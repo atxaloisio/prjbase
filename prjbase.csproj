@@ -237,8 +237,10 @@
     <Content Include="db\dbIntegracao.sdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\fechar.png" />
+    <None Include="Resources\excluir.png" />
     <None Include="Resources\novo.png" />
-    <None Include="Resources\teste.png" />
+    <None Include="Resources\Editar.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">

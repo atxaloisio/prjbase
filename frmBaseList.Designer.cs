@@ -30,11 +30,11 @@
         {
             this.pnlBotoes = new System.Windows.Forms.Panel();
             this.btnFechar = new System.Windows.Forms.Button();
+            this.pnlDados = new System.Windows.Forms.Panel();
+            this.dgvDados = new System.Windows.Forms.DataGridView();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnIncluir = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
-            this.pnlDados = new System.Windows.Forms.Panel();
-            this.dgvDados = new System.Windows.Forms.DataGridView();
             this.pnlBotoes.SuspendLayout();
             this.pnlDados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDados)).BeginInit();
@@ -60,7 +60,8 @@
             this.btnFechar.BackColor = System.Drawing.SystemColors.HotTrack;
             this.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFechar.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFechar.ForeColor = System.Drawing.SystemColors.ControlLightLight;            
+            this.btnFechar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnFechar.Image = global::prjbase.Properties.Resources.fechar;
             this.btnFechar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFechar.Location = new System.Drawing.Point(4, 370);
             this.btnFechar.Name = "btnFechar";
@@ -71,12 +72,32 @@
             this.btnFechar.UseVisualStyleBackColor = false;
             this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
+            // pnlDados
+            // 
+            this.pnlDados.Controls.Add(this.dgvDados);
+            this.pnlDados.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlDados.Location = new System.Drawing.Point(116, 0);
+            this.pnlDados.Name = "pnlDados";
+            this.pnlDados.Size = new System.Drawing.Size(615, 405);
+            this.pnlDados.TabIndex = 11;
+            // 
+            // dgvDados
+            // 
+            this.dgvDados.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvDados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDados.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDados.Location = new System.Drawing.Point(0, 0);
+            this.dgvDados.Name = "dgvDados";
+            this.dgvDados.Size = new System.Drawing.Size(615, 405);
+            this.dgvDados.TabIndex = 0;
+            // 
             // btnExcluir
             // 
             this.btnExcluir.BackColor = System.Drawing.SystemColors.HotTrack;
             this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcluir.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluir.ForeColor = System.Drawing.SystemColors.ControlLightLight;           
+            this.btnExcluir.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnExcluir.Image = global::prjbase.Properties.Resources.excluir;
             this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnExcluir.Location = new System.Drawing.Point(4, 71);
             this.btnExcluir.Name = "btnExcluir";
@@ -94,7 +115,7 @@
             this.btnIncluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIncluir.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIncluir.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            
+            this.btnIncluir.Image = global::prjbase.Properties.Resources.novo;
             this.btnIncluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnIncluir.Location = new System.Drawing.Point(4, 37);
             this.btnIncluir.Name = "btnIncluir";
@@ -111,7 +132,7 @@
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditar.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            
+            this.btnEditar.Image = global::prjbase.Properties.Resources.Editar;
             this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnEditar.Location = new System.Drawing.Point(4, 3);
             this.btnEditar.Name = "btnEditar";
@@ -121,24 +142,6 @@
             this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEditar.UseVisualStyleBackColor = false;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
-            // 
-            // pnlDados
-            // 
-            this.pnlDados.Controls.Add(this.dgvDados);
-            this.pnlDados.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlDados.Location = new System.Drawing.Point(116, 0);
-            this.pnlDados.Name = "pnlDados";
-            this.pnlDados.Size = new System.Drawing.Size(615, 405);
-            this.pnlDados.TabIndex = 11;
-            // 
-            // dgvDados
-            // 
-            this.dgvDados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDados.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDados.Location = new System.Drawing.Point(0, 0);
-            this.dgvDados.Name = "dgvDados";
-            this.dgvDados.Size = new System.Drawing.Size(615, 405);
-            this.dgvDados.TabIndex = 0;
             // 
             // frmBaseList
             // 
