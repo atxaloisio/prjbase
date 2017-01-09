@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace prjbase
 {
-    public partial class frmUsuarios : prjbase.frmBaseList
+    public partial class frmClientes : prjbase.frmBaseList
     {
-        public frmUsuarios()
+        public frmClientes()
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
@@ -21,7 +21,7 @@ namespace prjbase
             frmInstancia = new frmBaseCadEdit();
         }
 
-        private void frmUsuarios_Activated(object sender, EventArgs e)
+        private void frmClientes_Activated(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
         }

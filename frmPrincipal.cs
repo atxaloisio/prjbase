@@ -15,18 +15,80 @@ namespace prjbase
         public frmPrincipal()
         {
             InitializeComponent();
+        }        
+
+        private void mnuCadUsuario_Click(object sender, EventArgs e)
+        {
+            Boolean instanciar = true;
+
+            foreach (var mdiChildForm in MdiChildren)
+            {
+                if (mdiChildForm is frmUsuarios)
+                {
+                    instanciar = false;
+                    mdiChildForm.Show();
+                }
+            }
+
+            if (instanciar)
+            {
+                var frm = new frmUsuarios();
+                frm.ConfigurarForm(this);
+                frm.Show();
+            }
+            
         }
 
-        private void usuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        private void mnuCadClientes_Click(object sender, EventArgs e)
         {
-            var frm = new frmUsuarios();
-            frm.ConfigurarForm(this);            
-            frm.Show();
+            Boolean instanciar = true;
+
+            foreach (var mdiChildForm in MdiChildren)
+            {
+                if (mdiChildForm is frmClientes)
+                {
+                    instanciar = false;
+                    mdiChildForm.Show();
+                }
+            }
+
+            if (instanciar)
+            {
+                var frm = new frmClientes();
+                frm.ConfigurarForm(this);
+                frm.Show();
+            }
+            
         }
 
-        private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void mnuCadPedidoVendas_Click(object sender, EventArgs e)
         {
+            Boolean instanciar = true;
 
+            foreach (var mdiChildForm in MdiChildren)
+            {
+                if (mdiChildForm is frmPedidos)
+                {
+                    instanciar = false;
+                    mdiChildForm.Show();
+                }
+            }
+
+            if (instanciar)
+            {
+                var frm = new frmPedidos();
+                frm.ConfigurarForm(this);
+                frm.Show();
+            }
+            
+        }
+
+        private void mnuJanFecharTodos_Click(object sender, EventArgs e)
+        {
+            foreach (var mdiChildForm in MdiChildren)
+            {
+                mdiChildForm.Close();
+            }
         }
     }
 }

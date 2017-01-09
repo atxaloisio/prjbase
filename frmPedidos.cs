@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace prjbase
 {
-    public partial class frmUsuarios : prjbase.frmBaseList
+    public partial class frmPedidos : prjbase.frmBaseList
     {
-        public frmUsuarios()
+        public frmPedidos()
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
@@ -21,7 +21,12 @@ namespace prjbase
             frmInstancia = new frmBaseCadEdit();
         }
 
-        private void frmUsuarios_Activated(object sender, EventArgs e)
+        private void frmPedidos_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void frmPedidos_Activated(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
         }

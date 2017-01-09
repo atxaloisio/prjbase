@@ -1,6 +1,6 @@
 ﻿namespace prjbase
 {
-    partial class frmUsuarios
+    partial class frmClientes
     {
         /// <summary>
         /// Required designer variable.
@@ -33,17 +33,15 @@
             // 
             // btnFechar
             // 
-            this.btnFechar.Location = new System.Drawing.Point(3, 141);
+            this.btnFechar.Location = new System.Drawing.Point(4, 372);
             // 
-            // frmUsuarios
+            // frmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(731, 405);
-            this.MaximizeBox = true;
-            this.MinimizeBox = true;
-            this.Name = "frmUsuarios";
-            this.Text = "Listar Usuários";
-            this.Activated += new System.EventHandler(this.frmUsuarios_Activated);
+            this.Name = "frmClientes";
+            this.Text = "Listar Clientes";
+            this.Activated += new System.EventHandler(this.frmClientes_Activated);
             this.pnlBotoes.ResumeLayout(false);
             this.ResumeLayout(false);
 
