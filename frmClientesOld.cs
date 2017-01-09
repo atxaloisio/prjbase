@@ -12,9 +12,9 @@ using Model;
 
 namespace prjbase
 {
-    public partial class frmClientes : Form
+    public partial class frmClientesOld : Form
     {
-        public frmClientes()
+        public frmClientesOld()
         {
             InitializeComponent();
         }

@@ -23,5 +23,10 @@ namespace prjbase
             frm.ConfigurarForm(this);            
             frm.Show();
         }
+
+        private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

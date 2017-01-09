@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace prjbase
 {
@@ -16,7 +17,45 @@ namespace prjbase
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmPrincipal());
+
+            frmSplash splash = new frmSplash();
+            splash.Show();
+
+            Application.DoEvents();
+           
+            splash.setMensagem("Carregando configurações.");
+            splash.setprogresso(30);
+            Thread.Sleep(500);
+            Application.DoEvents();
+            
+            splash.setMensagem("Sincronizando informações com a nuvem.");            
+            splash.setprogresso(60);
+            Thread.Sleep(500);
+            Application.DoEvents();
+            
+            splash.setMensagem("Sincronizado.");            
+            splash.setprogresso(100);
+            Thread.Sleep(500);
+            Application.DoEvents();
+
+            Thread.Sleep(500);
+            Application.DoEvents();
+
+            splash.Dispose();
+
+            frmLogin login = new frmLogin();
+
+
+            if (login.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(new frmPrincipal());
+            }
+            else
+            {
+                Application.Exit();
+            }
+
+            
         }
     }
 }

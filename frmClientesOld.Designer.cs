@@ -1,6 +1,6 @@
 ﻿namespace prjbase
 {
-    partial class frmClientes
+    partial class frmClientesOld
     {
         /// <summary>
         /// Required designer variable.
