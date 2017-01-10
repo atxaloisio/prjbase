@@ -23,7 +23,7 @@ namespace prjbase
         {
             using (var context = new dbIntegracaoEntities())
             {
-                var lstUsuario = context.usuario.ToList<usuario>();
+                var lstUsuario = context.usuario.ToList<Usuario>();
                 dgvUsuarios.DataSource = lstUsuario;
             }
                 /*
