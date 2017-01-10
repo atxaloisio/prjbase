@@ -73,6 +73,16 @@ namespace prjbase.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cancelar {
+            get {
+                object obj = ResourceManager.GetObject("cancelar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Editar {
             get {
                 object obj = ResourceManager.GetObject("Editar", resourceCulture);
@@ -116,6 +126,16 @@ namespace prjbase.Properties {
         internal static System.Drawing.Bitmap novo {
             get {
                 object obj = ResourceManager.GetObject("novo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap salvar {
+            get {
+                object obj = ResourceManager.GetObject("salvar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

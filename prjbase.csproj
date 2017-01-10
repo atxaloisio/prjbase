@@ -212,6 +212,9 @@
     <EmbeddedResource Include="frmBase.resx">
       <DependentUpon>frmBase.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmBaseCadEdit.resx">
+      <DependentUpon>frmBaseCadEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmBaseList.resx">
       <DependentUpon>frmBaseList.cs</DependentUpon>
     </EmbeddedResource>
@@ -273,6 +276,8 @@
     <Content Include="db\dbIntegracao.sdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\salvar.png" />
+    <None Include="Resources\cancelar.png" />
     <None Include="Resources\cadeado.png" />
     <None Include="Resources\entrar.png" />
     <None Include="Resources\splash.png" />

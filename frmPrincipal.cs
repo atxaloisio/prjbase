@@ -26,6 +26,7 @@ namespace prjbase
                 if (mdiChildForm is frmUsuarios)
                 {
                     instanciar = false;
+                    mdiChildForm.BringToFront();
                     mdiChildForm.Show();
                 }
             }
@@ -48,6 +49,7 @@ namespace prjbase
                 if (mdiChildForm is frmClientes)
                 {
                     instanciar = false;
+                    mdiChildForm.BringToFront();
                     mdiChildForm.Show();
                 }
             }
@@ -70,6 +72,7 @@ namespace prjbase
                 if (mdiChildForm is frmPedidos)
                 {
                     instanciar = false;
+                    mdiChildForm.BringToFront();
                     mdiChildForm.Show();
                 }
             }
