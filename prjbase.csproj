@@ -153,6 +153,12 @@
     <Compile Include="frmBaseList.Designer.cs">
       <DependentUpon>frmBaseList.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCadEditUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCadEditUsuario.Designer.cs">
+      <DependentUpon>frmCadEditUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmClientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,29 +183,11 @@
     <Compile Include="frmSplash.Designer.cs">
       <DependentUpon>frmSplash.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmUsuarioOld.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmUsuarioOld.Designer.cs">
-      <DependentUpon>frmUsuarioOld.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmUsuarios.Designer.cs">
       <DependentUpon>frmUsuarios.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmUsuariosOld.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmUsuariosOld.Designer.cs">
-      <DependentUpon>frmUsuariosOld.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmClientesOld.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmClientesOld.Designer.cs">
-      <DependentUpon>frmClientesOld.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPrincipal.cs">
       <SubType>Form</SubType>
@@ -218,6 +206,9 @@
     <EmbeddedResource Include="frmBaseList.resx">
       <DependentUpon>frmBaseList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmCadEditUsuario.resx">
+      <DependentUpon>frmCadEditUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmClientes.resx">
       <DependentUpon>frmClientes.cs</DependentUpon>
     </EmbeddedResource>
@@ -230,17 +221,8 @@
     <EmbeddedResource Include="frmSplash.resx">
       <DependentUpon>frmSplash.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmUsuarioOld.resx">
-      <DependentUpon>frmUsuarioOld.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmUsuarios.resx">
       <DependentUpon>frmUsuarios.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmUsuariosOld.resx">
-      <DependentUpon>frmUsuariosOld.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmClientesOld.resx">
-      <DependentUpon>frmClientesOld.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
@@ -287,9 +269,9 @@
     <None Include="Resources\Editar.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DAL\DAL.csproj">
-      <Project>{f8da521d-7984-444d-8cf8-3f39b1d383cc}</Project>
-      <Name>DAL</Name>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{fae47ef5-5602-4cb7-973e-d4596f20281a}</Project>
+      <Name>BLL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{f2670f84-bee6-491c-8818-7a898b204bc5}</Project>

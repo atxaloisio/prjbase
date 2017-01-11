@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace prjbase
 {
-    public partial class frmUsuarioOld : Form
+    public partial class frmCadEditUsuario : prjbase.frmBaseCadEdit
     {
-        public frmUsuarioOld()
+        public frmCadEditUsuario()
         {
             InitializeComponent();
         }

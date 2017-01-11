@@ -30,14 +30,20 @@
         {
             this.pnlBotoes = new System.Windows.Forms.Panel();
             this.btnFechar = new System.Windows.Forms.Button();
-            this.pnlDados = new System.Windows.Forms.Panel();
-            this.dgvDados = new System.Windows.Forms.DataGridView();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnIncluir = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
+            this.pnlDados = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.dgvDados = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.dgvFiltro = new System.Windows.Forms.DataGridView();
             this.pnlBotoes.SuspendLayout();
             this.pnlDados.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDados)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFiltro)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlBotoes
@@ -71,25 +77,6 @@
             this.btnFechar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnFechar.UseVisualStyleBackColor = false;
             this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
-            // 
-            // pnlDados
-            // 
-            this.pnlDados.Controls.Add(this.dgvDados);
-            this.pnlDados.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlDados.Location = new System.Drawing.Point(116, 0);
-            this.pnlDados.Name = "pnlDados";
-            this.pnlDados.Size = new System.Drawing.Size(615, 405);
-            this.pnlDados.TabIndex = 11;
-            // 
-            // dgvDados
-            // 
-            this.dgvDados.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dgvDados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDados.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDados.Location = new System.Drawing.Point(0, 0);
-            this.dgvDados.Name = "dgvDados";
-            this.dgvDados.Size = new System.Drawing.Size(615, 405);
-            this.dgvDados.TabIndex = 0;
             // 
             // btnExcluir
             // 
@@ -143,6 +130,54 @@
             this.btnEditar.UseVisualStyleBackColor = false;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
+            // pnlDados
+            // 
+            this.pnlDados.Controls.Add(this.panel2);
+            this.pnlDados.Controls.Add(this.panel1);
+            this.pnlDados.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlDados.Location = new System.Drawing.Point(116, 0);
+            this.pnlDados.Name = "pnlDados";
+            this.pnlDados.Size = new System.Drawing.Size(615, 405);
+            this.pnlDados.TabIndex = 11;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.dgvDados);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 57);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(615, 348);
+            this.panel2.TabIndex = 1;
+            // 
+            // dgvDados
+            // 
+            this.dgvDados.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvDados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDados.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDados.Location = new System.Drawing.Point(0, 0);
+            this.dgvDados.Name = "dgvDados";
+            this.dgvDados.Size = new System.Drawing.Size(615, 348);
+            this.dgvDados.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.dgvFiltro);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(615, 57);
+            this.panel1.TabIndex = 0;
+            // 
+            // dgvFiltro
+            // 
+            this.dgvFiltro.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvFiltro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFiltro.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvFiltro.Location = new System.Drawing.Point(0, 0);
+            this.dgvFiltro.Name = "dgvFiltro";
+            this.dgvFiltro.Size = new System.Drawing.Size(615, 57);
+            this.dgvFiltro.TabIndex = 0;
+            // 
             // frmBaseList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -158,7 +193,10 @@
             this.Load += new System.EventHandler(this.frmBaseList_Load);
             this.pnlBotoes.ResumeLayout(false);
             this.pnlDados.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDados)).EndInit();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFiltro)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -169,7 +207,10 @@
         public System.Windows.Forms.Button btnExcluir;
         public System.Windows.Forms.Button btnIncluir;
         public System.Windows.Forms.Button btnEditar;
-        public System.Windows.Forms.DataGridView dgvDados;
         public System.Windows.Forms.Button btnFechar;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel1;
+        protected System.Windows.Forms.DataGridView dgvDados;
+        protected System.Windows.Forms.DataGridView dgvFiltro;
     }
 }

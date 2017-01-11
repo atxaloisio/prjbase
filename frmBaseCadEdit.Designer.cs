@@ -29,14 +29,16 @@
         private void InitializeComponent()
         {
             this.pnlBotoes = new System.Windows.Forms.Panel();
-            this.pnlPrincipal = new System.Windows.Forms.Panel();
+            this.btnIncluir = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
+            this.pnlPrincipal = new System.Windows.Forms.Panel();
             this.pnlBotoes.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlBotoes
             // 
+            this.pnlBotoes.Controls.Add(this.btnIncluir);
             this.pnlBotoes.Controls.Add(this.btnCancelar);
             this.pnlBotoes.Controls.Add(this.btnSalvar);
             this.pnlBotoes.Dock = System.Windows.Forms.DockStyle.Left;
@@ -45,17 +47,28 @@
             this.pnlBotoes.Size = new System.Drawing.Size(115, 386);
             this.pnlBotoes.TabIndex = 0;
             // 
-            // pnlPrincipal
+            // btnIncluir
             // 
-            this.pnlPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlPrincipal.Location = new System.Drawing.Point(115, 0);
-            this.pnlPrincipal.Name = "pnlPrincipal";
-            this.pnlPrincipal.Size = new System.Drawing.Size(495, 386);
-            this.pnlPrincipal.TabIndex = 1;
+            this.btnIncluir.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnIncluir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnIncluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIncluir.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIncluir.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnIncluir.Image = global::prjbase.Properties.Resources.novo;
+            this.btnIncluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIncluir.Location = new System.Drawing.Point(3, 75);
+            this.btnIncluir.Name = "btnIncluir";
+            this.btnIncluir.Size = new System.Drawing.Size(109, 33);
+            this.btnIncluir.TabIndex = 11;
+            this.btnIncluir.Text = "&Incluir";
+            this.btnIncluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnIncluir.UseVisualStyleBackColor = false;
+            this.btnIncluir.Visible = false;
             // 
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -87,13 +100,24 @@
             this.btnSalvar.UseVisualStyleBackColor = false;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
+            // pnlPrincipal
+            // 
+            this.pnlPrincipal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlPrincipal.Location = new System.Drawing.Point(115, 0);
+            this.pnlPrincipal.Name = "pnlPrincipal";
+            this.pnlPrincipal.Size = new System.Drawing.Size(495, 386);
+            this.pnlPrincipal.TabIndex = 1;
+            // 
             // frmBaseCadEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.CancelButton = this.btnCancelar;
             this.ClientSize = new System.Drawing.Size(610, 386);
             this.Controls.Add(this.pnlPrincipal);
             this.Controls.Add(this.pnlBotoes);
             this.Name = "frmBaseCadEdit";
+            this.Shown += new System.EventHandler(this.frmBaseCadEdit_Shown);
             this.pnlBotoes.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -105,5 +129,6 @@
         private System.Windows.Forms.Panel pnlPrincipal;
         public System.Windows.Forms.Button btnSalvar;
         public System.Windows.Forms.Button btnCancelar;
+        public System.Windows.Forms.Button btnIncluir;
     }
 }
