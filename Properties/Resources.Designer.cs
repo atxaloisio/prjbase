@@ -63,6 +63,16 @@ namespace prjbase.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap anterior {
+            get {
+                object obj = ResourceManager.GetObject("anterior", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cadeado {
             get {
                 object obj = ResourceManager.GetObject("cadeado", resourceCulture);
@@ -133,6 +143,26 @@ namespace prjbase.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap primeiro {
+            get {
+                object obj = ResourceManager.GetObject("primeiro", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap proximo {
+            get {
+                object obj = ResourceManager.GetObject("proximo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap salvar {
             get {
                 object obj = ResourceManager.GetObject("salvar", resourceCulture);
@@ -146,6 +176,16 @@ namespace prjbase.Properties {
         internal static System.Drawing.Bitmap splash {
             get {
                 object obj = ResourceManager.GetObject("splash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ultimo {
+            get {
+                object obj = ResourceManager.GetObject("ultimo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

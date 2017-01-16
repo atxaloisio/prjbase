@@ -29,6 +29,13 @@
         private void InitializeComponent()
         {
             this.pnlBotoes = new System.Windows.Forms.Panel();
+            this.lblTotalPaginas = new System.Windows.Forms.Label();
+            this.lblDe = new System.Windows.Forms.Label();
+            this.lblNumeroPagina = new System.Windows.Forms.Label();
+            this.btnPrimeiro = new System.Windows.Forms.Button();
+            this.btnAnterior = new System.Windows.Forms.Button();
+            this.btnProximo = new System.Windows.Forms.Button();
+            this.btnUltimo = new System.Windows.Forms.Button();
             this.btnFechar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnIncluir = new System.Windows.Forms.Button();
@@ -38,6 +45,7 @@
             this.dgvDados = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvFiltro = new System.Windows.Forms.DataGridView();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.pnlBotoes.SuspendLayout();
             this.pnlDados.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -49,6 +57,13 @@
             // pnlBotoes
             // 
             this.pnlBotoes.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.pnlBotoes.Controls.Add(this.lblTotalPaginas);
+            this.pnlBotoes.Controls.Add(this.lblDe);
+            this.pnlBotoes.Controls.Add(this.lblNumeroPagina);
+            this.pnlBotoes.Controls.Add(this.btnPrimeiro);
+            this.pnlBotoes.Controls.Add(this.btnAnterior);
+            this.pnlBotoes.Controls.Add(this.btnProximo);
+            this.pnlBotoes.Controls.Add(this.btnUltimo);
             this.pnlBotoes.Controls.Add(this.btnFechar);
             this.pnlBotoes.Controls.Add(this.btnExcluir);
             this.pnlBotoes.Controls.Add(this.btnIncluir);
@@ -59,6 +74,91 @@
             this.pnlBotoes.Name = "pnlBotoes";
             this.pnlBotoes.Size = new System.Drawing.Size(116, 405);
             this.pnlBotoes.TabIndex = 10;
+            // 
+            // lblTotalPaginas
+            // 
+            this.lblTotalPaginas.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lblTotalPaginas.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalPaginas.Location = new System.Drawing.Point(70, 322);
+            this.lblTotalPaginas.Name = "lblTotalPaginas";
+            this.lblTotalPaginas.Size = new System.Drawing.Size(40, 16);
+            this.lblTotalPaginas.TabIndex = 18;
+            this.lblTotalPaginas.Text = "0";
+            this.lblTotalPaginas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblDe
+            // 
+            this.lblDe.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lblDe.AutoSize = true;
+            this.lblDe.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDe.Location = new System.Drawing.Point(51, 322);
+            this.lblDe.Name = "lblDe";
+            this.lblDe.Size = new System.Drawing.Size(22, 16);
+            this.lblDe.TabIndex = 17;
+            this.lblDe.Text = "de";
+            this.lblDe.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblNumeroPagina
+            // 
+            this.lblNumeroPagina.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lblNumeroPagina.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumeroPagina.Location = new System.Drawing.Point(9, 322);
+            this.lblNumeroPagina.Name = "lblNumeroPagina";
+            this.lblNumeroPagina.Size = new System.Drawing.Size(39, 16);
+            this.lblNumeroPagina.TabIndex = 16;
+            this.lblNumeroPagina.Text = "0";
+            // 
+            // btnPrimeiro
+            // 
+            this.btnPrimeiro.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnPrimeiro.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnPrimeiro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrimeiro.Image = global::prjbase.Properties.Resources.primeiro;
+            this.btnPrimeiro.Location = new System.Drawing.Point(6, 341);
+            this.btnPrimeiro.Name = "btnPrimeiro";
+            this.btnPrimeiro.Size = new System.Drawing.Size(26, 23);
+            this.btnPrimeiro.TabIndex = 15;
+            this.btnPrimeiro.UseVisualStyleBackColor = false;
+            this.btnPrimeiro.Click += new System.EventHandler(this.btnPrimeiro_Click);
+            // 
+            // btnAnterior
+            // 
+            this.btnAnterior.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnAnterior.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnAnterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAnterior.Image = global::prjbase.Properties.Resources.anterior;
+            this.btnAnterior.Location = new System.Drawing.Point(34, 341);
+            this.btnAnterior.Name = "btnAnterior";
+            this.btnAnterior.Size = new System.Drawing.Size(24, 23);
+            this.btnAnterior.TabIndex = 14;
+            this.btnAnterior.UseVisualStyleBackColor = false;
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
+            // 
+            // btnProximo
+            // 
+            this.btnProximo.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnProximo.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnProximo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProximo.Image = global::prjbase.Properties.Resources.proximo;
+            this.btnProximo.Location = new System.Drawing.Point(60, 341);
+            this.btnProximo.Name = "btnProximo";
+            this.btnProximo.Size = new System.Drawing.Size(24, 23);
+            this.btnProximo.TabIndex = 13;
+            this.btnProximo.UseVisualStyleBackColor = false;
+            this.btnProximo.Click += new System.EventHandler(this.btnProximo_Click);
+            // 
+            // btnUltimo
+            // 
+            this.btnUltimo.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnUltimo.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnUltimo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUltimo.Image = global::prjbase.Properties.Resources.ultimo;
+            this.btnUltimo.Location = new System.Drawing.Point(86, 341);
+            this.btnUltimo.Name = "btnUltimo";
+            this.btnUltimo.Size = new System.Drawing.Size(26, 23);
+            this.btnUltimo.TabIndex = 12;
+            this.btnUltimo.UseVisualStyleBackColor = false;
+            this.btnUltimo.Click += new System.EventHandler(this.btnUltimo_Click);
             // 
             // btnFechar
             // 
@@ -134,6 +234,7 @@
             // 
             this.pnlDados.Controls.Add(this.panel2);
             this.pnlDados.Controls.Add(this.panel1);
+            this.pnlDados.Controls.Add(this.panel3);
             this.pnlDados.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlDados.Location = new System.Drawing.Point(116, 0);
             this.pnlDados.Name = "pnlDados";
@@ -146,7 +247,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 57);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(615, 348);
+            this.panel2.Size = new System.Drawing.Size(615, 313);
             this.panel2.TabIndex = 1;
             // 
             // dgvDados
@@ -156,7 +257,7 @@
             this.dgvDados.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDados.Location = new System.Drawing.Point(0, 0);
             this.dgvDados.Name = "dgvDados";
-            this.dgvDados.Size = new System.Drawing.Size(615, 348);
+            this.dgvDados.Size = new System.Drawing.Size(615, 313);
             this.dgvDados.TabIndex = 0;
             // 
             // panel1
@@ -178,6 +279,14 @@
             this.dgvFiltro.Size = new System.Drawing.Size(615, 57);
             this.dgvFiltro.TabIndex = 0;
             // 
+            // panel3
+            // 
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 370);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(615, 35);
+            this.panel3.TabIndex = 2;
+            // 
             // frmBaseList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -192,6 +301,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmBaseList_Load);
             this.pnlBotoes.ResumeLayout(false);
+            this.pnlBotoes.PerformLayout();
             this.pnlDados.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDados)).EndInit();
@@ -212,5 +322,13 @@
         private System.Windows.Forms.Panel panel1;
         protected System.Windows.Forms.DataGridView dgvDados;
         protected System.Windows.Forms.DataGridView dgvFiltro;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label lblDe;
+        protected System.Windows.Forms.Label lblTotalPaginas;
+        protected System.Windows.Forms.Label lblNumeroPagina;
+        protected System.Windows.Forms.Button btnPrimeiro;
+        protected System.Windows.Forms.Button btnAnterior;
+        protected System.Windows.Forms.Button btnProximo;
+        protected System.Windows.Forms.Button btnUltimo;
     }
 }

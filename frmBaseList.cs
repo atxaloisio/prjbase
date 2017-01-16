@@ -11,6 +11,12 @@ namespace prjbase
     public partial class frmBaseList : prjbase.frmBase
     {
         protected frmBase frmInstancia;
+
+        protected int deslocamento = 0;
+        protected int pagina = 0;
+        protected int tamanhoPagina = 20;
+        protected decimal totalPaginas = 0;
+        protected int totalReg = 0;
         public frmBaseList()
         {
             InitializeComponent();
@@ -19,7 +25,7 @@ namespace prjbase
 
         protected virtual void InstanciarFormulario()
         {
-            
+
         }
 
         public virtual void ConfigurarForm(Form pFormParent)
@@ -29,7 +35,7 @@ namespace prjbase
             MaximizeBox = false;
             ControlBox = false;
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            
+
             MdiParent = pFormParent;
         }
 
@@ -53,7 +59,7 @@ namespace prjbase
                 MessageBox.Show("não atualiza");
             }
             frmInstancia.Dispose();
-                                               
+
         }
 
         protected virtual void btnExcluir_Click(object sender, EventArgs e)
@@ -71,7 +77,7 @@ namespace prjbase
             TituloTela = frmInstancia.Text;
             frmInstancia.Text = "Editar : " + frmInstancia.Text;
             //frmInstancia.Text = TituloTela;
-            frmInstancia.ExibeDialogo(this, 1);            
+            frmInstancia.ExibeDialogo(this, 1);
             if (frmInstancia.atualizagrid)
             {
                 MessageBox.Show("atualiza.");
@@ -89,14 +95,26 @@ namespace prjbase
         }
 
         protected virtual void frmBaseList_Load(object sender, EventArgs e)
-        {
-            //MinimizeBox = false;
-            //MaximizeBox = false;
-            //MinimumSize = Parent.Size; 
-            btnFechar.Top = (pnlBotoes.Height - btnFechar.Height);
-            Parent.Text = Parent.Text + " : " + Text;           
-            WindowState = FormWindowState.Maximized;
+        {            
             carregaDados();
+            WindowState = FormWindowState.Maximized;
+            
+
+            var topBotoesNavegacao = (pnlBotoes.Height - (btnFechar.Height + btnProximo.Height + 4));
+            var topLabelsNavegacao = (pnlBotoes.Height - (btnFechar.Height + btnProximo.Height + lblDe.Height + 4));
+
+            lblDe.Top = topLabelsNavegacao;
+            lblNumeroPagina.Top = topLabelsNavegacao;
+            lblTotalPaginas.Top = topLabelsNavegacao;
+
+            btnProximo.Top = topBotoesNavegacao;
+            btnUltimo.Top = topBotoesNavegacao;
+            btnAnterior.Top = topBotoesNavegacao;
+            btnPrimeiro.Top = topBotoesNavegacao;
+
+            btnFechar.Top = (pnlBotoes.Height - btnFechar.Height);
+            Parent.Text = Parent.Text + " : " + Text;
+            
         }
 
         protected virtual void formataGridDados()
@@ -110,7 +128,7 @@ namespace prjbase
             gridDados.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             //altera a cor das linhas alternadas no grid
             gridDados.RowsDefaultCellStyle.BackColor = System.Drawing.Color.White;
-            gridDados.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.Aquamarine;
+            gridDados.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.LightSteelBlue;
             formataColunagridDados(gridDados);
             //seleciona a linha inteira
             gridDados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -153,8 +171,8 @@ namespace prjbase
         }
 
         protected virtual void dgvFiltro_DataError(object sender, DataGridViewDataErrorEventArgs e)
-        {            
-            if (e.Exception != null) 
+        {
+            if (e.Exception != null)
             {
                 MessageBox.Show(e.Exception.Message);
             }
@@ -193,9 +211,117 @@ namespace prjbase
             //metodo implementado nas entidades filhas
         }
 
+        protected virtual void carregaConsulta()
+        {
+            //Metodo implementado nas entidades filhas
+        }
+
         protected virtual void carregaDados()
         {
-            //metodo implementado nas entidades filhas
+            try
+            {
+                carregaConsulta();
+                pagina++;
+                if (totalReg > 0)
+                {
+                    totalPaginas = Math.Ceiling(decimal.Divide(totalReg, tamanhoPagina));
+                    lblNumeroPagina.Text = Convert.ToString(pagina);
+                    lblTotalPaginas.Text = Convert.ToString(totalPaginas);
+                    btnUltimo.Enabled = totalPaginas > 1;
+                    btnProximo.Enabled = totalPaginas > 1;
+                }
+                formataGridDados();
+                formataGridFiltro();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        protected virtual void callNextPage()
+        {
+            try
+            {
+                deslocamento = deslocamento + tamanhoPagina;
+                if (deslocamento > totalReg)
+                {
+                    deslocamento = 0;
+                }
+                carregaConsulta();
+                pagina++;
+
+                if (pagina > (totalPaginas))
+                {
+                    pagina = 1;
+                }
+
+                lblNumeroPagina.Text = Convert.ToString(pagina);
+                formataGridDados();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        protected virtual void callPrevPage()
+        {
+
+        }
+
+        protected virtual void callLastPage()
+        {
+            try
+            {
+                int ultimapagina = totalReg - tamanhoPagina;
+
+                if (ultimapagina < tamanhoPagina)
+                {
+                    deslocamento = totalReg - ultimapagina;
+                }
+                else
+                {
+                    deslocamento = ultimapagina;
+                }
+                
+                                
+                carregaConsulta();
+                
+                lblNumeroPagina.Text = Convert.ToString(totalPaginas);
+                formataGridDados();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        protected virtual void callFirstPage()
+        {
+
+        }
+
+        private void btnProximo_Click(object sender, EventArgs e)
+        {
+            callNextPage();
+        }
+
+        private void btnUltimo_Click(object sender, EventArgs e)
+        {
+            callLastPage();
+        }
+
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+            callPrevPage();
+        }
+
+        private void btnPrimeiro_Click(object sender, EventArgs e)
+        {
+            callFirstPage();
         }
     }
 }

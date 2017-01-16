@@ -33,7 +33,7 @@
             // 
             // btnFechar
             // 
-            this.btnFechar.Location = new System.Drawing.Point(3, 141);
+            this.btnFechar.Location = new System.Drawing.Point(3, 141);                         
             // 
             // frmUsuarios
             // 
@@ -45,6 +45,7 @@
             this.Text = "Listar Usuários";
             this.Activated += new System.EventHandler(this.frmUsuarios_Activated);
             this.pnlBotoes.ResumeLayout(false);
+            this.pnlBotoes.PerformLayout();
             this.ResumeLayout(false);
 
         }
