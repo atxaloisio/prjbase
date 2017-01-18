@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.pnlBotoes = new System.Windows.Forms.Panel();
+            this.lblTotalRegistros = new System.Windows.Forms.Label();
+            this.lblRegistros = new System.Windows.Forms.Label();
             this.lblTotalPaginas = new System.Windows.Forms.Label();
             this.lblDe = new System.Windows.Forms.Label();
             this.lblNumeroPagina = new System.Windows.Forms.Label();
@@ -45,7 +47,7 @@
             this.dgvDados = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvFiltro = new System.Windows.Forms.DataGridView();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.pnlBorda = new System.Windows.Forms.Panel();
             this.pnlBotoes.SuspendLayout();
             this.pnlDados.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -57,6 +59,9 @@
             // pnlBotoes
             // 
             this.pnlBotoes.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.pnlBotoes.Controls.Add(this.pnlBorda);
+            this.pnlBotoes.Controls.Add(this.lblTotalRegistros);
+            this.pnlBotoes.Controls.Add(this.lblRegistros);
             this.pnlBotoes.Controls.Add(this.lblTotalPaginas);
             this.pnlBotoes.Controls.Add(this.lblDe);
             this.pnlBotoes.Controls.Add(this.lblNumeroPagina);
@@ -74,6 +79,27 @@
             this.pnlBotoes.Name = "pnlBotoes";
             this.pnlBotoes.Size = new System.Drawing.Size(116, 405);
             this.pnlBotoes.TabIndex = 10;
+            // 
+            // lblTotalRegistros
+            // 
+            this.lblTotalRegistros.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lblTotalRegistros.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalRegistros.Location = new System.Drawing.Point(72, 286);
+            this.lblTotalRegistros.Name = "lblTotalRegistros";
+            this.lblTotalRegistros.Size = new System.Drawing.Size(40, 16);
+            this.lblTotalRegistros.TabIndex = 20;
+            this.lblTotalRegistros.Text = "0";
+            this.lblTotalRegistros.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblRegistros
+            // 
+            this.lblRegistros.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lblRegistros.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRegistros.Location = new System.Drawing.Point(9, 288);
+            this.lblRegistros.Name = "lblRegistros";
+            this.lblRegistros.Size = new System.Drawing.Size(56, 15);
+            this.lblRegistros.TabIndex = 19;
+            this.lblRegistros.Text = "Registros:";
             // 
             // lblTotalPaginas
             // 
@@ -234,7 +260,6 @@
             // 
             this.pnlDados.Controls.Add(this.panel2);
             this.pnlDados.Controls.Add(this.panel1);
-            this.pnlDados.Controls.Add(this.panel3);
             this.pnlDados.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlDados.Location = new System.Drawing.Point(116, 0);
             this.pnlDados.Name = "pnlDados";
@@ -247,7 +272,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 57);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(615, 313);
+            this.panel2.Size = new System.Drawing.Size(615, 348);
             this.panel2.TabIndex = 1;
             // 
             // dgvDados
@@ -257,7 +282,7 @@
             this.dgvDados.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDados.Location = new System.Drawing.Point(0, 0);
             this.dgvDados.Name = "dgvDados";
-            this.dgvDados.Size = new System.Drawing.Size(615, 313);
+            this.dgvDados.Size = new System.Drawing.Size(615, 348);
             this.dgvDados.TabIndex = 0;
             // 
             // panel1
@@ -279,13 +304,14 @@
             this.dgvFiltro.Size = new System.Drawing.Size(615, 57);
             this.dgvFiltro.TabIndex = 0;
             // 
-            // panel3
+            // pnlBorda
             // 
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 370);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(615, 35);
-            this.panel3.TabIndex = 2;
+            this.pnlBorda.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.pnlBorda.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.pnlBorda.Location = new System.Drawing.Point(6, 310);
+            this.pnlBorda.Name = "pnlBorda";
+            this.pnlBorda.Size = new System.Drawing.Size(104, 4);
+            this.pnlBorda.TabIndex = 21;
             // 
             // frmBaseList
             // 
@@ -322,7 +348,6 @@
         private System.Windows.Forms.Panel panel1;
         protected System.Windows.Forms.DataGridView dgvDados;
         protected System.Windows.Forms.DataGridView dgvFiltro;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label lblDe;
         protected System.Windows.Forms.Label lblTotalPaginas;
         protected System.Windows.Forms.Label lblNumeroPagina;
@@ -330,5 +355,8 @@
         protected System.Windows.Forms.Button btnAnterior;
         protected System.Windows.Forms.Button btnProximo;
         protected System.Windows.Forms.Button btnUltimo;
+        protected System.Windows.Forms.Label lblTotalRegistros;
+        private System.Windows.Forms.Label lblRegistros;
+        private System.Windows.Forms.Panel pnlBorda;
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSplash));
             this.lblMensagem = new System.Windows.Forms.Label();
             this.pbSplash = new System.Windows.Forms.PictureBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
@@ -72,7 +73,10 @@
             this.Controls.Add(this.lblMensagem);
             this.Controls.Add(this.pbSplash);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmSplash";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.frmSplash_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbSplash)).EndInit();

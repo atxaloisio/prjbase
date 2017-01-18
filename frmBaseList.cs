@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Utils;
 
 namespace prjbase
 {
@@ -17,6 +18,7 @@ namespace prjbase
         protected int tamanhoPagina = 20;
         protected decimal totalPaginas = 0;
         protected int totalReg = 0;
+        protected virtual int colOrdem { get; set; }
         public frmBaseList()
         {
             InitializeComponent();
@@ -99,13 +101,19 @@ namespace prjbase
             carregaDados();
             WindowState = FormWindowState.Maximized;
             
-
             var topBotoesNavegacao = (pnlBotoes.Height - (btnFechar.Height + btnProximo.Height + 4));
             var topLabelsNavegacao = (pnlBotoes.Height - (btnFechar.Height + btnProximo.Height + lblDe.Height + 4));
+            var topLabelsTotalReg  = (pnlBotoes.Height - (btnFechar.Height + btnProximo.Height + lblDe.Height + lblRegistros.Height + 25));
+            var topPanelBorda = (pnlBotoes.Height - (btnFechar.Height + btnProximo.Height + lblDe.Height + pnlBorda.Height + 10));
 
             lblDe.Top = topLabelsNavegacao;
             lblNumeroPagina.Top = topLabelsNavegacao;
             lblTotalPaginas.Top = topLabelsNavegacao;
+
+            lblRegistros.Top = topLabelsTotalReg;
+            lblTotalRegistros.Top = topLabelsTotalReg;
+
+            pnlBorda.Top = topPanelBorda;
 
             btnProximo.Top = topBotoesNavegacao;
             btnUltimo.Top = topBotoesNavegacao;
@@ -168,6 +176,67 @@ namespace prjbase
             gridFiltros.DataError += new DataGridViewDataErrorEventHandler(dgvFiltro_DataError);
 
             gridFiltros.EditingControlShowing += new DataGridViewEditingControlShowingEventHandler(dgvFiltro_EditingControlShowing);
+
+            gridFiltros.CellValidating += new DataGridViewCellValidatingEventHandler(dgvFiltro_CellValidating);
+            gridFiltros.KeyDown += new KeyEventHandler(dgvFiltro_KeyDown);
+            gridFiltros.CellEndEdit += new DataGridViewCellEventHandler(dgvFiltro_CellEndEdit);
+
+            gridFiltros.ColumnHeaderMouseClick += new DataGridViewCellMouseEventHandler(dgvFiltro_ColumnHeaderMouseClick);
+        }
+
+        private void dgvFiltro_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            ordenaCelula(sender, e);
+        }
+
+        protected virtual void ordenaCelula(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            
+        }
+
+        private void dgvFiltro_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                int iColumn = dgvFiltro.CurrentCell.ColumnIndex;
+                int iRow = dgvFiltro.CurrentCell.RowIndex;
+                if (iColumn == dgvFiltro.Columns.Count - 1)
+                    dgvFiltro.CurrentCell = dgvFiltro[0, iRow];
+                else
+                    dgvFiltro.CurrentCell = dgvFiltro[iColumn + 1, iRow];
+            }
+
+            if (e.KeyCode == Keys.Escape)
+            {
+                e.SuppressKeyPress = true;
+                int iColumn = dgvFiltro.CurrentCell.ColumnIndex;
+                int iRow = dgvFiltro.CurrentCell.RowIndex;
+
+                dgvFiltro[iColumn, iRow].Value = "";                
+            }
+        }
+
+        private void dgvFiltro_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            executeCellEndEditChild(sender, e);
+            dgvFiltro.Rows[e.RowIndex].ErrorText = String.Empty;
+        }
+
+        protected virtual void executeCellEndEditChild(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void dgvFiltro_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            executeCellValidatingChild(sender, e);
+            
+        }
+
+        protected virtual void executeCellValidatingChild(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            
         }
 
         protected virtual void dgvFiltro_DataError(object sender, DataGridViewDataErrorEventArgs e)
@@ -183,6 +252,7 @@ namespace prjbase
         protected virtual void dgvFiltro_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             e.Control.KeyPress -= new KeyPressEventHandler(Column0_KeyPress);
+            e.Control.KeyPress -= new KeyPressEventHandler(Column3_KeyPress);
             if (dgvFiltro.CurrentCell.ColumnIndex == 0) //Desired Column
             {
                 TextBox tb = e.Control as TextBox;
@@ -191,11 +261,28 @@ namespace prjbase
                     tb.KeyPress += new KeyPressEventHandler(Column0_KeyPress);
                 }
             }
+
+            if (dgvFiltro.CurrentCell.ColumnIndex == 3) //Desired Column
+            {
+                TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.KeyPress += new KeyPressEventHandler(Column3_KeyPress);
+                }
+            }
         }
 
         private void Column0_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void Column3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsNumber(e.KeyChar) && !e.KeyChar.Equals('/') && !Char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -227,9 +314,9 @@ namespace prjbase
                     totalPaginas = Math.Ceiling(decimal.Divide(totalReg, tamanhoPagina));
                     lblNumeroPagina.Text = Convert.ToString(pagina);
                     lblTotalPaginas.Text = Convert.ToString(totalPaginas);
-                    btnUltimo.Enabled = totalPaginas > 1;
-                    btnProximo.Enabled = totalPaginas > 1;
+                    lblTotalRegistros.Text = Convert.ToString(totalReg);                   
                 }
+                configuraBotoesNaveg();
                 formataGridDados();
                 formataGridFiltro();
             }
@@ -256,8 +343,9 @@ namespace prjbase
                 {
                     pagina = 1;
                 }
-
+                
                 lblNumeroPagina.Text = Convert.ToString(pagina);
+                configuraBotoesNaveg();
                 formataGridDados();
             }
             catch (Exception ex)
@@ -269,7 +357,32 @@ namespace prjbase
 
         protected virtual void callPrevPage()
         {
+            try
+            {
+                if ((deslocamento > 0) & (deslocamento >= tamanhoPagina))
+                {
+                    deslocamento = deslocamento - tamanhoPagina;
+                }
+                else
+                {
+                    deslocamento = 0;
+                }
+                            
+                carregaConsulta();
+                pagina--;
 
+                if (pagina < 1)
+                {
+                    pagina = 1;
+                }                
+                lblNumeroPagina.Text = Convert.ToString(pagina);
+                configuraBotoesNaveg();
+                formataGridDados();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         protected virtual void callLastPage()
@@ -289,8 +402,10 @@ namespace prjbase
                 
                                 
                 carregaConsulta();
-                
+
+                pagina = Convert.ToInt32(totalPaginas);                                
                 lblNumeroPagina.Text = Convert.ToString(totalPaginas);
+                configuraBotoesNaveg();
                 formataGridDados();
             }
             catch (Exception ex)
@@ -301,6 +416,25 @@ namespace prjbase
 
         protected virtual void callFirstPage()
         {
+            try
+            {
+                deslocamento = 0;                
+                carregaConsulta();
+
+                if (totalReg > 0)
+                {
+                    totalPaginas = Math.Ceiling(decimal.Divide(totalReg, tamanhoPagina));
+                    pagina = 1;
+                    lblNumeroPagina.Text = Convert.ToString(pagina);
+                    lblTotalPaginas.Text = Convert.ToString(totalPaginas);
+                }
+                configuraBotoesNaveg();
+                formataGridDados();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
@@ -322,6 +456,14 @@ namespace prjbase
         private void btnPrimeiro_Click(object sender, EventArgs e)
         {
             callFirstPage();
+        }
+
+        private void configuraBotoesNaveg()
+        {
+            btnAnterior.Enabled = deslocamento > 0;
+            btnPrimeiro.Enabled = deslocamento > 0;
+            btnProximo.Enabled = pagina < totalPaginas;
+            btnUltimo.Enabled = pagina < totalPaginas;            
         }
     }
 }
