@@ -54,11 +54,7 @@ namespace prjbase
             frmInstancia.ExibeDialogo();
             if (frmInstancia.atualizagrid)
             {
-                MessageBox.Show("atualiza.");
-            }
-            else
-            {
-                MessageBox.Show("não atualiza");
+                carregaConsulta();
             }
             frmInstancia.Dispose();
 
@@ -66,10 +62,30 @@ namespace prjbase
 
         protected virtual void btnExcluir_Click(object sender, EventArgs e)
         {
+            try
+            {
+                excluirRegistro(dgvDados.CurrentRow.Index);
+                carregaConsulta();
+            }
+            catch (Exception ex)
+            {
 
+                MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+        }
+
+        protected virtual void excluirRegistro(int RowSelected)
+        {
+            
         }
 
         protected virtual void btnEditar_Click(object sender, EventArgs e)
+        {
+            editarRegistro();            
+        }
+
+        private void editarRegistro()
         {
             String TituloTela;
             if ((frmInstancia == null) || (frmInstancia.IsDisposed))
@@ -79,14 +95,25 @@ namespace prjbase
             TituloTela = frmInstancia.Text;
             frmInstancia.Text = "Editar : " + frmInstancia.Text;
             //frmInstancia.Text = TituloTela;
-            frmInstancia.ExibeDialogo(this, 1);
+
+
+            if (dgvDados.CurrentRow != null)
+            {
+                if (dgvDados[0, dgvDados.CurrentRow.Index].Value != null)
+                {
+                    if (Convert.ToInt32(dgvDados[0, dgvDados.CurrentRow.Index].Value) > 0)
+                    {
+                        frmInstancia.ExibeDialogo(this, Convert.ToInt32(dgvDados[0, dgvDados.CurrentRow.Index].Value));
+                    }
+
+                }
+            }
+
+
             if (frmInstancia.atualizagrid)
             {
-                MessageBox.Show("atualiza.");
-            }
-            else
-            {
-                MessageBox.Show("não atualiza");
+                // MessageBox.Show("atualiza.");
+                carregaConsulta();
             }
             frmInstancia.Dispose();
         }
@@ -147,6 +174,13 @@ namespace prjbase
             //permite que o texto maior que célula não seja truncado
             gridDados.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             gridDados.DefaultCellStyle.Font = new Font("Tahoma", 10F, FontStyle.Regular);
+
+            gridDados.CellDoubleClick += new DataGridViewCellEventHandler(dgvDados_CellDoubleClick);            
+        }
+        
+        private void dgvDados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            editarRegistro();
         }
 
         protected virtual void formataGridFiltro()

@@ -20,20 +20,32 @@ namespace prjbase
     {
         UsuarioBLL usuarioBLL;
 
+        #region Constante de Colunas da Grid
+        private const int col_Id = 0;
+        private const int col_email = 1;
+        private const int col_nome = 2;
+        private const int col_password = 3;
+        private const int col_dtCricao = 4;
+        private const int col_dtAlteracao = 5;
+        
+        #endregion
+
         public frmUsuarios()
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
         }
+        
+        private void frmUsuarios_Activated(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        #region Metodos Sobreescritos
 
         protected override void InstanciarFormulario()
         {
             frmInstancia = new frmCadEditUsuario();
-        }
-
-        private void frmUsuarios_Activated(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Maximized;
         }
 
         protected override void formataColunagridFiltros(DataGridView gridFiltros)
@@ -50,11 +62,10 @@ namespace prjbase
             col.Name = "CRIACAO";
             col.ValueType = typeof(DateTime);
             col.SortMode = DataGridViewColumnSortMode.Programmatic;
-
             gridFiltros.Columns.Add(col);
 
 
-            //gridFiltros.Columns.Add("CRIACAO", "Dt. Criação");
+            
 
             //
             gridFiltros.Columns[0].Width = 50;
@@ -284,6 +295,31 @@ namespace prjbase
 
             List<Usuario> usuarioList = usuarioBLL.getUsuario(predicate.Expand(), t => t.Id.ToString(), false, deslocamento, tamanhoPagina, out totalReg);
             dgvDados.DataSource = usuarioList;
+            
         }
+
+        protected override void excluirRegistro(int Id)
+        {
+            base.excluirRegistro(Id);
+            usuarioBLL = new UsuarioBLL();
+            try
+            {
+                if (Convert.ToInt32(dgvDados[0, dgvDados.CurrentRow.Index].Value) > 0)
+                {
+                    Usuario usuario = usuarioBLL.Localizar(Convert.ToInt32(dgvDados[0, dgvDados.CurrentRow.Index].Value));
+                    if (MessageBox.Show("Deseja realmente excluir o registro : " + usuario.Id.ToString() + " - " + usuario.nome , Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        usuarioBLL.ExcluirUsuario(usuario);
+                    }
+                    
+                }
+            }
+            finally
+            {
+                usuarioBLL.Dispose();
+            }
+            
+        }
+        #endregion
     }
 }

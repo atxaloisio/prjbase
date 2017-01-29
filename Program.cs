@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using Model;
 
 namespace prjbase
-{
+{    
     static class Program
-    {
+    {        
+        public static Usuario usuario_logado  {get;set;}
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

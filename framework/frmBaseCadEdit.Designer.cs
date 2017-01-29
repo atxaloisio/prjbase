@@ -64,6 +64,7 @@
             this.btnIncluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnIncluir.UseVisualStyleBackColor = false;
             this.btnIncluir.Visible = false;
+            this.btnIncluir.Click += new System.EventHandler(this.btnIncluir_Click);
             // 
             // btnCancelar
             // 
@@ -104,6 +105,7 @@
             // 
             this.pnlPrincipal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlPrincipal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlPrincipal.Location = new System.Drawing.Point(115, 0);
             this.pnlPrincipal.Name = "pnlPrincipal";
             this.pnlPrincipal.Size = new System.Drawing.Size(495, 386);
@@ -116,19 +118,19 @@
             this.ClientSize = new System.Drawing.Size(610, 386);
             this.Controls.Add(this.pnlPrincipal);
             this.Controls.Add(this.pnlBotoes);
+            this.KeyPreview = true;
             this.Name = "frmBaseCadEdit";
-            this.Shown += new System.EventHandler(this.frmBaseCadEdit_Shown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmBaseCadEdit_KeyPress);
             this.pnlBotoes.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel pnlBotoes;
-        private System.Windows.Forms.Panel pnlPrincipal;
         public System.Windows.Forms.Button btnSalvar;
         public System.Windows.Forms.Button btnCancelar;
         public System.Windows.Forms.Button btnIncluir;
+        protected System.Windows.Forms.Panel pnlBotoes;
+        protected System.Windows.Forms.Panel pnlPrincipal;
     }
 }

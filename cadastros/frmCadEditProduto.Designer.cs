@@ -1,6 +1,6 @@
 ﻿namespace prjbase
 {
-    partial class frmCadEditUsuario
+    partial class frmCadEditProduto
     {
         /// <summary>
         /// Required designer variable.
@@ -28,14 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.pnlBotoes.SuspendLayout();
             this.SuspendLayout();
             // 
-            // frmCadEditUsuario
+            // frmCadEditProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(610, 386);
-            this.Name = "frmCadEditUsuario";
-            this.Text = "Usuário";
+            this.Name = "frmCadEditProduto";
+            this.Text = "Produto";
+            this.pnlBotoes.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

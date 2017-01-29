@@ -93,5 +93,27 @@ namespace prjbase
                 mdiChildForm.Close();
             }
         }
+
+        private void mnuProdutos_Click(object sender, EventArgs e)
+        {
+            Boolean instanciar = true;
+
+            foreach (var mdiChildForm in MdiChildren)
+            {
+                if (mdiChildForm is frmProdutos)
+                {
+                    instanciar = false;
+                    mdiChildForm.BringToFront();
+                    mdiChildForm.Show();
+                }
+            }
+
+            if (instanciar)
+            {
+                var frm = new frmProdutos();
+                frm.ConfigurarForm(this);
+                frm.Show();
+            }
+        }
     }
 }

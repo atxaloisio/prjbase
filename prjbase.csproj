@@ -150,34 +150,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmBase.cs">
+    <Compile Include="cadastros\frmCadEditProduto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmBase.Designer.cs">
+    <Compile Include="cadastros\frmCadEditProduto.Designer.cs">
+      <DependentUpon>frmCadEditProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="cadastros\frmProdutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cadastros\frmProdutos.Designer.cs">
+      <DependentUpon>frmProdutos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="framework\frmBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="framework\frmBase.Designer.cs">
       <DependentUpon>frmBase.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmBaseCadEdit.cs">
+    <Compile Include="framework\frmBaseCadEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmBaseCadEdit.Designer.cs">
+    <Compile Include="framework\frmBaseCadEdit.Designer.cs">
       <DependentUpon>frmBaseCadEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmBaseList.cs">
+    <Compile Include="framework\frmBaseList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmBaseList.Designer.cs">
+    <Compile Include="framework\frmBaseList.Designer.cs">
       <DependentUpon>frmBaseList.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCadEditUsuario.cs">
+    <Compile Include="cadastros\frmCadEditUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCadEditUsuario.Designer.cs">
+    <Compile Include="cadastros\frmCadEditUsuario.Designer.cs">
       <DependentUpon>frmCadEditUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmClientes.cs">
+    <Compile Include="cadastros\frmClientes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmClientes.Designer.cs">
+    <Compile Include="cadastros\frmClientes.Designer.cs">
       <DependentUpon>frmClientes.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
@@ -186,10 +198,10 @@
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPedidos.cs">
+    <Compile Include="cadastros\frmPedidos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPedidos.Designer.cs">
+    <Compile Include="cadastros\frmPedidos.Designer.cs">
       <DependentUpon>frmPedidos.cs</DependentUpon>
     </Compile>
     <Compile Include="frmSplash.cs">
@@ -198,10 +210,10 @@
     <Compile Include="frmSplash.Designer.cs">
       <DependentUpon>frmSplash.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmUsuarios.cs">
+    <Compile Include="cadastros\frmUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmUsuarios.Designer.cs">
+    <Compile Include="cadastros\frmUsuarios.Designer.cs">
       <DependentUpon>frmUsuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPrincipal.cs">
@@ -212,31 +224,37 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmBase.resx">
+    <EmbeddedResource Include="cadastros\frmCadEditProduto.resx">
+      <DependentUpon>frmCadEditProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cadastros\frmProdutos.resx">
+      <DependentUpon>frmProdutos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="framework\frmBase.resx">
       <DependentUpon>frmBase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmBaseCadEdit.resx">
+    <EmbeddedResource Include="framework\frmBaseCadEdit.resx">
       <DependentUpon>frmBaseCadEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmBaseList.resx">
+    <EmbeddedResource Include="framework\frmBaseList.resx">
       <DependentUpon>frmBaseList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCadEditUsuario.resx">
+    <EmbeddedResource Include="cadastros\frmCadEditUsuario.resx">
       <DependentUpon>frmCadEditUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmClientes.resx">
+    <EmbeddedResource Include="cadastros\frmClientes.resx">
       <DependentUpon>frmClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPedidos.resx">
+    <EmbeddedResource Include="cadastros\frmPedidos.resx">
       <DependentUpon>frmPedidos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSplash.resx">
       <DependentUpon>frmSplash.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmUsuarios.resx">
+    <EmbeddedResource Include="cadastros\frmUsuarios.resx">
       <DependentUpon>frmUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
@@ -305,7 +323,11 @@
       <Name>Utils</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="processos\" />
+    <Folder Include="relatorios\" />
+    <Folder Include="utilitarios\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
