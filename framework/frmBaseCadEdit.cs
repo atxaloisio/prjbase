@@ -27,11 +27,14 @@ namespace prjbase
             try
             {
                 atualizagrid = true;
-                salvar(sender, e);
-                btnIncluir.Top = 40;
-                btnIncluir.Visible = true;
-                btnCancelar.Top = 75;
-                MessageBox.Show(Text + " salvo com sucesso.", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (salvar(sender, e))
+                {
+                    btnIncluir.Top = 40;
+                    btnIncluir.Visible = true;
+                    btnCancelar.Top = 75;
+                    MessageBox.Show(Text + " salvo com sucesso.", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                
             }
             catch (Exception ex)
             {
@@ -46,9 +49,9 @@ namespace prjbase
 
         }
 
-        protected virtual void salvar(object sender, EventArgs e)
+        protected virtual bool salvar(object sender, EventArgs e)
         {
-
+            return true;
         }
 
         protected virtual void Limpar(Control control)
@@ -61,9 +64,22 @@ namespace prjbase
                     {
                         if (ctrl is TextBox)
 
-                        {                            
+                        {
                             ((TextBox)ctrl).Text = string.Empty;
                         }
+                        else if (ctrl is ComboBox)
+                        {
+                            ((ComboBox)ctrl).SelectedIndex = -1;
+                        }
+                        else if (ctrl is MaskedTextBox)
+                        {
+                            ((MaskedTextBox)ctrl).Clear();
+                        }
+                        else if (ctrl is CheckBox)
+                        {
+                            ((CheckBox)ctrl).Checked = false;
+                        } 
+
                     }
                 }                
             }
@@ -83,5 +99,10 @@ namespace prjbase
             Limpar(this);
             Id = null;
         }
+
+        protected virtual Boolean ValidarDados()
+        {
+            return true;
+        }        
     }
 }

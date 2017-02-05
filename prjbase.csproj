@@ -12,6 +12,21 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -55,6 +70,9 @@
     <Reference Include="EntityFrameworkCore.SqlServerCompact40.Design, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9af395b34ac99006, processorArchitecture=MSIL">
       <HintPath>packages\EntityFrameworkCore.SqlServerCompact40.Design.1.0.0\lib\net451\EntityFrameworkCore.SqlServerCompact40.Design.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="libComponente">
+      <HintPath>..\..\treinamento\ValidaCampos\libComponente\bin\Debug\libComponente.dll</HintPath>
     </Reference>
     <Reference Include="LinqKit">
       <HintPath>..\Utils\LinqKit.dll</HintPath>
@@ -150,11 +168,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cadastros\frmCadEditPerfil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cadastros\frmCadEditPerfil.Designer.cs">
+      <DependentUpon>frmCadEditPerfil.cs</DependentUpon>
+    </Compile>
     <Compile Include="cadastros\frmCadEditProduto.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="cadastros\frmCadEditProduto.Designer.cs">
       <DependentUpon>frmCadEditProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="cadastros\frmPerfis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cadastros\frmPerfis.Designer.cs">
+      <DependentUpon>frmPerfis.cs</DependentUpon>
     </Compile>
     <Compile Include="cadastros\frmProdutos.cs">
       <SubType>Form</SubType>
@@ -204,6 +234,12 @@
     <Compile Include="cadastros\frmPedidos.Designer.cs">
       <DependentUpon>frmPedidos.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPermissaoAcesso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPermissaoAcesso.Designer.cs">
+      <DependentUpon>frmPermissaoAcesso.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSplash.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,10 +258,22 @@
     <Compile Include="frmPrincipal.Designer.cs">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTrocarSenha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTrocarSenha.Designer.cs">
+      <DependentUpon>frmTrocarSenha.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="cadastros\frmCadEditPerfil.resx">
+      <DependentUpon>frmCadEditPerfil.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="cadastros\frmCadEditProduto.resx">
       <DependentUpon>frmCadEditProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cadastros\frmPerfis.resx">
+      <DependentUpon>frmPerfis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="cadastros\frmProdutos.resx">
       <DependentUpon>frmProdutos.cs</DependentUpon>
@@ -251,6 +299,9 @@
     <EmbeddedResource Include="cadastros\frmPedidos.resx">
       <DependentUpon>frmPedidos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmPermissaoAcesso.resx">
+      <DependentUpon>frmPermissaoAcesso.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSplash.resx">
       <DependentUpon>frmSplash.cs</DependentUpon>
     </EmbeddedResource>
@@ -259,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTrocarSenha.resx">
+      <DependentUpon>frmTrocarSenha.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -327,6 +381,18 @@
     <Folder Include="processos\" />
     <Folder Include="relatorios\" />
     <Folder Include="utilitarios\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

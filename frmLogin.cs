@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BLL;
+using Model;
 
 namespace prjbase
 {
     public partial class frmLogin : Form
     {
+        UsuarioBLL usuarioBLL;
         public frmLogin()
         {
             InitializeComponent();
@@ -31,7 +34,23 @@ namespace prjbase
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
+            usuarioBLL = new UsuarioBLL();
+#if DEBUG
+            Program.usuario_logado = usuarioBLL.Localizar(1);
             this.DialogResult = DialogResult.OK;
+#else
+                Program.usuario_logado = usuarioBLL.loginSistema(txtUsuaio.Text, txtSenha.Text);
+
+                if (Program.usuario_logado != null)
+                {
+                    this.DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("Usuário ou senha incorreto.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.DialogResult = DialogResult.None;
+                }
+#endif
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

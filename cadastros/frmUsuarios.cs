@@ -97,9 +97,14 @@ namespace prjbase
             gridDados.Columns[2].Width = 200;
             gridDados.Columns[2].SortMode = DataGridViewColumnSortMode.Programmatic;
             gridDados.Columns[3].Visible = false;
-            gridDados.Columns[4].Width = 200;
-            gridDados.Columns[4].SortMode = DataGridViewColumnSortMode.Programmatic;
-            gridDados.Columns[5].Visible = false;
+            gridDados.Columns[4].Visible = false;
+            gridDados.Columns[5].Width = 200;
+            gridDados.Columns[5].SortMode = DataGridViewColumnSortMode.Programmatic;
+            gridDados.Columns[6].Width = 200;
+            gridDados.Columns[6].SortMode = DataGridViewColumnSortMode.Programmatic;
+            gridDados.Columns[7].Width = 200;
+            gridDados.Columns[7].SortMode = DataGridViewColumnSortMode.Programmatic;
+
         }
 
         protected override void carregaConsulta()
@@ -176,7 +181,7 @@ namespace prjbase
 
                 case 3:
                     {
-                        List<Usuario> usuarioList = usuarioBLL.getUsuario(p => p.dtcriacao.ToString(), direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
+                        List<Usuario> usuarioList = usuarioBLL.getUsuario(p => p.inclusao.ToString(), direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
                         dgvDados.DataSource = usuarioList;
                     }
                     break;
@@ -290,7 +295,7 @@ namespace prjbase
 
             if ((data != null) & (ValidateUtils.isDate(data.ToString())))
             {                
-                predicate = predicate.And(p => DbFunctions.TruncateTime(p.dtcriacao) == DbFunctions.TruncateTime(data));                
+                predicate = predicate.And(p => DbFunctions.TruncateTime(p.inclusao) == DbFunctions.TruncateTime(data));                
             }
 
             List<Usuario> usuarioList = usuarioBLL.getUsuario(predicate.Expand(), t => t.Id.ToString(), false, deslocamento, tamanhoPagina, out totalReg);

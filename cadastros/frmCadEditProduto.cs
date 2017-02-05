@@ -39,10 +39,8 @@ namespace prjbase
             }
         }
 
-        protected override void salvar(object sender, EventArgs e)
-        {
-            base.salvar(sender, e);
-
+        protected override bool salvar(object sender, EventArgs e)
+        {            
             Produto Produto = new Produto();
             ProdutoBLL = new ProdutoBLL();
 
@@ -63,6 +61,7 @@ namespace prjbase
 
 
             ProdutoBLL.AdicionarProduto(Produto);
+            return true;
             
         }
 

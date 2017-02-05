@@ -13,7 +13,7 @@ namespace prjbase
     public partial class frmBase : Form
     {
         public virtual bool atualizagrid { get; set; }
-        public virtual int? Id { get; set; }
+        public virtual long? Id { get; set; }
         public frmBase()
         {
             InitializeComponent();
@@ -21,7 +21,7 @@ namespace prjbase
             Id = null;
         }
 
-        public virtual void ExibeDialogo(IWin32Window obj, int? pId)
+        public virtual void ExibeDialogo(IWin32Window obj, long? pId)
         {
             Id = pId;
             ShowDialog(obj);
@@ -31,7 +31,7 @@ namespace prjbase
             ShowDialog(obj);
         }
 
-        public virtual void ExibeDialogo(int? pId)
+        public virtual void ExibeDialogo(long? pId)
         {
             Id = pId;
             ShowDialog();

@@ -1,6 +1,6 @@
 ﻿namespace prjbase
 {
-    partial class frmBaseCadEdit
+    partial class frmBaseCadEdit 
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pnlBotoes = new System.Windows.Forms.Panel();
             this.btnIncluir = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.pnlPrincipal = new System.Windows.Forms.Panel();
+            this.epValidaDados = new libComponente.ValidaObrigatorio(this.components);
             this.pnlBotoes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlBotoes
@@ -69,6 +72,7 @@
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnCancelar.CausesValidation = false;
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -111,6 +115,11 @@
             this.pnlPrincipal.Size = new System.Drawing.Size(495, 386);
             this.pnlPrincipal.TabIndex = 1;
             // 
+            // epValidaDados
+            // 
+            this.epValidaDados.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.epValidaDados.ContainerControl = this;
+            // 
             // frmBaseCadEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -122,6 +131,7 @@
             this.Name = "frmBaseCadEdit";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmBaseCadEdit_KeyPress);
             this.pnlBotoes.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -132,5 +142,6 @@
         public System.Windows.Forms.Button btnIncluir;
         protected System.Windows.Forms.Panel pnlBotoes;
         protected System.Windows.Forms.Panel pnlPrincipal;
+        public libComponente.ValidaObrigatorio epValidaDados;
     }
 }

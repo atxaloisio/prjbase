@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.pnlBotoes = new System.Windows.Forms.Panel();
+            this.pnlBorda = new System.Windows.Forms.Panel();
             this.lblTotalRegistros = new System.Windows.Forms.Label();
             this.lblRegistros = new System.Windows.Forms.Label();
             this.lblTotalPaginas = new System.Windows.Forms.Label();
@@ -47,7 +48,6 @@
             this.dgvDados = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvFiltro = new System.Windows.Forms.DataGridView();
-            this.pnlBorda = new System.Windows.Forms.Panel();
             this.pnlBotoes.SuspendLayout();
             this.pnlDados.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -79,6 +79,15 @@
             this.pnlBotoes.Name = "pnlBotoes";
             this.pnlBotoes.Size = new System.Drawing.Size(116, 405);
             this.pnlBotoes.TabIndex = 10;
+            // 
+            // pnlBorda
+            // 
+            this.pnlBorda.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.pnlBorda.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.pnlBorda.Location = new System.Drawing.Point(6, 310);
+            this.pnlBorda.Name = "pnlBorda";
+            this.pnlBorda.Size = new System.Drawing.Size(104, 4);
+            this.pnlBorda.TabIndex = 21;
             // 
             // lblTotalRegistros
             // 
@@ -270,9 +279,9 @@
             // 
             this.panel2.Controls.Add(this.dgvDados);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 57);
+            this.panel2.Location = new System.Drawing.Point(0, 70);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(615, 348);
+            this.panel2.Size = new System.Drawing.Size(615, 335);
             this.panel2.TabIndex = 1;
             // 
             // dgvDados
@@ -282,7 +291,7 @@
             this.dgvDados.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDados.Location = new System.Drawing.Point(0, 0);
             this.dgvDados.Name = "dgvDados";
-            this.dgvDados.Size = new System.Drawing.Size(615, 348);
+            this.dgvDados.Size = new System.Drawing.Size(615, 335);
             this.dgvDados.TabIndex = 0;
             // 
             // panel1
@@ -291,7 +300,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(615, 57);
+            this.panel1.Size = new System.Drawing.Size(615, 70);
             this.panel1.TabIndex = 0;
             // 
             // dgvFiltro
@@ -301,17 +310,8 @@
             this.dgvFiltro.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvFiltro.Location = new System.Drawing.Point(0, 0);
             this.dgvFiltro.Name = "dgvFiltro";
-            this.dgvFiltro.Size = new System.Drawing.Size(615, 57);
+            this.dgvFiltro.Size = new System.Drawing.Size(615, 70);
             this.dgvFiltro.TabIndex = 0;
-            // 
-            // pnlBorda
-            // 
-            this.pnlBorda.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.pnlBorda.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.pnlBorda.Location = new System.Drawing.Point(6, 310);
-            this.pnlBorda.Name = "pnlBorda";
-            this.pnlBorda.Size = new System.Drawing.Size(104, 4);
-            this.pnlBorda.TabIndex = 21;
             // 
             // frmBaseList
             // 
