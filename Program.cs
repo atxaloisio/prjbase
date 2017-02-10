@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using Model;
+using Sync;
 
 namespace prjbase
 {    
@@ -30,7 +31,31 @@ namespace prjbase
             Thread.Sleep(500);
             Application.DoEvents();
             
-            splash.setMensagem("Sincronizando informações com a nuvem.");            
+            splash.setMensagem("Sincronizando informações com a nuvem.");
+            //Clientes
+            ClienteProxy cp = new ClienteProxy();
+            try
+            {                
+                cp.SyncCadastroCliente();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.InnerException.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+
+            //Produtos
+            ProdutoProxy pp = new ProdutoProxy();
+            try
+            {
+                pp.SyncCadastroProduto();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+
             splash.setprogresso(60);
             Thread.Sleep(500);
             Application.DoEvents();

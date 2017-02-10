@@ -36,6 +36,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.pnlBotoes.SuspendLayout();
             this.pnlPrincipal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSalvar
@@ -62,14 +63,17 @@
             this.pnlPrincipal.Controls.Add(this.label2);
             this.pnlPrincipal.Controls.Add(this.txtId);
             this.pnlPrincipal.Controls.Add(this.label1);
-            this.pnlPrincipal.Size = new System.Drawing.Size(424, 114);
+            this.pnlPrincipal.Size = new System.Drawing.Size(438, 114);
             // 
             // txtNome
             // 
+            this.epValidaDados.SetFraseErro(this.txtNome, "Nome do perfil obrigatório.");
             this.txtNome.Location = new System.Drawing.Point(81, 39);
             this.txtNome.Name = "txtNome";
+            this.epValidaDados.SetObrigatorio(this.txtNome, true);
             this.txtNome.Size = new System.Drawing.Size(336, 23);
             this.txtNome.TabIndex = 1;
+            this.txtNome.Validated += new System.EventHandler(this.Ctrls_Validated);
             // 
             // label2
             // 
@@ -82,12 +86,15 @@
             // 
             // txtId
             // 
+            this.epValidaDados.SetFraseErro(this.txtId, "");
             this.txtId.Location = new System.Drawing.Point(81, 9);
             this.txtId.Name = "txtId";
+            this.epValidaDados.SetObrigatorio(this.txtId, false);
             this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(100, 23);
             this.txtId.TabIndex = 0;
             this.txtId.TabStop = false;
+            this.txtId.Validated += new System.EventHandler(this.Ctrls_Validated);
             // 
             // label1
             // 
@@ -100,10 +107,13 @@
             // 
             // txtDescricao
             // 
+            this.epValidaDados.SetFraseErro(this.txtDescricao, "");
             this.txtDescricao.Location = new System.Drawing.Point(81, 68);
             this.txtDescricao.Name = "txtDescricao";
+            this.epValidaDados.SetObrigatorio(this.txtDescricao, false);
             this.txtDescricao.Size = new System.Drawing.Size(336, 23);
             this.txtDescricao.TabIndex = 2;
+            this.txtDescricao.Validated += new System.EventHandler(this.Ctrls_Validated);
             // 
             // label3
             // 
@@ -117,13 +127,14 @@
             // frmCadEditPerfil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(539, 114);
+            this.ClientSize = new System.Drawing.Size(553, 114);
             this.Name = "frmCadEditPerfil";
             this.Text = "Perfil";
             this.Shown += new System.EventHandler(this.frmCadEditPerfil_Shown);
             this.pnlBotoes.ResumeLayout(false);
             this.pnlPrincipal.ResumeLayout(false);
             this.pnlPrincipal.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -22,6 +22,7 @@ namespace prjbase
         public frmBaseList()
         {
             InitializeComponent();
+            carregaDados();
             //this.WindowState = FormWindowState.Maximized;
         }
 
@@ -125,7 +126,7 @@ namespace prjbase
 
         protected virtual void frmBaseList_Load(object sender, EventArgs e)
         {            
-            carregaDados();
+            
             WindowState = FormWindowState.Maximized;
             
             var topBotoesNavegacao = (pnlBotoes.Height - (btnFechar.Height + btnProximo.Height + 4));
@@ -149,7 +150,9 @@ namespace prjbase
 
             btnFechar.Top = (pnlBotoes.Height - btnFechar.Height);
             Parent.Text = Parent.Text + " : " + Text;
-            
+
+            //carregaDados();
+
         }
 
         protected virtual void formataGridDados()
@@ -341,6 +344,9 @@ namespace prjbase
         {
             try
             {
+                
+                Cursor = Cursors.WaitCursor;
+                Application.DoEvents();
                 carregaConsulta();
                 pagina++;
                 if (totalReg > 0)
@@ -353,9 +359,12 @@ namespace prjbase
                 configuraBotoesNaveg();
                 formataGridDados();
                 formataGridFiltro();
+                Cursor = Cursors.Default;
+                Application.DoEvents();
             }
             catch (Exception ex)
             {
+                Cursor = Cursors.Default;
                 MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 

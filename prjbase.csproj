@@ -156,6 +156,7 @@
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -336,7 +337,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -371,6 +374,10 @@
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{f2670f84-bee6-491c-8818-7a898b204bc5}</Project>
       <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sync\Sync.csproj">
+      <Project>{ffc83da7-7a02-45b6-b468-cd0b0cb83264}</Project>
+      <Name>Sync</Name>
     </ProjectReference>
     <ProjectReference Include="..\Utils\Utils.csproj">
       <Project>{2b871858-9472-400e-b75c-eccbe44ceae1}</Project>

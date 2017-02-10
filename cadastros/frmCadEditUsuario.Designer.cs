@@ -252,6 +252,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmCadEditUsuario";
             this.Text = "Usuário";
+            this.Load += new System.EventHandler(this.frmCadEditUsuario_Load);
             this.Shown += new System.EventHandler(this.frmCadEditUsuario_Shown);
             this.pnlBotoes.ResumeLayout(false);
             this.pnlPrincipal.ResumeLayout(false);

@@ -46,6 +46,7 @@ namespace prjbase
         protected override void InstanciarFormulario()
         {
             frmInstancia = new frmCadEditUsuario();
+            frmInstancia.Tag = Tag;
         }
 
         protected override void formataColunagridFiltros(DataGridView gridFiltros)

@@ -36,41 +36,49 @@ namespace prjbase
 
         protected override bool salvar(object sender, EventArgs e)
         {
-            
-
-            Perfil perfil = new Perfil();
-            perfilBLL = new PerfilBLL();
-
-            perfil.nome = txtNome.Text;
-            perfil.descricao = txtDescricao.Text;
-
-            if (Id != null)
+            if (epValidaDados.Validar())
             {
-                perfil.Id = Convert.ToInt32(txtId.Text);
-                perfil.alteracao = DateTime.Now;
-                if (Program.usuario_logado != null)
+                Perfil perfil = new Perfil();
+                perfilBLL = new PerfilBLL();
+
+                perfil.nome = txtNome.Text;
+                perfil.descricao = txtDescricao.Text;
+
+                if (Id != null)
                 {
-                    perfil.usuario_alteracao = Program.usuario_logado.nome;
+                    perfil.Id = Convert.ToInt32(txtId.Text);
+                    perfil.alteracao = DateTime.Now;
+                    if (Program.usuario_logado != null)
+                    {
+                        perfil.usuario_alteracao = Program.usuario_logado.nome;
+                    }
+
+                    perfilBLL.AlterarPerfil(perfil);
                 }
-                
-                perfilBLL.AlterarPerfil(perfil);
+                else
+                {
+                    perfil.inclusao = DateTime.Now;
+                    if (Program.usuario_logado != null)
+                    {
+                        perfil.usuario_inclusao = Program.usuario_logado.nome;
+                    }
+                    perfilBLL.AdicionarPerfil(perfil);
+                }
+
+                if (perfil.Id != 0)
+                {
+                    Id = perfil.Id;
+                    txtId.Text = perfil.Id.ToString();
+                }
+                return true;                
             }
             else
             {
-                perfil.inclusao = DateTime.Now;
-                if (Program.usuario_logado != null)
-                {
-                    perfil.usuario_inclusao = Program.usuario_logado.nome;
-                }
-                perfilBLL.AdicionarPerfil(perfil);
+                return false;
             }
 
-            if (perfil.Id != 0)
-            {
-                Id = perfil.Id;
-                txtId.Text = perfil.Id.ToString();
-            }
-            return true;
+
+            
         }
 
         protected override void Limpar(Control control)
@@ -78,6 +86,22 @@ namespace prjbase
         {
             base.Limpar(control);
             txtNome.Focus();
+        }
+
+        private void Ctrls_Validated(object sender, EventArgs e)
+        {
+            if (sender is TextBox)
+            {
+                epValidaDados.SetError((TextBox)sender, string.Empty);
+            }
+            else if (sender is MaskedTextBox)
+            {
+                epValidaDados.SetError((MaskedTextBox)sender, string.Empty);
+            }
+            else if (sender is ComboBox)
+            {
+                epValidaDados.SetError((ComboBox)sender, string.Empty);
+            }
         }
     }
 }

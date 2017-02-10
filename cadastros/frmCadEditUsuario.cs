@@ -23,8 +23,8 @@ namespace prjbase
 
         private void frmCadEditUsuario_Shown(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             perfilBLL = new PerfilBLL();
-
             List<Perfil> lstPerfil = perfilBLL.getPerfil();
             cbPerfil.DataSource = lstPerfil;
             cbPerfil.ValueMember = "Id";
@@ -50,6 +50,7 @@ namespace prjbase
                     chkInativo.Checked = usuario.inativo == "S";
                 }                
             }
+            this.Cursor = Cursors.Default;
         }
 
         protected override bool salvar(object sender, EventArgs e)
@@ -136,5 +137,9 @@ namespace prjbase
             }
         }
 
+        private void frmCadEditUsuario_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Model;
+using BLL;
 
 namespace prjbase
 {
@@ -39,6 +41,7 @@ namespace prjbase
             {
                 var frm = new frmUsuarios();
                 frm.ConfigurarForm(this);
+                frm.Tag = ((ToolStripMenuItem)sender).Tag;
                 frm.Show();
             }
             
@@ -62,6 +65,7 @@ namespace prjbase
             {
                 var frm = new frmClientes();
                 frm.ConfigurarForm(this);
+                frm.Tag = ((ToolStripMenuItem)sender).Tag;
                 frm.Show();
             }
             
@@ -146,6 +150,60 @@ namespace prjbase
                 var frm = new frmPerfis();
                 frm.ConfigurarForm(this);
                 frm.Show();
+            }
+        }
+
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
+            confPermissaoMenu();        
+        }
+
+        private void confPermissaoMenu()
+        {
+            bool exibemenu = true;
+
+            foreach (ToolStripMenuItem item in menuSistema.Items)
+            {
+                foreach (ToolStripMenuItem child in item.DropDownItems)
+                {
+                    if (child.DropDownItems.Count > 0)
+                    {
+                        interaMenuFilho(child);
+                    }
+                    else
+                    {
+                        Funcao_Perfil fp = Program.usuario_logado.perfil.funcao_perfil.Where(p => p.codigo_funcao == Convert.ToInt32(child.Tag)).FirstOrDefault();
+                        if (fp != null)
+                        {
+                            exibemenu = fp.consultar == "S" || fp.editar == "S" || fp.excluir == "S" || fp.salvar == "S" || fp.imprimir == "S";
+                            child.Visible = exibemenu;
+                        }
+                    }
+                }
+            }
+        }
+        /// <summary>
+        /// Intera sobre os menus filhos para setar a permissão.
+        /// </summary>
+        /// <param name="itens"></param>
+        private void interaMenuFilho(ToolStripMenuItem itens)
+        {
+            bool exibemenu = true;
+            foreach (ToolStripMenuItem child in itens.DropDownItems)
+            {
+                if (child.DropDownItems.Count >0)
+                {
+                    interaMenuFilho(child);
+                }
+                else
+                {
+                    Funcao_Perfil fp = Program.usuario_logado.perfil.funcao_perfil.Where(p => p.codigo_funcao == Convert.ToInt32(child.Tag)).FirstOrDefault();
+                    if (fp != null)
+                    {
+                        exibemenu = fp.consultar == "S" || fp.editar == "S" || fp.excluir == "S" || fp.salvar == "S" || fp.imprimir == "S";
+                        child.Visible = exibemenu;
+                    }
+                }                
             }
         }
     }
