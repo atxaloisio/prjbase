@@ -20,18 +20,7 @@ namespace prjbase
 
         private void frmCadEditPerfil_Shown(object sender, EventArgs e)
         {
-            if (Id != null)
-            {
-                perfilBLL = new PerfilBLL();
-                Perfil perfil = perfilBLL.Localizar(Id);
 
-                if (perfil != null)
-                {
-                    txtId.Text = perfil.Id.ToString();
-                    txtNome.Text = perfil.nome;
-                    txtDescricao.Text = perfil.descricao;                    
-                }
-            }
         }
 
         protected override bool salvar(object sender, EventArgs e)
@@ -70,7 +59,7 @@ namespace prjbase
                     Id = perfil.Id;
                     txtId.Text = perfil.Id.ToString();
                 }
-                return true;                
+                return true;
             }
             else
             {
@@ -78,7 +67,7 @@ namespace prjbase
             }
 
 
-            
+
         }
 
         protected override void Limpar(Control control)
@@ -102,6 +91,25 @@ namespace prjbase
             {
                 epValidaDados.SetError((ComboBox)sender, string.Empty);
             }
+        }
+
+        protected override void LoadToControls()
+        {
+            base.LoadToControls();
+
+            if (Id != null)
+            {
+                perfilBLL = new PerfilBLL();
+                Perfil perfil = perfilBLL.Localizar(Id);
+
+                if (perfil != null)
+                {
+                    txtId.Text = perfil.Id.ToString();
+                    txtNome.Text = perfil.nome;
+                    txtDescricao.Text = perfil.descricao;
+                }
+            }
+            
         }
     }
 }

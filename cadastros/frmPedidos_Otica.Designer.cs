@@ -1,6 +1,6 @@
 ﻿namespace prjbase
 {
-    partial class frmUsuarios
+    partial class frmPedido_Otica
     {
         /// <summary>
         /// Required designer variable.
@@ -33,7 +33,7 @@
             // 
             // btnFechar
             // 
-            this.btnFechar.Location = new System.Drawing.Point(3, 141);
+            this.btnFechar.Location = new System.Drawing.Point(4, 372);
             // 
             // lblTotalPaginas
             // 
@@ -63,15 +63,13 @@
             // 
             this.lblTotalRegistros.Location = new System.Drawing.Point(72, 293);
             // 
-            // frmUsuarios
+            // frmPedido_Otica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(731, 405);
-            this.MaximizeBox = true;
-            this.MinimizeBox = true;
-            this.Name = "frmUsuarios";
-            this.Text = "Listar Usuários";
-            this.Activated += new System.EventHandler(this.frmUsuarios_Activated);
+            this.Name = "frmPedido_Otica";
+            this.Text = "Pedido de Venda";
+            this.Activated += new System.EventHandler(this.frmPedidoOtica_Activated);
             this.pnlBotoes.ResumeLayout(false);
             this.pnlBotoes.PerformLayout();
             this.ResumeLayout(false);

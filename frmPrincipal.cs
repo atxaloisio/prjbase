@@ -31,9 +31,9 @@ namespace prjbase
             {
                 if (mdiChildForm is frmUsuarios)
                 {
-                    instanciar = false;
+                    instanciar = false;                    
+                    mdiChildForm.WindowState = FormWindowState.Maximized;
                     mdiChildForm.BringToFront();
-                    mdiChildForm.Show();
                 }
             }
 
@@ -43,6 +43,7 @@ namespace prjbase
                 frm.ConfigurarForm(this);
                 frm.Tag = ((ToolStripMenuItem)sender).Tag;
                 frm.Show();
+                frm.WindowState = FormWindowState.Maximized;
             }
             
         }
@@ -77,7 +78,7 @@ namespace prjbase
 
             foreach (var mdiChildForm in MdiChildren)
             {
-                if (mdiChildForm is frmPedidos)
+                if (mdiChildForm is frmPedido_Otica)
                 {
                     instanciar = false;
                     mdiChildForm.BringToFront();
@@ -87,7 +88,7 @@ namespace prjbase
 
             if (instanciar)
             {
-                var frm = new frmPedidos();
+                var frm = new frmPedido_Otica();
                 frm.ConfigurarForm(this);
                 frm.Show();
             }
@@ -139,9 +140,10 @@ namespace prjbase
             {
                 if (mdiChildForm is frmPerfis)
                 {
-                    instanciar = false;
+                    instanciar = false;                    
+                    //mdiChildForm.Show();
+                    mdiChildForm.WindowState = FormWindowState.Maximized;
                     mdiChildForm.BringToFront();
-                    mdiChildForm.Show();
                 }
             }
 
@@ -150,6 +152,7 @@ namespace prjbase
                 var frm = new frmPerfis();
                 frm.ConfigurarForm(this);
                 frm.Show();
+                frm.WindowState = FormWindowState.Maximized;
             }
         }
 

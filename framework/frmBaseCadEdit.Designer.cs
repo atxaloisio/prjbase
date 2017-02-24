@@ -129,6 +129,7 @@
             this.Controls.Add(this.pnlBotoes);
             this.KeyPreview = true;
             this.Name = "frmBaseCadEdit";
+            this.Load += new System.EventHandler(this.frmBaseCadEdit_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmBaseCadEdit_KeyPress);
             this.pnlBotoes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).EndInit();
@@ -142,6 +143,6 @@
         public System.Windows.Forms.Button btnIncluir;
         protected System.Windows.Forms.Panel pnlBotoes;
         protected System.Windows.Forms.Panel pnlPrincipal;
-        public libComponente.ValidaObrigatorio epValidaDados;
+        protected libComponente.ValidaObrigatorio epValidaDados;
     }
 }

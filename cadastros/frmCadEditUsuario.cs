@@ -20,8 +20,8 @@ namespace prjbase
         {
             InitializeComponent();
         }
-
-        private void frmCadEditUsuario_Shown(object sender, EventArgs e)
+        
+        protected override void LoadToControls()
         {
             this.Cursor = Cursors.WaitCursor;
             perfilBLL = new PerfilBLL();
@@ -34,7 +34,7 @@ namespace prjbase
             if (Id != null)
             {
                 usuarioBLL = new UsuarioBLL();
-                
+
                 Usuario usuario = usuarioBLL.Localizar(Id);
 
                 if (usuario != null)
@@ -48,7 +48,7 @@ namespace prjbase
                     txtDtCriacao.Text = usuario.inclusao.ToString();
                     cbPerfil.SelectedValue = usuario.perfil.Id;
                     chkInativo.Checked = usuario.inativo == "S";
-                }                
+                }
             }
             this.Cursor = Cursors.Default;
         }
@@ -92,7 +92,6 @@ namespace prjbase
         }
 
         protected override void Limpar(Control control)
-
         {
             base.Limpar(control);
             txtNome.Focus();
@@ -135,11 +134,6 @@ namespace prjbase
             {
                 epValidaDados.SetError((ComboBox)sender, string.Empty);
             }
-        }
-
-        private void frmCadEditUsuario_Load(object sender, EventArgs e)
-        {
-            
-        }
+        }        
     }
 }

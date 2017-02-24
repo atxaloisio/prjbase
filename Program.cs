@@ -32,6 +32,9 @@ namespace prjbase
             Application.DoEvents();
             
             splash.setMensagem("Sincronizando informações com a nuvem.");
+
+#if RELEASE
+
             //Clientes
             ClienteProxy cp = new ClienteProxy();
             try
@@ -55,17 +58,17 @@ namespace prjbase
                 MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
-
+#endif
             splash.setprogresso(60);
-            Thread.Sleep(500);
+            Thread.Sleep(100);
             Application.DoEvents();
-            
+
             splash.setMensagem("Sincronizado.");            
             splash.setprogresso(100);
-            Thread.Sleep(500);
+            Thread.Sleep(100);
             Application.DoEvents();
 
-            Thread.Sleep(500);
+            Thread.Sleep(50);
             Application.DoEvents();
 
             splash.Dispose();

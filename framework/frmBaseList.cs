@@ -33,7 +33,7 @@ namespace prjbase
 
         public virtual void ConfigurarForm(Form pFormParent)
         {
-            WindowState = FormWindowState.Maximized;
+            //WindowState = FormWindowState.Maximized;
             MinimizeBox = false;
             MaximizeBox = false;
             ControlBox = false;

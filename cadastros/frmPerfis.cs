@@ -34,8 +34,7 @@ namespace prjbase
 
         public frmPerfis()
         {
-            InitializeComponent();
-            this.WindowState = FormWindowState.Maximized;
+            InitializeComponent();            
         }
 
         private void frmPerfis_Activated(object sender, EventArgs e)
@@ -129,9 +128,8 @@ namespace prjbase
         protected override void carregaConsulta()
         {
             base.carregaConsulta();
-            PerfilBLL = new PerfilBLL();
-            List<Perfil> PerfilList = PerfilBLL.getPerfil(p => p.Id.ToString(), false, deslocamento, tamanhoPagina, out totalReg);            
-            dgvDados.DataSource = PerfilList;
+            PerfilBLL = new PerfilBLL();                        
+            dgvDados.DataSource = PerfilBLL.getPerfil(p => p.Id.ToString(), false, deslocamento, tamanhoPagina, out totalReg);
             colOrdem = 0;
         }
 
@@ -390,5 +388,15 @@ namespace prjbase
 
         }
         #endregion
+
+        private void frmPerfis_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+        }
+
+        private void frmPerfis_BindingContextChanged(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

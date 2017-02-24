@@ -58,12 +58,15 @@ namespace prjbase
         {
             foreach (Control pnl in control.Controls)
             {
-                if (pnl is Panel)
+                if ((pnl is Panel) || (pnl is GroupBox))
                 {
                     foreach (var ctrl in pnl.Controls)
                     {
-                        if (ctrl is TextBox)
-
+                        if ((pnl is Panel) || (pnl is GroupBox))
+                        {
+                            Limpar(pnl);
+                        }
+                        else if (ctrl is TextBox)
                         {
                             ((TextBox)ctrl).Text = string.Empty;
                         }
@@ -81,7 +84,23 @@ namespace prjbase
                         } 
 
                     }
-                }                
+                }
+                else if (pnl is TextBox)
+                {
+                    ((TextBox)pnl).Text = string.Empty;
+                }
+                else if (pnl is ComboBox)
+                {
+                    ((ComboBox)pnl).SelectedIndex = -1;
+                }
+                else if (pnl is MaskedTextBox)
+                {
+                    ((MaskedTextBox)pnl).Clear();
+                }
+                else if (pnl is CheckBox)
+                {
+                    ((CheckBox)pnl).Checked = false;
+                }
             }
         }
 
@@ -103,6 +122,16 @@ namespace prjbase
         protected virtual Boolean ValidarDados()
         {
             return true;
-        }        
+        }
+
+        protected virtual void LoadToControls()
+        {
+
+        }
+
+        private void frmBaseCadEdit_Load(object sender, EventArgs e)
+        {
+            LoadToControls();            
+        }
     }
 }

@@ -57,5 +57,14 @@ namespace prjbase
         {
             this.DialogResult = DialogResult.Cancel;
         }
+
+        private void frmLogin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                e.Handled = true;
+                SendKeys.Send("{tab}");
+            }
+        }
     }
 }

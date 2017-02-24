@@ -70,6 +70,7 @@
             this.Name = "frmPerfis";
             this.Text = "Listar Perfil";
             this.Activated += new System.EventHandler(this.frmPerfis_Activated);
+            this.BindingContextChanged += new System.EventHandler(this.frmPerfis_BindingContextChanged);
             this.pnlBotoes.ResumeLayout(false);
             this.pnlBotoes.PerformLayout();
             this.ResumeLayout(false);

@@ -21,27 +21,25 @@ namespace prjbase
             Id = null;
         }
 
-        public virtual void ExibeDialogo(IWin32Window obj, long? pId)
+        public virtual DialogResult ExibeDialogo(IWin32Window obj, long? pId)
         {
             Id = pId;
-            ShowDialog(obj);
+            return ShowDialog(obj);
         }
-        public virtual void ExibeDialogo(IWin32Window obj)
+        public virtual DialogResult ExibeDialogo(IWin32Window obj)
         {
-            ShowDialog(obj);
+           return ShowDialog(obj);
         }
 
-        public virtual void ExibeDialogo(long? pId)
+        public virtual DialogResult ExibeDialogo(long? pId)
         {
             Id = pId;
-            ShowDialog();
+           return ShowDialog();
         }
 
-        public virtual void ExibeDialogo()
+        public virtual DialogResult ExibeDialogo()
         {            
-            ShowDialog();
+           return ShowDialog();
         }
-
-
     }
 }

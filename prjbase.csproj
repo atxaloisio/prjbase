@@ -169,6 +169,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cadastros\frmCadEditPedido_Otica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cadastros\frmCadEditPedido_Otica.Designer.cs">
+      <DependentUpon>frmCadEditPedido_Otica.cs</DependentUpon>
+    </Compile>
     <Compile Include="cadastros\frmCadEditPerfil.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,11 +187,29 @@
     <Compile Include="cadastros\frmCadEditProduto.Designer.cs">
       <DependentUpon>frmCadEditProduto.cs</DependentUpon>
     </Compile>
+    <Compile Include="cadastros\frmPedidos_Otica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cadastros\frmPedidos_Otica.Designer.cs">
+      <DependentUpon>frmPedidos_Otica.cs</DependentUpon>
+    </Compile>
     <Compile Include="cadastros\frmPerfis.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="cadastros\frmPerfis.Designer.cs">
       <DependentUpon>frmPerfis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="cadastros\frmPesquisaClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cadastros\frmPesquisaClientes.Designer.cs">
+      <DependentUpon>frmPesquisaClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="cadastros\frmPesquisaProdutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cadastros\frmPesquisaProdutos.Designer.cs">
+      <DependentUpon>frmPesquisaProdutos.cs</DependentUpon>
     </Compile>
     <Compile Include="cadastros\frmProdutos.cs">
       <SubType>Form</SubType>
@@ -222,6 +246,12 @@
     </Compile>
     <Compile Include="cadastros\frmClientes.Designer.cs">
       <DependentUpon>frmClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="framework\frmBasePesquisa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="framework\frmBasePesquisa.Designer.cs">
+      <DependentUpon>frmBasePesquisa.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -267,14 +297,26 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="cadastros\frmCadEditPedido_Otica.resx">
+      <DependentUpon>frmCadEditPedido_Otica.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="cadastros\frmCadEditPerfil.resx">
       <DependentUpon>frmCadEditPerfil.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="cadastros\frmCadEditProduto.resx">
       <DependentUpon>frmCadEditProduto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="cadastros\frmPedidos_Otica.resx">
+      <DependentUpon>frmPedidos_Otica.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="cadastros\frmPerfis.resx">
       <DependentUpon>frmPerfis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cadastros\frmPesquisaClientes.resx">
+      <DependentUpon>frmPesquisaClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cadastros\frmPesquisaProdutos.resx">
+      <DependentUpon>frmPesquisaProdutos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="cadastros\frmProdutos.resx">
       <DependentUpon>frmProdutos.cs</DependentUpon>
@@ -293,6 +335,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="cadastros\frmClientes.resx">
       <DependentUpon>frmClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="framework\frmBasePesquisa.resx">
+      <DependentUpon>frmBasePesquisa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -350,6 +395,10 @@
     </Content>
     <Content Include="oculos.ico" />
     <Content Include="oculos2.ico" />
+    <None Include="Resources\ok.png" />
+    <None Include="Resources\plus.png" />
+    <None Include="Resources\remove.png" />
+    <None Include="Resources\Pesquisar.png" />
     <None Include="Resources\oculos2.ico" />
     <None Include="Resources\oculos.ico" />
     <None Include="Resources\primeiro.png" />

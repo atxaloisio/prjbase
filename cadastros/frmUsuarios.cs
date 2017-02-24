@@ -33,7 +33,7 @@ namespace prjbase
         public frmUsuarios()
         {
             InitializeComponent();
-            this.WindowState = FormWindowState.Maximized;
+            //this.WindowState = FormWindowState.Maximized;
         }
         
         private void frmUsuarios_Activated(object sender, EventArgs e)
@@ -327,5 +327,10 @@ namespace prjbase
             
         }
         #endregion
+
+        private void frmUsuarios_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //this.WindowState = FormWindowState.Normal;
+        }
     }
 }
