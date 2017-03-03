@@ -29,10 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadEditPedido_Otica));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txtNrPedCliente = new System.Windows.Forms.TextBox();
             this.txtDtFechamento = new System.Windows.Forms.MaskedTextBox();
             this.txtDtEmissao = new System.Windows.Forms.MaskedTextBox();
             this.txtIdCliente = new System.Windows.Forms.TextBox();
@@ -40,8 +42,8 @@
             this.textBox31 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.cbMotivoEntrega = new System.Windows.Forms.ComboBox();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.txtHrPrevEntrega = new System.Windows.Forms.MaskedTextBox();
+            this.txtDtPrevEntrega = new System.Windows.Forms.MaskedTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnPesquisa = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -117,6 +119,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox21 = new System.Windows.Forms.GroupBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.txtBaseCalculada = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.txtObs = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
@@ -181,6 +185,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label23);
+            this.groupBox1.Controls.Add(this.txtNrPedCliente);
             this.groupBox1.Controls.Add(this.txtDtFechamento);
             this.groupBox1.Controls.Add(this.txtDtEmissao);
             this.groupBox1.Controls.Add(this.txtIdCliente);
@@ -188,8 +194,8 @@
             this.groupBox1.Controls.Add(this.textBox31);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.cbMotivoEntrega);
-            this.groupBox1.Controls.Add(this.maskedTextBox2);
-            this.groupBox1.Controls.Add(this.maskedTextBox1);
+            this.groupBox1.Controls.Add(this.txtHrPrevEntrega);
+            this.groupBox1.Controls.Add(this.txtDtPrevEntrega);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.btnPesquisa);
             this.groupBox1.Controls.Add(this.label6);
@@ -212,6 +218,24 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados Pedido";
             // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(6, 114);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(121, 16);
+            this.label23.TabIndex = 54;
+            this.label23.Text = "Nr. Pedido Cliente";
+            // 
+            // txtNrPedCliente
+            // 
+            this.epValidaDados.SetFraseErro(this.txtNrPedCliente, "Numero do pedido no Cliente obrigatório.");
+            this.txtNrPedCliente.Location = new System.Drawing.Point(163, 111);
+            this.txtNrPedCliente.Name = "txtNrPedCliente";
+            this.epValidaDados.SetObrigatorio(this.txtNrPedCliente, true);
+            this.txtNrPedCliente.Size = new System.Drawing.Size(97, 23);
+            this.txtNrPedCliente.TabIndex = 10;
+            // 
             // txtDtFechamento
             // 
             this.epValidaDados.SetFraseErro(this.txtDtFechamento, "Data de fechamento obrigatório");
@@ -221,8 +245,11 @@
             this.epValidaDados.SetObrigatorio(this.txtDtFechamento, true);
             this.txtDtFechamento.Size = new System.Drawing.Size(87, 23);
             this.txtDtFechamento.TabIndex = 5;
+            this.txtDtFechamento.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.epValidaDados.SetTipoValidacao(this.txtDtFechamento, libComponente.TipoValidacao.Vazio);
             this.txtDtFechamento.ValidatingType = typeof(System.DateTime);
+            this.txtDtFechamento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
+            this.txtDtFechamento.Validating += new System.ComponentModel.CancelEventHandler(this.Ctrls_Validating);
             this.txtDtFechamento.Validated += new System.EventHandler(this.Ctrls_Validated);
             // 
             // txtDtEmissao
@@ -234,8 +261,11 @@
             this.epValidaDados.SetObrigatorio(this.txtDtEmissao, true);
             this.txtDtEmissao.Size = new System.Drawing.Size(87, 23);
             this.txtDtEmissao.TabIndex = 4;
+            this.txtDtEmissao.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.epValidaDados.SetTipoValidacao(this.txtDtEmissao, libComponente.TipoValidacao.Vazio);
             this.txtDtEmissao.ValidatingType = typeof(System.DateTime);
+            this.txtDtEmissao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
+            this.txtDtEmissao.Validating += new System.ComponentModel.CancelEventHandler(this.Ctrls_Validating);
             this.txtDtEmissao.Validated += new System.EventHandler(this.Ctrls_Validated);
             // 
             // txtIdCliente
@@ -261,17 +291,17 @@
             // 
             // textBox31
             // 
-            this.epValidaDados.SetFraseErro(this.textBox31, "");
+            this.epValidaDados.SetFraseErro(this.textBox31, "Numero da caixa obrigatório.");
             this.textBox31.Location = new System.Drawing.Point(885, 109);
             this.textBox31.Name = "textBox31";
-            this.epValidaDados.SetObrigatorio(this.textBox31, false);
+            this.epValidaDados.SetObrigatorio(this.textBox31, true);
             this.textBox31.Size = new System.Drawing.Size(97, 23);
-            this.textBox31.TabIndex = 50;
+            this.textBox31.TabIndex = 12;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 112);
+            this.label9.Location = new System.Drawing.Point(277, 112);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(107, 16);
             this.label9.TabIndex = 43;
@@ -282,35 +312,40 @@
             this.cbMotivoEntrega.FormattingEnabled = true;
             this.epValidaDados.SetFraseErro(this.cbMotivoEntrega, "");
             this.epValidaDados.SetIndiceCombo(this.cbMotivoEntrega, -1);
-            this.cbMotivoEntrega.Location = new System.Drawing.Point(163, 111);
+            this.cbMotivoEntrega.Location = new System.Drawing.Point(388, 111);
             this.cbMotivoEntrega.Name = "cbMotivoEntrega";
             this.epValidaDados.SetObrigatorio(this.cbMotivoEntrega, false);
-            this.cbMotivoEntrega.Size = new System.Drawing.Size(436, 24);
-            this.cbMotivoEntrega.TabIndex = 10;
+            this.cbMotivoEntrega.Size = new System.Drawing.Size(377, 24);
+            this.cbMotivoEntrega.TabIndex = 11;
             // 
-            // maskedTextBox2
+            // txtHrPrevEntrega
             // 
-            this.epValidaDados.SetFraseErro(this.maskedTextBox2, "");
-            this.maskedTextBox2.Location = new System.Drawing.Point(272, 80);
-            this.maskedTextBox2.Mask = "00:00";
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.epValidaDados.SetObrigatorio(this.maskedTextBox2, false);
-            this.maskedTextBox2.Size = new System.Drawing.Size(46, 23);
-            this.maskedTextBox2.TabIndex = 7;
-            this.epValidaDados.SetTipoValidacao(this.maskedTextBox2, libComponente.TipoValidacao.Vazio);
-            this.maskedTextBox2.ValidatingType = typeof(System.DateTime);
+            this.epValidaDados.SetFraseErro(this.txtHrPrevEntrega, "");
+            this.txtHrPrevEntrega.Location = new System.Drawing.Point(272, 80);
+            this.txtHrPrevEntrega.Mask = "00:00";
+            this.txtHrPrevEntrega.Name = "txtHrPrevEntrega";
+            this.epValidaDados.SetObrigatorio(this.txtHrPrevEntrega, false);
+            this.txtHrPrevEntrega.Size = new System.Drawing.Size(46, 23);
+            this.txtHrPrevEntrega.TabIndex = 7;
+            this.epValidaDados.SetTipoValidacao(this.txtHrPrevEntrega, libComponente.TipoValidacao.Vazio);
+            this.txtHrPrevEntrega.ValidatingType = typeof(System.DateTime);
+            this.txtHrPrevEntrega.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
             // 
-            // maskedTextBox1
+            // txtDtPrevEntrega
             // 
-            this.epValidaDados.SetFraseErro(this.maskedTextBox1, "Previsão de entrega obrigatório.");
-            this.maskedTextBox1.Location = new System.Drawing.Point(163, 80);
-            this.maskedTextBox1.Mask = "00/00/0000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.epValidaDados.SetObrigatorio(this.maskedTextBox1, false);
-            this.maskedTextBox1.Size = new System.Drawing.Size(87, 23);
-            this.maskedTextBox1.TabIndex = 6;
-            this.epValidaDados.SetTipoValidacao(this.maskedTextBox1, libComponente.TipoValidacao.Vazio);
-            this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
+            this.epValidaDados.SetFraseErro(this.txtDtPrevEntrega, "Previsão de entrega obrigatório.");
+            this.txtDtPrevEntrega.Location = new System.Drawing.Point(163, 80);
+            this.txtDtPrevEntrega.Mask = "00/00/0000";
+            this.txtDtPrevEntrega.Name = "txtDtPrevEntrega";
+            this.epValidaDados.SetObrigatorio(this.txtDtPrevEntrega, false);
+            this.txtDtPrevEntrega.Size = new System.Drawing.Size(87, 23);
+            this.txtDtPrevEntrega.TabIndex = 6;
+            this.txtDtPrevEntrega.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.epValidaDados.SetTipoValidacao(this.txtDtPrevEntrega, libComponente.TipoValidacao.Vazio);
+            this.txtDtPrevEntrega.ValidatingType = typeof(System.DateTime);
+            this.txtDtPrevEntrega.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
+            this.txtDtPrevEntrega.Validating += new System.ComponentModel.CancelEventHandler(this.Ctrls_Validating);
+            this.txtDtPrevEntrega.Validated += new System.EventHandler(this.Ctrls_Validated);
             // 
             // label8
             // 
@@ -336,6 +371,7 @@
             this.btnPesquisa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnPesquisa.UseVisualStyleBackColor = false;
             this.btnPesquisa.Click += new System.EventHandler(this.btnPesquisa_Click);
+            this.btnPesquisa.Validated += new System.EventHandler(this.btnPesquisa_Validated);
             // 
             // label6
             // 
@@ -398,7 +434,7 @@
             this.epValidaDados.SetIndiceCombo(this.cbTransportadora, -1);
             this.cbTransportadora.Location = new System.Drawing.Point(748, 79);
             this.cbTransportadora.Name = "cbTransportadora";
-            this.epValidaDados.SetObrigatorio(this.cbTransportadora, false);
+            this.epValidaDados.SetObrigatorio(this.cbTransportadora, true);
             this.cbTransportadora.Size = new System.Drawing.Size(234, 24);
             this.cbTransportadora.TabIndex = 9;
             // 
@@ -409,7 +445,7 @@
             this.epValidaDados.SetIndiceCombo(this.cbCondPagamento, -1);
             this.cbCondPagamento.Location = new System.Drawing.Point(451, 79);
             this.cbCondPagamento.Name = "cbCondPagamento";
-            this.epValidaDados.SetObrigatorio(this.cbCondPagamento, false);
+            this.epValidaDados.SetObrigatorio(this.cbCondPagamento, true);
             this.cbCondPagamento.Size = new System.Drawing.Size(170, 24);
             this.cbCondPagamento.TabIndex = 8;
             // 
@@ -451,10 +487,10 @@
             // 
             // txtCodigo
             // 
-            this.epValidaDados.SetFraseErro(this.txtCodigo, "");
+            this.epValidaDados.SetFraseErro(this.txtCodigo, "Código do pedido obrigatório.");
             this.txtCodigo.Location = new System.Drawing.Point(63, 20);
             this.txtCodigo.Name = "txtCodigo";
-            this.epValidaDados.SetObrigatorio(this.txtCodigo, false);
+            this.epValidaDados.SetObrigatorio(this.txtCodigo, true);
             this.txtCodigo.Size = new System.Drawing.Size(100, 23);
             this.txtCodigo.TabIndex = 0;
             this.txtCodigo.Validated += new System.EventHandler(this.Ctrls_Validated);
@@ -611,19 +647,6 @@
             this.cbShapeArmacao.FormattingEnabled = true;
             this.epValidaDados.SetFraseErro(this.cbShapeArmacao, "");
             this.epValidaDados.SetIndiceCombo(this.cbShapeArmacao, -1);
-            this.cbShapeArmacao.Items.AddRange(new object[] {
-            "SHAPE_1",
-            "SHAPE_2",
-            "SHAPE_3",
-            "SHAPE_4",
-            "SHAPE_5",
-            "SHAPE_6",
-            "SHAPE_7",
-            "SHAPE_8",
-            "SHAPE_9",
-            "SHAPE_10",
-            "SHAPE_11",
-            "SHAPE_12"});
             this.cbShapeArmacao.Location = new System.Drawing.Point(313, 19);
             this.cbShapeArmacao.Name = "cbShapeArmacao";
             this.epValidaDados.SetObrigatorio(this.cbShapeArmacao, false);
@@ -662,15 +685,6 @@
             this.cbTipoArmacao.FormattingEnabled = true;
             this.epValidaDados.SetFraseErro(this.cbTipoArmacao, "");
             this.epValidaDados.SetIndiceCombo(this.cbTipoArmacao, -1);
-            this.cbTipoArmacao.Items.AddRange(new object[] {
-            "SEM ARMAÇÃO",
-            "METAL",
-            "ZILO",
-            "FIO DE NYLON",
-            "PARAFUSADA",
-            "SEGURANÇA",
-            "FIO DE AÇO",
-            "PARAFUSO COM BUCHA"});
             this.cbTipoArmacao.Location = new System.Drawing.Point(87, 19);
             this.cbTipoArmacao.Name = "cbTipoArmacao";
             this.epValidaDados.SetObrigatorio(this.cbTipoArmacao, false);
@@ -1157,6 +1171,8 @@
             // 
             // groupBox21
             // 
+            this.groupBox21.Controls.Add(this.label24);
+            this.groupBox21.Controls.Add(this.txtBaseCalculada);
             this.groupBox21.Controls.Add(this.label22);
             this.groupBox21.Controls.Add(this.txtObs);
             this.groupBox21.Controls.Add(this.label21);
@@ -1169,6 +1185,24 @@
             this.groupBox21.TabIndex = 9;
             this.groupBox21.TabStop = false;
             this.groupBox21.Text = "Dados da Lente";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(603, 21);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(104, 16);
+            this.label24.TabIndex = 51;
+            this.label24.Text = "Base Calculada";
+            // 
+            // txtBaseCalculada
+            // 
+            this.epValidaDados.SetFraseErro(this.txtBaseCalculada, "");
+            this.txtBaseCalculada.Location = new System.Drawing.Point(711, 18);
+            this.txtBaseCalculada.Name = "txtBaseCalculada";
+            this.epValidaDados.SetObrigatorio(this.txtBaseCalculada, false);
+            this.txtBaseCalculada.Size = new System.Drawing.Size(226, 23);
+            this.txtBaseCalculada.TabIndex = 50;
             // 
             // label22
             // 
@@ -1220,22 +1254,6 @@
             this.cbTipoLente.FormattingEnabled = true;
             this.epValidaDados.SetFraseErro(this.cbTipoLente, "");
             this.epValidaDados.SetIndiceCombo(this.cbTipoLente, -1);
-            this.cbTipoLente.Items.AddRange(new object[] {
-            "VISÃO SIMPLES",
-            "VISÃO SIMPLES BASE INT",
-            "KATRAL VISÃO SIMPLES",
-            "HIDROP VISÃO SIMPLES",
-            "SOLA ASL",
-            "BIFOCAL TOPO RETO",
-            "BIFOCAL KRIPTOK",
-            "BIFOCAL ULTEX",
-            "BIFOCAL ULTEX CURVA EXT",
-            "BIFOCAL EXECUTIVE",
-            "HIDROP TOPO RETO",
-            "BIFOCAL KATRAL TOPO RETO",
-            "BIFOCAL KATRAL KRIPTOK",
-            "SOLA ASL TOPO RETO",
-            "PROGRESSIVOS"});
             this.cbTipoLente.Location = new System.Drawing.Point(101, 18);
             this.cbTipoLente.Name = "cbTipoLente";
             this.epValidaDados.SetObrigatorio(this.cbTipoLente, false);
@@ -1280,11 +1298,13 @@
             this.dgvItemPedido.Size = new System.Drawing.Size(972, 144);
             this.dgvItemPedido.TabIndex = 1;
             this.dgvItemPedido.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItemPedido_CellClick);
+            this.dgvItemPedido.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItemPedido_CellEndEdit);
             this.dgvItemPedido.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvItemPedido_CellFormatting);
             this.dgvItemPedido.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvItemPedido_CellPainting);
             this.dgvItemPedido.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvItemPedido_CellValidating);
-            this.dgvItemPedido.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItemPedido_CellValueChanged);
             this.dgvItemPedido.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvItemPedido_EditingControlShowing);
+            this.dgvItemPedido.NewRowNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgvItemPedido_NewRowNeeded);
+            this.dgvItemPedido.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvItemPedido_RowValidating);
             this.dgvItemPedido.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvItemPedido_KeyDown);
             // 
             // id
@@ -1333,9 +1353,9 @@
             // 
             // VLRUNITARIO
             // 
-            dataGridViewCellStyle1.Format = "N2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.VLRUNITARIO.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle19.Format = "N2";
+            dataGridViewCellStyle19.NullValue = null;
+            this.VLRUNITARIO.DefaultCellStyle = dataGridViewCellStyle19;
             this.VLRUNITARIO.Frozen = true;
             this.VLRUNITARIO.HeaderText = "Vlr Unitário";
             this.VLRUNITARIO.Name = "VLRUNITARIO";
@@ -1350,9 +1370,9 @@
             // 
             // VLRDESCONTO
             // 
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.VLRDESCONTO.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle20.Format = "N2";
+            dataGridViewCellStyle20.NullValue = null;
+            this.VLRDESCONTO.DefaultCellStyle = dataGridViewCellStyle20;
             this.VLRDESCONTO.Frozen = true;
             this.VLRDESCONTO.HeaderText = "Vlr Desc";
             this.VLRDESCONTO.Name = "VLRDESCONTO";
@@ -1360,9 +1380,9 @@
             // 
             // VLTTOTAL
             // 
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.VLTTOTAL.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle21.Format = "N2";
+            dataGridViewCellStyle21.NullValue = null;
+            this.VLTTOTAL.DefaultCellStyle = dataGridViewCellStyle21;
             this.VLTTOTAL.Frozen = true;
             this.VLTTOTAL.HeaderText = "Total";
             this.VLTTOTAL.Name = "VLTTOTAL";
@@ -1381,6 +1401,7 @@
             // btnRemoveItem
             // 
             this.btnRemoveItem.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnRemoveItem.CausesValidation = false;
             this.btnRemoveItem.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnRemoveItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemoveItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -1411,6 +1432,7 @@
             // frmCadEditPedido_Otica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.CancelButton = null;
             this.ClientSize = new System.Drawing.Size(1131, 597);
             this.Name = "frmCadEditPedido_Otica";
             this.Text = "Pedido de Venda";
@@ -1469,8 +1491,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cbMotivoEntrega;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox txtHrPrevEntrega;
+        private System.Windows.Forms.MaskedTextBox txtDtPrevEntrega;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnPesquisa;
         private System.Windows.Forms.Label label6;
@@ -1569,5 +1591,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PERCDESCONTO;
         private System.Windows.Forms.DataGridViewTextBoxColumn VLRDESCONTO;
         private System.Windows.Forms.DataGridViewTextBoxColumn VLTTOTAL;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox txtNrPedCliente;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox txtBaseCalculada;
     }
 }

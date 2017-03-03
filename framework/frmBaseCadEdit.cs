@@ -111,6 +111,8 @@ namespace prjbase
                 e.Handled = true;
                 SendKeys.Send("{tab}");
             }
+
+            
         }
 
         protected virtual void btnIncluir_Click(object sender, EventArgs e)
@@ -133,5 +135,6 @@ namespace prjbase
         {
             LoadToControls();            
         }
+              
     }
 }

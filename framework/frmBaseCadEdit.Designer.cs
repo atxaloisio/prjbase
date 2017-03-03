@@ -29,15 +29,25 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.pnlPrincipal = new System.Windows.Forms.Panel();
             this.pnlBotoes = new System.Windows.Forms.Panel();
             this.btnIncluir = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
-            this.pnlPrincipal = new System.Windows.Forms.Panel();
             this.epValidaDados = new libComponente.ValidaObrigatorio(this.components);
             this.pnlBotoes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
             this.SuspendLayout();
+            // 
+            // pnlPrincipal
+            // 
+            this.pnlPrincipal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlPrincipal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pnlPrincipal.Location = new System.Drawing.Point(115, 0);
+            this.pnlPrincipal.Name = "pnlPrincipal";
+            this.pnlPrincipal.Size = new System.Drawing.Size(495, 386);
+            this.pnlPrincipal.TabIndex = 1;
             // 
             // pnlBotoes
             // 
@@ -104,16 +114,6 @@
             this.btnSalvar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSalvar.UseVisualStyleBackColor = false;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
-            // 
-            // pnlPrincipal
-            // 
-            this.pnlPrincipal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlPrincipal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlPrincipal.Location = new System.Drawing.Point(115, 0);
-            this.pnlPrincipal.Name = "pnlPrincipal";
-            this.pnlPrincipal.Size = new System.Drawing.Size(495, 386);
-            this.pnlPrincipal.TabIndex = 1;
             // 
             // epValidaDados
             // 

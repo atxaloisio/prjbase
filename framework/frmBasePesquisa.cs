@@ -89,5 +89,14 @@ namespace prjbase
         {
             setRetorno();
         }
+
+        private void frmBasePesquisa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                e.Handled = true;
+                SendKeys.Send("{tab}");
+            }
+        }
     }
 }

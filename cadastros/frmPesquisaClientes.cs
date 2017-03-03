@@ -47,12 +47,23 @@ namespace prjbase
                 {                    
                     case "Id":
                         {
-                            dgvPesquisa.DataSource = clienteBLL.getCliente(p => p.codigo_cliente_integracao == txtFiltro.Text);
+                            List<Cliente> lstCliente = clienteBLL.getCliente(p => p.codigo_cliente_integracao == txtFiltro.Text);
+                            //if (lstCliente.Count <= 0)
+                            //{
+                            //    MessageBox.Show("Cliente código: "+ txtFiltro.Text + " não localizado.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            //} 
+                            dgvPesquisa.DataSource = lstCliente;
+                            
                         }
                         break;
                     case "nome_fantasia":
                         {
-                            dgvPesquisa.DataSource = clienteBLL.getCliente(p => p.nome_fantasia.ToLower().Contains(txtFiltro.Text));
+                            List<Cliente> lstCliente = clienteBLL.getCliente(p => p.nome_fantasia.ToLower().Contains(txtFiltro.Text));
+                            //if (lstCliente.Count <= 0)
+                            //{
+                            //    MessageBox.Show("Cliente Nome: " + txtFiltro.Text + " não localizado.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            //}
+                            dgvPesquisa.DataSource = lstCliente;
                         }
                         break;
                     case "cnpj_cpf":
@@ -60,7 +71,12 @@ namespace prjbase
                             string strCPF, strCNPJ = string.Empty;
                             strCPF = Convert.ToInt64(txtFiltro.Text).ToString(@"000\.000\.000\-00");
                             strCNPJ = Convert.ToInt64(txtFiltro.Text).ToString(@"00\.000\.000\/0000\-00");
-                            dgvPesquisa.DataSource = clienteBLL.getCliente(p => p.cnpj_cpf == strCPF || p.cnpj_cpf  == strCNPJ );
+                            List<Cliente> lstCliente = clienteBLL.getCliente(p => p.cnpj_cpf == strCPF || p.cnpj_cpf == strCNPJ);
+                            //if (lstCliente.Count <= 0)
+                            //{
+                            //    MessageBox.Show("Cliente CNPJ/CPF: " + txtFiltro.Text + " não localizado.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            //}
+                            dgvPesquisa.DataSource = lstCliente;
                         }
                         break;
                 }
@@ -80,12 +96,7 @@ namespace prjbase
             cbFiltro.DataSource = lstFiltroPesquisa;
             cbFiltro.ValueMember = "chave";
             cbFiltro.DisplayMember = "descricao";
-            
-            dgvPesquisa.Columns.Add("codigo_cliente_integracao", "Código");
-            dgvPesquisa.Columns.Add("cnpj_cpf", "CNPJ / CPF");
-            dgvPesquisa.Columns.Add("razao_social", "Razão Social");
-            dgvPesquisa.Columns.Add("nome_fantasia", "Nome");
-            
+                                    
             FormataGridPesquisa();
 
         }
@@ -94,10 +105,15 @@ namespace prjbase
         {
             if (cbFiltro.SelectedValue.ToString() == "Id")
             {
-                if (!char.IsDigit(e.KeyChar))
-
+                if ((!char.IsDigit(e.KeyChar)) & (e.KeyChar != 8) & ((e.KeyChar != 13)))
                 {
                     e.Handled = true;
+                }
+
+                if (e.KeyChar == 13)
+                {
+                    ExecutaPesquisa();
+                    FormataGridPesquisa();
                 }
             }
             
@@ -112,10 +128,16 @@ namespace prjbase
         {            
             txtFiltro.Text = string.Empty;
             dgvPesquisa.DataSource = null;
+            FormataGridPesquisa();
         }
 
         protected override void FormataGridPesquisa()
         {
+            dgvPesquisa.Columns.Add("codigo_cliente_integracao", "Código");
+            dgvPesquisa.Columns.Add("cnpj_cpf", "CNPJ / CPF");
+            dgvPesquisa.Columns.Add("razao_social", "Razão Social");
+            dgvPesquisa.Columns.Add("nome_fantasia", "Nome");
+
             base.FormataGridPesquisa();
 
             foreach (DataGridViewColumn col in dgvPesquisa.Columns)
