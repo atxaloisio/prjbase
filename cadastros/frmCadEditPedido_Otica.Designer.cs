@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadEditPedido_Otica));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label23 = new System.Windows.Forms.Label();
             this.txtNrPedCliente = new System.Windows.Forms.TextBox();
@@ -487,12 +487,14 @@
             // 
             // txtCodigo
             // 
-            this.epValidaDados.SetFraseErro(this.txtCodigo, "Código do pedido obrigatório.");
+            this.txtCodigo.Enabled = false;
+            this.epValidaDados.SetFraseErro(this.txtCodigo, "");
             this.txtCodigo.Location = new System.Drawing.Point(63, 20);
             this.txtCodigo.Name = "txtCodigo";
-            this.epValidaDados.SetObrigatorio(this.txtCodigo, true);
+            this.epValidaDados.SetObrigatorio(this.txtCodigo, false);
             this.txtCodigo.Size = new System.Drawing.Size(100, 23);
             this.txtCodigo.TabIndex = 0;
+            this.txtCodigo.TabStop = false;
             this.txtCodigo.Validated += new System.EventHandler(this.Ctrls_Validated);
             // 
             // groupBox2
@@ -1353,9 +1355,9 @@
             // 
             // VLRUNITARIO
             // 
-            dataGridViewCellStyle19.Format = "N2";
-            dataGridViewCellStyle19.NullValue = null;
-            this.VLRUNITARIO.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.VLRUNITARIO.DefaultCellStyle = dataGridViewCellStyle4;
             this.VLRUNITARIO.Frozen = true;
             this.VLRUNITARIO.HeaderText = "Vlr Unitário";
             this.VLRUNITARIO.Name = "VLRUNITARIO";
@@ -1370,9 +1372,9 @@
             // 
             // VLRDESCONTO
             // 
-            dataGridViewCellStyle20.Format = "N2";
-            dataGridViewCellStyle20.NullValue = null;
-            this.VLRDESCONTO.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = null;
+            this.VLRDESCONTO.DefaultCellStyle = dataGridViewCellStyle5;
             this.VLRDESCONTO.Frozen = true;
             this.VLRDESCONTO.HeaderText = "Vlr Desc";
             this.VLRDESCONTO.Name = "VLRDESCONTO";
@@ -1380,9 +1382,9 @@
             // 
             // VLTTOTAL
             // 
-            dataGridViewCellStyle21.Format = "N2";
-            dataGridViewCellStyle21.NullValue = null;
-            this.VLTTOTAL.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = null;
+            this.VLTTOTAL.DefaultCellStyle = dataGridViewCellStyle6;
             this.VLTTOTAL.Frozen = true;
             this.VLTTOTAL.HeaderText = "Total";
             this.VLTTOTAL.Name = "VLTTOTAL";

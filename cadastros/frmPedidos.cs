@@ -12,7 +12,7 @@ namespace prjbase
     {
         public frmPedidos()
         {
-            InitializeComponent();
+            InitializeComponent();            
             this.WindowState = FormWindowState.Maximized;
         }
 
@@ -30,5 +30,6 @@ namespace prjbase
         {
             this.WindowState = FormWindowState.Maximized;
         }
+        
     }
 }

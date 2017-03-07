@@ -219,6 +219,17 @@ namespace prjbase
             gridFiltros.CellEndEdit += new DataGridViewCellEventHandler(dgvFiltro_CellEndEdit);
 
             gridFiltros.ColumnHeaderMouseClick += new DataGridViewCellMouseEventHandler(dgvFiltro_ColumnHeaderMouseClick);
+            gridFiltros.CellLeave += new DataGridViewCellEventHandler(gridFiltros_CellLeave);
+        }
+
+        private void gridFiltros_CellLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            executeCellLeaveChild(sender, e);
+        }
+
+        protected virtual void executeCellLeaveChild(object sender, DataGridViewCellEventArgs e)
+        {
+            //metodo implementado nas entidades filhas
         }
 
         private void dgvFiltro_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -228,7 +239,7 @@ namespace prjbase
 
         protected virtual void ordenaCelula(object sender, DataGridViewCellMouseEventArgs e)
         {
-            
+            //metodo implementado nas entidades filhas
         }
 
         private void dgvFiltro_KeyDown(object sender, KeyEventArgs e)
@@ -241,16 +252,26 @@ namespace prjbase
                 if (iColumn == dgvFiltro.Columns.Count - 1)
                     dgvFiltro.CurrentCell = dgvFiltro[0, iRow];
                 else
-                    dgvFiltro.CurrentCell = dgvFiltro[iColumn + 1, iRow];
+                {
+                    try
+                    {
+                        dgvFiltro.CurrentCell = dgvFiltro[iColumn + 1, iRow];
+                    }
+                    catch (Exception)
+                    {
+                        dgvFiltro.CurrentCell = dgvFiltro[iColumn, iRow];
+                    }
+                }                    
             }
 
-            if (e.KeyCode == Keys.Escape)
+            if ((e.KeyCode == Keys.Escape) || (e.KeyCode == Keys.Back))
             {
                 e.SuppressKeyPress = true;
                 int iColumn = dgvFiltro.CurrentCell.ColumnIndex;
                 int iRow = dgvFiltro.CurrentCell.RowIndex;
 
-                dgvFiltro[iColumn, iRow].Value = "";                
+                dgvFiltro[iColumn, iRow].Value = "";
+                dgvFiltro.CurrentCell = dgvFiltro[iColumn, iRow];
             }
         }
 
@@ -262,7 +283,7 @@ namespace prjbase
 
         protected virtual void executeCellEndEditChild(object sender, DataGridViewCellEventArgs e)
         {
-            
+            //metodo implementado nas entidades filhas
         }
 
         private void dgvFiltro_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
@@ -273,7 +294,7 @@ namespace prjbase
 
         protected virtual void executeCellValidatingChild(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            
+            //metodo implementado nas entidades filhas
         }
 
         protected virtual void dgvFiltro_DataError(object sender, DataGridViewDataErrorEventArgs e)
@@ -286,43 +307,14 @@ namespace prjbase
             //&& e.Context == DataGridViewDataErrorContexts.Parsing)
         }
 
-        protected virtual void dgvFiltro_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        private void dgvFiltro_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            e.Control.KeyPress -= new KeyPressEventHandler(Column0_KeyPress);
-            e.Control.KeyPress -= new KeyPressEventHandler(Column3_KeyPress);
-            if (dgvFiltro.CurrentCell.ColumnIndex == 0) //Desired Column
-            {
-                TextBox tb = e.Control as TextBox;
-                if (tb != null)
-                {
-                    tb.KeyPress += new KeyPressEventHandler(Column0_KeyPress);
-                }
-            }
-
-            if (dgvFiltro.CurrentCell.ColumnIndex == 3) //Desired Column
-            {
-                TextBox tb = e.Control as TextBox;
-                if (tb != null)
-                {
-                    tb.KeyPress += new KeyPressEventHandler(Column3_KeyPress);
-                }
-            }
+            executeEditingControlShowingChild(sender, e);            
         }
 
-        private void Column0_KeyPress(object sender, KeyPressEventArgs e)
+        protected virtual void executeEditingControlShowingChild(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void Column3_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!Char.IsNumber(e.KeyChar) && !e.KeyChar.Equals('/') && !Char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-            }
+            //metodo implementado nas entidades filhas
         }
 
         protected virtual void formataColunagridDados(DataGridView gridDados)
@@ -507,6 +499,16 @@ namespace prjbase
             btnPrimeiro.Enabled = deslocamento > 0;
             btnProximo.Enabled = pagina < totalPaginas;
             btnUltimo.Enabled = pagina < totalPaginas;            
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            imprimirRegistro(sender, e);
+        }
+
+        protected virtual void imprimirRegistro(object sender, EventArgs e)
+        {
+            
         }
     }
 }

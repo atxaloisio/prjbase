@@ -21,12 +21,13 @@ namespace prjbase
         Pedido_OticaBLL Pedido_OticaBLL;
 
         #region Constante de Colunas da Grid
-        private const int col_Id = 0;
-        private const int col_email = 1;
-        private const int col_nome = 2;
-        private const int col_password = 3;
-        private const int col_dtCricao = 4;
-        private const int col_dtAlteracao = 5;
+        private const int COL_ID = 0;
+        private const int COL_PEDIDO = 1;
+        private const int COL_CLIENTE = 2;
+        private const int COL_CONDPAG = 3;
+        private const int COL_DTEMISSAO = 4;
+        private const int COL_DTFECHAMENTO = 5;
+        private const int COL_STATUS = 6;
 
         #endregion
         public frmPedido_Otica()
@@ -50,55 +51,214 @@ namespace prjbase
         protected override void formataColunagridFiltros(DataGridView gridFiltros)
         {
             base.formataColunagridFiltros(gridFiltros);
-            //altera o nome das colunas                        
+            //altera o nome das colunas                 
             gridFiltros.Columns.Add("ID", "Id");
-            gridFiltros.Columns.Add("EMAIL", "e-Mail");
-            gridFiltros.Columns.Add("NOME", "Nome");
+            gridFiltros.Columns.Add("PEDIDO", "Pedido");
+            gridFiltros.Columns.Add("CLIENTE", "Cliente");
+            gridFiltros.Columns.Add("CONDPAGTO", "Cond. Pagamento");
 
-            DataGridViewMaskedTextColumn col = new DataGridViewMaskedTextColumn("99/99/9999");
-            col.DataPropertyName = "CRIACAO";
-            col.HeaderText = "Dt. Criação";
-            col.Name = "CRIACAO";
-            col.ValueType = typeof(DateTime);
-            col.SortMode = DataGridViewColumnSortMode.Programmatic;
-            gridFiltros.Columns.Add(col);
+            DataGridViewMaskedTextColumn colDtEmissao = new DataGridViewMaskedTextColumn("99/99/9999");
+            colDtEmissao.DataPropertyName = "DTEMISSAO";
+            colDtEmissao.HeaderText = "Dt. Emissão";
+            colDtEmissao.Name = "DTEMISSAO";
+            colDtEmissao.ValueType = typeof(DateTime);
+            colDtEmissao.SortMode = DataGridViewColumnSortMode.Programmatic;
+            colDtEmissao.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            colDtEmissao.DefaultCellStyle.Format = "d";
+            gridFiltros.Columns.Add(colDtEmissao);
+
+            DataGridViewMaskedTextColumn colDtFechamento = new DataGridViewMaskedTextColumn("99/99/9999");
+            colDtFechamento.DataPropertyName = "DTFECHAMENTO";
+            colDtFechamento.HeaderText = "Dt. Fechamento";
+            colDtFechamento.Name = "DTFECHAMENTO";
+            colDtFechamento.ValueType = typeof(DateTime);
+            colDtFechamento.SortMode = DataGridViewColumnSortMode.Programmatic;
+            colDtFechamento.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            colDtFechamento.DefaultCellStyle.Format = "d";
+            gridFiltros.Columns.Add(colDtFechamento);
+
+            StatusPedido sp = new StatusPedido();
+            DataGridViewComboBoxColumn colStatus = new DataGridViewComboBoxColumn();
+            IList<itemEnumList> lstStatusPedido = Enumerados.getListEnum(sp);            
+            lstStatusPedido.Insert(0, new itemEnumList { chave = 7, descricao = string.Empty });
+            colStatus.DataSource = lstStatusPedido;
+            colStatus.ValueMember = "chave";
+            colStatus.DisplayMember = "descricao";
+            colStatus.DataPropertyName = "STATUS";
+            colStatus.HeaderText = "Status";
+            colStatus.Name = "STATUS";
+            colStatus.SortMode = DataGridViewColumnSortMode.Programmatic;
+            
 
 
-
+            gridFiltros.Columns.Add(colStatus);
 
             //
-            gridFiltros.Columns[0].Width = 50;
-            gridFiltros.Columns[0].ValueType = typeof(int);
-            gridFiltros.Columns[0].SortMode = DataGridViewColumnSortMode.Programmatic;
-            gridFiltros.Columns[1].Width = 200;
-            gridFiltros.Columns[1].ValueType = typeof(string);
-            gridFiltros.Columns[1].SortMode = DataGridViewColumnSortMode.Programmatic;
-            gridFiltros.Columns[2].Width = 200;
-            gridFiltros.Columns[2].ValueType = typeof(string);
-            gridFiltros.Columns[2].SortMode = DataGridViewColumnSortMode.Programmatic;
-            gridFiltros.Columns[3].Width = 200;
-            //gridFiltros.Columns[3].ValueType = typeof(DateTime);           
-            //gridFiltros.Columns[3].DefaultCellStyle.Format = "dd/mm/YYYY";
+            gridFiltros.Columns[COL_ID].Width = 150;
+            gridFiltros.Columns[COL_ID].ValueType = typeof(int);
+            gridFiltros.Columns[COL_ID].Visible = false;
+
+            gridFiltros.Columns[COL_PEDIDO].Width = 80;
+            gridFiltros.Columns[COL_PEDIDO].ValueType = typeof(int);
+            gridFiltros.Columns[COL_PEDIDO].SortMode = DataGridViewColumnSortMode.Programmatic;
+            gridFiltros.Columns[COL_PEDIDO].DefaultCellStyle = new DataGridViewCellStyle(gridFiltros.Columns[COL_PEDIDO].DefaultCellStyle);
+            gridFiltros.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            gridFiltros.Columns[COL_CLIENTE].Width = 300;
+            gridFiltros.Columns[COL_CLIENTE].ValueType = typeof(string);
+            gridFiltros.Columns[COL_CLIENTE].SortMode = DataGridViewColumnSortMode.Programmatic;
+
+            gridFiltros.Columns[COL_CONDPAG].Width = 200;
+            gridFiltros.Columns[COL_CONDPAG].ValueType = typeof(string);
+            gridFiltros.Columns[COL_CONDPAG].SortMode = DataGridViewColumnSortMode.Programmatic;
+
+            gridFiltros.Columns[COL_DTEMISSAO].Width = 140;
+            gridFiltros.Columns[COL_DTEMISSAO].DefaultCellStyle = new DataGridViewCellStyle(gridFiltros.Columns[COL_DTEMISSAO].DefaultCellStyle);
+            gridFiltros.Columns[COL_DTEMISSAO].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            gridFiltros.Columns[COL_DTFECHAMENTO].Width = 140;
+            gridFiltros.Columns[COL_DTFECHAMENTO].DefaultCellStyle = new DataGridViewCellStyle(gridFiltros.Columns[COL_DTFECHAMENTO].DefaultCellStyle);
+            gridFiltros.Columns[COL_DTFECHAMENTO].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            gridFiltros.Columns[COL_STATUS].Width = 200;
+
+            gridFiltros.EditingControlShowing += new DataGridViewEditingControlShowingEventHandler(gridFiltros_EditingControlShowing);
 
             //Adiciona uma linha ao grid.
             gridFiltros.Rows.Add();
-
-            //gridFiltros.Columns[2].Visible = false;            
+            
         }
 
+        private void gridFiltros_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            e.Control.KeyPress -= new KeyPressEventHandler(Col_Pedido_KeyPress);
+            e.Control.KeyPress -= new KeyPressEventHandler(Col_DtEmissaoFechamento_KeyPress);
+
+            switch (dgvFiltro.CurrentCell.ColumnIndex)
+            {
+                case COL_PEDIDO:
+                    {
+                        TextBox tb = e.Control as TextBox;
+                        if (tb != null)
+                        {
+                            tb.KeyPress -= new KeyPressEventHandler(Col_Pedido_KeyPress);
+                            tb.KeyPress += new KeyPressEventHandler(Col_Pedido_KeyPress);
+                        }
+                    }
+                    break;
+                case COL_DTEMISSAO:
+                case COL_DTFECHAMENTO:
+                    {
+                        TextBox tb = e.Control as TextBox;
+                        if (tb != null)
+                        {
+                            tb.KeyPress -= new KeyPressEventHandler(Col_DtEmissaoFechamento_KeyPress);
+                            tb.Validating -= new CancelEventHandler(Col_DtEmissaoFechamento_Validating);
+                            tb.KeyPress += new KeyPressEventHandler(Col_DtEmissaoFechamento_KeyPress);
+                            tb.Validating += new CancelEventHandler(Col_DtEmissaoFechamento_Validating);
+                        }
+                    }
+                    break;
+                case COL_STATUS:
+                    {
+                        if (e.Control is ComboBox)
+                        {
+                            ComboBox cb = e.Control as ComboBox;
+                            if (cb != null)
+                            {
+                                cb.SelectionChangeCommitted -= new EventHandler(ComboBox_SelectionChangeCommitted);
+                                cb.SelectionChangeCommitted += new EventHandler(ComboBox_SelectionChangeCommitted);
+                            }
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }                                                
+        }
+
+        private void Col_DtEmissaoFechamento_Validating(object sender, CancelEventArgs e)
+        {
+            var controle = ((DataGridViewTextBoxEditingControl)sender);
+            // ValidateUtils é uma classe estática utilizada para validação
+            if (!string.IsNullOrEmpty(controle.Text) && !ValidateUtils.isDate(controle.Text))
+            {
+                controle.Clear();
+                e.Cancel = true;
+                MessageBox.Show("Data inválida.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Col_DtEmissaoFechamento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsNumber(e.KeyChar) && !e.KeyChar.Equals('/') && !Char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void Col_Pedido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && !e.KeyChar.Equals(8))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void ComboBox_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            ComboBox cb = (ComboBox)sender;
+
+            int? value = null;
+
+            if (cb.SelectedValue is itemEnumList)
+            {
+                value = Convert.ToInt32(((itemEnumList)cb.SelectedValue).chave);
+            }
+            else
+            {
+                value = Convert.ToInt32(cb.SelectedValue);
+            }
+            
+            Expression<Func<Pedido_Otica, bool>> predicate = p => true;
+
+            if (value != 7)
+            {
+                predicate = predicate.And(p => p.status == value);
+            }
+          
+            List<Pedido_Otica> Pedido_OticaList = Pedido_OticaBLL.getPedido_Otica(predicate.Expand(), t => t.Id.ToString(), false, deslocamento, tamanhoPagina, out totalReg);
+            dgvDados.DataSource = Pedido_OticaBLL.ToList_Pedido_OticaView(Pedido_OticaList);
+        }
+        
         protected override void formataColunagridDados(DataGridView gridDados)
         {
             base.formataColunagridDados(gridDados);
-            //gridDados.Columns[0].Width = 50;
-            //gridDados.Columns[0].SortMode = DataGridViewColumnSortMode.Programmatic;
-            //gridDados.Columns[1].Width = 200;
-            //gridDados.Columns[1].SortMode = DataGridViewColumnSortMode.Programmatic;
-            //gridDados.Columns[2].Width = 200;
-            //gridDados.Columns[2].SortMode = DataGridViewColumnSortMode.Programmatic;
-            //gridDados.Columns[3].Visible = false;
-            //gridDados.Columns[4].Width = 200;
-            //gridDados.Columns[4].SortMode = DataGridViewColumnSortMode.Programmatic;
-            //gridDados.Columns[5].Visible = false;
+
+            gridDados.Columns[COL_ID].Width = 150;
+            gridDados.Columns[COL_ID].ValueType = typeof(int);
+            gridDados.Columns[COL_ID].Visible = false;
+
+            gridDados.Columns[COL_PEDIDO].Width = 80;
+            gridDados.Columns[COL_PEDIDO].ValueType = typeof(int);
+            gridDados.Columns[COL_PEDIDO].SortMode = DataGridViewColumnSortMode.Programmatic;
+            gridDados.Columns[COL_PEDIDO].DefaultCellStyle = new DataGridViewCellStyle(gridDados.Columns[COL_PEDIDO].DefaultCellStyle);
+            gridDados.Columns[COL_PEDIDO].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            gridDados.Columns[COL_CLIENTE].Width = 300;
+            gridDados.Columns[COL_CLIENTE].ValueType = typeof(string);
+            gridDados.Columns[COL_CLIENTE].SortMode = DataGridViewColumnSortMode.Programmatic;
+
+            gridDados.Columns[COL_CONDPAG].Width = 200;
+            gridDados.Columns[COL_CONDPAG].ValueType = typeof(string);
+            gridDados.Columns[COL_CONDPAG].SortMode = DataGridViewColumnSortMode.Programmatic;
+
+            gridDados.Columns[COL_DTEMISSAO].Width = 140;
+            gridDados.Columns[COL_DTFECHAMENTO].Width = 140;
+
+            gridDados.Columns[COL_STATUS].Width = 200;
+            gridDados.Columns[COL_STATUS].ValueType = typeof(string);
+            gridDados.Columns[COL_STATUS].SortMode = DataGridViewColumnSortMode.Programmatic;
         }
 
         protected override void carregaConsulta()
@@ -106,8 +266,9 @@ namespace prjbase
             base.carregaConsulta();
             Pedido_OticaBLL = new Pedido_OticaBLL();
             List<Pedido_Otica> Pedido_OticaList = Pedido_OticaBLL.getPedido_Otica(p => p.Id.ToString(), false, deslocamento, tamanhoPagina, out totalReg);
+
             //List<Pedido_Otica> Pedido_OticaList = Pedido_OticaBLL.getPedido_Otica(p => p.nome.Contains("x"), T => T.Id.ToString(), false, deslocamento, tamanhopagina, out totalreg);
-            dgvDados.DataSource = Pedido_OticaList;
+            dgvDados.DataSource = Pedido_OticaBLL.ToList_Pedido_OticaView(Pedido_OticaList);
             colOrdem = 0;
         }
 
@@ -156,37 +317,59 @@ namespace prjbase
                 colAnt.HeaderCell.SortGlyphDirection = SortOrder.None;
             }
 
-            //switch (e.ColumnIndex)
-            //{
+            switch (e.ColumnIndex)
+            {
 
-            //    case 1:
-            //        {
-            //            List<Pedido_Otica> Pedido_OticaList = Pedido_OticaBLL.getPedido_Otica(p => p.email, direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
-            //            dgvDados.DataSource = Pedido_OticaList;
-            //        }
-            //        break;
+                case COL_PEDIDO:
+                    {
+                        List<Pedido_Otica> Pedido_OticaList = Pedido_OticaBLL.getPedido_Otica(p => p.codigo.ToString(), direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
+                        dgvDados.DataSource = Pedido_OticaBLL.ToList_Pedido_OticaView(Pedido_OticaList);
+                    }
+                    break;
 
-            //    case 2:
-            //        {
-            //            List<Pedido_Otica> Pedido_OticaList = Pedido_OticaBLL.getPedido_Otica(p => p.nome, direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
-            //            dgvDados.DataSource = Pedido_OticaList;
-            //        }
-            //        break;
+                case COL_CLIENTE:
+                    {
+                        List<Pedido_Otica> Pedido_OticaList = Pedido_OticaBLL.getPedido_Otica(p => p.cliente.razao_social, direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
+                        dgvDados.DataSource = Pedido_OticaBLL.ToList_Pedido_OticaView(Pedido_OticaList);
+                    }
+                    break;
 
-            //    case 3:
-            //        {
-            //            List<Pedido_Otica> Pedido_OticaList = Pedido_OticaBLL.getPedido_Otica(p => p.dtcriacao.ToString(), direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
-            //            dgvDados.DataSource = Pedido_OticaList;
-            //        }
-            //        break;
-            //    //O default será executado quando o index for 0
-            //    default:
-            //        {
-            //            List<Pedido_Otica> Pedido_OticaList = Pedido_OticaBLL.getPedido_Otica(p => p.Id.ToString(), direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
-            //            dgvDados.DataSource = Pedido_OticaList;
-            //        }
-            //        break;
-            //}
+                case COL_CONDPAG:
+                    {
+                        List<Pedido_Otica> Pedido_OticaList = Pedido_OticaBLL.getPedido_Otica(p => p.formaspagvenda.cDescricao, direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
+                        dgvDados.DataSource = Pedido_OticaBLL.ToList_Pedido_OticaView(Pedido_OticaList);
+                    }
+                    break;
+
+                case COL_DTEMISSAO:
+                    {
+                        List<Pedido_Otica> Pedido_OticaList = Pedido_OticaBLL.getPedido_Otica(p => p.data_emissao.ToString(), direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
+                        dgvDados.DataSource = Pedido_OticaBLL.ToList_Pedido_OticaView(Pedido_OticaList);
+                    }
+                    break;
+
+                case COL_DTFECHAMENTO:
+                    {
+                        List<Pedido_Otica> Pedido_OticaList = Pedido_OticaBLL.getPedido_Otica(p => p.data_emissao.ToString(), direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
+                        dgvDados.DataSource = Pedido_OticaBLL.ToList_Pedido_OticaView(Pedido_OticaList);
+                    }
+                    break;
+
+                case COL_STATUS:
+                    {
+                        List<Pedido_Otica> Pedido_OticaList = Pedido_OticaBLL.getPedido_Otica(p => p.status.ToString(), direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
+                        dgvDados.DataSource = Pedido_OticaBLL.ToList_Pedido_OticaView(Pedido_OticaList);
+                    }
+                    break;
+
+                //O default será executado quando o index for 0
+                default:
+                    {
+                        List<Pedido_Otica> Pedido_OticaList = Pedido_OticaBLL.getPedido_Otica(p => p.Id.ToString(), direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
+                        dgvDados.DataSource = Pedido_OticaList;
+                    }
+                    break;
+            }
 
             colOrdem = e.ColumnIndex;
 
@@ -199,104 +382,186 @@ namespace prjbase
         {
             base.executeCellValidatingChild(sender, e);
 
-            //if (e.ColumnIndex == 0 && !string.IsNullOrEmpty((string)e.FormattedValue))
-            //{
-            //    //
-            //}
+            if (e.ColumnIndex == COL_ID && !string.IsNullOrEmpty((string)e.FormattedValue))
+            {
+                //
+            }
 
-            //if (e.ColumnIndex == 1 && !string.IsNullOrEmpty((string)e.FormattedValue))
-            //{
-            //    //Executa filtro.                
-            //}
+            if (e.ColumnIndex == COL_PEDIDO && !string.IsNullOrEmpty((string)e.FormattedValue))
+            {
+                //Executa filtro.                
+            }
 
-            //if (e.ColumnIndex == 2 && !string.IsNullOrEmpty((string)e.FormattedValue))
-            //{
-            //    //Executa filtro.                
-            //}
+            if (e.ColumnIndex == COL_CLIENTE && !string.IsNullOrEmpty((string)e.FormattedValue))
+            {
+                //Executa filtro.                
+            }
 
-            //if (e.ColumnIndex == 3 && !string.IsNullOrEmpty((string)e.FormattedValue))
-            //{
+            if (e.ColumnIndex == COL_CONDPAG && !string.IsNullOrEmpty((string)e.FormattedValue))
+            {
+                //Executa filtro.                
+            }
 
-            //    if ((string.IsNullOrEmpty((string)e.FormattedValue)) || ((string)e.FormattedValue == "__/__/____"))
-            //    {
-            //        dgvFiltro[e.ColumnIndex, e.RowIndex].Value = "";
-            //        return;
+            if (e.ColumnIndex == COL_DTEMISSAO && !string.IsNullOrEmpty((string)e.FormattedValue))
+            {
 
-            //    }
+                if ((string.IsNullOrEmpty((string)e.FormattedValue)) || ((string)e.FormattedValue == "__/__/____"))
+                {
+                    dgvFiltro[e.ColumnIndex, e.RowIndex].Value = "";
+                    return;
 
-            //    if (!ValidateUtils.isDate((string)e.FormattedValue))
-            //    {
-            //        e.Cancel = true;
-            //        dgvFiltro[e.ColumnIndex, e.RowIndex].Value = "";
-            //        MessageBox.Show("Data inválida.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //    }
-            //    else
-            //    {
-            //        //Executa filtro.
-            //    }
-            //}
+                }
+
+                if (!ValidateUtils.isDate((string)e.FormattedValue))
+                {
+                    e.Cancel = true;
+                    dgvFiltro[e.ColumnIndex, e.RowIndex].Value = "";
+                    MessageBox.Show("Data inválida.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    //Executa filtro.
+                }
+            }
+
+            if (e.ColumnIndex == COL_DTFECHAMENTO && !string.IsNullOrEmpty((string)e.FormattedValue))
+            {
+
+                if ((string.IsNullOrEmpty((string)e.FormattedValue)) || ((string)e.FormattedValue == "__/__/____"))
+                {
+                    dgvFiltro[e.ColumnIndex, e.RowIndex].Value = "";
+                    return;
+
+                }
+
+                if (!ValidateUtils.isDate((string)e.FormattedValue))
+                {
+                    e.Cancel = true;
+                    dgvFiltro[e.ColumnIndex, e.RowIndex].Value = "";
+                    MessageBox.Show("Data inválida.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    //Executa filtro.
+                }
+            }
+
+            if (e.ColumnIndex == COL_STATUS && !string.IsNullOrEmpty((string)e.FormattedValue))
+            {
+                //Executa filtro.                
+            }
         }
 
         protected override void executeCellEndEditChild(object sender, DataGridViewCellEventArgs e)
         {
             base.executeCellEndEditChild(sender, e);
 
-            //int id = 0;
-            //string email = "";
-            //string nome = "";
-            //DateTime? data = null;
-
-            //if (!string.IsNullOrEmpty((string)dgvFiltro[0, e.RowIndex].Value))
-            //{
-            //    id = Convert.ToInt32(dgvFiltro[0, e.RowIndex].Value);
-            //}
-
-            //if (!string.IsNullOrEmpty((string)dgvFiltro[1, e.RowIndex].Value))
-            //{
-            //    email = dgvFiltro[1, e.RowIndex].Value.ToString();
-            //}
-
-            //if (!string.IsNullOrEmpty((string)dgvFiltro[2, e.RowIndex].Value))
-            //{
-            //    nome = dgvFiltro[2, e.RowIndex].Value.ToString();
-            //}
-
-            //if (!string.IsNullOrEmpty((string)dgvFiltro[3, e.RowIndex].Value))
-            //{
-            //    data = Convert.ToDateTime(dgvFiltro[3, e.RowIndex].Value);
-            //}
-
-            ////var predicate = PredicateBuilder.True<Pedido_Otica>();
-
-
-            //Expression<Func<Pedido_Otica, bool>> predicate = p => true;
-
-
-            //if (id > 0)
-            //{
-            //    predicate = predicate = p => p.Id == id;
-            //}
-
-            //if (!string.IsNullOrEmpty(email))
-            //{
-            //    predicate = predicate.And(p => p.email.Contains(email));
-            //}
-
-            //if (!string.IsNullOrEmpty(nome))
-            //{
-            //    predicate = predicate.And(p => p.nome.Contains(nome));
-            //}
-
-            //if ((data != null) & (ValidateUtils.isDate(data.ToString())))
-            //{
-            //    predicate = predicate.And(p => DbFunctions.TruncateTime(p.dtcriacao) == DbFunctions.TruncateTime(data));
-            //}
-
-            //List<Pedido_Otica> Pedido_OticaList = Pedido_OticaBLL.getPedido_Otica(predicate.Expand(), t => t.Id.ToString(), false, deslocamento, tamanhoPagina, out totalReg);
-            //dgvDados.DataSource = Pedido_OticaList;
+            executeFilter(sender, e);
+           
+            
 
         }
 
+        private void executeFilter(object sender, DataGridViewCellEventArgs e)
+        {
+            int codigo = 0;
+            string cliente = string.Empty;
+            string condPag = string.Empty;
+            DateTime? DtEmiss = null;
+            DateTime? DtFecha = null;
+            int? status = null;
+
+            if (dgvFiltro[COL_PEDIDO, e.RowIndex].Value != null)
+            {
+                if (!string.IsNullOrEmpty(dgvFiltro[COL_PEDIDO, e.RowIndex].Value.ToString()))
+                {
+                    codigo = Convert.ToInt32(dgvFiltro[COL_PEDIDO, e.RowIndex].Value);
+                }
+            }
+
+            if (!string.IsNullOrEmpty((string)dgvFiltro[COL_CLIENTE, e.RowIndex].Value))
+            {
+                cliente = dgvFiltro[COL_CLIENTE, e.RowIndex].Value.ToString();
+            }
+
+            if (!string.IsNullOrEmpty((string)dgvFiltro[COL_CONDPAG, e.RowIndex].Value))
+            {
+                condPag = dgvFiltro[COL_CONDPAG, e.RowIndex].Value.ToString();
+            }
+
+            if (!string.IsNullOrEmpty((string)dgvFiltro[COL_DTEMISSAO, e.RowIndex].Value))
+            {
+                if (dgvFiltro[COL_DTEMISSAO, e.RowIndex].Value.ToString() != "__/__/____")
+                {
+                    if (ValidateUtils.isDate((string)dgvFiltro[COL_DTEMISSAO, e.RowIndex].Value.ToString()))
+                    {
+                        DtEmiss = Convert.ToDateTime(dgvFiltro[COL_DTEMISSAO, e.RowIndex].Value);
+                    }
+                }                                
+            }
+
+            if (!string.IsNullOrEmpty((string)dgvFiltro[COL_DTFECHAMENTO, e.RowIndex].Value))
+            {
+                if (dgvFiltro[COL_DTFECHAMENTO, e.RowIndex].Value.ToString() != "__/__/____")
+                {
+                    if (ValidateUtils.isDate((string)dgvFiltro[COL_DTFECHAMENTO, e.RowIndex].Value.ToString()))
+                    {
+                        DtFecha = Convert.ToDateTime(dgvFiltro[COL_DTFECHAMENTO, e.RowIndex].Value);
+                    }
+                }
+                
+            }
+
+            if (dgvFiltro[COL_STATUS, e.RowIndex].Value != null)
+            {
+                status = (int)((DataGridViewComboBoxCell)dgvFiltro[COL_STATUS, e.RowIndex]).Value;
+            }
+
+            //var predicate = PredicateBuilder.True<Pedido_Otica>();
+
+
+            Expression<Func<Pedido_Otica, bool>> predicate = p => true;
+
+
+            if (codigo > 0)
+            {
+                predicate = predicate = p => p.codigo == codigo;
+            }
+
+            if (!string.IsNullOrEmpty(cliente))
+            {
+                predicate = predicate.And(p => p.cliente.nome_fantasia.Contains(cliente));
+            }
+
+            if (!string.IsNullOrEmpty(condPag))
+            {
+                predicate = predicate.And(p => p.formaspagvenda.cDescricao.Contains(condPag));
+            }
+
+            if ((DtEmiss != null) & (ValidateUtils.isDate(DtEmiss.ToString())))
+            {
+                predicate = predicate.And(p => DbFunctions.TruncateTime(p.data_emissao) == DbFunctions.TruncateTime(DtEmiss));
+            }
+
+            if ((DtFecha != null) & (ValidateUtils.isDate(DtFecha.ToString())))
+            {
+                predicate = predicate.And(p => DbFunctions.TruncateTime(p.data_fechamento) == DbFunctions.TruncateTime(DtFecha));
+            }
+
+            if ((status != null) && (status != 7))
+            {
+                predicate = predicate.And(p => p.status == status);
+            }
+
+            List<Pedido_Otica> Pedido_OticaList = Pedido_OticaBLL.getPedido_Otica(predicate.Expand(), t => t.Id.ToString(), false, deslocamento, tamanhoPagina, out totalReg);
+            dgvDados.DataSource = Pedido_OticaBLL.ToList_Pedido_OticaView(Pedido_OticaList);
+        }
+
+        protected override void executeCellLeaveChild(object sender, DataGridViewCellEventArgs e)
+        {
+            base.executeCellLeaveChild(sender, e);
+            executeFilter(sender, e);
+        }
         protected override void excluirRegistro(int Id)
         {
             base.excluirRegistro(Id);
@@ -318,6 +583,20 @@ namespace prjbase
                 Pedido_OticaBLL.Dispose();
             }
 
+        }
+
+        public override void ConfigurarForm(Form pFormParent)
+        {
+            base.ConfigurarForm(pFormParent);
+            base.btnImprimir.Visible = true;
+            base.btnImprimir.Enabled = true;
+        }
+
+        protected override void imprimirRegistro(object sender, EventArgs e)
+        {
+            frmReportBase relatorio = new frmReportBase();
+            relatorio.rvRelatorios.LocalReport.ReportEmbeddedResource = "prjbase.relatorios.relPedido_Otica.rdlc";
+            relatorio.ShowDialog();            
         }
         #endregion
     }

@@ -37,9 +37,8 @@ namespace prjbase
                 
             }
             catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.InnerException.InnerException.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            {                              
+                MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }

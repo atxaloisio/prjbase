@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Data.Entity;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Text;
@@ -51,208 +52,222 @@ namespace prjbase
                 Retorno = ValidaDadosEspecifico();
             }
 
-            try
+            if (Retorno)
             {
-                pedido_OticaBLL = new Pedido_OticaBLL();
-
-                Pedido_Otica pedido_Otica = new Pedido_Otica();
-
-                #region Dados do Pedido
-                pedido_Otica.agrupado = "N";
-                pedido_Otica.Id_cliente = Convert.ToInt64(txtIdCliente.Text);
-                pedido_Otica.codigo_cliente = txtCodCliIntegracao.Text;
-                pedido_Otica.codigo_pedido = txtCodigo.Text;
-
-                if (!string.IsNullOrEmpty(txtDtEmissao.Text))
+                try
                 {
-                    txtDtEmissao.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
-                    pedido_Otica.data_emissao = Convert.ToDateTime(txtDtEmissao.Text);
-                    txtDtEmissao.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-                }
+                    pedido_OticaBLL = new Pedido_OticaBLL();
 
-                if (!string.IsNullOrEmpty(txtDtFechamento.Text))
+                    Pedido_Otica pedido_Otica = LoadFromControls();
+
+                    pedido_OticaBLL.AdicionarPedido_Otica(pedido_Otica);
+
+                    Retorno = true;
+                }
+                catch (Exception ex)
                 {
-                    txtDtFechamento.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
-                    pedido_Otica.data_fechamento = Convert.ToDateTime(txtDtFechamento.Text);
-                    txtDtFechamento.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+                    Retorno = false;
+                    throw ex;
                 }
+            }
 
-                if (cbCondPagamento.SelectedIndex != -1)
-                {
-                    pedido_Otica.condicao_pagamento = Convert.ToInt64(cbCondPagamento.SelectedValue);
-                }
-                pedido_Otica.numero_pedido_cliente = txtNrPedCliente.Text;
+            return Retorno;
+        }
 
-                if (!string.IsNullOrEmpty(txtDtPrevEntrega.Text))
-                {
-                    txtDtPrevEntrega.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
-                    pedido_Otica.date_previsao_entrega = Convert.ToDateTime(txtDtPrevEntrega.Text);
-                    txtDtPrevEntrega.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-                }
+        private Pedido_Otica LoadFromControls()
+        {
+            Pedido_Otica pedido_Otica = new Pedido_Otica();
+            #region Dados do Pedido
+            pedido_Otica.agrupado = "N";
+            pedido_Otica.Id_cliente = Convert.ToInt64(txtIdCliente.Text);
+            pedido_Otica.codigo_cliente = txtCodCliIntegracao.Text;
 
-                if (!string.IsNullOrEmpty(txtHrPrevEntrega.Text))
-                {
-                    CultureInfo Culture = CultureInfo.CurrentCulture;
-                    TimeSpan horaEnt;
-                    txtHrPrevEntrega.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
-                    TimeSpan.TryParseExact(txtHrPrevEntrega.Text, "g", Culture, out horaEnt);
-                    pedido_Otica.hora_previsao_entrega = horaEnt;
-                }
+            if (!string.IsNullOrEmpty(txtDtEmissao.Text))
+            {
+                txtDtEmissao.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+                pedido_Otica.data_emissao = Convert.ToDateTime(txtDtEmissao.Text);
+                txtDtEmissao.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            }
 
-                if (cbMotivoEntrega.SelectedIndex != -1)
-                {
-                    pedido_Otica.id_motivo_entrega = Convert.ToInt64(cbMotivoEntrega.SelectedValue);
-                }
+            if (!string.IsNullOrEmpty(txtDtFechamento.Text))
+            {
+                txtDtFechamento.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+                pedido_Otica.data_fechamento = Convert.ToDateTime(txtDtFechamento.Text);
+                txtDtFechamento.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            }
 
-                if (cbTransportadora.SelectedIndex != -1)
-                {
-                    pedido_Otica.Id_transportadora = Convert.ToInt64(cbTransportadora.SelectedValue);
-                }
-                #endregion
+            if (cbCondPagamento.SelectedIndex != -1)
+            {
+                pedido_Otica.condicao_pagamento = Convert.ToInt64(cbCondPagamento.SelectedValue);
+            }
+            pedido_Otica.numero_pedido_cliente = txtNrPedCliente.Text;
 
-                #region Dados Receiturario
-                //Olho Direito
-                pedido_Otica.od_gl_esf = txtod_gl_esf.Text;
-                pedido_Otica.od_gl_cil = txtod_gl_cil.Text;
+            if (!string.IsNullOrEmpty(txtDtPrevEntrega.Text))
+            {
+                txtDtPrevEntrega.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+                pedido_Otica.date_previsao_entrega = Convert.ToDateTime(txtDtPrevEntrega.Text);
+                txtDtPrevEntrega.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            }
 
-                if (!string.IsNullOrEmpty(txtod_eixo.Text))
-                {
-                    pedido_Otica.od_eixo = Convert.ToInt32(txtod_eixo.Text);
-                }
+            if (!string.IsNullOrEmpty(txtHrPrevEntrega.Text))
+            {
+                CultureInfo Culture = CultureInfo.CurrentCulture;
+                TimeSpan horaEnt;
+                txtHrPrevEntrega.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+                TimeSpan.TryParseExact(txtHrPrevEntrega.Text, "g", Culture, out horaEnt);
+                pedido_Otica.hora_previsao_entrega = horaEnt;
+            }
 
-                if (!string.IsNullOrEmpty(txtod_adicao.Text))
-                {
-                    pedido_Otica.od_adicao = Convert.ToDecimal(txtod_adicao.Text);
-                }
+            if (cbMotivoEntrega.SelectedIndex != -1)
+            {
+                pedido_Otica.id_motivo_entrega = Convert.ToInt64(cbMotivoEntrega.SelectedValue);
+            }
 
-                pedido_Otica.od_gp_esf = txtod_gp_esf.Text;
-                pedido_Otica.od_gp_cil = txtod_gp_cil.Text;
-                pedido_Otica.od_dnp_longe = txtod_dnp_longe.Text;
-                pedido_Otica.od_dnp_perto = txtod_dnp_perto.Text;
-                pedido_Otica.od_alt = txtod_alt.Text;
-                pedido_Otica.od_dech = txtod_dech.Text;
-                pedido_Otica.od_prisma_valor = txtod_prisma_valor.Text;
+            if (cbTransportadora.SelectedIndex != -1)
+            {
+                pedido_Otica.Id_transportadora = Convert.ToInt64(cbTransportadora.SelectedValue);
+            }
+            #endregion
 
-                if (!string.IsNullOrEmpty(txtod_prisma_eixo.Text))
-                {
-                    pedido_Otica.od_prisma_eixo = Convert.ToInt32(txtod_prisma_eixo.Text);
-                }
-                //Olho Esquerdo
-                pedido_Otica.oe_gl_esf = txtoe_gl_esf.Text;
-                pedido_Otica.oe_gl_cil = txtoe_gl_cil.Text;
+            #region Dados Receiturario
+            //Olho Direito
+            pedido_Otica.od_gl_esf = txtod_gl_esf.Text;
+            pedido_Otica.od_gl_cil = txtod_gl_cil.Text;
 
-                if (!string.IsNullOrEmpty(txtoe_eixo.Text))
-                {
-                    pedido_Otica.oe_eixo = Convert.ToInt32(txtoe_eixo.Text);
-                }
+            if (!string.IsNullOrEmpty(txtod_eixo.Text))
+            {
+                pedido_Otica.od_eixo = Convert.ToInt32(txtod_eixo.Text);
+            }
 
-                if (!string.IsNullOrEmpty(txtoe_adicao.Text))
-                {
-                    pedido_Otica.oe_adicao = Convert.ToDecimal(txtoe_adicao.Text);
-                }
+            if (!string.IsNullOrEmpty(txtod_adicao.Text))
+            {
+                pedido_Otica.od_adicao = Convert.ToDecimal(txtod_adicao.Text);
+            }
 
-                pedido_Otica.oe_gp_esf = txtoe_gp_esf.Text;
-                pedido_Otica.oe_gp_cil = txtoe_gp_cil.Text;
-                pedido_Otica.oe_dnp_longe = txtoe_dnp_longe.Text;
-                pedido_Otica.oe_dnp_perto = txtoe_dnp_perto.Text;
-                pedido_Otica.oe_alt = txtoe_alt.Text;
-                pedido_Otica.oe_dech = txtoe_dech.Text;
-                pedido_Otica.oe_prisma_valor = txtoe_prisma_valor.Text;
+            pedido_Otica.od_gp_esf = txtod_gp_esf.Text;
+            pedido_Otica.od_gp_cil = txtod_gp_cil.Text;
+            pedido_Otica.od_dnp_longe = txtod_dnp_longe.Text;
+            pedido_Otica.od_dnp_perto = txtod_dnp_perto.Text;
+            pedido_Otica.od_alt = txtod_alt.Text;
+            pedido_Otica.od_dech = txtod_dech.Text;
+            pedido_Otica.od_prisma_valor = txtod_prisma_valor.Text;
 
-                if (!string.IsNullOrEmpty(txtoe_prisma_eixo.Text))
-                {
-                    pedido_Otica.oe_prisma_eixo = Convert.ToInt32(txtoe_prisma_eixo.Text);
-                }
-                pedido_Otica.status = (int)StatusPedido.GRAVADO;
-                #endregion
+            if (!string.IsNullOrEmpty(txtod_prisma_eixo.Text))
+            {
+                pedido_Otica.od_prisma_eixo = Convert.ToInt32(txtod_prisma_eixo.Text);
+            }
+            //Olho Esquerdo
+            pedido_Otica.oe_gl_esf = txtoe_gl_esf.Text;
+            pedido_Otica.oe_gl_cil = txtoe_gl_cil.Text;
 
-                #region Dados Armação
-                Pedido_Armacao pedido_Armacao = new Pedido_Armacao();
+            if (!string.IsNullOrEmpty(txtoe_eixo.Text))
+            {
+                pedido_Otica.oe_eixo = Convert.ToInt32(txtoe_eixo.Text);
+            }
 
-                if (cbTipoArmacao.SelectedIndex != -1)
-                {
-                    pedido_Armacao.tipo = Convert.ToInt32(cbTipoArmacao.SelectedValue);
-                }
+            if (!string.IsNullOrEmpty(txtoe_adicao.Text))
+            {
+                pedido_Otica.oe_adicao = Convert.ToDecimal(txtoe_adicao.Text);
+            }
 
-                if (cbShapeArmacao.SelectedIndex != -1)
-                {
-                    pedido_Armacao.shape = Convert.ToInt32(cbShapeArmacao.SelectedValue);
-                }
+            pedido_Otica.oe_gp_esf = txtoe_gp_esf.Text;
+            pedido_Otica.oe_gp_cil = txtoe_gp_cil.Text;
+            pedido_Otica.oe_dnp_longe = txtoe_dnp_longe.Text;
+            pedido_Otica.oe_dnp_perto = txtoe_dnp_perto.Text;
+            pedido_Otica.oe_alt = txtoe_alt.Text;
+            pedido_Otica.oe_dech = txtoe_dech.Text;
+            pedido_Otica.oe_prisma_valor = txtoe_prisma_valor.Text;
 
-                if (!string.IsNullOrEmpty(txtDiaFinLente.Text))
-                {
-                    pedido_Armacao.diametro_final_lente = Convert.ToDecimal(txtDiaFinLente.Text);
-                }
+            if (!string.IsNullOrEmpty(txtoe_prisma_eixo.Text))
+            {
+                pedido_Otica.oe_prisma_eixo = Convert.ToInt32(txtoe_prisma_eixo.Text);
+            }
+            pedido_Otica.status = (int)StatusPedido.GRAVADO;
+            #endregion
 
-                if (!string.IsNullOrEmpty(txtLarguaArmacao.Text))
-                {
-                    pedido_Armacao.largura = Convert.ToInt32(txtLarguaArmacao.Text);
-                }
+            #region Dados Armação
+            Pedido_Armacao pedido_Armacao = new Pedido_Armacao();
 
-                if (!string.IsNullOrEmpty(txtPonteArmacao.Text))
-                {
-                    pedido_Armacao.ponte = Convert.ToInt32(txtPonteArmacao.Text);
-                }
+            if (cbTipoArmacao.SelectedIndex != -1)
+            {
+                pedido_Armacao.tipo = Convert.ToInt32(cbTipoArmacao.SelectedValue);
+            }
 
-                if (!string.IsNullOrEmpty(txtAlturaArmacao.Text))
-                {
-                    pedido_Armacao.altura = Convert.ToInt32(txtAlturaArmacao.Text);
-                }
+            if (cbShapeArmacao.SelectedIndex != -1)
+            {
+                pedido_Armacao.shape = Convert.ToInt32(cbShapeArmacao.SelectedValue);
+            }
 
-                if (!string.IsNullOrEmpty(txtMaiorDiagonal.Text))
-                {
-                    pedido_Armacao.maior_diagonal = Convert.ToInt32(txtMaiorDiagonal.Text);
-                }
+            if (!string.IsNullOrEmpty(txtDiaFinLente.Text))
+            {
+                pedido_Armacao.diametro_final_lente = Convert.ToDecimal(txtDiaFinLente.Text);
+            }
 
-                if (!string.IsNullOrEmpty(txtEixoMaiorDiagonal.Text))
-                {
-                    pedido_Armacao.eixo_maior_diagonal = Convert.ToInt32(txtEixoMaiorDiagonal.Text);
-                }
+            if (!string.IsNullOrEmpty(txtLarguaArmacao.Text))
+            {
+                pedido_Armacao.largura = Convert.ToInt32(txtLarguaArmacao.Text);
+            }
 
-                pedido_Otica.pedido_armacao.Add(pedido_Armacao);
-                #endregion
+            if (!string.IsNullOrEmpty(txtPonteArmacao.Text))
+            {
+                pedido_Armacao.ponte = Convert.ToInt32(txtPonteArmacao.Text);
+            }
 
-                #region Dados Lente
-                Pedido_Lente pedido_Lente = new Pedido_Lente();
-                if (cbTipoLente.SelectedIndex != -1)
-                {
-                    pedido_Lente.tipo = Convert.ToInt32(cbTipoLente.SelectedValue);
-                }
-                pedido_Lente.marca_material = txtMaterialLente.Text;
-                pedido_Lente.observacoes = txtObs.Text;
-                #endregion
+            if (!string.IsNullOrEmpty(txtAlturaArmacao.Text))
+            {
+                pedido_Armacao.altura = Convert.ToInt32(txtAlturaArmacao.Text);
+            }
 
-                #region Itens do Pedido
+            if (!string.IsNullOrEmpty(txtMaiorDiagonal.Text))
+            {
+                pedido_Armacao.maior_diagonal = Convert.ToInt32(txtMaiorDiagonal.Text);
+            }
 
-                //
+            if (!string.IsNullOrEmpty(txtEixoMaiorDiagonal.Text))
+            {
+                pedido_Armacao.eixo_maior_diagonal = Convert.ToInt32(txtEixoMaiorDiagonal.Text);
+            }
 
-                foreach (DataGridViewRow item in dgvItemPedido.Rows)
+            pedido_Otica.pedido_armacao.Add(pedido_Armacao);
+            #endregion
+
+            #region Dados Lente
+            Pedido_Lente pedido_Lente = new Pedido_Lente();
+            if (cbTipoLente.SelectedIndex != -1)
+            {
+                pedido_Lente.tipo = Convert.ToInt32(cbTipoLente.SelectedValue);
+            }
+            pedido_Lente.marca_material = txtMaterialLente.Text;
+            pedido_Lente.observacoes = txtObs.Text;
+
+            pedido_Otica.pedido_lente.Add(pedido_Lente);
+            #endregion
+
+            #region Itens do Pedido
+
+            //
+
+            foreach (DataGridViewRow item in dgvItemPedido.Rows)
+            {
+
+                if (item.Cells[col_Id].Value != null)
                 {
                     pedido_Otica.itempedido_otica.Add(new ItemPedido_Otica
                     {
                         Id_produto = Convert.ToInt64(item.Cells[col_Id].Value),
                         quantidade = Convert.ToInt32(item.Cells[col_Quantidade].Value),
-                        unidade = ((DataGridViewComboBoxCell)item.Cells[col_Quantidade]).Value.ToString(),
+                        unidade = ((DataGridViewComboBoxCell)item.Cells[col_Unidade]).Value.ToString(),
                         percentual_desconto = Convert.ToDecimal(item.Cells[col_PercDesconto].Value),
                         valor_desconto = Convert.ToDecimal(item.Cells[col_VlrDesconto].Value),
                         valor_unitario = Convert.ToDecimal(item.Cells[col_VlrUnitario].Value),
                         valor_total = Convert.ToDecimal(item.Cells[col_VlrTotal].Value),
                     });
-                    MessageBox.Show(item.Cells[0].Value.ToString());
                 }
-
-                #endregion
-
-
-
-
-                return true;
             }
-            catch (Exception ex)
-            {
-                return false;
-                throw ex;
-            }
+
+            #endregion
+
+            return pedido_Otica;
         }
 
         private bool ValidaDadosEspecifico()
@@ -379,7 +394,7 @@ namespace prjbase
                         catch (Exception)
                         {
                             dgvItemPedido.CurrentCell = dgvItemPedido[iColumn, iRow];
-                        }                                                                            
+                        }
                     }
                 }
             }
@@ -406,18 +421,16 @@ namespace prjbase
                     {
                         dgvItemPedido.Rows.RemoveAt(dgvItemPedido.CurrentRow.Index);
                     }
-                }                
+                }
             }
         }
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
             bool AdicionaLinha = true;
-            if (dgvItemPedido.Rows.Count > 0)
-            {
-                AdicionaLinha = ValidaLinhaGrid(dgvItemPedido.CurrentRow.Index);
-            }
 
+            AdicionaLinha = epValidaDados.Validar();
+            
             if (AdicionaLinha)
             {
                 dgvItemPedido.Rows.Add();
@@ -429,31 +442,7 @@ namespace prjbase
                 SendKeys.Send("{DOWN}");
             }
         }
-
-        private bool ValidaLinhaGrid(int index)
-        {
-            bool retorno = true;
-
-            //retorno = dgvItemPedido_ValidarQuantidade(index);
-
-            //if (retorno)
-            //{
-            //    retorno = dgvItemPedido_ValidarValorUnitario(index);
-            //}
-
-            //if (retorno)
-            //{
-            //    retorno = dgvItemPedido_ValidarPercDesconto(index);
-            //}
-
-            //if (retorno)
-            //{
-            //    retorno = dgvItemPedido_ValidarPercDesconto(index);
-            //}
-
-            return retorno;
-        }
-
+        
         private void btnRemoveItem_Click(object sender, EventArgs e)
         {
             if (dgvItemPedido.Rows.Count > 0)
@@ -706,7 +695,7 @@ namespace prjbase
 
         private void onlyNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if ((!Char.IsNumber(e.KeyChar)) & (e.KeyChar != 8))
+            if ((!Char.IsNumber(e.KeyChar)) & (e.KeyChar != 8) & (!e.KeyChar.Equals(',')))
             {
                 e.Handled = true;
             }
@@ -714,7 +703,11 @@ namespace prjbase
 
         private void EsfCil_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsNumber(e.KeyChar) && !e.KeyChar.Equals('+') && !e.KeyChar.Equals('-') && !Char.IsControl(e.KeyChar))
+            if (!Char.IsNumber(e.KeyChar) &&
+                !e.KeyChar.Equals('.') &&
+                !e.KeyChar.Equals('+') &&
+                !e.KeyChar.Equals('-') &&
+                !Char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -752,7 +745,7 @@ namespace prjbase
 
             if (e.Cancel)
             {
-                dgvItemPedido.CurrentCell = dgvItemPedido[e.ColumnIndex, e.RowIndex];                
+                dgvItemPedido.CurrentCell = dgvItemPedido[e.ColumnIndex, e.RowIndex];
             }
         }
 
@@ -762,7 +755,7 @@ namespace prjbase
 
             if (string.IsNullOrEmpty(e.FormattedValue.ToString()))
             {
-                MessageBox.Show("Valor de desconto invalido.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);                
+                MessageBox.Show("Valor de desconto invalido.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 retorno = false;
             }
 
@@ -778,9 +771,9 @@ namespace prjbase
 
                     if (vlrDesc > vlrTotal)
                     {
-                        MessageBox.Show("Valor de desconto não pode ser maior que valor total.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);                        
+                        MessageBox.Show("Valor de desconto não pode ser maior que valor total.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         retorno = false;
-                    }                    
+                    }
                 }
             }
 
@@ -792,20 +785,20 @@ namespace prjbase
             bool retorno = true;
             if (string.IsNullOrEmpty(e.FormattedValue.ToString()))
             {
-                MessageBox.Show("Percentual de desconto invalido.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);                
+                MessageBox.Show("Percentual de desconto invalido.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 retorno = false;
             }
             else if (Convert.ToDecimal(e.FormattedValue) > 100)
             {
-                MessageBox.Show("Percentual de desconto deve ser menor que 100.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);                              
+                MessageBox.Show("Percentual de desconto deve ser menor que 100.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 retorno = false;
             }
-            else if (Convert.ToDecimal(e.FormattedValue) < 100)
+            else if (Convert.ToDecimal(e.FormattedValue) < 0)
             {
-                MessageBox.Show("Percentual de desconto deve ser menor que zero.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);                
+                MessageBox.Show("Percentual de desconto não pode ser menor que zero.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 retorno = false;
             }
-            
+
             return retorno;
         }
 
@@ -814,10 +807,10 @@ namespace prjbase
             bool retorno = true;
             if (string.IsNullOrEmpty(e.FormattedValue.ToString()))
             {
-                MessageBox.Show("Quantidade obrigatória.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);                                
+                MessageBox.Show("Quantidade obrigatória.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 retorno = false;
             }
-            
+
             return retorno;
         }
 
@@ -826,15 +819,15 @@ namespace prjbase
             bool retorno = true;
             if (string.IsNullOrEmpty(e.FormattedValue.ToString()))
             {
-                MessageBox.Show("Valor unitário obrigatório.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);                
+                MessageBox.Show("Valor unitário obrigatório.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 retorno = false;
             }
             else if (Convert.ToDecimal(e.FormattedValue) <= 0)
             {
-                MessageBox.Show("Deve ser maior que zero.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);                
+                MessageBox.Show("Deve ser maior que zero.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 retorno = false;
             }
-                       
+
             return retorno;
         }
 
@@ -865,7 +858,13 @@ namespace prjbase
         protected override void Limpar(Control control)
         {
             base.Limpar(control);
-            txtCodigo.Focus();
+
+            if (dgvItemPedido.Rows.Count > 0)
+            {
+                dgvItemPedido.Rows.Clear();
+            }
+
+            txtCodCliIntegracao.Focus();
         }
 
         private void Ctrls_Validating(object sender, CancelEventArgs e)
@@ -901,16 +900,18 @@ namespace prjbase
 
         private void dgvItemPedido_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+            bool nextCell = false;
             if (e.ColumnIndex == col_Quantidade)
             {
                 if ((dgvItemPedido[col_Quantidade, e.RowIndex].Value != null) && (dgvItemPedido[col_VlrUnitario, e.RowIndex].Value != null))
                 {
                     decimal qtd = Convert.ToDecimal(dgvItemPedido[col_Quantidade, e.RowIndex].Value);
                     decimal vlrUn = Convert.ToDecimal(dgvItemPedido[col_VlrUnitario, e.RowIndex].Value);
-                    dgvItemPedido[col_VlrTotal, e.RowIndex].Value = qtd * vlrUn;                    
+                    dgvItemPedido[col_VlrTotal, e.RowIndex].Value = qtd * vlrUn;
+                    nextCell = true;
                 }
             }
-            if(e.ColumnIndex == col_PercDesconto)
+            if (e.ColumnIndex == col_PercDesconto)
             {
                 if ((dgvItemPedido[col_Quantidade, e.RowIndex].Value != null) & (dgvItemPedido[col_VlrUnitario, e.RowIndex].Value != null))
                 {
@@ -922,6 +923,7 @@ namespace prjbase
 
                     dgvItemPedido[col_VlrDesconto, e.RowIndex].Value = vlrDesc;
                     dgvItemPedido[col_VlrTotal, e.RowIndex].Value = (vlrTotal - vlrDesc);
+                    nextCell = true;
                 }
             }
 
@@ -932,6 +934,7 @@ namespace prjbase
                     decimal qtd = Convert.ToDecimal(dgvItemPedido[col_Quantidade, e.RowIndex].Value);
                     decimal vlrUn = Convert.ToDecimal(dgvItemPedido[col_VlrUnitario, e.RowIndex].Value);
                     dgvItemPedido[col_VlrTotal, e.RowIndex].Value = qtd * vlrUn;
+                    nextCell = true;
                 }
             }
 
@@ -950,13 +953,20 @@ namespace prjbase
                 }
 
                 dgvItemPedido[col_VlrTotal, e.RowIndex].Value = (vlrTotal - vlrDesc);
-                
+                nextCell = true;
+
             }
 
-            if (e.ColumnIndex == dgvItemPedido.Columns.Count - 1)
-                dgvItemPedido.CurrentCell = dgvItemPedido[col_Codigo, e.RowIndex];
-            else
-                dgvItemPedido.CurrentCell = dgvItemPedido[e.ColumnIndex + 1, e.RowIndex];
+            if (nextCell)
+            {
+                this.BeginInvoke(new MethodInvoker(() =>
+                {
+                    if (e.ColumnIndex == dgvItemPedido.Columns.Count - 1)
+                        dgvItemPedido.CurrentCell = dgvItemPedido[col_Codigo, e.RowIndex];
+                    else
+                        dgvItemPedido.CurrentCell = dgvItemPedido[e.ColumnIndex + 1, e.RowIndex];
+                }));                               
+            }            
         }
 
         private void dgvItemPedido_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
@@ -968,7 +978,7 @@ namespace prjbase
             }
             else if (dgvItemPedido[col_Quantidade, e.RowIndex].Value == null)
             {
-                msg = msg + "Quantidade obrigatório";                
+                msg = msg + "Quantidade obrigatório";
             }
             else if (dgvItemPedido[col_VlrUnitario, e.RowIndex].Value == null)
             {

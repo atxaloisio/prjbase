@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.pnlBotoes = new System.Windows.Forms.Panel();
+            this.btnImprimir = new System.Windows.Forms.Button();
             this.pnlBorda = new System.Windows.Forms.Panel();
             this.lblTotalRegistros = new System.Windows.Forms.Label();
             this.lblRegistros = new System.Windows.Forms.Label();
@@ -59,6 +60,7 @@
             // pnlBotoes
             // 
             this.pnlBotoes.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.pnlBotoes.Controls.Add(this.btnImprimir);
             this.pnlBotoes.Controls.Add(this.pnlBorda);
             this.pnlBotoes.Controls.Add(this.lblTotalRegistros);
             this.pnlBotoes.Controls.Add(this.lblRegistros);
@@ -79,6 +81,25 @@
             this.pnlBotoes.Name = "pnlBotoes";
             this.pnlBotoes.Size = new System.Drawing.Size(116, 405);
             this.pnlBotoes.TabIndex = 10;
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnImprimir.Enabled = false;
+            this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimir.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimir.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnImprimir.Image = global::prjbase.Properties.Resources.Imprimir;
+            this.btnImprimir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImprimir.Location = new System.Drawing.Point(4, 105);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(109, 33);
+            this.btnImprimir.TabIndex = 22;
+            this.btnImprimir.Text = "Imprimi&r";
+            this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnImprimir.UseVisualStyleBackColor = false;
+            this.btnImprimir.Visible = false;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // pnlBorda
             // 
@@ -358,5 +379,6 @@
         protected System.Windows.Forms.Label lblTotalRegistros;
         private System.Windows.Forms.Label lblRegistros;
         private System.Windows.Forms.Panel pnlBorda;
+        public System.Windows.Forms.Button btnImprimir;
     }
 }

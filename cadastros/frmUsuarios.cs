@@ -21,13 +21,17 @@ namespace prjbase
         UsuarioBLL usuarioBLL;
 
         #region Constante de Colunas da Grid
-        private const int col_Id = 0;
-        private const int col_email = 1;
-        private const int col_nome = 2;
-        private const int col_password = 3;
-        private const int col_dtCricao = 4;
-        private const int col_dtAlteracao = 5;
-        
+        private const int COL_ID = 0;
+        private const int COL_EMAIL = 1;
+        private const int COL_NOME = 2;
+        private const int COL_PASSWORD = 3;
+        private const int COL_PERFIL = 4;
+        private const int COL_DTINCLUSAO = 5;
+        private const int COL_USINCLUSAO = 6;
+        private const int COL_DTALTERACAO = 7;
+        private const int COL_USALTERACAO = 8;
+        private const int COL_INTATIVO = 9;
+
         #endregion
 
         public frmUsuarios()
@@ -56,6 +60,8 @@ namespace prjbase
             gridFiltros.Columns.Add("ID", "Id");
             gridFiltros.Columns.Add("EMAIL", "e-Mail");
             gridFiltros.Columns.Add("NOME", "Nome");
+            gridFiltros.Columns.Add("PASSWORD", "Password");
+            gridFiltros.Columns.Add("PERFIL", "Perfil");
 
             DataGridViewMaskedTextColumn col = new DataGridViewMaskedTextColumn("99/99/9999");
             col.DataPropertyName = "CRIACAO";
@@ -69,18 +75,20 @@ namespace prjbase
             
 
             //
-            gridFiltros.Columns[0].Width = 50;
-            gridFiltros.Columns[0].ValueType = typeof(int);
-            gridFiltros.Columns[0].SortMode = DataGridViewColumnSortMode.Programmatic;
-            gridFiltros.Columns[1].Width = 200;
-            gridFiltros.Columns[1].ValueType = typeof(string);
-            gridFiltros.Columns[1].SortMode = DataGridViewColumnSortMode.Programmatic;
-            gridFiltros.Columns[2].Width = 200;
-            gridFiltros.Columns[2].ValueType = typeof(string);
-            gridFiltros.Columns[2].SortMode = DataGridViewColumnSortMode.Programmatic;
-            gridFiltros.Columns[3].Width = 200;
-            //gridFiltros.Columns[3].ValueType = typeof(DateTime);           
-            //gridFiltros.Columns[3].DefaultCellStyle.Format = "dd/mm/YYYY";
+            gridFiltros.Columns[COL_ID].Width = 50;
+            gridFiltros.Columns[COL_ID].ValueType = typeof(int);
+            gridFiltros.Columns[COL_ID].SortMode = DataGridViewColumnSortMode.Programmatic;
+
+            gridFiltros.Columns[COL_EMAIL].Width = 200;
+            gridFiltros.Columns[COL_EMAIL].ValueType = typeof(string);
+            gridFiltros.Columns[COL_EMAIL].SortMode = DataGridViewColumnSortMode.Programmatic;
+
+            gridFiltros.Columns[COL_NOME].Width = 200;
+            gridFiltros.Columns[COL_NOME].ValueType = typeof(string);
+            gridFiltros.Columns[COL_NOME].SortMode = DataGridViewColumnSortMode.Programmatic;
+
+            gridFiltros.Columns[COL_PASSWORD].Visible = false;
+            
 
             //Adiciona uma linha ao grid.
             gridFiltros.Rows.Add();
@@ -302,6 +310,45 @@ namespace prjbase
             List<Usuario> usuarioList = usuarioBLL.getUsuario(predicate.Expand(), t => t.Id.ToString(), false, deslocamento, tamanhoPagina, out totalReg);
             dgvDados.DataSource = usuarioList;
             
+        }
+
+        protected override void executeEditingControlShowingChild(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            e.Control.KeyPress -= new KeyPressEventHandler(Column0_KeyPress);
+            e.Control.KeyPress -= new KeyPressEventHandler(Column3_KeyPress);
+            if (dgvFiltro.CurrentCell.ColumnIndex == 0) //Desired Column
+            {
+                TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.KeyPress += new KeyPressEventHandler(Column0_KeyPress);
+                }
+            }
+
+            if (dgvFiltro.CurrentCell.ColumnIndex == 3) //Desired Column
+            {
+                TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.KeyPress += new KeyPressEventHandler(Column3_KeyPress);
+                }
+            }
+        }
+
+        private void Column0_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void Column3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsNumber(e.KeyChar) && !e.KeyChar.Equals('/') && !Char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
 
         protected override void excluirRegistro(int Id)
