@@ -220,6 +220,14 @@
     <Compile Include="cadastros\frmProdutos.Designer.cs">
       <DependentUpon>frmProdutos.cs</DependentUpon>
     </Compile>
+    <Compile Include="dbintegracaoDataSet.cs">
+      <DependentUpon>dbintegracaoDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dbintegracaoDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbintegracaoDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="framework\frmBase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -380,6 +388,18 @@
     <EmbeddedResource Include="relatorios\relPedido_Otica.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="relatorios\subRelItemPedido_Otica.rdlc" />
+    <None Include="dbintegracaoDataSet.xsc">
+      <DependentUpon>dbintegracaoDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="dbintegracaoDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>dbintegracaoDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="dbintegracaoDataSet.xss">
+      <DependentUpon>dbintegracaoDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

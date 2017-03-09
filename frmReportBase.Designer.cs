@@ -28,22 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.rvRelatorios = new Microsoft.Reporting.WinForms.ReportViewer();
             this.SuspendLayout();
             // 
             // rvRelatorios
             // 
             this.rvRelatorios.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Value = null;
+            this.rvRelatorios.LocalReport.DataSources.Add(reportDataSource1);
             this.rvRelatorios.LocalReport.ReportEmbeddedResource = "prjbase.relatorios.relPedido_Otica.rdlc";
             this.rvRelatorios.Location = new System.Drawing.Point(0, 0);
             this.rvRelatorios.Name = "rvRelatorios";
-            this.rvRelatorios.Size = new System.Drawing.Size(718, 644);
+            this.rvRelatorios.Size = new System.Drawing.Size(806, 644);
             this.rvRelatorios.TabIndex = 0;
             // 
             // frmReportBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(718, 644);
+            this.ClientSize = new System.Drawing.Size(806, 644);
             this.Controls.Add(this.rvRelatorios);
             this.Name = "frmReportBase";
             this.Text = "";

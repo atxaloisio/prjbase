@@ -34,5 +34,16 @@ namespace prjbase.Properties {
                 this["nr_reg_pag"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;password=pass4admin;persistsecurityinfo=True;databa" +
+            "se=dbintegracao")]
+        public string dbintegracaoConnectionString {
+            get {
+                return ((string)(this["dbintegracaoConnectionString"]));
+            }
+        }
     }
 }

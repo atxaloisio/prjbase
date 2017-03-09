@@ -596,7 +596,18 @@ namespace prjbase
         {
             frmReportBase relatorio = new frmReportBase();
             relatorio.rvRelatorios.LocalReport.ReportEmbeddedResource = "prjbase.relatorios.relPedido_Otica.rdlc";
-            relatorio.ShowDialog();            
+            if (dgvDados.CurrentRow != null)
+            {
+                if (dgvDados[0, dgvDados.CurrentRow.Index].Value != null)
+                {
+                    if (Convert.ToInt32(dgvDados[0, dgvDados.CurrentRow.Index].Value) > 0)
+                    {
+                        relatorio.ExibeDialogo(this, Convert.ToInt32(dgvDados[0, dgvDados.CurrentRow.Index].Value));
+                    }
+
+                }
+            }
+            //relatorio.ShowDialog();            
         }
         #endregion
     }
