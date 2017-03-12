@@ -25,24 +25,146 @@ namespace prjbase
         private Pedido_OticaBLL pedido_OticaBLL;
 
         #region Constante de Colunas da Grid
-        private const int col_Id = 0;
-        private const int col_Codigo = 1;
-        private const int col_BtnPesquisa = 2;
-        private const int col_Descricao = 3;
-        private const int col_Unidade = 4;
-        private const int col_Quantidade = 5;
-        private const int col_VlrUnitario = 6;
-        private const int col_PercDesconto = 7;
-        private const int col_VlrDesconto = 8;
-        private const int col_VlrTotal = 9;
-
-
+        private const int col_Id            = 0;
+        private const int col_IdItem        = 1;
+        private const int col_IdPedido      = 2;
+        private const int col_Codigo        = 3;
+        private const int col_BtnPesquisa   = 4;
+        private const int col_Descricao     = 5;
+        private const int col_Unidade       = 6;
+        private const int col_Quantidade    = 7;
+        private const int col_VlrUnitario   = 8;
+        private const int col_PercDesconto  = 9;
+        private const int col_VlrDesconto   = 10;
+        private const int col_VlrTotal      = 11;
+        
         #endregion
         public frmCadEditPedido_Otica()
         {
             InitializeComponent();
         }
 
+        protected override void LoadToControls()
+        {
+            if (Id != null)
+            {
+                pedido_OticaBLL = new Pedido_OticaBLL();
+                Pedido_Otica pedido_otica = pedido_OticaBLL.Localizar(Id);
+                if (pedido_otica != null)
+                {
+                    txtId.Text               = pedido_otica.Id.ToString();
+                    txtIdCliente.Text        = pedido_otica.Id_cliente.ToString();
+                    txtCodigo.Text           = pedido_otica.codigo.ToString();
+                    txtCodCliIntegracao.Text = pedido_otica.cliente.codigo_cliente_integracao;
+                    txtClienteNome.Text      = pedido_otica.cliente.nome_fantasia;
+                    txtDtEmissao.Text        = pedido_otica.data_emissao.Value.ToShortDateString();
+                    txtDtFechamento.Text     = pedido_otica.data_fechamento.Value.ToShortDateString();
+
+                    if (pedido_otica.date_previsao_entrega.Value != null)
+                    {
+                        txtDtPrevEntrega.Text = pedido_otica.date_previsao_entrega.Value.ToShortDateString();
+                    }
+                    if (pedido_otica.hora_previsao_entrega.Value != null)
+                    {
+                        txtHrPrevEntrega.Text = pedido_otica.hora_previsao_entrega.Value.ToString();
+                    }
+
+                    cbCondPagamento.SelectedValue  = pedido_otica.condicao_pagamento;
+                    cbTransportadora.SelectedValue = pedido_otica.Id_transportadora;
+                    txtNrPedCliente.Text           = pedido_otica.numero_pedido_cliente;
+                    txtNrCaixa.Text                = pedido_otica.numero_caixa;
+
+                    if (pedido_otica.motivo_entrega != null)
+                    {
+                        cbMotivoEntrega.SelectedValue = pedido_otica.motivo_entrega.Id;
+                    }
+
+                    
+
+                    txtod_gp_esf.Text       = pedido_otica.od_gp_esf;
+                    txtod_gp_cil.Text       = pedido_otica.od_gp_cil;
+                    txtod_eixo.Text         = (pedido_otica.od_eixo != null) ? pedido_otica.od_eixo.Value.ToString() : string.Empty;
+                    txtod_adicao.Text       = (pedido_otica.od_adicao != null) ? pedido_otica.od_adicao.Value.ToString() : string.Empty; 
+                    txtod_gl_esf.Text       = pedido_otica.od_gl_esf;
+                    txtod_gl_cil.Text       = pedido_otica.od_gl_cil;
+                    txtod_dnp_longe.Text    = pedido_otica.od_dnp_longe;
+                    txtod_dnp_perto.Text    = pedido_otica.od_dnp_perto;
+                    txtod_alt.Text          = pedido_otica.od_alt;
+                    txtod_dech.Text         = pedido_otica.od_dech;
+                    txtod_prisma_valor.Text = pedido_otica.od_prisma_valor;
+                    txtod_prisma_eixo.Text  = (pedido_otica.od_prisma_eixo != null) ? pedido_otica.od_prisma_eixo.Value.ToString() : string.Empty;
+
+                    txtoe_gp_esf.Text       = pedido_otica.oe_gp_esf;
+                    txtoe_gp_cil.Text       = pedido_otica.oe_gp_cil;
+                    txtoe_eixo.Text         = (pedido_otica.oe_eixo != null) ? pedido_otica.oe_eixo.Value.ToString() : string.Empty;
+                    txtoe_adicao.Text       = (pedido_otica.oe_adicao != null) ? pedido_otica.oe_adicao.Value.ToString() : string.Empty;
+                    txtoe_gl_esf.Text       = pedido_otica.oe_gl_esf;
+                    txtoe_gl_cil.Text       = pedido_otica.oe_gl_cil;
+                    txtoe_dnp_longe.Text    = pedido_otica.oe_dnp_longe;
+                    txtoe_dnp_perto.Text    = pedido_otica.oe_dnp_perto;
+                    txtoe_alt.Text          = pedido_otica.oe_alt;
+                    txtoe_dech.Text         = pedido_otica.oe_dech;
+                    txtoe_prisma_valor.Text = pedido_otica.oe_prisma_valor;
+                    txtoe_prisma_eixo.Text  = (pedido_otica.oe_prisma_eixo != null) ? pedido_otica.oe_prisma_eixo.Value.ToString() : string.Empty;
+                    txtBaseCalculada.Text   = pedido_otica.base_calculada;
+
+                    if (pedido_otica.pedido_armacao.Count > 0)
+                    {
+                        if (pedido_otica.pedido_armacao.FirstOrDefault() != null)
+                        {
+                            Pedido_Armacao Armacao = pedido_otica.pedido_armacao.FirstOrDefault();
+
+                            if (Armacao.tipo != null)
+                            { 
+                                cbTipoArmacao.SelectedValue =  Armacao.tipo;
+                            }
+
+                            if (Armacao.shape != null)
+                            {
+                                cbShapeArmacao.SelectedValue = Armacao.shape;
+                            }
+
+                            txtDiaFinLente.Text          = (Armacao.diametro_final_lente != null) ? Armacao.diametro_final_lente.Value.ToString() : string.Empty;
+                            txtLarguaArmacao.Text        = (Armacao.largura != null) ? Armacao.largura.Value.ToString() : string.Empty;
+                            txtPonteArmacao.Text         = (Armacao.ponte != null) ? Armacao.ponte.Value.ToString() : string.Empty;
+                            txtAlturaArmacao.Text        = (Armacao.altura != null) ? Armacao.altura.Value.ToString() : string.Empty;
+                            txtMaiorDiagonal.Text        = (Armacao.maior_diagonal != null) ? Armacao.maior_diagonal.Value.ToString() : string.Empty;
+                            txtEixoMaiorDiagonal.Text    = (Armacao.eixo_maior_diagonal != null) ? Armacao.eixo_maior_diagonal.Value.ToString() : string.Empty;
+                        }                                                
+                    }
+
+                    if (pedido_otica.pedido_lente.Count > 0)
+                    {
+                        if (pedido_otica.pedido_lente.FirstOrDefault() != null)
+                        {
+                            Pedido_Lente Lente        = pedido_otica.pedido_lente.FirstOrDefault();
+                            if (Lente.tipo != null)
+                            {
+                                cbTipoLente.SelectedValue = Lente.tipo;
+                            }
+                            txtMaterialLente.Text     = Lente.marca_material;
+                            txtObs.Text               = Lente.observacoes;
+                        }                        
+                    }
+
+                    foreach (ItemPedido_Otica  item in pedido_otica.itempedido_otica)
+                    {
+                        int rowIndex = dgvItemPedido.Rows.Add();
+                        dgvItemPedido[col_Id, rowIndex].Value = item.Id_produto;
+                        dgvItemPedido[col_IdItem, rowIndex].Value = item.Id;
+                        dgvItemPedido[col_IdPedido, rowIndex].Value = item.Id_pedido_otica;
+                        dgvItemPedido[col_Codigo, rowIndex].Value = item.produto.codigo_produto_integracao;
+                        dgvItemPedido[col_Descricao, rowIndex].Value = item.produto.descricao;
+                        dgvItemPedido[col_Unidade, rowIndex].Value = item.unidade;
+                        dgvItemPedido[col_Quantidade, rowIndex].Value = item.quantidade;
+                        dgvItemPedido[col_VlrUnitario, rowIndex].Value = item.valor_unitario;
+                        dgvItemPedido[col_PercDesconto, rowIndex].Value = item.percentual_desconto;
+                        dgvItemPedido[col_VlrDesconto, rowIndex].Value = item.valor_desconto;
+                        dgvItemPedido[col_VlrTotal, rowIndex].Value = item.valor_total;                        
+                    }                    
+                }
+            }
+        }
         protected override bool salvar(object sender, EventArgs e)
         {
             bool Retorno = epValidaDados.Validar(true);
@@ -57,10 +179,21 @@ namespace prjbase
                 try
                 {
                     pedido_OticaBLL = new Pedido_OticaBLL();
+                    pedido_OticaBLL.UsuarioLogado = Program.usuario_logado;
 
                     Pedido_Otica pedido_Otica = LoadFromControls();
 
-                    pedido_OticaBLL.AdicionarPedido_Otica(pedido_Otica);
+                    if (Id != null)
+                    {
+                        pedido_OticaBLL.AlterarPedido_Otica(pedido_Otica);                        
+                    }
+                    else
+                    {
+                        pedido_OticaBLL.AdicionarPedido_Otica(pedido_Otica);
+                        
+                    }
+
+                    Id = pedido_Otica.Id;
 
                     Retorno = true;
                 }
@@ -69,15 +202,29 @@ namespace prjbase
                     Retorno = false;
                     throw ex;
                 }
-            }
-
+            }            
             return Retorno;
         }
 
-        private Pedido_Otica LoadFromControls()
+        protected override void ImprimirRegistro(Int64? id)
+        {
+            if (MessageBox.Show(Text + " Deseja imprimir o recido do pedido?", Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                frmReportBase relatorio = new frmReportBase();
+                relatorio.Id = id;
+                relatorio.ImprimirDireto();
+            }
+        }
+
+        protected virtual Pedido_Otica LoadFromControls()
         {
             Pedido_Otica pedido_Otica = new Pedido_Otica();
             #region Dados do Pedido
+            if (Id != null)
+            {
+                pedido_Otica.Id = Convert.ToInt64(Id);
+                pedido_Otica.codigo = Convert.ToInt64(txtCodigo.Text);
+            }
             pedido_Otica.agrupado = "N";
             pedido_Otica.Id_cliente = Convert.ToInt64(txtIdCliente.Text);
             pedido_Otica.codigo_cliente = txtCodCliIntegracao.Text;
@@ -101,6 +248,7 @@ namespace prjbase
                 pedido_Otica.condicao_pagamento = Convert.ToInt64(cbCondPagamento.SelectedValue);
             }
             pedido_Otica.numero_pedido_cliente = txtNrPedCliente.Text;
+            pedido_Otica.numero_caixa = txtNrCaixa.Text;
 
             if (!string.IsNullOrEmpty(txtDtPrevEntrega.Text))
             {
@@ -127,6 +275,8 @@ namespace prjbase
             {
                 pedido_Otica.Id_transportadora = Convert.ToInt64(cbTransportadora.SelectedValue);
             }
+
+            pedido_Otica.numero_caixa = txtNrCaixa.Text;
             #endregion
 
             #region Dados Receiturario
@@ -182,11 +332,17 @@ namespace prjbase
             {
                 pedido_Otica.oe_prisma_eixo = Convert.ToInt32(txtoe_prisma_eixo.Text);
             }
+            pedido_Otica.base_calculada = txtBaseCalculada.Text;
             pedido_Otica.status = (int)StatusPedido.GRAVADO;
             #endregion
 
             #region Dados Armação
             Pedido_Armacao pedido_Armacao = new Pedido_Armacao();
+
+            if (Id != null)
+            {
+                pedido_Armacao.Id_pedido_otica = Convert.ToInt64(Id);
+            }
 
             if (cbTipoArmacao.SelectedIndex != -1)
             {
@@ -233,6 +389,12 @@ namespace prjbase
 
             #region Dados Lente
             Pedido_Lente pedido_Lente = new Pedido_Lente();
+
+            if (Id != null)
+            {
+                pedido_Lente.Id_pedido_otica = Convert.ToInt64(Id);
+            }
+
             if (cbTipoLente.SelectedIndex != -1)
             {
                 pedido_Lente.tipo = Convert.ToInt32(cbTipoLente.SelectedValue);
@@ -252,16 +414,35 @@ namespace prjbase
 
                 if (item.Cells[col_Id].Value != null)
                 {
-                    pedido_Otica.itempedido_otica.Add(new ItemPedido_Otica
+                    ItemPedido_Otica itemPedido_Otica = new ItemPedido_Otica()
                     {
-                        Id_produto = Convert.ToInt64(item.Cells[col_Id].Value),
+                        Id_produto = Convert.ToInt64(item.Cells[col_Id].Value),                        
                         quantidade = Convert.ToInt32(item.Cells[col_Quantidade].Value),
                         unidade = ((DataGridViewComboBoxCell)item.Cells[col_Unidade]).Value.ToString(),
                         percentual_desconto = Convert.ToDecimal(item.Cells[col_PercDesconto].Value),
                         valor_desconto = Convert.ToDecimal(item.Cells[col_VlrDesconto].Value),
                         valor_unitario = Convert.ToDecimal(item.Cells[col_VlrUnitario].Value),
                         valor_total = Convert.ToDecimal(item.Cells[col_VlrTotal].Value),
-                    });
+                        
+                    };
+
+                    if (item.Cells[col_IdItem].Value != null)
+                    {
+                        itemPedido_Otica.Id = Convert.ToInt64(item.Cells[col_IdItem].Value);
+                    }
+
+                    if (item.Cells[col_IdPedido].Value != null)
+                    {
+                        itemPedido_Otica.Id_pedido_otica = Convert.ToInt64(item.Cells[col_IdPedido].Value);
+                    }
+                    else if (Id != null)
+                    {
+                        itemPedido_Otica.Id_pedido_otica = Convert.ToInt64(Id);
+                    }
+
+                    pedido_Otica.itempedido_otica.Add(itemPedido_Otica);
+                    
+
                 }
             }
 
@@ -274,13 +455,8 @@ namespace prjbase
         {
             return true;
         }
-
-        private void frmCadEditPedido_Otica_Load(object sender, EventArgs e)
-        {
-            SetupControls();
-        }
-
-        protected void SetupControls()
+        
+        protected override void SetupControls()
         {
             SetupCondPagamento();
             SetupTransportadora();
@@ -584,10 +760,7 @@ namespace prjbase
                 setupCol_BtnPesquisa(sender, e);
                 e.Handled = true;
             }
-
         }
-
-
 
         private void setupCol_BtnPesquisa(object sender, DataGridViewCellPaintingEventArgs e)
         {
@@ -636,7 +809,7 @@ namespace prjbase
                         ((DataGridViewComboBoxCell)dgvItemPedido[col_Unidade, e.RowIndex]).Value = produto.unidade;
                         //dgvItemPedido[col_Unidade, e.RowIndex].Value = produto.unidade;
 
-
+                        dgvItemPedido[col_Quantidade, e.RowIndex].Value = string.Empty;
                         dgvItemPedido[col_VlrUnitario, e.RowIndex].Value = produto.valor_unitario;
                         dgvItemPedido[col_PercDesconto, e.RowIndex].Value = 0;
                         dgvItemPedido[col_VlrDesconto, e.RowIndex].Value = Convert.ToDecimal(0.00);
@@ -996,10 +1169,6 @@ namespace prjbase
             }
 
         }
-
-        private void dgvItemPedido_NewRowNeeded(object sender, DataGridViewRowEventArgs e)
-        {
-
-        }        
+             
     }
 }

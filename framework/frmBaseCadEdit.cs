@@ -33,6 +33,7 @@ namespace prjbase
                     btnIncluir.Visible = true;
                     btnCancelar.Top = 75;
                     MessageBox.Show(Text + " salvo com sucesso.", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ImprimirRegistro(Id);
                 }
                 
             }
@@ -40,6 +41,11 @@ namespace prjbase
             {                              
                 MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
+        }
+
+        protected virtual void ImprimirRegistro(Int64? id)
+        {
             
         }
 
@@ -129,9 +135,15 @@ namespace prjbase
         {
 
         }
+       
+        protected virtual void SetupControls()
+        {
+
+        }
 
         private void frmBaseCadEdit_Load(object sender, EventArgs e)
         {
+            SetupControls();
             LoadToControls();            
         }
               

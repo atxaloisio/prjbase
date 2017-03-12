@@ -39,7 +39,7 @@
             this.txtDtEmissao = new System.Windows.Forms.MaskedTextBox();
             this.txtIdCliente = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.textBox31 = new System.Windows.Forms.TextBox();
+            this.txtNrCaixa = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.cbMotivoEntrega = new System.Windows.Forms.ComboBox();
             this.txtHrPrevEntrega = new System.Windows.Forms.MaskedTextBox();
@@ -129,7 +129,12 @@
             this.cbTipoLente = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgvItemPedido = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnRemoveItem = new System.Windows.Forms.Button();
+            this.btnAddItem = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idpedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Id_Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colbtnPesquisa = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ds_produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -139,9 +144,6 @@
             this.PERCDESCONTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VLRDESCONTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VLTTOTAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnRemoveItem = new System.Windows.Forms.Button();
-            this.btnAddItem = new System.Windows.Forms.Button();
             this.pnlBotoes.SuspendLayout();
             this.pnlPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
@@ -180,7 +182,7 @@
             this.pnlPrincipal.Controls.Add(this.groupBox3);
             this.pnlPrincipal.Controls.Add(this.groupBox2);
             this.pnlPrincipal.Controls.Add(this.groupBox1);
-            this.pnlPrincipal.Size = new System.Drawing.Size(1016, 597);
+            this.pnlPrincipal.Size = new System.Drawing.Size(1004, 597);
             this.pnlPrincipal.TabIndex = 0;
             // 
             // groupBox1
@@ -191,7 +193,7 @@
             this.groupBox1.Controls.Add(this.txtDtEmissao);
             this.groupBox1.Controls.Add(this.txtIdCliente);
             this.groupBox1.Controls.Add(this.label19);
-            this.groupBox1.Controls.Add(this.textBox31);
+            this.groupBox1.Controls.Add(this.txtNrCaixa);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.cbMotivoEntrega);
             this.groupBox1.Controls.Add(this.txtHrPrevEntrega);
@@ -213,7 +215,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1014, 144);
+            this.groupBox1.Size = new System.Drawing.Size(1002, 144);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados Pedido";
@@ -289,14 +291,14 @@
             this.label19.TabIndex = 51;
             this.label19.Text = "Número Caixa";
             // 
-            // textBox31
+            // txtNrCaixa
             // 
-            this.epValidaDados.SetFraseErro(this.textBox31, "Numero da caixa obrigatório.");
-            this.textBox31.Location = new System.Drawing.Point(885, 109);
-            this.textBox31.Name = "textBox31";
-            this.epValidaDados.SetObrigatorio(this.textBox31, true);
-            this.textBox31.Size = new System.Drawing.Size(97, 23);
-            this.textBox31.TabIndex = 12;
+            this.epValidaDados.SetFraseErro(this.txtNrCaixa, "Numero da caixa obrigatório.");
+            this.txtNrCaixa.Location = new System.Drawing.Point(885, 109);
+            this.txtNrCaixa.Name = "txtNrCaixa";
+            this.epValidaDados.SetObrigatorio(this.txtNrCaixa, true);
+            this.txtNrCaixa.Size = new System.Drawing.Size(97, 23);
+            this.txtNrCaixa.TabIndex = 12;
             // 
             // label9
             // 
@@ -514,7 +516,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox2.Location = new System.Drawing.Point(0, 144);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1014, 285);
+            this.groupBox2.Size = new System.Drawing.Size(1002, 285);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dados Receituario";
@@ -1269,7 +1271,7 @@
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Location = new System.Drawing.Point(0, 429);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1014, 166);
+            this.groupBox3.Size = new System.Drawing.Size(1002, 166);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Itens do Pedido";
@@ -1283,6 +1285,8 @@
             this.dgvItemPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvItemPedido.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
+            this.idItem,
+            this.idpedido,
             this.Id_Produto,
             this.colbtnPesquisa,
             this.ds_produto,
@@ -1297,7 +1301,7 @@
             this.dgvItemPedido.MultiSelect = false;
             this.dgvItemPedido.Name = "dgvItemPedido";
             this.dgvItemPedido.RowHeadersVisible = false;
-            this.dgvItemPedido.Size = new System.Drawing.Size(972, 144);
+            this.dgvItemPedido.Size = new System.Drawing.Size(960, 144);
             this.dgvItemPedido.TabIndex = 1;
             this.dgvItemPedido.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItemPedido_CellClick);
             this.dgvItemPedido.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItemPedido_CellEndEdit);
@@ -1305,90 +1309,8 @@
             this.dgvItemPedido.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvItemPedido_CellPainting);
             this.dgvItemPedido.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvItemPedido_CellValidating);
             this.dgvItemPedido.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvItemPedido_EditingControlShowing);
-            this.dgvItemPedido.NewRowNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgvItemPedido_NewRowNeeded);
             this.dgvItemPedido.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvItemPedido_RowValidating);
             this.dgvItemPedido.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvItemPedido_KeyDown);
-            // 
-            // id
-            // 
-            this.id.Frozen = true;
-            this.id.HeaderText = "id";
-            this.id.Name = "id";
-            this.id.Visible = false;
-            // 
-            // Id_Produto
-            // 
-            this.Id_Produto.Frozen = true;
-            this.Id_Produto.HeaderText = "Produto";
-            this.Id_Produto.Name = "Id_Produto";
-            // 
-            // colbtnPesquisa
-            // 
-            this.colbtnPesquisa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.colbtnPesquisa.Frozen = true;
-            this.colbtnPesquisa.HeaderText = "";
-            this.colbtnPesquisa.Name = "colbtnPesquisa";
-            this.colbtnPesquisa.Width = 30;
-            // 
-            // ds_produto
-            // 
-            this.ds_produto.Frozen = true;
-            this.ds_produto.HeaderText = "Descrição";
-            this.ds_produto.Name = "ds_produto";
-            this.ds_produto.Width = 260;
-            // 
-            // UNIDADE
-            // 
-            this.UNIDADE.Frozen = true;
-            this.UNIDADE.HeaderText = "Unidade";
-            this.UNIDADE.Name = "UNIDADE";
-            this.UNIDADE.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.UNIDADE.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.UNIDADE.Width = 65;
-            // 
-            // QUANTIDADE
-            // 
-            this.QUANTIDADE.Frozen = true;
-            this.QUANTIDADE.HeaderText = "Quantidade";
-            this.QUANTIDADE.Name = "QUANTIDADE";
-            this.QUANTIDADE.Width = 90;
-            // 
-            // VLRUNITARIO
-            // 
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.VLRUNITARIO.DefaultCellStyle = dataGridViewCellStyle4;
-            this.VLRUNITARIO.Frozen = true;
-            this.VLRUNITARIO.HeaderText = "Vlr Unitário";
-            this.VLRUNITARIO.Name = "VLRUNITARIO";
-            this.VLRUNITARIO.Width = 110;
-            // 
-            // PERCDESCONTO
-            // 
-            this.PERCDESCONTO.Frozen = true;
-            this.PERCDESCONTO.HeaderText = "% Desc";
-            this.PERCDESCONTO.Name = "PERCDESCONTO";
-            this.PERCDESCONTO.Width = 80;
-            // 
-            // VLRDESCONTO
-            // 
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = null;
-            this.VLRDESCONTO.DefaultCellStyle = dataGridViewCellStyle5;
-            this.VLRDESCONTO.Frozen = true;
-            this.VLRDESCONTO.HeaderText = "Vlr Desc";
-            this.VLRDESCONTO.Name = "VLRDESCONTO";
-            this.VLRDESCONTO.Width = 110;
-            // 
-            // VLTTOTAL
-            // 
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = null;
-            this.VLTTOTAL.DefaultCellStyle = dataGridViewCellStyle6;
-            this.VLTTOTAL.Frozen = true;
-            this.VLTTOTAL.HeaderText = "Total";
-            this.VLTTOTAL.Name = "VLTTOTAL";
-            this.VLTTOTAL.ReadOnly = true;
             // 
             // panel1
             // 
@@ -1431,14 +1353,98 @@
             this.btnAddItem.UseVisualStyleBackColor = false;
             this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
             // 
+            // id
+            // 
+            this.id.Frozen = true;
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.Visible = false;
+            // 
+            // idItem
+            // 
+            this.idItem.HeaderText = "Iditem";
+            this.idItem.Name = "idItem";
+            this.idItem.Visible = false;
+            // 
+            // idpedido
+            // 
+            this.idpedido.HeaderText = "idpedido";
+            this.idpedido.Name = "idpedido";
+            this.idpedido.Visible = false;
+            // 
+            // Id_Produto
+            // 
+            this.Id_Produto.HeaderText = "Produto";
+            this.Id_Produto.Name = "Id_Produto";
+            // 
+            // colbtnPesquisa
+            // 
+            this.colbtnPesquisa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.colbtnPesquisa.HeaderText = "";
+            this.colbtnPesquisa.Name = "colbtnPesquisa";
+            this.colbtnPesquisa.Width = 30;
+            // 
+            // ds_produto
+            // 
+            this.ds_produto.HeaderText = "Descrição";
+            this.ds_produto.Name = "ds_produto";
+            this.ds_produto.Width = 260;
+            // 
+            // UNIDADE
+            // 
+            this.UNIDADE.HeaderText = "Unidade";
+            this.UNIDADE.Name = "UNIDADE";
+            this.UNIDADE.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.UNIDADE.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.UNIDADE.Width = 65;
+            // 
+            // QUANTIDADE
+            // 
+            this.QUANTIDADE.HeaderText = "Quantidade";
+            this.QUANTIDADE.Name = "QUANTIDADE";
+            this.QUANTIDADE.Width = 90;
+            // 
+            // VLRUNITARIO
+            // 
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.VLRUNITARIO.DefaultCellStyle = dataGridViewCellStyle4;
+            this.VLRUNITARIO.HeaderText = "Vlr Unitário";
+            this.VLRUNITARIO.Name = "VLRUNITARIO";
+            this.VLRUNITARIO.Width = 110;
+            // 
+            // PERCDESCONTO
+            // 
+            this.PERCDESCONTO.HeaderText = "% Desc";
+            this.PERCDESCONTO.Name = "PERCDESCONTO";
+            this.PERCDESCONTO.Width = 80;
+            // 
+            // VLRDESCONTO
+            // 
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = null;
+            this.VLRDESCONTO.DefaultCellStyle = dataGridViewCellStyle5;
+            this.VLRDESCONTO.HeaderText = "Vlr Desc";
+            this.VLRDESCONTO.Name = "VLRDESCONTO";
+            this.VLRDESCONTO.Width = 110;
+            // 
+            // VLTTOTAL
+            // 
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = null;
+            this.VLTTOTAL.DefaultCellStyle = dataGridViewCellStyle6;
+            this.VLTTOTAL.HeaderText = "Total";
+            this.VLTTOTAL.Name = "VLTTOTAL";
+            this.VLTTOTAL.ReadOnly = true;
+            // 
             // frmCadEditPedido_Otica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.CancelButton = null;
-            this.ClientSize = new System.Drawing.Size(1131, 597);
+            this.ClientSize = new System.Drawing.Size(1119, 597);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmCadEditPedido_Otica";
             this.Text = "Pedido de Venda";
-            this.Load += new System.EventHandler(this.frmCadEditPedido_Otica_Load);
             this.pnlBotoes.ResumeLayout(false);
             this.pnlPrincipal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).EndInit();
@@ -1575,7 +1581,7 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ComboBox cbTipoLente;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox31;
+        private System.Windows.Forms.TextBox txtNrCaixa;
         private System.Windows.Forms.DataGridView dgvItemPedido;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnRemoveItem;
@@ -1583,7 +1589,13 @@
         private System.Windows.Forms.TextBox txtIdCliente;
         private System.Windows.Forms.MaskedTextBox txtDtFechamento;
         private System.Windows.Forms.MaskedTextBox txtDtEmissao;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox txtNrPedCliente;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox txtBaseCalculada;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idpedido;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id_Produto;
         private System.Windows.Forms.DataGridViewButtonColumn colbtnPesquisa;
         private System.Windows.Forms.DataGridViewTextBoxColumn ds_produto;
@@ -1593,9 +1605,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PERCDESCONTO;
         private System.Windows.Forms.DataGridViewTextBoxColumn VLRDESCONTO;
         private System.Windows.Forms.DataGridViewTextBoxColumn VLTTOTAL;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.TextBox txtNrPedCliente;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox txtBaseCalculada;
     }
 }

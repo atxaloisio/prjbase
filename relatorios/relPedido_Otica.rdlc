@@ -241,7 +241,6 @@
             </Style>
           </Textbox>
           <Line Name="Line3">
-            <Top>0cm</Top>
             <Left>8.1171cm</Left>
             <Height>1.65875cm</Height>
             <Width>0cm</Width>

@@ -12,7 +12,7 @@
               <Width>4.66958cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.64792cm</Width>
+              <Width>0.87676cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.10313cm</Width>
@@ -659,7 +659,7 @@
         </TablixRowHierarchy>
         <DataSetName>DataSetItemPedido_Otica</DataSetName>
         <Height>1.00542cm</Height>
-        <Width>15.97833cm</Width>
+        <Width>16.20718cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
