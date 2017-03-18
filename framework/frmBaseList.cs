@@ -114,6 +114,7 @@ namespace prjbase
             if (frmInstancia.atualizagrid)
             {
                 // MessageBox.Show("atualiza.");
+                dgvDados.DataSource = null;
                 carregaConsulta();
             }
             frmInstancia.Dispose();

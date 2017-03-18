@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Utils;
 
 namespace prjbase
 {
@@ -38,8 +39,9 @@ namespace prjbase
                 
             }
             catch (Exception ex)
-            {                              
-                MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            {
+                string mensagem = TrataException.getAllMessage(ex);                                                        
+                MessageBox.Show(mensagem, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }

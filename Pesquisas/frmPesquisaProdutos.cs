@@ -63,6 +63,8 @@ namespace prjbase
 
         protected override void SetupControls()
         {
+            base.SetupControls();
+
             List<FiltroPesquisa> lstFiltroPesquisa = new List<FiltroPesquisa>();
 
             lstFiltroPesquisa.Add(new FiltroPesquisa() { chave = "id", descricao = "Código" });
@@ -75,9 +77,14 @@ namespace prjbase
             dgvPesquisa.Columns.Add("codigo_produto_integracao", "Código");
             dgvPesquisa.Columns.Add("descricao", "Descrição");
             dgvPesquisa.Columns.Add("unidade", "Unidade");
-           
-            FormataGridPesquisa();
+                      
+        }
 
+        protected override void SetupColunasGrid()
+        {
+            List<Produto> lstProduto = new List<Produto>();
+            lstProduto.Add(new Produto());
+            dgvPesquisa.DataSource = lstProduto;
         }
 
         private void txtFiltro_KeyPress(object sender, KeyPressEventArgs e)
@@ -102,6 +109,8 @@ namespace prjbase
         {
             txtFiltro.Text = string.Empty;
             dgvPesquisa.DataSource = null;
+            SetupColunasGrid();
+            FormataGridPesquisa();
         }
 
         protected override void FormataGridPesquisa()

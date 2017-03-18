@@ -82,7 +82,14 @@ namespace prjbase
 
         protected virtual void SetupControls()
         {
-            
+            SetupColunasGrid();
+            FormataGridPesquisa();
+
+        }
+
+        protected virtual void SetupColunasGrid()
+        {
+
         }
 
         private void dgvPesquisa_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

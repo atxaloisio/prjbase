@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace prjbase
 {
-    public partial class frmPedidos : prjbase.frmBaseList
+    public partial class frmListPedidos : prjbase.frmBaseList
     {
-        public frmPedidos()
+        public frmListPedidos()
         {
             InitializeComponent();            
             this.WindowState = FormWindowState.Maximized;

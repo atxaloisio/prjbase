@@ -1,6 +1,6 @@
 ﻿namespace prjbase
 {
-    partial class frmClientes
+    partial class frmPesquisaFornecedor
     {
         /// <summary>
         /// Required designer variable.
@@ -29,20 +29,27 @@
         private void InitializeComponent()
         {
             this.pnlBotoes.SuspendLayout();
+            this.pnlFiltro.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnFechar
+            // txtFiltro
             // 
-            this.btnFechar.Location = new System.Drawing.Point(4, 372);
+            this.txtFiltro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFiltro_KeyPress);
             // 
-            // frmClientes
+            // cbFiltro
+            // 
+            this.cbFiltro.SelectionChangeCommitted += new System.EventHandler(this.cbFiltro_SelectionChangeCommitted);
+            this.cbFiltro.SelectedValueChanged += new System.EventHandler(this.cbFiltro_SelectedValueChanged);
+            // 
+            // frmPesquisaClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(731, 405);
-            this.Name = "frmClientes";
-            this.Text = "Listar Clientes";
-            this.Activated += new System.EventHandler(this.frmClientes_Activated);
+            this.ClientSize = new System.Drawing.Size(689, 298);
+            this.Name = "frmPesquisaClientes";
+            this.Load += new System.EventHandler(this.frmPesquisaClientes_Load);
             this.pnlBotoes.ResumeLayout(false);
+            this.pnlFiltro.ResumeLayout(false);
+            this.pnlFiltro.PerformLayout();
             this.ResumeLayout(false);
 
         }

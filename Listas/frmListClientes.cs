@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace prjbase
 {
-    public partial class frmClientes : prjbase.frmBaseList
+    public partial class frmListClientes : prjbase.frmBaseList
     {
-        public frmClientes()
+        public frmListClientes()
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;

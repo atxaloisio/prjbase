@@ -35,19 +35,25 @@ namespace prjbase
         protected override void ExecutaPesquisa()
         {
             clienteBLL = new ClienteBLL();
+            //Cliente_TagBLL cliente_TagBLL = new Cliente_TagBLL();
+            //Cliente_Tag cliente_Tag = cliente_TagBLL.getCliente_Tag(t => t.tag == "Cliente").First();
+
             if (string.IsNullOrEmpty(txtFiltro.Text))
             {
                 dgvPesquisa.Columns.Clear();
-                dgvPesquisa.DataSource = clienteBLL.getCliente();
+                List<Cliente> lstCliente = clienteBLL.getCliente(c => c.cliente_tag.Any(e => e.tag == "Cliente"));
+                dgvPesquisa.DataSource = lstCliente;
             }
             else
             {
                 dgvPesquisa.Columns.Clear();
+                
                 switch (Convert.ToString(cbFiltro.SelectedValue))
                 {                    
                     case "Id":
                         {
-                            List<Cliente> lstCliente = clienteBLL.getCliente(p => p.codigo_cliente_integracao == txtFiltro.Text);
+                            
+                            List<Cliente> lstCliente = clienteBLL.getCliente(p => p.codigo_cliente_integracao == txtFiltro.Text & p.cliente_tag.Any(e => e.tag == "Cliente"));
                             //if (lstCliente.Count <= 0)
                             //{
                             //    MessageBox.Show("Cliente código: "+ txtFiltro.Text + " não localizado.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -58,7 +64,7 @@ namespace prjbase
                         break;
                     case "nome_fantasia":
                         {
-                            List<Cliente> lstCliente = clienteBLL.getCliente(p => p.nome_fantasia.ToLower().Contains(txtFiltro.Text));
+                            List<Cliente> lstCliente = clienteBLL.getCliente(p => p.nome_fantasia.ToLower().Contains(txtFiltro.Text.ToLower()) & p.cliente_tag.Any(e => e.tag == "Cliente"));
                             //if (lstCliente.Count <= 0)
                             //{
                             //    MessageBox.Show("Cliente Nome: " + txtFiltro.Text + " não localizado.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -71,7 +77,7 @@ namespace prjbase
                             string strCPF, strCNPJ = string.Empty;
                             strCPF = Convert.ToInt64(txtFiltro.Text).ToString(@"000\.000\.000\-00");
                             strCNPJ = Convert.ToInt64(txtFiltro.Text).ToString(@"00\.000\.000\/0000\-00");
-                            List<Cliente> lstCliente = clienteBLL.getCliente(p => p.cnpj_cpf == strCPF || p.cnpj_cpf == strCNPJ);
+                            List<Cliente> lstCliente = clienteBLL.getCliente(p => (p.cnpj_cpf == strCPF || p.cnpj_cpf == strCNPJ) & p.cliente_tag.Any(e => e.tag == "Cliente"));
                             //if (lstCliente.Count <= 0)
                             //{
                             //    MessageBox.Show("Cliente CNPJ/CPF: " + txtFiltro.Text + " não localizado.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -87,6 +93,7 @@ namespace prjbase
 
         protected override void SetupControls()
         {
+            base.SetupControls();
             List<FiltroPesquisa> lstFiltroPesquisa = new List<FiltroPesquisa>();
 
             lstFiltroPesquisa.Add(new FiltroPesquisa() { chave = "Id", descricao = "Código" });
@@ -96,9 +103,7 @@ namespace prjbase
             cbFiltro.DataSource = lstFiltroPesquisa;
             cbFiltro.ValueMember = "chave";
             cbFiltro.DisplayMember = "descricao";
-                                    
-            FormataGridPesquisa();
-
+                                                
         }
 
         private void txtFiltro_KeyPress(object sender, KeyPressEventArgs e)
@@ -128,16 +133,12 @@ namespace prjbase
         {            
             txtFiltro.Text = string.Empty;
             dgvPesquisa.DataSource = null;
+            SetupColunasGrid();
             FormataGridPesquisa();
         }
 
         protected override void FormataGridPesquisa()
-        {
-            dgvPesquisa.Columns.Add("codigo_cliente_integracao", "Código");
-            dgvPesquisa.Columns.Add("cnpj_cpf", "CNPJ / CPF");
-            dgvPesquisa.Columns.Add("razao_social", "Razão Social");
-            dgvPesquisa.Columns.Add("nome_fantasia", "Nome");
-
+        {                       
             base.FormataGridPesquisa();
 
             foreach (DataGridViewColumn col in dgvPesquisa.Columns)
@@ -173,8 +174,15 @@ namespace prjbase
             }
         }
 
-        private void frmPesquisaClientes_Load(object sender, EventArgs e)
+        protected override void SetupColunasGrid()
         {
+            List<Cliente> lstCliente = new List<Cliente>();
+            lstCliente.Add(new Cliente());
+            dgvPesquisa.DataSource = lstCliente;
+        }
+
+        private void frmPesquisaClientes_Load(object sender, EventArgs e)
+        {            
             if (!string.IsNullOrEmpty(txtFiltro.Text))
             {
                 if (txtFiltro.Text.Where(c => char.IsNumber(c)).Count() >= 11)
@@ -189,10 +197,10 @@ namespace prjbase
                 {
                     cbFiltro.SelectedValue = "nome_fantasia";
                 }
-
-                ExecutaPesquisa();
-                FormataGridPesquisa();
+                
+                ExecutaPesquisa();                
             }
+            FormataGridPesquisa();
         }
     }
 }

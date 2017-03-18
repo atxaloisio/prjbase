@@ -1,6 +1,6 @@
 ﻿namespace prjbase
 {
-    partial class frmPerfis
+    partial class frmListPerfis
     {
         /// <summary>
         /// Required designer variable.

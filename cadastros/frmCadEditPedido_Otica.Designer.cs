@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadEditPedido_Otica));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label23 = new System.Windows.Forms.Label();
             this.txtNrPedCliente = new System.Windows.Forms.TextBox();
@@ -129,9 +129,6 @@
             this.cbTipoLente = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgvItemPedido = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnRemoveItem = new System.Windows.Forms.Button();
-            this.btnAddItem = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idpedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -144,6 +141,9 @@
             this.PERCDESCONTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VLRDESCONTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VLTTOTAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnRemoveItem = new System.Windows.Forms.Button();
+            this.btnAddItem = new System.Windows.Forms.Button();
             this.pnlBotoes.SuspendLayout();
             this.pnlPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
@@ -175,7 +175,6 @@
             // pnlBotoes
             // 
             this.pnlBotoes.Size = new System.Drawing.Size(115, 597);
-            this.pnlBotoes.TabIndex = 1;
             // 
             // pnlPrincipal
             // 
@@ -183,7 +182,6 @@
             this.pnlPrincipal.Controls.Add(this.groupBox2);
             this.pnlPrincipal.Controls.Add(this.groupBox1);
             this.pnlPrincipal.Size = new System.Drawing.Size(1004, 597);
-            this.pnlPrincipal.TabIndex = 0;
             // 
             // groupBox1
             // 
@@ -223,20 +221,20 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(6, 114);
+            this.label23.Location = new System.Drawing.Point(809, 84);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(121, 16);
+            this.label23.Size = new System.Drawing.Size(106, 16);
             this.label23.TabIndex = 54;
-            this.label23.Text = "Nr. Pedido Cliente";
+            this.label23.Text = "Nr. Ped. Cliente";
             // 
             // txtNrPedCliente
             // 
             this.epValidaDados.SetFraseErro(this.txtNrPedCliente, "Numero do pedido no Cliente obrigatório.");
-            this.txtNrPedCliente.Location = new System.Drawing.Point(163, 111);
+            this.txtNrPedCliente.Location = new System.Drawing.Point(915, 79);
             this.txtNrPedCliente.Name = "txtNrPedCliente";
             this.epValidaDados.SetObrigatorio(this.txtNrPedCliente, true);
-            this.txtNrPedCliente.Size = new System.Drawing.Size(97, 23);
-            this.txtNrPedCliente.TabIndex = 10;
+            this.txtNrPedCliente.Size = new System.Drawing.Size(67, 23);
+            this.txtNrPedCliente.TabIndex = 9;
             // 
             // txtDtFechamento
             // 
@@ -285,7 +283,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(787, 114);
+            this.label19.Location = new System.Drawing.Point(810, 114);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(95, 16);
             this.label19.TabIndex = 51;
@@ -294,16 +292,16 @@
             // txtNrCaixa
             // 
             this.epValidaDados.SetFraseErro(this.txtNrCaixa, "Numero da caixa obrigatório.");
-            this.txtNrCaixa.Location = new System.Drawing.Point(885, 109);
+            this.txtNrCaixa.Location = new System.Drawing.Point(915, 111);
             this.txtNrCaixa.Name = "txtNrCaixa";
             this.epValidaDados.SetObrigatorio(this.txtNrCaixa, true);
-            this.txtNrCaixa.Size = new System.Drawing.Size(97, 23);
+            this.txtNrCaixa.Size = new System.Drawing.Size(67, 23);
             this.txtNrCaixa.TabIndex = 12;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(277, 112);
+            this.label9.Location = new System.Drawing.Point(329, 84);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(107, 16);
             this.label9.TabIndex = 43;
@@ -311,14 +309,15 @@
             // 
             // cbMotivoEntrega
             // 
+            this.cbMotivoEntrega.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMotivoEntrega.FormattingEnabled = true;
             this.epValidaDados.SetFraseErro(this.cbMotivoEntrega, "");
             this.epValidaDados.SetIndiceCombo(this.cbMotivoEntrega, -1);
-            this.cbMotivoEntrega.Location = new System.Drawing.Point(388, 111);
+            this.cbMotivoEntrega.Location = new System.Drawing.Point(440, 79);
             this.cbMotivoEntrega.Name = "cbMotivoEntrega";
             this.epValidaDados.SetObrigatorio(this.cbMotivoEntrega, false);
-            this.cbMotivoEntrega.Size = new System.Drawing.Size(377, 24);
-            this.cbMotivoEntrega.TabIndex = 11;
+            this.cbMotivoEntrega.Size = new System.Drawing.Size(361, 24);
+            this.cbMotivoEntrega.TabIndex = 8;
             // 
             // txtHrPrevEntrega
             // 
@@ -396,7 +395,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(634, 83);
+            this.label4.Location = new System.Drawing.Point(453, 114);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(110, 16);
             this.label4.TabIndex = 35;
@@ -405,7 +404,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(328, 83);
+            this.label3.Location = new System.Drawing.Point(6, 114);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(121, 16);
             this.label3.TabIndex = 34;
@@ -431,25 +430,27 @@
             // 
             // cbTransportadora
             // 
+            this.cbTransportadora.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTransportadora.FormattingEnabled = true;
             this.epValidaDados.SetFraseErro(this.cbTransportadora, "Transportadora obrigatório");
             this.epValidaDados.SetIndiceCombo(this.cbTransportadora, -1);
-            this.cbTransportadora.Location = new System.Drawing.Point(748, 79);
+            this.cbTransportadora.Location = new System.Drawing.Point(567, 110);
             this.cbTransportadora.Name = "cbTransportadora";
             this.epValidaDados.SetObrigatorio(this.cbTransportadora, true);
             this.cbTransportadora.Size = new System.Drawing.Size(234, 24);
-            this.cbTransportadora.TabIndex = 9;
+            this.cbTransportadora.TabIndex = 11;
             // 
             // cbCondPagamento
             // 
+            this.cbCondPagamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCondPagamento.FormattingEnabled = true;
             this.epValidaDados.SetFraseErro(this.cbCondPagamento, "Codição de pagamento obrigatório.");
             this.epValidaDados.SetIndiceCombo(this.cbCondPagamento, -1);
-            this.cbCondPagamento.Location = new System.Drawing.Point(451, 79);
+            this.cbCondPagamento.Location = new System.Drawing.Point(129, 110);
             this.cbCondPagamento.Name = "cbCondPagamento";
             this.epValidaDados.SetObrigatorio(this.cbCondPagamento, true);
-            this.cbCondPagamento.Size = new System.Drawing.Size(170, 24);
-            this.cbCondPagamento.TabIndex = 8;
+            this.cbCondPagamento.Size = new System.Drawing.Size(318, 24);
+            this.cbCondPagamento.TabIndex = 10;
             // 
             // txtCodCliIntegracao
             // 
@@ -686,6 +687,7 @@
             // 
             // cbTipoArmacao
             // 
+            this.cbTipoArmacao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTipoArmacao.FormattingEnabled = true;
             this.epValidaDados.SetFraseErro(this.cbTipoArmacao, "");
             this.epValidaDados.SetIndiceCombo(this.cbTipoArmacao, -1);
@@ -1255,6 +1257,7 @@
             // 
             // cbTipoLente
             // 
+            this.cbTipoLente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTipoLente.FormattingEnabled = true;
             this.epValidaDados.SetFraseErro(this.cbTipoLente, "");
             this.epValidaDados.SetIndiceCombo(this.cbTipoLente, -1);
@@ -1312,47 +1315,6 @@
             this.dgvItemPedido.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvItemPedido_RowValidating);
             this.dgvItemPedido.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvItemPedido_KeyDown);
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnRemoveItem);
-            this.panel1.Controls.Add(this.btnAddItem);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(3, 19);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(36, 144);
-            this.panel1.TabIndex = 0;
-            // 
-            // btnRemoveItem
-            // 
-            this.btnRemoveItem.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.btnRemoveItem.CausesValidation = false;
-            this.btnRemoveItem.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRemoveItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemoveItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnRemoveItem.Image = global::prjbase.Properties.Resources.remove;
-            this.btnRemoveItem.Location = new System.Drawing.Point(0, 26);
-            this.btnRemoveItem.Name = "btnRemoveItem";
-            this.btnRemoveItem.Size = new System.Drawing.Size(36, 26);
-            this.btnRemoveItem.TabIndex = 1;
-            this.btnRemoveItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnRemoveItem.UseVisualStyleBackColor = false;
-            this.btnRemoveItem.Click += new System.EventHandler(this.btnRemoveItem_Click);
-            // 
-            // btnAddItem
-            // 
-            this.btnAddItem.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.btnAddItem.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAddItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAddItem.Image = global::prjbase.Properties.Resources.plus;
-            this.btnAddItem.Location = new System.Drawing.Point(0, 0);
-            this.btnAddItem.Name = "btnAddItem";
-            this.btnAddItem.Size = new System.Drawing.Size(36, 26);
-            this.btnAddItem.TabIndex = 0;
-            this.btnAddItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnAddItem.UseVisualStyleBackColor = false;
-            this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
-            // 
             // id
             // 
             this.id.Frozen = true;
@@ -1406,9 +1368,9 @@
             // 
             // VLRUNITARIO
             // 
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.VLRUNITARIO.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.VLRUNITARIO.DefaultCellStyle = dataGridViewCellStyle1;
             this.VLRUNITARIO.HeaderText = "Vlr Unitário";
             this.VLRUNITARIO.Name = "VLRUNITARIO";
             this.VLRUNITARIO.Width = 110;
@@ -1421,21 +1383,62 @@
             // 
             // VLRDESCONTO
             // 
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = null;
-            this.VLRDESCONTO.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.VLRDESCONTO.DefaultCellStyle = dataGridViewCellStyle2;
             this.VLRDESCONTO.HeaderText = "Vlr Desc";
             this.VLRDESCONTO.Name = "VLRDESCONTO";
             this.VLRDESCONTO.Width = 110;
             // 
             // VLTTOTAL
             // 
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = null;
-            this.VLTTOTAL.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.VLTTOTAL.DefaultCellStyle = dataGridViewCellStyle3;
             this.VLTTOTAL.HeaderText = "Total";
             this.VLTTOTAL.Name = "VLTTOTAL";
             this.VLTTOTAL.ReadOnly = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnRemoveItem);
+            this.panel1.Controls.Add(this.btnAddItem);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(3, 19);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(36, 144);
+            this.panel1.TabIndex = 0;
+            // 
+            // btnRemoveItem
+            // 
+            this.btnRemoveItem.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnRemoveItem.CausesValidation = false;
+            this.btnRemoveItem.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRemoveItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoveItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnRemoveItem.Image = global::prjbase.Properties.Resources.remove;
+            this.btnRemoveItem.Location = new System.Drawing.Point(0, 26);
+            this.btnRemoveItem.Name = "btnRemoveItem";
+            this.btnRemoveItem.Size = new System.Drawing.Size(36, 26);
+            this.btnRemoveItem.TabIndex = 1;
+            this.btnRemoveItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnRemoveItem.UseVisualStyleBackColor = false;
+            this.btnRemoveItem.Click += new System.EventHandler(this.btnRemoveItem_Click);
+            // 
+            // btnAddItem
+            // 
+            this.btnAddItem.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnAddItem.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAddItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAddItem.Image = global::prjbase.Properties.Resources.plus;
+            this.btnAddItem.Location = new System.Drawing.Point(0, 0);
+            this.btnAddItem.Name = "btnAddItem";
+            this.btnAddItem.Size = new System.Drawing.Size(36, 26);
+            this.btnAddItem.TabIndex = 0;
+            this.btnAddItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAddItem.UseVisualStyleBackColor = false;
+            this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
             // 
             // frmCadEditPedido_Otica
             // 

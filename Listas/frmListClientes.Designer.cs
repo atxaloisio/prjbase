@@ -1,6 +1,6 @@
 ﻿namespace prjbase
 {
-    partial class frmPedido_Otica
+    partial class frmListClientes
     {
         /// <summary>
         /// Required designer variable.
@@ -35,43 +35,14 @@
             // 
             this.btnFechar.Location = new System.Drawing.Point(4, 372);
             // 
-            // lblTotalPaginas
-            // 
-            this.lblTotalPaginas.Location = new System.Drawing.Point(70, 329);
-            // 
-            // lblNumeroPagina
-            // 
-            this.lblNumeroPagina.Location = new System.Drawing.Point(9, 329);
-            // 
-            // btnPrimeiro
-            // 
-            this.btnPrimeiro.Location = new System.Drawing.Point(6, 345);
-            // 
-            // btnAnterior
-            // 
-            this.btnAnterior.Location = new System.Drawing.Point(34, 345);
-            // 
-            // btnProximo
-            // 
-            this.btnProximo.Location = new System.Drawing.Point(60, 345);
-            // 
-            // btnUltimo
-            // 
-            this.btnUltimo.Location = new System.Drawing.Point(86, 345);
-            // 
-            // lblTotalRegistros
-            // 
-            this.lblTotalRegistros.Location = new System.Drawing.Point(72, 293);
-            // 
-            // frmPedido_Otica
+            // frmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(731, 405);
-            this.Name = "frmPedido_Otica";
-            this.Text = "Pedido de Venda";
-            this.Activated += new System.EventHandler(this.frmPedidoOtica_Activated);
+            this.Name = "frmClientes";
+            this.Text = "Listar Clientes";
+            this.Activated += new System.EventHandler(this.frmClientes_Activated);
             this.pnlBotoes.ResumeLayout(false);
-            this.pnlBotoes.PerformLayout();
             this.ResumeLayout(false);
 
         }

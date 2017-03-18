@@ -16,7 +16,7 @@ using LinqKit;
 
 namespace prjbase
 {
-    public partial class frmProdutos : prjbase.frmBaseList
+    public partial class frmListProdutos : prjbase.frmBaseList
     {
         ProdutoBLL ProdutoBLL;
 
@@ -30,7 +30,7 @@ namespace prjbase
 
         #endregion
 
-        public frmProdutos()
+        public frmListProdutos()
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;

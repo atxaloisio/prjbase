@@ -47,7 +47,7 @@
             this.pnlPrincipal.Location = new System.Drawing.Point(115, 0);
             this.pnlPrincipal.Name = "pnlPrincipal";
             this.pnlPrincipal.Size = new System.Drawing.Size(495, 386);
-            this.pnlPrincipal.TabIndex = 1;
+            this.pnlPrincipal.TabIndex = 0;
             // 
             // pnlBotoes
             // 
@@ -58,7 +58,7 @@
             this.pnlBotoes.Location = new System.Drawing.Point(0, 0);
             this.pnlBotoes.Name = "pnlBotoes";
             this.pnlBotoes.Size = new System.Drawing.Size(115, 386);
-            this.pnlBotoes.TabIndex = 0;
+            this.pnlBotoes.TabIndex = 1;
             // 
             // btnIncluir
             // 

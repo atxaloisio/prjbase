@@ -16,7 +16,7 @@ using LinqKit;
 
 namespace prjbase
 {
-    public partial class frmPedido_Otica : prjbase.frmBaseList
+    public partial class frmListPedidos_Otica : prjbase.frmBaseList
     {
         Pedido_OticaBLL Pedido_OticaBLL;
 
@@ -30,7 +30,7 @@ namespace prjbase
         private const int COL_STATUS = 6;
 
         #endregion
-        public frmPedido_Otica()
+        public frmListPedidos_Otica()
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;

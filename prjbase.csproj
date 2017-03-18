@@ -172,6 +172,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cadastros\frmCadEditCliente_Transportadora.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cadastros\frmCadEditCliente_Transportadora.Designer.cs">
+      <DependentUpon>frmCadEditCliente_Transportadora.cs</DependentUpon>
+    </Compile>
+    <Compile Include="cadastros\frmCadEditRota.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cadastros\frmCadEditRota.Designer.cs">
+      <DependentUpon>frmCadEditRota.cs</DependentUpon>
+    </Compile>
     <Compile Include="cadastros\frmCadEditPedido_Otica.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,35 +202,71 @@
     <Compile Include="cadastros\frmCadEditProduto.Designer.cs">
       <DependentUpon>frmCadEditProduto.cs</DependentUpon>
     </Compile>
-    <Compile Include="cadastros\frmPedidos_Otica.cs">
+    <Compile Include="Listas\frmListCliente_Transportadora.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="cadastros\frmPedidos_Otica.Designer.cs">
-      <DependentUpon>frmPedidos_Otica.cs</DependentUpon>
+    <Compile Include="Listas\frmListCliente_Transportadora.Designer.cs">
+      <DependentUpon>frmListCliente_Transportadora.cs</DependentUpon>
     </Compile>
-    <Compile Include="cadastros\frmPerfis.cs">
+    <Compile Include="Listas\frmListRotas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="cadastros\frmPerfis.Designer.cs">
-      <DependentUpon>frmPerfis.cs</DependentUpon>
+    <Compile Include="Listas\frmListRotas.Designer.cs">
+      <DependentUpon>frmListRotas.cs</DependentUpon>
     </Compile>
-    <Compile Include="cadastros\frmPesquisaClientes.cs">
+    <Compile Include="Listas\frmListCliente_Parcela.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="cadastros\frmPesquisaClientes.Designer.cs">
+    <Compile Include="Listas\frmListCliente_Parcela.Designer.cs">
+      <DependentUpon>frmListCliente_Parcela.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Listas\frmListPedidos_Otica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listas\frmListPedidos_Otica.Designer.cs">
+      <DependentUpon>frmListPedidos_Otica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Listas\frmListPerfis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listas\frmListPerfis.Designer.cs">
+      <DependentUpon>frmListPerfis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pesquisas\frmPesquisaFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pesquisas\frmPesquisaFornecedor.Designer.cs">
+      <DependentUpon>frmPesquisaFornecedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pesquisas\frmPesquisaTransportadora.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pesquisas\frmPesquisaTransportadora.Designer.cs">
+      <DependentUpon>frmPesquisaTransportadora.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pesquisas\frmPesquisaClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pesquisas\frmPesquisaClientes.Designer.cs">
       <DependentUpon>frmPesquisaClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="cadastros\frmPesquisaProdutos.cs">
+    <Compile Include="Pesquisas\frmPesquisaProdutos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="cadastros\frmPesquisaProdutos.Designer.cs">
+    <Compile Include="Pesquisas\frmPesquisaProdutos.Designer.cs">
       <DependentUpon>frmPesquisaProdutos.cs</DependentUpon>
     </Compile>
-    <Compile Include="cadastros\frmProdutos.cs">
+    <Compile Include="Listas\frmListProdutos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="cadastros\frmProdutos.Designer.cs">
-      <DependentUpon>frmProdutos.cs</DependentUpon>
+    <Compile Include="Listas\frmListProdutos.Designer.cs">
+      <DependentUpon>frmListProdutos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="cadastros\frmCadEditCliente_Parcela.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cadastros\frmCadEditCliente_Parcela.Designer.cs">
+      <DependentUpon>frmCadEditCliente_Parcela.cs</DependentUpon>
     </Compile>
     <Compile Include="dbintegracaoDataSet.cs">
       <DependentUpon>dbintegracaoDataSet.xsd</DependentUpon>
@@ -252,11 +300,11 @@
     <Compile Include="cadastros\frmCadEditUsuario.Designer.cs">
       <DependentUpon>frmCadEditUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="cadastros\frmClientes.cs">
+    <Compile Include="Listas\frmListClientes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="cadastros\frmClientes.Designer.cs">
-      <DependentUpon>frmClientes.cs</DependentUpon>
+    <Compile Include="Listas\frmListClientes.Designer.cs">
+      <DependentUpon>frmListClientes.cs</DependentUpon>
     </Compile>
     <Compile Include="framework\frmBasePesquisa.cs">
       <SubType>Form</SubType>
@@ -270,11 +318,11 @@
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="cadastros\frmPedidos.cs">
+    <Compile Include="Listas\frmListPedidos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="cadastros\frmPedidos.Designer.cs">
-      <DependentUpon>frmPedidos.cs</DependentUpon>
+    <Compile Include="Listas\frmListPedidos.Designer.cs">
+      <DependentUpon>frmListPedidos.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPermissaoAcesso.cs">
       <SubType>Form</SubType>
@@ -294,11 +342,11 @@
     <Compile Include="frmSplash.Designer.cs">
       <DependentUpon>frmSplash.cs</DependentUpon>
     </Compile>
-    <Compile Include="cadastros\frmUsuarios.cs">
+    <Compile Include="Listas\frmListUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="cadastros\frmUsuarios.Designer.cs">
-      <DependentUpon>frmUsuarios.cs</DependentUpon>
+    <Compile Include="Listas\frmListUsuarios.Designer.cs">
+      <DependentUpon>frmListUsuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPrincipal.cs">
       <SubType>Form</SubType>
@@ -314,6 +362,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="cadastros\frmCadEditCliente_Transportadora.resx">
+      <DependentUpon>frmCadEditCliente_Transportadora.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cadastros\frmCadEditRota.resx">
+      <DependentUpon>frmCadEditRota.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cadastros\frmCadEditCliente_Parcela.resx">
+      <DependentUpon>frmCadEditCliente_Parcela.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="cadastros\frmCadEditPedido_Otica.resx">
       <DependentUpon>frmCadEditPedido_Otica.cs</DependentUpon>
     </EmbeddedResource>
@@ -323,20 +380,35 @@
     <EmbeddedResource Include="cadastros\frmCadEditProduto.resx">
       <DependentUpon>frmCadEditProduto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cadastros\frmPedidos_Otica.resx">
-      <DependentUpon>frmPedidos_Otica.cs</DependentUpon>
+    <EmbeddedResource Include="Listas\frmListCliente_Transportadora.resx">
+      <DependentUpon>frmListCliente_Transportadora.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cadastros\frmPerfis.resx">
-      <DependentUpon>frmPerfis.cs</DependentUpon>
+    <EmbeddedResource Include="Listas\frmListRotas.resx">
+      <DependentUpon>frmListRotas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cadastros\frmPesquisaClientes.resx">
+    <EmbeddedResource Include="Listas\frmListCliente_Parcela.resx">
+      <DependentUpon>frmListCliente_Parcela.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listas\frmListPedidos_Otica.resx">
+      <DependentUpon>frmListPedidos_Otica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listas\frmListPerfis.resx">
+      <DependentUpon>frmListPerfis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pesquisas\frmPesquisaFornecedor.resx">
+      <DependentUpon>frmPesquisaFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pesquisas\frmPesquisaTransportadora.resx">
+      <DependentUpon>frmPesquisaTransportadora.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pesquisas\frmPesquisaClientes.resx">
       <DependentUpon>frmPesquisaClientes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cadastros\frmPesquisaProdutos.resx">
+    <EmbeddedResource Include="Pesquisas\frmPesquisaProdutos.resx">
       <DependentUpon>frmPesquisaProdutos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cadastros\frmProdutos.resx">
-      <DependentUpon>frmProdutos.cs</DependentUpon>
+    <EmbeddedResource Include="Listas\frmListProdutos.resx">
+      <DependentUpon>frmListProdutos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="framework\frmBase.resx">
       <DependentUpon>frmBase.cs</DependentUpon>
@@ -350,8 +422,8 @@
     <EmbeddedResource Include="cadastros\frmCadEditUsuario.resx">
       <DependentUpon>frmCadEditUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cadastros\frmClientes.resx">
-      <DependentUpon>frmClientes.cs</DependentUpon>
+    <EmbeddedResource Include="Listas\frmListClientes.resx">
+      <DependentUpon>frmListClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="framework\frmBasePesquisa.resx">
       <DependentUpon>frmBasePesquisa.cs</DependentUpon>
@@ -359,8 +431,8 @@
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cadastros\frmPedidos.resx">
-      <DependentUpon>frmPedidos.cs</DependentUpon>
+    <EmbeddedResource Include="Listas\frmListPedidos.resx">
+      <DependentUpon>frmListPedidos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPermissaoAcesso.resx">
       <DependentUpon>frmPermissaoAcesso.cs</DependentUpon>
@@ -371,8 +443,8 @@
     <EmbeddedResource Include="frmSplash.resx">
       <DependentUpon>frmSplash.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cadastros\frmUsuarios.resx">
-      <DependentUpon>frmUsuarios.cs</DependentUpon>
+    <EmbeddedResource Include="Listas\frmListUsuarios.resx">
+      <DependentUpon>frmListUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>

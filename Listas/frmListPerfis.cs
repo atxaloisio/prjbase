@@ -17,7 +17,7 @@ using LinqKit;
 
 namespace prjbase
 {
-    public partial class frmPerfis : prjbase.frmBaseList
+    public partial class frmListPerfis : prjbase.frmBaseList
     {
         PerfilBLL PerfilBLL;
 
@@ -32,7 +32,7 @@ namespace prjbase
 
         #endregion
 
-        public frmPerfis()
+        public frmListPerfis()
         {
             InitializeComponent();            
         }
@@ -388,12 +388,7 @@ namespace prjbase
 
         }
         #endregion
-
-        private void frmPerfis_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            
-        }
-
+        
         private void frmPerfis_BindingContextChanged(object sender, EventArgs e)
         {
             

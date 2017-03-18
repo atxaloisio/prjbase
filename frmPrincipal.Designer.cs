@@ -134,13 +134,15 @@
             this.mnuCadRelClienteFormaPagamento.Size = new System.Drawing.Size(236, 22);
             this.mnuCadRelClienteFormaPagamento.Tag = "10042";
             this.mnuCadRelClienteFormaPagamento.Text = "Cliente x Forma de Pagamento";
+            this.mnuCadRelClienteFormaPagamento.Click += new System.EventHandler(this.mnuCadRelClienteFormaPagamento_Click);
             // 
             // mnuCadRelLocalidadeTransportadora
             // 
             this.mnuCadRelLocalidadeTransportadora.Name = "mnuCadRelLocalidadeTransportadora";
             this.mnuCadRelLocalidadeTransportadora.Size = new System.Drawing.Size(236, 22);
             this.mnuCadRelLocalidadeTransportadora.Tag = "10043";
-            this.mnuCadRelLocalidadeTransportadora.Text = "Localidades x Transportadora";
+            this.mnuCadRelLocalidadeTransportadora.Text = "Transportadora x Localidades";
+            this.mnuCadRelLocalidadeTransportadora.Click += new System.EventHandler(this.mnuCadRelLocalidadeTransportadora_Click);
             // 
             // mnuCadRelClienteTransportadora
             // 
@@ -252,7 +254,7 @@
             // mnuJanFecharTodos
             // 
             this.mnuJanFecharTodos.Name = "mnuJanFecharTodos";
-            this.mnuJanFecharTodos.Size = new System.Drawing.Size(152, 22);
+            this.mnuJanFecharTodos.Size = new System.Drawing.Size(144, 22);
             this.mnuJanFecharTodos.Text = "Fechar Todos";
             this.mnuJanFecharTodos.Click += new System.EventHandler(this.mnuJanFecharTodos_Click);
             // 

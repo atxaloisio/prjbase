@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace prjbase
 {
-    public partial class frmBase : Form
+    public partial class frmBase : Form, IDisposable
     {
         public virtual bool atualizagrid { get; set; }
         public virtual long? Id { get; set; }
@@ -40,6 +40,6 @@ namespace prjbase
         public virtual DialogResult ExibeDialogo()
         {            
            return ShowDialog();
-        }
+        }                       
     }
 }

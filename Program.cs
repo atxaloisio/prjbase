@@ -33,6 +33,10 @@ namespace prjbase
             
             splash.setMensagem("Sincronizando informações com a nuvem.");
 
+            /*Ao incluir um novo webservice no projeto SYNC copiar o conteundo de <system.serviceModel> </system.serviceModel> 
+             * para o app.config da aplicação principal.
+             */
+
 #if RELEASE
 
             //Clientes
@@ -58,7 +62,32 @@ namespace prjbase
                 MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
+
+            FormaPagVendasProxy fpv = new FormaPagVendasProxy();
+            try
+            {
+                fpv.SyncFormaPagVendas();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);                
+            }
+
+            CidadesProxy cid = new CidadesProxy();
+            try
+            {
+                cid.SyncCidades();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
 #endif
+
+
+
+
             splash.setprogresso(60);
             Thread.Sleep(100);
             Application.DoEvents();

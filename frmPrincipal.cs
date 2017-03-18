@@ -29,7 +29,7 @@ namespace prjbase
 
             foreach (var mdiChildForm in MdiChildren)
             {
-                if (mdiChildForm is frmUsuarios)
+                if (mdiChildForm is frmListUsuarios)
                 {
                     instanciar = false;                    
                     mdiChildForm.WindowState = FormWindowState.Maximized;
@@ -39,7 +39,7 @@ namespace prjbase
 
             if (instanciar)
             {
-                var frm = new frmUsuarios();
+                var frm = new frmListUsuarios();
                 frm.ConfigurarForm(this);
                 frm.Tag = ((ToolStripMenuItem)sender).Tag;
                 frm.Show();
@@ -54,7 +54,7 @@ namespace prjbase
 
             foreach (var mdiChildForm in MdiChildren)
             {
-                if (mdiChildForm is frmClientes)
+                if (mdiChildForm is frmListClientes)
                 {
                     instanciar = false;
                     mdiChildForm.BringToFront();
@@ -64,7 +64,7 @@ namespace prjbase
 
             if (instanciar)
             {
-                var frm = new frmClientes();
+                var frm = new frmListClientes();
                 frm.ConfigurarForm(this);
                 frm.Tag = ((ToolStripMenuItem)sender).Tag;
                 frm.Show();
@@ -78,7 +78,7 @@ namespace prjbase
 
             foreach (var mdiChildForm in MdiChildren)
             {
-                if (mdiChildForm is frmPedido_Otica)
+                if (mdiChildForm is frmListPedidos_Otica)
                 {
                     instanciar = false;
                     mdiChildForm.BringToFront();
@@ -88,8 +88,9 @@ namespace prjbase
 
             if (instanciar)
             {
-                var frm = new frmPedido_Otica();
+                var frm = new frmListPedidos_Otica();
                 frm.ConfigurarForm(this);
+                frm.Tag = ((ToolStripMenuItem)sender).Tag;
                 frm.Show();
             }
             
@@ -109,7 +110,7 @@ namespace prjbase
 
             foreach (var mdiChildForm in MdiChildren)
             {
-                if (mdiChildForm is frmProdutos)
+                if (mdiChildForm is frmListProdutos)
                 {
                     instanciar = false;
                     mdiChildForm.BringToFront();
@@ -119,8 +120,9 @@ namespace prjbase
 
             if (instanciar)
             {
-                var frm = new frmProdutos();
+                var frm = new frmListProdutos();
                 frm.ConfigurarForm(this);
+                frm.Tag = ((ToolStripMenuItem)sender).Tag;
                 frm.Show();
             }
         }
@@ -138,7 +140,7 @@ namespace prjbase
 
             foreach (var mdiChildForm in MdiChildren)
             {
-                if (mdiChildForm is frmPerfis)
+                if (mdiChildForm is frmListPerfis)
                 {
                     instanciar = false;                    
                     //mdiChildForm.Show();
@@ -149,8 +151,9 @@ namespace prjbase
 
             if (instanciar)
             {
-                var frm = new frmPerfis();
+                var frm = new frmListPerfis();
                 frm.ConfigurarForm(this);
+                frm.Tag = ((ToolStripMenuItem)sender).Tag;
                 frm.Show();
                 frm.WindowState = FormWindowState.Maximized;
             }
@@ -207,6 +210,56 @@ namespace prjbase
                         child.Visible = exibemenu;
                     }
                 }                
+            }
+        }
+
+        private void mnuCadRelClienteFormaPagamento_Click(object sender, EventArgs e)
+        {
+            Boolean instanciar = true;
+
+            foreach (var mdiChildForm in MdiChildren)
+            {
+                if (mdiChildForm is frmListCliente_Parcela)
+                {
+                    instanciar = false;
+                    //mdiChildForm.Show();
+                    mdiChildForm.WindowState = FormWindowState.Maximized;
+                    mdiChildForm.BringToFront();
+                }
+            }
+
+            if (instanciar)
+            {
+                var frm = new frmListCliente_Parcela();
+                frm.ConfigurarForm(this);
+                frm.Tag = ((ToolStripMenuItem)sender).Tag;
+                frm.Show();
+                frm.WindowState = FormWindowState.Maximized;
+            }
+        }
+
+        private void mnuCadRelLocalidadeTransportadora_Click(object sender, EventArgs e)
+        {
+            Boolean instanciar = true;
+
+            foreach (var mdiChildForm in MdiChildren)
+            {
+                if (mdiChildForm is frmListRotas)
+                {
+                    instanciar = false;
+                    //mdiChildForm.Show();
+                    mdiChildForm.WindowState = FormWindowState.Maximized;
+                    mdiChildForm.BringToFront();
+                }
+            }
+
+            if (instanciar)
+            {
+                var frm = new frmListRotas();
+                frm.ConfigurarForm(this);
+                frm.Tag = ((ToolStripMenuItem)sender).Tag;
+                frm.Show();
+                frm.WindowState = FormWindowState.Maximized;
             }
         }
     }
