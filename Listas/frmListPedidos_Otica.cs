@@ -336,7 +336,7 @@ namespace prjbase
 
                 case COL_CONDPAG:
                     {
-                        List<Pedido_Otica> Pedido_OticaList = Pedido_OticaBLL.getPedido_Otica(p => p.formaspagvenda.cDescricao, direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
+                        List<Pedido_Otica> Pedido_OticaList = Pedido_OticaBLL.getPedido_Otica(p => p.parcela.descricao, direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
                         dgvDados.DataSource = Pedido_OticaBLL.ToList_Pedido_OticaView(Pedido_OticaList);
                     }
                     break;
@@ -535,7 +535,7 @@ namespace prjbase
 
             if (!string.IsNullOrEmpty(condPag))
             {
-                predicate = predicate.And(p => p.formaspagvenda.cDescricao.Contains(condPag));
+                predicate = predicate.And(p => p.parcela.descricao.Contains(condPag));
             }
 
             if ((DtEmiss != null) & (ValidateUtils.isDate(DtEmiss.ToString())))

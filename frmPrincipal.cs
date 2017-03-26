@@ -7,19 +7,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 using Model;
 using BLL;
+using Utils;
 
 namespace prjbase
 {
     public partial class frmPrincipal : Form
     {
+        private string nomeApp = string.Empty;
         public frmPrincipal()
-        {           
+        {                       
             InitializeComponent();
             if (Program.usuario_logado != null)
             {
-                this.Text = this.Text + "           Usuário: " + Program.usuario_logado.nome;
+                nomeApp = ConfigurationManager.AppSettings["NomeApp"];
+
+                
+
+                this.Text = nomeApp + "           Usuário: " + Program.usuario_logado.nome;
             }
         }        
 
@@ -261,6 +268,99 @@ namespace prjbase
                 frm.Show();
                 frm.WindowState = FormWindowState.Maximized;
             }
+        }
+
+        private void mnuCadRelClienteTransportadora_Click(object sender, EventArgs e)
+        {
+            Boolean instanciar = true;
+
+            foreach (var mdiChildForm in MdiChildren)
+            {
+                if (mdiChildForm is frmListCliente_Transportadora)
+                {
+                    instanciar = false;
+                    //mdiChildForm.Show();
+                    mdiChildForm.WindowState = FormWindowState.Maximized;
+                    mdiChildForm.BringToFront();
+                }
+            }
+
+            if (instanciar)
+            {
+                var frm = new frmListCliente_Transportadora();
+                frm.ConfigurarForm(this);
+                frm.Tag = ((ToolStripMenuItem)sender).Tag;
+                frm.Show();
+                frm.WindowState = FormWindowState.Maximized;
+            }
+        }
+
+        private void trocarUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {            
+            foreach (var mdiChildForm in MdiChildren)
+            {
+                mdiChildForm.Close();
+            }
+
+            frmLogin login = new frmLogin();            
+
+            if (login.ShowDialog() == DialogResult.OK)
+            {
+                if (Program.usuario_logado != null)
+                {
+                    this.Text = nomeApp + "           Usuário: " + Program.usuario_logado.nome;
+                    confPermissaoMenu();
+                }
+            }
+        }
+
+        private void agrupamentoDePedidosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Boolean instanciar = true;
+
+            foreach (var mdiChildForm in MdiChildren)
+            {
+                if (mdiChildForm is frmProcAgrupaPedido)
+                {
+                    instanciar = false;
+                    //mdiChildForm.Show();
+                    mdiChildForm.WindowState = FormWindowState.Maximized;
+                    mdiChildForm.BringToFront();
+                }
+            }
+
+            if (instanciar)
+            {
+                var frm = new frmProcAgrupaPedido();
+                frm.ConfigurarForm(this);
+                frm.Tag = ((ToolStripMenuItem)sender).Tag;
+                frm.Show();
+                frm.WindowState = FormWindowState.Maximized;
+            }
+        }
+
+        private void parametrosDeSistemasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmParametroSistema ParametroSistema = new frmParametroSistema();
+            ParametroSistema.Tag = ((ToolStripMenuItem)sender).Tag;
+            ParametroSistema.ExibeDialogo();
+            ParametroSistema.Dispose();            
+        }
+
+        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void trocarSenhaToolStripMenuItem_Click(object sender, EventArgs e)
+        {            
+            if (Program.usuario_logado != null)
+            {
+                frmAlteraSenha AlteraSenha = new frmAlteraSenha();
+                AlteraSenha.Tag = ((ToolStripMenuItem)sender).Tag;
+                AlteraSenha.ExibeDialogo(Program.usuario_logado.Id);
+                AlteraSenha.Dispose();
+            }            
         }
     }
 }

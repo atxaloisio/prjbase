@@ -15,8 +15,7 @@ namespace prjbase
     {
         private ClienteBLL clienteBLL;
         private Cliente_TransportadoraBLL Cliente_TransportadoraBLL;
-        private FormasPagVendaBLL formasPagVendaBLL;
-
+        
         public frmCadEditCliente_Transportadora()
         {
             InitializeComponent();
@@ -36,10 +35,10 @@ namespace prjbase
 
                 if (Cliente_Transportadora != null)
                 {
-                    txtCodCliIntegracao.Text = Cliente_Transportadora.cliente.codigo_cliente_integracao;
-                    txtClienteNome.Text = Cliente_Transportadora.cliente.nome_fantasia;
+                    txtCodCliIntegracao.Text = Cliente_Transportadora.Cliente.codigo_cliente_integracao;
+                    txtClienteNome.Text = Cliente_Transportadora.Cliente.nome_fantasia;
                     txtIdCliente.Text = Cliente_Transportadora.Id_cliente.ToString();
-                    cbCondPagamento.SelectedValue = Cliente_Transportadora.Id_parcela;
+                    cbTransportadora.SelectedValue = Cliente_Transportadora.Id_transportadora;
                 }
             }
         }
@@ -92,8 +91,7 @@ namespace prjbase
             }
 
             Cliente_Transportadora.Id_cliente = Convert.ToInt64(txtIdCliente.Text);
-            Cliente_Transportadora.Id_parcela = Convert.ToInt32(cbCondPagamento.SelectedValue);
-            Cliente_Transportadora.descricao = cbCondPagamento.Text;
+            Cliente_Transportadora.Id_transportadora= Convert.ToInt32(cbTransportadora.SelectedValue);            
 
             return Cliente_Transportadora;
         }
@@ -105,11 +103,11 @@ namespace prjbase
 
         private void SetupCondPagamento()
         {
-            formasPagVendaBLL = new FormasPagVendaBLL();
-            cbCondPagamento.DataSource = formasPagVendaBLL.getFormasPagVenda();
-            cbCondPagamento.ValueMember = "Id";
-            cbCondPagamento.DisplayMember = "cDescricao";
-            cbCondPagamento.SelectedIndex = -1;
+            clienteBLL = new ClienteBLL();
+            cbTransportadora.DataSource = clienteBLL.getCliente(x => x.cliente_tag.Any(e => e.tag == "Transportadora"));
+            cbTransportadora.ValueMember = "Id";
+            cbTransportadora.DisplayMember = "nome_fantasia";
+            cbTransportadora.SelectedIndex = -1;
         }
 
         private void btnPesquisa_Click(object sender, EventArgs e)
@@ -131,11 +129,11 @@ namespace prjbase
                         txtCodCliIntegracao.Text = cliente.codigo_cliente_integracao;
                         txtClienteNome.Text = cliente.nome_fantasia;
                         txtIdCliente.Text = cliente.Id.ToString();
-                        if (cliente.Cliente_Transportadora.Count >0)
+                        if (cliente.cliente_transportadora.Count >0)
                         {
-                            Id = cliente.Cliente_Transportadora.FirstOrDefault().Id;
+                            Id = cliente.cliente_transportadora.FirstOrDefault().Id;
                             txtId.Text = Convert.ToString(Id);
-                            cbCondPagamento.SelectedValue = cliente.Cliente_Transportadora.FirstOrDefault().Id_parcela;
+                            cbTransportadora.SelectedValue = cliente.cliente_transportadora.FirstOrDefault().Id_transportadora;
                         }
                     }
                 }
@@ -180,12 +178,11 @@ namespace prjbase
                 txtIdCliente.Text = cliente.Id.ToString();
                 txtCodCliIntegracao.Text = cliente.codigo_cliente_integracao;
                 txtClienteNome.Text = cliente.nome_fantasia;
-                if (cliente.Cliente_Transportadora.Count > 0)
+                if (cliente.cliente_transportadora.Count > 0)
                 {
-                    cbCondPagamento.SelectedValue = cliente.Cliente_Transportadora.First().Id_parcela;
-                    Id = cliente.Cliente_Transportadora.FirstOrDefault().Id;
+                    Id = cliente.cliente_transportadora.FirstOrDefault().Id;
                     txtId.Text = Convert.ToString(Id);
-                    cbCondPagamento.SelectedValue = cliente.Cliente_Transportadora.FirstOrDefault().Id_parcela;
+                    cbTransportadora.SelectedValue = cliente.cliente_transportadora.FirstOrDefault().Id_transportadora;
                 }
             }
         }

@@ -23,18 +23,6 @@ namespace prjbase.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public int nr_reg_pag {
-            get {
-                return ((int)(this["nr_reg_pag"]));
-            }
-            set {
-                this["nr_reg_pag"] = value;
-            }
-        }
-        
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
@@ -43,6 +31,18 @@ namespace prjbase.Properties {
         public string dbintegracaoConnectionString {
             get {
                 return ((string)(this["dbintegracaoConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public string nr_reg_pag {
+            get {
+                return ((string)(this["nr_reg_pag"]));
+            }
+            set {
+                this["nr_reg_pag"] = value;
             }
         }
     }

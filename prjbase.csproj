@@ -8,11 +8,12 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>prjbase</RootNamespace>
-    <AssemblyName>prjbase</AssemblyName>
+    <AssemblyName>Optima</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <PublishUrl>publish\</PublishUrl>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\asus\Desktop\LabPrecision\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -22,10 +23,11 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <TargetCulture>pt-BR</TargetCulture>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -49,6 +51,27 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>oculos2.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>prjbase.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>EC969F2BAA8C2345650FDAA8C6C6E8D49B13D0C8</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>prjbase_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -160,6 +183,7 @@
     <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -202,6 +226,19 @@
     <Compile Include="cadastros\frmCadEditProduto.Designer.cs">
       <DependentUpon>frmCadEditProduto.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAlteraSenha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAlteraSenha.Designer.cs">
+      <DependentUpon>frmAlteraSenha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmParametroSistema.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmParametroSistema.Designer.cs">
+      <DependentUpon>frmParametroSistema.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GravaArquivo.cs" />
     <Compile Include="Listas\frmListCliente_Transportadora.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -354,14 +391,15 @@
     <Compile Include="frmPrincipal.Designer.cs">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmTrocarSenha.cs">
+    <Compile Include="processos\frmProcAgrupaPedido.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTrocarSenha.Designer.cs">
-      <DependentUpon>frmTrocarSenha.cs</DependentUpon>
+    <Compile Include="processos\frmProcAgrupaPedido.Designer.cs">
+      <DependentUpon>frmProcAgrupaPedido.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs" />
     <EmbeddedResource Include="cadastros\frmCadEditCliente_Transportadora.resx">
       <DependentUpon>frmCadEditCliente_Transportadora.cs</DependentUpon>
     </EmbeddedResource>
@@ -379,6 +417,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="cadastros\frmCadEditProduto.resx">
       <DependentUpon>frmCadEditProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAlteraSenha.resx">
+      <DependentUpon>frmAlteraSenha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmParametroSistema.resx">
+      <DependentUpon>frmParametroSistema.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Listas\frmListCliente_Transportadora.resx">
       <DependentUpon>frmListCliente_Transportadora.cs</DependentUpon>
@@ -449,8 +493,8 @@
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTrocarSenha.resx">
-      <DependentUpon>frmTrocarSenha.cs</DependentUpon>
+    <EmbeddedResource Include="processos\frmProcAgrupaPedido.resx">
+      <DependentUpon>frmProcAgrupaPedido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -473,6 +517,7 @@
       <DependentUpon>dbintegracaoDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -491,6 +536,7 @@
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -502,6 +548,11 @@
     </Content>
     <Content Include="oculos.ico" />
     <Content Include="oculos2.ico" />
+    <None Include="Resources\fundo2.png" />
+    <None Include="Resources\fundo1.png" />
+    <None Include="Resources\fundo.png" />
+    <None Include="Resources\optima.png" />
+    <None Include="Resources\pasta.png" />
     <None Include="Resources\Imprimir.png" />
     <None Include="Resources\ok.png" />
     <None Include="Resources\plus.png" />
@@ -542,7 +593,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="processos\" />
     <Folder Include="utilitarios\" />
   </ItemGroup>
   <ItemGroup>
@@ -555,6 +605,26 @@
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.ReportViewer.12.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft Report Viewer 2014 Runtime</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SqlServer.SQLSysClrTypes.12.0.x64">
+      <Visible>False</Visible>
+      <ProductName>Microsoft® System CLR Types for SQL Server® 2014 %28x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SqlServer.SQLSysClrTypes.12.0.x86">
+      <Visible>False</Visible>
+      <ProductName>Microsoft® System CLR Types for SQL Server® 2014 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -20,7 +20,7 @@ namespace prjbase
     {
         private ClienteBLL clienteBLL;
         private ProdutoBLL produtoBLL;
-        private FormasPagVendaBLL formasPagVendaBLL;
+        private ParcelaBLL parcelaBLL;
         private Motivo_EntregaBLL motivo_EntregaBLL;
         private Pedido_OticaBLL pedido_OticaBLL;
 
@@ -517,10 +517,10 @@ namespace prjbase
 
         private void SetupCondPagamento()
         {
-            formasPagVendaBLL = new FormasPagVendaBLL();
-            cbCondPagamento.DataSource = formasPagVendaBLL.getFormasPagVenda();
+            parcelaBLL = new ParcelaBLL();
+            cbCondPagamento.DataSource = parcelaBLL.getParcela();
             cbCondPagamento.ValueMember = "Id";
-            cbCondPagamento.DisplayMember = "cDescricao";
+            cbCondPagamento.DisplayMember = "Descricao";
             cbCondPagamento.SelectedIndex = -1;
         }
 
@@ -647,6 +647,10 @@ namespace prjbase
                         txtCodCliIntegracao.Text = cliente.codigo_cliente_integracao;
                         txtClienteNome.Text = cliente.nome_fantasia;
                         txtIdCliente.Text = cliente.Id.ToString();
+                        if (cliente.cliente_parcela.FirstOrDefault() != null)
+                        {
+                            cbCondPagamento.SelectedValue = cliente.cliente_parcela.FirstOrDefault().Id_parcela;
+                        }
                         txtDtEmissao.Focus();
                     }
                 }
@@ -691,6 +695,10 @@ namespace prjbase
                 txtIdCliente.Text = cliente.Id.ToString();
                 txtCodCliIntegracao.Text = cliente.codigo_cliente_integracao;
                 txtClienteNome.Text = cliente.nome_fantasia;
+                if (cliente.cliente_parcela.FirstOrDefault() != null)
+                {
+                    cbCondPagamento.SelectedValue = cliente.cliente_parcela.FirstOrDefault().Id_parcela;
+                }
                 txtDtEmissao.Focus();
             }
         }
@@ -1169,6 +1177,13 @@ namespace prjbase
             }
 
         }
-             
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string caminho = @"c:\temp\";
+            string nomearq = "123.dat";
+            string linha = "0,1,\"OTICA MATEUS; 0059; 8152\",+0.50,-0.50,180,2.50,+0.50,-0.50,180,2.50,,,,,,,,,,,,,,,,,,,,";
+            GravaArquivo.EscreverArquivo(caminho + nomearq, linha);
+        }
     }
 }

@@ -225,7 +225,16 @@ namespace prjbase
 
         private void gridFiltros_CellLeave(object sender, DataGridViewCellEventArgs e)
         {
-            executeCellLeaveChild(sender, e);
+            try
+            {
+                executeCellLeaveChild(sender, e);
+            }
+            catch (Exception ex)
+            {
+                string mensagem = TrataException.getAllMessage(ex);
+                MessageBox.Show(mensagem, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         protected virtual void executeCellLeaveChild(object sender, DataGridViewCellEventArgs e)
@@ -272,14 +281,28 @@ namespace prjbase
                 int iRow = dgvFiltro.CurrentCell.RowIndex;
 
                 dgvFiltro[iColumn, iRow].Value = "";
+
+                DataGridViewCellEventArgs eventArgs = new DataGridViewCellEventArgs(iColumn, iRow);
+
+                dgvFiltro_CellEndEdit(dgvFiltro, eventArgs);
+
                 dgvFiltro.CurrentCell = dgvFiltro[iColumn, iRow];
             }
         }
 
         private void dgvFiltro_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            executeCellEndEditChild(sender, e);
-            dgvFiltro.Rows[e.RowIndex].ErrorText = String.Empty;
+            try
+            {
+                executeCellEndEditChild(sender, e);
+                dgvFiltro.Rows[e.RowIndex].ErrorText = String.Empty;
+            }
+            catch (Exception ex)
+            {
+                string mensagem = TrataException.getAllMessage(ex);
+                MessageBox.Show(mensagem, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         protected virtual void executeCellEndEditChild(object sender, DataGridViewCellEventArgs e)
@@ -289,8 +312,15 @@ namespace prjbase
 
         private void dgvFiltro_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            executeCellValidatingChild(sender, e);
-            
+            try
+            {
+                executeCellValidatingChild(sender, e);
+            }
+            catch (Exception ex)
+            {
+                string mensagem = TrataException.getAllMessage(ex);
+                MessageBox.Show(mensagem, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }                        
         }
 
         protected virtual void executeCellValidatingChild(object sender, DataGridViewCellValidatingEventArgs e)
@@ -310,7 +340,16 @@ namespace prjbase
 
         private void dgvFiltro_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            executeEditingControlShowingChild(sender, e);            
+            try
+            {
+                executeEditingControlShowingChild(sender, e);
+            }
+            catch (Exception ex)
+            {
+                string mensagem = TrataException.getAllMessage(ex);
+                MessageBox.Show(mensagem, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         protected virtual void executeEditingControlShowingChild(object sender, DataGridViewEditingControlShowingEventArgs e)

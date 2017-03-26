@@ -15,7 +15,7 @@ namespace prjbase
     {
         private ClienteBLL clienteBLL;
         private Cliente_ParcelaBLL cliente_ParcelaBLL;
-        private FormasPagVendaBLL formasPagVendaBLL;
+        private ParcelaBLL parcelaBLL;
 
         public frmCadEditCliente_Parcela()
         {
@@ -105,10 +105,10 @@ namespace prjbase
 
         private void SetupCondPagamento()
         {
-            formasPagVendaBLL = new FormasPagVendaBLL();
-            cbCondPagamento.DataSource = formasPagVendaBLL.getFormasPagVenda();
+            parcelaBLL = new ParcelaBLL();
+            cbCondPagamento.DataSource = parcelaBLL.getParcela();
             cbCondPagamento.ValueMember = "Id";
-            cbCondPagamento.DisplayMember = "cDescricao";
+            cbCondPagamento.DisplayMember = "Descricao";
             cbCondPagamento.SelectedIndex = -1;
         }
 

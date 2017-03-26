@@ -28,8 +28,8 @@ namespace prjbase
 
         #endregion
         public frmListCliente_Transportadora()
-        {            
-            InitializeComponent();            
+        {
+            InitializeComponent();
         }
 
         private void frmListCliente_Transportadora_Activated(object sender, EventArgs e)
@@ -48,7 +48,7 @@ namespace prjbase
         {
             base.formataColunagridFiltros(gridFiltros);
             //altera o nome das colunas                        
-            gridFiltros.Columns.Add("ID", "id");
+            gridFiltros.Columns.Add("ID", "Código");
             gridFiltros.Columns.Add("CLIENTE", "Cliente");
             gridFiltros.Columns.Add("TRANSPORTADORA", "Transportadora");
 
@@ -59,11 +59,11 @@ namespace prjbase
             gridFiltros.Columns[col_Id].SortMode = DataGridViewColumnSortMode.Programmatic;
             gridFiltros.Columns[col_Id].Visible = true;
 
-            gridFiltros.Columns[col_cliente].Width = 300;
+            gridFiltros.Columns[col_cliente].Width = 400;
             gridFiltros.Columns[col_cliente].ValueType = typeof(string);
             gridFiltros.Columns[col_cliente].SortMode = DataGridViewColumnSortMode.Programmatic;
 
-            gridFiltros.Columns[col_transportadora].Width = 300;
+            gridFiltros.Columns[col_transportadora].Width = 400;
             gridFiltros.Columns[col_transportadora].ValueType = typeof(string);
             gridFiltros.Columns[col_transportadora].SortMode = DataGridViewColumnSortMode.Programmatic;
 
@@ -78,15 +78,15 @@ namespace prjbase
             gridDados.Columns[col_Id].Width = 70;
             gridDados.Columns[col_Id].SortMode = DataGridViewColumnSortMode.Programmatic;
             gridDados.Columns[col_Id].Visible = true;
-            gridDados.Columns[col_cliente].Width = 300;
+            gridDados.Columns[col_cliente].Width = 400;
             gridDados.Columns[col_cliente].SortMode = DataGridViewColumnSortMode.Programmatic;
-            gridDados.Columns[col_transportadora].Width = 300;
+            gridDados.Columns[col_transportadora].Width = 400;
             gridDados.Columns[col_transportadora].SortMode = DataGridViewColumnSortMode.Programmatic;
         }
 
         protected override void carregaConsulta()
         {
-            Cliente_TransportadoraBLL = new Cliente_TransportadoraBLL();            
+            Cliente_TransportadoraBLL = new Cliente_TransportadoraBLL();
             base.carregaConsulta();
             dgvDados.DataSource = null;
             dgvDados.DataSource = Cliente_TransportadoraBLL.ToList_Cliente_TransportadoraView(Cliente_TransportadoraBLL.getCliente_Transportadora(p => p.Id.ToString(), false, deslocamento, tamanhoPagina, out totalReg));
@@ -144,7 +144,7 @@ namespace prjbase
 
                 case col_cliente:
                     {
-                        List<Cliente_Transportadora> Cliente_TransportadoraList = Cliente_TransportadoraBLL.getCliente_Transportadora(p => p.cliente.razao_social, direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
+                        List<Cliente_Transportadora> Cliente_TransportadoraList = Cliente_TransportadoraBLL.getCliente_Transportadora(p => p.Cliente.razao_social, direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
 
                         dgvDados.DataSource = Cliente_TransportadoraBLL.ToList_Cliente_TransportadoraView(Cliente_TransportadoraList);
                     }
@@ -152,7 +152,7 @@ namespace prjbase
 
                 case col_transportadora:
                     {
-                        List<Cliente_Transportadora> Cliente_TransportadoraList = Cliente_TransportadoraBLL.getCliente_Transportadora(p => p.descricao, direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
+                        List<Cliente_Transportadora> Cliente_TransportadoraList = Cliente_TransportadoraBLL.getCliente_Transportadora(p => p.Cliente.razao_social, direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
                         dgvDados.DataSource = Cliente_TransportadoraBLL.ToList_Cliente_TransportadoraView(Cliente_TransportadoraList);
                     }
                     break;
@@ -200,24 +200,36 @@ namespace prjbase
             Cliente_TransportadoraBLL = new Cliente_TransportadoraBLL();
 
             int id = 0;
-            string nome = string.Empty;
-            string descricao = string.Empty;
+            string cliente = string.Empty;
+            string transportadora = string.Empty;
 
 
-            if (!string.IsNullOrEmpty((string)dgvFiltro[col_Id, e.RowIndex].Value.ToString()))
+
+
+            if (dgvFiltro[col_Id, e.RowIndex].Value != null)
             {
-                id = Convert.ToInt32(dgvFiltro[col_Id, e.RowIndex].Value);
+                if (!string.IsNullOrEmpty((string)dgvFiltro[col_Id, e.RowIndex].Value.ToString()))
+                {
+                    id = Convert.ToInt32(dgvFiltro[col_Id, e.RowIndex].Value);
+                }
             }
 
-            if (!string.IsNullOrEmpty((string)dgvFiltro[col_cliente, e.RowIndex].Value))
+            if (dgvFiltro[col_cliente, e.RowIndex].Value != null)
             {
-                nome = dgvFiltro[col_cliente, e.RowIndex].Value.ToString();
+                if (!string.IsNullOrEmpty((string)dgvFiltro[col_cliente, e.RowIndex].Value))
+                {
+                    cliente = dgvFiltro[col_cliente, e.RowIndex].Value.ToString();
+                }
             }
 
-            if (!string.IsNullOrEmpty((string)dgvFiltro[col_transportadora, e.RowIndex].Value))
+            if (dgvFiltro[col_transportadora, e.RowIndex].Value != null)
             {
-                descricao = dgvFiltro[col_transportadora, e.RowIndex].Value.ToString();
+                if (!string.IsNullOrEmpty((string)dgvFiltro[col_transportadora, e.RowIndex].Value))
+                {
+                    transportadora = dgvFiltro[col_transportadora, e.RowIndex].Value.ToString();
+                }
             }
+
 
             Expression<Func<Cliente_Transportadora, bool>> predicate = p => true;
 
@@ -227,22 +239,18 @@ namespace prjbase
                 predicate = predicate = p => p.Id == id;
             }
 
-            if (!string.IsNullOrEmpty(nome))
+            if (!string.IsNullOrEmpty(cliente))
             {
-                predicate = predicate.And(p => p.Cliente.razao_social.Contains(nome));
+                predicate = predicate.And(p => p.Cliente.razao_social.ToLower().Contains(cliente.ToLower()));
             }
 
-            //if (!string.IsNullOrEmpty(descricao))
-            //{
-            //    predicate = predicate.And(p => p.descricao.Contains(descricao));
-            //}
+            if (!string.IsNullOrEmpty(transportadora))
+            {
+                predicate = predicate.And(p => p.Transportadora.nome_fantasia.ToLower().Contains(transportadora.ToLower()));
+            }
 
             List<Cliente_Transportadora> Cliente_TransportadoraList = Cliente_TransportadoraBLL.getCliente_Transportadora(predicate.Expand(), t => t.Id.ToString(), false, deslocamento, tamanhoPagina, out totalReg);
             dgvDados.DataSource = Cliente_TransportadoraBLL.ToList_Cliente_TransportadoraView(Cliente_TransportadoraList);
-
-
-
-
 
         }
 
@@ -255,13 +263,13 @@ namespace prjbase
             if (Convert.ToInt32(dgvDados[0, dgvDados.CurrentRow.Index].Value) > 0)
             {
                 Cliente_Transportadora Cliente_Transportadora = Cliente_TransportadoraBLL.Localizar(Convert.ToInt32(dgvDados[0, dgvDados.CurrentRow.Index].Value));
-                if (MessageBox.Show("Deseja realmente excluir o registro : " + Cliente_Transportadora.cliente.nome_fantasia + " - " + Cliente_Transportadora.descricao, Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Deseja realmente excluir o registro : " + Cliente_Transportadora.Cliente.nome_fantasia + " - " + Cliente_Transportadora.Transportadora.nome_fantasia, Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Cliente_TransportadoraBLL.ExcluirCliente_Transportadora(Cliente_Transportadora);
                 }
             }
         }
-        
+
         #endregion
     }
 }

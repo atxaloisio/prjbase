@@ -38,29 +38,30 @@
             // lblMensagem
             // 
             this.lblMensagem.AutoSize = true;
-            this.lblMensagem.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMensagem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblMensagem.Location = new System.Drawing.Point(12, 232);
+            this.lblMensagem.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMensagem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblMensagem.Location = new System.Drawing.Point(5, 271);
             this.lblMensagem.Name = "lblMensagem";
             this.lblMensagem.Size = new System.Drawing.Size(0, 16);
             this.lblMensagem.TabIndex = 1;
             // 
             // pbSplash
             // 
+            this.pbSplash.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbSplash.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbSplash.Image = global::prjbase.Properties.Resources.splash;
+            this.pbSplash.Image = global::prjbase.Properties.Resources.optima;
             this.pbSplash.Location = new System.Drawing.Point(0, 0);
             this.pbSplash.Name = "pbSplash";
-            this.pbSplash.Size = new System.Drawing.Size(493, 261);
+            this.pbSplash.Size = new System.Drawing.Size(500, 300);
             this.pbSplash.TabIndex = 0;
             this.pbSplash.TabStop = false;
             // 
             // progressBar1
             // 
             this.progressBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.progressBar1.Location = new System.Drawing.Point(0, 251);
+            this.progressBar1.Location = new System.Drawing.Point(0, 290);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(493, 10);
+            this.progressBar1.Size = new System.Drawing.Size(500, 10);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar1.TabIndex = 2;
             // 
@@ -68,7 +69,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(493, 261);
+            this.ClientSize = new System.Drawing.Size(500, 300);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.lblMensagem);
             this.Controls.Add(this.pbSplash);

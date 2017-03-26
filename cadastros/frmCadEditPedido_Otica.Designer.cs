@@ -1004,7 +1004,7 @@
             this.groupBox5.Size = new System.Drawing.Size(136, 99);
             this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Grau de Longe";
+            this.groupBox5.Text = "Grau de Perto";
             // 
             // groupBox8
             // 

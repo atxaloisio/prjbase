@@ -45,6 +45,7 @@
             this.rotasDeEntregaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.utilitáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trocarSenhaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.trocarUsuárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.parametrosDeSistemasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.controleAcessoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCadUsuario = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,6 +54,7 @@
             this.janelasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuJanFecharTodos = new System.Windows.Forms.ToolStripMenuItem();
             this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSistema.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,7 +67,8 @@
             this.relatoriosToolStripMenuItem,
             this.utilitáriosToolStripMenuItem,
             this.janelasToolStripMenuItem,
-            this.sobreToolStripMenuItem});
+            this.sobreToolStripMenuItem,
+            this.sairToolStripMenuItem});
             this.menuSistema.Location = new System.Drawing.Point(0, 0);
             this.menuSistema.MdiWindowListItem = this.janelasToolStripMenuItem;
             this.menuSistema.Name = "menuSistema";
@@ -91,6 +94,7 @@
             this.mnuCadClientes.Size = new System.Drawing.Size(172, 22);
             this.mnuCadClientes.Tag = "1001";
             this.mnuCadClientes.Text = "&Clientes";
+            this.mnuCadClientes.Visible = false;
             this.mnuCadClientes.Click += new System.EventHandler(this.mnuCadClientes_Click);
             // 
             // mnuProdutos
@@ -99,6 +103,7 @@
             this.mnuProdutos.Size = new System.Drawing.Size(172, 22);
             this.mnuProdutos.Tag = "1002";
             this.mnuProdutos.Text = "Produtos";
+            this.mnuProdutos.Visible = false;
             this.mnuProdutos.Click += new System.EventHandler(this.mnuProdutos_Click);
             // 
             // mnuCadPedidoVendas
@@ -150,6 +155,7 @@
             this.mnuCadRelClienteTransportadora.Size = new System.Drawing.Size(236, 22);
             this.mnuCadRelClienteTransportadora.Tag = "10044";
             this.mnuCadRelClienteTransportadora.Text = "Cliente x Transportadora";
+            this.mnuCadRelClienteTransportadora.Click += new System.EventHandler(this.mnuCadRelClienteTransportadora_Click);
             // 
             // processosToolStripMenuItem
             // 
@@ -166,6 +172,7 @@
             this.agrupamentoDePedidosToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
             this.agrupamentoDePedidosToolStripMenuItem.Tag = "2001";
             this.agrupamentoDePedidosToolStripMenuItem.Text = "Agrupamento de Pedidos";
+            this.agrupamentoDePedidosToolStripMenuItem.Click += new System.EventHandler(this.agrupamentoDePedidosToolStripMenuItem_Click);
             // 
             // relatoriosToolStripMenuItem
             // 
@@ -187,6 +194,7 @@
             // 
             this.utilitáriosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.trocarSenhaToolStripMenuItem,
+            this.trocarUsuárioToolStripMenuItem,
             this.parametrosDeSistemasToolStripMenuItem,
             this.controleAcessoToolStripMenuItem});
             this.utilitáriosToolStripMenuItem.Name = "utilitáriosToolStripMenuItem";
@@ -199,6 +207,14 @@
             this.trocarSenhaToolStripMenuItem.Name = "trocarSenhaToolStripMenuItem";
             this.trocarSenhaToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.trocarSenhaToolStripMenuItem.Text = "Trocar senha";
+            this.trocarSenhaToolStripMenuItem.Click += new System.EventHandler(this.trocarSenhaToolStripMenuItem_Click);
+            // 
+            // trocarUsuárioToolStripMenuItem
+            // 
+            this.trocarUsuárioToolStripMenuItem.Name = "trocarUsuárioToolStripMenuItem";
+            this.trocarUsuárioToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.trocarUsuárioToolStripMenuItem.Text = "Trocar usuário";
+            this.trocarUsuárioToolStripMenuItem.Click += new System.EventHandler(this.trocarUsuarioToolStripMenuItem_Click);
             // 
             // parametrosDeSistemasToolStripMenuItem
             // 
@@ -206,6 +222,7 @@
             this.parametrosDeSistemasToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.parametrosDeSistemasToolStripMenuItem.Tag = "4001";
             this.parametrosDeSistemasToolStripMenuItem.Text = "Parâmetro de Sistema";
+            this.parametrosDeSistemasToolStripMenuItem.Click += new System.EventHandler(this.parametrosDeSistemasToolStripMenuItem_Click);
             // 
             // controleAcessoToolStripMenuItem
             // 
@@ -264,6 +281,14 @@
             this.sobreToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
             this.sobreToolStripMenuItem.Tag = "6000";
             this.sobreToolStripMenuItem.Text = "Sobre";
+            this.sobreToolStripMenuItem.Visible = false;
+            // 
+            // sairToolStripMenuItem
+            // 
+            this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
+            this.sairToolStripMenuItem.Text = "Sair";
+            this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
@@ -276,7 +301,7 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuSistema;
             this.Name = "frmPrincipal";
-            this.Text = "Omie";
+            this.Text = "Optima";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
             this.menuSistema.ResumeLayout(false);
@@ -312,5 +337,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuPerfilUsuarios;
         private System.Windows.Forms.ToolStripMenuItem mnuPermissoesAcesso;
         private System.Windows.Forms.ToolStripMenuItem trocarSenhaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem trocarUsuárioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
     }
 }

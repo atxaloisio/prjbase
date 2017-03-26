@@ -34,7 +34,7 @@
             this.txtCodCliIntegracao = new System.Windows.Forms.TextBox();
             this.txtClienteNome = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.cbCondPagamento = new System.Windows.Forms.ComboBox();
+            this.cbTransportadora = new System.Windows.Forms.ComboBox();
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtIdCliente = new System.Windows.Forms.TextBox();
             this.pnlBotoes.SuspendLayout();
@@ -51,12 +51,12 @@
             this.pnlPrincipal.Controls.Add(this.txtIdCliente);
             this.pnlPrincipal.Controls.Add(this.txtId);
             this.pnlPrincipal.Controls.Add(this.label3);
-            this.pnlPrincipal.Controls.Add(this.cbCondPagamento);
+            this.pnlPrincipal.Controls.Add(this.cbTransportadora);
             this.pnlPrincipal.Controls.Add(this.btnPesquisa);
             this.pnlPrincipal.Controls.Add(this.label2);
             this.pnlPrincipal.Controls.Add(this.txtCodCliIntegracao);
             this.pnlPrincipal.Controls.Add(this.txtClienteNome);
-            this.pnlPrincipal.Size = new System.Drawing.Size(619, 112);
+            this.pnlPrincipal.Size = new System.Drawing.Size(570, 112);
             // 
             // btnPesquisa
             // 
@@ -64,7 +64,7 @@
             this.btnPesquisa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPesquisa.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnPesquisa.Image = ((System.Drawing.Image)(resources.GetObject("btnPesquisa.Image")));
-            this.btnPesquisa.Location = new System.Drawing.Point(162, 12);
+            this.btnPesquisa.Location = new System.Drawing.Point(161, 12);
             this.btnPesquisa.Name = "btnPesquisa";
             this.btnPesquisa.Size = new System.Drawing.Size(27, 27);
             this.btnPesquisa.TabIndex = 2;
@@ -77,7 +77,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(4, 17);
+            this.label2.Location = new System.Drawing.Point(5, 17);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 16);
             this.label2.TabIndex = 37;
@@ -86,7 +86,7 @@
             // txtCodCliIntegracao
             // 
             this.epValidaDados.SetFraseErro(this.txtCodCliIntegracao, "");
-            this.txtCodCliIntegracao.Location = new System.Drawing.Point(61, 14);
+            this.txtCodCliIntegracao.Location = new System.Drawing.Point(60, 14);
             this.txtCodCliIntegracao.Name = "txtCodCliIntegracao";
             this.epValidaDados.SetObrigatorio(this.txtCodCliIntegracao, false);
             this.txtCodCliIntegracao.Size = new System.Drawing.Size(100, 23);
@@ -97,34 +97,34 @@
             // txtClienteNome
             // 
             this.epValidaDados.SetFraseErro(this.txtClienteNome, "Cliente obrigatório.");
-            this.txtClienteNome.Location = new System.Drawing.Point(190, 14);
+            this.txtClienteNome.Location = new System.Drawing.Point(189, 14);
             this.txtClienteNome.Name = "txtClienteNome";
             this.epValidaDados.SetObrigatorio(this.txtClienteNome, true);
             this.txtClienteNome.ReadOnly = true;
-            this.txtClienteNome.Size = new System.Drawing.Size(405, 23);
+            this.txtClienteNome.Size = new System.Drawing.Size(358, 23);
             this.txtClienteNome.TabIndex = 3;
             this.txtClienteNome.TabStop = false;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(4, 52);
+            this.label3.Location = new System.Drawing.Point(5, 44);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(141, 16);
+            this.label3.Size = new System.Drawing.Size(110, 16);
             this.label3.TabIndex = 39;
-            this.label3.Text = "Cond. de Pagamento";
+            this.label3.Text = "Transportadora";
             // 
-            // cbCondPagamento
+            // cbTransportadora
             // 
-            this.cbCondPagamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbCondPagamento.FormattingEnabled = true;
-            this.epValidaDados.SetFraseErro(this.cbCondPagamento, "Codição de pagamento obrigatório.");
-            this.epValidaDados.SetIndiceCombo(this.cbCondPagamento, -1);
-            this.cbCondPagamento.Location = new System.Drawing.Point(162, 48);
-            this.cbCondPagamento.Name = "cbCondPagamento";
-            this.epValidaDados.SetObrigatorio(this.cbCondPagamento, true);
-            this.cbCondPagamento.Size = new System.Drawing.Size(433, 24);
-            this.cbCondPagamento.TabIndex = 4;
+            this.cbTransportadora.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTransportadora.FormattingEnabled = true;
+            this.epValidaDados.SetFraseErro(this.cbTransportadora, "Codição de pagamento obrigatório.");
+            this.epValidaDados.SetIndiceCombo(this.cbTransportadora, -1);
+            this.cbTransportadora.Location = new System.Drawing.Point(121, 41);
+            this.cbTransportadora.Name = "cbTransportadora";
+            this.epValidaDados.SetObrigatorio(this.cbTransportadora, true);
+            this.cbTransportadora.Size = new System.Drawing.Size(426, 24);
+            this.cbTransportadora.TabIndex = 4;
             // 
             // txtId
             // 
@@ -153,7 +153,7 @@
             // frmCadEditCliente_Transportadora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(734, 112);
+            this.ClientSize = new System.Drawing.Size(685, 112);
             this.Name = "frmCadEditCliente_Transportadora";
             this.Text = "Cliente x Formas de Pagamento";
             this.pnlBotoes.ResumeLayout(false);
@@ -170,7 +170,7 @@
         private System.Windows.Forms.TextBox txtCodCliIntegracao;
         private System.Windows.Forms.TextBox txtClienteNome;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cbCondPagamento;
+        private System.Windows.Forms.ComboBox cbTransportadora;
         private System.Windows.Forms.TextBox txtIdCliente;
         private System.Windows.Forms.TextBox txtId;
     }

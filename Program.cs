@@ -23,7 +23,7 @@ namespace prjbase
 
             frmSplash splash = new frmSplash();
             splash.Show();
-
+            
             Application.DoEvents();
            
             splash.setMensagem("Carregando configurações.");
@@ -32,6 +32,7 @@ namespace prjbase
             Application.DoEvents();
             
             splash.setMensagem("Sincronizando informações com a nuvem.");
+            Application.DoEvents();
 
             /*Ao incluir um novo webservice no projeto SYNC copiar o conteundo de <system.serviceModel> </system.serviceModel> 
              * para o app.config da aplicação principal.
@@ -39,51 +40,143 @@ namespace prjbase
 
 #if RELEASE
 
-            //Clientes
-            ClienteProxy cp = new ClienteProxy();
-            try
-            {                
-                cp.SyncCadastroCliente();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.InnerException.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                throw;
-            }
+            ////Clientes
+            //ClienteProxy cp = new ClienteProxy();
+            //try
+            //{                
+            //    cp.SyncCadastroCliente();
+            //}
+            //catch(Exception ex)
+            //{
+            //    MessageBox.Show(ex.InnerException.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    throw;
+            //}
 
-            //Produtos
-            ProdutoProxy pp = new ProdutoProxy();
-            try
-            {
-                pp.SyncCadastroProduto();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                throw;
-            }
+            ////Produtos
+            //ProdutoProxy pp = new ProdutoProxy();
+            //try
+            //{
+            //    pp.SyncCadastroProduto();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    throw;
+            //}
 
-            FormaPagVendasProxy fpv = new FormaPagVendasProxy();
-            try
-            {
-                fpv.SyncFormaPagVendas();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);                
-            }
+            //FormaPagVendasProxy fpv = new FormaPagVendasProxy();
+            //try
+            //{
+            //    fpv.SyncFormaPagVendas();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);                
+            //}
 
-            CidadesProxy cid = new CidadesProxy();
-            try
-            {
-                cid.SyncCidades();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                throw;
-            }
+            //CidadesProxy cid = new CidadesProxy();
+            //try
+            //{
+            //    cid.SyncCidades();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    throw;
+            //}
+
+            //ProdutosImpostosProxy prod = new ProdutosImpostosProxy();
+            //try
+            //{
+            //    prod.SyncProdutosImpostos();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    throw;
+            //}
+
+            //ParcelaProxy parcelas = new ParcelaProxy();
+            //try
+            //{
+            //    splash.setMensagem("Sincronizando cadastro de parcelas");
+            //    Application.DoEvents();
+            //    parcelas.SyncParcela();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    throw;
+            //}
+
+            //ProdutosImpostosProxy prod = new ProdutosImpostosProxy();
+            //try
+            //{
+            //    splash.setMensagem("Sincronizando cadastro de Impostos aprendidos.");
+            //    Application.DoEvents();
+            //    prod.SyncProdutosImpostos();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    throw;
+            //}
+
+            //CategoriaProxy categ = new CategoriaProxy();
+            //try
+            //{
+            //    splash.setMensagem("Sincronizando cadastro de Categorias.");
+            //    Application.DoEvents();
+            //    categ.SyncCategoria();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    throw;
+            //}
+
+            // ContaCorrenteProxy cc = new ContaCorrenteProxy();
+            //try
+            //{
+            //    splash.setMensagem("Sincronizando cadastro de Conta Corrente.");
+            //    Application.DoEvents();
+            //    cc.SyncContaCorrente();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    throw;
+            //}
+
+            //ContaCorrenteProxy cc = new ContaCorrenteProxy();
+            //try
+            //{
+            //    splash.setMensagem("Sincronizando cadastro de Conta Corrente.");
+            //    Application.DoEvents();
+            //    cc.SyncContaCorrente();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    throw;
+            //}
+
+            //ContaCorrenteProxy cc = new ContaCorrenteProxy();
+            //try
+            //{
+            //    splash.setMensagem("Sincronizando cadastro de Conta Corrente.");
+            //    Application.DoEvents();
+            //    cc.SyncContaCorrente();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    throw;
+            //}
 #endif
+
+
+
 
 
 
