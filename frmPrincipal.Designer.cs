@@ -41,6 +41,7 @@
             this.mnuCadRelClienteTransportadora = new System.Windows.Forms.ToolStripMenuItem();
             this.processosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.agrupamentoDePedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.atualizarStatusDoPedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatoriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rotasDeEntregaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.utilitáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -160,7 +161,8 @@
             // processosToolStripMenuItem
             // 
             this.processosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.agrupamentoDePedidosToolStripMenuItem});
+            this.agrupamentoDePedidosToolStripMenuItem,
+            this.atualizarStatusDoPedidoToolStripMenuItem});
             this.processosToolStripMenuItem.Name = "processosToolStripMenuItem";
             this.processosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.processosToolStripMenuItem.Tag = "2000";
@@ -173,6 +175,14 @@
             this.agrupamentoDePedidosToolStripMenuItem.Tag = "2001";
             this.agrupamentoDePedidosToolStripMenuItem.Text = "Agrupamento de Pedidos";
             this.agrupamentoDePedidosToolStripMenuItem.Click += new System.EventHandler(this.agrupamentoDePedidosToolStripMenuItem_Click);
+            // 
+            // atualizarStatusDoPedidoToolStripMenuItem
+            // 
+            this.atualizarStatusDoPedidoToolStripMenuItem.Name = "atualizarStatusDoPedidoToolStripMenuItem";
+            this.atualizarStatusDoPedidoToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.atualizarStatusDoPedidoToolStripMenuItem.Tag = "2002";
+            this.atualizarStatusDoPedidoToolStripMenuItem.Text = "Status do Pedido";
+            this.atualizarStatusDoPedidoToolStripMenuItem.Click += new System.EventHandler(this.atualizarStatusDoPedidoToolStripMenuItem_Click);
             // 
             // relatoriosToolStripMenuItem
             // 
@@ -339,5 +349,6 @@
         private System.Windows.Forms.ToolStripMenuItem trocarSenhaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem trocarUsuárioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem atualizarStatusDoPedidoToolStripMenuItem;
     }
 }

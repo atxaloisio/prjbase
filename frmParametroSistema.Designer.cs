@@ -36,6 +36,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.chkIntGenLab = new System.Windows.Forms.CheckBox();
             this.tpPedidoVenda = new System.Windows.Forms.TabPage();
+            this.txtCodigoEmpresa = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.cbContaCorrente = new System.Windows.Forms.ComboBox();
             this.cbCategoria = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,17 +47,28 @@
             this.txtAppKey = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.lblQtdRegistros = new System.Windows.Forms.Label();
+            this.pbSincronizar = new System.Windows.Forms.ProgressBar();
+            this.btnSincronizar = new System.Windows.Forms.Button();
+            this.lblMensagem = new System.Windows.Forms.Label();
+            this.chkCidade = new System.Windows.Forms.CheckBox();
+            this.chkContaCorrente = new System.Windows.Forms.CheckBox();
+            this.chkCategoria = new System.Windows.Forms.CheckBox();
+            this.chkFormaPagto = new System.Windows.Forms.CheckBox();
+            this.chkImpostos = new System.Windows.Forms.CheckBox();
+            this.chkProdutos = new System.Windows.Forms.CheckBox();
+            this.chkClientes = new System.Windows.Forms.CheckBox();
             this.pnlBotoes = new System.Windows.Forms.Panel();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.dlgCaminhoArquivos = new System.Windows.Forms.FolderBrowserDialog();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtCodigoEmpresa = new System.Windows.Forms.TextBox();
             this.pnlPrincipal.SuspendLayout();
             this.tcParametros.SuspendLayout();
             this.tpGeral.SuspendLayout();
             this.tpPedidoVenda.SuspendLayout();
             this.tpIntegracao.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.pnlBotoes.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,6 +88,7 @@
             this.tcParametros.Controls.Add(this.tpGeral);
             this.tcParametros.Controls.Add(this.tpPedidoVenda);
             this.tcParametros.Controls.Add(this.tpIntegracao);
+            this.tcParametros.Controls.Add(this.tabPage1);
             this.tcParametros.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcParametros.Location = new System.Drawing.Point(0, 0);
             this.tcParametros.Name = "tcParametros";
@@ -154,6 +168,23 @@
             this.tpPedidoVenda.TabIndex = 1;
             this.tpPedidoVenda.Text = "Pedido de Vendas";
             this.tpPedidoVenda.UseVisualStyleBackColor = true;
+            // 
+            // txtCodigoEmpresa
+            // 
+            this.txtCodigoEmpresa.Location = new System.Drawing.Point(10, 146);
+            this.txtCodigoEmpresa.Name = "txtCodigoEmpresa";
+            this.txtCodigoEmpresa.Size = new System.Drawing.Size(163, 23);
+            this.txtCodigoEmpresa.TabIndex = 5;
+            this.txtCodigoEmpresa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 127);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(130, 16);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "Código da Empresa";
             // 
             // cbContaCorrente
             // 
@@ -236,6 +267,137 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "App Key";
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.lblQtdRegistros);
+            this.tabPage1.Controls.Add(this.pbSincronizar);
+            this.tabPage1.Controls.Add(this.btnSincronizar);
+            this.tabPage1.Controls.Add(this.lblMensagem);
+            this.tabPage1.Controls.Add(this.chkCidade);
+            this.tabPage1.Controls.Add(this.chkContaCorrente);
+            this.tabPage1.Controls.Add(this.chkCategoria);
+            this.tabPage1.Controls.Add(this.chkFormaPagto);
+            this.tabPage1.Controls.Add(this.chkImpostos);
+            this.tabPage1.Controls.Add(this.chkProdutos);
+            this.tabPage1.Controls.Add(this.chkClientes);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(538, 227);
+            this.tabPage1.TabIndex = 3;
+            this.tabPage1.Text = "Sincronizar Base x Omie";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // lblQtdRegistros
+            // 
+            this.lblQtdRegistros.AutoSize = true;
+            this.lblQtdRegistros.Location = new System.Drawing.Point(395, 154);
+            this.lblQtdRegistros.Name = "lblQtdRegistros";
+            this.lblQtdRegistros.Size = new System.Drawing.Size(0, 16);
+            this.lblQtdRegistros.TabIndex = 12;
+            // 
+            // pbSincronizar
+            // 
+            this.pbSincronizar.Location = new System.Drawing.Point(10, 173);
+            this.pbSincronizar.Name = "pbSincronizar";
+            this.pbSincronizar.Size = new System.Drawing.Size(518, 14);
+            this.pbSincronizar.TabIndex = 11;
+            // 
+            // btnSincronizar
+            // 
+            this.btnSincronizar.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnSincronizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSincronizar.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSincronizar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSincronizar.Image = global::prjbase.Properties.Resources.sync;
+            this.btnSincronizar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnSincronizar.Location = new System.Drawing.Point(213, 191);
+            this.btnSincronizar.Name = "btnSincronizar";
+            this.btnSincronizar.Size = new System.Drawing.Size(115, 33);
+            this.btnSincronizar.TabIndex = 10;
+            this.btnSincronizar.Text = "&Sincronizar";
+            this.btnSincronizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSincronizar.UseVisualStyleBackColor = false;
+            this.btnSincronizar.Click += new System.EventHandler(this.btnSincronizar_Click);
+            // 
+            // lblMensagem
+            // 
+            this.lblMensagem.AutoSize = true;
+            this.lblMensagem.Location = new System.Drawing.Point(7, 154);
+            this.lblMensagem.Name = "lblMensagem";
+            this.lblMensagem.Size = new System.Drawing.Size(0, 16);
+            this.lblMensagem.TabIndex = 7;
+            // 
+            // chkCidade
+            // 
+            this.chkCidade.AutoSize = true;
+            this.chkCidade.Location = new System.Drawing.Point(6, 135);
+            this.chkCidade.Name = "chkCidade";
+            this.chkCidade.Size = new System.Drawing.Size(77, 20);
+            this.chkCidade.TabIndex = 6;
+            this.chkCidade.Text = "Cidades";
+            this.chkCidade.UseVisualStyleBackColor = true;
+            // 
+            // chkContaCorrente
+            // 
+            this.chkContaCorrente.AutoSize = true;
+            this.chkContaCorrente.Location = new System.Drawing.Point(6, 113);
+            this.chkContaCorrente.Name = "chkContaCorrente";
+            this.chkContaCorrente.Size = new System.Drawing.Size(134, 20);
+            this.chkContaCorrente.TabIndex = 5;
+            this.chkContaCorrente.Text = "Contas Corrente";
+            this.chkContaCorrente.UseVisualStyleBackColor = true;
+            // 
+            // chkCategoria
+            // 
+            this.chkCategoria.AutoSize = true;
+            this.chkCategoria.Location = new System.Drawing.Point(6, 91);
+            this.chkCategoria.Name = "chkCategoria";
+            this.chkCategoria.Size = new System.Drawing.Size(97, 20);
+            this.chkCategoria.TabIndex = 4;
+            this.chkCategoria.Text = "Categorias";
+            this.chkCategoria.UseVisualStyleBackColor = true;
+            // 
+            // chkFormaPagto
+            // 
+            this.chkFormaPagto.AutoSize = true;
+            this.chkFormaPagto.Location = new System.Drawing.Point(6, 68);
+            this.chkFormaPagto.Name = "chkFormaPagto";
+            this.chkFormaPagto.Size = new System.Drawing.Size(170, 20);
+            this.chkFormaPagto.TabIndex = 3;
+            this.chkFormaPagto.Text = "Formas de Pagamento";
+            this.chkFormaPagto.UseVisualStyleBackColor = true;
+            // 
+            // chkImpostos
+            // 
+            this.chkImpostos.AutoSize = true;
+            this.chkImpostos.Location = new System.Drawing.Point(6, 47);
+            this.chkImpostos.Name = "chkImpostos";
+            this.chkImpostos.Size = new System.Drawing.Size(165, 20);
+            this.chkImpostos.TabIndex = 2;
+            this.chkImpostos.Text = "Impostos Aprendidos";
+            this.chkImpostos.UseVisualStyleBackColor = true;
+            // 
+            // chkProdutos
+            // 
+            this.chkProdutos.AutoSize = true;
+            this.chkProdutos.Location = new System.Drawing.Point(6, 27);
+            this.chkProdutos.Name = "chkProdutos";
+            this.chkProdutos.Size = new System.Drawing.Size(86, 20);
+            this.chkProdutos.TabIndex = 1;
+            this.chkProdutos.Text = "Produtos";
+            this.chkProdutos.UseVisualStyleBackColor = true;
+            // 
+            // chkClientes
+            // 
+            this.chkClientes.AutoSize = true;
+            this.chkClientes.Location = new System.Drawing.Point(6, 6);
+            this.chkClientes.Name = "chkClientes";
+            this.chkClientes.Size = new System.Drawing.Size(307, 20);
+            this.chkClientes.TabIndex = 0;
+            this.chkClientes.Text = "Clientes / Fornecedores / Transportadoras";
+            this.chkClientes.UseVisualStyleBackColor = true;
+            // 
             // pnlBotoes
             // 
             this.pnlBotoes.Controls.Add(this.btnCancelar);
@@ -281,23 +443,6 @@
             this.btnSalvar.UseVisualStyleBackColor = false;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 127);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(130, 16);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Código da Empresa";
-            // 
-            // txtCodigoEmpresa
-            // 
-            this.txtCodigoEmpresa.Location = new System.Drawing.Point(10, 146);
-            this.txtCodigoEmpresa.Name = "txtCodigoEmpresa";
-            this.txtCodigoEmpresa.Size = new System.Drawing.Size(163, 23);
-            this.txtCodigoEmpresa.TabIndex = 5;
-            this.txtCodigoEmpresa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
-            // 
             // frmParametroSistema
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -315,6 +460,8 @@
             this.tpPedidoVenda.PerformLayout();
             this.tpIntegracao.ResumeLayout(false);
             this.tpIntegracao.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.pnlBotoes.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -345,5 +492,17 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtCodigoEmpresa;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.CheckBox chkImpostos;
+        private System.Windows.Forms.CheckBox chkProdutos;
+        private System.Windows.Forms.CheckBox chkClientes;
+        private System.Windows.Forms.CheckBox chkFormaPagto;
+        private System.Windows.Forms.CheckBox chkContaCorrente;
+        private System.Windows.Forms.CheckBox chkCategoria;
+        private System.Windows.Forms.CheckBox chkCidade;
+        public System.Windows.Forms.Button btnSincronizar;
+        private System.Windows.Forms.Label lblMensagem;
+        private System.Windows.Forms.ProgressBar pbSincronizar;
+        private System.Windows.Forms.Label lblQtdRegistros;
     }
 }

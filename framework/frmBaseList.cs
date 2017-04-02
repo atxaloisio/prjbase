@@ -56,6 +56,7 @@ namespace prjbase
             if (frmInstancia.atualizagrid)
             {
                 carregaConsulta();
+                AtualizaContadores();
             }
             frmInstancia.Dispose();
 
@@ -67,6 +68,7 @@ namespace prjbase
             {
                 excluirRegistro(dgvDados.CurrentRow.Index);
                 carregaConsulta();
+                AtualizaContadores();
             }
             catch (Exception ex)
             {
@@ -116,8 +118,20 @@ namespace prjbase
                 // MessageBox.Show("atualiza.");
                 dgvDados.DataSource = null;
                 carregaConsulta();
+                AtualizaContadores();
             }
             frmInstancia.Dispose();
+        }
+
+        private void AtualizaContadores()
+        {
+            if (totalReg > 0)
+            {
+                totalPaginas = Math.Ceiling(decimal.Divide(totalReg, tamanhoPagina));
+                lblNumeroPagina.Text = Convert.ToString(pagina);
+                lblTotalPaginas.Text = Convert.ToString(totalPaginas);
+                lblTotalRegistros.Text = Convert.ToString(totalReg);
+            }
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -381,13 +395,7 @@ namespace prjbase
                 Application.DoEvents();
                 carregaConsulta();
                 pagina++;
-                if (totalReg > 0)
-                {
-                    totalPaginas = Math.Ceiling(decimal.Divide(totalReg, tamanhoPagina));
-                    lblNumeroPagina.Text = Convert.ToString(pagina);
-                    lblTotalPaginas.Text = Convert.ToString(totalPaginas);
-                    lblTotalRegistros.Text = Convert.ToString(totalReg);                   
-                }
+                AtualizaContadores();
                 configuraBotoesNaveg();
                 formataGridDados();
                 formataGridFiltro();

@@ -602,7 +602,15 @@ namespace prjbase
                 {
                     if (Convert.ToInt32(dgvDados[0, dgvDados.CurrentRow.Index].Value) > 0)
                     {
-                        relatorio.ExibeDialogo(this, Convert.ToInt32(dgvDados[0, dgvDados.CurrentRow.Index].Value));
+                        long? idPed = Convert.ToInt32(dgvDados[0, dgvDados.CurrentRow.Index].Value);
+                        Pedido_OticaBLL pedido_OticaBLL = new Pedido_OticaBLL();
+                        Pedido_Otica pedido_otica = pedido_OticaBLL.Localizar(idPed);
+                        if (pedido_otica.status == (int)StatusPedido.GRAVADO)
+                        {
+                            pedido_OticaBLL.UsuarioLogado = Program.usuario_logado;
+                            pedido_OticaBLL.AtualizarStatusPedido(idPed, StatusPedido.IMPRESSO);
+                        }
+                        relatorio.ExibeDialogo(this, idPed);
                     }
 
                 }

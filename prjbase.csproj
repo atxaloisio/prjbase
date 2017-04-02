@@ -391,6 +391,12 @@
     <Compile Include="frmPrincipal.Designer.cs">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="processos\frmProcAtualizaStatusPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="processos\frmProcAtualizaStatusPedido.Designer.cs">
+      <DependentUpon>frmProcAtualizaStatusPedido.cs</DependentUpon>
+    </Compile>
     <Compile Include="processos\frmProcAgrupaPedido.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -493,6 +499,9 @@
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="processos\frmProcAtualizaStatusPedido.resx">
+      <DependentUpon>frmProcAtualizaStatusPedido.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="processos\frmProcAgrupaPedido.resx">
       <DependentUpon>frmProcAgrupaPedido.cs</DependentUpon>
     </EmbeddedResource>
@@ -548,9 +557,10 @@
     </Content>
     <Content Include="oculos.ico" />
     <Content Include="oculos2.ico" />
+    <None Include="Resources\sync.png" />
+    <None Include="Resources\fundo.png" />
     <None Include="Resources\fundo2.png" />
     <None Include="Resources\fundo1.png" />
-    <None Include="Resources\fundo.png" />
     <None Include="Resources\optima.png" />
     <None Include="Resources\pasta.png" />
     <None Include="Resources\Imprimir.png" />

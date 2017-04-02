@@ -58,13 +58,17 @@ namespace prjbase
                     txtCodCliIntegracao.Text = pedido_otica.cliente.codigo_cliente_integracao;
                     txtClienteNome.Text      = pedido_otica.cliente.nome_fantasia;
                     txtDtEmissao.Text        = pedido_otica.data_emissao.Value.ToShortDateString();
-                    txtDtFechamento.Text     = pedido_otica.data_fechamento.Value.ToShortDateString();
+                    if (pedido_otica.data_fechamento != null)
+                    {
+                        txtDtFechamento.Text = pedido_otica.data_fechamento.Value.ToShortDateString();
+                    }
+                    
 
-                    if (pedido_otica.date_previsao_entrega.Value != null)
+                    if (pedido_otica.date_previsao_entrega != null)
                     {
                         txtDtPrevEntrega.Text = pedido_otica.date_previsao_entrega.Value.ToShortDateString();
                     }
-                    if (pedido_otica.hora_previsao_entrega.Value != null)
+                    if (pedido_otica.hora_previsao_entrega != null)
                     {
                         txtHrPrevEntrega.Text = pedido_otica.hora_previsao_entrega.Value.ToString();
                     }
@@ -189,11 +193,13 @@ namespace prjbase
                     }
                     else
                     {
+                        pedido_Otica.status = (int)StatusPedido.GRAVADO;
                         pedido_OticaBLL.AdicionarPedido_Otica(pedido_Otica);
                         
                     }
 
                     Id = pedido_Otica.Id;
+                    txtCodigo.Text = pedido_Otica.codigo.ToString();
 
                     Retorno = true;
                 }
@@ -213,6 +219,14 @@ namespace prjbase
                 frmReportBase relatorio = new frmReportBase();
                 relatorio.Id = id;
                 relatorio.ImprimirDireto();
+                pedido_OticaBLL = new Pedido_OticaBLL();
+                Pedido_Otica pedido_otica = pedido_OticaBLL.Localizar(id);
+                if (pedido_otica.status == (int) StatusPedido.GRAVADO)
+                {
+                    pedido_OticaBLL.UsuarioLogado = Program.usuario_logado;
+                    pedido_OticaBLL.AtualizarStatusPedido(id, StatusPedido.IMPRESSO);
+                }
+                
             }
         }
 
@@ -647,11 +661,38 @@ namespace prjbase
                         txtCodCliIntegracao.Text = cliente.codigo_cliente_integracao;
                         txtClienteNome.Text = cliente.nome_fantasia;
                         txtIdCliente.Text = cliente.Id.ToString();
-                        if (cliente.cliente_parcela.FirstOrDefault() != null)
+
+                        Cliente_Parcela cliente_Parcela = cliente.cliente_parcela.FirstOrDefault();
+                        if (cliente_Parcela != null)
                         {
-                            cbCondPagamento.SelectedValue = cliente.cliente_parcela.FirstOrDefault().Id_parcela;
+                            cbCondPagamento.SelectedValue = cliente_Parcela.Id_parcela;
                         }
-                        txtDtEmissao.Focus();
+                        if (Id == null)
+                        {
+                            txtDtEmissao.Text = DateTime.Now.ToShortDateString();
+                        }
+
+                        if (cliente.cliente_transportadora.Count() > 0)
+                        {
+                            Cliente_Transportadora cliente_Transportadora = cliente.cliente_transportadora.First();
+                            if (cliente_Transportadora != null)
+                            {
+                                cbTransportadora.SelectedValue = cliente_Transportadora.Id_transportadora;
+                            }
+                        }                        
+                        else
+                        {
+                            //Vamos sugerir a transportadora pela localidade do cliente.
+                            RotaBLL rotaBLL = new RotaBLL();
+                            IList<Rota> RotaList = rotaBLL.getRota(p => p.cidade.cCod == cliente.cidade);
+                            if (RotaList.Count > 0)
+                            {
+                                cbTransportadora.SelectedValue = RotaList.First().id_transportadora;
+                            }                            
+                        }
+
+                        
+                        txtDtFechamento.Focus();                        
                     }
                 }
                 else
@@ -699,8 +740,31 @@ namespace prjbase
                 {
                     cbCondPagamento.SelectedValue = cliente.cliente_parcela.FirstOrDefault().Id_parcela;
                 }
-                txtDtEmissao.Focus();
+                if (Id == null)
+                {
+                    txtDtEmissao.Text = DateTime.Now.ToShortDateString();
+                }
+
+                Cliente_Transportadora cliente_Transportadora = cliente.cliente_transportadora.First();
+                if (cliente_Transportadora != null)
+                {
+                    cbTransportadora.SelectedValue = cliente_Transportadora.Id_transportadora;
+                }
+                else
+                {
+                    //Vamos sugerir a transportadora pela localidade do cliente.
+                    RotaBLL rotaBLL = new RotaBLL();
+                    Rota rota = rotaBLL.getRota(p => p.cidade.cNome == cliente.cidade).First();
+                    if (rota != null)
+                    {
+                        cbTransportadora.SelectedValue = rota.id_transportadora;
+                    }
+                }
+
+                txtDtFechamento.Focus();                
             }
+
+
         }
 
         private void txtDtEmissao_Enter(object sender, EventArgs e)
@@ -741,6 +805,7 @@ namespace prjbase
                 if (((TextBox)sender).Name == "txtCodCliIntegracao")
                 {
                     epValidaDados.SetError(txtClienteNome, string.Empty);
+                    epValidaDados.SetError(txtDtEmissao, string.Empty);
                 }
             }
             else if (sender is MaskedTextBox)

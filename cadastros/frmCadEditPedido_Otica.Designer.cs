@@ -232,7 +232,7 @@
             this.epValidaDados.SetFraseErro(this.txtNrPedCliente, "Numero do pedido no Cliente obrigatório.");
             this.txtNrPedCliente.Location = new System.Drawing.Point(915, 79);
             this.txtNrPedCliente.Name = "txtNrPedCliente";
-            this.epValidaDados.SetObrigatorio(this.txtNrPedCliente, true);
+            this.epValidaDados.SetObrigatorio(this.txtNrPedCliente, false);
             this.txtNrPedCliente.Size = new System.Drawing.Size(67, 23);
             this.txtNrPedCliente.TabIndex = 9;
             // 
@@ -242,7 +242,7 @@
             this.txtDtFechamento.Location = new System.Drawing.Point(895, 48);
             this.txtDtFechamento.Mask = "00/00/0000";
             this.txtDtFechamento.Name = "txtDtFechamento";
-            this.epValidaDados.SetObrigatorio(this.txtDtFechamento, true);
+            this.epValidaDados.SetObrigatorio(this.txtDtFechamento, false);
             this.txtDtFechamento.Size = new System.Drawing.Size(87, 23);
             this.txtDtFechamento.TabIndex = 5;
             this.txtDtFechamento.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
@@ -254,6 +254,7 @@
             // 
             // txtDtEmissao
             // 
+            this.txtDtEmissao.Enabled = false;
             this.epValidaDados.SetFraseErro(this.txtDtEmissao, "Data de Emissão obrigatório");
             this.txtDtEmissao.Location = new System.Drawing.Point(676, 48);
             this.txtDtEmissao.Mask = "00/00/0000";
@@ -436,7 +437,7 @@
             this.epValidaDados.SetIndiceCombo(this.cbTransportadora, -1);
             this.cbTransportadora.Location = new System.Drawing.Point(567, 110);
             this.cbTransportadora.Name = "cbTransportadora";
-            this.epValidaDados.SetObrigatorio(this.cbTransportadora, true);
+            this.epValidaDados.SetObrigatorio(this.cbTransportadora, false);
             this.cbTransportadora.Size = new System.Drawing.Size(234, 24);
             this.cbTransportadora.TabIndex = 11;
             // 

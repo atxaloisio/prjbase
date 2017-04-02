@@ -362,5 +362,13 @@ namespace prjbase
                 AlteraSenha.Dispose();
             }            
         }
+
+        private void atualizarStatusDoPedidoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmProcAtualizaStatusPedido AtualizaStatusPedido = new frmProcAtualizaStatusPedido();
+            AtualizaStatusPedido.Tag = ((ToolStripMenuItem)sender).Tag;
+            AtualizaStatusPedido.ExibeDialogo();
+            AtualizaStatusPedido.Dispose();
+        }
     }
 }
