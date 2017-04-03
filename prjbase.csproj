@@ -367,10 +367,10 @@
     <Compile Include="frmPermissaoAcesso.Designer.cs">
       <DependentUpon>frmPermissaoAcesso.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmReportBase.cs">
+    <Compile Include="framework\frmReportBase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmReportBase.Designer.cs">
+    <Compile Include="framework\frmReportBase.Designer.cs">
       <DependentUpon>frmReportBase.cs</DependentUpon>
     </Compile>
     <Compile Include="frmSplash.cs">
@@ -405,6 +405,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="relatorios\frmRelListPedido_Otica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="relatorios\frmRelListPedido_Otica.Designer.cs">
+      <DependentUpon>frmRelListPedido_Otica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="relatorios\frmRelPedido_Otica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="relatorios\frmRelPedido_Otica.Designer.cs">
+      <DependentUpon>frmRelPedido_Otica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="relatorios\frmRelRota.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="relatorios\frmRelRota.Designer.cs">
+      <DependentUpon>frmRelRota.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs" />
     <EmbeddedResource Include="cadastros\frmCadEditCliente_Transportadora.resx">
       <DependentUpon>frmCadEditCliente_Transportadora.cs</DependentUpon>
@@ -487,7 +505,7 @@
     <EmbeddedResource Include="frmPermissaoAcesso.resx">
       <DependentUpon>frmPermissaoAcesso.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmReportBase.resx">
+    <EmbeddedResource Include="framework\frmReportBase.resx">
       <DependentUpon>frmReportBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSplash.resx">
@@ -510,9 +528,14 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="relatorios\frmRelRota.resx">
+      <DependentUpon>frmRelRota.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="relatorios\relPedido_Otica.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="relatorios\relListPedido_Otica.rdlc" />
+    <EmbeddedResource Include="relatorios\relRota.rdlc" />
     <EmbeddedResource Include="relatorios\subRelItemPedido_Otica.rdlc" />
     <None Include="dbintegracaoDataSet.xsc">
       <DependentUpon>dbintegracaoDataSet.xsd</DependentUpon>

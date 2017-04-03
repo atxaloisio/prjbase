@@ -199,6 +199,7 @@
             this.rotasDeEntregaToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.rotasDeEntregaToolStripMenuItem.Tag = "3001";
             this.rotasDeEntregaToolStripMenuItem.Text = "Rotas de Entrega";
+            this.rotasDeEntregaToolStripMenuItem.Click += new System.EventHandler(this.rotasDeEntregaToolStripMenuItem_Click);
             // 
             // utilitáriosToolStripMenuItem
             // 

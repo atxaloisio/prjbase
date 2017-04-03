@@ -1156,5 +1156,48 @@ namespace prjbase
 
             Destino.Controls.Add(p);
         }
+
+        private void lblSaiuPEntrega_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmRelRota relatorio = new frmRelRota();
+            relatorio.rvRelatorios.LocalReport.ReportEmbeddedResource = "prjbase.relatorios.relRota.rdlc";
+            relatorio.ExibeDialogo(this);
+            relatorio.Dispose();
+        }
+
+        private void lblGravadasImpressas_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ListaPedido_Otica(StatusPedido.GRAVADO, StatusPedido.IMPRESSO);
+        }
+
+        private void lblAgProducao_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ListaPedido_Otica(StatusPedido.AGPRODUCAO, StatusPedido.AGPRODUCAO);
+        }
+
+        private void lblEmProducao_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ListaPedido_Otica(StatusPedido.PRODUCAO, StatusPedido.PRODUCAO);
+        }
+
+        private void lblAEntregar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ListaPedido_Otica(StatusPedido.AENTREGAR, StatusPedido.AENTREGAR);
+        }
+
+        private void ListaPedido_Otica(StatusPedido StatusDe, StatusPedido StatusAte)
+        {
+            frmRelListPedido_Otica relatorio = new frmRelListPedido_Otica();
+            relatorio.rvRelatorios.LocalReport.ReportEmbeddedResource = "prjbase.relatorios.relListPedido_Otica.rdlc";
+            relatorio.statusDe = StatusDe;
+            relatorio.statusAte = StatusAte;
+            relatorio.ExibeDialogo(this);
+            relatorio.Dispose();
+        }
+
+        private void lblEntregue_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ListaPedido_Otica(StatusPedido.ENTREGUE, StatusPedido.ENTREGUE);
+        }
     }
 }

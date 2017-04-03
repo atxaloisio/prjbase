@@ -1122,6 +1122,7 @@
             this.txtod_gl_cil.Size = new System.Drawing.Size(53, 21);
             this.txtod_gl_cil.TabIndex = 0;
             this.txtod_gl_cil.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EsfCil_KeyPress);
+            this.txtod_gl_cil.Validated += new System.EventHandler(this.txtod_gl_cil_Validated);
             // 
             // groupBox6
             // 

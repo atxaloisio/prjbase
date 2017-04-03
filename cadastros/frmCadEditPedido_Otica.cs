@@ -73,8 +73,16 @@ namespace prjbase
                         txtHrPrevEntrega.Text = pedido_otica.hora_previsao_entrega.Value.ToString();
                     }
 
-                    cbCondPagamento.SelectedValue  = pedido_otica.condicao_pagamento;
-                    cbTransportadora.SelectedValue = pedido_otica.Id_transportadora;
+                    if (pedido_otica.condicao_pagamento != null)
+                    {
+                        cbCondPagamento.SelectedValue = pedido_otica.condicao_pagamento;
+                    }
+                    
+                    if (pedido_otica.Id_transportadora != null)
+                    {
+                        cbTransportadora.SelectedValue = pedido_otica.Id_transportadora;
+                    }
+                    
                     txtNrPedCliente.Text           = pedido_otica.numero_pedido_cliente;
                     txtNrCaixa.Text                = pedido_otica.numero_caixa;
 
@@ -216,7 +224,7 @@ namespace prjbase
         {
             if (MessageBox.Show(Text + " Deseja imprimir o recido do pedido?", Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                frmReportBase relatorio = new frmReportBase();
+                frmRelPedido_Otica relatorio = new frmRelPedido_Otica();
                 relatorio.Id = id;
                 relatorio.ImprimirDireto();
                 pedido_OticaBLL = new Pedido_OticaBLL();
@@ -736,30 +744,35 @@ namespace prjbase
                 txtIdCliente.Text = cliente.Id.ToString();
                 txtCodCliIntegracao.Text = cliente.codigo_cliente_integracao;
                 txtClienteNome.Text = cliente.nome_fantasia;
-                if (cliente.cliente_parcela.FirstOrDefault() != null)
+                if (cliente.cliente_parcela.Count() > 0)
                 {
-                    cbCondPagamento.SelectedValue = cliente.cliente_parcela.FirstOrDefault().Id_parcela;
+                    cbCondPagamento.SelectedValue = cliente.cliente_parcela.FirstOrDefault().Id_parcela;                    
                 }
+                
                 if (Id == null)
                 {
                     txtDtEmissao.Text = DateTime.Now.ToShortDateString();
                 }
 
-                Cliente_Transportadora cliente_Transportadora = cliente.cliente_transportadora.First();
-                if (cliente_Transportadora != null)
+                if (cliente.cliente_transportadora.Count() > 0)
                 {
-                    cbTransportadora.SelectedValue = cliente_Transportadora.Id_transportadora;
-                }
-                else
-                {
-                    //Vamos sugerir a transportadora pela localidade do cliente.
-                    RotaBLL rotaBLL = new RotaBLL();
-                    Rota rota = rotaBLL.getRota(p => p.cidade.cNome == cliente.cidade).First();
-                    if (rota != null)
+                    Cliente_Transportadora cliente_Transportadora = cliente.cliente_transportadora.First();
+                    if (cliente_Transportadora != null)
                     {
-                        cbTransportadora.SelectedValue = rota.id_transportadora;
+                        cbTransportadora.SelectedValue = cliente_Transportadora.Id_transportadora;
+                    }
+                    else
+                    {
+                        //Vamos sugerir a transportadora pela localidade do cliente.
+                        RotaBLL rotaBLL = new RotaBLL();
+                        Rota rota = rotaBLL.getRota(p => p.cidade.cNome == cliente.cidade).First();
+                        if (rota != null)
+                        {
+                            cbTransportadora.SelectedValue = rota.id_transportadora;
+                        }
                     }
                 }
+                
 
                 txtDtFechamento.Focus();                
             }
@@ -1249,6 +1262,13 @@ namespace prjbase
             string nomearq = "123.dat";
             string linha = "0,1,\"OTICA MATEUS; 0059; 8152\",+0.50,-0.50,180,2.50,+0.50,-0.50,180,2.50,,,,,,,,,,,,,,,,,,,,";
             GravaArquivo.EscreverArquivo(caminho + nomearq, linha);
+        }
+
+        private void txtod_gl_cil_Validated(object sender, EventArgs e)
+        {
+            pedido_OticaBLL = new Pedido_OticaBLL();
+
+            txtBaseCalculada.Text = pedido_OticaBLL.CalcularBasePedido_Otica(txtod_gl_esf.Text, txtod_gl_cil.Text).ToString();
         }
     }
 }

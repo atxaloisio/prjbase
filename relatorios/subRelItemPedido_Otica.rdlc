@@ -6,19 +6,19 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.30937cm</Width>
+              <Width>1.89145cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.66958cm</Width>
+              <Width>4.49584cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>0.87676cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.10313cm</Width>
+              <Width>0.88605cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.73271cm</Width>
+              <Width>1.65333cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>1.44167cm</Width>
@@ -27,7 +27,7 @@
               <Width>1.57396cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>1.62688cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -46,12 +46,14 @@
                               <Value>CODIGO</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
-                                <FontSize>7.5pt</FontSize>
+                                <FontSize>6pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox1</rd:DefaultName>
@@ -89,12 +91,14 @@
                               <Value>DESCRIÇÃO</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
-                                <FontSize>7.5pt</FontSize>
+                                <FontSize>6pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox3</rd:DefaultName>
@@ -129,7 +133,7 @@
                               <Value>UN</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
-                                <FontSize>7.5pt</FontSize>
+                                <FontSize>6pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -168,10 +172,10 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>QUANT.</Value>
+                              <Value>QTD.</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
-                                <FontSize>7.5pt</FontSize>
+                                <FontSize>6pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -211,7 +215,7 @@
                               <Value>VLR. UNIT.</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
-                                <FontSize>7.5pt</FontSize>
+                                <FontSize>6pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -251,7 +255,7 @@
                               <Value>% DESC.</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
-                                <FontSize>7.5pt</FontSize>
+                                <FontSize>6pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -291,7 +295,7 @@
                               <Value>VLR DESC.</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
-                                <FontSize>7.5pt</FontSize>
+                                <FontSize>6pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -331,7 +335,7 @@
                               <Value>VLR TOTAL</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
-                                <FontSize>7.5pt</FontSize>
+                                <FontSize>6pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -383,7 +387,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>codigo</rd:DefaultName>
@@ -482,7 +488,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>quantidade</rd:DefaultName>
@@ -659,7 +667,7 @@
         </TablixRowHierarchy>
         <DataSetName>DataSetItemPedido_Otica</DataSetName>
         <Height>1.00542cm</Height>
-        <Width>16.20718cm</Width>
+        <Width>14.44594cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -669,17 +677,17 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>1.82546in</Height>
+    <Height>1.43542in</Height>
     <Style />
   </Body>
-  <Width>6.38078in</Width>
+  <Width>5.83321in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
-    <LeftMargin>2cm</LeftMargin>
-    <RightMargin>2cm</RightMargin>
-    <TopMargin>2cm</TopMargin>
-    <BottomMargin>2cm</BottomMargin>
+    <LeftMargin>0.5cm</LeftMargin>
+    <RightMargin>0.5cm</RightMargin>
+    <TopMargin>0.5cm</TopMargin>
+    <BottomMargin>0.5cm</BottomMargin>
     <ColumnSpacing>0.13cm</ColumnSpacing>
     <Style />
   </Page>

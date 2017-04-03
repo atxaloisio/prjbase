@@ -6,3 +6,10 @@
     {
     }
 }
+
+namespace prjbase.dbintegracaoDataSetTableAdapters {
+    
+    
+    public partial class qryListPedido_OticaTableAdapter {
+    }
+}

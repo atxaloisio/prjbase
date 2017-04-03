@@ -370,5 +370,13 @@ namespace prjbase
             AtualizaStatusPedido.ExibeDialogo();
             AtualizaStatusPedido.Dispose();
         }
+
+        private void rotasDeEntregaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRelRota relatorio = new frmRelRota();
+            //relatorio.rvRelatorios.LocalReport.ReportEmbeddedResource = "prjbase.relatorios.relRota.rdlc";
+            relatorio.ExibeDialogo(this);
+            relatorio.Dispose();
+        }
     }
 }

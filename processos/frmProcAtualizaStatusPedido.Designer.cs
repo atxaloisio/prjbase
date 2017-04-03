@@ -32,22 +32,22 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.lblCountEntregue = new System.Windows.Forms.Label();
-            this.linkLabel6 = new System.Windows.Forms.LinkLabel();
+            this.lblEntregue = new System.Windows.Forms.LinkLabel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.lblCountSaiuPEntrega = new System.Windows.Forms.Label();
-            this.linkLabel5 = new System.Windows.Forms.LinkLabel();
+            this.lblSaiuPEntrega = new System.Windows.Forms.LinkLabel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblCountAEntregar = new System.Windows.Forms.Label();
-            this.linkLabel4 = new System.Windows.Forms.LinkLabel();
+            this.lblAEntregar = new System.Windows.Forms.LinkLabel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblCountEmProducao = new System.Windows.Forms.Label();
-            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
+            this.lblEmProducao = new System.Windows.Forms.LinkLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblCountAgProducao = new System.Windows.Forms.Label();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.lblAgProducao = new System.Windows.Forms.LinkLabel();
             this.pnlGravadasImpressas = new System.Windows.Forms.Panel();
             this.lblCountGravadas = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.lblGravadasImpressas = new System.Windows.Forms.LinkLabel();
             this.pnlEntregue = new System.Windows.Forms.Panel();
             this.pnlSaiuPEntrega = new System.Windows.Forms.Panel();
             this.pnlAEntregar = new System.Windows.Forms.Panel();
@@ -104,7 +104,7 @@
             this.panel6.BackColor = System.Drawing.SystemColors.HotTrack;
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel6.Controls.Add(this.lblCountEntregue);
-            this.panel6.Controls.Add(this.linkLabel6);
+            this.panel6.Controls.Add(this.lblEntregue);
             this.panel6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel6.Location = new System.Drawing.Point(896, 0);
             this.panel6.Name = "panel6";
@@ -122,23 +122,24 @@
             this.lblCountEntregue.Text = "(0)";
             this.lblCountEntregue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // linkLabel6
+            // lblEntregue
             // 
-            this.linkLabel6.AutoSize = true;
-            this.linkLabel6.LinkColor = System.Drawing.Color.White;
-            this.linkLabel6.Location = new System.Drawing.Point(55, 4);
-            this.linkLabel6.Name = "linkLabel6";
-            this.linkLabel6.Size = new System.Drawing.Size(67, 16);
-            this.linkLabel6.TabIndex = 1;
-            this.linkLabel6.TabStop = true;
-            this.linkLabel6.Text = "Entregue";
+            this.lblEntregue.AutoSize = true;
+            this.lblEntregue.LinkColor = System.Drawing.Color.White;
+            this.lblEntregue.Location = new System.Drawing.Point(55, 4);
+            this.lblEntregue.Name = "lblEntregue";
+            this.lblEntregue.Size = new System.Drawing.Size(67, 16);
+            this.lblEntregue.TabIndex = 1;
+            this.lblEntregue.TabStop = true;
+            this.lblEntregue.Text = "Entregue";
+            this.lblEntregue.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblEntregue_LinkClicked);
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.HotTrack;
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel5.Controls.Add(this.lblCountSaiuPEntrega);
-            this.panel5.Controls.Add(this.linkLabel5);
+            this.panel5.Controls.Add(this.lblSaiuPEntrega);
             this.panel5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel5.Location = new System.Drawing.Point(717, 0);
             this.panel5.Name = "panel5";
@@ -156,23 +157,24 @@
             this.lblCountSaiuPEntrega.Text = "(0)";
             this.lblCountSaiuPEntrega.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // linkLabel5
+            // lblSaiuPEntrega
             // 
-            this.linkLabel5.AutoSize = true;
-            this.linkLabel5.LinkColor = System.Drawing.Color.White;
-            this.linkLabel5.Location = new System.Drawing.Point(27, 4);
-            this.linkLabel5.Name = "linkLabel5";
-            this.linkLabel5.Size = new System.Drawing.Size(124, 16);
-            this.linkLabel5.TabIndex = 1;
-            this.linkLabel5.TabStop = true;
-            this.linkLabel5.Text = "Saiu para Entrega";
+            this.lblSaiuPEntrega.AutoSize = true;
+            this.lblSaiuPEntrega.LinkColor = System.Drawing.Color.White;
+            this.lblSaiuPEntrega.Location = new System.Drawing.Point(27, 4);
+            this.lblSaiuPEntrega.Name = "lblSaiuPEntrega";
+            this.lblSaiuPEntrega.Size = new System.Drawing.Size(124, 16);
+            this.lblSaiuPEntrega.TabIndex = 1;
+            this.lblSaiuPEntrega.TabStop = true;
+            this.lblSaiuPEntrega.Text = "Saiu para Entrega";
+            this.lblSaiuPEntrega.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblSaiuPEntrega_LinkClicked);
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.HotTrack;
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.lblCountAEntregar);
-            this.panel4.Controls.Add(this.linkLabel4);
+            this.panel4.Controls.Add(this.lblAEntregar);
             this.panel4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel4.Location = new System.Drawing.Point(538, 0);
             this.panel4.Name = "panel4";
@@ -190,23 +192,24 @@
             this.lblCountAEntregar.Text = "(0)";
             this.lblCountAEntregar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // linkLabel4
+            // lblAEntregar
             // 
-            this.linkLabel4.AutoSize = true;
-            this.linkLabel4.LinkColor = System.Drawing.Color.White;
-            this.linkLabel4.Location = new System.Drawing.Point(53, 4);
-            this.linkLabel4.Name = "linkLabel4";
-            this.linkLabel4.Size = new System.Drawing.Size(79, 16);
-            this.linkLabel4.TabIndex = 1;
-            this.linkLabel4.TabStop = true;
-            this.linkLabel4.Text = "A Entregar";
+            this.lblAEntregar.AutoSize = true;
+            this.lblAEntregar.LinkColor = System.Drawing.Color.White;
+            this.lblAEntregar.Location = new System.Drawing.Point(53, 4);
+            this.lblAEntregar.Name = "lblAEntregar";
+            this.lblAEntregar.Size = new System.Drawing.Size(79, 16);
+            this.lblAEntregar.TabIndex = 1;
+            this.lblAEntregar.TabStop = true;
+            this.lblAEntregar.Text = "A Entregar";
+            this.lblAEntregar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblAEntregar_LinkClicked);
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.HotTrack;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.lblCountEmProducao);
-            this.panel3.Controls.Add(this.linkLabel3);
+            this.panel3.Controls.Add(this.lblEmProducao);
             this.panel3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel3.Location = new System.Drawing.Point(359, 0);
             this.panel3.Name = "panel3";
@@ -224,23 +227,24 @@
             this.lblCountEmProducao.Text = "(0)";
             this.lblCountEmProducao.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // linkLabel3
+            // lblEmProducao
             // 
-            this.linkLabel3.AutoSize = true;
-            this.linkLabel3.LinkColor = System.Drawing.Color.White;
-            this.linkLabel3.Location = new System.Drawing.Point(47, 4);
-            this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.Size = new System.Drawing.Size(91, 16);
-            this.linkLabel3.TabIndex = 1;
-            this.linkLabel3.TabStop = true;
-            this.linkLabel3.Text = "Em Producao";
+            this.lblEmProducao.AutoSize = true;
+            this.lblEmProducao.LinkColor = System.Drawing.Color.White;
+            this.lblEmProducao.Location = new System.Drawing.Point(47, 4);
+            this.lblEmProducao.Name = "lblEmProducao";
+            this.lblEmProducao.Size = new System.Drawing.Size(91, 16);
+            this.lblEmProducao.TabIndex = 1;
+            this.lblEmProducao.TabStop = true;
+            this.lblEmProducao.Text = "Em Producao";
+            this.lblEmProducao.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblEmProducao_LinkClicked);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.HotTrack;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.lblCountAgProducao);
-            this.panel1.Controls.Add(this.linkLabel2);
+            this.panel1.Controls.Add(this.lblAgProducao);
             this.panel1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(180, 0);
             this.panel1.Name = "panel1";
@@ -258,23 +262,24 @@
             this.lblCountAgProducao.Text = "(0)";
             this.lblCountAgProducao.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // linkLabel2
+            // lblAgProducao
             // 
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.LinkColor = System.Drawing.Color.White;
-            this.linkLabel2.Location = new System.Drawing.Point(13, 4);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(153, 16);
-            this.linkLabel2.TabIndex = 1;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "Aguardando Produção";
+            this.lblAgProducao.AutoSize = true;
+            this.lblAgProducao.LinkColor = System.Drawing.Color.White;
+            this.lblAgProducao.Location = new System.Drawing.Point(13, 4);
+            this.lblAgProducao.Name = "lblAgProducao";
+            this.lblAgProducao.Size = new System.Drawing.Size(153, 16);
+            this.lblAgProducao.TabIndex = 1;
+            this.lblAgProducao.TabStop = true;
+            this.lblAgProducao.Text = "Aguardando Produção";
+            this.lblAgProducao.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblAgProducao_LinkClicked);
             // 
             // pnlGravadasImpressas
             // 
             this.pnlGravadasImpressas.BackColor = System.Drawing.SystemColors.HotTrack;
             this.pnlGravadasImpressas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlGravadasImpressas.Controls.Add(this.lblCountGravadas);
-            this.pnlGravadasImpressas.Controls.Add(this.linkLabel1);
+            this.pnlGravadasImpressas.Controls.Add(this.lblGravadasImpressas);
             this.pnlGravadasImpressas.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlGravadasImpressas.Location = new System.Drawing.Point(1, 0);
             this.pnlGravadasImpressas.Name = "pnlGravadasImpressas";
@@ -292,16 +297,17 @@
             this.lblCountGravadas.Text = "(0)";
             this.lblCountGravadas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // linkLabel1
+            // lblGravadasImpressas
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.LinkColor = System.Drawing.Color.White;
-            this.linkLabel1.Location = new System.Drawing.Point(18, 4);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(148, 16);
-            this.linkLabel1.TabIndex = 0;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Gravada && Impressas";
+            this.lblGravadasImpressas.AutoSize = true;
+            this.lblGravadasImpressas.LinkColor = System.Drawing.Color.White;
+            this.lblGravadasImpressas.Location = new System.Drawing.Point(18, 4);
+            this.lblGravadasImpressas.Name = "lblGravadasImpressas";
+            this.lblGravadasImpressas.Size = new System.Drawing.Size(148, 16);
+            this.lblGravadasImpressas.TabIndex = 0;
+            this.lblGravadasImpressas.TabStop = true;
+            this.lblGravadasImpressas.Text = "Gravada && Impressas";
+            this.lblGravadasImpressas.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblGravadasImpressas_LinkClicked);
             // 
             // pnlEntregue
             // 
@@ -456,17 +462,17 @@
         private System.Windows.Forms.Panel pnlAGProducao;
         private System.Windows.Forms.Panel pnlGravadaImpressa;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.LinkLabel linkLabel6;
+        private System.Windows.Forms.LinkLabel lblEntregue;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.LinkLabel linkLabel5;
+        private System.Windows.Forms.LinkLabel lblSaiuPEntrega;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.LinkLabel linkLabel4;
+        private System.Windows.Forms.LinkLabel lblAEntregar;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.LinkLabel linkLabel3;
+        private System.Windows.Forms.LinkLabel lblEmProducao;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.LinkLabel linkLabel2;
+        private System.Windows.Forms.LinkLabel lblAgProducao;
         private System.Windows.Forms.Panel pnlGravadasImpressas;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel lblGravadasImpressas;
         private System.Windows.Forms.Label lblCountEntregue;
         private System.Windows.Forms.Label lblCountSaiuPEntrega;
         private System.Windows.Forms.Label lblCountAEntregar;
