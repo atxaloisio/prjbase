@@ -11,13 +11,13 @@ using System.Linq;
 
 namespace prjbase
 {
-    public partial class frmCadEditRota : prjbase.frmBaseCadEdit
+    public partial class frmCadEditVendedor_Localidade : prjbase.frmBaseCadEdit
     {
-        private RotaBLL rotaBLL;
+        private Vendedor_LocalidadeBLL Vendedor_LocalidadeBLL;
         private CidadeBLL cidadeBLL;
-        private ClienteBLL clienteBLL;
+        private VendedorBLL VendedorBLL;
 
-        public frmCadEditRota()
+        public frmCadEditVendedor_Localidade()
         {
             InitializeComponent();            
         }
@@ -26,17 +26,17 @@ namespace prjbase
         {
             if (Id != null)
             {
-                rotaBLL = new RotaBLL();
+                Vendedor_LocalidadeBLL = new Vendedor_LocalidadeBLL();
 
-                Rota rota = rotaBLL.Localizar(Id);
+                Vendedor_Localidade Vendedor_Localidade = Vendedor_LocalidadeBLL.Localizar(Id);
 
-                if (rota != null)
+                if (Vendedor_Localidade != null)
                 {
-                    txtId.Text = rota.id.ToString();
-                    cbTransportadora.SelectedValue = rota.cliente.Id;
-                    cbUF.Text = rota.cidade.cUF;
-                    SetupCidade(rota.cidade.cUF);
-                    cbCidade.SelectedValue = rota.cidade.Id;
+                    txtId.Text = Vendedor_Localidade.Id.ToString();
+                    cbVendedor.SelectedValue = Vendedor_Localidade.vendedor.Id;
+                    cbUF.Text = Vendedor_Localidade.cidade.cUF;
+                    SetupCidade(Vendedor_Localidade.cidade.cUF);
+                    cbCidade.SelectedValue = Vendedor_Localidade.cidade.Id;
                 }                
             }
         }
@@ -49,24 +49,24 @@ namespace prjbase
             {
                 try
                 {
-                    rotaBLL = new RotaBLL();
-                    rotaBLL.UsuarioLogado = Program.usuario_logado;
+                    Vendedor_LocalidadeBLL = new Vendedor_LocalidadeBLL();
+                    Vendedor_LocalidadeBLL.UsuarioLogado = Program.usuario_logado;
 
-                    Rota rota = LoadFromControls();
+                    Vendedor_Localidade Vendedor_Localidade = LoadFromControls();
 
                     if (Id != null)
                     {
-                        rotaBLL.AlterarRota(rota);
+                        Vendedor_LocalidadeBLL.AlterarVendedor_Localidade(Vendedor_Localidade);
                     }
                     else
                     {
-                        rotaBLL.AdicionarRota(rota);
+                        Vendedor_LocalidadeBLL.AdicionarVendedor_Localidade(Vendedor_Localidade);
                     }
                     
-                    if (rota.id != 0)
+                    if (Vendedor_Localidade.Id != 0)
                     {
-                        Id = rota.id;
-                        txtId.Text = rota.id.ToString();
+                        Id = Vendedor_Localidade.Id;
+                        txtId.Text = Vendedor_Localidade.Id.ToString();
                     }
 
                     Retorno = true;
@@ -80,36 +80,36 @@ namespace prjbase
             return Retorno;
         }
 
-        protected virtual Rota LoadFromControls()
+        protected virtual Vendedor_Localidade LoadFromControls()
         {
-            Rota rota = new Rota();
+            Vendedor_Localidade Vendedor_Localidade = new Vendedor_Localidade();
 
             if (!string.IsNullOrEmpty(txtId.Text))
             {
-                rota.id = Convert.ToInt64(txtId.Text);
+                Vendedor_Localidade.Id = Convert.ToInt64(txtId.Text);
             }
 
-            rota.id_transportadora = Convert.ToInt64(cbTransportadora.SelectedValue);
-            rota.id_cidade = Convert.ToInt32(cbCidade.SelectedValue);
+            Vendedor_Localidade.Id_vendedor = Convert.ToInt64(cbVendedor.SelectedValue);
+            Vendedor_Localidade.Id_localidade = Convert.ToInt32(cbCidade.SelectedValue);
 
-            rotaBLL = new RotaBLL();
+            Vendedor_LocalidadeBLL = new Vendedor_LocalidadeBLL();
 
-            List<Rota> RotaList = rotaBLL.getRota(p => p.id_transportadora == rota.id_transportadora & p.id_cidade == rota.id_cidade);
+            List<Vendedor_Localidade> Vendedor_LocalidadeList = Vendedor_LocalidadeBLL.getVendedor_Localidade(p => p.Id_vendedor == Vendedor_Localidade.Id_vendedor & p.Id_localidade == Vendedor_Localidade.Id_localidade);
 
-            if (RotaList.Count > 0)
+            if (Vendedor_LocalidadeList.Count > 0)
             {
-                rota = RotaList.First();
-                rota.id_cidade = Convert.ToInt64(cbCidade.SelectedValue);
-                rota.id_transportadora = Convert.ToInt64(cbTransportadora.SelectedValue);
-                Id = rota.id;
+                Vendedor_Localidade = Vendedor_LocalidadeList.First();
+                Vendedor_Localidade.Id_localidade = Convert.ToInt64(cbCidade.SelectedValue);
+                Vendedor_Localidade.Id_vendedor = Convert.ToInt64(cbVendedor.SelectedValue);
+                Id = Vendedor_Localidade.Id;
             }
             
-            return rota;
+            return Vendedor_Localidade;
         }
 
         protected override void SetupControls()
         {            
-            SetupTransportadora();
+            SetupVendedor();
             SetupUF();
         }
 
@@ -130,23 +130,23 @@ namespace prjbase
             cbUF.SelectedIndex = -1;
         }
 
-        private void SetupTransportadora()
+        private void SetupVendedor()
         {
-            clienteBLL = new ClienteBLL();
-            List<Cliente> ClienteList = clienteBLL.getCliente(x => x.cliente_tag.Any(e => e.tag == "Transportadora"));
+            VendedorBLL = new VendedorBLL();
+            List<Vendedor> VendedorList = VendedorBLL.getVendedor();
 
             AutoCompleteStringCollection acc = new AutoCompleteStringCollection();
 
-            foreach (Cliente item in ClienteList)
+            foreach (Vendedor item in VendedorList)
             {
-                acc.Add(item.nome_fantasia);
+                acc.Add(item.nome);
             }
 
-            cbTransportadora.DataSource = ClienteList;
-            cbTransportadora.AutoCompleteCustomSource = acc;
-            cbTransportadora.ValueMember = "Id";
-            cbTransportadora.DisplayMember = "nome_fantasia";
-            cbTransportadora.SelectedIndex = -1;
+            cbVendedor.DataSource = VendedorList;
+            cbVendedor.AutoCompleteCustomSource = acc;
+            cbVendedor.ValueMember = "Id";
+            cbVendedor.DisplayMember = "nome";
+            cbVendedor.SelectedIndex = -1;
         }
 
 
@@ -155,7 +155,7 @@ namespace prjbase
         {
             base.Limpar(control);
 
-            cbTransportadora.Focus();
+            cbVendedor.Focus();
         }
 
         private void cbUF_SelectionChangeCommitted(object sender, EventArgs e)
@@ -182,7 +182,7 @@ namespace prjbase
             cbCidade.SelectedIndex = -1;
         }
 
-        private void cbTransportadora_KeyPress(object sender, KeyPressEventArgs e)
+        private void cbVendedor_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
             {
@@ -197,15 +197,6 @@ namespace prjbase
             {
                 SetupCidade(cbUF.Text);
             }
-        }
-
-        private void cbUF_Validating(object sender, CancelEventArgs e)
-        {
-            e.Cancel = ((ComboBox)sender).FindStringExact(((ComboBox)sender).Text) < 0;
-            if (e.Cancel)
-            {
-                MessageBox.Show("Valor digitado não encontrado na lista", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }         
         }
     }
 }

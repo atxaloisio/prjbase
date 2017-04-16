@@ -32,7 +32,7 @@
             this.pnlPrincipal = new System.Windows.Forms.Panel();
             this.pnlBotoes = new System.Windows.Forms.Panel();
             this.btnIncluir = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnFechar = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.epValidaDados = new libComponente.ValidaObrigatorio(this.components);
             this.pnlBotoes.SuspendLayout();
@@ -52,7 +52,7 @@
             // pnlBotoes
             // 
             this.pnlBotoes.Controls.Add(this.btnIncluir);
-            this.pnlBotoes.Controls.Add(this.btnCancelar);
+            this.pnlBotoes.Controls.Add(this.btnFechar);
             this.pnlBotoes.Controls.Add(this.btnSalvar);
             this.pnlBotoes.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlBotoes.Location = new System.Drawing.Point(0, 0);
@@ -79,24 +79,24 @@
             this.btnIncluir.Visible = false;
             this.btnIncluir.Click += new System.EventHandler(this.btnIncluir_Click);
             // 
-            // btnCancelar
+            // btnFechar
             // 
-            this.btnCancelar.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.btnCancelar.CausesValidation = false;
-            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnCancelar.Image = global::prjbase.Properties.Resources.cancelar;
-            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(3, 40);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(109, 33);
-            this.btnCancelar.TabIndex = 10;
-            this.btnCancelar.Text = "&Cancelar";
-            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            this.btnFechar.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnFechar.CausesValidation = false;
+            this.btnFechar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFechar.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFechar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnFechar.Image = global::prjbase.Properties.Resources.fechar;
+            this.btnFechar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnFechar.Location = new System.Drawing.Point(3, 40);
+            this.btnFechar.Name = "btnFechar";
+            this.btnFechar.Size = new System.Drawing.Size(109, 33);
+            this.btnFechar.TabIndex = 10;
+            this.btnFechar.Text = "&Fechar";
+            this.btnFechar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnFechar.UseVisualStyleBackColor = false;
+            this.btnFechar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnSalvar
             // 
@@ -123,7 +123,7 @@
             // frmBaseCadEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.CancelButton = this.btnCancelar;
+            this.CancelButton = this.btnFechar;
             this.ClientSize = new System.Drawing.Size(610, 386);
             this.Controls.Add(this.pnlPrincipal);
             this.Controls.Add(this.pnlBotoes);
@@ -139,7 +139,7 @@
 
         #endregion
         public System.Windows.Forms.Button btnSalvar;
-        public System.Windows.Forms.Button btnCancelar;
+        public System.Windows.Forms.Button btnFechar;
         public System.Windows.Forms.Button btnIncluir;
         protected System.Windows.Forms.Panel pnlBotoes;
         protected System.Windows.Forms.Panel pnlPrincipal;

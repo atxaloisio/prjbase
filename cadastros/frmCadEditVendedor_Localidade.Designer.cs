@@ -1,6 +1,6 @@
 ﻿namespace prjbase
 {
-    partial class frmCadEditRota
+    partial class frmCadEditVendedor_Localidade
     {
         /// <summary>
         /// Required designer variable.
@@ -35,7 +35,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbCidade = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.cbTransportadora = new System.Windows.Forms.ComboBox();
+            this.cbVendedor = new System.Windows.Forms.ComboBox();
             this.pnlBotoes.SuspendLayout();
             this.pnlPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
@@ -48,19 +48,19 @@
             // pnlPrincipal
             // 
             this.pnlPrincipal.Controls.Add(this.label4);
-            this.pnlPrincipal.Controls.Add(this.cbTransportadora);
+            this.pnlPrincipal.Controls.Add(this.cbVendedor);
             this.pnlPrincipal.Controls.Add(this.label1);
             this.pnlPrincipal.Controls.Add(this.cbCidade);
             this.pnlPrincipal.Controls.Add(this.txtIdCliente);
             this.pnlPrincipal.Controls.Add(this.txtId);
             this.pnlPrincipal.Controls.Add(this.label3);
             this.pnlPrincipal.Controls.Add(this.cbUF);
-            this.pnlPrincipal.Size = new System.Drawing.Size(495, 112);
+            this.pnlPrincipal.Size = new System.Drawing.Size(459, 112);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(93, 37);
+            this.label3.Location = new System.Drawing.Point(55, 38);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(22, 16);
             this.label3.TabIndex = 39;
@@ -73,7 +73,7 @@
             this.cbUF.FormattingEnabled = true;
             this.epValidaDados.SetFraseErro(this.cbUF, "UF obrigatório.");
             this.epValidaDados.SetIndiceCombo(this.cbUF, -1);
-            this.cbUF.Location = new System.Drawing.Point(121, 34);
+            this.cbUF.Location = new System.Drawing.Point(83, 35);
             this.cbUF.MaxLength = 2;
             this.cbUF.Name = "cbUF";
             this.epValidaDados.SetObrigatorio(this.cbUF, true);
@@ -81,13 +81,12 @@
             this.cbUF.TabIndex = 1;
             this.cbUF.SelectedIndexChanged += new System.EventHandler(this.cbUF_SelectedIndexChanged);
             this.cbUF.SelectionChangeCommitted += new System.EventHandler(this.cbUF_SelectionChangeCommitted);
-            this.cbUF.Validating += new System.ComponentModel.CancelEventHandler(this.cbUF_Validating);
             // 
             // txtId
             // 
             this.txtId.Enabled = false;
             this.epValidaDados.SetFraseErro(this.txtId, "");
-            this.txtId.Location = new System.Drawing.Point(266, 34);
+            this.txtId.Location = new System.Drawing.Point(228, 35);
             this.txtId.Name = "txtId";
             this.epValidaDados.SetObrigatorio(this.txtId, false);
             this.txtId.Size = new System.Drawing.Size(100, 23);
@@ -99,7 +98,7 @@
             // 
             this.txtIdCliente.Enabled = false;
             this.epValidaDados.SetFraseErro(this.txtIdCliente, "");
-            this.txtIdCliente.Location = new System.Drawing.Point(372, 34);
+            this.txtIdCliente.Location = new System.Drawing.Point(334, 35);
             this.txtIdCliente.Name = "txtIdCliente";
             this.epValidaDados.SetObrigatorio(this.txtIdCliente, false);
             this.txtIdCliente.Size = new System.Drawing.Size(100, 23);
@@ -110,7 +109,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(39, 65);
+            this.label1.Location = new System.Drawing.Point(1, 66);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(76, 16);
             this.label1.TabIndex = 41;
@@ -123,42 +122,41 @@
             this.cbCidade.FormattingEnabled = true;
             this.epValidaDados.SetFraseErro(this.cbCidade, "Loclidade obrigatório.");
             this.epValidaDados.SetIndiceCombo(this.cbCidade, -1);
-            this.cbCidade.Location = new System.Drawing.Point(121, 62);
+            this.cbCidade.Location = new System.Drawing.Point(83, 63);
             this.cbCidade.Name = "cbCidade";
             this.epValidaDados.SetObrigatorio(this.cbCidade, true);
             this.cbCidade.Size = new System.Drawing.Size(351, 24);
             this.cbCidade.TabIndex = 2;
-            this.cbCidade.Validating += new System.ComponentModel.CancelEventHandler(this.cbUF_Validating);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(5, 14);
+            this.label4.Location = new System.Drawing.Point(6, 9);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(110, 16);
+            this.label4.Size = new System.Drawing.Size(71, 16);
             this.label4.TabIndex = 43;
-            this.label4.Text = "Transportadora";
+            this.label4.Text = "Vendedor";
             // 
-            // cbTransportadora
+            // cbVendedor
             // 
-            this.cbTransportadora.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbTransportadora.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cbTransportadora.FormattingEnabled = true;
-            this.epValidaDados.SetFraseErro(this.cbTransportadora, "Transportadora obrigatório");
-            this.epValidaDados.SetIndiceCombo(this.cbTransportadora, -1);
-            this.cbTransportadora.Location = new System.Drawing.Point(121, 6);
-            this.cbTransportadora.Name = "cbTransportadora";
-            this.epValidaDados.SetObrigatorio(this.cbTransportadora, true);
-            this.cbTransportadora.Size = new System.Drawing.Size(351, 24);
-            this.cbTransportadora.TabIndex = 0;
-            this.cbTransportadora.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbTransportadora_KeyPress);
+            this.cbVendedor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbVendedor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbVendedor.FormattingEnabled = true;
+            this.epValidaDados.SetFraseErro(this.cbVendedor, "Vendedor obrigatório");
+            this.epValidaDados.SetIndiceCombo(this.cbVendedor, -1);
+            this.cbVendedor.Location = new System.Drawing.Point(83, 7);
+            this.cbVendedor.Name = "cbVendedor";
+            this.epValidaDados.SetObrigatorio(this.cbVendedor, true);
+            this.cbVendedor.Size = new System.Drawing.Size(351, 24);
+            this.cbVendedor.TabIndex = 0;
+            this.cbVendedor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbVendedor_KeyPress);
             // 
-            // frmCadEditRota
+            // frmCadEditVendedor_Localidade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(610, 112);
-            this.Name = "frmCadEditRota";
-            this.Text = "Transportadora x Localidade";
+            this.ClientSize = new System.Drawing.Size(574, 112);
+            this.Name = "frmCadEditVendedor_Localidade";
+            this.Text = "Vendedor x Localidade";
             this.pnlBotoes.ResumeLayout(false);
             this.pnlPrincipal.ResumeLayout(false);
             this.pnlPrincipal.PerformLayout();
@@ -175,6 +173,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbCidade;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cbTransportadora;
+        private System.Windows.Forms.ComboBox cbVendedor;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace prjbase
 {
-    partial class frmCadEditPerfil
+    partial class frmCadEditCaixa
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtNome = new System.Windows.Forms.TextBox();
+            this.txtNumero = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtDescricao = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.chkInativo = new System.Windows.Forms.CheckBox();
             this.pnlBotoes.SuspendLayout();
             this.pnlPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
@@ -57,37 +56,36 @@
             // 
             // pnlPrincipal
             // 
-            this.pnlPrincipal.Controls.Add(this.txtDescricao);
-            this.pnlPrincipal.Controls.Add(this.label3);
-            this.pnlPrincipal.Controls.Add(this.txtNome);
+            this.pnlPrincipal.Controls.Add(this.chkInativo);
+            this.pnlPrincipal.Controls.Add(this.txtNumero);
             this.pnlPrincipal.Controls.Add(this.label2);
             this.pnlPrincipal.Controls.Add(this.txtId);
             this.pnlPrincipal.Controls.Add(this.label1);
-            this.pnlPrincipal.Size = new System.Drawing.Size(438, 114);
+            this.pnlPrincipal.Size = new System.Drawing.Size(176, 114);
             // 
-            // txtNome
+            // txtNumero
             // 
-            this.epValidaDados.SetFraseErro(this.txtNome, "Nome do perfil obrigatório.");
-            this.txtNome.Location = new System.Drawing.Point(81, 39);
-            this.txtNome.Name = "txtNome";
-            this.epValidaDados.SetObrigatorio(this.txtNome, true);
-            this.txtNome.Size = new System.Drawing.Size(336, 23);
-            this.txtNome.TabIndex = 1;
-            this.txtNome.Validated += new System.EventHandler(this.Ctrls_Validated);
+            this.epValidaDados.SetFraseErro(this.txtNumero, "Nome do Caixa obrigatório.");
+            this.txtNumero.Location = new System.Drawing.Point(62, 36);
+            this.txtNumero.Name = "txtNumero";
+            this.epValidaDados.SetObrigatorio(this.txtNumero, true);
+            this.txtNumero.Size = new System.Drawing.Size(100, 23);
+            this.txtNumero.TabIndex = 0;
+            this.txtNumero.Validated += new System.EventHandler(this.Ctrls_Validated);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 42);
+            this.label2.Location = new System.Drawing.Point(3, 39);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 16);
+            this.label2.Size = new System.Drawing.Size(57, 16);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Nome";
+            this.label2.Text = "Número";
             // 
             // txtId
             // 
             this.epValidaDados.SetFraseErro(this.txtId, "");
-            this.txtId.Location = new System.Drawing.Point(81, 9);
+            this.txtId.Location = new System.Drawing.Point(62, 9);
             this.txtId.Name = "txtId";
             this.epValidaDados.SetObrigatorio(this.txtId, false);
             this.txtId.ReadOnly = true;
@@ -105,32 +103,23 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Código";
             // 
-            // txtDescricao
+            // chkInativo
             // 
-            this.epValidaDados.SetFraseErro(this.txtDescricao, "");
-            this.txtDescricao.Location = new System.Drawing.Point(81, 68);
-            this.txtDescricao.Name = "txtDescricao";
-            this.epValidaDados.SetObrigatorio(this.txtDescricao, false);
-            this.txtDescricao.Size = new System.Drawing.Size(336, 23);
-            this.txtDescricao.TabIndex = 2;
-            this.txtDescricao.Validated += new System.EventHandler(this.Ctrls_Validated);
+            this.chkInativo.AutoSize = true;
+            this.chkInativo.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkInativo.Location = new System.Drawing.Point(3, 60);
+            this.chkInativo.Name = "chkInativo";
+            this.chkInativo.Size = new System.Drawing.Size(73, 20);
+            this.chkInativo.TabIndex = 1;
+            this.chkInativo.Text = "Inativo";
+            this.chkInativo.UseVisualStyleBackColor = true;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 71);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 16);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Descrição";
-            // 
-            // frmCadEditPerfil
+            // frmCadEditCaixa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(553, 114);
-            this.Name = "frmCadEditPerfil";
-            this.Text = "Perfil";
-            this.Shown += new System.EventHandler(this.frmCadEditPerfil_Shown);
+            this.ClientSize = new System.Drawing.Size(291, 114);
+            this.Name = "frmCadEditCaixa";
+            this.Text = "Caixa";
             this.pnlBotoes.ResumeLayout(false);
             this.pnlPrincipal.ResumeLayout(false);
             this.pnlPrincipal.PerformLayout();
@@ -141,11 +130,10 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtNome;
+        private System.Windows.Forms.TextBox txtNumero;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtDescricao;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox chkInativo;
     }
 }

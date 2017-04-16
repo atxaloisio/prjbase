@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Utils;
+using Model;
 
 namespace prjbase
 {
@@ -44,31 +45,41 @@ namespace prjbase
 
         protected virtual void btnIncluir_Click(object sender, EventArgs e)
         {
-            String TituloTela;
-            if ((frmInstancia == null) || (frmInstancia.IsDisposed))
+            if (ValidaAcessoFuncao(Operacao.Salvar))
             {
-                this.InstanciarFormulario();
-            }
-            TituloTela = frmInstancia.Text;
-            frmInstancia.Text = "Incluir : " + frmInstancia.Text;
-            //frmInstancia.Text = TituloTela;
-            frmInstancia.ExibeDialogo();
-            if (frmInstancia.atualizagrid)
-            {
-                carregaConsulta();
-                AtualizaContadores();
-            }
-            frmInstancia.Dispose();
-
+                String TituloTela;
+                if ((frmInstancia == null) || (frmInstancia.IsDisposed))
+                {
+                    this.InstanciarFormulario();
+                }
+                TituloTela = frmInstancia.Text;
+                frmInstancia.Text = "Incluir : " + frmInstancia.Text;
+                if (this.Tag != null)
+                {
+                    frmInstancia.Tag = this.Tag;
+                }
+                //frmInstancia.Text = TituloTela;
+                frmInstancia.ExibeDialogo();
+                if (frmInstancia.atualizagrid)
+                {
+                    carregaConsulta();
+                    AtualizaContadores();
+                }
+                frmInstancia.Dispose();
+            }            
         }
 
         protected virtual void btnExcluir_Click(object sender, EventArgs e)
         {
             try
             {
-                excluirRegistro(dgvDados.CurrentRow.Index);
-                carregaConsulta();
-                AtualizaContadores();
+                if (ValidaAcessoFuncao(Operacao.Excluir))
+                {
+                    excluirRegistro(dgvDados.CurrentRow.Index);
+                    carregaConsulta();
+                    AtualizaContadores();
+                }
+                
             }
             catch (Exception ex)
             {
@@ -85,7 +96,11 @@ namespace prjbase
 
         protected virtual void btnEditar_Click(object sender, EventArgs e)
         {
-            editarRegistro();            
+            if (ValidaAcessoFuncao(Operacao.Editar))
+            {
+                editarRegistro();
+            }
+            
         }
 
         private void editarRegistro()
@@ -97,6 +112,10 @@ namespace prjbase
             }
             TituloTela = frmInstancia.Text;
             frmInstancia.Text = "Editar : " + frmInstancia.Text;
+            if (this.Tag != null)
+            {
+                frmInstancia.Tag = this.Tag;
+            }
             //frmInstancia.Text = TituloTela;
 
 
@@ -557,6 +576,16 @@ namespace prjbase
         protected virtual void imprimirRegistro(object sender, EventArgs e)
         {
             
+        }
+
+        private void dgvFiltro_Scroll(object sender, ScrollEventArgs e)
+        {
+            dgvDados.HorizontalScrollingOffset = e.NewValue; 
+        }
+
+        private void dgvDados_Scroll(object sender, ScrollEventArgs e)
+        {
+            dgvFiltro.HorizontalScrollingOffset = e.NewValue;
         }
     }
 }

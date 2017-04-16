@@ -48,6 +48,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.chkVendedores = new System.Windows.Forms.CheckBox();
             this.lblQtdRegistros = new System.Windows.Forms.Label();
             this.pbSincronizar = new System.Windows.Forms.ProgressBar();
             this.btnSincronizar = new System.Windows.Forms.Button();
@@ -269,6 +270,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.chkVendedores);
             this.tabPage1.Controls.Add(this.lblQtdRegistros);
             this.tabPage1.Controls.Add(this.pbSincronizar);
             this.tabPage1.Controls.Add(this.btnSincronizar);
@@ -287,6 +289,16 @@
             this.tabPage1.TabIndex = 3;
             this.tabPage1.Text = "Sincronizar Base x Omie";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // chkVendedores
+            // 
+            this.chkVendedores.AutoSize = true;
+            this.chkVendedores.Location = new System.Drawing.Point(6, 118);
+            this.chkVendedores.Name = "chkVendedores";
+            this.chkVendedores.Size = new System.Drawing.Size(105, 20);
+            this.chkVendedores.TabIndex = 13;
+            this.chkVendedores.Text = "Vendedores";
+            this.chkVendedores.UseVisualStyleBackColor = true;
             // 
             // lblQtdRegistros
             // 
@@ -331,7 +343,7 @@
             // chkCidade
             // 
             this.chkCidade.AutoSize = true;
-            this.chkCidade.Location = new System.Drawing.Point(6, 135);
+            this.chkCidade.Location = new System.Drawing.Point(6, 102);
             this.chkCidade.Name = "chkCidade";
             this.chkCidade.Size = new System.Drawing.Size(77, 20);
             this.chkCidade.TabIndex = 6;
@@ -341,7 +353,7 @@
             // chkContaCorrente
             // 
             this.chkContaCorrente.AutoSize = true;
-            this.chkContaCorrente.Location = new System.Drawing.Point(6, 113);
+            this.chkContaCorrente.Location = new System.Drawing.Point(6, 86);
             this.chkContaCorrente.Name = "chkContaCorrente";
             this.chkContaCorrente.Size = new System.Drawing.Size(134, 20);
             this.chkContaCorrente.TabIndex = 5;
@@ -351,7 +363,7 @@
             // chkCategoria
             // 
             this.chkCategoria.AutoSize = true;
-            this.chkCategoria.Location = new System.Drawing.Point(6, 91);
+            this.chkCategoria.Location = new System.Drawing.Point(6, 70);
             this.chkCategoria.Name = "chkCategoria";
             this.chkCategoria.Size = new System.Drawing.Size(97, 20);
             this.chkCategoria.TabIndex = 4;
@@ -361,7 +373,7 @@
             // chkFormaPagto
             // 
             this.chkFormaPagto.AutoSize = true;
-            this.chkFormaPagto.Location = new System.Drawing.Point(6, 68);
+            this.chkFormaPagto.Location = new System.Drawing.Point(6, 54);
             this.chkFormaPagto.Name = "chkFormaPagto";
             this.chkFormaPagto.Size = new System.Drawing.Size(170, 20);
             this.chkFormaPagto.TabIndex = 3;
@@ -371,7 +383,7 @@
             // chkImpostos
             // 
             this.chkImpostos.AutoSize = true;
-            this.chkImpostos.Location = new System.Drawing.Point(6, 47);
+            this.chkImpostos.Location = new System.Drawing.Point(6, 38);
             this.chkImpostos.Name = "chkImpostos";
             this.chkImpostos.Size = new System.Drawing.Size(165, 20);
             this.chkImpostos.TabIndex = 2;
@@ -381,7 +393,7 @@
             // chkProdutos
             // 
             this.chkProdutos.AutoSize = true;
-            this.chkProdutos.Location = new System.Drawing.Point(6, 27);
+            this.chkProdutos.Location = new System.Drawing.Point(6, 22);
             this.chkProdutos.Name = "chkProdutos";
             this.chkProdutos.Size = new System.Drawing.Size(86, 20);
             this.chkProdutos.TabIndex = 1;
@@ -504,5 +516,6 @@
         private System.Windows.Forms.Label lblMensagem;
         private System.Windows.Forms.ProgressBar pbSincronizar;
         private System.Windows.Forms.Label lblQtdRegistros;
+        private System.Windows.Forms.CheckBox chkVendedores;
     }
 }

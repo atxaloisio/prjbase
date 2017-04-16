@@ -75,19 +75,26 @@ namespace prjbase
 
         protected virtual void btnIncluir_Click(object sender, EventArgs e)
         {
-            AgruparPedidos();
+            if (ValidaAcessoFuncao(Operacao.Salvar))
+            {
+                AgruparPedidos();
+            }
+            
         }
 
         protected virtual void btnExcluir_Click(object sender, EventArgs e)
         {
+            
             try
             {
-                if (dgvDados.CurrentRow != null)
+                if (ValidaAcessoFuncao(Operacao.Excluir))
                 {
-                    excluirRegistro(dgvDados.CurrentRow.Index);
-                    carregaConsulta();
-                }
-
+                    if (dgvDados.CurrentRow != null)
+                    {
+                        excluirRegistro(dgvDados.CurrentRow.Index);
+                        carregaConsulta();
+                    }
+                }                
             }
             catch (Exception ex)
             {
@@ -967,9 +974,8 @@ namespace prjbase
         protected virtual void carregaConsulta()
         {
             pedido_OticaBLL = new Pedido_OticaBLL();
-            int stgravado = (int)StatusPedido.GRAVADO;
-            int stImpresso = (int)StatusPedido.IMPRESSO;
-            List<Pedido_Otica> Pedido_OticaList = pedido_OticaBLL.getPedido_Otica(c => c.status == stgravado || c.status == stImpresso, p => p.Id.ToString(), false, deslocamento, tamanhoPagina, out totalReg);
+            int stEntregue = (int)StatusPedido.ENTREGUE;
+            List<Pedido_Otica> Pedido_OticaList = pedido_OticaBLL.getPedido_Otica(c => c.status == stEntregue, p => p.Id.ToString(), false, deslocamento, tamanhoPagina, out totalReg);
 
             //List<Pedido_Otica> Pedido_OticaList = Pedido_OticaBLL.getPedido_Otica(p => p.nome.Contains("x"), T => T.Id.ToString(), false, deslocamento, tamanhopagina, out totalreg);
             dgvDados.DataSource = pedido_OticaBLL.ToList_Pedido_OticaAgrupaView(Pedido_OticaList);
@@ -1159,6 +1165,7 @@ namespace prjbase
         {
             //Carregar os pedido_otica para uma lista.
             pedido_OticaBLL = new Pedido_OticaBLL();
+            pedidoBLL = new PedidoBLL();
 
             List<Pedido_Otica> Pedido_OticaList = new List<Pedido_Otica>();
 
@@ -1174,20 +1181,26 @@ namespace prjbase
                 }
             }
 
-            if (ValidaPedido_Otica(Pedido_OticaList))
+            CriarPedido(Pedido_OticaList);
+            
+        }
+
+        private void CriarPedido(List<Pedido_Otica> pedido_OticaList)
+        {
+            if (ValidaPedido_Otica(pedido_OticaList))
             {
                 //Validação passou vamos criar o pedido.
 
                 Pedido pedido = new Pedido();
 
-                Cliente cli = Pedido_OticaList.FirstOrDefault().cliente;
+                Cliente cli = pedido_OticaList.FirstOrDefault().cliente;
 
                 pedido.codigo_cliente = Convert.ToInt32(cli.codigo_cliente_omie);
                 pedido.codigo_cliente_integracao = cli.codigo_cliente_integracao;
                 pedido.codigo_empresa = Convert.ToInt32(ConfigurationManager.AppSettings["codEmpresa"]);
-                pedido.codigo_parcela = Pedido_OticaList.FirstOrDefault().parcela.codigo;
+                pedido.codigo_parcela = pedido_OticaList.FirstOrDefault().parcela.codigo;
                 pedido.codigo_pedido_integracao = Sequence.GetNextVal("sq_pedido_sequence").ToString();
-                pedido.data_previsao = Pedido_OticaList.FirstOrDefault().data_fechamento.Value.ToShortDateString();
+                pedido.data_previsao = pedido_OticaList.FirstOrDefault().data_fechamento.Value.ToShortDateString();
                 pedido.etapa = "10";
                 pedido.Id_cliente = cli.Id;
                 pedido.importado_api = "S";
@@ -1195,7 +1208,7 @@ namespace prjbase
 
                 int qtdItens = 0;
                 string strPedidos = string.Empty;
-                foreach (Pedido_Otica item in Pedido_OticaList)
+                foreach (Pedido_Otica item in pedido_OticaList)
                 {
                     if (!string.IsNullOrEmpty(strPedidos))
                     {
@@ -1344,13 +1357,51 @@ namespace prjbase
                     totalValor += itemPedido.itempedido_produto.Sum(p => p.valor_total);
                 }
 
-                pedido.pedido_parcelas.Add(new Pedido_Parcelas()
+                CategoriaBLL categoriaBLL = new CategoriaBLL();
+                string idCategoria = ConfigurationManager.AppSettings["IdCategoria"];
+                Categoria Categoria = new Categoria();
+                if (idCategoria != "-1")
                 {
-                    numero_parcela = 1,
-                    percentual = 100,
-                    quantidade_dias = 0,
-                    valor = Convert.ToDecimal(totalValor)
-                });
+                    Categoria = categoriaBLL.Localizar(Convert.ToInt64(idCategoria));
+                }
+                Conta_CorrenteBLL conta_CorrenteBLL = new Conta_CorrenteBLL();
+                string idContaCorrente = ConfigurationManager.AppSettings["IdContaCorrente"];
+                Conta_Corrente Conta_Corrente = new Conta_Corrente();
+                if (idContaCorrente != "-1")
+                {
+                    Conta_Corrente = conta_CorrenteBLL.Localizar(Convert.ToInt64(idContaCorrente));
+                }
+
+                Pedido_InfoAdic Pedido_InfoAdic = new Pedido_InfoAdic();
+                if (Categoria != null)
+                {
+                    Pedido_InfoAdic.codigo_categoria = Categoria.codigo;
+                }
+
+                if (Conta_Corrente != null)
+                {
+                    Pedido_InfoAdic.codigo_conta_corrente = Conta_Corrente.nCodCC;
+                }
+
+                if (pedido_OticaList.FirstOrDefault().vendedor != null)
+                {
+                    Pedido_InfoAdic.codVend = Convert.ToInt32(pedido_OticaList.FirstOrDefault().vendedor.codigo);
+                }
+
+                pedido.pedido_infoadic.Add(Pedido_InfoAdic);
+
+                //criar uma rotina que gera a lista de parcelas conforme a condição de pagamento selecionada.
+                //Aqui temos um impasse usar como data do primeiro boleto a data de emissão do primeiro pedido ou
+                //usar a data de agrupamento. Vamos usar por enquanto a data do primeiro agrupamento.
+                pedido.pedido_parcelas = pedidoBLL.GerarParcelas(pedido_OticaList.FirstOrDefault().condicao_pagamento, totalValor, DateTime.Now);
+
+                //pedido.pedido_parcelas.Add(new Pedido_Parcelas()
+                //{
+                //    numero_parcela = 1,
+                //    percentual = 100,
+                //    quantidade_dias = 0,
+                //    valor = Convert.ToDecimal(totalValor)
+                //});
 
                 if (!string.IsNullOrEmpty(strPedidos))
                 {
@@ -1364,7 +1415,7 @@ namespace prjbase
                 pedido.quantidade_itens = pedido.itempedidoes.Count();
                 this.Cursor = Cursors.WaitCursor;
                 PedidoVendaProxy proxy = new PedidoVendaProxy();
-                pedidoBLL = new PedidoBLL();
+
                 try
                 {
                     proxy.IncluirPedidoVenda(ref pedido);
@@ -1373,11 +1424,11 @@ namespace prjbase
 
                     //Atualizando os pedidos otica
                     pedido_OticaBLL.UsuarioLogado = Program.usuario_logado;
-                    foreach (Pedido_Otica item in Pedido_OticaList)
+                    foreach (Pedido_Otica item in pedido_OticaList)
                     {
                         item.Id_pedido = pedido.id;
                         item.codigo_pedido = pedido.numero_pedido;
-                        item.agrupado = (Pedido_OticaList.Count > 0) ? "S" : "N";
+                        item.agrupado = (pedido_OticaList.Count > 0) ? "S" : "N";
                         item.status = (int)StatusPedido.AGRUPADO;
                         pedido_OticaBLL.AlterarPedido_Otica(item);
                     }

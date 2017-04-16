@@ -185,11 +185,15 @@ namespace prjbase
                     }
                     else
                     {
-                        Funcao_Perfil fp = Program.usuario_logado.perfil.funcao_perfil.Where(p => p.codigo_funcao == Convert.ToInt32(child.Tag)).FirstOrDefault();
-                        if (fp != null)
+                        if ((child.Tag != null) & (!string.IsNullOrEmpty((string)child.Tag)))
                         {
-                            exibemenu = fp.consultar == "S" || fp.editar == "S" || fp.excluir == "S" || fp.salvar == "S" || fp.imprimir == "S";
-                            child.Visible = exibemenu;
+                            child.Visible = false;
+                            Funcao_Perfil fp = Program.usuario_logado.perfil.funcao_perfil.Where(p => p.codigo_funcao == Convert.ToInt32(child.Tag)).FirstOrDefault();
+                            if (fp != null)
+                            {
+                                exibemenu = fp.consultar == "S" || fp.editar == "S" || fp.excluir == "S" || fp.salvar == "S" || fp.imprimir == "S";
+                                child.Visible = exibemenu;
+                            }
                         }
                     }
                 }
@@ -210,11 +214,15 @@ namespace prjbase
                 }
                 else
                 {
-                    Funcao_Perfil fp = Program.usuario_logado.perfil.funcao_perfil.Where(p => p.codigo_funcao == Convert.ToInt32(child.Tag)).FirstOrDefault();
-                    if (fp != null)
+                    if ((child.Tag != null) & (!string.IsNullOrEmpty((string)child.Tag)))
                     {
-                        exibemenu = fp.consultar == "S" || fp.editar == "S" || fp.excluir == "S" || fp.salvar == "S" || fp.imprimir == "S";
-                        child.Visible = exibemenu;
+                        child.Visible = false;
+                        Funcao_Perfil fp = Program.usuario_logado.perfil.funcao_perfil.Where(p => p.codigo_funcao == Convert.ToInt32(child.Tag)).FirstOrDefault();
+                        if (fp != null)
+                        {
+                            exibemenu = fp.consultar == "S" || fp.editar == "S" || fp.excluir == "S" || fp.salvar == "S" || fp.imprimir == "S";
+                            child.Visible = exibemenu;
+                        }
                     }
                 }                
             }
@@ -377,6 +385,106 @@ namespace prjbase
             //relatorio.rvRelatorios.LocalReport.ReportEmbeddedResource = "prjbase.relatorios.relRota.rdlc";
             relatorio.ExibeDialogo(this);
             relatorio.Dispose();
+        }
+
+        private void mnuVendedores_Click(object sender, EventArgs e)
+        {
+            Boolean instanciar = true;
+
+            foreach (var mdiChildForm in MdiChildren)
+            {
+                if (mdiChildForm is frmListVendedores)
+                {
+                    instanciar = false;
+                    //mdiChildForm.Show();
+                    mdiChildForm.WindowState = FormWindowState.Maximized;
+                    mdiChildForm.BringToFront();
+                }
+            }
+
+            if (instanciar)
+            {
+                var frm = new frmListVendedores();
+                frm.ConfigurarForm(this);
+                frm.Tag = ((ToolStripMenuItem)sender).Tag;
+                frm.Show();
+                frm.WindowState = FormWindowState.Maximized;
+            }
+        }
+
+        private void mnuCadRelVendedorLocalidade_Click(object sender, EventArgs e)
+        {
+            Boolean instanciar = true;
+
+            foreach (var mdiChildForm in MdiChildren)
+            {
+                if (mdiChildForm is frmListVendedor_Localidade)
+                {
+                    instanciar = false;
+                    //mdiChildForm.Show();
+                    mdiChildForm.WindowState = FormWindowState.Maximized;
+                    mdiChildForm.BringToFront();
+                }
+            }
+
+            if (instanciar)
+            {
+                var frm = new frmListVendedor_Localidade();
+                frm.ConfigurarForm(this);
+                frm.Tag = ((ToolStripMenuItem)sender).Tag;
+                frm.Show();
+                frm.WindowState = FormWindowState.Maximized;
+            }
+        }
+
+        private void mnuCadRelClienteVendedor_Click(object sender, EventArgs e)
+        {
+            Boolean instanciar = true;
+
+            foreach (var mdiChildForm in MdiChildren)
+            {
+                if (mdiChildForm is frmListCliente_Vendedor)
+                {
+                    instanciar = false;
+                    //mdiChildForm.Show();
+                    mdiChildForm.WindowState = FormWindowState.Maximized;
+                    mdiChildForm.BringToFront();
+                }
+            }
+
+            if (instanciar)
+            {
+                var frm = new frmListCliente_Vendedor();
+                frm.ConfigurarForm(this);
+                frm.Tag = ((ToolStripMenuItem)sender).Tag;
+                frm.Show();
+                frm.WindowState = FormWindowState.Maximized;
+            }
+        }
+
+        private void mnuCadCaixa_Click(object sender, EventArgs e)
+        {
+            Boolean instanciar = true;
+
+            foreach (var mdiChildForm in MdiChildren)
+            {
+                if (mdiChildForm is frmListCaixas)
+                {
+                    instanciar = false;
+                    //mdiChildForm.Show();
+                    mdiChildForm.WindowState = FormWindowState.Maximized;
+                    mdiChildForm.BringToFront();
+                }
+            }
+
+            if (instanciar)
+            {
+                var frm = new frmListCaixas();
+                frm.ConfigurarForm(this);
+                frm.Tag = ((ToolStripMenuItem)sender).Tag;
+                frm.Show();
+                frm.WindowState = FormWindowState.Maximized;
+            }
         }
     }
 }

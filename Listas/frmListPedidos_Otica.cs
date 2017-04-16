@@ -21,13 +21,18 @@ namespace prjbase
         Pedido_OticaBLL Pedido_OticaBLL;
 
         #region Constante de Colunas da Grid
-        private const int COL_ID = 0;
-        private const int COL_PEDIDO = 1;
-        private const int COL_CLIENTE = 2;
-        private const int COL_CONDPAG = 3;
-        private const int COL_DTEMISSAO = 4;
-        private const int COL_DTFECHAMENTO = 5;
-        private const int COL_STATUS = 6;
+        private const int COL_ID            = 0;
+        private const int COL_PEDIDO        = 1;
+        private const int COL_NRPEDCLIENTE  = 2;
+        private const int COL_NRCAIXA       = 3;
+        private const int COL_CLIENTE       = 4;
+        private const int COL_CONDPAG       = 5;
+        private const int COL_VENDEDOR      = 6;
+        private const int COL_TRANSP        = 7;
+        private const int COL_DTEMISSAO     = 8;
+        private const int COL_DTFECHAMENTO  = 9;
+        private const int COL_STATUS        = 10;
+        private const int COL_USUARIO       = 11;
 
         #endregion
         public frmListPedidos_Otica()
@@ -54,8 +59,12 @@ namespace prjbase
             //altera o nome das colunas                 
             gridFiltros.Columns.Add("ID", "Id");
             gridFiltros.Columns.Add("PEDIDO", "Pedido");
+            gridFiltros.Columns.Add("NRPEDCLIENTE", "Nr. Ped. Cliente");
+            gridFiltros.Columns.Add("NRCAIXA", "Caixa");
             gridFiltros.Columns.Add("CLIENTE", "Cliente");
             gridFiltros.Columns.Add("CONDPAGTO", "Cond. Pagamento");
+            gridFiltros.Columns.Add("VENDEDOR", "Vendedor");
+            gridFiltros.Columns.Add("TRANSPORTADORA", "Transportadora");
 
             DataGridViewMaskedTextColumn colDtEmissao = new DataGridViewMaskedTextColumn("99/99/9999");
             colDtEmissao.DataPropertyName = "DTEMISSAO";
@@ -81,20 +90,20 @@ namespace prjbase
             DataGridViewComboBoxColumn colStatus = new DataGridViewComboBoxColumn();
             IList<itemEnumList> lstStatusPedido = Enumerados.getListEnum(sp);            
             lstStatusPedido.Insert(0, new itemEnumList { chave = 7, descricao = string.Empty });
+            
             colStatus.DataSource = lstStatusPedido;
             colStatus.ValueMember = "chave";
             colStatus.DisplayMember = "descricao";
             colStatus.DataPropertyName = "STATUS";
             colStatus.HeaderText = "Status";
             colStatus.Name = "STATUS";
-            colStatus.SortMode = DataGridViewColumnSortMode.Programmatic;
-            
-
-
+            colStatus.SortMode = DataGridViewColumnSortMode.Programmatic;            
             gridFiltros.Columns.Add(colStatus);
 
+            gridFiltros.Columns.Add("USUARIO", "Usuário");
+
             //
-            gridFiltros.Columns[COL_ID].Width = 150;
+            gridFiltros.Columns[COL_ID].Width = 120;
             gridFiltros.Columns[COL_ID].ValueType = typeof(int);
             gridFiltros.Columns[COL_ID].Visible = false;
 
@@ -104,13 +113,29 @@ namespace prjbase
             gridFiltros.Columns[COL_PEDIDO].DefaultCellStyle = new DataGridViewCellStyle(gridFiltros.Columns[COL_PEDIDO].DefaultCellStyle);
             gridFiltros.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-            gridFiltros.Columns[COL_CLIENTE].Width = 300;
+            gridFiltros.Columns[COL_NRPEDCLIENTE].Width = 140;
+            gridFiltros.Columns[COL_NRPEDCLIENTE].ValueType = typeof(string);
+            gridFiltros.Columns[COL_NRPEDCLIENTE].SortMode = DataGridViewColumnSortMode.Programmatic;
+
+            gridFiltros.Columns[COL_NRCAIXA].Width = 70;
+            gridFiltros.Columns[COL_NRCAIXA].ValueType = typeof(string);
+            gridFiltros.Columns[COL_NRCAIXA].SortMode = DataGridViewColumnSortMode.Programmatic;
+
+            gridFiltros.Columns[COL_CLIENTE].Width = 380;
             gridFiltros.Columns[COL_CLIENTE].ValueType = typeof(string);
             gridFiltros.Columns[COL_CLIENTE].SortMode = DataGridViewColumnSortMode.Programmatic;
 
             gridFiltros.Columns[COL_CONDPAG].Width = 200;
             gridFiltros.Columns[COL_CONDPAG].ValueType = typeof(string);
             gridFiltros.Columns[COL_CONDPAG].SortMode = DataGridViewColumnSortMode.Programmatic;
+
+            gridFiltros.Columns[COL_VENDEDOR].Width = 250;
+            gridFiltros.Columns[COL_VENDEDOR].ValueType = typeof(string);
+            gridFiltros.Columns[COL_VENDEDOR].SortMode = DataGridViewColumnSortMode.Programmatic;
+
+            gridFiltros.Columns[COL_TRANSP].Width = 250;
+            gridFiltros.Columns[COL_TRANSP].ValueType = typeof(string);
+            gridFiltros.Columns[COL_TRANSP].SortMode = DataGridViewColumnSortMode.Programmatic;
 
             gridFiltros.Columns[COL_DTEMISSAO].Width = 140;
             gridFiltros.Columns[COL_DTEMISSAO].DefaultCellStyle = new DataGridViewCellStyle(gridFiltros.Columns[COL_DTEMISSAO].DefaultCellStyle);
@@ -121,6 +146,10 @@ namespace prjbase
             gridFiltros.Columns[COL_DTFECHAMENTO].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             gridFiltros.Columns[COL_STATUS].Width = 200;
+
+            gridFiltros.Columns[COL_USUARIO].Width = 200;
+            gridFiltros.Columns[COL_USUARIO].ValueType = typeof(string);
+            gridFiltros.Columns[COL_USUARIO].SortMode = DataGridViewColumnSortMode.Programmatic;
 
             gridFiltros.EditingControlShowing += new DataGridViewEditingControlShowingEventHandler(gridFiltros_EditingControlShowing);
 
@@ -235,7 +264,7 @@ namespace prjbase
         {
             base.formataColunagridDados(gridDados);
 
-            gridDados.Columns[COL_ID].Width = 150;
+            gridDados.Columns[COL_ID].Width = 120;
             gridDados.Columns[COL_ID].ValueType = typeof(int);
             gridDados.Columns[COL_ID].Visible = false;
 
@@ -245,7 +274,15 @@ namespace prjbase
             gridDados.Columns[COL_PEDIDO].DefaultCellStyle = new DataGridViewCellStyle(gridDados.Columns[COL_PEDIDO].DefaultCellStyle);
             gridDados.Columns[COL_PEDIDO].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-            gridDados.Columns[COL_CLIENTE].Width = 300;
+            gridDados.Columns[COL_NRPEDCLIENTE].Width = 140;
+            gridDados.Columns[COL_NRPEDCLIENTE].ValueType = typeof(string);
+            gridDados.Columns[COL_NRPEDCLIENTE].SortMode = DataGridViewColumnSortMode.Programmatic;
+
+            gridDados.Columns[COL_NRCAIXA].Width = 70;
+            gridDados.Columns[COL_NRCAIXA].ValueType = typeof(string);
+            gridDados.Columns[COL_NRCAIXA].SortMode = DataGridViewColumnSortMode.Programmatic;
+
+            gridDados.Columns[COL_CLIENTE].Width = 380;
             gridDados.Columns[COL_CLIENTE].ValueType = typeof(string);
             gridDados.Columns[COL_CLIENTE].SortMode = DataGridViewColumnSortMode.Programmatic;
 
@@ -253,21 +290,31 @@ namespace prjbase
             gridDados.Columns[COL_CONDPAG].ValueType = typeof(string);
             gridDados.Columns[COL_CONDPAG].SortMode = DataGridViewColumnSortMode.Programmatic;
 
+            gridDados.Columns[COL_VENDEDOR].Width = 250;
+            gridDados.Columns[COL_VENDEDOR].ValueType = typeof(string);
+            gridDados.Columns[COL_VENDEDOR].SortMode = DataGridViewColumnSortMode.Programmatic;
+
+            gridDados.Columns[COL_TRANSP].Width = 250;
+            gridDados.Columns[COL_TRANSP].ValueType = typeof(string);
+            gridDados.Columns[COL_TRANSP].SortMode = DataGridViewColumnSortMode.Programmatic;
+
             gridDados.Columns[COL_DTEMISSAO].Width = 140;
             gridDados.Columns[COL_DTFECHAMENTO].Width = 140;
 
             gridDados.Columns[COL_STATUS].Width = 200;
             gridDados.Columns[COL_STATUS].ValueType = typeof(string);
             gridDados.Columns[COL_STATUS].SortMode = DataGridViewColumnSortMode.Programmatic;
+
+            gridDados.Columns[COL_USUARIO].Width = 200;
+            gridDados.Columns[COL_USUARIO].ValueType = typeof(string);
+            gridDados.Columns[COL_USUARIO].SortMode = DataGridViewColumnSortMode.Programmatic;
         }
 
         protected override void carregaConsulta()
         {
             base.carregaConsulta();
             Pedido_OticaBLL = new Pedido_OticaBLL();
-            List<Pedido_Otica> Pedido_OticaList = Pedido_OticaBLL.getPedido_Otica(p => p.Id.ToString(), false, deslocamento, tamanhoPagina, out totalReg);
-
-            //List<Pedido_Otica> Pedido_OticaList = Pedido_OticaBLL.getPedido_Otica(p => p.nome.Contains("x"), T => T.Id.ToString(), false, deslocamento, tamanhopagina, out totalreg);
+            List<Pedido_Otica> Pedido_OticaList = Pedido_OticaBLL.getPedido_Otica(p => p.Id.ToString(), false, deslocamento, tamanhoPagina, out totalReg);            
             dgvDados.DataSource = Pedido_OticaBLL.ToList_Pedido_OticaView(Pedido_OticaList);
             colOrdem = 0;
         }
@@ -327,6 +374,20 @@ namespace prjbase
                     }
                     break;
 
+                case COL_NRPEDCLIENTE:
+                    {
+                        List<Pedido_Otica> Pedido_OticaList = Pedido_OticaBLL.getPedido_Otica(p => p.numero_pedido_cliente, direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
+                        dgvDados.DataSource = Pedido_OticaBLL.ToList_Pedido_OticaView(Pedido_OticaList);
+                    }
+                    break;
+
+                case COL_NRCAIXA:
+                    {
+                        List<Pedido_Otica> Pedido_OticaList = Pedido_OticaBLL.getPedido_Otica(p => p.caixa.numero, direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
+                        dgvDados.DataSource = Pedido_OticaBLL.ToList_Pedido_OticaView(Pedido_OticaList);
+                    }
+                    break;
+
                 case COL_CLIENTE:
                     {
                         List<Pedido_Otica> Pedido_OticaList = Pedido_OticaBLL.getPedido_Otica(p => p.cliente.razao_social, direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
@@ -337,6 +398,20 @@ namespace prjbase
                 case COL_CONDPAG:
                     {
                         List<Pedido_Otica> Pedido_OticaList = Pedido_OticaBLL.getPedido_Otica(p => p.parcela.descricao, direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
+                        dgvDados.DataSource = Pedido_OticaBLL.ToList_Pedido_OticaView(Pedido_OticaList);
+                    }
+                    break;
+
+                case COL_VENDEDOR:
+                    {
+                        List<Pedido_Otica> Pedido_OticaList = Pedido_OticaBLL.getPedido_Otica(p => p.vendedor.nome, direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
+                        dgvDados.DataSource = Pedido_OticaBLL.ToList_Pedido_OticaView(Pedido_OticaList);
+                    }
+                    break;
+
+                case COL_TRANSP:
+                    {
+                        List<Pedido_Otica> Pedido_OticaList = Pedido_OticaBLL.getPedido_Otica(p => p.transportadora.nome_fantasia, direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
                         dgvDados.DataSource = Pedido_OticaBLL.ToList_Pedido_OticaView(Pedido_OticaList);
                     }
                     break;
@@ -358,6 +433,13 @@ namespace prjbase
                 case COL_STATUS:
                     {
                         List<Pedido_Otica> Pedido_OticaList = Pedido_OticaBLL.getPedido_Otica(p => p.status.ToString(), direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
+                        dgvDados.DataSource = Pedido_OticaBLL.ToList_Pedido_OticaView(Pedido_OticaList);
+                    }
+                    break;
+
+                case COL_USUARIO:
+                    {
+                        List<Pedido_Otica> Pedido_OticaList = Pedido_OticaBLL.getPedido_Otica(p => p.usuario_inclusao, direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
                         dgvDados.DataSource = Pedido_OticaBLL.ToList_Pedido_OticaView(Pedido_OticaList);
                     }
                     break;
@@ -465,11 +547,16 @@ namespace prjbase
         private void executeFilter(object sender, DataGridViewCellEventArgs e)
         {
             int codigo = 0;
+            string nr_ped_cliente = string.Empty;
+            string nrcaixa = string.Empty;
             string cliente = string.Empty;
             string condPag = string.Empty;
+            string vendedor = string.Empty;
+            string transp = string.Empty;
             DateTime? DtEmiss = null;
             DateTime? DtFecha = null;
             int? status = null;
+            string usuario = string.Empty;
 
             if (dgvFiltro[COL_PEDIDO, e.RowIndex].Value != null)
             {
@@ -477,6 +564,16 @@ namespace prjbase
                 {
                     codigo = Convert.ToInt32(dgvFiltro[COL_PEDIDO, e.RowIndex].Value);
                 }
+            }
+
+            if (!string.IsNullOrEmpty((string)dgvFiltro[COL_NRPEDCLIENTE, e.RowIndex].Value))
+            {
+                nr_ped_cliente = dgvFiltro[COL_NRPEDCLIENTE, e.RowIndex].Value.ToString();
+            }
+
+            if (!string.IsNullOrEmpty((string)dgvFiltro[COL_NRCAIXA, e.RowIndex].Value))
+            {
+                nrcaixa = dgvFiltro[COL_NRCAIXA, e.RowIndex].Value.ToString();
             }
 
             if (!string.IsNullOrEmpty((string)dgvFiltro[COL_CLIENTE, e.RowIndex].Value))
@@ -487,6 +584,16 @@ namespace prjbase
             if (!string.IsNullOrEmpty((string)dgvFiltro[COL_CONDPAG, e.RowIndex].Value))
             {
                 condPag = dgvFiltro[COL_CONDPAG, e.RowIndex].Value.ToString();
+            }
+
+            if (!string.IsNullOrEmpty((string)dgvFiltro[COL_VENDEDOR, e.RowIndex].Value))
+            {
+                vendedor = dgvFiltro[COL_VENDEDOR, e.RowIndex].Value.ToString();
+            }
+
+            if (!string.IsNullOrEmpty((string)dgvFiltro[COL_TRANSP, e.RowIndex].Value))
+            {
+                transp = dgvFiltro[COL_TRANSP, e.RowIndex].Value.ToString();
             }
 
             if (!string.IsNullOrEmpty((string)dgvFiltro[COL_DTEMISSAO, e.RowIndex].Value))
@@ -517,6 +624,11 @@ namespace prjbase
                 status = (int)((DataGridViewComboBoxCell)dgvFiltro[COL_STATUS, e.RowIndex]).Value;
             }
 
+            if (!string.IsNullOrEmpty((string)dgvFiltro[COL_USUARIO, e.RowIndex].Value))
+            {
+                usuario = dgvFiltro[COL_USUARIO, e.RowIndex].Value.ToString();
+            }
+
             //var predicate = PredicateBuilder.True<Pedido_Otica>();
 
 
@@ -528,14 +640,34 @@ namespace prjbase
                 predicate = predicate = p => p.codigo == codigo;
             }
 
+            if (!string.IsNullOrEmpty(nr_ped_cliente))
+            {
+                predicate = predicate.And(p => p.numero_pedido_cliente.Contains(nr_ped_cliente));
+            }
+
+            if (!string.IsNullOrEmpty(nrcaixa))
+            {
+                predicate = predicate.And(p => p.numero_caixa.Contains(nrcaixa));
+            }
+
             if (!string.IsNullOrEmpty(cliente))
             {
-                predicate = predicate.And(p => p.cliente.nome_fantasia.Contains(cliente));
+                predicate = predicate.And(p => p.cliente.nome_fantasia.ToLower().Contains(cliente.ToLower()));
             }
 
             if (!string.IsNullOrEmpty(condPag))
             {
                 predicate = predicate.And(p => p.parcela.descricao.Contains(condPag));
+            }
+
+            if (!string.IsNullOrEmpty(vendedor))
+            {
+                predicate = predicate.And(p => p.vendedor.nome.ToLower().Contains(vendedor.ToLower()));
+            }
+
+            if (!string.IsNullOrEmpty(transp))
+            {
+                predicate = predicate.And(p => p.transportadora.nome_fantasia.ToLower().Contains(transp.ToLower()));
             }
 
             if ((DtEmiss != null) & (ValidateUtils.isDate(DtEmiss.ToString())))
@@ -551,6 +683,11 @@ namespace prjbase
             if ((status != null) && (status != 7))
             {
                 predicate = predicate.And(p => p.status == status);
+            }
+
+            if (!string.IsNullOrEmpty(usuario))
+            {
+                predicate = predicate.And(p => p.transportadora.usuario_inclusao.ToLower().Contains(usuario.ToLower()));
             }
 
             List<Pedido_Otica> Pedido_OticaList = Pedido_OticaBLL.getPedido_Otica(predicate.Expand(), t => t.Id.ToString(), false, deslocamento, tamanhoPagina, out totalReg);

@@ -29,17 +29,19 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadEditPedido_Otica));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbCaixa = new System.Windows.Forms.ComboBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.cbVendedor = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
             this.txtNrPedCliente = new System.Windows.Forms.TextBox();
             this.txtDtFechamento = new System.Windows.Forms.MaskedTextBox();
             this.txtDtEmissao = new System.Windows.Forms.MaskedTextBox();
             this.txtIdCliente = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.txtNrCaixa = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.cbMotivoEntrega = new System.Windows.Forms.ComboBox();
             this.txtHrPrevEntrega = new System.Windows.Forms.MaskedTextBox();
@@ -60,6 +62,8 @@
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox20 = new System.Windows.Forms.GroupBox();
+            this.txtIdPedLente = new System.Windows.Forms.TextBox();
+            this.txtIdPedArmacao = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.txtEixoMaiorDiagonal = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -185,13 +189,15 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbCaixa);
+            this.groupBox1.Controls.Add(this.label25);
+            this.groupBox1.Controls.Add(this.cbVendedor);
             this.groupBox1.Controls.Add(this.label23);
             this.groupBox1.Controls.Add(this.txtNrPedCliente);
             this.groupBox1.Controls.Add(this.txtDtFechamento);
             this.groupBox1.Controls.Add(this.txtDtEmissao);
             this.groupBox1.Controls.Add(this.txtIdCliente);
             this.groupBox1.Controls.Add(this.label19);
-            this.groupBox1.Controls.Add(this.txtNrCaixa);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.cbMotivoEntrega);
             this.groupBox1.Controls.Add(this.txtHrPrevEntrega);
@@ -218,10 +224,48 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados Pedido";
             // 
+            // cbCaixa
+            // 
+            this.cbCaixa.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbCaixa.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbCaixa.FormattingEnabled = true;
+            this.epValidaDados.SetFraseErro(this.cbCaixa, "");
+            this.epValidaDados.SetIndiceCombo(this.cbCaixa, -1);
+            this.cbCaixa.Location = new System.Drawing.Point(911, 110);
+            this.cbCaixa.Name = "cbCaixa";
+            this.epValidaDados.SetObrigatorio(this.cbCaixa, false);
+            this.cbCaixa.Size = new System.Drawing.Size(75, 24);
+            this.cbCaixa.TabIndex = 57;
+            this.cbCaixa.Validating += new System.ComponentModel.CancelEventHandler(this.cbCaixa_Validating);
+            this.cbCaixa.Validated += new System.EventHandler(this.cbCaixa_Validated);
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(6, 81);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(71, 16);
+            this.label25.TabIndex = 56;
+            this.label25.Text = "Vendedor";
+            // 
+            // cbVendedor
+            // 
+            this.cbVendedor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbVendedor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbVendedor.FormattingEnabled = true;
+            this.epValidaDados.SetFraseErro(this.cbVendedor, "Transportadora obrigatório");
+            this.epValidaDados.SetIndiceCombo(this.cbVendedor, -1);
+            this.cbVendedor.Location = new System.Drawing.Point(82, 79);
+            this.cbVendedor.Name = "cbVendedor";
+            this.epValidaDados.SetObrigatorio(this.cbVendedor, false);
+            this.cbVendedor.Size = new System.Drawing.Size(252, 24);
+            this.cbVendedor.TabIndex = 55;
+            this.cbVendedor.Validating += new System.ComponentModel.CancelEventHandler(this.cb_Validating);
+            // 
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(809, 84);
+            this.label23.Location = new System.Drawing.Point(814, 84);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(106, 16);
             this.label23.TabIndex = 54;
@@ -230,7 +274,7 @@
             // txtNrPedCliente
             // 
             this.epValidaDados.SetFraseErro(this.txtNrPedCliente, "Numero do pedido no Cliente obrigatório.");
-            this.txtNrPedCliente.Location = new System.Drawing.Point(915, 79);
+            this.txtNrPedCliente.Location = new System.Drawing.Point(920, 79);
             this.txtNrPedCliente.Name = "txtNrPedCliente";
             this.epValidaDados.SetObrigatorio(this.txtNrPedCliente, false);
             this.txtNrPedCliente.Size = new System.Drawing.Size(67, 23);
@@ -239,7 +283,7 @@
             // txtDtFechamento
             // 
             this.epValidaDados.SetFraseErro(this.txtDtFechamento, "Data de fechamento obrigatório");
-            this.txtDtFechamento.Location = new System.Drawing.Point(895, 48);
+            this.txtDtFechamento.Location = new System.Drawing.Point(660, 48);
             this.txtDtFechamento.Mask = "00/00/0000";
             this.txtDtFechamento.Name = "txtDtFechamento";
             this.epValidaDados.SetObrigatorio(this.txtDtFechamento, false);
@@ -256,7 +300,7 @@
             // 
             this.txtDtEmissao.Enabled = false;
             this.epValidaDados.SetFraseErro(this.txtDtEmissao, "Data de Emissão obrigatório");
-            this.txtDtEmissao.Location = new System.Drawing.Point(676, 48);
+            this.txtDtEmissao.Location = new System.Drawing.Point(250, 20);
             this.txtDtEmissao.Mask = "00/00/0000";
             this.txtDtEmissao.Name = "txtDtEmissao";
             this.epValidaDados.SetObrigatorio(this.txtDtEmissao, true);
@@ -273,9 +317,10 @@
             // 
             this.txtIdCliente.Enabled = false;
             this.epValidaDados.SetFraseErro(this.txtIdCliente, "");
-            this.txtIdCliente.Location = new System.Drawing.Point(304, 20);
+            this.txtIdCliente.Location = new System.Drawing.Point(887, 15);
             this.txtIdCliente.Name = "txtIdCliente";
             this.epValidaDados.SetObrigatorio(this.txtIdCliente, false);
+            this.txtIdCliente.ReadOnly = true;
             this.txtIdCliente.Size = new System.Drawing.Size(100, 23);
             this.txtIdCliente.TabIndex = 52;
             this.txtIdCliente.TabStop = false;
@@ -284,25 +329,16 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(810, 114);
+            this.label19.Location = new System.Drawing.Point(815, 114);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(95, 16);
             this.label19.TabIndex = 51;
             this.label19.Text = "Número Caixa";
             // 
-            // txtNrCaixa
-            // 
-            this.epValidaDados.SetFraseErro(this.txtNrCaixa, "Numero da caixa obrigatório.");
-            this.txtNrCaixa.Location = new System.Drawing.Point(915, 111);
-            this.txtNrCaixa.Name = "txtNrCaixa";
-            this.epValidaDados.SetObrigatorio(this.txtNrCaixa, true);
-            this.txtNrCaixa.Size = new System.Drawing.Size(67, 23);
-            this.txtNrCaixa.TabIndex = 12;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(329, 84);
+            this.label9.Location = new System.Drawing.Point(338, 84);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(107, 16);
             this.label9.TabIndex = 43;
@@ -314,7 +350,7 @@
             this.cbMotivoEntrega.FormattingEnabled = true;
             this.epValidaDados.SetFraseErro(this.cbMotivoEntrega, "");
             this.epValidaDados.SetIndiceCombo(this.cbMotivoEntrega, -1);
-            this.cbMotivoEntrega.Location = new System.Drawing.Point(440, 79);
+            this.cbMotivoEntrega.Location = new System.Drawing.Point(449, 79);
             this.cbMotivoEntrega.Name = "cbMotivoEntrega";
             this.epValidaDados.SetObrigatorio(this.cbMotivoEntrega, false);
             this.cbMotivoEntrega.Size = new System.Drawing.Size(361, 24);
@@ -323,7 +359,7 @@
             // txtHrPrevEntrega
             // 
             this.epValidaDados.SetFraseErro(this.txtHrPrevEntrega, "");
-            this.txtHrPrevEntrega.Location = new System.Drawing.Point(272, 80);
+            this.txtHrPrevEntrega.Location = new System.Drawing.Point(942, 47);
             this.txtHrPrevEntrega.Mask = "00:00";
             this.txtHrPrevEntrega.Name = "txtHrPrevEntrega";
             this.epValidaDados.SetObrigatorio(this.txtHrPrevEntrega, false);
@@ -336,7 +372,7 @@
             // txtDtPrevEntrega
             // 
             this.epValidaDados.SetFraseErro(this.txtDtPrevEntrega, "Previsão de entrega obrigatório.");
-            this.txtDtPrevEntrega.Location = new System.Drawing.Point(163, 80);
+            this.txtDtPrevEntrega.Location = new System.Drawing.Point(854, 47);
             this.txtDtPrevEntrega.Mask = "00/00/0000";
             this.txtDtPrevEntrega.Name = "txtDtPrevEntrega";
             this.epValidaDados.SetObrigatorio(this.txtDtPrevEntrega, false);
@@ -352,11 +388,11 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 84);
+            this.label8.Location = new System.Drawing.Point(753, 51);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(139, 16);
+            this.label8.Size = new System.Drawing.Size(97, 16);
             this.label8.TabIndex = 39;
-            this.label8.Text = "Previsão de Entrega";
+            this.label8.Text = "Prev. Entrega";
             // 
             // btnPesquisa
             // 
@@ -378,7 +414,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(784, 52);
+            this.label6.Location = new System.Drawing.Point(549, 52);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(109, 16);
             this.label6.TabIndex = 37;
@@ -387,7 +423,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(592, 52);
+            this.label5.Location = new System.Drawing.Point(166, 22);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(82, 16);
             this.label5.TabIndex = 36;
@@ -431,15 +467,17 @@
             // 
             // cbTransportadora
             // 
-            this.cbTransportadora.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTransportadora.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbTransportadora.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.cbTransportadora.FormattingEnabled = true;
             this.epValidaDados.SetFraseErro(this.cbTransportadora, "Transportadora obrigatório");
             this.epValidaDados.SetIndiceCombo(this.cbTransportadora, -1);
-            this.cbTransportadora.Location = new System.Drawing.Point(567, 110);
+            this.cbTransportadora.Location = new System.Drawing.Point(565, 110);
             this.cbTransportadora.Name = "cbTransportadora";
             this.epValidaDados.SetObrigatorio(this.cbTransportadora, false);
-            this.cbTransportadora.Size = new System.Drawing.Size(234, 24);
+            this.cbTransportadora.Size = new System.Drawing.Size(245, 24);
             this.cbTransportadora.TabIndex = 11;
+            this.cbTransportadora.Validating += new System.ComponentModel.CancelEventHandler(this.cb_Validating);
             // 
             // cbCondPagamento
             // 
@@ -469,7 +507,7 @@
             // 
             this.txtId.Enabled = false;
             this.epValidaDados.SetFraseErro(this.txtId, "");
-            this.txtId.Location = new System.Drawing.Point(192, 19);
+            this.txtId.Location = new System.Drawing.Point(775, 14);
             this.txtId.Name = "txtId";
             this.epValidaDados.SetObrigatorio(this.txtId, false);
             this.txtId.ReadOnly = true;
@@ -484,7 +522,7 @@
             this.txtClienteNome.Name = "txtClienteNome";
             this.epValidaDados.SetObrigatorio(this.txtClienteNome, true);
             this.txtClienteNome.ReadOnly = true;
-            this.txtClienteNome.Size = new System.Drawing.Size(381, 23);
+            this.txtClienteNome.Size = new System.Drawing.Size(342, 23);
             this.txtClienteNome.TabIndex = 2;
             this.txtClienteNome.TabStop = false;
             this.txtClienteNome.Validated += new System.EventHandler(this.Ctrls_Validated);
@@ -525,6 +563,8 @@
             // 
             // groupBox20
             // 
+            this.groupBox20.Controls.Add(this.txtIdPedLente);
+            this.groupBox20.Controls.Add(this.txtIdPedArmacao);
             this.groupBox20.Controls.Add(this.label16);
             this.groupBox20.Controls.Add(this.txtEixoMaiorDiagonal);
             this.groupBox20.Controls.Add(this.label17);
@@ -541,12 +581,36 @@
             this.groupBox20.Controls.Add(this.txtDiaFinLente);
             this.groupBox20.Controls.Add(this.label11);
             this.groupBox20.Controls.Add(this.cbTipoArmacao);
-            this.groupBox20.Location = new System.Drawing.Point(9, 117);
+            this.groupBox20.Location = new System.Drawing.Point(21, 117);
             this.groupBox20.Name = "groupBox20";
             this.groupBox20.Size = new System.Drawing.Size(943, 79);
             this.groupBox20.TabIndex = 8;
             this.groupBox20.TabStop = false;
             this.groupBox20.Text = "Dados da armação";
+            // 
+            // txtIdPedLente
+            // 
+            this.txtIdPedLente.Enabled = false;
+            this.epValidaDados.SetFraseErro(this.txtIdPedLente, "");
+            this.txtIdPedLente.Location = new System.Drawing.Point(650, 50);
+            this.txtIdPedLente.Name = "txtIdPedLente";
+            this.epValidaDados.SetObrigatorio(this.txtIdPedLente, false);
+            this.txtIdPedLente.Size = new System.Drawing.Size(71, 23);
+            this.txtIdPedLente.TabIndex = 49;
+            this.txtIdPedLente.TabStop = false;
+            this.txtIdPedLente.Visible = false;
+            // 
+            // txtIdPedArmacao
+            // 
+            this.txtIdPedArmacao.Enabled = false;
+            this.epValidaDados.SetFraseErro(this.txtIdPedArmacao, "");
+            this.txtIdPedArmacao.Location = new System.Drawing.Point(573, 50);
+            this.txtIdPedArmacao.Name = "txtIdPedArmacao";
+            this.epValidaDados.SetObrigatorio(this.txtIdPedArmacao, false);
+            this.txtIdPedArmacao.Size = new System.Drawing.Size(71, 23);
+            this.txtIdPedArmacao.TabIndex = 48;
+            this.txtIdPedArmacao.TabStop = false;
+            this.txtIdPedArmacao.Visible = false;
             // 
             // label16
             // 
@@ -702,7 +766,7 @@
             // 
             this.groupBox17.Controls.Add(this.groupBox18);
             this.groupBox17.Controls.Add(this.groupBox19);
-            this.groupBox17.Location = new System.Drawing.Point(799, 15);
+            this.groupBox17.Location = new System.Drawing.Point(812, 15);
             this.groupBox17.Name = "groupBox17";
             this.groupBox17.Size = new System.Drawing.Size(152, 99);
             this.groupBox17.TabIndex = 7;
@@ -785,7 +849,7 @@
             // 
             this.groupBox15.Controls.Add(this.txtoe_dech);
             this.groupBox15.Controls.Add(this.txtod_dech);
-            this.groupBox15.Location = new System.Drawing.Point(737, 15);
+            this.groupBox15.Location = new System.Drawing.Point(750, 15);
             this.groupBox15.Name = "groupBox15";
             this.groupBox15.Size = new System.Drawing.Size(63, 99);
             this.groupBox15.TabIndex = 6;
@@ -818,7 +882,7 @@
             // 
             this.groupBox16.Controls.Add(this.txtoe_alt);
             this.groupBox16.Controls.Add(this.txtod_alt);
-            this.groupBox16.Location = new System.Drawing.Point(675, 15);
+            this.groupBox16.Location = new System.Drawing.Point(688, 15);
             this.groupBox16.Name = "groupBox16";
             this.groupBox16.Size = new System.Drawing.Size(63, 99);
             this.groupBox16.TabIndex = 5;
@@ -851,7 +915,7 @@
             // 
             this.groupBox12.Controls.Add(this.groupBox13);
             this.groupBox12.Controls.Add(this.groupBox14);
-            this.groupBox12.Location = new System.Drawing.Point(542, 15);
+            this.groupBox12.Location = new System.Drawing.Point(555, 15);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(134, 99);
             this.groupBox12.TabIndex = 4;
@@ -932,7 +996,7 @@
             // 
             this.groupBox11.Controls.Add(this.txtoe_adicao);
             this.groupBox11.Controls.Add(this.txtod_adicao);
-            this.groupBox11.Location = new System.Drawing.Point(342, 15);
+            this.groupBox11.Location = new System.Drawing.Point(355, 15);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(66, 99);
             this.groupBox11.TabIndex = 2;
@@ -965,7 +1029,7 @@
             // 
             this.groupBox10.Controls.Add(this.txtoe_eixo);
             this.groupBox10.Controls.Add(this.txtod_eixo);
-            this.groupBox10.Location = new System.Drawing.Point(280, 15);
+            this.groupBox10.Location = new System.Drawing.Point(293, 15);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(63, 99);
             this.groupBox10.TabIndex = 1;
@@ -1000,7 +1064,7 @@
             // 
             this.groupBox5.Controls.Add(this.groupBox8);
             this.groupBox5.Controls.Add(this.groupBox9);
-            this.groupBox5.Location = new System.Drawing.Point(407, 15);
+            this.groupBox5.Location = new System.Drawing.Point(420, 15);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(136, 99);
             this.groupBox5.TabIndex = 3;
@@ -1081,7 +1145,7 @@
             // 
             this.groupBox4.Controls.Add(this.groupBox7);
             this.groupBox4.Controls.Add(this.groupBox6);
-            this.groupBox4.Location = new System.Drawing.Point(145, 15);
+            this.groupBox4.Location = new System.Drawing.Point(158, 15);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(136, 99);
             this.groupBox4.TabIndex = 0;
@@ -1162,7 +1226,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(17, 83);
+            this.label10.Location = new System.Drawing.Point(43, 82);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(100, 16);
             this.label10.TabIndex = 1;
@@ -1171,7 +1235,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(17, 56);
+            this.label7.Location = new System.Drawing.Point(43, 55);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(83, 16);
             this.label7.TabIndex = 0;
@@ -1187,7 +1251,7 @@
             this.groupBox21.Controls.Add(this.txtMaterialLente);
             this.groupBox21.Controls.Add(this.label20);
             this.groupBox21.Controls.Add(this.cbTipoLente);
-            this.groupBox21.Location = new System.Drawing.Point(9, 196);
+            this.groupBox21.Location = new System.Drawing.Point(21, 196);
             this.groupBox21.Name = "groupBox21";
             this.groupBox21.Size = new System.Drawing.Size(943, 84);
             this.groupBox21.TabIndex = 9;
@@ -1370,9 +1434,9 @@
             // 
             // VLRUNITARIO
             // 
-            dataGridViewCellStyle1.Format = "N2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.VLRUNITARIO.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Format = "N2";
+            dataGridViewCellStyle7.NullValue = null;
+            this.VLRUNITARIO.DefaultCellStyle = dataGridViewCellStyle7;
             this.VLRUNITARIO.HeaderText = "Vlr Unitário";
             this.VLRUNITARIO.Name = "VLRUNITARIO";
             this.VLRUNITARIO.Width = 110;
@@ -1385,18 +1449,18 @@
             // 
             // VLRDESCONTO
             // 
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.VLRDESCONTO.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Format = "N2";
+            dataGridViewCellStyle8.NullValue = null;
+            this.VLRDESCONTO.DefaultCellStyle = dataGridViewCellStyle8;
             this.VLRDESCONTO.HeaderText = "Vlr Desc";
             this.VLRDESCONTO.Name = "VLRDESCONTO";
             this.VLRDESCONTO.Width = 110;
             // 
             // VLTTOTAL
             // 
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.VLTTOTAL.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Format = "N2";
+            dataGridViewCellStyle9.NullValue = null;
+            this.VLTTOTAL.DefaultCellStyle = dataGridViewCellStyle9;
             this.VLTTOTAL.HeaderText = "Total";
             this.VLTTOTAL.Name = "VLTTOTAL";
             this.VLTTOTAL.ReadOnly = true;
@@ -1586,7 +1650,6 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ComboBox cbTipoLente;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox txtNrCaixa;
         private System.Windows.Forms.DataGridView dgvItemPedido;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnRemoveItem;
@@ -1610,5 +1673,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PERCDESCONTO;
         private System.Windows.Forms.DataGridViewTextBoxColumn VLRDESCONTO;
         private System.Windows.Forms.DataGridViewTextBoxColumn VLTTOTAL;
+        private System.Windows.Forms.TextBox txtIdPedArmacao;
+        private System.Windows.Forms.TextBox txtIdPedLente;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.ComboBox cbVendedor;
+        private System.Windows.Forms.ComboBox cbCaixa;
     }
 }

@@ -314,6 +314,7 @@
             this.dgvDados.Name = "dgvDados";
             this.dgvDados.Size = new System.Drawing.Size(615, 335);
             this.dgvDados.TabIndex = 0;
+            this.dgvDados.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dgvDados_Scroll);
             // 
             // panel1
             // 
@@ -333,6 +334,7 @@
             this.dgvFiltro.Name = "dgvFiltro";
             this.dgvFiltro.Size = new System.Drawing.Size(615, 70);
             this.dgvFiltro.TabIndex = 0;
+            this.dgvFiltro.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dgvFiltro_Scroll);
             // 
             // frmBaseList
             // 

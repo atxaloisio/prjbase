@@ -31,14 +31,18 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
             this.menuSistema = new System.Windows.Forms.MenuStrip();
             this.arquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCadCaixa = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCadClientes = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuProdutos = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuVendedores = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCadPedidoVendas = new System.Windows.Forms.ToolStripMenuItem();
             this.produtoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCadRelProdutoBase = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCadRelClienteFormaPagamento = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCadRelLocalidadeTransportadora = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCadRelClienteTransportadora = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCadRelVendedorLocalidade = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCadRelClienteVendedor = new System.Windows.Forms.ToolStripMenuItem();
             this.processosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.agrupamentoDePedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.atualizarStatusDoPedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -80,14 +84,24 @@
             // arquivoToolStripMenuItem
             // 
             this.arquivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuCadCaixa,
             this.mnuCadClientes,
             this.mnuProdutos,
+            this.mnuVendedores,
             this.mnuCadPedidoVendas,
             this.produtoToolStripMenuItem});
             this.arquivoToolStripMenuItem.Name = "arquivoToolStripMenuItem";
             this.arquivoToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.arquivoToolStripMenuItem.Tag = "1000";
             this.arquivoToolStripMenuItem.Text = "&Cadastros";
+            // 
+            // mnuCadCaixa
+            // 
+            this.mnuCadCaixa.Name = "mnuCadCaixa";
+            this.mnuCadCaixa.Size = new System.Drawing.Size(172, 22);
+            this.mnuCadCaixa.Tag = "1006";
+            this.mnuCadCaixa.Text = "Caixa";
+            this.mnuCadCaixa.Click += new System.EventHandler(this.mnuCadCaixa_Click);
             // 
             // mnuCadClientes
             // 
@@ -103,9 +117,17 @@
             this.mnuProdutos.Name = "mnuProdutos";
             this.mnuProdutos.Size = new System.Drawing.Size(172, 22);
             this.mnuProdutos.Tag = "1002";
-            this.mnuProdutos.Text = "Produtos";
+            this.mnuProdutos.Text = "&Produtos";
             this.mnuProdutos.Visible = false;
             this.mnuProdutos.Click += new System.EventHandler(this.mnuProdutos_Click);
+            // 
+            // mnuVendedores
+            // 
+            this.mnuVendedores.Name = "mnuVendedores";
+            this.mnuVendedores.Size = new System.Drawing.Size(172, 22);
+            this.mnuVendedores.Tag = "1005";
+            this.mnuVendedores.Text = "&Vendedores";
+            this.mnuVendedores.Click += new System.EventHandler(this.mnuVendedores_Click);
             // 
             // mnuCadPedidoVendas
             // 
@@ -121,7 +143,9 @@
             this.mnuCadRelProdutoBase,
             this.mnuCadRelClienteFormaPagamento,
             this.mnuCadRelLocalidadeTransportadora,
-            this.mnuCadRelClienteTransportadora});
+            this.mnuCadRelClienteTransportadora,
+            this.mnuCadRelVendedorLocalidade,
+            this.mnuCadRelClienteVendedor});
             this.produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
             this.produtoToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.produtoToolStripMenuItem.Tag = "1004";
@@ -132,14 +156,14 @@
             this.mnuCadRelProdutoBase.Name = "mnuCadRelProdutoBase";
             this.mnuCadRelProdutoBase.Size = new System.Drawing.Size(236, 22);
             this.mnuCadRelProdutoBase.Tag = "10041";
-            this.mnuCadRelProdutoBase.Text = "Produto x Base";
+            this.mnuCadRelProdutoBase.Text = "Produto x &Base";
             // 
             // mnuCadRelClienteFormaPagamento
             // 
             this.mnuCadRelClienteFormaPagamento.Name = "mnuCadRelClienteFormaPagamento";
             this.mnuCadRelClienteFormaPagamento.Size = new System.Drawing.Size(236, 22);
             this.mnuCadRelClienteFormaPagamento.Tag = "10042";
-            this.mnuCadRelClienteFormaPagamento.Text = "Cliente x Forma de Pagamento";
+            this.mnuCadRelClienteFormaPagamento.Text = "Cliente x &Forma de Pagamento";
             this.mnuCadRelClienteFormaPagamento.Click += new System.EventHandler(this.mnuCadRelClienteFormaPagamento_Click);
             // 
             // mnuCadRelLocalidadeTransportadora
@@ -147,7 +171,7 @@
             this.mnuCadRelLocalidadeTransportadora.Name = "mnuCadRelLocalidadeTransportadora";
             this.mnuCadRelLocalidadeTransportadora.Size = new System.Drawing.Size(236, 22);
             this.mnuCadRelLocalidadeTransportadora.Tag = "10043";
-            this.mnuCadRelLocalidadeTransportadora.Text = "Transportadora x Localidades";
+            this.mnuCadRelLocalidadeTransportadora.Text = "Transportadora x &Localidades";
             this.mnuCadRelLocalidadeTransportadora.Click += new System.EventHandler(this.mnuCadRelLocalidadeTransportadora_Click);
             // 
             // mnuCadRelClienteTransportadora
@@ -155,8 +179,24 @@
             this.mnuCadRelClienteTransportadora.Name = "mnuCadRelClienteTransportadora";
             this.mnuCadRelClienteTransportadora.Size = new System.Drawing.Size(236, 22);
             this.mnuCadRelClienteTransportadora.Tag = "10044";
-            this.mnuCadRelClienteTransportadora.Text = "Cliente x Transportadora";
+            this.mnuCadRelClienteTransportadora.Text = "Cliente x &Transportadora";
             this.mnuCadRelClienteTransportadora.Click += new System.EventHandler(this.mnuCadRelClienteTransportadora_Click);
+            // 
+            // mnuCadRelVendedorLocalidade
+            // 
+            this.mnuCadRelVendedorLocalidade.Name = "mnuCadRelVendedorLocalidade";
+            this.mnuCadRelVendedorLocalidade.Size = new System.Drawing.Size(236, 22);
+            this.mnuCadRelVendedorLocalidade.Tag = "10045";
+            this.mnuCadRelVendedorLocalidade.Text = "&Vendedor x Localidade";
+            this.mnuCadRelVendedorLocalidade.Click += new System.EventHandler(this.mnuCadRelVendedorLocalidade_Click);
+            // 
+            // mnuCadRelClienteVendedor
+            // 
+            this.mnuCadRelClienteVendedor.Name = "mnuCadRelClienteVendedor";
+            this.mnuCadRelClienteVendedor.Size = new System.Drawing.Size(236, 22);
+            this.mnuCadRelClienteVendedor.Tag = "10046";
+            this.mnuCadRelClienteVendedor.Text = "Cli&ente x Vendedor";
+            this.mnuCadRelClienteVendedor.Click += new System.EventHandler(this.mnuCadRelClienteVendedor_Click);
             // 
             // processosToolStripMenuItem
             // 
@@ -217,6 +257,7 @@
             // 
             this.trocarSenhaToolStripMenuItem.Name = "trocarSenhaToolStripMenuItem";
             this.trocarSenhaToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.trocarSenhaToolStripMenuItem.Tag = "";
             this.trocarSenhaToolStripMenuItem.Text = "Trocar senha";
             this.trocarSenhaToolStripMenuItem.Click += new System.EventHandler(this.trocarSenhaToolStripMenuItem_Click);
             // 
@@ -224,6 +265,7 @@
             // 
             this.trocarUsuárioToolStripMenuItem.Name = "trocarUsuárioToolStripMenuItem";
             this.trocarUsuárioToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.trocarUsuárioToolStripMenuItem.Tag = "";
             this.trocarUsuárioToolStripMenuItem.Text = "Trocar usuário";
             this.trocarUsuárioToolStripMenuItem.Click += new System.EventHandler(this.trocarUsuarioToolStripMenuItem_Click);
             // 
@@ -351,5 +393,9 @@
         private System.Windows.Forms.ToolStripMenuItem trocarUsuárioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem atualizarStatusDoPedidoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuVendedores;
+        private System.Windows.Forms.ToolStripMenuItem mnuCadRelVendedorLocalidade;
+        private System.Windows.Forms.ToolStripMenuItem mnuCadRelClienteVendedor;
+        private System.Windows.Forms.ToolStripMenuItem mnuCadCaixa;
     }
 }

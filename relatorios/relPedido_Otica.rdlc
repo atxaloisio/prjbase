@@ -2792,15 +2792,17 @@
             </Style>
           </Textbox>
           <Textbox Name="Textbox119">
+            <CanGrow>true</CanGrow>
+            <CanShrink>true</CanShrink>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!tipo.Value</Value>
+                    <Value>=Switch(Fields!tipo.Value = 1,"SEM ARMAÇÃO",Fields!tipo.Value = 2,"METAL",Fields!tipo.Value = 3,"ZILO",Fields!tipo.Value = 4,"FIO DE NYLON",Fields!tipo.Value = 5,"PARAFUSADA",Fields!tipo.Value = 6,"SEGURANÇA",Fields!tipo.Value = 7,"FIO DE AÇO",Fields!tipo.Value = 8,"PARAFUSO COM BUCHA")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>5pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -2809,10 +2811,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox44</rd:DefaultName>
-            <Top>0.07423cm</Top>
-            <Left>2.032cm</Left>
+            <Top>0.04416cm</Top>
+            <Left>1.83201cm</Left>
             <Height>0.36188cm</Height>
-            <Width>0.72729cm</Width>
+            <Width>1.80359cm</Width>
             <ZIndex>6</ZIndex>
             <Style>
               <Border>
@@ -2823,15 +2825,17 @@
             </Style>
           </Textbox>
           <Textbox Name="Textbox120">
+            <CanGrow>true</CanGrow>
+            <CanShrink>true</CanShrink>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!shape.Value</Value>
+                    <Value>=Switch(Fields!shape.Value = 1,"SHAPE_1",Fields!shape.Value = 2,"SHAPE_2",Fields!shape.Value = 3,"SHAPE_3",Fields!shape.Value = 4,"SHAPE_4",Fields!shape.Value = 5,"SHAPE_5",Fields!shape.Value = 6,"SHAPE_6",Fields!shape.Value = 7,"SHAPE_7",Fields!shape.Value = 8,"SHAPE_8",Fields!shape.Value = 9,"SHAPE_9",Fields!shape.Value = 10,"SHAPE_10",Fields!shape.Value = 11,"SHAPE_11",Fields!shape.Value = 12,"SHAPE_12")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>5pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -2841,9 +2845,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox44</rd:DefaultName>
             <Top>0.54715cm</Top>
-            <Left>2.032cm</Left>
+            <Left>1.83201cm</Left>
             <Height>0.36188cm</Height>
-            <Width>0.72729cm</Width>
+            <Width>1.80359cm</Width>
             <ZIndex>7</ZIndex>
             <Style>
               <Border>
@@ -2854,6 +2858,8 @@
             </Style>
           </Textbox>
           <Textbox Name="Textbox121">
+            <CanGrow>true</CanGrow>
+            <CanShrink>true</CanShrink>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
@@ -2872,9 +2878,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox44</rd:DefaultName>
             <Top>1.02006cm</Top>
-            <Left>2.032cm</Left>
+            <Left>1.83201cm</Left>
             <Height>0.36188cm</Height>
-            <Width>0.72729cm</Width>
+            <Width>1.80359cm</Width>
             <ZIndex>8</ZIndex>
             <Style>
               <Border>
@@ -2885,6 +2891,8 @@
             </Style>
           </Textbox>
           <Textbox Name="Textbox122">
+            <CanGrow>true</CanGrow>
+            <CanShrink>true</CanShrink>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
@@ -2903,9 +2911,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox44</rd:DefaultName>
             <Top>1.49298cm</Top>
-            <Left>2.032cm</Left>
+            <Left>1.83201cm</Left>
             <Height>0.36188cm</Height>
-            <Width>0.72729cm</Width>
+            <Width>1.80359cm</Width>
             <ZIndex>9</ZIndex>
             <Style>
               <Border>
@@ -2916,6 +2924,8 @@
             </Style>
           </Textbox>
           <Textbox Name="Textbox127">
+            <CanGrow>true</CanGrow>
+            <CanShrink>true</CanShrink>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
@@ -2934,9 +2944,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox44</rd:DefaultName>
             <Top>1.96589cm</Top>
-            <Left>2.032cm</Left>
+            <Left>1.83201cm</Left>
             <Height>0.36188cm</Height>
-            <Width>0.72729cm</Width>
+            <Width>1.80359cm</Width>
             <ZIndex>10</ZIndex>
             <Style>
               <Border>
@@ -2947,6 +2957,8 @@
             </Style>
           </Textbox>
           <Textbox Name="Textbox128">
+            <CanGrow>true</CanGrow>
+            <CanShrink>true</CanShrink>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
@@ -2964,10 +2976,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox44</rd:DefaultName>
-            <Top>2.43881cm</Top>
-            <Left>2.032cm</Left>
+            <Top>2.40874cm</Top>
+            <Left>1.83201cm</Left>
             <Height>0.36188cm</Height>
-            <Width>0.72729cm</Width>
+            <Width>1.80359cm</Width>
             <ZIndex>11</ZIndex>
             <Style>
               <Border>
@@ -3009,6 +3021,8 @@
             </Style>
           </Textbox>
           <Textbox Name="Textbox129">
+            <CanGrow>true</CanGrow>
+            <CanShrink>true</CanShrink>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
@@ -3027,9 +3041,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox44</rd:DefaultName>
             <Top>2.91173cm</Top>
-            <Left>2.032cm</Left>
+            <Left>1.83201cm</Left>
             <Height>0.36188cm</Height>
-            <Width>0.72729cm</Width>
+            <Width>1.80359cm</Width>
             <ZIndex>13</ZIndex>
             <Style>
               <Border>
@@ -3285,7 +3299,10 @@
                 <TextRuns>
                   <TextRun>
                     <Value>Base</Value>
-                    <Style />
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style>
@@ -3317,7 +3334,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>=Fields!base_calculada.Value</Value>
-                    <Style />
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style>
@@ -5386,47 +5405,18 @@
               <PaddingRight>2pt</PaddingRight>
             </Style>
           </Textbox>
-          <Textbox Name="Textbox176">
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=Fields!tipo.Value</Value>
-                    <Style>
-                      <FontFamily>Tahoma</FontFamily>
-                      <FontSize>8pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox44</rd:DefaultName>
-            <Top>0.07423cm</Top>
-            <Left>2.032cm</Left>
-            <Height>0.36188cm</Height>
-            <Width>0.72729cm</Width>
-            <ZIndex>6</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-            </Style>
-          </Textbox>
           <Textbox Name="Textbox177">
+            <CanGrow>true</CanGrow>
+            <CanShrink>true</CanShrink>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!shape.Value</Value>
+                    <Value>=Switch(Fields!shape.Value = 1,"SHAPE_1",Fields!shape.Value = 2,"SHAPE_2",Fields!shape.Value = 3,"SHAPE_3",Fields!shape.Value = 4,"SHAPE_4",Fields!shape.Value = 5,"SHAPE_5",Fields!shape.Value = 6,"SHAPE_6",Fields!shape.Value = 7,"SHAPE_7",Fields!shape.Value = 8,"SHAPE_8",Fields!shape.Value = 9,"SHAPE_9",Fields!shape.Value = 10,"SHAPE_10",Fields!shape.Value = 11,"SHAPE_11",Fields!shape.Value = 12,"SHAPE_12")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>5pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -5436,10 +5426,10 @@
             </Paragraphs>
             <rd:DefaultName>Textbox44</rd:DefaultName>
             <Top>0.49541cm</Top>
-            <Left>2.07522cm</Left>
+            <Left>1.81136cm</Left>
             <Height>0.36188cm</Height>
-            <Width>0.72729cm</Width>
-            <ZIndex>7</ZIndex>
+            <Width>1.80359cm</Width>
+            <ZIndex>6</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -5449,6 +5439,8 @@
             </Style>
           </Textbox>
           <Textbox Name="Textbox178">
+            <CanGrow>true</CanGrow>
+            <CanShrink>true</CanShrink>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
@@ -5467,10 +5459,10 @@
             </Paragraphs>
             <rd:DefaultName>Textbox44</rd:DefaultName>
             <Top>0.96832cm</Top>
-            <Left>2.07522cm</Left>
+            <Left>1.81136cm</Left>
             <Height>0.36188cm</Height>
-            <Width>0.72729cm</Width>
-            <ZIndex>8</ZIndex>
+            <Width>1.80359cm</Width>
+            <ZIndex>7</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -5480,6 +5472,8 @@
             </Style>
           </Textbox>
           <Textbox Name="Textbox179">
+            <CanGrow>true</CanGrow>
+            <CanShrink>true</CanShrink>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
@@ -5498,10 +5492,10 @@
             </Paragraphs>
             <rd:DefaultName>Textbox44</rd:DefaultName>
             <Top>1.44124cm</Top>
-            <Left>2.07522cm</Left>
+            <Left>1.81136cm</Left>
             <Height>0.36188cm</Height>
-            <Width>0.72729cm</Width>
-            <ZIndex>9</ZIndex>
+            <Width>1.80359cm</Width>
+            <ZIndex>8</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -5511,6 +5505,8 @@
             </Style>
           </Textbox>
           <Textbox Name="Textbox180">
+            <CanGrow>true</CanGrow>
+            <CanShrink>true</CanShrink>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
@@ -5529,10 +5525,10 @@
             </Paragraphs>
             <rd:DefaultName>Textbox44</rd:DefaultName>
             <Top>1.91415cm</Top>
-            <Left>2.07522cm</Left>
+            <Left>1.81136cm</Left>
             <Height>0.36188cm</Height>
-            <Width>0.72729cm</Width>
-            <ZIndex>10</ZIndex>
+            <Width>1.80359cm</Width>
+            <ZIndex>9</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -5542,6 +5538,8 @@
             </Style>
           </Textbox>
           <Textbox Name="Textbox181">
+            <CanGrow>true</CanGrow>
+            <CanShrink>true</CanShrink>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
@@ -5560,10 +5558,10 @@
             </Paragraphs>
             <rd:DefaultName>Textbox44</rd:DefaultName>
             <Top>2.38707cm</Top>
-            <Left>2.07522cm</Left>
+            <Left>1.81136cm</Left>
             <Height>0.36188cm</Height>
-            <Width>0.72729cm</Width>
-            <ZIndex>11</ZIndex>
+            <Width>1.80359cm</Width>
+            <ZIndex>10</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -5594,7 +5592,7 @@
             <Left>0.14605cm</Left>
             <Height>0.36188cm</Height>
             <Width>0.98848cm</Width>
-            <ZIndex>12</ZIndex>
+            <ZIndex>11</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -5604,6 +5602,8 @@
             </Style>
           </Textbox>
           <Textbox Name="Textbox183">
+            <CanGrow>true</CanGrow>
+            <CanShrink>true</CanShrink>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
@@ -5622,9 +5622,42 @@
             </Paragraphs>
             <rd:DefaultName>Textbox44</rd:DefaultName>
             <Top>2.92349cm</Top>
-            <Left>2.07522cm</Left>
+            <Left>1.81136cm</Left>
             <Height>0.36188cm</Height>
-            <Width>0.72729cm</Width>
+            <Width>1.80359cm</Width>
+            <ZIndex>12</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox176">
+            <CanGrow>true</CanGrow>
+            <CanShrink>true</CanShrink>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Microsoft.VisualBasic.Interaction.Switch(Fields!tipo.Value = 1, "SEM ARMAÇÃO", Fields!tipo.Value = 2, "METAL", Fields!tipo.Value = 3, "ZILO", Fields!tipo.Value = 4, "FIO DE NYLON", Fields!tipo.Value = 5, "PARAFUSADA", Fields!tipo.Value = 6, "SEGURANÇA", Fields!tipo.Value = 7, "FIO DE AÇO", Fields!tipo.Value = 8, "PARAFUSO COM BUCHA")</Value>
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>5pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox44</rd:DefaultName>
+            <Top>0.01073cm</Top>
+            <Left>1.81136cm</Left>
+            <Height>0.36188cm</Height>
+            <Width>1.80359cm</Width>
             <ZIndex>13</ZIndex>
             <Style>
               <Border>
@@ -5878,7 +5911,10 @@
                 <TextRuns>
                   <TextRun>
                     <Value>Base</Value>
-                    <Style />
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style>
@@ -5909,7 +5945,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>=Fields!base_calculada.Value</Value>
-                    <Style />
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style>

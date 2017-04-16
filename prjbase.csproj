@@ -196,11 +196,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cadastros\frmCadEditCliente_Vendedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cadastros\frmCadEditCliente_Vendedor.Designer.cs">
+      <DependentUpon>frmCadEditCliente_Vendedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="cadastros\frmCadEditCliente_Transportadora.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="cadastros\frmCadEditCliente_Transportadora.Designer.cs">
       <DependentUpon>frmCadEditCliente_Transportadora.cs</DependentUpon>
+    </Compile>
+    <Compile Include="cadastros\frmCadEditCaixa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cadastros\frmCadEditCaixa.Designer.cs">
+      <DependentUpon>frmCadEditCaixa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="cadastros\frmCadEditVendedor_Localidade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cadastros\frmCadEditVendedor_Localidade.Designer.cs">
+      <DependentUpon>frmCadEditVendedor_Localidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="cadastros\frmCadEditVendedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cadastros\frmCadEditVendedor.Designer.cs">
+      <DependentUpon>frmCadEditVendedor.cs</DependentUpon>
     </Compile>
     <Compile Include="cadastros\frmCadEditRota.cs">
       <SubType>Form</SubType>
@@ -239,11 +263,35 @@
       <DependentUpon>frmParametroSistema.cs</DependentUpon>
     </Compile>
     <Compile Include="GravaArquivo.cs" />
+    <Compile Include="Listas\frmListCliente_Vendedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listas\frmListCliente_Vendedor.Designer.cs">
+      <DependentUpon>frmListCliente_Vendedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Listas\frmListCliente_Transportadora.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Listas\frmListCliente_Transportadora.Designer.cs">
       <DependentUpon>frmListCliente_Transportadora.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Listas\frmListCaixas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listas\frmListCaixas.Designer.cs">
+      <DependentUpon>frmListCaixas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Listas\frmListVendedor_Localidade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listas\frmListVendedor_Localidade.Designer.cs">
+      <DependentUpon>frmListVendedor_Localidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Listas\frmListVendedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listas\frmListVendedores.Designer.cs">
+      <DependentUpon>frmListVendedores.cs</DependentUpon>
     </Compile>
     <Compile Include="Listas\frmListRotas.cs">
       <SubType>Form</SubType>
@@ -424,8 +472,26 @@
       <DependentUpon>frmRelRota.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
+    <Compile Include="utilitarios\frmUtilCancelarPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="utilitarios\frmUtilCancelarPedido.Designer.cs">
+      <DependentUpon>frmUtilCancelarPedido.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="cadastros\frmCadEditCliente_Vendedor.resx">
+      <DependentUpon>frmCadEditCliente_Vendedor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="cadastros\frmCadEditCliente_Transportadora.resx">
       <DependentUpon>frmCadEditCliente_Transportadora.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cadastros\frmCadEditCaixa.resx">
+      <DependentUpon>frmCadEditCaixa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cadastros\frmCadEditVendedor_Localidade.resx">
+      <DependentUpon>frmCadEditVendedor_Localidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cadastros\frmCadEditVendedor.resx">
+      <DependentUpon>frmCadEditVendedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="cadastros\frmCadEditRota.resx">
       <DependentUpon>frmCadEditRota.cs</DependentUpon>
@@ -448,8 +514,20 @@
     <EmbeddedResource Include="frmParametroSistema.resx">
       <DependentUpon>frmParametroSistema.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Listas\frmListCliente_Vendedor.resx">
+      <DependentUpon>frmListCliente_Vendedor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Listas\frmListCliente_Transportadora.resx">
       <DependentUpon>frmListCliente_Transportadora.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listas\frmListCaixas.resx">
+      <DependentUpon>frmListCaixas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listas\frmListVendedor_Localidade.resx">
+      <DependentUpon>frmListVendedor_Localidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listas\frmListVendedores.resx">
+      <DependentUpon>frmListVendedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Listas\frmListRotas.resx">
       <DependentUpon>frmListRotas.cs</DependentUpon>
@@ -534,9 +612,18 @@
     <EmbeddedResource Include="relatorios\relPedido_Otica.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="relatorios\relListPedido_Otica.rdlc" />
-    <EmbeddedResource Include="relatorios\relRota.rdlc" />
-    <EmbeddedResource Include="relatorios\subRelItemPedido_Otica.rdlc" />
+    <EmbeddedResource Include="relatorios\relListPedido_Otica.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="relatorios\relRota.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="relatorios\subRelItemPedido_Otica.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="utilitarios\frmUtilCancelarPedido.resx">
+      <DependentUpon>frmUtilCancelarPedido.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="dbintegracaoDataSet.xsc">
       <DependentUpon>dbintegracaoDataSet.xsd</DependentUpon>
     </None>
@@ -625,9 +712,7 @@
       <Name>Utils</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="utilitarios\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>

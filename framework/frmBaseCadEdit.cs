@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Utils;
+using Model;
 
 namespace prjbase
 {
@@ -28,14 +29,18 @@ namespace prjbase
             try
             {
                 atualizagrid = true;
-                if (salvar(sender, e))
+                if(ValidaAcessoFuncao(Operacao.Salvar))
                 {
-                    btnIncluir.Top = 40;
-                    btnIncluir.Visible = true;
-                    btnCancelar.Top = 75;
-                    MessageBox.Show(Text + " salvo com sucesso.", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ImprimirRegistro(Id);
-                }
+                    if (salvar(sender, e))
+                    {
+                        btnIncluir.Top = 40;
+                        btnIncluir.Visible = true;
+                        btnFechar.Top = 75;
+                        MessageBox.Show(Text + " salvo com sucesso.", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ImprimirRegistro(Id);
+                    }
+                }                
+                
                 
             }
             catch (Exception ex)
@@ -45,7 +50,7 @@ namespace prjbase
             }
             
         }
-
+        
         protected virtual void ImprimirRegistro(Int64? id)
         {
             

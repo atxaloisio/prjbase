@@ -38,6 +38,7 @@ namespace prjbase
 #if DEBUG
             Program.usuario_logado = usuarioBLL.Localizar(1);
             this.DialogResult = DialogResult.OK;
+
             //Program.usuario_logado = usuarioBLL.loginSistema(txtUsuaio.Text, txtSenha.Text);
 
             //if (Program.usuario_logado != null)
@@ -50,7 +51,7 @@ namespace prjbase
             //    this.DialogResult = DialogResult.None;
             //}
 #else
-                Program.usuario_logado = usuarioBLL.loginSistema(txtUsuaio.Text, txtSenha.Text);
+            Program.usuario_logado = usuarioBLL.loginSistema(txtUsuaio.Text, txtSenha.Text);
 
                 if (Program.usuario_logado != null)
                 {
