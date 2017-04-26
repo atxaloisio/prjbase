@@ -20,6 +20,7 @@ namespace prjbase
 
         protected virtual void btnCancelar_Click(object sender, EventArgs e)
         {
+            this.AutoValidate = AutoValidate.Disable;
             cancelar(sender, e);
             Close();
         }
@@ -128,6 +129,12 @@ namespace prjbase
         }
 
         protected virtual void btnIncluir_Click(object sender, EventArgs e)
+        {
+            Incluir();
+            
+        }
+
+        protected virtual void Incluir()
         {
             Limpar(this);
             Id = null;

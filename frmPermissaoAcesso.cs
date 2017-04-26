@@ -118,6 +118,11 @@ namespace prjbase
                         {
                             switch (Convert.ToInt32(node.Tag))
                             {
+                                case Constantes.OP_CANCELAR:
+                                    {
+                                        node.Checked = (item.consultar == "S") ? true : false;
+                                    }
+                                    break;
                                 case Constantes.OP_CONSULTAR:
                                     {
                                         node.Checked = (item.consultar == "S") ? true : false;
@@ -165,8 +170,8 @@ namespace prjbase
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show(ex.InnerException.InnerException.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string mensagem = TrataException.getAllMessage(ex);
+                MessageBox.Show(mensagem, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -187,6 +192,16 @@ namespace prjbase
                     {
                         switch (Convert.ToInt32(node.Tag))
                         {
+                            case Constantes.OP_CANCELAR:
+                                {
+                                    if (funcao_perfil == null)
+                                    {
+                                        funcao_perfil = new Funcao_Perfil(true);
+                                    }
+                                    funcao_perfil.codigo_funcao = Convert.ToInt32(node.Parent.Tag);
+                                    funcao_perfil.cancelar = (node.Checked) ? "S" : "N";
+                                }
+                                break;
                             case Constantes.OP_CONSULTAR:
                                 {
                                     if (funcao_perfil == null)

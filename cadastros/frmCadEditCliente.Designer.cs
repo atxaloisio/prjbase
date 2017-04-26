@@ -1,6 +1,6 @@
 ﻿namespace prjbase
 {
-    partial class frmCadEditProduto
+    partial class frmCadEditCliente
     {
         /// <summary>
         /// Required designer variable.
@@ -98,7 +98,7 @@
             // 
             // txtNome
             // 
-            this.epValidaDados.SetFraseErro(this.txtNome, "Nome do Produto obrigatório.");
+            this.epValidaDados.SetFraseErro(this.txtNome, "Nome do Cliente obrigatório.");
             this.txtNome.Location = new System.Drawing.Point(62, 38);
             this.txtNome.Name = "txtNome";
             this.epValidaDados.SetObrigatorio(this.txtNome, true);
@@ -129,12 +129,12 @@
             this.txtCodigo.TabStop = false;
             this.txtCodigo.Visible = false;
             // 
-            // frmCadEditProduto
+            // frmCadEditCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(534, 112);
-            this.Name = "frmCadEditProduto";
-            this.Text = "Produto";
+            this.Name = "frmCadEditCliente";
+            this.Text = "Cliente";
             this.pnlBotoes.ResumeLayout(false);
             this.pnlPrincipal.ResumeLayout(false);
             this.pnlPrincipal.PerformLayout();

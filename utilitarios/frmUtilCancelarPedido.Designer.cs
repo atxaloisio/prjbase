@@ -1,4 +1,4 @@
-﻿namespace prjbase.utilitarios
+﻿namespace prjbase
 {
     partial class frmUtilCancelarPedido
     {
@@ -280,6 +280,7 @@
             // btnPesquisa
             // 
             this.btnPesquisa.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnPesquisa.Enabled = false;
             this.btnPesquisa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPesquisa.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnPesquisa.Image = ((System.Drawing.Image)(resources.GetObject("btnPesquisa.Image")));
@@ -437,6 +438,7 @@
             this.txtMotivoCancelamento.Size = new System.Drawing.Size(994, 52);
             this.txtMotivoCancelamento.TabIndex = 0;
             this.txtMotivoCancelamento.Text = "";
+            this.txtMotivoCancelamento.Validating += new System.ComponentModel.CancelEventHandler(this.txtMotivoCancelamento_Validating);
             // 
             // frmUtilCancelarPedido
             // 
@@ -444,6 +446,8 @@
             this.ClientSize = new System.Drawing.Size(1117, 220);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmUtilCancelarPedido";
+            this.Tag = "1007";
+            this.Text = "Cancelamento de Pedido Ótica";
             this.pnlBotoes.ResumeLayout(false);
             this.pnlPrincipal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).EndInit();

@@ -88,6 +88,11 @@ namespace prjbase
 
                     txtNrPedCliente.Text = pedido_otica.numero_pedido_cliente;
 
+                    if (pedido_otica.vendedor != null)
+                    {
+                        cbVendedor.SelectedValue = pedido_otica.Id_vendedor;
+                    }
+
                     if (pedido_otica.Id_caixa != null)
                     {
                         cbCaixa.SelectedValue = pedido_otica.Id_caixa;
@@ -511,11 +516,23 @@ namespace prjbase
                 caixaBLL = new CaixaBLL();
                 int id_caixa = Convert.ToInt32(cbCaixa.SelectedValue);
                 int status = (int)StatusPedido.ENTREGUE;
-                List<Caixa> CaixaList = caixaBLL.getCaixa(p => p.Id == id_caixa & p.pedido_otica.Any(c => c.status != status));
+                List<Caixa> CaixaList = caixaBLL.getCaixa(p => p.Id == id_caixa & p.pedido_otica.Any(c => c.status < status));
                 if (CaixaList.Count > 0)
                 {
-                    MessageBox.Show("Caixa selecionada está em uso no pedido : " + CaixaList.FirstOrDefault().pedido_otica.FirstOrDefault().codigo, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    retorno = false;
+                    if (Id != null)
+                    {
+                        if (Id != CaixaList.FirstOrDefault().pedido_otica.Where(t => t.status < status).FirstOrDefault().Id)
+                        {
+                            MessageBox.Show("Caixa selecionada está em uso no pedido : " + CaixaList.FirstOrDefault().pedido_otica.Where(t => t.status < status).FirstOrDefault().codigo, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            retorno = false;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Caixa selecionada está em uso no pedido : " + CaixaList.FirstOrDefault().pedido_otica.Where(t => t.status < status).FirstOrDefault().codigo, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        retorno = false;
+                    }
+                    
                 }
             }
             return retorno;
@@ -537,7 +554,9 @@ namespace prjbase
         private void SetupCaixa()
         {
             caixaBLL = new CaixaBLL();
+            
             List<Caixa> CaixaList = caixaBLL.getCaixa();
+
             AutoCompleteStringCollection acc = new AutoCompleteStringCollection();
 
             foreach (Caixa item in CaixaList)
@@ -548,7 +567,7 @@ namespace prjbase
             cbCaixa.DataSource = CaixaList;
             cbCaixa.AutoCompleteCustomSource = acc;
             cbCaixa.ValueMember = "Id";
-            cbCaixa.DisplayMember = "nome";
+            cbCaixa.DisplayMember = "numero";
             cbCaixa.SelectedIndex = -1;
         }
 
@@ -712,9 +731,38 @@ namespace prjbase
                     }
                 }
             }
+
+            if (e.KeyCode == Keys.F4)
+            {
+                e.SuppressKeyPress = true;
+
+                if (dgvItemPedido.CurrentCell != null)
+                {
+                    int iColumn = dgvItemPedido.CurrentCell.ColumnIndex;
+                    int iRow = dgvItemPedido.CurrentCell.RowIndex;
+
+                    DataGridViewCellCancelEventArgs x = new DataGridViewCellCancelEventArgs(iColumn, iRow);
+
+                    dgvItemPedido_RowValidating(dgvItemPedido, x);
+
+                    if (!x.Cancel)
+                    {
+                        AdicionaItem();
+                    }
+                }
+                else
+                {
+                    AdicionaItem();
+                }                                
+            }
         }
 
         private void btnAddItem_Click(object sender, EventArgs e)
+        {
+            AdicionaItem();            
+        }
+
+        private void AdicionaItem()
         {
             bool AdicionaLinha = true;
 
@@ -1225,18 +1273,19 @@ namespace prjbase
             }
         }
 
-        protected override void Limpar(Control control)
+        protected override void Incluir()
         {
-            base.Limpar(control);
-
+            base.Incluir();
             if (dgvItemPedido.Rows.Count > 0)
             {
                 dgvItemPedido.Rows.Clear();
             }
 
+            SetupCaixa();
+
             txtCodCliIntegracao.Focus();
         }
-
+        
         private void Ctrls_Validating(object sender, CancelEventArgs e)
         {
             if (sender is MaskedTextBox)
@@ -1275,10 +1324,13 @@ namespace prjbase
             {
                 if ((dgvItemPedido[col_Quantidade, e.RowIndex].Value != null) && (dgvItemPedido[col_VlrUnitario, e.RowIndex].Value != null))
                 {
-                    decimal qtd = Convert.ToDecimal(dgvItemPedido[col_Quantidade, e.RowIndex].Value);
-                    decimal vlrUn = Convert.ToDecimal(dgvItemPedido[col_VlrUnitario, e.RowIndex].Value);
-                    dgvItemPedido[col_VlrTotal, e.RowIndex].Value = qtd * vlrUn;
-                    nextCell = true;
+                    if (!string.IsNullOrEmpty(dgvItemPedido[col_Quantidade, e.RowIndex].Value.ToString()))
+                    {
+                        decimal qtd = Convert.ToDecimal(dgvItemPedido[col_Quantidade, e.RowIndex].Value);
+                        decimal vlrUn = Convert.ToDecimal(dgvItemPedido[col_VlrUnitario, e.RowIndex].Value);
+                        dgvItemPedido[col_VlrTotal, e.RowIndex].Value = qtd * vlrUn;
+                        nextCell = true;
+                    }                    
                 }
             }
             if (e.ColumnIndex == col_PercDesconto)
@@ -1342,23 +1394,235 @@ namespace prjbase
         private void dgvItemPedido_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
         {
             string msg = string.Empty;
-            if (dgvItemPedido[col_Codigo, e.RowIndex].Value == null)
-            {
-                msg = msg + "Produto obrigatório";
-            }
-            else if (dgvItemPedido[col_Quantidade, e.RowIndex].Value == null)
-            {
-                msg = msg + "Quantidade obrigatório";
-            }
-            else if (dgvItemPedido[col_VlrUnitario, e.RowIndex].Value == null)
-            {
-                msg = msg + "Valor unitário obrigatório";
-            }
-            else if (dgvItemPedido[col_PercDesconto, e.RowIndex].Value == null)
-            {
-                msg = msg + "Percentual de desconto obrigatório";
-            }
 
+            switch (e.ColumnIndex)
+            {
+                case col_Codigo:
+                    {
+                        if (dgvItemPedido[col_Codigo, e.RowIndex].Value == null)
+                        {
+                            msg = msg + "Produto obrigatório";
+                        }
+                        else if (string.IsNullOrEmpty(dgvItemPedido[col_Codigo, e.RowIndex].Value.ToString()))
+                        {
+                            msg = msg + "Produto obrigatório";
+                        }
+                        else
+                        {
+                            string codigo = dgvItemPedido[col_Codigo, e.RowIndex].Value.ToString();
+                            produtoBLL = new ProdutoBLL();
+                            List<Produto> produtoList = produtoBLL.getProduto(p => p.codigo == codigo);
+                            if (produtoList.Count() > 0)
+                            {
+                                Produto produto = produtoList.First();
+                                if (produto != null)
+                                {
+                                    if (dgvItemPedido[col_Id, e.RowIndex].Value==null)
+                                    {
+                                        dgvItemPedido[col_Id, e.RowIndex].Value = produto.id;
+                                    }
+
+                                    if (dgvItemPedido[col_Codigo, e.RowIndex].Value==null)
+                                    {
+                                        dgvItemPedido[col_Codigo, e.RowIndex].Value = produto.codigo_produto_integracao;
+                                    }
+
+                                    if (dgvItemPedido[col_Descricao, e.RowIndex].Value==null)
+                                    {
+                                        dgvItemPedido[col_Descricao, e.RowIndex].Value = produto.descricao;
+                                    }
+
+                                    if (((DataGridViewComboBoxCell)dgvItemPedido[col_Unidade, e.RowIndex]).Value == null)
+                                    {
+                                        ((DataGridViewComboBoxCell)dgvItemPedido[col_Unidade, e.RowIndex]).Value = produto.unidade;
+                                    }
+
+                                    if (dgvItemPedido[col_Quantidade, e.RowIndex].Value==null)
+                                    {
+                                        dgvItemPedido[col_Quantidade, e.RowIndex].Value = string.Empty;
+                                    }
+
+                                    if (dgvItemPedido[col_VlrUnitario, e.RowIndex].Value==null)
+                                    {
+                                        dgvItemPedido[col_VlrUnitario, e.RowIndex].Value = produto.valor_unitario;
+                                    }
+
+                                    if (dgvItemPedido[col_PercDesconto, e.RowIndex].Value==null)
+                                    {
+                                        dgvItemPedido[col_PercDesconto, e.RowIndex].Value = 0;
+                                    }
+
+                                    if (dgvItemPedido[col_VlrDesconto, e.RowIndex].Value==null)
+                                    {
+                                        dgvItemPedido[col_VlrDesconto, e.RowIndex].Value = Convert.ToDecimal(0.00);
+                                    }
+
+                                    if (dgvItemPedido[col_VlrTotal, e.RowIndex].Value==null)
+                                    {
+                                        dgvItemPedido[col_VlrTotal, e.RowIndex].Value = Convert.ToDecimal(0.00);
+                                    }
+                                    
+                                    if (dgvItemPedido.Rows.Count > 0)
+                                    {
+                                        dgvItemPedido.CurrentCell = dgvItemPedido.Rows[e.RowIndex].Cells[col_Quantidade];
+                                    }
+                                }
+                            }                                                      
+                        }
+                    }
+                    break;
+                case col_Quantidade:
+                    {
+                        if (dgvItemPedido[col_Codigo, e.RowIndex].Value == null)
+                        {
+                            msg = msg + "Produto obrigatório";
+                        }
+                        else if (string.IsNullOrEmpty(dgvItemPedido[col_Codigo, e.RowIndex].Value.ToString()))
+                        {
+                            msg = msg + "Produto obrigatório";
+                        }
+                        else if (dgvItemPedido[col_Quantidade, e.RowIndex].Value == null)
+                        {
+                            msg = msg + "Quantidade obrigatório";
+                        }
+                        else if (string.IsNullOrEmpty(dgvItemPedido[col_Quantidade, e.RowIndex].Value.ToString()))
+                        {
+                            msg = msg + "Quantidade obrigatório";
+                        }
+                    }
+                    break;
+                case col_VlrUnitario:
+                    {
+                        if (dgvItemPedido[col_Codigo, e.RowIndex].Value == null)
+                        {
+                            msg = msg + "Produto obrigatório";
+                        }
+                        else if (string.IsNullOrEmpty(dgvItemPedido[col_Codigo, e.RowIndex].Value.ToString()))
+                        {
+                            msg = msg + "Produto obrigatório";
+                        }
+                        else if (dgvItemPedido[col_Quantidade, e.RowIndex].Value == null)
+                        {
+                            msg = msg + "Quantidade obrigatório";
+                        }
+                        else if (string.IsNullOrEmpty(dgvItemPedido[col_Quantidade, e.RowIndex].Value.ToString()))
+                        {
+                            msg = msg + "Quantidade obrigatório";
+                        }
+                        else if (dgvItemPedido[col_VlrUnitario, e.RowIndex].Value == null)
+                        {
+                            msg = msg + "Valor unitário obrigatório";
+                        }
+                        else if (string.IsNullOrEmpty(dgvItemPedido[col_VlrUnitario, e.RowIndex].Value.ToString()))
+                        {
+                            msg = msg + "Valor unitário obrigatório";
+                        }
+                        else if (Convert.ToDecimal(dgvItemPedido[col_VlrUnitario, e.RowIndex].Value) <= 0)
+                        {
+                            msg = msg + "Deve ser maior que zero.";                           
+                        }
+                    }
+                    break;
+                case col_PercDesconto:
+                    {
+                        if (dgvItemPedido[col_Codigo, e.RowIndex].Value == null)
+                        {
+                            msg = msg + "Produto obrigatório";
+                        }
+                        else if (string.IsNullOrEmpty(dgvItemPedido[col_Codigo, e.RowIndex].Value.ToString()))
+                        {
+                            msg = msg + "Produto obrigatório";
+                        }
+                        else if (dgvItemPedido[col_Quantidade, e.RowIndex].Value == null)
+                        {
+                            msg = msg + "Quantidade obrigatório";
+                        }
+                        else if (string.IsNullOrEmpty(dgvItemPedido[col_Quantidade, e.RowIndex].Value.ToString()))
+                        {
+                            msg = msg + "Quantidade obrigatório";
+                        }
+                        else if (dgvItemPedido[col_VlrUnitario, e.RowIndex].Value == null)
+                        {
+                            msg = msg + "Valor unitário obrigatório";
+                        }
+                        else if (string.IsNullOrEmpty(dgvItemPedido[col_VlrUnitario, e.RowIndex].Value.ToString()))
+                        {
+                            msg = msg + "Valor unitário obrigatório";
+                        }
+                        else if (dgvItemPedido[col_PercDesconto, e.RowIndex].Value == null)
+                        {
+                            msg = msg + "Percentual de desconto obrigatório";
+                        }
+                        else if (string.IsNullOrEmpty(dgvItemPedido[col_PercDesconto, e.RowIndex].Value.ToString()))
+                        {
+                            msg = msg + "Percentual de desconto obrigatório";
+                        }
+                        else if (Convert.ToDecimal(dgvItemPedido[col_PercDesconto, e.RowIndex].Value) > 100)
+                        {
+                            msg = msg + "Percentual de desconto deve ser menor que 100.";                            
+                        }
+                        else if (Convert.ToDecimal(dgvItemPedido[col_PercDesconto, e.RowIndex].Value) < 0)
+                        {
+                            msg = msg + "Percentual de desconto não pode ser menor que zero.";                            
+                        }
+                    }
+                    break;
+                case col_VlrDesconto:
+                    {
+                        if (dgvItemPedido[col_Codigo, e.RowIndex].Value == null)
+                        {
+                            msg = msg + "Produto obrigatório";
+                        }
+                        else if (string.IsNullOrEmpty(dgvItemPedido[col_Codigo, e.RowIndex].Value.ToString()))
+                        {
+                            msg = msg + "Produto obrigatório";
+                        }
+                        else if (dgvItemPedido[col_Quantidade, e.RowIndex].Value == null)
+                        {
+                            msg = msg + "Quantidade obrigatório";
+                        }
+                        else if (string.IsNullOrEmpty(dgvItemPedido[col_Quantidade, e.RowIndex].Value.ToString()))
+                        {
+                            msg = msg + "Quantidade obrigatório";
+                        }
+                        else if (dgvItemPedido[col_VlrUnitario, e.RowIndex].Value == null)
+                        {
+                            msg = msg + "Valor unitário obrigatório";
+                        }
+                        else if (string.IsNullOrEmpty(dgvItemPedido[col_VlrUnitario, e.RowIndex].Value.ToString()))
+                        {
+                            msg = msg + "Valor unitário obrigatório";
+                        }
+                        else if (dgvItemPedido[col_PercDesconto, e.RowIndex].Value == null)
+                        {
+                            msg = msg + "Percentual de desconto obrigatório";
+                        }
+                        else if (string.IsNullOrEmpty(dgvItemPedido[col_PercDesconto, e.RowIndex].Value.ToString()))
+                        {
+                            msg = msg + "Percentual de desconto obrigatório";
+                        }
+                        else if (Convert.ToDecimal(dgvItemPedido[col_PercDesconto, e.RowIndex].Value) > 100)
+                        {
+                            msg = msg + "Percentual de desconto deve ser menor que 100.";
+                        }
+                        else if (Convert.ToDecimal(dgvItemPedido[col_PercDesconto, e.RowIndex].Value) < 0)
+                        {
+                            msg = msg + "Percentual de desconto não pode ser menor que zero.";
+                        }
+                        else if (dgvItemPedido[col_VlrDesconto, e.RowIndex].Value == null)
+                        {
+                            msg = msg + "Valor de desconto obrigatório";
+                        }
+                        else if (string.IsNullOrEmpty(dgvItemPedido[col_VlrDesconto, e.RowIndex].Value.ToString()))
+                        {
+                            msg = msg + "Valor de desconto obrigatório";
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
+                        
             if (!string.IsNullOrEmpty(msg))
             {
                 MessageBox.Show(msg, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1374,14 +1638,7 @@ namespace prjbase
             string linha = "0,1,\"OTICA MATEUS; 0059; 8152\",+0.50,-0.50,180,2.50,+0.50,-0.50,180,2.50,,,,,,,,,,,,,,,,,,,,";
             GravaArquivo.EscreverArquivo(caminho + nomearq, linha);
         }
-
-        private void txtod_gl_cil_Validated(object sender, EventArgs e)
-        {
-            pedido_OticaBLL = new Pedido_OticaBLL();
-
-            txtBaseCalculada.Text = pedido_OticaBLL.CalcularBasePedido_Otica(txtod_gl_esf.Text, txtod_gl_cil.Text).ToString();
-        }
-
+        
         private void cbCaixa_Validating(object sender, CancelEventArgs e)
         {
             cb_Validating(sender, e);
@@ -1392,12 +1649,25 @@ namespace prjbase
                     caixaBLL = new CaixaBLL();
                     int id_caixa = Convert.ToInt32(cbCaixa.SelectedValue);
                     int status = (int)StatusPedido.ENTREGUE;
-                    List<Caixa> CaixaList = caixaBLL.getCaixa(p => p.Id == id_caixa & p.pedido_otica.Any(c => c.status != status));
+                    List<Caixa> CaixaList = caixaBLL.getCaixa(p => p.Id == id_caixa & p.pedido_otica.Any(c => c.status < status));
                     if (CaixaList.Count > 0)
                     {
-                        MessageBox.Show("Caixa selecionada está em uso no pedido : " + CaixaList.FirstOrDefault().pedido_otica.FirstOrDefault().codigo, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        epValidaDados.SetError(cbCaixa, "Caixa selecionada está em uso no pedido.");
-                        e.Cancel = true;
+                        if (Id != null)
+                        {
+                            if (Id != CaixaList.FirstOrDefault().pedido_otica.Where(t => t.status < status).FirstOrDefault().Id)
+                            {
+                                MessageBox.Show("Caixa selecionada está em uso no pedido : " + CaixaList.FirstOrDefault().pedido_otica.Where(t => t.status < status).FirstOrDefault().codigo, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                epValidaDados.SetError(cbCaixa, "Caixa selecionada está em uso no pedido: " + CaixaList.FirstOrDefault().pedido_otica.Where(t => t.status < status).FirstOrDefault().codigo);
+                                e.Cancel = true;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Caixa selecionada está em uso no pedido : " + CaixaList.FirstOrDefault().pedido_otica.Where(t => t.status < status).FirstOrDefault().codigo, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            epValidaDados.SetError(cbCaixa, "Caixa selecionada está em uso no pedido: " + CaixaList.FirstOrDefault().pedido_otica.Where(t => t.status < status).FirstOrDefault().codigo);
+                            e.Cancel = true;
+                        }
+                        
                     }
                 }
             }            
@@ -1410,11 +1680,230 @@ namespace prjbase
 
         private void cb_Validating(object sender, CancelEventArgs e)
         {
-            e.Cancel = ((ComboBox)sender).FindStringExact(((ComboBox)sender).Text) < 0;
-            if (e.Cancel)
+            e.Cancel = false;
+            if (!string.IsNullOrEmpty(((ComboBox)sender).Text))
             {
-                MessageBox.Show("Valor digitado não encontrado na lista", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                e.Cancel = ((ComboBox)sender).FindStringExact(((ComboBox)sender).Text) < 0;
+                if (e.Cancel)
+                {
+                    MessageBox.Show("Valor digitado não encontrado na lista", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+        }
+                
+        private void Enter_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SendKeys.Send("{TAB}");
+            }
+        }
+                
+        private void EsfCilAd_Validated(object sender, EventArgs e)
+        {
+            epValidaDados.SetError(((TextBox)sender), string.Empty);
+            string txt = ((TextBox)sender).Text;
+            if (!string.IsNullOrEmpty(txt))
+            {
+                if (Utils.StringExtensions.IsNumeric(txt.Substring(0, 1)))
+                {
+                    decimal dec = Convert.ToDecimal(txt.Replace(".", ","));
+                    ((TextBox)sender).Text = "+" + dec.ToString("N2").Replace(",", ".");
+                }
+                else if ((txt.Substring(0, 1) == "-") & (txt.Trim().Length > 1) )
+                {
+                    decimal dec = Convert.ToDecimal(txt.Substring(1, txt.Length -1).Replace(".", ","));
+                    ((TextBox)sender).Text = "-" + dec.ToString("N2").Replace(",", ".");
+                }
+                else if ((txt.Substring(0, 1) == "+") & (txt.Trim().Length > 1))
+                {
+                    decimal dec = Convert.ToDecimal(txt.Substring(1, txt.Length -1).Replace(".", ","));
+                    ((TextBox)sender).Text = "+" + dec.ToString("N2").Replace(",", ".");
+                }
+            }
+            CalcularBase();
+        }
+
+        private void CalcularBase()
+        {
+            pedido_OticaBLL = new Pedido_OticaBLL();
+
+            string esf = string.Empty;
+            string cil = string.Empty;
+
+            //Vamos usar primeiro o olho direito para calculo da base.
+            if ((!string.IsNullOrEmpty(txtod_gl_esf.Text)) && (!string.IsNullOrEmpty(txtod_gl_cil.Text)))
+            {
+                esf = txtod_gl_esf.Text;
+                cil = txtod_gl_cil.Text;
+            }
+            else if ((!string.IsNullOrEmpty(txtoe_gl_esf.Text)) && (!string.IsNullOrEmpty(txtoe_gl_cil.Text)))
+            {
+                esf = txtoe_gl_esf.Text;
+                cil = txtoe_gl_cil.Text;
+            }
+
+            if ((!string.IsNullOrEmpty(esf)) && (!string.IsNullOrEmpty(cil)))
+            {
+                txtBaseCalculada.Text = pedido_OticaBLL.CalcularBasePedido_Otica(esf, cil).ToString();
+            }
+                
+        }
+
+        private void txtod_adicao_Validated(object sender, EventArgs e)
+        {
+
+            EsfCilAd_Validated(sender, e);
+            decimal Esferico = 0;
+            decimal Cilindro = 0;
+            decimal Adicao = 0;
+            decimal GlEsf = 0;
+            decimal GlCil = 0;
+
+            if (!string.IsNullOrEmpty(txtod_gl_esf.Text))
+            {
+                Esferico = Convert.ToDecimal(txtod_gl_esf.Text.Substring(1, txtod_gl_esf.Text.Length - 1).Replace(".", ","));
+                if (txtod_gl_esf.Text.Substring(0, 1) == "-")
+                {
+                    Esferico = Esferico * -1;
+                }
+            }
+
+            if (!string.IsNullOrEmpty(txtod_gl_cil.Text))
+            {
+                Cilindro = Convert.ToDecimal(txtod_gl_cil.Text.Substring(1, txtod_gl_cil.Text.Length - 1).Replace(".", ","));
+                if (txtod_gl_cil.Text.Substring(0, 1) == "-")
+                {
+                    Cilindro = Cilindro * -1;
+                }
+            }
+
+            if (!string.IsNullOrEmpty(txtod_adicao.Text))
+            {
+                Adicao = Convert.ToDecimal(txtod_adicao.Text.Substring(1, txtod_adicao.Text.Length - 1).Replace(".", ","));
+                if ((txtod_adicao.Text.Substring(0, 1) == "-") & (txtod_adicao.Text.Trim().Length > 1))
+                {
+                    Adicao = Adicao * -1;
+                }
+            }
+            GlEsf = Esferico + Adicao;
+            GlCil = Cilindro;
+            if (GlEsf > 0)
+            {
+                txtod_gp_esf.Text = "+" + GlEsf.ToString("N2").Replace(",", ".");
+            }
+            else
+            {
+                txtod_gp_esf.Text = GlEsf.ToString("N2").Replace(",", ".");
+            }
+
+            if (GlCil > 0)
+            {
+                txtod_gp_cil.Text = "+" + GlCil.ToString("N2").Replace(",", ".");
+            }
+            else
+            {
+                txtod_gp_cil.Text = GlCil.ToString("N2").Replace(",", ".");
+            }
+
+
+
+        }
+
+        private void txtoe_adicao_Validated(object sender, EventArgs e)
+        {
+            EsfCilAd_Validated(sender, e);
+            decimal Esferico = 0;
+            decimal Cilindro = 0;
+            decimal Adicao = 0;
+            decimal GlEsf = 0;
+            decimal GlCil = 0;
+
+            if (!string.IsNullOrEmpty(txtoe_gl_esf.Text))
+            {
+                Esferico = Convert.ToDecimal(txtoe_gl_esf.Text.Substring(1, txtoe_gl_esf.Text.Length - 1).Replace(".", ","));
+                if (txtoe_gl_esf.Text.Substring(0, 1) == "-")
+                {
+                    Esferico = Esferico * -1;
+                }
+            }
+
+            if (!string.IsNullOrEmpty(txtoe_gl_cil.Text))
+            {
+                Cilindro = Convert.ToDecimal(txtoe_gl_cil.Text.Substring(1, txtoe_gl_cil.Text.Length - 1).Replace(".", ","));
+                if (txtoe_gl_cil.Text.Substring(0, 1) == "-")
+                {
+                    Cilindro = Cilindro * -1;
+                }
+            }
+
+            if (!string.IsNullOrEmpty(txtoe_adicao.Text))
+            {
+                Adicao = Convert.ToDecimal(txtoe_adicao.Text.Substring(1, txtoe_adicao.Text.Length - 1).Replace(".", ","));
+                if (txtoe_adicao.Text.Substring(0, 1) == "-")
+                {
+                    Adicao = Adicao * -1;
+                }
+            }
+            GlEsf = Esferico + Adicao;
+            GlCil = Cilindro;
+            if (GlEsf > 0)
+            {
+                txtoe_gp_esf.Text = "+" + GlEsf.ToString("N2").Replace(",", ".");
+            }
+            else
+            {
+                txtoe_gp_esf.Text = GlEsf.ToString("N2").Replace(",", ".");
+            }
+
+            if (GlCil > 0)
+            {
+                txtoe_gp_cil.Text = "+" + GlCil.ToString("N2").Replace(",", ".");
+            }
+            else
+            {
+                txtoe_gp_cil.Text = GlCil.ToString("N2").Replace(",", ".");
+            }
+        }
+        
+        private void EsfCilAd_Validating(object sender, CancelEventArgs e)
+        {
+            decimal ret = 0;
+            bool exibemsg = false;
+            if (((TextBox)sender).Text.Length == 1)
+            {
+                if ((((TextBox)sender).Text == "+") || (((TextBox)sender).Text == "-"))
+                {
+                    exibemsg = true;                    
+                }
+            }
+            else if (((TextBox)sender).Text.Length > 1)
+            {
+                if (((((TextBox)sender).Text.Substring(0, ((TextBox)sender).Text.Length - 1)) == "+") ||
+                    ((((TextBox)sender).Text.Substring(0, ((TextBox)sender).Text.Length - 1)) == "-"))
+                {
+                    if (!Utils.StringExtensions.IsNumeric(((TextBox)sender).Text.Substring(1, ((TextBox)sender).Text.Length-1)))
+                    {
+                        exibemsg = true;                        
+                    }
+                }
+                else if (!decimal.TryParse(((TextBox)sender).Text.Substring(0, ((TextBox)sender).Text.Length).Replace(".",","), out ret))
+                {
+                    exibemsg = true;                    
+                }
+            }
+
+            if (exibemsg)
+            {
+                epValidaDados.SetError(((TextBox)sender), "Valor informado inválido.");
+                e.Cancel = true;
+            }
+        }
+
+        private void dgvItemPedido_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
+        {
+            
+            
         }
     }
 }

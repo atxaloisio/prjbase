@@ -64,6 +64,7 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.dlgCaminhoArquivos = new System.Windows.Forms.FolderBrowserDialog();
+            this.btnZerarCadProd = new System.Windows.Forms.Button();
             this.pnlPrincipal.SuspendLayout();
             this.tcParametros.SuspendLayout();
             this.tpGeral.SuspendLayout();
@@ -270,6 +271,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnZerarCadProd);
             this.tabPage1.Controls.Add(this.chkVendedores);
             this.tabPage1.Controls.Add(this.lblQtdRegistros);
             this.tabPage1.Controls.Add(this.pbSincronizar);
@@ -455,6 +457,25 @@
             this.btnSalvar.UseVisualStyleBackColor = false;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
+            // btnZerarCadProd
+            // 
+            this.btnZerarCadProd.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnZerarCadProd.Enabled = false;
+            this.btnZerarCadProd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnZerarCadProd.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnZerarCadProd.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnZerarCadProd.Image = global::prjbase.Properties.Resources.sync;
+            this.btnZerarCadProd.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnZerarCadProd.Location = new System.Drawing.Point(349, 5);
+            this.btnZerarCadProd.Name = "btnZerarCadProd";
+            this.btnZerarCadProd.Size = new System.Drawing.Size(183, 33);
+            this.btnZerarCadProd.TabIndex = 14;
+            this.btnZerarCadProd.Text = "&Zerar Cad. Produtos";
+            this.btnZerarCadProd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnZerarCadProd.UseVisualStyleBackColor = false;
+            this.btnZerarCadProd.Visible = false;
+            this.btnZerarCadProd.Click += new System.EventHandler(this.btnZerarCadProd_Click);
+            // 
             // frmParametroSistema
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -517,5 +538,6 @@
         private System.Windows.Forms.ProgressBar pbSincronizar;
         private System.Windows.Forms.Label lblQtdRegistros;
         private System.Windows.Forms.CheckBox chkVendedores;
+        public System.Windows.Forms.Button btnZerarCadProd;
     }
 }

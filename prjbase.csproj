@@ -13,7 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\asus\Desktop\LabPrecision\</PublishUrl>
+    <PublishUrl>D:\GDrive\Optima\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -24,9 +24,11 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <TargetCulture>pt-BR</TargetCulture>
-    <ApplicationRevision>2</ApplicationRevision>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -196,6 +198,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cadastros\frmCadEditProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cadastros\frmCadEditProduto.Designer.cs">
+      <DependentUpon>frmCadEditProduto.cs</DependentUpon>
+    </Compile>
     <Compile Include="cadastros\frmCadEditCliente_Vendedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -213,6 +221,12 @@
     </Compile>
     <Compile Include="cadastros\frmCadEditCaixa.Designer.cs">
       <DependentUpon>frmCadEditCaixa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="cadastros\frmCadEditCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cadastros\frmCadEditCliente.Designer.cs">
+      <DependentUpon>frmCadEditCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="cadastros\frmCadEditVendedor_Localidade.cs">
       <SubType>Form</SubType>
@@ -243,12 +257,6 @@
     </Compile>
     <Compile Include="cadastros\frmCadEditPerfil.Designer.cs">
       <DependentUpon>frmCadEditPerfil.cs</DependentUpon>
-    </Compile>
-    <Compile Include="cadastros\frmCadEditProduto.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="cadastros\frmCadEditProduto.Designer.cs">
-      <DependentUpon>frmCadEditProduto.cs</DependentUpon>
     </Compile>
     <Compile Include="frmAlteraSenha.cs">
       <SubType>Form</SubType>
@@ -478,6 +486,9 @@
     <Compile Include="utilitarios\frmUtilCancelarPedido.Designer.cs">
       <DependentUpon>frmUtilCancelarPedido.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="cadastros\frmCadEditProduto.resx">
+      <DependentUpon>frmCadEditProduto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="cadastros\frmCadEditCliente_Vendedor.resx">
       <DependentUpon>frmCadEditCliente_Vendedor.cs</DependentUpon>
     </EmbeddedResource>
@@ -486,6 +497,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="cadastros\frmCadEditCaixa.resx">
       <DependentUpon>frmCadEditCaixa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cadastros\frmCadEditCliente.resx">
+      <DependentUpon>frmCadEditCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="cadastros\frmCadEditVendedor_Localidade.resx">
       <DependentUpon>frmCadEditVendedor_Localidade.cs</DependentUpon>
@@ -504,9 +518,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="cadastros\frmCadEditPerfil.resx">
       <DependentUpon>frmCadEditPerfil.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="cadastros\frmCadEditProduto.resx">
-      <DependentUpon>frmCadEditProduto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAlteraSenha.resx">
       <DependentUpon>frmAlteraSenha.cs</DependentUpon>
@@ -712,7 +723,9 @@
       <Name>Utils</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>

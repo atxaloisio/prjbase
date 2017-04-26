@@ -43,14 +43,18 @@ namespace prjbase
            return ShowDialog();
         }
 
-        protected virtual bool ValidaAcessoFuncao(Operacao operacao)
+        protected virtual bool ValidaAcessoFuncao(Operacao operacao, object tag = null )
         {
             bool Retorno = true;
             string mensagem = string.Empty;
 
-            if (this.Tag != null)
+            if ((this.Tag != null)||(tag != null))
             {
                 int func = Convert.ToInt32(this.Tag);
+                if (tag != null)
+                {
+                    func = Convert.ToInt32(tag);
+                }
                 Usuario usuario = Program.usuario_logado;
 
                 List<Funcao_Perfil> fpList = usuario.perfil.funcao_perfil.ToList();
@@ -59,6 +63,14 @@ namespace prjbase
                 {
                     switch (operacao)
                     {
+                        case Operacao.Cancelar:
+                            {
+                                if (fp.cancelar == "N")
+                                {
+                                    mensagem = "Usuário não possui direito de canclamento do recurso selecionado \n por favor entre em contato com o administrador do sistema.";
+                                }
+                            }
+                            break;
                         case Operacao.Consultar:
                             {
                                 if (fp.consultar == "N")

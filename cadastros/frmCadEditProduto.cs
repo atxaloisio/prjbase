@@ -5,71 +5,126 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using System.Linq;
 using Model;
 using BLL;
+using System.Linq;
+using Sync;
+using Utils;
 
 namespace prjbase
 {
     public partial class frmCadEditProduto : prjbase.frmBaseCadEdit
     {
-        ProdutoBLL ProdutoBLL;
+        private ProdutoBLL ProdutoBLL;
+       
         public frmCadEditProduto()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
-        private void frmCadEditProduto_Shown(object sender, EventArgs e)
+        protected override void LoadToControls()
         {
             if (Id != null)
             {
                 ProdutoBLL = new ProdutoBLL();
+
                 Produto Produto = ProdutoBLL.Localizar(Id);
 
                 if (Produto != null)
                 {
                     //txtId.Text = Produto.Id.ToString();
+                    //txtCodigo.Text = Produto.codigo.ToString();
+                    //txtCodInt.Text = Produto.codInt;
                     //txtNome.Text = Produto.nome;
-                    //txtEmail.Text = Produto.email;
-                    //txtPassword.Text = Produto.password;
-                    //txtDtAlteracao.Text = Produto.dtalteracao.ToString();
-                    //txtDtCriacao.Text = Produto.dtcriacao.ToString();
-                }
-                //MessageBox.Show("Id informado " + Convert.ToString(Id));
+                    //chkInativo.Checked = Produto.inativo == "S";                    
+                }                
             }
         }
 
         protected override bool salvar(object sender, EventArgs e)
-        {            
-            Produto Produto = new Produto();
-            ProdutoBLL = new ProdutoBLL();
+        {
+            bool Retorno = epValidaDados.Validar(true);
 
-            Produto.descricao = "caneta bic preta";
-            Produto.codigo = "PRD0003";
-            Produto.ncm = "123456";
-            Produto.unidade = "UN";
+            if (Retorno)
+            {
+                try
+                {
+                    ProdutoBLL = new ProdutoBLL();
+                    ProdutoBLL.UsuarioLogado = Program.usuario_logado;
+                    ProdutoProxy proxy = new ProdutoProxy();
 
-            Produto_Ibpt produto_ibpt = new Produto_Ibpt();
+                    Produto Produto = LoadFromControls();
 
-            produto_ibpt.aliqEstadual = new decimal(10.21);
-            produto_ibpt.aliqFederal = new decimal(22.45);
-            produto_ibpt.aliqMunicipal = new decimal(33);
-            produto_ibpt.fonte = "teste";
-            produto_ibpt.chave = "ver1";
+                    if (Id != null)
+                    {                        
+                        //ProdutoBLL.AlterarProduto(Produto);
+                        //proxy.AlterarProduto(Produto);
+                    }
+                    else
+                    {
+                        //ProdutoBLL.AdicionarProduto(Produto);
+                        //proxy.IncluirProduto(Produto);
+                    }
+                    
+                    if (Produto.id != 0)
+                    {
+                        //txtCodInt.Text = Produto.codInt;
+                    }
 
-            Produto.produto_ibpt.Add(produto_ibpt);
-
-
-            ProdutoBLL.AdicionarProduto(Produto);
-            return true;
-            
+                    Retorno = true;
+                }
+                catch (Exception ex)
+                {
+                    Retorno = false;
+                    throw ex;
+                }
+            }
+            return Retorno;
         }
 
-        protected override void Limpar(Control control)
+        protected virtual Produto LoadFromControls()
+        {
+            Produto Produto = new Produto();
 
+            if (Id != null)
+            {
+                //Produto.Id = Convert.ToInt64(txtId.Text);
+                //Produto.codigo = Convert.ToInt64(txtCodigo.Text);
+                //Produto.codInt = txtCodInt.Text;
+            }
+            
+            //Produto.nome = txtNome.Text;
+            //if (Id == null)
+            //{
+            //    ProdutoBLL = new ProdutoBLL();
+            //    List<Produto> ProdutoList = ProdutoBLL.getProduto(p => p.nome.ToLower() == Produto.nome.ToLower());
+            //    if (ProdutoList.Count > 0)
+            //    {
+            //        Produto.Id = ProdutoList.FirstOrDefault().Id;
+            //        Produto.codigo = ProdutoList.FirstOrDefault().codigo;
+            //        Produto.codInt = ProdutoList.FirstOrDefault().codInt;
+            //    }
+            //    else
+            //    {
+            //        Produto.codInt = Sequence.GetNextVal("sq_Produto_sequence").ToString();
+            //    }
+            //}
+            
+            
+            //Produto.inativo = (chkInativo.Checked == true) ? "S" : "N";
+            
+            return Produto;
+        }
+
+        protected override void SetupControls()
+        {                        
+        }
+                    
+        protected override void Limpar(Control control)
         {
             base.Limpar(control);
-            //txtNome.Focus();
-        }
+
+            txtNome.Focus();
+        }                
     }
 }

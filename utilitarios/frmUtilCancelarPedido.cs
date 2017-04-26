@@ -14,7 +14,7 @@ using Model;
 using System.Globalization;
 using Utils;
 
-namespace prjbase.utilitarios
+namespace prjbase
 {
     public partial class frmUtilCancelarPedido : prjbase.frmBaseCadEdit
     {
@@ -26,6 +26,7 @@ namespace prjbase.utilitarios
         private VendedorBLL vendedorBLL;
         private Vendedor_LocalidadeBLL vendedor_LocalidadeBLL;
         private CaixaBLL caixaBLL;
+                
         public frmUtilCancelarPedido()
         {
             InitializeComponent();
@@ -65,6 +66,11 @@ namespace prjbase.utilitarios
                         cbCondPagamento.SelectedValue = pedido_otica.condicao_pagamento;
                     }
 
+                    if (pedido_otica.vendedor != null)
+                    {
+                        cbVendedor.SelectedValue = pedido_otica.Id_vendedor;
+                    }
+
                     if (pedido_otica.Id_transportadora != null)
                     {
                         cbTransportadora.SelectedValue = pedido_otica.Id_transportadora;
@@ -80,7 +86,7 @@ namespace prjbase.utilitarios
                     if (pedido_otica.motivo_entrega != null)
                     {
                         cbMotivoEntrega.SelectedValue = pedido_otica.motivo_entrega.Id;
-                    }                                                                        
+                    }                    
                 }
             }
         }
@@ -117,6 +123,15 @@ namespace prjbase.utilitarios
                         mensagem = "Pedido: " + pedido_Otica.codigo + " Não pode ser cancelado pois consta como faturado.";
                     }
 
+                    if (string.IsNullOrEmpty(txtMotivoCancelamento.Text))
+                    {
+                        mensagem = "Pedido: " + pedido_Otica.codigo + " Motivo de cancelamento obrigatório";
+                    }
+                    else if (txtMotivoCancelamento.Text.Length < 20)
+                    {
+                        mensagem = "Pedido: " + pedido_Otica.codigo + " Motivo de cancelamento com descrição insuficiente. \n Minimo 20 Caracteres";
+                    }
+
                     if (!string.IsNullOrEmpty(mensagem))
                     {
                         MessageBox.Show(mensagem, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -140,7 +155,7 @@ namespace prjbase.utilitarios
             bool Retorno = epValidaDados.Validar(true);
 
             Retorno = ValidaDadosEspecifico();
-            
+                        
             if (Retorno)
             {
                 try
@@ -154,9 +169,16 @@ namespace prjbase.utilitarios
                     pedido_Otica.motivo_cancelamento = txtMotivoCancelamento.Text;
 
 
-                    pedido_OticaBLL.AlterarPedido_Otica(pedido_Otica);
-                                       
-                    Retorno = true;
+                    if (MessageBox.Show("Deseja realmente cancelar o pedido otica: " + pedido_Otica.codigo + " - " + 
+                        pedido_Otica.cliente.nome_fantasia, Text,MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        pedido_OticaBLL.AlterarPedido_Otica(pedido_Otica);
+                        Retorno = true;
+                    }
+                    else
+                    {
+                        Retorno = false;
+                    }                                                                                   
                 }
                 catch (Exception ex)
                 {
@@ -165,6 +187,95 @@ namespace prjbase.utilitarios
                 }
             }
             return Retorno;
+        }
+
+        protected override void SetupControls()
+        {
+            SetupCondPagamento();
+            SetupCaixa();
+            SetupTransportadora();
+            SetupVendedor();
+            SetupMotivoEntrega();            
+        }
+
+        private void SetupCaixa()
+        {
+            caixaBLL = new CaixaBLL();
+
+            List<Caixa> CaixaList = caixaBLL.getCaixa();
+
+            AutoCompleteStringCollection acc = new AutoCompleteStringCollection();
+
+            foreach (Caixa item in CaixaList)
+            {
+                acc.Add(item.numero);
+            }
+
+            cbCaixa.DataSource = CaixaList;
+            cbCaixa.AutoCompleteCustomSource = acc;
+            cbCaixa.ValueMember = "Id";
+            cbCaixa.DisplayMember = "numero";
+            cbCaixa.SelectedIndex = -1;
+        }
+
+        private void SetupVendedor()
+        {
+            vendedorBLL = new VendedorBLL();
+            List<Vendedor> VendedorList = vendedorBLL.getVendedor();
+
+            AutoCompleteStringCollection acc = new AutoCompleteStringCollection();
+
+            foreach (Vendedor item in VendedorList)
+            {
+                acc.Add(item.nome);
+            }
+
+            cbVendedor.DataSource = VendedorList;
+            cbVendedor.AutoCompleteCustomSource = acc;
+            cbVendedor.ValueMember = "Id";
+            cbVendedor.DisplayMember = "nome";
+            cbVendedor.SelectedIndex = -1;
+        }
+        
+        private void SetupMotivoEntrega()
+        {
+            motivo_EntregaBLL = new Motivo_EntregaBLL();
+            cbMotivoEntrega.DataSource = motivo_EntregaBLL.getMotivo_Entrega();
+            cbMotivoEntrega.ValueMember = "Id";
+            cbMotivoEntrega.DisplayMember = "Descricao";
+            cbMotivoEntrega.SelectedIndex = -1;
+        }
+
+        private void SetupTransportadora()
+        {
+            clienteBLL = new ClienteBLL();
+            List<Cliente> ClienteList = clienteBLL.getCliente(x => x.cliente_tag.Any(e => e.tag == "Transportadora"));
+
+            AutoCompleteStringCollection acc = new AutoCompleteStringCollection();
+
+            foreach (Cliente item in ClienteList)
+            {
+                acc.Add(item.nome_fantasia);
+            }
+            cbTransportadora.DataSource = ClienteList;
+            cbTransportadora.AutoCompleteCustomSource = acc;
+            cbTransportadora.ValueMember = "Id";
+            cbTransportadora.DisplayMember = "nome_fantasia";
+            cbTransportadora.SelectedIndex = -1;
+        }
+
+        private void SetupCondPagamento()
+        {
+            parcelaBLL = new ParcelaBLL();
+            cbCondPagamento.DataSource = parcelaBLL.getParcela();
+            cbCondPagamento.ValueMember = "Id";
+            cbCondPagamento.DisplayMember = "Descricao";
+            cbCondPagamento.SelectedIndex = -1;
+        }
+
+        private void txtMotivoCancelamento_Validating(object sender, CancelEventArgs e)
+        {
+           
         }
     }
 }

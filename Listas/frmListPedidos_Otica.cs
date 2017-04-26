@@ -755,5 +755,44 @@ namespace prjbase
             //relatorio.ShowDialog();            
         }
         #endregion
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            CancelarPedido_Otica();
+        }
+
+        private void CancelarPedido_Otica()
+        {
+            frmUtilCancelarPedido CancelarPedido = new frmUtilCancelarPedido();
+            try
+            {
+                if (ValidaAcessoFuncao(Operacao.Cancelar,CancelarPedido.Tag))
+                {                    
+                    if (dgvDados.CurrentRow != null)
+                    {
+                        if (dgvDados[0, dgvDados.CurrentRow.Index].Value != null)
+                        {
+                            if (Convert.ToInt32(dgvDados[0, dgvDados.CurrentRow.Index].Value) > 0)
+                            {
+                                CancelarPedido.atualizagrid = true;
+                                CancelarPedido.ExibeDialogo(this, Convert.ToInt32(dgvDados[0, dgvDados.CurrentRow.Index].Value));
+                            }
+
+                        }
+                    }
+
+
+                    if (CancelarPedido.atualizagrid)
+                    {
+                        carregaConsulta();
+                        AtualizaContadores();
+                    }
+                }
+            }
+            finally
+            {
+                CancelarPedido.Dispose();
+            }                                        
+        }
     }
 }

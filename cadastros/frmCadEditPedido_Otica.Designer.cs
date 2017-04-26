@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadEditPedido_Otica));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbCaixa = new System.Windows.Forms.ComboBox();
             this.label25 = new System.Windows.Forms.Label();
@@ -235,7 +235,8 @@
             this.cbCaixa.Name = "cbCaixa";
             this.epValidaDados.SetObrigatorio(this.cbCaixa, false);
             this.cbCaixa.Size = new System.Drawing.Size(75, 24);
-            this.cbCaixa.TabIndex = 57;
+            this.cbCaixa.TabIndex = 13;
+            this.cbCaixa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown);
             this.cbCaixa.Validating += new System.ComponentModel.CancelEventHandler(this.cbCaixa_Validating);
             this.cbCaixa.Validated += new System.EventHandler(this.cbCaixa_Validated);
             // 
@@ -259,7 +260,8 @@
             this.cbVendedor.Name = "cbVendedor";
             this.epValidaDados.SetObrigatorio(this.cbVendedor, false);
             this.cbVendedor.Size = new System.Drawing.Size(252, 24);
-            this.cbVendedor.TabIndex = 55;
+            this.cbVendedor.TabIndex = 8;
+            this.cbVendedor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown);
             this.cbVendedor.Validating += new System.ComponentModel.CancelEventHandler(this.cb_Validating);
             // 
             // label23
@@ -278,7 +280,7 @@
             this.txtNrPedCliente.Name = "txtNrPedCliente";
             this.epValidaDados.SetObrigatorio(this.txtNrPedCliente, false);
             this.txtNrPedCliente.Size = new System.Drawing.Size(67, 23);
-            this.txtNrPedCliente.TabIndex = 9;
+            this.txtNrPedCliente.TabIndex = 10;
             // 
             // txtDtFechamento
             // 
@@ -306,6 +308,7 @@
             this.epValidaDados.SetObrigatorio(this.txtDtEmissao, true);
             this.txtDtEmissao.Size = new System.Drawing.Size(87, 23);
             this.txtDtEmissao.TabIndex = 4;
+            this.txtDtEmissao.TabStop = false;
             this.txtDtEmissao.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.epValidaDados.SetTipoValidacao(this.txtDtEmissao, libComponente.TipoValidacao.Vazio);
             this.txtDtEmissao.ValidatingType = typeof(System.DateTime);
@@ -354,7 +357,7 @@
             this.cbMotivoEntrega.Name = "cbMotivoEntrega";
             this.epValidaDados.SetObrigatorio(this.cbMotivoEntrega, false);
             this.cbMotivoEntrega.Size = new System.Drawing.Size(361, 24);
-            this.cbMotivoEntrega.TabIndex = 8;
+            this.cbMotivoEntrega.TabIndex = 9;
             // 
             // txtHrPrevEntrega
             // 
@@ -476,7 +479,8 @@
             this.cbTransportadora.Name = "cbTransportadora";
             this.epValidaDados.SetObrigatorio(this.cbTransportadora, false);
             this.cbTransportadora.Size = new System.Drawing.Size(245, 24);
-            this.cbTransportadora.TabIndex = 11;
+            this.cbTransportadora.TabIndex = 12;
+            this.cbTransportadora.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown);
             this.cbTransportadora.Validating += new System.ComponentModel.CancelEventHandler(this.cb_Validating);
             // 
             // cbCondPagamento
@@ -489,7 +493,7 @@
             this.cbCondPagamento.Name = "cbCondPagamento";
             this.epValidaDados.SetObrigatorio(this.cbCondPagamento, true);
             this.cbCondPagamento.Size = new System.Drawing.Size(318, 24);
-            this.cbCondPagamento.TabIndex = 10;
+            this.cbCondPagamento.TabIndex = 11;
             // 
             // txtCodCliIntegracao
             // 
@@ -581,9 +585,9 @@
             this.groupBox20.Controls.Add(this.txtDiaFinLente);
             this.groupBox20.Controls.Add(this.label11);
             this.groupBox20.Controls.Add(this.cbTipoArmacao);
-            this.groupBox20.Location = new System.Drawing.Point(21, 117);
+            this.groupBox20.Location = new System.Drawing.Point(4, 117);
             this.groupBox20.Name = "groupBox20";
-            this.groupBox20.Size = new System.Drawing.Size(943, 79);
+            this.groupBox20.Size = new System.Drawing.Size(991, 79);
             this.groupBox20.TabIndex = 8;
             this.groupBox20.TabStop = false;
             this.groupBox20.Text = "Dados da armação";
@@ -766,7 +770,7 @@
             // 
             this.groupBox17.Controls.Add(this.groupBox18);
             this.groupBox17.Controls.Add(this.groupBox19);
-            this.groupBox17.Location = new System.Drawing.Point(812, 15);
+            this.groupBox17.Location = new System.Drawing.Point(845, 15);
             this.groupBox17.Name = "groupBox17";
             this.groupBox17.Size = new System.Drawing.Size(152, 99);
             this.groupBox17.TabIndex = 7;
@@ -849,7 +853,7 @@
             // 
             this.groupBox15.Controls.Add(this.txtoe_dech);
             this.groupBox15.Controls.Add(this.txtod_dech);
-            this.groupBox15.Location = new System.Drawing.Point(750, 15);
+            this.groupBox15.Location = new System.Drawing.Point(783, 15);
             this.groupBox15.Name = "groupBox15";
             this.groupBox15.Size = new System.Drawing.Size(63, 99);
             this.groupBox15.TabIndex = 6;
@@ -882,7 +886,7 @@
             // 
             this.groupBox16.Controls.Add(this.txtoe_alt);
             this.groupBox16.Controls.Add(this.txtod_alt);
-            this.groupBox16.Location = new System.Drawing.Point(688, 15);
+            this.groupBox16.Location = new System.Drawing.Point(721, 15);
             this.groupBox16.Name = "groupBox16";
             this.groupBox16.Size = new System.Drawing.Size(63, 99);
             this.groupBox16.TabIndex = 5;
@@ -915,7 +919,7 @@
             // 
             this.groupBox12.Controls.Add(this.groupBox13);
             this.groupBox12.Controls.Add(this.groupBox14);
-            this.groupBox12.Location = new System.Drawing.Point(555, 15);
+            this.groupBox12.Location = new System.Drawing.Point(588, 15);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(134, 99);
             this.groupBox12.TabIndex = 4;
@@ -996,9 +1000,9 @@
             // 
             this.groupBox11.Controls.Add(this.txtoe_adicao);
             this.groupBox11.Controls.Add(this.txtod_adicao);
-            this.groupBox11.Location = new System.Drawing.Point(355, 15);
+            this.groupBox11.Location = new System.Drawing.Point(344, 15);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(66, 99);
+            this.groupBox11.Size = new System.Drawing.Size(78, 99);
             this.groupBox11.TabIndex = 2;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Adição";
@@ -1008,30 +1012,36 @@
             this.txtoe_adicao.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.epValidaDados.SetFraseErro(this.txtoe_adicao, "");
             this.txtoe_adicao.Location = new System.Drawing.Point(5, 65);
+            this.txtoe_adicao.MaxLength = 5;
             this.txtoe_adicao.Name = "txtoe_adicao";
             this.epValidaDados.SetObrigatorio(this.txtoe_adicao, false);
             this.txtoe_adicao.Size = new System.Drawing.Size(53, 21);
             this.txtoe_adicao.TabIndex = 1;
             this.txtoe_adicao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EsfCil_KeyPress);
+            this.txtoe_adicao.Validating += new System.ComponentModel.CancelEventHandler(this.EsfCilAd_Validating);
+            this.txtoe_adicao.Validated += new System.EventHandler(this.txtoe_adicao_Validated);
             // 
             // txtod_adicao
             // 
             this.txtod_adicao.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.epValidaDados.SetFraseErro(this.txtod_adicao, "");
             this.txtod_adicao.Location = new System.Drawing.Point(5, 39);
+            this.txtod_adicao.MaxLength = 5;
             this.txtod_adicao.Name = "txtod_adicao";
             this.epValidaDados.SetObrigatorio(this.txtod_adicao, false);
             this.txtod_adicao.Size = new System.Drawing.Size(53, 21);
             this.txtod_adicao.TabIndex = 0;
             this.txtod_adicao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EsfCil_KeyPress);
+            this.txtod_adicao.Validating += new System.ComponentModel.CancelEventHandler(this.EsfCilAd_Validating);
+            this.txtod_adicao.Validated += new System.EventHandler(this.txtod_adicao_Validated);
             // 
             // groupBox10
             // 
             this.groupBox10.Controls.Add(this.txtoe_eixo);
             this.groupBox10.Controls.Add(this.txtod_eixo);
-            this.groupBox10.Location = new System.Drawing.Point(293, 15);
+            this.groupBox10.Location = new System.Drawing.Point(267, 15);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(63, 99);
+            this.groupBox10.Size = new System.Drawing.Size(76, 99);
             this.groupBox10.TabIndex = 1;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Eixo";
@@ -1041,6 +1051,7 @@
             this.txtoe_eixo.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.epValidaDados.SetFraseErro(this.txtoe_eixo, "");
             this.txtoe_eixo.Location = new System.Drawing.Point(5, 65);
+            this.txtoe_eixo.MaxLength = 5;
             this.txtoe_eixo.Name = "txtoe_eixo";
             this.epValidaDados.SetObrigatorio(this.txtoe_eixo, false);
             this.txtoe_eixo.Size = new System.Drawing.Size(53, 21);
@@ -1053,6 +1064,7 @@
             this.txtod_eixo.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.epValidaDados.SetFraseErro(this.txtod_eixo, "");
             this.txtod_eixo.Location = new System.Drawing.Point(5, 39);
+            this.txtod_eixo.MaxLength = 5;
             this.txtod_eixo.Name = "txtod_eixo";
             this.epValidaDados.SetObrigatorio(this.txtod_eixo, false);
             this.txtod_eixo.Size = new System.Drawing.Size(53, 21);
@@ -1064,9 +1076,9 @@
             // 
             this.groupBox5.Controls.Add(this.groupBox8);
             this.groupBox5.Controls.Add(this.groupBox9);
-            this.groupBox5.Location = new System.Drawing.Point(420, 15);
+            this.groupBox5.Location = new System.Drawing.Point(423, 15);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(136, 99);
+            this.groupBox5.Size = new System.Drawing.Size(166, 99);
             this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Grau de Perto";
@@ -1077,9 +1089,9 @@
             this.groupBox8.Controls.Add(this.txtod_gp_cil);
             this.groupBox8.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox8.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox8.Location = new System.Drawing.Point(68, 19);
+            this.groupBox8.Location = new System.Drawing.Point(83, 19);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(64, 77);
+            this.groupBox8.Size = new System.Drawing.Size(80, 77);
             this.groupBox8.TabIndex = 1;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Cilindro";
@@ -1089,22 +1101,28 @@
             this.txtoe_gp_cil.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.epValidaDados.SetFraseErro(this.txtoe_gp_cil, "");
             this.txtoe_gp_cil.Location = new System.Drawing.Point(6, 46);
+            this.txtoe_gp_cil.MaxLength = 5;
             this.txtoe_gp_cil.Name = "txtoe_gp_cil";
             this.epValidaDados.SetObrigatorio(this.txtoe_gp_cil, false);
             this.txtoe_gp_cil.Size = new System.Drawing.Size(53, 21);
             this.txtoe_gp_cil.TabIndex = 1;
             this.txtoe_gp_cil.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EsfCil_KeyPress);
+            this.txtoe_gp_cil.Validating += new System.ComponentModel.CancelEventHandler(this.EsfCilAd_Validating);
+            this.txtoe_gp_cil.Validated += new System.EventHandler(this.EsfCilAd_Validated);
             // 
             // txtod_gp_cil
             // 
             this.txtod_gp_cil.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.epValidaDados.SetFraseErro(this.txtod_gp_cil, "");
             this.txtod_gp_cil.Location = new System.Drawing.Point(6, 19);
+            this.txtod_gp_cil.MaxLength = 5;
             this.txtod_gp_cil.Name = "txtod_gp_cil";
             this.epValidaDados.SetObrigatorio(this.txtod_gp_cil, false);
             this.txtod_gp_cil.Size = new System.Drawing.Size(53, 21);
             this.txtod_gp_cil.TabIndex = 0;
             this.txtod_gp_cil.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EsfCil_KeyPress);
+            this.txtod_gp_cil.Validating += new System.ComponentModel.CancelEventHandler(this.EsfCilAd_Validating);
+            this.txtod_gp_cil.Validated += new System.EventHandler(this.EsfCilAd_Validated);
             // 
             // groupBox9
             // 
@@ -1114,7 +1132,7 @@
             this.groupBox9.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox9.Location = new System.Drawing.Point(3, 19);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(65, 77);
+            this.groupBox9.Size = new System.Drawing.Size(80, 77);
             this.groupBox9.TabIndex = 0;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Esferico";
@@ -1124,30 +1142,36 @@
             this.txtoe_gp_esf.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.epValidaDados.SetFraseErro(this.txtoe_gp_esf, "");
             this.txtoe_gp_esf.Location = new System.Drawing.Point(6, 46);
+            this.txtoe_gp_esf.MaxLength = 5;
             this.txtoe_gp_esf.Name = "txtoe_gp_esf";
             this.epValidaDados.SetObrigatorio(this.txtoe_gp_esf, false);
             this.txtoe_gp_esf.Size = new System.Drawing.Size(53, 21);
             this.txtoe_gp_esf.TabIndex = 1;
             this.txtoe_gp_esf.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EsfCil_KeyPress);
+            this.txtoe_gp_esf.Validating += new System.ComponentModel.CancelEventHandler(this.EsfCilAd_Validating);
+            this.txtoe_gp_esf.Validated += new System.EventHandler(this.EsfCilAd_Validated);
             // 
             // txtod_gp_esf
             // 
             this.txtod_gp_esf.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.epValidaDados.SetFraseErro(this.txtod_gp_esf, "");
             this.txtod_gp_esf.Location = new System.Drawing.Point(6, 19);
+            this.txtod_gp_esf.MaxLength = 5;
             this.txtod_gp_esf.Name = "txtod_gp_esf";
             this.epValidaDados.SetObrigatorio(this.txtod_gp_esf, false);
             this.txtod_gp_esf.Size = new System.Drawing.Size(53, 21);
             this.txtod_gp_esf.TabIndex = 0;
             this.txtod_gp_esf.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EsfCil_KeyPress);
+            this.txtod_gp_esf.Validating += new System.ComponentModel.CancelEventHandler(this.EsfCilAd_Validating);
+            this.txtod_gp_esf.Validated += new System.EventHandler(this.EsfCilAd_Validated);
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.groupBox7);
             this.groupBox4.Controls.Add(this.groupBox6);
-            this.groupBox4.Location = new System.Drawing.Point(158, 15);
+            this.groupBox4.Location = new System.Drawing.Point(100, 15);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(136, 99);
+            this.groupBox4.Size = new System.Drawing.Size(166, 99);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Grau de Longe";
@@ -1158,9 +1182,9 @@
             this.groupBox7.Controls.Add(this.txtod_gl_cil);
             this.groupBox7.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox7.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox7.Location = new System.Drawing.Point(68, 19);
+            this.groupBox7.Location = new System.Drawing.Point(83, 19);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(64, 77);
+            this.groupBox7.Size = new System.Drawing.Size(80, 77);
             this.groupBox7.TabIndex = 1;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Cilindro";
@@ -1170,23 +1194,28 @@
             this.txtoe_gl_cil.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.epValidaDados.SetFraseErro(this.txtoe_gl_cil, "");
             this.txtoe_gl_cil.Location = new System.Drawing.Point(6, 46);
+            this.txtoe_gl_cil.MaxLength = 5;
             this.txtoe_gl_cil.Name = "txtoe_gl_cil";
             this.epValidaDados.SetObrigatorio(this.txtoe_gl_cil, false);
             this.txtoe_gl_cil.Size = new System.Drawing.Size(53, 21);
             this.txtoe_gl_cil.TabIndex = 1;
             this.txtoe_gl_cil.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EsfCil_KeyPress);
+            this.txtoe_gl_cil.Validating += new System.ComponentModel.CancelEventHandler(this.EsfCilAd_Validating);
+            this.txtoe_gl_cil.Validated += new System.EventHandler(this.EsfCilAd_Validated);
             // 
             // txtod_gl_cil
             // 
             this.txtod_gl_cil.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.epValidaDados.SetFraseErro(this.txtod_gl_cil, "");
             this.txtod_gl_cil.Location = new System.Drawing.Point(6, 19);
+            this.txtod_gl_cil.MaxLength = 5;
             this.txtod_gl_cil.Name = "txtod_gl_cil";
             this.epValidaDados.SetObrigatorio(this.txtod_gl_cil, false);
             this.txtod_gl_cil.Size = new System.Drawing.Size(53, 21);
             this.txtod_gl_cil.TabIndex = 0;
             this.txtod_gl_cil.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EsfCil_KeyPress);
-            this.txtod_gl_cil.Validated += new System.EventHandler(this.txtod_gl_cil_Validated);
+            this.txtod_gl_cil.Validating += new System.ComponentModel.CancelEventHandler(this.EsfCilAd_Validating);
+            this.txtod_gl_cil.Validated += new System.EventHandler(this.EsfCilAd_Validated);
             // 
             // groupBox6
             // 
@@ -1196,7 +1225,7 @@
             this.groupBox6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox6.Location = new System.Drawing.Point(3, 19);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(65, 77);
+            this.groupBox6.Size = new System.Drawing.Size(80, 77);
             this.groupBox6.TabIndex = 0;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Esferico";
@@ -1206,27 +1235,33 @@
             this.txtoe_gl_esf.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.epValidaDados.SetFraseErro(this.txtoe_gl_esf, "");
             this.txtoe_gl_esf.Location = new System.Drawing.Point(6, 46);
+            this.txtoe_gl_esf.MaxLength = 5;
             this.txtoe_gl_esf.Name = "txtoe_gl_esf";
             this.epValidaDados.SetObrigatorio(this.txtoe_gl_esf, false);
             this.txtoe_gl_esf.Size = new System.Drawing.Size(53, 21);
             this.txtoe_gl_esf.TabIndex = 1;
             this.txtoe_gl_esf.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EsfCil_KeyPress);
+            this.txtoe_gl_esf.Validating += new System.ComponentModel.CancelEventHandler(this.EsfCilAd_Validating);
+            this.txtoe_gl_esf.Validated += new System.EventHandler(this.EsfCilAd_Validated);
             // 
             // txtod_gl_esf
             // 
             this.txtod_gl_esf.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.epValidaDados.SetFraseErro(this.txtod_gl_esf, "");
             this.txtod_gl_esf.Location = new System.Drawing.Point(6, 19);
+            this.txtod_gl_esf.MaxLength = 5;
             this.txtod_gl_esf.Name = "txtod_gl_esf";
             this.epValidaDados.SetObrigatorio(this.txtod_gl_esf, false);
             this.txtod_gl_esf.Size = new System.Drawing.Size(53, 21);
             this.txtod_gl_esf.TabIndex = 0;
             this.txtod_gl_esf.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EsfCil_KeyPress);
+            this.txtod_gl_esf.Validating += new System.ComponentModel.CancelEventHandler(this.EsfCilAd_Validating);
+            this.txtod_gl_esf.Validated += new System.EventHandler(this.EsfCilAd_Validated);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(43, 82);
+            this.label10.Location = new System.Drawing.Point(2, 82);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(100, 16);
             this.label10.TabIndex = 1;
@@ -1235,7 +1270,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(43, 55);
+            this.label7.Location = new System.Drawing.Point(2, 55);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(83, 16);
             this.label7.TabIndex = 0;
@@ -1251,9 +1286,9 @@
             this.groupBox21.Controls.Add(this.txtMaterialLente);
             this.groupBox21.Controls.Add(this.label20);
             this.groupBox21.Controls.Add(this.cbTipoLente);
-            this.groupBox21.Location = new System.Drawing.Point(21, 196);
+            this.groupBox21.Location = new System.Drawing.Point(4, 196);
             this.groupBox21.Name = "groupBox21";
-            this.groupBox21.Size = new System.Drawing.Size(943, 84);
+            this.groupBox21.Size = new System.Drawing.Size(991, 84);
             this.groupBox21.TabIndex = 9;
             this.groupBox21.TabStop = false;
             this.groupBox21.Text = "Dados da Lente";
@@ -1434,9 +1469,9 @@
             // 
             // VLRUNITARIO
             // 
-            dataGridViewCellStyle7.Format = "N2";
-            dataGridViewCellStyle7.NullValue = null;
-            this.VLRUNITARIO.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.VLRUNITARIO.DefaultCellStyle = dataGridViewCellStyle1;
             this.VLRUNITARIO.HeaderText = "Vlr Unitário";
             this.VLRUNITARIO.Name = "VLRUNITARIO";
             this.VLRUNITARIO.Width = 110;
@@ -1449,18 +1484,18 @@
             // 
             // VLRDESCONTO
             // 
-            dataGridViewCellStyle8.Format = "N2";
-            dataGridViewCellStyle8.NullValue = null;
-            this.VLRDESCONTO.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.VLRDESCONTO.DefaultCellStyle = dataGridViewCellStyle2;
             this.VLRDESCONTO.HeaderText = "Vlr Desc";
             this.VLRDESCONTO.Name = "VLRDESCONTO";
             this.VLRDESCONTO.Width = 110;
             // 
             // VLTTOTAL
             // 
-            dataGridViewCellStyle9.Format = "N2";
-            dataGridViewCellStyle9.NullValue = null;
-            this.VLTTOTAL.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.VLTTOTAL.DefaultCellStyle = dataGridViewCellStyle3;
             this.VLTTOTAL.HeaderText = "Total";
             this.VLTTOTAL.Name = "VLTTOTAL";
             this.VLTTOTAL.ReadOnly = true;
@@ -1509,6 +1544,7 @@
             // frmCadEditPedido_Otica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScroll = true;
             this.CancelButton = null;
             this.ClientSize = new System.Drawing.Size(1119, 597);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

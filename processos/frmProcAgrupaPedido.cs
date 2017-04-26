@@ -34,6 +34,10 @@ namespace prjbase
 
         #endregion
 
+        #region Constante limpo do Status Pedido
+        private const int StatusPedidoLimpo = 9;
+        #endregion
+
         protected frmBase frmInstancia;
 
         protected int deslocamento = 0;
@@ -149,39 +153,7 @@ namespace prjbase
 
         }
 
-        private void editarRegistro()
-        {
-            String TituloTela;
-            if ((frmInstancia == null) || (frmInstancia.IsDisposed))
-            {
-                this.InstanciarFormulario();
-            }
-            TituloTela = frmInstancia.Text;
-            frmInstancia.Text = "Editar : " + frmInstancia.Text;
-            //frmInstancia.Text = TituloTela;
-
-
-            if (dgvDados.CurrentRow != null)
-            {
-                if (dgvDados[0, dgvDados.CurrentRow.Index].Value != null)
-                {
-                    if (Convert.ToInt32(dgvDados[0, dgvDados.CurrentRow.Index].Value) > 0)
-                    {
-                        frmInstancia.ExibeDialogo(this, Convert.ToInt32(dgvDados[0, dgvDados.CurrentRow.Index].Value));
-                    }
-
-                }
-            }
-
-
-            if (frmInstancia.atualizagrid)
-            {
-                // MessageBox.Show("atualiza.");
-                dgvDados.DataSource = null;
-                carregaConsulta();
-            }
-            frmInstancia.Dispose();
-        }
+        
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
@@ -364,9 +336,9 @@ namespace prjbase
                 status = (int)((DataGridViewComboBoxCell)dgvFiltro[COL_STATUS, 0]).Value;
             }
 
-            if (status == null || status == 7)
+            if (status == null || status == StatusPedidoLimpo)
             {
-                status = (int)StatusPedido.IMPRESSO;
+                status = (int)StatusPedido.ENTREGUE;
             }
 
             switch (e.ColumnIndex)
@@ -579,13 +551,13 @@ namespace prjbase
                 predicate = predicate.And(p => DbFunctions.TruncateTime(p.data_fechamento) == DbFunctions.TruncateTime(DtFecha));
             }
 
-            if ((status != null) && (status != 7))
+            if ((status != null) && (status != StatusPedidoLimpo))
             {
                 predicate = predicate.And(p => p.status == status);
             }
             else
             {
-                status = (int)StatusPedido.IMPRESSO;
+                status = (int)StatusPedido.ENTREGUE;
                 predicate = predicate.And(p => p.status == status);
             }
 
@@ -795,7 +767,7 @@ namespace prjbase
 
             Expression<Func<Pedido_Otica, bool>> predicate = p => true;
 
-            if (value != 7)
+            if (value != StatusPedidoLimpo)
             {
                 predicate = predicate.And(p => p.status == value);
             }
@@ -902,8 +874,20 @@ namespace prjbase
 
             StatusPedido sp = new StatusPedido();
             DataGridViewComboBoxColumn colStatus = new DataGridViewComboBoxColumn();
-            IList<itemEnumList> lstStatusPedido = Enumerados.getListEnum(sp);
-            lstStatusPedido.Insert(0, new itemEnumList { chave = 7, descricao = string.Empty });
+
+            int statusEntregue = (int)StatusPedido.ENTREGUE;
+            int statusAgrupado = (int)StatusPedido.AGRUPADO;
+            int statusFaturado = (int)StatusPedido.FATURADO;
+
+
+            IList<itemEnumList> lstStatusPedido = Enumerados.getListEnum(sp).Where(p => p.chave == statusEntregue || p.chave == statusAgrupado || p.chave == statusFaturado).ToList();
+
+                                               
+            lstStatusPedido.Insert(0, new itemEnumList { chave = StatusPedidoLimpo, descricao = string.Empty });
+            
+
+
+
             colStatus.DataSource = lstStatusPedido;
             colStatus.ValueMember = "chave";
             colStatus.DisplayMember = "descricao";
@@ -975,7 +959,8 @@ namespace prjbase
         {
             pedido_OticaBLL = new Pedido_OticaBLL();
             int stEntregue = (int)StatusPedido.ENTREGUE;
-            List<Pedido_Otica> Pedido_OticaList = pedido_OticaBLL.getPedido_Otica(c => c.status == stEntregue, p => p.Id.ToString(), false, deslocamento, tamanhoPagina, out totalReg);
+            
+            List<Pedido_Otica> Pedido_OticaList = pedido_OticaBLL.getPedido_Otica(c => c.status == stEntregue, false, deslocamento, tamanhoPagina, out totalReg,p => p.Id_cliente.ToString(),p => p.codigo.ToString());
 
             //List<Pedido_Otica> Pedido_OticaList = Pedido_OticaBLL.getPedido_Otica(p => p.nome.Contains("x"), T => T.Id.ToString(), false, deslocamento, tamanhopagina, out totalreg);
             dgvDados.DataSource = pedido_OticaBLL.ToList_Pedido_OticaAgrupaView(Pedido_OticaList);
@@ -1200,7 +1185,7 @@ namespace prjbase
                 pedido.codigo_empresa = Convert.ToInt32(ConfigurationManager.AppSettings["codEmpresa"]);
                 pedido.codigo_parcela = pedido_OticaList.FirstOrDefault().parcela.codigo;
                 pedido.codigo_pedido_integracao = Sequence.GetNextVal("sq_pedido_sequence").ToString();
-                pedido.data_previsao = pedido_OticaList.FirstOrDefault().data_fechamento.Value.ToShortDateString();
+                pedido.data_previsao = DateTime.Now.ToShortDateString();
                 pedido.etapa = "10";
                 pedido.Id_cliente = cli.Id;
                 pedido.importado_api = "S";
@@ -1374,12 +1359,13 @@ namespace prjbase
 
                 Pedido_InfoAdic Pedido_InfoAdic = new Pedido_InfoAdic();
                 if (Categoria != null)
-                {
+                {                    
                     Pedido_InfoAdic.codigo_categoria = Categoria.codigo;
                 }
 
                 if (Conta_Corrente != null)
                 {
+                    Pedido_InfoAdic.Id_conta_corrente = Conta_Corrente.Id;
                     Pedido_InfoAdic.codigo_conta_corrente = Conta_Corrente.nCodCC;
                 }
 
@@ -1436,8 +1422,10 @@ namespace prjbase
                     carregaConsulta();
                     this.Cursor = Cursors.Default;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    string mensagem = TrataException.getAllMessage(ex);
+                    MessageBox.Show(mensagem, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     throw;
                 }
                 finally
@@ -1465,6 +1453,7 @@ namespace prjbase
                 Retorno = false;
             }
 
+            
             foreach (Pedido_Otica item in pedido_OticaList)
             {
                 if (IdCliente == null)
@@ -1497,6 +1486,16 @@ namespace prjbase
                             Retorno = false;
                             break;
                         }
+                    }
+                }
+
+                if (Retorno)
+                {
+                    if (!string.IsNullOrEmpty(item.codigo_pedido))
+                    {
+                        msgValidacao = "Pedido " + item.codigo + " Já foi agrupado.";
+                        Retorno = false;
+                        break;
                     }
                 }
 

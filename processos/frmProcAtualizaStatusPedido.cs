@@ -378,7 +378,7 @@ namespace prjbase
                 predicate = predicate.And(p => DbFunctions.TruncateTime(p.data_fechamento) == DbFunctions.TruncateTime(DtFecha));
             }
 
-            if ((status != null) && (status != 7))
+            if ((status != null) && (status != 9))
             {
                 predicate = predicate.And(p => p.status == status);
             }
@@ -619,7 +619,7 @@ namespace prjbase
 
             DataGridViewCellEventArgs eventArgs = new DataGridViewCellEventArgs(iColumn, iRow);
 
-            if (value == 7)
+            if (value == 9)
             {
                 dgvFiltro_CellEndEdit(dgvFiltro, eventArgs);
             }
@@ -758,8 +758,9 @@ namespace prjbase
 
             StatusPedido sp = new StatusPedido();
             DataGridViewComboBoxColumn colStatus = new DataGridViewComboBoxColumn();
-            IList<itemEnumList> lstStatusPedido = Enumerados.getListEnum(sp);
-            lstStatusPedido.Insert(0, new itemEnumList { chave = 7, descricao = string.Empty });
+            int statusEntregue = (int)StatusPedido.ENTREGUE;
+            IList<itemEnumList> lstStatusPedido = Enumerados.getListEnum(sp).Where(p =>p.chave <= statusEntregue).ToList();
+            lstStatusPedido.Insert(0, new itemEnumList { chave = 9, descricao = string.Empty });
             colStatus.DataSource = lstStatusPedido;
             colStatus.ValueMember = "chave";
             colStatus.DisplayMember = "descricao";

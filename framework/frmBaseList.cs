@@ -142,7 +142,7 @@ namespace prjbase
             frmInstancia.Dispose();
         }
 
-        private void AtualizaContadores()
+        protected virtual void AtualizaContadores()
         {
             if (totalReg > 0)
             {

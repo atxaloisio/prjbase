@@ -52,7 +52,7 @@ namespace prjbase
                         break;
                     case "descricao":
                         {
-                            dgvPesquisa.DataSource = produtoBLL.getProduto(p => p.descricao.ToLower().Contains(txtFiltro.Text));
+                            dgvPesquisa.DataSource = produtoBLL.getProduto(p => p.descricao.ToLower().Contains(txtFiltro.Text.ToLower()));
                         }
                         break;
                 }

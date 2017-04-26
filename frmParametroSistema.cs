@@ -383,5 +383,68 @@ namespace prjbase
             lblMensagem.Text = string.Empty;
             lblQtdRegistros.Text = string.Empty;
         }
+
+        private void btnZerarCadProd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cursor = Cursors.WaitCursor;
+                
+
+                if (chkProdutos.Checked)
+                {
+
+                    ProdutoProxy pp = new ProdutoProxy();
+                    try
+                    {
+
+                        ProdutoBLL produtoBLL = new ProdutoBLL();
+
+                        List<Produto> produtoList = produtoBLL.getProduto();
+
+                        int reg = 0;
+                        int qtdregs = 0;
+                        qtdregs = produtoList.Count();
+                        pbSincronizar.Maximum = qtdregs;
+                        foreach (Produto item in produtoList)
+                        {
+                            reg++;
+                            pbSincronizar.Value = reg;
+                            lblQtdRegistros.Text = reg.ToString() + " de " + qtdregs.ToString();
+                            lblMensagem.Text = "Limpando base de produtos omie.";
+                            pp.ExcluirProduto(item);
+                        }
+
+
+                        //pp.ProgressBar = pbSincronizar;
+                        //pp.Mensagem = lblMensagem;
+                        //pp.QtdRegistros = lblQtdRegistros;
+                        //pp.SyncCadastroProduto();
+                        //LimpaAbaSincronizar();
+                        //chkProdutos.Checked = false;
+                    }
+                    finally
+                    {
+                        pp.Dispose();
+                    }
+
+                }
+                                                
+                
+
+                MessageBox.Show("Sincronização concluida!", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception ex)
+            {
+                string mensagem = TrataException.getAllMessage(ex);
+                MessageBox.Show(mensagem, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
+        }
     }
 }
