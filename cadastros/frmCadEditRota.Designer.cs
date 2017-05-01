@@ -81,6 +81,7 @@
             this.cbUF.TabIndex = 1;
             this.cbUF.SelectedIndexChanged += new System.EventHandler(this.cbUF_SelectedIndexChanged);
             this.cbUF.SelectionChangeCommitted += new System.EventHandler(this.cbUF_SelectionChangeCommitted);
+            this.cbUF.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbTransportadora_KeyPress);
             this.cbUF.Validating += new System.ComponentModel.CancelEventHandler(this.cbUF_Validating);
             // 
             // txtId
@@ -128,6 +129,7 @@
             this.epValidaDados.SetObrigatorio(this.cbCidade, true);
             this.cbCidade.Size = new System.Drawing.Size(351, 24);
             this.cbCidade.TabIndex = 2;
+            this.cbCidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbTransportadora_KeyPress);
             this.cbCidade.Validating += new System.ComponentModel.CancelEventHandler(this.cbUF_Validating);
             // 
             // label4

@@ -22,20 +22,22 @@ namespace prjbase
         #region Constante de Colunas da Grid
         private const int col_Id = 0;
         private const int col_codigo_cliente = 1;
-        private const int col_razao_social = 2;
-        private const int col_nome_fantasia = 3;
-        private const int col_cnpj_cpf = 4;
-        private const int col_logradouro = 5;
-        private const int col_endereco = 6;
-        private const int col_endereco_numero = 7;
-        private const int col_complemento = 8;
-        private const int col_bairro = 9;
-        private const int col_cidade = 10;
-        private const int col_estado = 11;
-        private const int col_cep = 12;
-        private const int col_telefone1_ddd = 13;
-        private const int col_telefone1_numero = 14;
-        private const int col_email = 15;
+        private const int col_cnpj_cpf = 2;
+        private const int col_razao_social = 3;
+        private const int col_nome_fantasia = 4;
+        private const int col_telefone1_ddd = 5;
+        private const int col_telefone1_numero = 6;
+        private const int col_contato = 7;
+        private const int col_email = 8;
+        private const int col_cidade = 9;
+        private const int col_estado = 10;
+        private const int col_endereco = 11;
+        private const int col_endereco_numero = 12;
+        private const int col_bairro = 13;
+        private const int col_complemento = 14;                
+        private const int col_cep = 15;               
+        private const int col_inscricao_estadual = 16;
+        private const int col_inscricao_municipal = 17;
         #endregion
         public frmListClientes()
         {
@@ -61,15 +63,14 @@ namespace prjbase
             //altera o nome das colunas                        
             gridFiltros.Columns.Add("ID", "ID");
             gridFiltros.Columns.Add("CODIGO", "Código");
+            gridFiltros.Columns.Add("CNPJ_CPF", "CNPJ / CPF");
             gridFiltros.Columns.Add("RAZAO_SOCIAL", "Razão Social");
             gridFiltros.Columns.Add("NOME_FANTASIA", "Nome Fantasia");
-            gridFiltros.Columns.Add("CNPJ_CPF", "CNPJ / CPF");
-            gridFiltros.Columns.Add("LOGRADOURO", "Logradouro");
-            gridFiltros.Columns.Add("ENDERECO", "Endereço");
-            gridFiltros.Columns.Add("NUMERO", "Número");
-            gridFiltros.Columns.Add("COMPLEMENTO", "Complemento");
-            gridFiltros.Columns.Add("BAIRRO", "Bairro");
-            gridFiltros.Columns.Add("CIDADE", "Cidade");
+            gridFiltros.Columns.Add("DDD", "DDD");
+            gridFiltros.Columns.Add("TELEFONE", "Telefone");
+            gridFiltros.Columns.Add("CONTATO", "Contato");
+            gridFiltros.Columns.Add("EMAIL", "e-Mail");
+            gridFiltros.Columns.Add("CIDADE", "Cidade");                     
 
             CidadeBLL cidadeBLL = new CidadeBLL();
             DataGridViewComboBoxColumn colUF = new DataGridViewComboBoxColumn();
@@ -83,11 +84,14 @@ namespace prjbase
             colUF.SortMode = DataGridViewColumnSortMode.Programmatic;
             gridFiltros.Columns.Add(colUF);
 
+            gridFiltros.Columns.Add("ENDERECO", "Endereço");
+            gridFiltros.Columns.Add("NUMERO", "Número");
+            gridFiltros.Columns.Add("BAIRRO", "Bairro");
+            gridFiltros.Columns.Add("COMPLEMENTO", "Complemento");            
             gridFiltros.Columns.Add("CEP", "CEP");
-            gridFiltros.Columns.Add("DDD", "DDD");
-            gridFiltros.Columns.Add("TELEFONE", "Telefone");
-            gridFiltros.Columns.Add("EMAIL", "e-Mail");
-
+            gridFiltros.Columns.Add("INSCRESTADUAL", "Inscrição Estadual");
+            gridFiltros.Columns.Add("INSCRMUNICIPAL", "Inscrição Municipal");
+            
 
             gridFiltros.Columns[col_Id].Width = 70;
             gridFiltros.Columns[col_Id].ValueType = typeof(int);
@@ -98,6 +102,10 @@ namespace prjbase
             gridFiltros.Columns[col_codigo_cliente].ValueType = typeof(string);
             gridFiltros.Columns[col_codigo_cliente].SortMode = DataGridViewColumnSortMode.Programmatic;
 
+            gridFiltros.Columns[col_cnpj_cpf].Width = 150;
+            gridFiltros.Columns[col_cnpj_cpf].ValueType = typeof(string);
+            gridFiltros.Columns[col_cnpj_cpf].SortMode = DataGridViewColumnSortMode.Programmatic;
+
             gridFiltros.Columns[col_razao_social].Width = 350;
             gridFiltros.Columns[col_razao_social].ValueType = typeof(string);
             gridFiltros.Columns[col_razao_social].SortMode = DataGridViewColumnSortMode.Programmatic;
@@ -106,29 +114,21 @@ namespace prjbase
             gridFiltros.Columns[col_nome_fantasia].ValueType = typeof(string);
             gridFiltros.Columns[col_nome_fantasia].SortMode = DataGridViewColumnSortMode.Programmatic;
 
-            gridFiltros.Columns[col_cnpj_cpf].Width = 150;
-            gridFiltros.Columns[col_cnpj_cpf].ValueType = typeof(string);
-            gridFiltros.Columns[col_cnpj_cpf].SortMode = DataGridViewColumnSortMode.Programmatic;
+            gridFiltros.Columns[col_telefone1_ddd].Width = 80;
+            gridFiltros.Columns[col_telefone1_ddd].ValueType = typeof(string);
+            gridFiltros.Columns[col_telefone1_ddd].SortMode = DataGridViewColumnSortMode.NotSortable;
 
-            gridFiltros.Columns[col_logradouro].Width = 120;
-            gridFiltros.Columns[col_logradouro].ValueType = typeof(string);
-            gridFiltros.Columns[col_logradouro].SortMode = DataGridViewColumnSortMode.Programmatic;
+            gridFiltros.Columns[col_telefone1_numero].Width = 150;
+            gridFiltros.Columns[col_telefone1_numero].ValueType = typeof(string);
+            gridFiltros.Columns[col_telefone1_numero].SortMode = DataGridViewColumnSortMode.NotSortable;                      
 
-            gridFiltros.Columns[col_endereco].Width = 400;
-            gridFiltros.Columns[col_endereco].ValueType = typeof(string);
-            gridFiltros.Columns[col_endereco].SortMode = DataGridViewColumnSortMode.Programmatic;
+            gridFiltros.Columns[col_contato].Width = 180;
+            gridFiltros.Columns[col_contato].ValueType = typeof(string);
+            gridFiltros.Columns[col_contato].SortMode = DataGridViewColumnSortMode.Programmatic;
 
-            gridFiltros.Columns[col_endereco_numero].Width = 80;
-            gridFiltros.Columns[col_endereco_numero].ValueType = typeof(string);
-            gridFiltros.Columns[col_endereco_numero].SortMode = DataGridViewColumnSortMode.NotSortable;
-
-            gridFiltros.Columns[col_complemento].Width = 150;
-            gridFiltros.Columns[col_complemento].ValueType = typeof(string);
-            gridFiltros.Columns[col_complemento].SortMode = DataGridViewColumnSortMode.NotSortable;
-
-            gridFiltros.Columns[col_bairro].Width = 200;
-            gridFiltros.Columns[col_bairro].ValueType = typeof(string);
-            gridFiltros.Columns[col_bairro].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gridFiltros.Columns[col_email].Width = 300;
+            gridFiltros.Columns[col_email].ValueType = typeof(string);
+            gridFiltros.Columns[col_email].SortMode = DataGridViewColumnSortMode.Programmatic;
 
             gridFiltros.Columns[col_cidade].Width = 200;
             gridFiltros.Columns[col_cidade].ValueType = typeof(string);
@@ -138,21 +138,34 @@ namespace prjbase
             //gridFiltros.Columns[col_uf].ValueType = typeof(string);
             gridFiltros.Columns[col_estado].SortMode = DataGridViewColumnSortMode.Programmatic;
 
+            gridFiltros.Columns[col_endereco].Width = 400;
+            gridFiltros.Columns[col_endereco].ValueType = typeof(string);
+            gridFiltros.Columns[col_endereco].SortMode = DataGridViewColumnSortMode.Programmatic;
+
+            gridFiltros.Columns[col_endereco_numero].Width = 80;
+            gridFiltros.Columns[col_endereco_numero].ValueType = typeof(string);
+            gridFiltros.Columns[col_endereco_numero].SortMode = DataGridViewColumnSortMode.NotSortable;
+
+            gridFiltros.Columns[col_bairro].Width = 200;
+            gridFiltros.Columns[col_bairro].ValueType = typeof(string);
+            gridFiltros.Columns[col_bairro].SortMode = DataGridViewColumnSortMode.NotSortable;
+
+            gridFiltros.Columns[col_complemento].Width = 150;
+            gridFiltros.Columns[col_complemento].ValueType = typeof(string);
+            gridFiltros.Columns[col_complemento].SortMode = DataGridViewColumnSortMode.NotSortable;
+                        
             gridFiltros.Columns[col_cep].Width = 100;
             gridFiltros.Columns[col_cep].ValueType = typeof(string);
             gridFiltros.Columns[col_cep].SortMode = DataGridViewColumnSortMode.Programmatic;
 
-            gridFiltros.Columns[col_telefone1_ddd].Width = 80;
-            gridFiltros.Columns[col_telefone1_ddd].ValueType = typeof(string);
-            gridFiltros.Columns[col_telefone1_ddd].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gridFiltros.Columns[col_inscricao_estadual].Width = 150;
+            gridFiltros.Columns[col_inscricao_estadual].ValueType = typeof(string);
+            gridFiltros.Columns[col_inscricao_estadual].SortMode = DataGridViewColumnSortMode.NotSortable;
 
-            gridFiltros.Columns[col_telefone1_numero].Width = 150;
-            gridFiltros.Columns[col_telefone1_numero].ValueType = typeof(string);
-            gridFiltros.Columns[col_telefone1_numero].SortMode = DataGridViewColumnSortMode.NotSortable;
-
-            gridFiltros.Columns[col_email].Width = 300;
-            gridFiltros.Columns[col_email].ValueType = typeof(string);
-            gridFiltros.Columns[col_email].SortMode = DataGridViewColumnSortMode.Programmatic;
+            gridFiltros.Columns[col_inscricao_municipal].Width = 150;
+            gridFiltros.Columns[col_inscricao_municipal].ValueType = typeof(string);
+            gridFiltros.Columns[col_inscricao_municipal].SortMode = DataGridViewColumnSortMode.NotSortable;
+            
 
             gridFiltros.EditingControlShowing += new DataGridViewEditingControlShowingEventHandler(gridFiltros_EditingControlShowing);
 
@@ -218,8 +231,8 @@ namespace prjbase
             gridDados.Columns[col_nome_fantasia].SortMode = DataGridViewColumnSortMode.Programmatic;
             gridDados.Columns[col_cnpj_cpf].Width = 150;
             gridDados.Columns[col_cnpj_cpf].SortMode = DataGridViewColumnSortMode.Programmatic;
-            gridDados.Columns[col_logradouro].Width = 120;
-            gridDados.Columns[col_logradouro].SortMode = DataGridViewColumnSortMode.Programmatic;
+            gridDados.Columns[col_contato].Width = 180;
+            gridDados.Columns[col_contato].SortMode = DataGridViewColumnSortMode.Programmatic;
             gridDados.Columns[col_endereco].Width = 400;
             gridDados.Columns[col_endereco].SortMode = DataGridViewColumnSortMode.Programmatic;
             gridDados.Columns[col_endereco_numero].Width = 80;
@@ -240,6 +253,10 @@ namespace prjbase
             gridDados.Columns[col_telefone1_numero].SortMode = DataGridViewColumnSortMode.Programmatic;
             gridDados.Columns[col_email].Width = 300;
             gridDados.Columns[col_email].SortMode = DataGridViewColumnSortMode.Programmatic;
+            gridDados.Columns[col_inscricao_estadual].Width = 150;
+            gridDados.Columns[col_inscricao_estadual].SortMode = DataGridViewColumnSortMode.Programmatic;
+            gridDados.Columns[col_inscricao_municipal].Width = 150;
+            gridDados.Columns[col_inscricao_municipal].SortMode = DataGridViewColumnSortMode.Programmatic;
         }
 
         protected override void carregaConsulta()
@@ -328,7 +345,7 @@ namespace prjbase
                     }
                     break;
 
-                case col_logradouro:
+                case col_contato:
                     {
                         ClienteList = clienteBLL.getCliente(p => p.cliente_tag.Any(c => c.tag == "Cliente"), p => p.logradouro, direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
                     }
@@ -450,11 +467,11 @@ namespace prjbase
                 }
             }
 
-            if (dgvFiltro[col_logradouro, e.RowIndex].Value != null)
+            if (dgvFiltro[col_contato, e.RowIndex].Value != null)
             {
-                if (!string.IsNullOrEmpty((string)dgvFiltro[col_logradouro, e.RowIndex].Value))
+                if (!string.IsNullOrEmpty((string)dgvFiltro[col_contato, e.RowIndex].Value))
                 {
-                    logradouro = dgvFiltro[col_logradouro, e.RowIndex].Value.ToString();
+                    logradouro = dgvFiltro[col_contato, e.RowIndex].Value.ToString();
                 }
             }
 

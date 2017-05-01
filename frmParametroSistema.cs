@@ -64,46 +64,98 @@ namespace prjbase
 
         private void LoadToControls()
         {
-            if (ConfigurationManager.AppSettings["bGeraGenLab"] != null)
+            string genlab = Parametro.GetParametro("intGenLab"); 
+            if (!string.IsNullOrEmpty(genlab))
             {
-                string value = ConfigurationManager.AppSettings["bGeraGenLab"];
-                chkIntGenLab.Checked = Convert.ToBoolean(value);
+                rbIntGenLab.Checked = Convert.ToBoolean(genlab);
+            }
+                
+            string tooling = Parametro.GetParametro("intTooling");
+            if (!string.IsNullOrEmpty(tooling))
+            {
+                rbIntTooling.Checked = Convert.ToBoolean(tooling);
             }
 
-
-            if (ConfigurationManager.AppSettings["strPathFileGenLab"] != null)
+            string strPathFileLab = Parametro.GetParametro("strPathFileLab");
+            if (!string.IsNullOrEmpty(strPathFileLab))
             {
-                txtCaminhoArquivos.Text = ConfigurationManager.AppSettings["strPathFileGenLab"];
+                txtCaminhoArquivos.Text = strPathFileLab;
             }
 
-
-            if (ConfigurationManager.AppSettings["IdCategoria"] != null)
+            string layoutLaboratorio = Parametro.GetParametro("layoutLaboratorio");
+            if (!string.IsNullOrEmpty(genlab))
             {
-                cbCategoria.SelectedValue = Convert.ToInt64(ConfigurationManager.AppSettings["IdCategoria"]);
+                rbLaboratorio.Checked = Convert.ToBoolean(layoutLaboratorio);
             }
 
-
-            if (ConfigurationManager.AppSettings["IdContaCorrente"] != null)
+            string layoutOtica = Parametro.GetParametro("layoutOtica");
+            if (!string.IsNullOrEmpty(layoutOtica))
             {
-                cbContaCorrente.SelectedValue = Convert.ToInt64(ConfigurationManager.AppSettings["IdContaCorrente"]);
+                rbOtica.Checked = Convert.ToBoolean(layoutOtica);
             }
 
-
-            if (ConfigurationManager.AppSettings["codEmpresa"] != null)
+            string IdCategoria = Parametro.GetParametro("IdCategoria");
+            if (!string.IsNullOrEmpty(IdCategoria) && StringExtensions.IsNumeric(IdCategoria))
             {
-                txtCodigoEmpresa.Text = ConfigurationManager.AppSettings["codEmpresa"];
+                cbCategoria.SelectedValue = Convert.ToInt64(IdCategoria);
             }
 
-
-            if (ConfigurationManager.AppSettings["app_key"] != null)
+            string IdContaCorrente = Parametro.GetParametro("IdContaCorrente");
+            if (!string.IsNullOrEmpty(IdContaCorrente) && StringExtensions.IsNumeric(IdContaCorrente))
             {
-                txtAppKey.Text = ConfigurationManager.AppSettings["app_key"];
+                cbContaCorrente.SelectedValue = Convert.ToInt64(IdContaCorrente);
             }
 
-            if (ConfigurationManager.AppSettings["app_secret"] != null)
+            string codEmpresa = Parametro.GetParametro("codEmpresa");
+            if (!string.IsNullOrEmpty(codEmpresa) && StringExtensions.IsNumeric(codEmpresa))
             {
-                txtAppSecret.Text = ConfigurationManager.AppSettings["app_secret"];
+                txtCodigoEmpresa.Text = codEmpresa;
             }
+
+            string intOmie = Parametro.GetParametro("intOmie");
+            if (!string.IsNullOrEmpty(intOmie))
+            {
+                chkIntegrarOmie.Checked = Convert.ToBoolean(intOmie);
+            }
+
+            string app_key = Parametro.GetParametro("app_key");
+            if (!string.IsNullOrEmpty(app_key))
+            {
+                txtAppKey.Text = app_key;
+            }
+
+            string app_secret = Parametro.GetParametro("app_secret");
+            if (!string.IsNullOrEmpty(app_secret))
+            {
+                txtAppSecret.Text = app_secret;
+            }
+
+            string updateClienteOmie = Parametro.GetParametro("updateClienteOmie");
+            if (!string.IsNullOrEmpty(updateClienteOmie))
+            {
+                chkAtualizaCliente.Checked = Convert.ToBoolean(updateClienteOmie);
+            }
+
+            string updateProdutoOmie = Parametro.GetParametro("updateProdutoOmie");
+            if (!string.IsNullOrEmpty(updateProdutoOmie))
+            {
+                chkAtualizaProduto.Checked = Convert.ToBoolean(updateProdutoOmie);
+            }
+
+            string updateVendedorOmie = Parametro.GetParametro("updateVendedorOmie");
+            if (!string.IsNullOrEmpty(updateVendedorOmie))
+            {
+                chkAtualizaVendedor.Checked = Convert.ToBoolean(updateVendedorOmie);
+            }
+
+            long ultCodCliente = Sequence.GetCurrentVal("sq_cliente_sequence");
+            txtCodCliente.Text = ultCodCliente.ToString();
+
+            long ultCodProduto = Sequence.GetCurrentVal("sq_produto_sequence");
+            txtCodProduto.Text = ultCodProduto.ToString();
+
+            long ultCodPedido = Sequence.GetCurrentVal("sq_pedido_sequence");
+            txtCodPedido.Text = ultCodPedido.ToString();
 
         }
 
@@ -114,60 +166,169 @@ namespace prjbase
 
         private void Salvar()
         {
-            var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            var settings = configFile.AppSettings.Settings;
-            //Geral
-            if (settings["bGeraGenLab"] != null)
+            string genlab = Parametro.GetParametro("intGenLab");
+            if (!string.IsNullOrEmpty(genlab))
             {
-                settings["bGeraGenLab"].Value = Convert.ToString(chkIntGenLab.Checked);
+                Parametro.SetParametro("intGenLab", Convert.ToString(rbIntGenLab.Checked));
+            }
+            else
+            {
+                Parametro.AddParametro("intGenLab", Convert.ToString(rbIntGenLab.Checked));
             }
 
-            if (settings["strPathFileGenLab"] != null)
+            
+            string tooling = Parametro.GetParametro("intTooling");
+            if (!string.IsNullOrEmpty(tooling))
+            {                
+                Parametro.SetParametro("intTooling", Convert.ToString(rbIntTooling.Checked));
+            }
+            else
             {
-                settings["strPathFileGenLab"].Value = txtCaminhoArquivos.Text;
+                Parametro.AddParametro("intTooling", Convert.ToString(rbIntTooling.Checked));
             }
 
-            if (settings["IdCategoria"] != null)
+            string strPathFileLab = Parametro.GetParametro("strPathFileLab");
+            if (!string.IsNullOrEmpty(strPathFileLab))
+            {                
+                Parametro.SetParametro("strPathFileLab", txtCaminhoArquivos.Text);
+            }
+            else
+            {
+                Parametro.AddParametro("strPathFileLab", txtCaminhoArquivos.Text);
+            }
+
+            string layoutLaboratorio = Parametro.GetParametro("layoutLaboratorio");
+            if (!string.IsNullOrEmpty(layoutLaboratorio))
+            {
+                Parametro.SetParametro("layoutLaboratorio", Convert.ToString(rbLaboratorio.Checked));
+            }
+            else
+            {
+                Parametro.AddParametro("layoutLaboratorio", Convert.ToString(rbLaboratorio.Checked));
+            }
+
+
+            string layoutOtica = Parametro.GetParametro("layoutOtica");
+            if (!string.IsNullOrEmpty(tooling))
+            {
+                Parametro.SetParametro("layoutOtica", Convert.ToString(rbOtica.Checked));
+            }
+            else
+            {
+                Parametro.AddParametro("layoutOtica", Convert.ToString(rbOtica.Checked));
+            }
+
+            string IdCategoria = Parametro.GetParametro("IdCategoria");
+            if (!string.IsNullOrEmpty(IdCategoria) && StringExtensions.IsNumeric(IdCategoria))
+            {                
+                Parametro.SetParametro("IdCategoria", cbCategoria.SelectedValue.ToString());
+            }
+            else
             {
                 if (cbCategoria.SelectedValue != null)
-                    settings["IdCategoria"].Value = Convert.ToString(cbCategoria.SelectedValue);
+                {
+                    Parametro.AddParametro("IdCategoria", cbCategoria.SelectedValue.ToString());
+                }
+                
             }
 
-            if (settings["IdContaCorrente"] != null)
+            string IdContaCorrente = Parametro.GetParametro("IdContaCorrente");
+            if (!string.IsNullOrEmpty(IdContaCorrente) && StringExtensions.IsNumeric(IdContaCorrente))
+            {                
+                Parametro.SetParametro("IdContaCorrente", cbContaCorrente.SelectedValue.ToString());
+            }
+            else
             {
                 if (cbContaCorrente.SelectedValue != null)
-                    settings["IdContaCorrente"].Value = Convert.ToString(cbContaCorrente.SelectedValue);
+                {
+                    Parametro.AddParametro("IdContaCorrente", cbContaCorrente.SelectedValue.ToString());
+                }
             }
 
-            if (settings["codEmpresa"] != null)
-            {
-                settings["codEmpresa"].Value = txtCodigoEmpresa.Text;
-            }
-
-            if (settings["app_key"] != null)
-            {
-                settings["app_key"].Value = txtAppKey.Text;
+            string codEmpresa = Parametro.GetParametro("codEmpresa");
+            if (!string.IsNullOrEmpty(codEmpresa) && StringExtensions.IsNumeric(codEmpresa))
+            {                
+                Parametro.SetParametro("codEmpresa", txtCodigoEmpresa.Text);
             }
             else
             {
-                ConfigurationManager.AppSettings.Add("app_key", txtAppKey.Text);
+                Parametro.AddParametro("codEmpresa", txtCodigoEmpresa.Text);
             }
 
-            if (settings["app_secret"] != null)
-            {
-                settings["app_secret"].Value = txtAppSecret.Text;
+            string intOmie = Parametro.GetParametro("intOmie");
+            if (!string.IsNullOrEmpty(intOmie))
+            {                
+                Parametro.SetParametro("intOmie", Convert.ToString(chkIntegrarOmie.Checked));
             }
             else
             {
-                ConfigurationManager.AppSettings.Add("app_secret", txtAppSecret.Text);
+                Parametro.AddParametro("intOmie", Convert.ToString(chkIntegrarOmie.Checked));
             }
 
-            ConfigurationManager.RefreshSection("appSettings");
+            string app_key = Parametro.GetParametro("app_key");
+            if (!string.IsNullOrEmpty(app_key))
+            {                
+                Parametro.SetParametro("app_key", txtAppKey.Text);
+            }
+            else
+            {
+                Parametro.AddParametro("app_key", txtAppKey.Text);
+            }
 
-            configFile.Save(ConfigurationSaveMode.Modified);
-            ConfigurationManager.RefreshSection(configFile.AppSettings.SectionInformation.Name);
+            string app_secret = Parametro.GetParametro("app_secret");
+            if (!string.IsNullOrEmpty(app_secret))
+            {                
+                Parametro.SetParametro("app_secret", txtAppSecret.Text);
+            }
+            else
+            {
+                Parametro.AddParametro("app_secret", txtAppSecret.Text);
+            }
 
+            string updateClienteOmie = Parametro.GetParametro("updateClienteOmie");
+            if (!string.IsNullOrEmpty(updateClienteOmie))
+            {
+                Parametro.SetParametro("updateClienteOmie", Convert.ToString(chkAtualizaCliente.Checked));                
+            }
+            else
+            {
+                Parametro.AddParametro("updateClienteOmie", Convert.ToString(chkAtualizaCliente.Checked));
+            }
 
+            string updateProdutoOmie = Parametro.GetParametro("updateProdutoOmie");
+            if (!string.IsNullOrEmpty(updateProdutoOmie))
+            {
+                Parametro.SetParametro("updateProdutoOmie", Convert.ToString(chkAtualizaProduto.Checked));
+            }
+            else
+            {
+                Parametro.AddParametro("updateProdutoOmie", Convert.ToString(chkAtualizaProduto.Checked));
+            }
+
+            string updateVendedorOmie = Parametro.GetParametro("updateVendedorOmie");
+            if (!string.IsNullOrEmpty(updateVendedorOmie))
+            {
+                Parametro.SetParametro("updateVendedorOmie", Convert.ToString(chkAtualizaVendedor.Checked));
+            }
+            else
+            {
+                Parametro.AddParametro("updateVendedorOmie", Convert.ToString(chkAtualizaVendedor.Checked));
+            }
+
+            if (!string.IsNullOrEmpty(txtCodCliente.Text) && StringExtensions.IsNumeric(txtCodCliente.Text))
+            {
+                Sequence.SetCurrentVal("sq_cliente_sequence", Convert.ToInt64(txtCodCliente.Text));
+            }
+
+            if (!string.IsNullOrEmpty(txtCodProduto.Text) && StringExtensions.IsNumeric(txtCodProduto.Text))
+            {
+                Sequence.SetCurrentVal("sq_produto_sequence", Convert.ToInt64(txtCodProduto.Text));
+            }
+
+            if (!string.IsNullOrEmpty(txtCodPedido.Text) && StringExtensions.IsNumeric(txtCodPedido.Text))
+            {
+                Sequence.SetCurrentVal("sq_pedido_sequence", Convert.ToInt64(txtCodPedido.Text));
+            }
 
             MessageBox.Show(Text + " salvo com sucesso.", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -175,7 +336,7 @@ namespace prjbase
 
         private void onlyNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if ((!Char.IsNumber(e.KeyChar)) & (e.KeyChar != 8))
+            if ((!Char.IsNumber(e.KeyChar)) & (e.KeyChar != 8) & (e.KeyChar != 22))
             {
                 e.Handled = true;
             }
@@ -185,7 +346,9 @@ namespace prjbase
         {
             if (chkClientes.Checked ||
                 chkProdutos.Checked ||
+                chkUnidades.Checked ||
                 chkImpostos.Checked ||
+                chkFamiliaProdutos.Checked ||
                 chkCategoria.Checked ||
                 chkContaCorrente.Checked ||
                 chkCidade.Checked ||
@@ -245,6 +408,46 @@ namespace prjbase
                         pp.Dispose();
                     }
                     
+                }
+
+                if (chkUnidades.Checked)
+                {
+
+                    UnidadesProxy up = new UnidadesProxy();
+                    try
+                    {
+                        up.ProgressBar = pbSincronizar;
+                        up.Mensagem = lblMensagem;
+                        up.QtdRegistros = lblQtdRegistros;
+                        up.SyncUnidades();
+                        LimpaAbaSincronizar();
+                        chkUnidades.Checked = false;
+                    }
+                    finally
+                    {
+                        up.Dispose();
+                    }
+
+                }
+
+                if (chkFamiliaProdutos.Checked)
+                {
+
+                    FamiliaProdutoProxy fp = new FamiliaProdutoProxy();
+                    try
+                    {
+                        fp.ProgressBar = pbSincronizar;
+                        fp.Mensagem = lblMensagem;
+                        fp.QtdRegistros = lblQtdRegistros;
+                        fp.SyncFamilia_Produto();
+                        LimpaAbaSincronizar();
+                        chkFamiliaProdutos.Checked = false;
+                    }
+                    finally
+                    {
+                        fp.Dispose();
+                    }
+
                 }
 
                 if (chkImpostos.Checked)
@@ -406,6 +609,7 @@ namespace prjbase
                         int qtdregs = 0;
                         qtdregs = produtoList.Count();
                         pbSincronizar.Maximum = qtdregs;
+
                         foreach (Produto item in produtoList)
                         {
                             reg++;
@@ -444,6 +648,64 @@ namespace prjbase
             finally
             {
                 Cursor = Cursors.Default;
+            }
+        }
+        
+        private void txtCod_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar))
+
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtCodigoEmpresa_Validating(object sender, CancelEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtCodigoEmpresa.Text))
+            {
+                if (!StringExtensions.IsNumeric(txtCodigoEmpresa.Text))
+                {
+                    MessageBox.Show("Valor inválido.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    e.Cancel = true;
+                }
+            }
+            
+        }
+
+        private void btnZerarCadFamiliaProd_Click(object sender, EventArgs e)
+        {
+            Familia_ProdutoBLL familia_ProdutoBLL = new Familia_ProdutoBLL();
+            FamiliaProdutoProxy fp = new FamiliaProdutoProxy();
+            try
+            {
+                List<Familia_Produto> Familia_ProdutoList = familia_ProdutoBLL.getFamilia_Produto();
+
+                int reg = 0;
+                int qtdregs = 0;
+                qtdregs = Familia_ProdutoList.Count() + 1;
+                pbSincronizar.Maximum = qtdregs;
+
+                foreach (Familia_Produto item in Familia_ProdutoList)
+                {
+                    reg++;
+                    pbSincronizar.Value = reg;
+                    lblQtdRegistros.Text = reg.ToString() + " de " + qtdregs.ToString();
+                    lblMensagem.Text = "Limpando base familia de produtos omie.";
+                    lblMensagem.Text = fp.ExcluirFamilia_Produto(item);
+                    pbSincronizar.Refresh();
+                    Application.DoEvents();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }            
+            finally
+            {
+                familia_ProdutoBLL.Dispose();
+                fp.Dispose();
             }
         }
     }

@@ -331,6 +331,12 @@
     <Compile Include="Pesquisas\frmPesquisaFornecedor.Designer.cs">
       <DependentUpon>frmPesquisaFornecedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pesquisas\frmPesquisaCNAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pesquisas\frmPesquisaCNAE.Designer.cs">
+      <DependentUpon>frmPesquisaCNAE.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pesquisas\frmPesquisaTransportadora.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -554,6 +560,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pesquisas\frmPesquisaFornecedor.resx">
       <DependentUpon>frmPesquisaFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pesquisas\frmPesquisaCNAE.resx">
+      <DependentUpon>frmPesquisaCNAE.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pesquisas\frmPesquisaTransportadora.resx">
       <DependentUpon>frmPesquisaTransportadora.cs</DependentUpon>
