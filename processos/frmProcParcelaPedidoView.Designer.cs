@@ -1,6 +1,6 @@
 ﻿namespace prjbase
 {
-    partial class frmCadEditPedido_Otica
+    partial class frmProcParcelaPedidoView
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadEditPedido_Otica));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProcParcelaPedidoView));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -1633,14 +1633,14 @@
             this.txtIdPedInfoadic.TabStop = false;
             this.txtIdPedInfoadic.Visible = false;
             // 
-            // frmCadEditPedido_Otica
+            // frmProcParcelaPedidoView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScroll = true;
             this.CancelButton = null;
             this.ClientSize = new System.Drawing.Size(1122, 597);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "frmCadEditPedido_Otica";
+            this.Name = "frmProcParcelaPedidoView";
             this.Text = "Pedido de Venda";
             this.pnlBotoes.ResumeLayout(false);
             this.pnlPrincipal.ResumeLayout(false);

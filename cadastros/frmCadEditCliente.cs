@@ -361,7 +361,7 @@ namespace prjbase
                 else
                 {
                     ClienteBLL = new ClienteBLL();
-                    List<Cliente> cliList = ClienteBLL.getCliente(p => p.cnpj_cpf.Contains(strCNPJ));
+                    List<Cliente> cliList = ClienteBLL.getCliente(p => p.cnpj_cpf.Contains(txtCNPJCPF.Text));
                     if (cliList.Count() > 0)
                     {
                         epValidaDados.SetError(txtCNPJCPF, "CNPJ / CPF Já está cadastrado.");

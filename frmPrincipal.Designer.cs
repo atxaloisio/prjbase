@@ -44,8 +44,9 @@
             this.mnuCadRelVendedorLocalidade = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCadRelClienteVendedor = new System.Windows.Forms.ToolStripMenuItem();
             this.processosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.agrupamentoDePedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.atualizarStatusDoPedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAgrupamentoPedido = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuStatusPedido = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuParcelasPedido = new System.Windows.Forms.ToolStripMenuItem();
             this.relatoriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rotasDeEntregaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.utilitáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -201,28 +202,37 @@
             // processosToolStripMenuItem
             // 
             this.processosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.agrupamentoDePedidosToolStripMenuItem,
-            this.atualizarStatusDoPedidoToolStripMenuItem});
+            this.mnuAgrupamentoPedido,
+            this.mnuStatusPedido,
+            this.mnuParcelasPedido});
             this.processosToolStripMenuItem.Name = "processosToolStripMenuItem";
             this.processosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.processosToolStripMenuItem.Tag = "2000";
             this.processosToolStripMenuItem.Text = "&Processos";
             // 
-            // agrupamentoDePedidosToolStripMenuItem
+            // mnuAgrupamentoPedido
             // 
-            this.agrupamentoDePedidosToolStripMenuItem.Name = "agrupamentoDePedidosToolStripMenuItem";
-            this.agrupamentoDePedidosToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
-            this.agrupamentoDePedidosToolStripMenuItem.Tag = "2001";
-            this.agrupamentoDePedidosToolStripMenuItem.Text = "Agrupamento de Pedidos";
-            this.agrupamentoDePedidosToolStripMenuItem.Click += new System.EventHandler(this.agrupamentoDePedidosToolStripMenuItem_Click);
+            this.mnuAgrupamentoPedido.Name = "mnuAgrupamentoPedido";
+            this.mnuAgrupamentoPedido.Size = new System.Drawing.Size(230, 22);
+            this.mnuAgrupamentoPedido.Tag = "2001";
+            this.mnuAgrupamentoPedido.Text = "Agrupamento de Pedidos";
+            this.mnuAgrupamentoPedido.Click += new System.EventHandler(this.mnuAgrupamentoPedido_Click);
             // 
-            // atualizarStatusDoPedidoToolStripMenuItem
+            // mnuStatusPedido
             // 
-            this.atualizarStatusDoPedidoToolStripMenuItem.Name = "atualizarStatusDoPedidoToolStripMenuItem";
-            this.atualizarStatusDoPedidoToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
-            this.atualizarStatusDoPedidoToolStripMenuItem.Tag = "2002";
-            this.atualizarStatusDoPedidoToolStripMenuItem.Text = "Status do Pedido";
-            this.atualizarStatusDoPedidoToolStripMenuItem.Click += new System.EventHandler(this.atualizarStatusDoPedidoToolStripMenuItem_Click);
+            this.mnuStatusPedido.Name = "mnuStatusPedido";
+            this.mnuStatusPedido.Size = new System.Drawing.Size(230, 22);
+            this.mnuStatusPedido.Tag = "2002";
+            this.mnuStatusPedido.Text = "Status do Pedido de Vendas";
+            this.mnuStatusPedido.Click += new System.EventHandler(this.mnuStatusPedido_Click);
+            // 
+            // mnuParcelasPedido
+            // 
+            this.mnuParcelasPedido.Name = "mnuParcelasPedido";
+            this.mnuParcelasPedido.Size = new System.Drawing.Size(230, 22);
+            this.mnuParcelasPedido.Tag = "2003";
+            this.mnuParcelasPedido.Text = "Parcelas do Pedido de Vendas";
+            this.mnuParcelasPedido.Click += new System.EventHandler(this.mnuParcelasPedido_Click);
             // 
             // relatoriosToolStripMenuItem
             // 
@@ -375,7 +385,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuCadRelLocalidadeTransportadora;
         private System.Windows.Forms.ToolStripMenuItem mnuCadRelClienteTransportadora;
         private System.Windows.Forms.ToolStripMenuItem processosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem agrupamentoDePedidosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuAgrupamentoPedido;
         private System.Windows.Forms.ToolStripMenuItem relatoriosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rotasDeEntregaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem utilitáriosToolStripMenuItem;
@@ -392,10 +402,11 @@
         private System.Windows.Forms.ToolStripMenuItem trocarSenhaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem trocarUsuárioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem atualizarStatusDoPedidoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuStatusPedido;
         private System.Windows.Forms.ToolStripMenuItem mnuVendedores;
         private System.Windows.Forms.ToolStripMenuItem mnuCadRelVendedorLocalidade;
         private System.Windows.Forms.ToolStripMenuItem mnuCadRelClienteVendedor;
         private System.Windows.Forms.ToolStripMenuItem mnuCadCaixa;
+        private System.Windows.Forms.ToolStripMenuItem mnuParcelasPedido;
     }
 }

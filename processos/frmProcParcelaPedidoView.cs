@@ -16,7 +16,7 @@ using Utils;
 
 namespace prjbase
 {
-    public partial class frmCadEditPedido_Otica : prjbase.frmBaseCadEdit
+    public partial class frmProcParcelaPedidoView : prjbase.frmBaseCadEdit
     {
         private ClienteBLL clienteBLL;
         private ProdutoBLL produtoBLL;
@@ -42,7 +42,7 @@ namespace prjbase
         private const int col_VlrTotal = 11;
 
         #endregion
-        public frmCadEditPedido_Otica()
+        public frmProcParcelaPedidoView()
         {
             InitializeComponent();
             LoadViews();

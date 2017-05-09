@@ -322,31 +322,6 @@ namespace prjbase
             }
         }
 
-        private void agrupamentoDePedidosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Boolean instanciar = true;
-
-            foreach (var mdiChildForm in MdiChildren)
-            {
-                if (mdiChildForm is frmProcAgrupaPedido)
-                {
-                    instanciar = false;
-                    //mdiChildForm.Show();
-                    mdiChildForm.WindowState = FormWindowState.Maximized;
-                    mdiChildForm.BringToFront();
-                }
-            }
-
-            if (instanciar)
-            {
-                var frm = new frmProcAgrupaPedido();
-                frm.ConfigurarForm(this);
-                frm.Tag = ((ToolStripMenuItem)sender).Tag;
-                frm.Show();
-                frm.WindowState = FormWindowState.Maximized;
-            }
-        }
-
         private void parametrosDeSistemasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmParametroSistema ParametroSistema = new frmParametroSistema();
@@ -369,14 +344,6 @@ namespace prjbase
                 AlteraSenha.ExibeDialogo(Program.usuario_logado.Id);
                 AlteraSenha.Dispose();
             }            
-        }
-
-        private void atualizarStatusDoPedidoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmProcAtualizaStatusPedido AtualizaStatusPedido = new frmProcAtualizaStatusPedido();
-            AtualizaStatusPedido.Tag = ((ToolStripMenuItem)sender).Tag;
-            AtualizaStatusPedido.ExibeDialogo();
-            AtualizaStatusPedido.Dispose();
         }
 
         private void rotasDeEntregaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -480,6 +447,64 @@ namespace prjbase
             if (instanciar)
             {
                 var frm = new frmListCaixas();
+                frm.ConfigurarForm(this);
+                frm.Tag = ((ToolStripMenuItem)sender).Tag;
+                frm.Show();
+                frm.WindowState = FormWindowState.Maximized;
+            }
+        }
+
+        private void mnuStatusPedido_Click(object sender, EventArgs e)
+        {
+            frmProcAtualizaStatusPedido AtualizaStatusPedido = new frmProcAtualizaStatusPedido();
+            AtualizaStatusPedido.Tag = ((ToolStripMenuItem)sender).Tag;
+            AtualizaStatusPedido.ExibeDialogo();
+            AtualizaStatusPedido.Dispose();
+        }
+
+        private void mnuAgrupamentoPedido_Click(object sender, EventArgs e)
+        {
+            Boolean instanciar = true;
+
+            foreach (var mdiChildForm in MdiChildren)
+            {
+                if (mdiChildForm is frmProcAgrupaPedido)
+                {
+                    instanciar = false;
+                    //mdiChildForm.Show();
+                    mdiChildForm.WindowState = FormWindowState.Maximized;
+                    mdiChildForm.BringToFront();
+                }
+            }
+
+            if (instanciar)
+            {
+                var frm = new frmProcAgrupaPedido();
+                frm.ConfigurarForm(this);
+                frm.Tag = ((ToolStripMenuItem)sender).Tag;
+                frm.Show();
+                frm.WindowState = FormWindowState.Maximized;
+            }
+        }
+
+        private void mnuParcelasPedido_Click(object sender, EventArgs e)
+        {
+            Boolean instanciar = true;
+
+            foreach (var mdiChildForm in MdiChildren)
+            {
+                if (mdiChildForm is frmProcParcelasPedido)
+                {
+                    instanciar = false;
+                    //mdiChildForm.Show();
+                    mdiChildForm.WindowState = FormWindowState.Maximized;
+                    mdiChildForm.BringToFront();
+                }
+            }
+
+            if (instanciar)
+            {
+                var frm = new frmProcParcelasPedido();
                 frm.ConfigurarForm(this);
                 frm.Tag = ((ToolStripMenuItem)sender).Tag;
                 frm.Show();

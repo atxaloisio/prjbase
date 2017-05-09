@@ -44,7 +44,8 @@ namespace prjbase
             ReportParameterCollection parametros = new ReportParameterCollection();
             ReportParameter parametro = new ReportParameter();
             parametro.Name = "EndLaboratorio";
-            parametro.Values.Add("LABORATORIO PRECISION - Rua Antonio Rabelo Guimarães, 256 - Centro - Nova Iguaçu/RJ - Fone: (21) 2667-6932");
+            //parametro.Values.Add("LABORATORIO PRECISION - Rua Antonio Rabelo Guimarães, 256 - Centro - Nova Iguaçu/RJ - Fone: (21) 2667-6932");
+            parametro.Values.Add("");
             parametros.Add(parametro);
             rvRelatorios.LocalReport.SetParameters(parametros);
         }

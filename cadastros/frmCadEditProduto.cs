@@ -124,7 +124,7 @@ namespace prjbase
         {
             base.Limpar(control);
 
-            txtNome.Focus();
+            txtDescricao.Focus();
         }                
     }
 }

@@ -36,6 +36,79 @@ namespace prjbase
         {
             SetupCategoria();
             SetupContaCorrente();
+            SetupUF();
+            SetupRegimeTributario();
+        }
+
+        private void SetupRegimeTributario()
+        {
+            Regime_Tributario tp = new Regime_Tributario();
+
+            cbRegimeTributario.DataSource = Enumerados.getListEnum(tp);
+            cbRegimeTributario.ValueMember = "chave";
+            cbRegimeTributario.DisplayMember = "descricao";
+            cbRegimeTributario.SelectedIndex = -1;
+        }
+
+        private void SetupUF()
+        {
+            CidadeBLL cidadeBLL = new CidadeBLL();
+            List<string> CidadeList = cidadeBLL.getCidade().OrderBy(p => p.cUF).Select(c => c.cUF).Distinct().ToList();
+
+            AutoCompleteStringCollection acc = new AutoCompleteStringCollection();
+
+            foreach (string item in CidadeList)
+            {
+                acc.Add(item);
+            }
+
+            cbUF.DataSource = CidadeList;
+            cbUF.AutoCompleteCustomSource = acc;
+            cbUF.SelectedIndex = -1;
+        }
+
+        private void cbUF_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            SetupCidade(cbUF.SelectedValue.ToString());
+        }
+
+        private void SetupCidade(string UF)
+        {
+            CidadeBLL cidadeBLL = new CidadeBLL();
+            List<Cidade> CidadeList = cidadeBLL.getCidade(p => p.cUF == UF).OrderBy(p => p.cNome).ToList();
+            cbCidade.DataSource = CidadeList;
+
+            AutoCompleteStringCollection acc = new AutoCompleteStringCollection();
+            foreach (Cidade item in CidadeList)
+            {
+                acc.Add(item.cNome);
+            }
+
+
+            cbCidade.AutoCompleteCustomSource = acc;
+            cbCidade.ValueMember = "Id";
+            cbCidade.DisplayMember = "cCod";
+            cbCidade.SelectedIndex = -1;
+        }
+
+        private void cbUF_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(cbUF.Text))
+            {
+                SetupCidade(cbUF.Text);
+            }
+        }
+
+        private void cbUF_Validating(object sender, CancelEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(((ComboBox)sender).Text))
+            {
+                e.Cancel = ((ComboBox)sender).FindStringExact(((ComboBox)sender).Text) < 0;
+                if (e.Cancel)
+                {
+                    MessageBox.Show("Valor digitado não encontrado na lista", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         protected virtual void SetupContaCorrente()
@@ -64,12 +137,18 @@ namespace prjbase
 
         private void LoadToControls()
         {
-            string genlab = Parametro.GetParametro("intGenLab"); 
+            LoadParametros();
+            LoadEmpresa();            
+        }
+
+        private void LoadParametros()
+        {
+            string genlab = Parametro.GetParametro("intGenLab");
             if (!string.IsNullOrEmpty(genlab))
             {
                 rbIntGenLab.Checked = Convert.ToBoolean(genlab);
             }
-                
+
             string tooling = Parametro.GetParametro("intTooling");
             if (!string.IsNullOrEmpty(tooling))
             {
@@ -156,7 +235,125 @@ namespace prjbase
 
             long ultCodPedido = Sequence.GetCurrentVal("sq_pedido_sequence");
             txtCodPedido.Text = ultCodPedido.ToString();
+        }
 
+        private void LoadEmpresa()
+        {
+            if (!string.IsNullOrEmpty(txtCodigoEmpresa.Text))
+            {
+                long? codigo = Convert.ToInt64(txtCodigoEmpresa.Text); 
+                EmpresaBLL empresaBLL = new EmpresaBLL();
+                List<Empresa> empresaList = empresaBLL.getEmpresa(p => p.codigo_empresa == codigo);
+                if (empresaList.Count() > 0)
+                {
+                    Empresa empresa = empresaList.FirstOrDefault();
+
+                    LoadEmpresaToControls(empresa);
+                    foreach (Control item in tpEmpresa.Controls)
+                    {
+                        item.Enabled = false;
+                        if (item is TextBox)
+                        {
+                            ((TextBox)item).ReadOnly = true;
+                        }
+                    }
+
+                    tcCliente.Enabled = true;
+                    foreach (Control item in tpEndereco.Controls)
+                    {
+                        item.Enabled = false;
+                        if (item is TextBox)
+                        {
+                            ((TextBox)item).ReadOnly = true;
+                        }
+                    }
+
+                    foreach (Control item in tpTelefoneEmail.Controls)
+                    {
+                        item.Enabled = false;
+                        if (item is TextBox)
+                        {
+                            ((TextBox)item).ReadOnly = true;
+                        }
+                    }
+
+                    foreach (Control item in tpInscrCnae.Controls)
+                    {
+                        item.Enabled = false;
+                        if (item is TextBox)
+                        {
+                            ((TextBox)item).ReadOnly = true;
+                        }
+                    }
+
+                    imgLogoEmp.Enabled = true;
+                    btnAbrirLogo.Enabled = true;
+                }
+                
+                
+            }
+            else if (!chkIntegrarOmie.Checked)
+            {
+                EmpresaBLL empresaBLL = new EmpresaBLL();
+                List<Empresa> empresaList = empresaBLL.getEmpresa();
+                if (empresaList.Count() > 0)
+                {
+                    Empresa empresa = empresaList.FirstOrDefault();
+
+                    LoadEmpresaToControls(empresa);
+                }
+            }
+            
+        }
+
+        private void LoadEmpresaToControls(Empresa empresa)
+        {
+            txtId.Text = empresa.Id.ToString();
+
+            if (empresa.codigo_empresa != null)
+            {
+                txtCodigo.Text = empresa.codigo_empresa.ToString();
+            }
+
+            txtCodInt.Text = empresa.codigo_empresa_integracao;
+            txtRazaoSocial.Text = empresa.razao_social;
+            txtCNPJ.Text = empresa.cnpj;
+            txtNomeFantasia.Text = empresa.nome_fantasia;
+            txtDDD.Text = empresa.telefone1_ddd;
+            txtTelefone.Text = empresa.telefone1_numero;
+            txtEndereco.Text = empresa.endereco;
+            txtNumero.Text = empresa.endereco_numero;
+            txtBairro.Text = empresa.bairro;
+            txtComplemento.Text = empresa.complemento;
+            cbUF.Text = empresa.estado;
+            cbCidade.Text = empresa.cidade;
+            txtCEP.Text = empresa.cep;
+            txtDDD2.Text = empresa.telefone2_ddd;
+            txtTelefone2.Text = empresa.telefone2_numero;
+            txtDDDFax.Text = empresa.fax_ddd;
+            txtFax.Text = empresa.fax_numero;
+            txtEmail.Text = empresa.email;
+            txtWebSite.Text = empresa.website;
+            txtInscricaoEstadual.Text = empresa.inscricao_estadual;
+            txtInscricaoMunicipal.Text = empresa.inscricao_municipal;
+            txtInscricaoSuframa.Text = empresa.inscricao_suframa;
+            txtCodCnae.Text = empresa.cnae;
+            if (!string.IsNullOrEmpty(empresa.cnae))
+            {
+                CNAEBLL CNAEBLL = new CNAEBLL();
+                txtDescricaoCnae.Text = CNAEBLL.getCNAE(p => p.codigo == empresa.cnae).FirstOrDefault().descricao;
+            }
+
+            if (empresa.regime_tributario != null)
+            {
+                cbRegimeTributario.SelectedValue = empresa.regime_tributario;
+            }
+
+            if (empresa.data_adesao_sn != null)
+            {
+                txtDtSimplNac.Text = empresa.data_adesao_sn.Value.ToShortDateString();
+            }
+            
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -165,6 +362,19 @@ namespace prjbase
         }
 
         private void Salvar()
+        {
+            SalvarParametros();
+
+            if (!chkIntegrarOmie.Checked)
+            {
+                SalvarEmpresa();
+            }
+                        
+            MessageBox.Show(Text + " salvo com sucesso.", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
+
+        private void SalvarParametros()
         {
             string genlab = Parametro.GetParametro("intGenLab");
             if (!string.IsNullOrEmpty(genlab))
@@ -176,10 +386,10 @@ namespace prjbase
                 Parametro.AddParametro("intGenLab", Convert.ToString(rbIntGenLab.Checked));
             }
 
-            
+
             string tooling = Parametro.GetParametro("intTooling");
             if (!string.IsNullOrEmpty(tooling))
-            {                
+            {
                 Parametro.SetParametro("intTooling", Convert.ToString(rbIntTooling.Checked));
             }
             else
@@ -189,7 +399,7 @@ namespace prjbase
 
             string strPathFileLab = Parametro.GetParametro("strPathFileLab");
             if (!string.IsNullOrEmpty(strPathFileLab))
-            {                
+            {
                 Parametro.SetParametro("strPathFileLab", txtCaminhoArquivos.Text);
             }
             else
@@ -218,36 +428,43 @@ namespace prjbase
                 Parametro.AddParametro("layoutOtica", Convert.ToString(rbOtica.Checked));
             }
 
-            string IdCategoria = Parametro.GetParametro("IdCategoria");
-            if (!string.IsNullOrEmpty(IdCategoria) && StringExtensions.IsNumeric(IdCategoria))
-            {                
-                Parametro.SetParametro("IdCategoria", cbCategoria.SelectedValue.ToString());
-            }
-            else
+            if (cbCategoria.SelectedValue != null)
             {
-                if (cbCategoria.SelectedValue != null)
+                string IdCategoria = Parametro.GetParametro("IdCategoria");
+                if (!string.IsNullOrEmpty(IdCategoria) && StringExtensions.IsNumeric(IdCategoria))
                 {
-                    Parametro.AddParametro("IdCategoria", cbCategoria.SelectedValue.ToString());
+                    Parametro.SetParametro("IdCategoria", cbCategoria.SelectedValue.ToString());
                 }
-                
+                else
+                {
+                    if (cbCategoria.SelectedValue != null)
+                    {
+                        Parametro.AddParametro("IdCategoria", cbCategoria.SelectedValue.ToString());
+                    }
+
+                }
             }
 
-            string IdContaCorrente = Parametro.GetParametro("IdContaCorrente");
-            if (!string.IsNullOrEmpty(IdContaCorrente) && StringExtensions.IsNumeric(IdContaCorrente))
-            {                
-                Parametro.SetParametro("IdContaCorrente", cbContaCorrente.SelectedValue.ToString());
-            }
-            else
+            if (cbContaCorrente.SelectedValue != null)
             {
-                if (cbContaCorrente.SelectedValue != null)
+                string IdContaCorrente = Parametro.GetParametro("IdContaCorrente");
+                if (!string.IsNullOrEmpty(IdContaCorrente) && StringExtensions.IsNumeric(IdContaCorrente))
                 {
-                    Parametro.AddParametro("IdContaCorrente", cbContaCorrente.SelectedValue.ToString());
+
+                    Parametro.SetParametro("IdContaCorrente", cbContaCorrente.SelectedValue.ToString());
+                }
+                else
+                {
+                    if (cbContaCorrente.SelectedValue != null)
+                    {
+                        Parametro.AddParametro("IdContaCorrente", cbContaCorrente.SelectedValue.ToString());
+                    }
                 }
             }
 
             string codEmpresa = Parametro.GetParametro("codEmpresa");
             if (!string.IsNullOrEmpty(codEmpresa) && StringExtensions.IsNumeric(codEmpresa))
-            {                
+            {
                 Parametro.SetParametro("codEmpresa", txtCodigoEmpresa.Text);
             }
             else
@@ -257,7 +474,7 @@ namespace prjbase
 
             string intOmie = Parametro.GetParametro("intOmie");
             if (!string.IsNullOrEmpty(intOmie))
-            {                
+            {
                 Parametro.SetParametro("intOmie", Convert.ToString(chkIntegrarOmie.Checked));
             }
             else
@@ -267,7 +484,7 @@ namespace prjbase
 
             string app_key = Parametro.GetParametro("app_key");
             if (!string.IsNullOrEmpty(app_key))
-            {                
+            {
                 Parametro.SetParametro("app_key", txtAppKey.Text);
             }
             else
@@ -277,7 +494,7 @@ namespace prjbase
 
             string app_secret = Parametro.GetParametro("app_secret");
             if (!string.IsNullOrEmpty(app_secret))
-            {                
+            {
                 Parametro.SetParametro("app_secret", txtAppSecret.Text);
             }
             else
@@ -288,7 +505,7 @@ namespace prjbase
             string updateClienteOmie = Parametro.GetParametro("updateClienteOmie");
             if (!string.IsNullOrEmpty(updateClienteOmie))
             {
-                Parametro.SetParametro("updateClienteOmie", Convert.ToString(chkAtualizaCliente.Checked));                
+                Parametro.SetParametro("updateClienteOmie", Convert.ToString(chkAtualizaCliente.Checked));
             }
             else
             {
@@ -329,9 +546,71 @@ namespace prjbase
             {
                 Sequence.SetCurrentVal("sq_pedido_sequence", Convert.ToInt64(txtCodPedido.Text));
             }
+        }
 
-            MessageBox.Show(Text + " salvo com sucesso.", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        private void SalvarEmpresa()
+        {
+            EmpresaBLL empresaBLL = new EmpresaBLL();
+            Empresa empresa = empresaBLL.getEmpresa().FirstOrDefault();
+            if (empresa != null)
+            {
+                empresa = LoadEmpresaFromControls(empresa);
+                empresaBLL.AlterarEmpresa(empresa);
+            }
+            else
+            {
+                empresa = new Empresa();
+                empresa = LoadEmpresaFromControls(empresa);
+                empresaBLL.AdicionarEmpresa(empresa);
+            }
+        }
 
+        private Empresa LoadEmpresaFromControls(Empresa empresa)
+        {
+            if (!string.IsNullOrEmpty(txtId.Text))
+            {
+                empresa.Id = Convert.ToInt64(txtId.Text);
+            }
+
+            if (!string.IsNullOrEmpty(txtCodigo.Text))
+            {
+                empresa.codigo_empresa = Convert.ToInt64(txtCodigo.Text);
+            }
+
+            empresa.codigo_empresa_integracao = txtCodInt.Text;
+            empresa.razao_social = txtRazaoSocial.Text;
+            empresa.nome_fantasia = txtNomeFantasia.Text;
+            empresa.telefone1_ddd = txtDDD.Text;
+            empresa.telefone1_numero = txtTelefone.Text;
+            empresa.endereco = txtEndereco.Text;
+            empresa.endereco_numero = txtNumero.Text;
+            empresa.bairro = txtBairro.Text;
+            empresa.complemento = txtComplemento.Text;
+            empresa.estado = cbUF.SelectedValue.ToString();
+            empresa.cidade = cbCidade.SelectedValue.ToString();
+            empresa.cep = txtCEP.Text;
+            empresa.telefone2_ddd = txtDDD2.Text;
+            empresa.telefone2_numero = txtTelefone2.Text;
+            empresa.fax_ddd = txtDDDFax.Text;
+            empresa.fax_numero = txtFax.Text;
+            empresa.email = txtEmail.Text;
+            empresa.website = txtWebSite.Text;
+            empresa.inscricao_estadual = txtInscricaoEstadual.Text;
+            empresa.inscricao_municipal = txtInscricaoMunicipal.Text;
+            empresa.inscricao_suframa = txtInscricaoSuframa.Text;
+            empresa.cnae = txtCodCnae.Text;                       
+
+            if (cbRegimeTributario.SelectedValue != null)
+            {
+                empresa.regime_tributario = Convert.ToSByte(cbRegimeTributario.SelectedValue);
+            }
+
+            if (!string.IsNullOrEmpty(txtDtSimplNac.Text))
+            {
+                empresa.data_adesao_sn = Convert.ToDateTime(txtDtSimplNac.Text);
+            }
+                        
+            return empresa;
         }
 
         private void onlyNumber_KeyPress(object sender, KeyPressEventArgs e)
@@ -353,7 +632,8 @@ namespace prjbase
                 chkContaCorrente.Checked ||
                 chkCidade.Checked ||
                 chkFormaPagto.Checked ||
-                chkVendedores.Checked)
+                chkVendedores.Checked ||
+                chkEmpresa.Checked)
             {
                 if (MessageBox.Show("Deseja iniciar a sincronização de dados?" +
                     " \n Esta operação pode levar alguns minutos dependento da quantidade de dados sinconizada. ",
@@ -565,6 +845,26 @@ namespace prjbase
                     
                 }
 
+                if (chkEmpresa.Checked)
+                {
+                    EmpresaProxy emp = new EmpresaProxy();
+                    try
+                    {
+                        emp.ProgressBar = pbSincronizar;
+                        emp.Mensagem = lblMensagem;
+                        emp.QtdRegistros = lblQtdRegistros;
+                        emp.SyncEmpresa();
+                        LimpaAbaSincronizar();
+                        chkEmpresa.Checked = false;
+                        LoadEmpresa();
+                    }
+                    finally
+                    {
+                        emp.Dispose();
+                    }
+
+                }
+
                 MessageBox.Show("Sincronização concluida!", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
@@ -572,7 +872,7 @@ namespace prjbase
             {
                 string mensagem = TrataException.getAllMessage(ex);
                 MessageBox.Show(mensagem, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                throw;
+                //throw;
             }
             finally
             {
@@ -608,6 +908,7 @@ namespace prjbase
                         int reg = 0;
                         int qtdregs = 0;
                         qtdregs = produtoList.Count();
+                        qtdregs++;
                         pbSincronizar.Maximum = qtdregs;
 
                         foreach (Produto item in produtoList)
@@ -617,6 +918,8 @@ namespace prjbase
                             lblQtdRegistros.Text = reg.ToString() + " de " + qtdregs.ToString();
                             lblMensagem.Text = "Limpando base de produtos omie.";
                             pp.ExcluirProduto(item);
+                            pbSincronizar.Refresh();
+                            Application.DoEvents();
                         }
 
 
@@ -706,6 +1009,14 @@ namespace prjbase
             {
                 familia_ProdutoBLL.Dispose();
                 fp.Dispose();
+            }
+        }
+
+        private void btnAbrirLogo_Click(object sender, EventArgs e)
+        {
+            if (dlgCaminhoImagem.ShowDialog() == DialogResult.OK)
+            {
+                imgLogoEmp.Image = Image.FromFile(@dlgCaminhoImagem.FileName);                
             }
         }
     }

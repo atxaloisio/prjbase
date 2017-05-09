@@ -453,6 +453,18 @@
     <Compile Include="frmPrincipal.Designer.cs">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="processos\frmProcParcelaPedidoView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="processos\frmProcParcelaPedidoView.Designer.cs">
+      <DependentUpon>frmProcParcelaPedidoView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="processos\frmProcParcelasPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="processos\frmProcParcelasPedido.Designer.cs">
+      <DependentUpon>frmProcParcelasPedido.cs</DependentUpon>
+    </Compile>
     <Compile Include="processos\frmProcAtualizaStatusPedido.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -615,6 +627,12 @@
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="processos\frmProcParcelaPedidoView.resx">
+      <DependentUpon>frmProcParcelaPedidoView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="processos\frmProcParcelasPedido.resx">
+      <DependentUpon>frmProcParcelasPedido.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="processos\frmProcAtualizaStatusPedido.resx">
       <DependentUpon>frmProcAtualizaStatusPedido.cs</DependentUpon>
     </EmbeddedResource>
@@ -687,6 +705,8 @@
     </Content>
     <Content Include="oculos.ico" />
     <Content Include="oculos2.ico" />
+    <None Include="Resources\usd.png" />
+    <None Include="Resources\view.png" />
     <None Include="Resources\sync.png" />
     <None Include="Resources\fundo.png" />
     <None Include="Resources\fundo2.png" />
