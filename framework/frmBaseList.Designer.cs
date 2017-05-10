@@ -114,9 +114,9 @@
             // 
             this.lblTotalRegistros.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblTotalRegistros.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalRegistros.Location = new System.Drawing.Point(72, 286);
+            this.lblTotalRegistros.Location = new System.Drawing.Point(58, 286);
             this.lblTotalRegistros.Name = "lblTotalRegistros";
-            this.lblTotalRegistros.Size = new System.Drawing.Size(40, 16);
+            this.lblTotalRegistros.Size = new System.Drawing.Size(46, 16);
             this.lblTotalRegistros.TabIndex = 20;
             this.lblTotalRegistros.Text = "0";
             this.lblTotalRegistros.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -125,7 +125,7 @@
             // 
             this.lblRegistros.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblRegistros.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegistros.Location = new System.Drawing.Point(9, 288);
+            this.lblRegistros.Location = new System.Drawing.Point(5, 288);
             this.lblRegistros.Name = "lblRegistros";
             this.lblRegistros.Size = new System.Drawing.Size(56, 15);
             this.lblRegistros.TabIndex = 19;

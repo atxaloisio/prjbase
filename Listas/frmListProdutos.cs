@@ -21,12 +21,13 @@ namespace prjbase
         ProdutoBLL ProdutoBLL;
 
         #region Constante de Colunas da Grid
-        private const int col_Id = 0;
-        private const int col_email = 1;
-        private const int col_nome = 2;
-        private const int col_password = 3;
-        private const int col_dtCricao = 4;
-        private const int col_dtAlteracao = 5;
+        private const int COL_ID = 0;
+        private const int COL_CODIGO = 1;
+        private const int COL_DESCRICAO = 2;
+        private const int COL_UNIDADE = 3;
+        private const int COL_NCM = 4;
+        private const int COL_VALOR_UNITARIO = 5;
+        private const int COL_FAMILIA = 6;
 
         #endregion
 
@@ -53,53 +54,73 @@ namespace prjbase
             base.formataColunagridFiltros(gridFiltros);
             //altera o nome das colunas                        
             gridFiltros.Columns.Add("ID", "Id");
-            gridFiltros.Columns.Add("EMAIL", "e-Mail");
-            gridFiltros.Columns.Add("NOME", "Nome");
-
-            DataGridViewMaskedTextColumn col = new DataGridViewMaskedTextColumn("99/99/9999");
-            col.DataPropertyName = "CRIACAO";
-            col.HeaderText = "Dt. Criação";
-            col.Name = "CRIACAO";
-            col.ValueType = typeof(DateTime);
-            col.SortMode = DataGridViewColumnSortMode.Programmatic;
-            gridFiltros.Columns.Add(col);
-
-
-
-
+            gridFiltros.Columns.Add("CODIGO", "Código");
+            gridFiltros.Columns.Add("DESCRICAO", "Descrição");
+            gridFiltros.Columns.Add("UNIDADE", "Unidade");
+            gridFiltros.Columns.Add("NCM", "NCM");
+            gridFiltros.Columns.Add("VALORUNITARIO", "Valor Unitario");
+            gridFiltros.Columns.Add("FAMILIA", "Familia");
             //
-            gridFiltros.Columns[0].Width = 50;
-            gridFiltros.Columns[0].ValueType = typeof(int);
-            gridFiltros.Columns[0].SortMode = DataGridViewColumnSortMode.Programmatic;
-            gridFiltros.Columns[1].Width = 200;
-            gridFiltros.Columns[1].ValueType = typeof(string);
-            gridFiltros.Columns[1].SortMode = DataGridViewColumnSortMode.Programmatic;
-            gridFiltros.Columns[2].Width = 200;
-            gridFiltros.Columns[2].ValueType = typeof(string);
-            gridFiltros.Columns[2].SortMode = DataGridViewColumnSortMode.Programmatic;
-            gridFiltros.Columns[3].Width = 200;
-            //gridFiltros.Columns[3].ValueType = typeof(DateTime);           
-            //gridFiltros.Columns[3].DefaultCellStyle.Format = "dd/mm/YYYY";
+            gridFiltros.Columns[COL_ID].Width = 50;
+            gridFiltros.Columns[COL_ID].ValueType = typeof(int);
+            gridFiltros.Columns[COL_ID].SortMode = DataGridViewColumnSortMode.Programmatic;
+            gridFiltros.Columns[COL_ID].Visible = false;
 
-            //Adiciona uma linha ao grid.
-            gridFiltros.Rows.Add();
+            gridFiltros.Columns[COL_CODIGO].Width = 100;
+            gridFiltros.Columns[COL_CODIGO].ValueType = typeof(string);
+            gridFiltros.Columns[COL_CODIGO].SortMode = DataGridViewColumnSortMode.Programmatic;
 
-            //gridFiltros.Columns[2].Visible = false;            
+            gridFiltros.Columns[COL_DESCRICAO].Width = 450;
+            gridFiltros.Columns[COL_DESCRICAO].ValueType = typeof(string);
+            gridFiltros.Columns[COL_DESCRICAO].SortMode = DataGridViewColumnSortMode.Programmatic;
+
+            gridFiltros.Columns[COL_UNIDADE].Width = 80;
+            gridFiltros.Columns[COL_UNIDADE].ValueType = typeof(string);
+            gridFiltros.Columns[COL_UNIDADE].SortMode = DataGridViewColumnSortMode.Programmatic;
+
+            gridFiltros.Columns[COL_NCM].Width = 100;
+            gridFiltros.Columns[COL_NCM].ValueType = typeof(string);
+            gridFiltros.Columns[COL_NCM].SortMode = DataGridViewColumnSortMode.Programmatic;
+            
+            gridFiltros.Columns[COL_VALOR_UNITARIO].Width = 100;
+            gridFiltros.Columns[COL_VALOR_UNITARIO].ValueType = typeof(decimal);
+            gridFiltros.Columns[COL_VALOR_UNITARIO].DefaultCellStyle.Format = "N2";
+            gridFiltros.Columns[COL_VALOR_UNITARIO].SortMode = DataGridViewColumnSortMode.Programmatic;
+
+            gridFiltros.Columns[COL_FAMILIA].Width = 300;
+            gridFiltros.Columns[COL_FAMILIA].ValueType = typeof(string);
+            gridFiltros.Columns[COL_FAMILIA].SortMode = DataGridViewColumnSortMode.Programmatic;
+            
+            gridFiltros.Rows.Add();            
         }
 
         protected override void formataColunagridDados(DataGridView gridDados)
         {
             base.formataColunagridDados(gridDados);
-            //gridDados.Columns[0].Width = 50;
-            //gridDados.Columns[0].SortMode = DataGridViewColumnSortMode.Programmatic;
-            //gridDados.Columns[1].Width = 200;
-            //gridDados.Columns[1].SortMode = DataGridViewColumnSortMode.Programmatic;
-            //gridDados.Columns[2].Width = 200;
-            //gridDados.Columns[2].SortMode = DataGridViewColumnSortMode.Programmatic;
-            //gridDados.Columns[3].Visible = false;
-            //gridDados.Columns[4].Width = 200;
-            //gridDados.Columns[4].SortMode = DataGridViewColumnSortMode.Programmatic;
-            //gridDados.Columns[5].Visible = false;
+            gridDados.Columns[COL_ID].Width = 50;
+            gridDados.Columns[COL_ID].SortMode = DataGridViewColumnSortMode.Programmatic;
+            gridDados.Columns[COL_ID].Visible = false;
+
+            gridDados.Columns[COL_CODIGO].Width = 100;
+            gridDados.Columns[COL_CODIGO].SortMode = DataGridViewColumnSortMode.Programmatic;
+
+            gridDados.Columns[COL_DESCRICAO].Width = 450;
+            gridDados.Columns[COL_DESCRICAO].SortMode = DataGridViewColumnSortMode.Programmatic;
+
+            gridDados.Columns[COL_UNIDADE].Width = 80;
+            gridDados.Columns[COL_UNIDADE].SortMode = DataGridViewColumnSortMode.Programmatic;
+
+            gridDados.Columns[COL_NCM].Width = 100;
+            gridDados.Columns[COL_NCM].SortMode = DataGridViewColumnSortMode.Programmatic;
+
+            gridDados.Columns[COL_VALOR_UNITARIO].Width = 100;
+            gridDados.Columns[COL_VALOR_UNITARIO].SortMode = DataGridViewColumnSortMode.Programmatic;
+            gridDados.Columns[COL_VALOR_UNITARIO].DefaultCellStyle.Format = "N2";
+
+            gridDados.Columns[COL_FAMILIA].Width = 300;
+            gridDados.Columns[COL_FAMILIA].SortMode = DataGridViewColumnSortMode.Programmatic;
+
+
         }
 
         protected override void carregaConsulta()
@@ -108,7 +129,7 @@ namespace prjbase
             ProdutoBLL = new ProdutoBLL();
             List<Produto> ProdutoList = ProdutoBLL.getProduto(p => p.id.ToString(), false, deslocamento, tamanhoPagina, out totalReg);
             //List<Produto> ProdutoList = ProdutoBLL.getProduto(p => p.nome.Contains("x"), T => T.Id.ToString(), false, deslocamento, tamanhopagina, out totalreg);
-            dgvDados.DataSource = ProdutoList;
+            dgvDados.DataSource = ProdutoBLL.ToList_ProdutoView(ProdutoList);
             colOrdem = 0;
         }
 

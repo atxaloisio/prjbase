@@ -138,7 +138,7 @@ namespace prjbase
         private void LoadToControls()
         {
             LoadParametros();
-            LoadEmpresa();            
+            LoadEmpresa();
         }
 
         private void LoadParametros()
@@ -241,7 +241,7 @@ namespace prjbase
         {
             if (!string.IsNullOrEmpty(txtCodigoEmpresa.Text))
             {
-                long? codigo = Convert.ToInt64(txtCodigoEmpresa.Text); 
+                long? codigo = Convert.ToInt64(txtCodigoEmpresa.Text);
                 EmpresaBLL empresaBLL = new EmpresaBLL();
                 List<Empresa> empresaList = empresaBLL.getEmpresa(p => p.codigo_empresa == codigo);
                 if (empresaList.Count() > 0)
@@ -289,8 +289,8 @@ namespace prjbase
                     imgLogoEmp.Enabled = true;
                     btnAbrirLogo.Enabled = true;
                 }
-                
-                
+
+
             }
             else if (!chkIntegrarOmie.Checked)
             {
@@ -303,7 +303,7 @@ namespace prjbase
                     LoadEmpresaToControls(empresa);
                 }
             }
-            
+
         }
 
         private void LoadEmpresaToControls(Empresa empresa)
@@ -353,7 +353,7 @@ namespace prjbase
             {
                 txtDtSimplNac.Text = empresa.data_adesao_sn.Value.ToShortDateString();
             }
-            
+
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -369,7 +369,7 @@ namespace prjbase
             {
                 SalvarEmpresa();
             }
-                        
+
             MessageBox.Show(Text + " salvo com sucesso.", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
@@ -586,8 +586,14 @@ namespace prjbase
             empresa.endereco_numero = txtNumero.Text;
             empresa.bairro = txtBairro.Text;
             empresa.complemento = txtComplemento.Text;
-            empresa.estado = cbUF.SelectedValue.ToString();
-            empresa.cidade = cbCidade.SelectedValue.ToString();
+            if (cbUF.SelectedValue != null)
+            {
+                empresa.estado = cbUF.SelectedValue.ToString();
+            }
+            if (cbCidade.SelectedValue != null)
+            {
+                empresa.cidade = cbCidade.SelectedValue.ToString();
+            }
             empresa.cep = txtCEP.Text;
             empresa.telefone2_ddd = txtDDD2.Text;
             empresa.telefone2_numero = txtTelefone2.Text;
@@ -598,7 +604,7 @@ namespace prjbase
             empresa.inscricao_estadual = txtInscricaoEstadual.Text;
             empresa.inscricao_municipal = txtInscricaoMunicipal.Text;
             empresa.inscricao_suframa = txtInscricaoSuframa.Text;
-            empresa.cnae = txtCodCnae.Text;                       
+            empresa.cnae = txtCodCnae.Text;
 
             if (cbRegimeTributario.SelectedValue != null)
             {
@@ -609,7 +615,7 @@ namespace prjbase
             {
                 empresa.data_adesao_sn = Convert.ToDateTime(txtDtSimplNac.Text);
             }
-                        
+
             return empresa;
         }
 
@@ -667,7 +673,7 @@ namespace prjbase
                     {
                         cp.Dispose();
                     }
-                    
+
                 }
 
                 if (chkProdutos.Checked)
@@ -687,7 +693,7 @@ namespace prjbase
                     {
                         pp.Dispose();
                     }
-                    
+
                 }
 
                 if (chkUnidades.Checked)
@@ -746,14 +752,14 @@ namespace prjbase
                     {
                         pi.Dispose();
                     }
-                    
+
                 }
 
                 if (chkFormaPagto.Checked)
                 {
                     ParcelaProxy par = new ParcelaProxy();
                     try
-                    {                        
+                    {
                         par.ProgressBar = pbSincronizar;
                         par.Mensagem = lblMensagem;
                         par.QtdRegistros = lblQtdRegistros;
@@ -765,7 +771,7 @@ namespace prjbase
                     {
                         par.Dispose();
                     }
-                    
+
                 }
 
                 if (chkCategoria.Checked)
@@ -773,7 +779,7 @@ namespace prjbase
                     CategoriaProxy categ = new CategoriaProxy();
                     try
                     {
-                        
+
                         categ.ProgressBar = pbSincronizar;
                         categ.Mensagem = lblMensagem;
                         categ.QtdRegistros = lblQtdRegistros;
@@ -785,7 +791,7 @@ namespace prjbase
                     {
                         categ.Dispose();
                     }
-                    
+
                 }
 
                 if (chkContaCorrente.Checked)
@@ -804,7 +810,7 @@ namespace prjbase
                     {
                         cc.Dispose();
                     }
-                    
+
                 }
 
                 if (chkCidade.Checked)
@@ -823,7 +829,7 @@ namespace prjbase
                     {
                         cid.Dispose();
                     }
-                    
+
                 }
 
                 if (chkVendedores.Checked)
@@ -842,7 +848,7 @@ namespace prjbase
                     {
                         Vend.Dispose();
                     }
-                    
+
                 }
 
                 if (chkEmpresa.Checked)
@@ -892,7 +898,7 @@ namespace prjbase
             try
             {
                 Cursor = Cursors.WaitCursor;
-                
+
 
                 if (chkProdutos.Checked)
                 {
@@ -936,8 +942,8 @@ namespace prjbase
                     }
 
                 }
-                                                
-                
+
+
 
                 MessageBox.Show("Sincronização concluida!", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -953,7 +959,7 @@ namespace prjbase
                 Cursor = Cursors.Default;
             }
         }
-        
+
         private void txtCod_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar))
@@ -973,7 +979,7 @@ namespace prjbase
                     e.Cancel = true;
                 }
             }
-            
+
         }
 
         private void btnZerarCadFamiliaProd_Click(object sender, EventArgs e)
@@ -1004,7 +1010,7 @@ namespace prjbase
             {
 
                 throw;
-            }            
+            }
             finally
             {
                 familia_ProdutoBLL.Dispose();
@@ -1016,7 +1022,7 @@ namespace prjbase
         {
             if (dlgCaminhoImagem.ShowDialog() == DialogResult.OK)
             {
-                imgLogoEmp.Image = Image.FromFile(@dlgCaminhoImagem.FileName);                
+                imgLogoEmp.Image = Image.FromFile(@dlgCaminhoImagem.FileName);
             }
         }
     }

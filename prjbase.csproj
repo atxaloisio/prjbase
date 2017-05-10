@@ -705,6 +705,7 @@
     </Content>
     <Content Include="oculos.ico" />
     <Content Include="oculos2.ico" />
+    <None Include="Resources\movimento.png" />
     <None Include="Resources\usd.png" />
     <None Include="Resources\view.png" />
     <None Include="Resources\sync.png" />

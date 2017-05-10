@@ -28,26 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadEditProduto));
-            this.tcProduto = new System.Windows.Forms.TabControl();
-            this.tpEstoque = new System.Windows.Forms.TabPage();
-            this.tpTelefoneEmail = new System.Windows.Forms.TabPage();
-            this.tpInscrCnae = new System.Windows.Forms.TabPage();
-            this.chkProdutorRural = new System.Windows.Forms.CheckBox();
-            this.chkoptantesimples = new System.Windows.Forms.CheckBox();
-            this.btnPesquisa = new System.Windows.Forms.Button();
-            this.label24 = new System.Windows.Forms.Label();
-            this.txtCodCnae = new System.Windows.Forms.TextBox();
-            this.txtDescricaoCnae = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.txtInscricaoSuframa = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.txtInscricaoMunicipal = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.txtInscricaoEstadual = new System.Windows.Forms.TextBox();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.txtNomeFantasia = new System.Windows.Forms.TextBox();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.txtNCM = new System.Windows.Forms.TextBox();
+            this.txtCodigoOmie = new System.Windows.Forms.TextBox();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtDescricao = new System.Windows.Forms.TextBox();
@@ -55,16 +37,36 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbUnidade = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtEAN = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtPrecoUnitario = new System.Windows.Forms.TextBox();
+            this.tpInscrCnae = new System.Windows.Forms.TabPage();
+            this.tpEstoque = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.dgvMovEstoque = new System.Windows.Forms.DataGridView();
+            this.tcProduto = new System.Windows.Forms.TabControl();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtPesoLiquido = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtPesoBruto = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtDescDetProd = new System.Windows.Forms.RichTextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cbFamiliaProduto = new System.Windows.Forms.ComboBox();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
             this.pnlBotoes.SuspendLayout();
             this.pnlPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
-            this.tcProduto.SuspendLayout();
             this.tpInscrCnae.SuspendLayout();
+            this.tpEstoque.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMovEstoque)).BeginInit();
+            this.tcProduto.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlBotoes
@@ -73,232 +75,50 @@
             // 
             // pnlPrincipal
             // 
-            this.pnlPrincipal.Controls.Add(this.label6);
-            this.pnlPrincipal.Controls.Add(this.textBox2);
-            this.pnlPrincipal.Controls.Add(this.label5);
-            this.pnlPrincipal.Controls.Add(this.textBox1);
-            this.pnlPrincipal.Controls.Add(this.label4);
-            this.pnlPrincipal.Controls.Add(this.comboBox1);
-            this.pnlPrincipal.Controls.Add(this.label2);
-            this.pnlPrincipal.Controls.Add(this.txtNomeFantasia);
             this.pnlPrincipal.Controls.Add(this.txtCodigo);
+            this.pnlPrincipal.Controls.Add(this.label6);
+            this.pnlPrincipal.Controls.Add(this.txtPrecoUnitario);
+            this.pnlPrincipal.Controls.Add(this.label5);
+            this.pnlPrincipal.Controls.Add(this.txtEAN);
+            this.pnlPrincipal.Controls.Add(this.label4);
+            this.pnlPrincipal.Controls.Add(this.cbUnidade);
+            this.pnlPrincipal.Controls.Add(this.label2);
+            this.pnlPrincipal.Controls.Add(this.txtNCM);
+            this.pnlPrincipal.Controls.Add(this.txtCodigoOmie);
             this.pnlPrincipal.Controls.Add(this.txtId);
             this.pnlPrincipal.Controls.Add(this.label1);
             this.pnlPrincipal.Controls.Add(this.txtDescricao);
             this.pnlPrincipal.Controls.Add(this.txtCodInt);
             this.pnlPrincipal.Controls.Add(this.label3);
             this.pnlPrincipal.Controls.Add(this.tcProduto);
-            this.pnlPrincipal.Size = new System.Drawing.Size(805, 309);
+            this.pnlPrincipal.Size = new System.Drawing.Size(813, 309);
             // 
-            // tcProduto
+            // txtNCM
             // 
-            this.tcProduto.Controls.Add(this.tpEstoque);
-            this.tcProduto.Controls.Add(this.tpTelefoneEmail);
-            this.tcProduto.Controls.Add(this.tpInscrCnae);
-            this.tcProduto.Controls.Add(this.tabPage1);
-            this.tcProduto.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tcProduto.Location = new System.Drawing.Point(0, 98);
-            this.tcProduto.Name = "tcProduto";
-            this.tcProduto.SelectedIndex = 0;
-            this.tcProduto.Size = new System.Drawing.Size(803, 209);
-            this.tcProduto.TabIndex = 7;
+            this.epValidaDados.SetFraseErro(this.txtNCM, "NCM do produto obrigatório.");
+            this.txtNCM.Location = new System.Drawing.Point(84, 61);
+            this.txtNCM.Name = "txtNCM";
+            this.epValidaDados.SetObrigatorio(this.txtNCM, true);
+            this.txtNCM.Size = new System.Drawing.Size(154, 23);
+            this.txtNCM.TabIndex = 3;
             // 
-            // tpEstoque
+            // txtCodigoOmie
             // 
-            this.tpEstoque.Location = new System.Drawing.Point(4, 25);
-            this.tpEstoque.Name = "tpEstoque";
-            this.tpEstoque.Padding = new System.Windows.Forms.Padding(3);
-            this.tpEstoque.Size = new System.Drawing.Size(795, 180);
-            this.tpEstoque.TabIndex = 0;
-            this.tpEstoque.Text = "Estoque";
-            this.tpEstoque.UseVisualStyleBackColor = true;
-            // 
-            // tpTelefoneEmail
-            // 
-            this.tpTelefoneEmail.Location = new System.Drawing.Point(4, 25);
-            this.tpTelefoneEmail.Name = "tpTelefoneEmail";
-            this.tpTelefoneEmail.Padding = new System.Windows.Forms.Padding(3);
-            this.tpTelefoneEmail.Size = new System.Drawing.Size(485, 180);
-            this.tpTelefoneEmail.TabIndex = 1;
-            this.tpTelefoneEmail.Text = "Impostos Aprendidos";
-            this.tpTelefoneEmail.UseVisualStyleBackColor = true;
-            // 
-            // tpInscrCnae
-            // 
-            this.tpInscrCnae.Controls.Add(this.chkProdutorRural);
-            this.tpInscrCnae.Controls.Add(this.chkoptantesimples);
-            this.tpInscrCnae.Controls.Add(this.btnPesquisa);
-            this.tpInscrCnae.Controls.Add(this.label24);
-            this.tpInscrCnae.Controls.Add(this.txtCodCnae);
-            this.tpInscrCnae.Controls.Add(this.txtDescricaoCnae);
-            this.tpInscrCnae.Controls.Add(this.label23);
-            this.tpInscrCnae.Controls.Add(this.txtInscricaoSuframa);
-            this.tpInscrCnae.Controls.Add(this.label22);
-            this.tpInscrCnae.Controls.Add(this.txtInscricaoMunicipal);
-            this.tpInscrCnae.Controls.Add(this.label21);
-            this.tpInscrCnae.Controls.Add(this.txtInscricaoEstadual);
-            this.tpInscrCnae.Location = new System.Drawing.Point(4, 25);
-            this.tpInscrCnae.Name = "tpInscrCnae";
-            this.tpInscrCnae.Padding = new System.Windows.Forms.Padding(3);
-            this.tpInscrCnae.Size = new System.Drawing.Size(485, 180);
-            this.tpInscrCnae.TabIndex = 2;
-            this.tpInscrCnae.Text = "Informações Adicionais";
-            this.tpInscrCnae.UseVisualStyleBackColor = true;
-            // 
-            // chkProdutorRural
-            // 
-            this.chkProdutorRural.AutoSize = true;
-            this.chkProdutorRural.Location = new System.Drawing.Point(558, 46);
-            this.chkProdutorRural.Name = "chkProdutorRural";
-            this.chkProdutorRural.Size = new System.Drawing.Size(123, 20);
-            this.chkProdutorRural.TabIndex = 18;
-            this.chkProdutorRural.Text = "Produtor Rural";
-            this.chkProdutorRural.UseVisualStyleBackColor = true;
-            // 
-            // chkoptantesimples
-            // 
-            this.chkoptantesimples.AutoSize = true;
-            this.chkoptantesimples.Location = new System.Drawing.Point(558, 30);
-            this.chkoptantesimples.Name = "chkoptantesimples";
-            this.chkoptantesimples.Size = new System.Drawing.Size(209, 20);
-            this.chkoptantesimples.TabIndex = 17;
-            this.chkoptantesimples.Text = "Optante do Simples Nacional";
-            this.chkoptantesimples.UseVisualStyleBackColor = true;
-            // 
-            // btnPesquisa
-            // 
-            this.btnPesquisa.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.btnPesquisa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisa.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnPesquisa.Image = ((System.Drawing.Image)(resources.GetObject("btnPesquisa.Image")));
-            this.btnPesquisa.Location = new System.Drawing.Point(154, 31);
-            this.btnPesquisa.Name = "btnPesquisa";
-            this.btnPesquisa.Size = new System.Drawing.Size(27, 27);
-            this.btnPesquisa.TabIndex = 15;
-            this.btnPesquisa.TabStop = false;
-            this.btnPesquisa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnPesquisa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnPesquisa.UseVisualStyleBackColor = false;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(6, 36);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(41, 16);
-            this.label24.TabIndex = 56;
-            this.label24.Text = "CNAE";
-            // 
-            // txtCodCnae
-            // 
-            this.epValidaDados.SetFraseErro(this.txtCodCnae, "");
-            this.txtCodCnae.Location = new System.Drawing.Point(53, 33);
-            this.txtCodCnae.Name = "txtCodCnae";
-            this.epValidaDados.SetObrigatorio(this.txtCodCnae, false);
-            this.txtCodCnae.Size = new System.Drawing.Size(100, 23);
-            this.txtCodCnae.TabIndex = 14;
-            // 
-            // txtDescricaoCnae
-            // 
-            this.epValidaDados.SetFraseErro(this.txtDescricaoCnae, "Cliente obrigatório.");
-            this.txtDescricaoCnae.Location = new System.Drawing.Point(182, 33);
-            this.txtDescricaoCnae.Name = "txtDescricaoCnae";
-            this.epValidaDados.SetObrigatorio(this.txtDescricaoCnae, true);
-            this.txtDescricaoCnae.ReadOnly = true;
-            this.txtDescricaoCnae.Size = new System.Drawing.Size(358, 23);
-            this.txtDescricaoCnae.TabIndex = 16;
-            this.txtDescricaoCnae.TabStop = false;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(518, 9);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(133, 16);
-            this.label23.TabIndex = 52;
-            this.label23.Text = "Inscrição SUFRAMA";
-            // 
-            // txtInscricaoSuframa
-            // 
-            this.epValidaDados.SetFraseErro(this.txtInscricaoSuframa, "Nome do Cliente obrigatório.");
-            this.txtInscricaoSuframa.Location = new System.Drawing.Point(653, 6);
-            this.txtInscricaoSuframa.Name = "txtInscricaoSuframa";
-            this.epValidaDados.SetObrigatorio(this.txtInscricaoSuframa, true);
-            this.txtInscricaoSuframa.Size = new System.Drawing.Size(123, 23);
-            this.txtInscricaoSuframa.TabIndex = 13;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(260, 8);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(130, 16);
-            this.label22.TabIndex = 50;
-            this.label22.Text = "Inscrição Municipal";
-            // 
-            // txtInscricaoMunicipal
-            // 
-            this.epValidaDados.SetFraseErro(this.txtInscricaoMunicipal, "Nome do Cliente obrigatório.");
-            this.txtInscricaoMunicipal.Location = new System.Drawing.Point(392, 6);
-            this.txtInscricaoMunicipal.Name = "txtInscricaoMunicipal";
-            this.epValidaDados.SetObrigatorio(this.txtInscricaoMunicipal, true);
-            this.txtInscricaoMunicipal.Size = new System.Drawing.Size(123, 23);
-            this.txtInscricaoMunicipal.TabIndex = 12;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(6, 9);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(126, 16);
-            this.label21.TabIndex = 48;
-            this.label21.Text = "Inscrição Estadual";
-            // 
-            // txtInscricaoEstadual
-            // 
-            this.epValidaDados.SetFraseErro(this.txtInscricaoEstadual, "Nome do Cliente obrigatório.");
-            this.txtInscricaoEstadual.Location = new System.Drawing.Point(134, 6);
-            this.txtInscricaoEstadual.Name = "txtInscricaoEstadual";
-            this.epValidaDados.SetObrigatorio(this.txtInscricaoEstadual, true);
-            this.txtInscricaoEstadual.Size = new System.Drawing.Size(123, 23);
-            this.txtInscricaoEstadual.TabIndex = 11;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(485, 180);
-            this.tabPage1.TabIndex = 3;
-            this.tabPage1.Text = "Características";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // txtNomeFantasia
-            // 
-            this.epValidaDados.SetFraseErro(this.txtNomeFantasia, "Nome Fantasia / Nome Abreviado obrigatório.");
-            this.txtNomeFantasia.Location = new System.Drawing.Point(84, 63);
-            this.txtNomeFantasia.Name = "txtNomeFantasia";
-            this.epValidaDados.SetObrigatorio(this.txtNomeFantasia, true);
-            this.txtNomeFantasia.Size = new System.Drawing.Size(154, 23);
-            this.txtNomeFantasia.TabIndex = 60;
-            // 
-            // txtCodigo
-            // 
-            this.txtCodigo.Enabled = false;
-            this.epValidaDados.SetFraseErro(this.txtCodigo, "");
-            this.txtCodigo.Location = new System.Drawing.Point(190, 11);
-            this.txtCodigo.Name = "txtCodigo";
-            this.epValidaDados.SetObrigatorio(this.txtCodigo, false);
-            this.txtCodigo.Size = new System.Drawing.Size(100, 23);
-            this.txtCodigo.TabIndex = 68;
-            this.txtCodigo.TabStop = false;
-            this.txtCodigo.Visible = false;
+            this.txtCodigoOmie.Enabled = false;
+            this.epValidaDados.SetFraseErro(this.txtCodigoOmie, "");
+            this.txtCodigoOmie.Location = new System.Drawing.Point(341, 9);
+            this.txtCodigoOmie.Name = "txtCodigoOmie";
+            this.epValidaDados.SetObrigatorio(this.txtCodigoOmie, false);
+            this.txtCodigoOmie.Size = new System.Drawing.Size(100, 23);
+            this.txtCodigoOmie.TabIndex = 68;
+            this.txtCodigoOmie.TabStop = false;
+            this.txtCodigoOmie.Visible = false;
             // 
             // txtId
             // 
             this.txtId.Enabled = false;
             this.epValidaDados.SetFraseErro(this.txtId, "");
-            this.txtId.Location = new System.Drawing.Point(296, 11);
+            this.txtId.Location = new System.Drawing.Point(447, 9);
             this.txtId.Name = "txtId";
             this.epValidaDados.SetObrigatorio(this.txtId, false);
             this.txtId.Size = new System.Drawing.Size(100, 23);
@@ -309,7 +129,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1, 40);
+            this.label1.Location = new System.Drawing.Point(1, 38);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 16);
             this.label1.TabIndex = 66;
@@ -317,23 +137,24 @@
             // 
             // txtDescricao
             // 
-            this.epValidaDados.SetFraseErro(this.txtDescricao, "Razão social / Nome Completo obrigatório.");
-            this.txtDescricao.Location = new System.Drawing.Point(84, 37);
+            this.epValidaDados.SetFraseErro(this.txtDescricao, "Descrição do produto obrigatório.");
+            this.txtDescricao.Location = new System.Drawing.Point(84, 35);
             this.txtDescricao.Name = "txtDescricao";
             this.epValidaDados.SetObrigatorio(this.txtDescricao, true);
             this.txtDescricao.Size = new System.Drawing.Size(394, 23);
-            this.txtDescricao.TabIndex = 58;
+            this.txtDescricao.TabIndex = 1;
             // 
             // txtCodInt
             // 
             this.txtCodInt.Enabled = false;
             this.epValidaDados.SetFraseErro(this.txtCodInt, "");
-            this.txtCodInt.Location = new System.Drawing.Point(84, 11);
+            this.txtCodInt.Location = new System.Drawing.Point(235, 9);
             this.txtCodInt.Name = "txtCodInt";
             this.epValidaDados.SetObrigatorio(this.txtCodInt, false);
             this.txtCodInt.Size = new System.Drawing.Size(100, 23);
             this.txtCodInt.TabIndex = 62;
             this.txtCodInt.TabStop = false;
+            this.txtCodInt.Visible = false;
             // 
             // label3
             // 
@@ -347,7 +168,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1, 66);
+            this.label2.Location = new System.Drawing.Point(1, 64);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 16);
             this.label2.TabIndex = 74;
@@ -356,111 +177,306 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(479, 65);
+            this.label4.Location = new System.Drawing.Point(497, 64);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 16);
             this.label4.TabIndex = 76;
             this.label4.Text = "Unidade";
             // 
-            // comboBox1
+            // cbUnidade
             // 
-            this.comboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.comboBox1.FormattingEnabled = true;
-            this.epValidaDados.SetFraseErro(this.comboBox1, "UF obrigatório.");
-            this.epValidaDados.SetIndiceCombo(this.comboBox1, -1);
-            this.comboBox1.Location = new System.Drawing.Point(549, 62);
-            this.comboBox1.MaxLength = 2;
-            this.comboBox1.Name = "comboBox1";
-            this.epValidaDados.SetObrigatorio(this.comboBox1, true);
-            this.comboBox1.Size = new System.Drawing.Size(48, 24);
-            this.comboBox1.TabIndex = 75;
+            this.cbUnidade.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbUnidade.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbUnidade.FormattingEnabled = true;
+            this.epValidaDados.SetFraseErro(this.cbUnidade, "Unidade do produto obrigatório.");
+            this.epValidaDados.SetIndiceCombo(this.cbUnidade, -1);
+            this.cbUnidade.Location = new System.Drawing.Point(567, 61);
+            this.cbUnidade.MaxLength = 2;
+            this.cbUnidade.Name = "cbUnidade";
+            this.epValidaDados.SetObrigatorio(this.cbUnidade, true);
+            this.cbUnidade.Size = new System.Drawing.Size(48, 24);
+            this.cbUnidade.TabIndex = 5;
+            this.cbUnidade.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(241, 66);
+            this.label5.Location = new System.Drawing.Point(259, 64);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(80, 16);
             this.label5.TabIndex = 78;
             this.label5.Text = "Código EAN";
             // 
-            // textBox1
+            // txtEAN
             // 
-            this.epValidaDados.SetFraseErro(this.textBox1, "Nome Fantasia / Nome Abreviado obrigatório.");
-            this.textBox1.Location = new System.Drawing.Point(324, 63);
-            this.textBox1.Name = "textBox1";
-            this.epValidaDados.SetObrigatorio(this.textBox1, true);
-            this.textBox1.Size = new System.Drawing.Size(154, 23);
-            this.textBox1.TabIndex = 77;
+            this.epValidaDados.SetFraseErro(this.txtEAN, "");
+            this.txtEAN.Location = new System.Drawing.Point(342, 61);
+            this.txtEAN.Name = "txtEAN";
+            this.epValidaDados.SetObrigatorio(this.txtEAN, false);
+            this.txtEAN.Size = new System.Drawing.Size(154, 23);
+            this.txtEAN.TabIndex = 4;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(481, 41);
+            this.label6.Location = new System.Drawing.Point(497, 38);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(164, 16);
             this.label6.TabIndex = 80;
             this.label6.Text = "Preço Unitário de Venda";
             // 
-            // textBox2
+            // txtPrecoUnitario
             // 
-            this.epValidaDados.SetFraseErro(this.textBox2, "Nome Fantasia / Nome Abreviado obrigatório.");
-            this.textBox2.Location = new System.Drawing.Point(648, 38);
-            this.textBox2.Name = "textBox2";
-            this.epValidaDados.SetObrigatorio(this.textBox2, true);
-            this.textBox2.Size = new System.Drawing.Size(127, 23);
-            this.textBox2.TabIndex = 79;
+            this.epValidaDados.SetFraseErro(this.txtPrecoUnitario, "Preço Unitário de Venda Obrigatório");
+            this.txtPrecoUnitario.Location = new System.Drawing.Point(664, 35);
+            this.txtPrecoUnitario.Name = "txtPrecoUnitario";
+            this.epValidaDados.SetObrigatorio(this.txtPrecoUnitario, true);
+            this.txtPrecoUnitario.Size = new System.Drawing.Size(127, 23);
+            this.txtPrecoUnitario.TabIndex = 2;
+            this.txtPrecoUnitario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumber_KeyPress);
+            this.txtPrecoUnitario.Validating += new System.ComponentModel.CancelEventHandler(this.OnlyNumber_Validating);
+            // 
+            // tpInscrCnae
+            // 
+            this.tpInscrCnae.Controls.Add(this.label9);
+            this.tpInscrCnae.Controls.Add(this.cbFamiliaProduto);
+            this.tpInscrCnae.Controls.Add(this.groupBox1);
+            this.tpInscrCnae.Controls.Add(this.label8);
+            this.tpInscrCnae.Controls.Add(this.txtPesoBruto);
+            this.tpInscrCnae.Controls.Add(this.label7);
+            this.tpInscrCnae.Controls.Add(this.txtPesoLiquido);
+            this.tpInscrCnae.Location = new System.Drawing.Point(4, 25);
+            this.tpInscrCnae.Name = "tpInscrCnae";
+            this.tpInscrCnae.Padding = new System.Windows.Forms.Padding(3);
+            this.tpInscrCnae.Size = new System.Drawing.Size(803, 180);
+            this.tpInscrCnae.TabIndex = 2;
+            this.tpInscrCnae.Text = "Informações Adicionais";
+            this.tpInscrCnae.UseVisualStyleBackColor = true;
+            // 
+            // tpEstoque
+            // 
+            this.tpEstoque.Controls.Add(this.dgvMovEstoque);
+            this.tpEstoque.Controls.Add(this.panel1);
+            this.tpEstoque.Location = new System.Drawing.Point(4, 25);
+            this.tpEstoque.Name = "tpEstoque";
+            this.tpEstoque.Padding = new System.Windows.Forms.Padding(3);
+            this.tpEstoque.Size = new System.Drawing.Size(795, 180);
+            this.tpEstoque.TabIndex = 0;
+            this.tpEstoque.Text = "Estoque";
+            this.tpEstoque.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(789, 39);
+            this.panel1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button1.Image = global::prjbase.Properties.Resources.movimento;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button1.Location = new System.Drawing.Point(634, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(158, 33);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "&Novo Movimento";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button2.Image = global::prjbase.Properties.Resources.Editar;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button2.Location = new System.Drawing.Point(473, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(158, 33);
+            this.button2.TabIndex = 11;
+            this.button2.Text = "&Editar Movimento";
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // dgvMovEstoque
+            // 
+            this.dgvMovEstoque.AllowUserToAddRows = false;
+            this.dgvMovEstoque.AllowUserToDeleteRows = false;
+            this.dgvMovEstoque.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvMovEstoque.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMovEstoque.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvMovEstoque.Location = new System.Drawing.Point(3, 42);
+            this.dgvMovEstoque.MultiSelect = false;
+            this.dgvMovEstoque.Name = "dgvMovEstoque";
+            this.dgvMovEstoque.ReadOnly = true;
+            this.dgvMovEstoque.RowHeadersVisible = false;
+            this.dgvMovEstoque.Size = new System.Drawing.Size(789, 135);
+            this.dgvMovEstoque.TabIndex = 1;
+            // 
+            // tcProduto
+            // 
+            this.tcProduto.Controls.Add(this.tpEstoque);
+            this.tcProduto.Controls.Add(this.tpInscrCnae);
+            this.tcProduto.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tcProduto.Location = new System.Drawing.Point(0, 98);
+            this.tcProduto.Name = "tcProduto";
+            this.tcProduto.SelectedIndex = 0;
+            this.tcProduto.Size = new System.Drawing.Size(811, 209);
+            this.tcProduto.TabIndex = 7;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(4, 8);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(88, 16);
+            this.label7.TabIndex = 76;
+            this.label7.Text = "Peso Liquido";
+            // 
+            // txtPesoLiquido
+            // 
+            this.epValidaDados.SetFraseErro(this.txtPesoLiquido, "Nome Fantasia / Nome Abreviado obrigatório.");
+            this.txtPesoLiquido.Location = new System.Drawing.Point(95, 5);
+            this.txtPesoLiquido.Name = "txtPesoLiquido";
+            this.epValidaDados.SetObrigatorio(this.txtPesoLiquido, true);
+            this.txtPesoLiquido.Size = new System.Drawing.Size(154, 23);
+            this.txtPesoLiquido.TabIndex = 75;
+            this.txtPesoLiquido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumber_KeyPress);
+            this.txtPesoLiquido.Validating += new System.ComponentModel.CancelEventHandler(this.OnlyNumber_Validating);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(252, 8);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(79, 16);
+            this.label8.TabIndex = 78;
+            this.label8.Text = "Peso Bruto";
+            // 
+            // txtPesoBruto
+            // 
+            this.epValidaDados.SetFraseErro(this.txtPesoBruto, "Nome Fantasia / Nome Abreviado obrigatório.");
+            this.txtPesoBruto.Location = new System.Drawing.Point(333, 5);
+            this.txtPesoBruto.Name = "txtPesoBruto";
+            this.epValidaDados.SetObrigatorio(this.txtPesoBruto, true);
+            this.txtPesoBruto.Size = new System.Drawing.Size(154, 23);
+            this.txtPesoBruto.TabIndex = 77;
+            this.txtPesoBruto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumber_KeyPress);
+            this.txtPesoBruto.Validating += new System.ComponentModel.CancelEventHandler(this.OnlyNumber_Validating);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtDescDetProd);
+            this.groupBox1.Location = new System.Drawing.Point(7, 34);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(781, 139);
+            this.groupBox1.TabIndex = 79;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Descrição Detalhada do Produto";
+            // 
+            // txtDescDetProd
+            // 
+            this.txtDescDetProd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtDescDetProd.Location = new System.Drawing.Point(3, 19);
+            this.txtDescDetProd.Name = "txtDescDetProd";
+            this.txtDescDetProd.Size = new System.Drawing.Size(775, 117);
+            this.txtDescDetProd.TabIndex = 0;
+            this.txtDescDetProd.Text = "";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(491, 8);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(50, 16);
+            this.label9.TabIndex = 81;
+            this.label9.Text = "Família";
+            // 
+            // cbFamiliaProduto
+            // 
+            this.cbFamiliaProduto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbFamiliaProduto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbFamiliaProduto.FormattingEnabled = true;
+            this.epValidaDados.SetFraseErro(this.cbFamiliaProduto, "UF obrigatório.");
+            this.epValidaDados.SetIndiceCombo(this.cbFamiliaProduto, -1);
+            this.cbFamiliaProduto.Location = new System.Drawing.Point(541, 5);
+            this.cbFamiliaProduto.MaxLength = 2;
+            this.cbFamiliaProduto.Name = "cbFamiliaProduto";
+            this.epValidaDados.SetObrigatorio(this.cbFamiliaProduto, true);
+            this.cbFamiliaProduto.Size = new System.Drawing.Size(248, 24);
+            this.cbFamiliaProduto.TabIndex = 80;
+            this.cbFamiliaProduto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown);
+            // 
+            // txtCodigo
+            // 
+            this.epValidaDados.SetFraseErro(this.txtCodigo, "Código do produto Obrigatório.");
+            this.txtCodigo.Location = new System.Drawing.Point(84, 9);
+            this.txtCodigo.Name = "txtCodigo";
+            this.epValidaDados.SetObrigatorio(this.txtCodigo, true);
+            this.txtCodigo.Size = new System.Drawing.Size(100, 23);
+            this.txtCodigo.TabIndex = 0;
+            this.txtCodigo.TabStop = false;
             // 
             // frmCadEditProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(920, 309);
+            this.ClientSize = new System.Drawing.Size(928, 309);
             this.Name = "frmCadEditProduto";
             this.Text = "Produto";
             this.pnlBotoes.ResumeLayout(false);
             this.pnlPrincipal.ResumeLayout(false);
             this.pnlPrincipal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).EndInit();
-            this.tcProduto.ResumeLayout(false);
             this.tpInscrCnae.ResumeLayout(false);
             this.tpInscrCnae.PerformLayout();
+            this.tpEstoque.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMovEstoque)).EndInit();
+            this.tcProduto.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TabControl tcProduto;
-        private System.Windows.Forms.TabPage tpEstoque;
-        private System.Windows.Forms.TabPage tpTelefoneEmail;
-        private System.Windows.Forms.TabPage tpInscrCnae;
-        private System.Windows.Forms.CheckBox chkProdutorRural;
-        private System.Windows.Forms.CheckBox chkoptantesimples;
-        private System.Windows.Forms.Button btnPesquisa;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox txtCodCnae;
-        private System.Windows.Forms.TextBox txtDescricaoCnae;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.TextBox txtInscricaoSuframa;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox txtInscricaoMunicipal;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox txtInscricaoEstadual;
-        private System.Windows.Forms.TextBox txtNomeFantasia;
-        private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.TextBox txtNCM;
+        private System.Windows.Forms.TextBox txtCodigoOmie;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtDescricao;
         private System.Windows.Forms.TextBox txtCodInt;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtPrecoUnitario;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtEAN;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbUnidade;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabControl tcProduto;
+        private System.Windows.Forms.TabPage tpEstoque;
+        protected System.Windows.Forms.DataGridView dgvMovEstoque;
+        private System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.Button button2;
+        public System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TabPage tpInscrCnae;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RichTextBox txtDescDetProd;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtPesoBruto;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtPesoLiquido;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cbFamiliaProduto;
+        private System.Windows.Forms.TextBox txtCodigo;
     }
 }

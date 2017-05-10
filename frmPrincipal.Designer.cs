@@ -230,8 +230,9 @@
             // 
             this.mnuParcelasPedido.Name = "mnuParcelasPedido";
             this.mnuParcelasPedido.Size = new System.Drawing.Size(230, 22);
-            this.mnuParcelasPedido.Tag = "2003";
+            this.mnuParcelasPedido.Tag = "";
             this.mnuParcelasPedido.Text = "Parcelas do Pedido de Vendas";
+            this.mnuParcelasPedido.Visible = false;
             this.mnuParcelasPedido.Click += new System.EventHandler(this.mnuParcelasPedido_Click);
             // 
             // relatoriosToolStripMenuItem

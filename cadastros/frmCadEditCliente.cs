@@ -105,12 +105,7 @@ namespace prjbase
 
                     if (Id != null)
                     {
-                        ClienteBLL.AlterarCliente(Cliente);
-
-                        if ((intOmie) & (updateClienteOmie))
-                        {
-                            proxy.AlterarClientes(Cliente);
-                        }
+                        ClienteBLL.AlterarCliente(Cliente);                        
                     }
                     else
                     {
@@ -119,14 +114,21 @@ namespace prjbase
                         Tag tg = tagBLL.getTag("Cliente").FirstOrDefault();
                         Cliente.cliente_tag.Add(new Cliente_Tag { Id_tag = tg.Id, tag = tg.tag1 });
                                                                         
-                        ClienteBLL.AdicionarCliente(Cliente);
+                        ClienteBLL.AdicionarCliente(Cliente);                        
+                    }
 
-                        if ((intOmie) & (updateClienteOmie))
+                    if ((intOmie) & (updateClienteOmie))
+                    {
+                        if (Cliente.codigo_cliente_omie <= 0)
                         {
                             proxy.IncluirClientes(Cliente);
                         }
+                        else
+                        {
+                            proxy.AlterarClientes(Cliente);
+                        }                        
                     }
-                                       
+
                     if (Cliente.Id != 0)
                     {
                         txtId.Text = Cliente.Id.ToString();
