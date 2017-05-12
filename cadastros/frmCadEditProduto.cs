@@ -528,6 +528,13 @@ namespace prjbase
                 {
                     frmCadEditMovimento frm = new frmCadEditMovimento();
                     Movimento movEnt = LoadLinhaMovimentoFromGrid(dgvMovEstoque.CurrentRow.Index);
+
+                    if (movEnt.tipo.Substring(0,1) == "S")
+                    {
+                        movEnt.quantidade = movEnt.quantidade * -1;
+                    }
+
+
                     if (frm.ExibeDialogo(movEnt, txtDescricao.Text) == DialogResult.OK)
                     {
                         //carrega grid para lista.
