@@ -286,6 +286,8 @@ namespace prjbase
                         }
                     }
 
+                    imgLogoEmp.Image = ImagemFromDB.GetImagem(empresa.Id, "empresa_logo", "id_empresa");
+
                     imgLogoEmp.Enabled = true;
                     btnAbrirLogo.Enabled = true;
                 }
@@ -562,6 +564,14 @@ namespace prjbase
                 empresa = new Empresa();
                 empresa = LoadEmpresaFromControls(empresa);
                 empresaBLL.AdicionarEmpresa(empresa);
+            }
+
+            if (empresa.Id > 0)
+            {
+                if (imgLogoEmp.Image != null)
+                {
+                    ImagemFromDB.setImagem(empresa.Id, "empresa_logo", "id_empresa", imgLogoEmp.Image);
+                }
             }
         }
 

@@ -27,6 +27,7 @@ namespace prjbase
         private const int COL_SALDO = 6;
         private const int COL_CMCUNITARIO = 7;        
         private const int COL_CMCTOTAL = 8;
+        private const int COL_OBS = 9;
 
         #endregion
 
@@ -57,10 +58,11 @@ namespace prjbase
                     cbFamiliaProduto.Text = Produto.descricao_familia;
                     txtPesoLiquido.Text = Produto.peso_liq.ToString();
                     txtPesoBruto.Text = Produto.peso_bruto.ToString();
+                    LoadMovimentosToGrid(Produto.movimentacoes);
                 }                
             }
         }
-
+        
         protected override bool salvar(object sender, EventArgs e)
         {
             bool Retorno = epValidaDados.Validar(true);
@@ -132,10 +134,18 @@ namespace prjbase
             Produto.codigo = txtCodigo.Text;
             Produto.descricao = txtDescricao.Text;
             Produto.ncm = txtNCM.Text;
-            Produto.peso_liq = Convert.ToDecimal(txtPesoLiquido.Text);
-            Produto.peso_bruto = Convert.ToDecimal(txtPesoBruto.Text);
-            Produto.valor_unitario = Convert.ToDecimal(txtPrecoUnitario.Text);
-
+            if (!string.IsNullOrEmpty(txtPesoLiquido.Text))
+            {
+                Produto.peso_liq = Convert.ToDecimal(txtPesoLiquido.Text);
+            }
+            if (!string.IsNullOrEmpty(txtPesoBruto.Text))
+            {
+                Produto.peso_bruto = Convert.ToDecimal(txtPesoBruto.Text);
+            }
+            if (!string.IsNullOrEmpty(txtPrecoUnitario.Text))
+            {
+                Produto.valor_unitario = Convert.ToDecimal(txtPrecoUnitario.Text);
+            }
             if (cbUnidade.SelectedValue != null)
             {
                 Produto.unidade = cbUnidade.SelectedValue.ToString();
@@ -150,6 +160,19 @@ namespace prjbase
             }
 
             Produto.descr_detalhada = txtDescDetProd.Text;
+
+            List<Movimento> MovList = LoadMovimentoFromGrid();
+
+            if (Id != null)
+            {
+                foreach (Movimento item in MovList)
+                {
+                    item.id_produto = Convert.ToInt64(Id);
+                }
+            }
+            Produto.movimentacoes.Clear();
+
+            Produto.movimentacoes = MovList;
             
             return Produto;
         }
@@ -214,7 +237,7 @@ namespace prjbase
             // exibe nulos formatados
             dgvMovEstoque.DefaultCellStyle.NullValue = " - ";
             //permite que o texto maior que célula não seja truncado
-            dgvMovEstoque.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgvMovEstoque.DefaultCellStyle.WrapMode = DataGridViewTriState.False;
             dgvMovEstoque.DefaultCellStyle.Font = new Font("Tahoma", 10F, FontStyle.Regular);
 
             dgvMovEstoque.CellDoubleClick += new DataGridViewCellEventHandler(dgvDados_CellDoubleClick);
@@ -223,7 +246,7 @@ namespace prjbase
 
         private void dgvDados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            throw new NotImplementedException();
+            EditarMovimento();
         }
 
         private void formataColunadgvMovEstoque()
@@ -238,6 +261,7 @@ namespace prjbase
             dgvMovEstoque.Columns.Add("SALDO", "Saldo Acumulado");
             dgvMovEstoque.Columns.Add("CMCUNITARIO", "CMC Unitário");
             dgvMovEstoque.Columns.Add("CMCTOTAL", "CMC Total");
+            dgvMovEstoque.Columns.Add("OBS", "OBS");
 
 
             dgvMovEstoque.Columns[COL_ID].Width = 70;
@@ -255,21 +279,21 @@ namespace prjbase
             dgvMovEstoque.Columns[COL_DATA].ValueType = typeof(DateTime);
             dgvMovEstoque.Columns[COL_DATA].SortMode = DataGridViewColumnSortMode.Programmatic;
 
-            dgvMovEstoque.Columns[COL_ORIGEM].Width = 200;
+            dgvMovEstoque.Columns[COL_ORIGEM].Width = 100;
             dgvMovEstoque.Columns[COL_ORIGEM].ValueType = typeof(string);
             dgvMovEstoque.Columns[COL_ORIGEM].SortMode = DataGridViewColumnSortMode.Programmatic;
 
-            dgvMovEstoque.Columns[COL_QUANTIDADE].Width = 120;
+            dgvMovEstoque.Columns[COL_QUANTIDADE].Width = 100;
             dgvMovEstoque.Columns[COL_QUANTIDADE].ValueType = typeof(string);
             dgvMovEstoque.Columns[COL_QUANTIDADE].SortMode = DataGridViewColumnSortMode.Programmatic;
             
-            dgvMovEstoque.Columns[COL_VALOR].Width = 120;
+            dgvMovEstoque.Columns[COL_VALOR].Width = 100;
             dgvMovEstoque.Columns[COL_VALOR].ValueType = typeof(decimal);
             dgvMovEstoque.Columns[COL_VALOR].SortMode = DataGridViewColumnSortMode.Programmatic;
             dgvMovEstoque.Columns[COL_VALOR].DefaultCellStyle.Format = "N2";
             dgvMovEstoque.Columns[COL_VALOR].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-            dgvMovEstoque.Columns[COL_SALDO].Width = 180;
+            dgvMovEstoque.Columns[COL_SALDO].Width = 150;
             dgvMovEstoque.Columns[COL_SALDO].ValueType = typeof(decimal);
             dgvMovEstoque.Columns[COL_SALDO].SortMode = DataGridViewColumnSortMode.Programmatic;
             dgvMovEstoque.Columns[COL_SALDO].DefaultCellStyle.Format = "N2";
@@ -286,6 +310,13 @@ namespace prjbase
             dgvMovEstoque.Columns[COL_CMCTOTAL].SortMode = DataGridViewColumnSortMode.Programmatic;
             dgvMovEstoque.Columns[COL_CMCTOTAL].DefaultCellStyle.Format = "N2";
             dgvMovEstoque.Columns[COL_CMCTOTAL].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            dgvMovEstoque.Columns[COL_OBS].Width = 300;
+            dgvMovEstoque.Columns[COL_OBS].ValueType = typeof(string);
+            dgvMovEstoque.Columns[COL_OBS].SortMode = DataGridViewColumnSortMode.Programmatic;
+            dgvMovEstoque.Columns[COL_OBS].Visible = true;
+
+
 
 
             //Adiciona uma linha ao grid.
@@ -320,6 +351,194 @@ namespace prjbase
             if (e.KeyCode == Keys.Enter)
             {
                 SendKeys.Send("{TAB}");
+            }
+        }
+
+        private void btnNovoMovimento_Click(object sender, EventArgs e)
+        {
+            NovoMovimento();
+        }
+
+        private void NovoMovimento()
+        {
+            frmCadEditMovimento frm = new frmCadEditMovimento();
+            if (frm.ExibeDialogo(null,txtDescricao.Text) == DialogResult.OK)
+            {
+                //carrega grid para lista.
+                List<Movimento> MovimentoList = new List<Movimento>();
+                Movimento mov = Clone(frm.Movimento);                
+                LoadToMovGrid(mov);
+                dgvMovEstoque.Refresh();
+            }
+            frm.Dispose();
+        }
+
+        private void LoadMovimentosToGrid(ICollection<Movimento> movList)
+        {
+            foreach (Movimento item in movList)
+            {
+                LoadToMovGrid(item);
+            }
+        }
+
+        private void LoadToMovGrid(Movimento item, int Row = -1 )
+        {
+            int rowIndex = 0;
+            if (Row > -1)
+            {
+                rowIndex = Row;
+            }
+            else
+            {
+                rowIndex = dgvMovEstoque.Rows.Add();
+            }
+                             
+            dgvMovEstoque[COL_ID,rowIndex].Value = item.Id;
+            dgvMovEstoque[COL_IDPRODUTO, rowIndex].Value = item.id_produto;
+            dgvMovEstoque[COL_DATA,rowIndex].Value = item.data;
+
+            if (item.tipo.Substring(0,1)=="E")
+            {
+                item.quantidade = item.quantidade  * 1;
+            }
+            else if (item.tipo.Substring(0, 1) == "S")
+            {
+                if (item.quantidade > 0)
+                {
+                    item.quantidade = item.quantidade * -1;
+                }
+                
+                dgvMovEstoque[COL_QUANTIDADE, rowIndex].Style.ForeColor = Color.Red;
+            }
+
+            dgvMovEstoque[COL_QUANTIDADE, rowIndex].Value = item.quantidade;
+            dgvMovEstoque[COL_VALOR, rowIndex].Value = item.valor_unitario;
+            
+            dgvMovEstoque[COL_CMCUNITARIO, rowIndex].Value = item.valor_unitario;
+            if (item.tipo.Substring(0,1) == "E")
+            {
+                dgvMovEstoque[COL_ORIGEM, rowIndex].Value = "Entrada";
+            }
+            else if (item.tipo.Substring(0, 1) == "S")
+            {
+                dgvMovEstoque[COL_ORIGEM, rowIndex].Value = "Saida";
+            }
+                
+            dgvMovEstoque[COL_OBS, rowIndex].Value = item.observacao;
+
+            if (rowIndex > 0)
+            {
+                int RowAnt = rowIndex;
+                RowAnt--;
+                decimal saldoant = 0;
+                saldoant = Convert.ToDecimal(dgvMovEstoque[COL_SALDO, RowAnt].Value);
+                decimal saldo = 0;
+
+                saldo = saldoant + item.quantidade;
+                dgvMovEstoque[COL_SALDO, rowIndex].Value = saldo;
+            }
+            else
+            {
+                dgvMovEstoque[COL_SALDO, rowIndex].Value = item.quantidade;
+            }
+            
+            if (dgvMovEstoque[COL_SALDO, rowIndex].Value != null)
+            {
+                decimal saldo = Convert.ToDecimal(dgvMovEstoque[COL_SALDO, rowIndex].Value);
+                dgvMovEstoque[COL_CMCTOTAL, rowIndex].Value = saldo * item.valor_unitario;
+            }
+            
+        }
+
+        private Movimento Clone(Movimento movimento)
+        {
+            Movimento mov = new Movimento()
+            {
+                data = movimento.data,
+                Id = movimento.Id,
+                id_produto = movimento.id_produto,
+                observacao = movimento.observacao,
+                quantidade = movimento.quantidade,
+                tipo = movimento.tipo,
+                valor_total = movimento.valor_total,
+                valor_unitario = movimento.valor_unitario
+            };
+            return mov;
+        }
+
+        protected virtual List<Movimento> LoadMovimentoFromGrid()
+        {
+            List<Movimento> MovimentoList = new List<Movimento>();
+            foreach (DataGridViewRow item in dgvMovEstoque.Rows)
+            {
+                Movimento mov = new Movimento();
+                mov.Id = Convert.ToInt64(item.Cells[COL_ID].Value);
+                mov.id_produto = Convert.ToInt64(item.Cells[COL_IDPRODUTO].Value);
+                mov.quantidade = Convert.ToDecimal(item.Cells[COL_QUANTIDADE].Value);
+                mov.data = Convert.ToDateTime(item.Cells[COL_DATA].Value);
+                mov.tipo = item.Cells[COL_ORIGEM].Value.ToString().Substring(0,1);                
+                mov.valor_unitario = Convert.ToDecimal(item.Cells[COL_VALOR].Value);
+                mov.valor_total = mov.quantidade * mov.valor_unitario;
+                mov.observacao = item.Cells[COL_OBS].Value.ToString();
+                MovimentoList.Add(mov);
+            }
+            return MovimentoList;
+        }
+
+        protected virtual Movimento LoadLinhaMovimentoFromGrid(int RowIndex)
+        {
+            Movimento mov = new Movimento();
+
+            DataGridViewRow item = dgvMovEstoque.Rows[RowIndex];
+
+            mov.Id = Convert.ToInt64(item.Cells[COL_ID].Value);
+            mov.id_produto = Convert.ToInt64(item.Cells[COL_IDPRODUTO].Value);
+            mov.quantidade = Convert.ToDecimal(item.Cells[COL_QUANTIDADE].Value);
+            mov.data = Convert.ToDateTime(item.Cells[COL_DATA].Value);
+            mov.tipo = item.Cells[COL_ORIGEM].Value.ToString();
+            mov.valor_unitario = Convert.ToDecimal(item.Cells[COL_VALOR].Value);
+            mov.valor_total = mov.quantidade * mov.valor_unitario;
+            mov.observacao = item.Cells[COL_OBS].Value.ToString();
+
+            return mov;
+        }
+
+        private void dgvMovEstoque_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                if (dgvMovEstoque[e.ColumnIndex, e.RowIndex].Value != null)
+                {
+                    btnEditarMovimento.Visible = true;
+                }
+            }
+            
+        }
+
+        private void btnEditarMovimento_Click(object sender, EventArgs e)
+        {
+            EditarMovimento();            
+        }
+
+        private void EditarMovimento()
+        {
+            if (dgvMovEstoque.CurrentRow != null)
+            {
+                if (dgvMovEstoque[0, dgvMovEstoque.CurrentRow.Index].Value != null)
+                {
+                    frmCadEditMovimento frm = new frmCadEditMovimento();
+                    Movimento movEnt = LoadLinhaMovimentoFromGrid(dgvMovEstoque.CurrentRow.Index);
+                    if (frm.ExibeDialogo(movEnt, txtDescricao.Text) == DialogResult.OK)
+                    {
+                        //carrega grid para lista.
+                        List<Movimento> MovimentoList = new List<Movimento>();
+                        Movimento mov = Clone(frm.Movimento);
+                        LoadToMovGrid(mov, dgvMovEstoque.CurrentRow.Index);
+                        dgvMovEstoque.Refresh();
+                    }
+                    frm.Dispose();
+
+                }
             }
         }
     }

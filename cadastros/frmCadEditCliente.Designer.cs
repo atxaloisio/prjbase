@@ -94,6 +94,10 @@
             this.txtCNPJCPF = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
+            this.imgFotoCliente = new System.Windows.Forms.PictureBox();
+            this.btnAbrirImagem = new System.Windows.Forms.Button();
+            this.btnCapturaCamera = new System.Windows.Forms.Button();
+            this.dlgCaminhoImagem = new System.Windows.Forms.OpenFileDialog();
             this.pnlBotoes.SuspendLayout();
             this.pnlPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
@@ -103,14 +107,18 @@
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tpInscrCnae.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgFotoCliente)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlBotoes
             // 
-            this.pnlBotoes.Size = new System.Drawing.Size(115, 301);
+            this.pnlBotoes.Size = new System.Drawing.Size(115, 328);
             // 
             // pnlPrincipal
             // 
+            this.pnlPrincipal.Controls.Add(this.btnCapturaCamera);
+            this.pnlPrincipal.Controls.Add(this.btnAbrirImagem);
+            this.pnlPrincipal.Controls.Add(this.imgFotoCliente);
             this.pnlPrincipal.Controls.Add(this.label27);
             this.pnlPrincipal.Controls.Add(this.label26);
             this.pnlPrincipal.Controls.Add(this.tcCliente);
@@ -131,12 +139,12 @@
             this.pnlPrincipal.Controls.Add(this.txtRazaoSocial);
             this.pnlPrincipal.Controls.Add(this.txtCodInt);
             this.pnlPrincipal.Controls.Add(this.label3);
-            this.pnlPrincipal.Size = new System.Drawing.Size(796, 301);
+            this.pnlPrincipal.Size = new System.Drawing.Size(796, 328);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 12);
+            this.label3.Location = new System.Drawing.Point(159, 12);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 16);
             this.label3.TabIndex = 39;
@@ -146,7 +154,7 @@
             // 
             this.txtCodInt.Enabled = false;
             this.epValidaDados.SetFraseErro(this.txtCodInt, "");
-            this.txtCodInt.Location = new System.Drawing.Point(105, 9);
+            this.txtCodInt.Location = new System.Drawing.Point(261, 9);
             this.txtCodInt.Name = "txtCodInt";
             this.epValidaDados.SetObrigatorio(this.txtCodInt, false);
             this.txtCodInt.Size = new System.Drawing.Size(100, 23);
@@ -156,7 +164,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 33);
+            this.label1.Location = new System.Drawing.Point(159, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 16);
             this.label1.TabIndex = 41;
@@ -166,7 +174,7 @@
             // 
             this.chkBloqueado.AutoSize = true;
             this.chkBloqueado.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkBloqueado.Location = new System.Drawing.Point(595, 9);
+            this.chkBloqueado.Location = new System.Drawing.Point(641, 15);
             this.chkBloqueado.Name = "chkBloqueado";
             this.chkBloqueado.Size = new System.Drawing.Size(73, 20);
             this.chkBloqueado.TabIndex = 42;
@@ -177,7 +185,7 @@
             // txtRazaoSocial
             // 
             this.epValidaDados.SetFraseErro(this.txtRazaoSocial, "Razão social / Nome Completo obrigatório.");
-            this.txtRazaoSocial.Location = new System.Drawing.Point(105, 35);
+            this.txtRazaoSocial.Location = new System.Drawing.Point(261, 35);
             this.txtRazaoSocial.Name = "txtRazaoSocial";
             this.epValidaDados.SetObrigatorio(this.txtRazaoSocial, true);
             this.txtRazaoSocial.Size = new System.Drawing.Size(453, 23);
@@ -188,7 +196,7 @@
             // 
             this.txtId.Enabled = false;
             this.epValidaDados.SetFraseErro(this.txtId, "");
-            this.txtId.Location = new System.Drawing.Point(317, 9);
+            this.txtId.Location = new System.Drawing.Point(473, 9);
             this.txtId.Name = "txtId";
             this.epValidaDados.SetObrigatorio(this.txtId, false);
             this.txtId.Size = new System.Drawing.Size(100, 23);
@@ -200,7 +208,7 @@
             // 
             this.txtCodigo.Enabled = false;
             this.epValidaDados.SetFraseErro(this.txtCodigo, "");
-            this.txtCodigo.Location = new System.Drawing.Point(211, 9);
+            this.txtCodigo.Location = new System.Drawing.Point(367, 9);
             this.txtCodigo.Name = "txtCodigo";
             this.epValidaDados.SetObrigatorio(this.txtCodigo, false);
             this.txtCodigo.Size = new System.Drawing.Size(100, 23);
@@ -211,7 +219,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 58);
+            this.label2.Location = new System.Drawing.Point(159, 58);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(101, 16);
             this.label2.TabIndex = 46;
@@ -220,28 +228,29 @@
             // txtNomeFantasia
             // 
             this.epValidaDados.SetFraseErro(this.txtNomeFantasia, "Nome Fantasia / Nome Abreviado obrigatório.");
-            this.txtNomeFantasia.Location = new System.Drawing.Point(105, 61);
+            this.txtNomeFantasia.Location = new System.Drawing.Point(261, 61);
             this.txtNomeFantasia.Name = "txtNomeFantasia";
             this.epValidaDados.SetObrigatorio(this.txtNomeFantasia, true);
-            this.txtNomeFantasia.Size = new System.Drawing.Size(217, 23);
-            this.txtNomeFantasia.TabIndex = 2;
+            this.txtNomeFantasia.Size = new System.Drawing.Size(252, 23);
+            this.txtNomeFantasia.TabIndex = 1;
             this.txtNomeFantasia.Validated += new System.EventHandler(this.txt_Validated);
             // 
             // txtTelefone
             // 
             this.epValidaDados.SetFraseErro(this.txtTelefone, "");
-            this.txtTelefone.Location = new System.Drawing.Point(473, 61);
-            this.txtTelefone.Mask = "00000-0000";
+            this.txtTelefone.Location = new System.Drawing.Point(355, 87);
             this.txtTelefone.Name = "txtTelefone";
             this.epValidaDados.SetObrigatorio(this.txtTelefone, false);
             this.txtTelefone.Size = new System.Drawing.Size(85, 23);
             this.txtTelefone.TabIndex = 4;
             this.epValidaDados.SetTipoValidacao(this.txtTelefone, libComponente.TipoValidacao.Vazio);
+            this.txtTelefone.Enter += new System.EventHandler(this.txt_Enter);
+            this.txtTelefone.Validating += new System.ComponentModel.CancelEventHandler(this.txtTelefone_Validating);
             // 
             // txtDDD
             // 
             this.epValidaDados.SetFraseErro(this.txtDDD, "");
-            this.txtDDD.Location = new System.Drawing.Point(378, 61);
+            this.txtDDD.Location = new System.Drawing.Point(260, 87);
             this.txtDDD.Mask = "00";
             this.txtDDD.Name = "txtDDD";
             this.epValidaDados.SetObrigatorio(this.txtDDD, false);
@@ -252,7 +261,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(576, 39);
+            this.label4.Location = new System.Drawing.Point(516, 64);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(76, 16);
             this.label4.TabIndex = 51;
@@ -261,7 +270,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(341, 64);
+            this.label5.Location = new System.Drawing.Point(223, 90);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(35, 16);
             this.label5.TabIndex = 52;
@@ -270,7 +279,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(407, 64);
+            this.label6.Location = new System.Drawing.Point(289, 90);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(63, 16);
             this.label6.TabIndex = 53;
@@ -279,7 +288,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(561, 64);
+            this.label7.Location = new System.Drawing.Point(501, 90);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(60, 16);
             this.label7.TabIndex = 55;
@@ -288,7 +297,7 @@
             // txtContato
             // 
             this.epValidaDados.SetFraseErro(this.txtContato, "Nome do Cliente obrigatório.");
-            this.txtContato.Location = new System.Drawing.Point(624, 61);
+            this.txtContato.Location = new System.Drawing.Point(564, 87);
             this.txtContato.Name = "txtContato";
             this.epValidaDados.SetObrigatorio(this.txtContato, false);
             this.txtContato.Size = new System.Drawing.Size(150, 23);
@@ -300,7 +309,7 @@
             this.tcCliente.Controls.Add(this.tpTelefoneEmail);
             this.tcCliente.Controls.Add(this.tpInscrCnae);
             this.tcCliente.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tcCliente.Location = new System.Drawing.Point(0, 90);
+            this.tcCliente.Location = new System.Drawing.Point(0, 117);
             this.tcCliente.Name = "tcCliente";
             this.tcCliente.SelectedIndex = 0;
             this.tcCliente.Size = new System.Drawing.Size(794, 209);
@@ -341,6 +350,7 @@
             this.txtCEP.TabIndex = 58;
             this.txtCEP.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.epValidaDados.SetTipoValidacao(this.txtCEP, libComponente.TipoValidacao.CEP);
+            this.txtCEP.Enter += new System.EventHandler(this.txt_Enter);
             this.txtCEP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCEP_KeyDown);
             this.txtCEP.Validating += new System.ComponentModel.CancelEventHandler(this.txtCEP_Validating);
             this.txtCEP.Validated += new System.EventHandler(this.txtCEP_Validated);
@@ -540,12 +550,13 @@
             // 
             this.epValidaDados.SetFraseErro(this.txtFax, "");
             this.txtFax.Location = new System.Drawing.Point(136, 19);
-            this.txtFax.Mask = "00000-0000";
             this.txtFax.Name = "txtFax";
             this.epValidaDados.SetObrigatorio(this.txtFax, false);
             this.txtFax.Size = new System.Drawing.Size(85, 23);
             this.txtFax.TabIndex = 1;
             this.epValidaDados.SetTipoValidacao(this.txtFax, libComponente.TipoValidacao.Vazio);
+            this.txtFax.Enter += new System.EventHandler(this.txt_Enter);
+            this.txtFax.Validating += new System.ComponentModel.CancelEventHandler(this.txtTelefone_Validating);
             // 
             // groupBox1
             // 
@@ -593,12 +604,13 @@
             // 
             this.epValidaDados.SetFraseErro(this.txtTelefone2, "");
             this.txtTelefone2.Location = new System.Drawing.Point(136, 19);
-            this.txtTelefone2.Mask = "00000-0000";
             this.txtTelefone2.Name = "txtTelefone2";
             this.epValidaDados.SetObrigatorio(this.txtTelefone2, false);
             this.txtTelefone2.Size = new System.Drawing.Size(85, 23);
             this.txtTelefone2.TabIndex = 1;
             this.epValidaDados.SetTipoValidacao(this.txtTelefone2, libComponente.TipoValidacao.Vazio);
+            this.txtTelefone2.Enter += new System.EventHandler(this.txt_Enter);
+            this.txtTelefone2.Validating += new System.ComponentModel.CancelEventHandler(this.txtTelefone_Validating);
             // 
             // label20
             // 
@@ -802,12 +814,12 @@
             // txtCNPJCPF
             // 
             this.epValidaDados.SetFraseErro(this.txtCNPJCPF, "CNPJ / CPF obrigatório.");
-            this.txtCNPJCPF.Location = new System.Drawing.Point(655, 36);
+            this.txtCNPJCPF.Location = new System.Drawing.Point(595, 61);
             this.txtCNPJCPF.MaxLength = 15;
             this.txtCNPJCPF.Name = "txtCNPJCPF";
             this.epValidaDados.SetObrigatorio(this.txtCNPJCPF, true);
             this.txtCNPJCPF.Size = new System.Drawing.Size(119, 23);
-            this.txtCNPJCPF.TabIndex = 1;
+            this.txtCNPJCPF.TabIndex = 2;
             this.txtCNPJCPF.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCNPJCPF_KeyPress);
             this.txtCNPJCPF.Validating += new System.ComponentModel.CancelEventHandler(this.txtCNPJCPF_Validating);
             this.txtCNPJCPF.Validated += new System.EventHandler(this.txt_Validated);
@@ -816,7 +828,7 @@
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Tahoma", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(2, 47);
+            this.label26.Location = new System.Drawing.Point(158, 47);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(93, 11);
             this.label26.TabIndex = 56;
@@ -826,16 +838,60 @@
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Tahoma", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(3, 72);
+            this.label27.Location = new System.Drawing.Point(159, 72);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(98, 11);
             this.label27.TabIndex = 57;
             this.label27.Text = "(Nome Abreviado)";
             // 
+            // imgFotoCliente
+            // 
+            this.imgFotoCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.imgFotoCliente.Location = new System.Drawing.Point(5, 8);
+            this.imgFotoCliente.Name = "imgFotoCliente";
+            this.imgFotoCliente.Size = new System.Drawing.Size(102, 100);
+            this.imgFotoCliente.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgFotoCliente.TabIndex = 58;
+            this.imgFotoCliente.TabStop = false;
+            // 
+            // btnAbrirImagem
+            // 
+            this.btnAbrirImagem.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnAbrirImagem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAbrirImagem.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbrirImagem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAbrirImagem.Image = global::prjbase.Properties.Resources.pasta;
+            this.btnAbrirImagem.Location = new System.Drawing.Point(107, 76);
+            this.btnAbrirImagem.Name = "btnAbrirImagem";
+            this.btnAbrirImagem.Size = new System.Drawing.Size(30, 30);
+            this.btnAbrirImagem.TabIndex = 78;
+            this.btnAbrirImagem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAbrirImagem.UseVisualStyleBackColor = false;
+            this.btnAbrirImagem.Click += new System.EventHandler(this.btnAbrirImagem_Click);
+            // 
+            // btnCapturaCamera
+            // 
+            this.btnCapturaCamera.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnCapturaCamera.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCapturaCamera.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCapturaCamera.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnCapturaCamera.Image = global::prjbase.Properties.Resources.camera1;
+            this.btnCapturaCamera.Location = new System.Drawing.Point(107, 8);
+            this.btnCapturaCamera.Name = "btnCapturaCamera";
+            this.btnCapturaCamera.Size = new System.Drawing.Size(30, 30);
+            this.btnCapturaCamera.TabIndex = 79;
+            this.btnCapturaCamera.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnCapturaCamera.UseVisualStyleBackColor = false;
+            this.btnCapturaCamera.Click += new System.EventHandler(this.btnCapturaCamera_Click);
+            // 
+            // dlgCaminhoImagem
+            // 
+            this.dlgCaminhoImagem.Filter = "Arquivos PNG (*.png)|*.png|Arquivos JPEG (*.jpg)|*.jpg|All files (*.*)|*.*";
+            // 
             // frmCadEditCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(911, 301);
+            this.ClientSize = new System.Drawing.Size(911, 328);
             this.Name = "frmCadEditCliente";
             this.Text = "Cliente";
             this.pnlBotoes.ResumeLayout(false);
@@ -853,6 +909,7 @@
             this.groupBox1.PerformLayout();
             this.tpInscrCnae.ResumeLayout(false);
             this.tpInscrCnae.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgFotoCliente)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -923,5 +980,9 @@
         private System.Windows.Forms.MaskedTextBox txtCEP;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.PictureBox imgFotoCliente;
+        public System.Windows.Forms.Button btnCapturaCamera;
+        public System.Windows.Forms.Button btnAbrirImagem;
+        private System.Windows.Forms.OpenFileDialog dlgCaminhoImagem;
     }
 }

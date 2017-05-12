@@ -18,13 +18,11 @@ namespace prjbase
 {
     public partial class frmUtilCancelarPedido : prjbase.frmBaseCadEdit
     {
-        private ClienteBLL clienteBLL;
-        private ProdutoBLL produtoBLL;
+        private ClienteBLL clienteBLL;       
         private ParcelaBLL parcelaBLL;
         private Motivo_EntregaBLL motivo_EntregaBLL;
         private Pedido_OticaBLL pedido_OticaBLL;
-        private VendedorBLL vendedorBLL;
-        private Vendedor_LocalidadeBLL vendedor_LocalidadeBLL;
+        private VendedorBLL vendedorBLL;        
         private CaixaBLL caixaBLL;
                 
         public frmUtilCancelarPedido()

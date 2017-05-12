@@ -53,22 +53,35 @@ namespace prjbase
                     VendedorBLL.UsuarioLogado = Program.usuario_logado;
                     VendedorProxy proxy = new VendedorProxy();
 
+                    bool intOmie = Convert.ToBoolean(Parametro.GetParametro("intOmie"));
+                    bool updateVendedorOmie = Convert.ToBoolean(Parametro.GetParametro("updateVendedorOmie"));
+
                     Vendedor Vendedor = LoadFromControls();
 
                     if (Id != null)
                     {                        
-                        VendedorBLL.AlterarVendedor(Vendedor);
-                        proxy.AlterarVendedor(Vendedor);
+                        VendedorBLL.AlterarVendedor(Vendedor);                      
                     }
                     else
                     {
-                        VendedorBLL.AdicionarVendedor(Vendedor);
-                        proxy.IncluirVendedor(Vendedor);
+                        VendedorBLL.AdicionarVendedor(Vendedor);                       
                     }
                     
                     if (Vendedor.Id != 0)
                     {
                         txtCodInt.Text = Vendedor.codInt;
+                    }
+
+                    if ((intOmie) & (updateVendedorOmie))
+                    {
+                        if (Vendedor.codigo <= 0)
+                        {
+                            proxy.IncluirVendedor(Vendedor);
+                        }
+                        else
+                        {
+                            proxy.AlterarVendedor(Vendedor);
+                        }
                     }
 
                     Retorno = true;

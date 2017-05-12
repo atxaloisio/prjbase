@@ -43,30 +43,30 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtPrecoUnitario = new System.Windows.Forms.TextBox();
             this.tpInscrCnae = new System.Windows.Forms.TabPage();
-            this.tpEstoque = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.dgvMovEstoque = new System.Windows.Forms.DataGridView();
-            this.tcProduto = new System.Windows.Forms.TabControl();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtPesoLiquido = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtPesoBruto = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtDescDetProd = new System.Windows.Forms.RichTextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.cbFamiliaProduto = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtDescDetProd = new System.Windows.Forms.RichTextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtPesoBruto = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtPesoLiquido = new System.Windows.Forms.TextBox();
+            this.tpEstoque = new System.Windows.Forms.TabPage();
+            this.dgvMovEstoque = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnEditarMovimento = new System.Windows.Forms.Button();
+            this.btnNovoMovimento = new System.Windows.Forms.Button();
+            this.tcProduto = new System.Windows.Forms.TabControl();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.pnlBotoes.SuspendLayout();
             this.pnlPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
             this.tpInscrCnae.SuspendLayout();
-            this.tpEstoque.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMovEstoque)).BeginInit();
-            this.tcProduto.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tpEstoque.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMovEstoque)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.tcProduto.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlBotoes
@@ -248,149 +248,10 @@
             this.tpInscrCnae.Location = new System.Drawing.Point(4, 25);
             this.tpInscrCnae.Name = "tpInscrCnae";
             this.tpInscrCnae.Padding = new System.Windows.Forms.Padding(3);
-            this.tpInscrCnae.Size = new System.Drawing.Size(803, 180);
+            this.tpInscrCnae.Size = new System.Drawing.Size(485, 180);
             this.tpInscrCnae.TabIndex = 2;
             this.tpInscrCnae.Text = "Informações Adicionais";
             this.tpInscrCnae.UseVisualStyleBackColor = true;
-            // 
-            // tpEstoque
-            // 
-            this.tpEstoque.Controls.Add(this.dgvMovEstoque);
-            this.tpEstoque.Controls.Add(this.panel1);
-            this.tpEstoque.Location = new System.Drawing.Point(4, 25);
-            this.tpEstoque.Name = "tpEstoque";
-            this.tpEstoque.Padding = new System.Windows.Forms.Padding(3);
-            this.tpEstoque.Size = new System.Drawing.Size(795, 180);
-            this.tpEstoque.TabIndex = 0;
-            this.tpEstoque.Text = "Estoque";
-            this.tpEstoque.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(789, 39);
-            this.panel1.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Image = global::prjbase.Properties.Resources.movimento;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button1.Location = new System.Drawing.Point(634, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(158, 33);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "&Novo Movimento";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Image = global::prjbase.Properties.Resources.Editar;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button2.Location = new System.Drawing.Point(473, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(158, 33);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "&Editar Movimento";
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // dgvMovEstoque
-            // 
-            this.dgvMovEstoque.AllowUserToAddRows = false;
-            this.dgvMovEstoque.AllowUserToDeleteRows = false;
-            this.dgvMovEstoque.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dgvMovEstoque.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMovEstoque.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvMovEstoque.Location = new System.Drawing.Point(3, 42);
-            this.dgvMovEstoque.MultiSelect = false;
-            this.dgvMovEstoque.Name = "dgvMovEstoque";
-            this.dgvMovEstoque.ReadOnly = true;
-            this.dgvMovEstoque.RowHeadersVisible = false;
-            this.dgvMovEstoque.Size = new System.Drawing.Size(789, 135);
-            this.dgvMovEstoque.TabIndex = 1;
-            // 
-            // tcProduto
-            // 
-            this.tcProduto.Controls.Add(this.tpEstoque);
-            this.tcProduto.Controls.Add(this.tpInscrCnae);
-            this.tcProduto.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tcProduto.Location = new System.Drawing.Point(0, 98);
-            this.tcProduto.Name = "tcProduto";
-            this.tcProduto.SelectedIndex = 0;
-            this.tcProduto.Size = new System.Drawing.Size(811, 209);
-            this.tcProduto.TabIndex = 7;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(4, 8);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(88, 16);
-            this.label7.TabIndex = 76;
-            this.label7.Text = "Peso Liquido";
-            // 
-            // txtPesoLiquido
-            // 
-            this.epValidaDados.SetFraseErro(this.txtPesoLiquido, "Nome Fantasia / Nome Abreviado obrigatório.");
-            this.txtPesoLiquido.Location = new System.Drawing.Point(95, 5);
-            this.txtPesoLiquido.Name = "txtPesoLiquido";
-            this.epValidaDados.SetObrigatorio(this.txtPesoLiquido, true);
-            this.txtPesoLiquido.Size = new System.Drawing.Size(154, 23);
-            this.txtPesoLiquido.TabIndex = 75;
-            this.txtPesoLiquido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumber_KeyPress);
-            this.txtPesoLiquido.Validating += new System.ComponentModel.CancelEventHandler(this.OnlyNumber_Validating);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(252, 8);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(79, 16);
-            this.label8.TabIndex = 78;
-            this.label8.Text = "Peso Bruto";
-            // 
-            // txtPesoBruto
-            // 
-            this.epValidaDados.SetFraseErro(this.txtPesoBruto, "Nome Fantasia / Nome Abreviado obrigatório.");
-            this.txtPesoBruto.Location = new System.Drawing.Point(333, 5);
-            this.txtPesoBruto.Name = "txtPesoBruto";
-            this.epValidaDados.SetObrigatorio(this.txtPesoBruto, true);
-            this.txtPesoBruto.Size = new System.Drawing.Size(154, 23);
-            this.txtPesoBruto.TabIndex = 77;
-            this.txtPesoBruto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumber_KeyPress);
-            this.txtPesoBruto.Validating += new System.ComponentModel.CancelEventHandler(this.OnlyNumber_Validating);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.txtDescDetProd);
-            this.groupBox1.Location = new System.Drawing.Point(7, 34);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(781, 139);
-            this.groupBox1.TabIndex = 79;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Descrição Detalhada do Produto";
-            // 
-            // txtDescDetProd
-            // 
-            this.txtDescDetProd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtDescDetProd.Location = new System.Drawing.Point(3, 19);
-            this.txtDescDetProd.Name = "txtDescDetProd";
-            this.txtDescDetProd.Size = new System.Drawing.Size(775, 117);
-            this.txtDescDetProd.TabIndex = 0;
-            this.txtDescDetProd.Text = "";
             // 
             // label9
             // 
@@ -416,6 +277,149 @@
             this.cbFamiliaProduto.TabIndex = 80;
             this.cbFamiliaProduto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtDescDetProd);
+            this.groupBox1.Location = new System.Drawing.Point(7, 34);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(781, 139);
+            this.groupBox1.TabIndex = 79;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Descrição Detalhada do Produto";
+            // 
+            // txtDescDetProd
+            // 
+            this.txtDescDetProd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtDescDetProd.Location = new System.Drawing.Point(3, 19);
+            this.txtDescDetProd.Name = "txtDescDetProd";
+            this.txtDescDetProd.Size = new System.Drawing.Size(775, 117);
+            this.txtDescDetProd.TabIndex = 0;
+            this.txtDescDetProd.Text = "";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(252, 8);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(79, 16);
+            this.label8.TabIndex = 78;
+            this.label8.Text = "Peso Bruto";
+            // 
+            // txtPesoBruto
+            // 
+            this.epValidaDados.SetFraseErro(this.txtPesoBruto, "Nome Fantasia / Nome Abreviado obrigatório.");
+            this.txtPesoBruto.Location = new System.Drawing.Point(333, 5);
+            this.txtPesoBruto.Name = "txtPesoBruto";
+            this.epValidaDados.SetObrigatorio(this.txtPesoBruto, true);
+            this.txtPesoBruto.Size = new System.Drawing.Size(154, 23);
+            this.txtPesoBruto.TabIndex = 77;
+            this.txtPesoBruto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumber_KeyPress);
+            this.txtPesoBruto.Validating += new System.ComponentModel.CancelEventHandler(this.OnlyNumber_Validating);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(4, 8);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(88, 16);
+            this.label7.TabIndex = 76;
+            this.label7.Text = "Peso Liquido";
+            // 
+            // txtPesoLiquido
+            // 
+            this.epValidaDados.SetFraseErro(this.txtPesoLiquido, "Nome Fantasia / Nome Abreviado obrigatório.");
+            this.txtPesoLiquido.Location = new System.Drawing.Point(95, 5);
+            this.txtPesoLiquido.Name = "txtPesoLiquido";
+            this.epValidaDados.SetObrigatorio(this.txtPesoLiquido, true);
+            this.txtPesoLiquido.Size = new System.Drawing.Size(154, 23);
+            this.txtPesoLiquido.TabIndex = 75;
+            this.txtPesoLiquido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumber_KeyPress);
+            this.txtPesoLiquido.Validating += new System.ComponentModel.CancelEventHandler(this.OnlyNumber_Validating);
+            // 
+            // tpEstoque
+            // 
+            this.tpEstoque.Controls.Add(this.dgvMovEstoque);
+            this.tpEstoque.Controls.Add(this.panel1);
+            this.tpEstoque.Location = new System.Drawing.Point(4, 25);
+            this.tpEstoque.Name = "tpEstoque";
+            this.tpEstoque.Padding = new System.Windows.Forms.Padding(3);
+            this.tpEstoque.Size = new System.Drawing.Size(803, 180);
+            this.tpEstoque.TabIndex = 0;
+            this.tpEstoque.Text = "Estoque";
+            this.tpEstoque.UseVisualStyleBackColor = true;
+            // 
+            // dgvMovEstoque
+            // 
+            this.dgvMovEstoque.AllowUserToAddRows = false;
+            this.dgvMovEstoque.AllowUserToDeleteRows = false;
+            this.dgvMovEstoque.AllowUserToOrderColumns = true;
+            this.dgvMovEstoque.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvMovEstoque.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMovEstoque.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvMovEstoque.Location = new System.Drawing.Point(3, 42);
+            this.dgvMovEstoque.MultiSelect = false;
+            this.dgvMovEstoque.Name = "dgvMovEstoque";
+            this.dgvMovEstoque.RowHeadersVisible = false;
+            this.dgvMovEstoque.Size = new System.Drawing.Size(797, 135);
+            this.dgvMovEstoque.TabIndex = 2;
+            this.dgvMovEstoque.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMovEstoque_CellClick);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnEditarMovimento);
+            this.panel1.Controls.Add(this.btnNovoMovimento);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(797, 39);
+            this.panel1.TabIndex = 0;
+            // 
+            // btnEditarMovimento
+            // 
+            this.btnEditarMovimento.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnEditarMovimento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarMovimento.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarMovimento.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnEditarMovimento.Image = global::prjbase.Properties.Resources.Editar;
+            this.btnEditarMovimento.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnEditarMovimento.Location = new System.Drawing.Point(473, 3);
+            this.btnEditarMovimento.Name = "btnEditarMovimento";
+            this.btnEditarMovimento.Size = new System.Drawing.Size(158, 33);
+            this.btnEditarMovimento.TabIndex = 11;
+            this.btnEditarMovimento.Text = "&Editar Movimento";
+            this.btnEditarMovimento.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEditarMovimento.UseVisualStyleBackColor = false;
+            this.btnEditarMovimento.Visible = false;
+            this.btnEditarMovimento.Click += new System.EventHandler(this.btnEditarMovimento_Click);
+            // 
+            // btnNovoMovimento
+            // 
+            this.btnNovoMovimento.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnNovoMovimento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNovoMovimento.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNovoMovimento.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnNovoMovimento.Image = global::prjbase.Properties.Resources.movimento;
+            this.btnNovoMovimento.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnNovoMovimento.Location = new System.Drawing.Point(634, 3);
+            this.btnNovoMovimento.Name = "btnNovoMovimento";
+            this.btnNovoMovimento.Size = new System.Drawing.Size(158, 33);
+            this.btnNovoMovimento.TabIndex = 10;
+            this.btnNovoMovimento.Text = "&Novo Movimento";
+            this.btnNovoMovimento.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNovoMovimento.UseVisualStyleBackColor = false;
+            this.btnNovoMovimento.Click += new System.EventHandler(this.btnNovoMovimento_Click);
+            // 
+            // tcProduto
+            // 
+            this.tcProduto.Controls.Add(this.tpEstoque);
+            this.tcProduto.Controls.Add(this.tpInscrCnae);
+            this.tcProduto.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tcProduto.Location = new System.Drawing.Point(0, 98);
+            this.tcProduto.Name = "tcProduto";
+            this.tcProduto.SelectedIndex = 0;
+            this.tcProduto.Size = new System.Drawing.Size(811, 209);
+            this.tcProduto.TabIndex = 7;
+            // 
             // txtCodigo
             // 
             this.epValidaDados.SetFraseErro(this.txtCodigo, "Código do produto Obrigatório.");
@@ -438,11 +442,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).EndInit();
             this.tpInscrCnae.ResumeLayout(false);
             this.tpInscrCnae.PerformLayout();
-            this.tpEstoque.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMovEstoque)).EndInit();
-            this.tcProduto.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.tpEstoque.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMovEstoque)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.tcProduto.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -464,10 +468,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TabControl tcProduto;
         private System.Windows.Forms.TabPage tpEstoque;
-        protected System.Windows.Forms.DataGridView dgvMovEstoque;
         private System.Windows.Forms.Panel panel1;
-        public System.Windows.Forms.Button button2;
-        public System.Windows.Forms.Button button1;
+        public System.Windows.Forms.Button btnEditarMovimento;
+        public System.Windows.Forms.Button btnNovoMovimento;
         private System.Windows.Forms.TabPage tpInscrCnae;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RichTextBox txtDescDetProd;
@@ -478,5 +481,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cbFamiliaProduto;
         private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.DataGridView dgvMovEstoque;
     }
 }

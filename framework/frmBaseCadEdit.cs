@@ -27,10 +27,15 @@ namespace prjbase
 
         protected virtual void btnSalvar_Click(object sender, EventArgs e)
         {
+            Salvar_Click(sender, e);                        
+        }
+
+        protected virtual void Salvar_Click(object sender, EventArgs e)
+        {
             try
             {
                 atualizagrid = true;
-                if(ValidaAcessoFuncao(Operacao.Salvar))
+                if (ValidaAcessoFuncao(Operacao.Salvar))
                 {
                     if (salvar(sender, e))
                     {
@@ -40,18 +45,17 @@ namespace prjbase
                         MessageBox.Show(Text + " salvo com sucesso.", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         ImprimirRegistro(Id);
                     }
-                }                
-                
-                
+                }
+
+
             }
             catch (Exception ex)
             {
-                string mensagem = TrataException.getAllMessage(ex);                                                        
+                string mensagem = TrataException.getAllMessage(ex);
                 MessageBox.Show(mensagem, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
         }
-        
+
         protected virtual void ImprimirRegistro(Int64? id)
         {
             

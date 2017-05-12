@@ -178,37 +178,44 @@ namespace prjbase
                 colAnt.HeaderCell.SortGlyphDirection = SortOrder.None;
             }
 
-            //switch (e.ColumnIndex)
-            //{
+            switch (e.ColumnIndex)
+            {
 
-            //    case 1:
-            //        {
-            //            List<Produto> ProdutoList = ProdutoBLL.getProduto(p => p.email, direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
-            //            dgvDados.DataSource = ProdutoList;
-            //        }
-            //        break;
+                case COL_CODIGO:
+                    {
+                        List<Produto> ProdutoList = ProdutoBLL.getProduto(p => p.codigo, direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
+                        dgvDados.DataSource = ProdutoList;
+                    }
+                    break;
 
-            //    case 2:
-            //        {
-            //            List<Produto> ProdutoList = ProdutoBLL.getProduto(p => p.nome, direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
-            //            dgvDados.DataSource = ProdutoList;
-            //        }
-            //        break;
+                case COL_DESCRICAO:
+                    {
+                        List<Produto> ProdutoList = ProdutoBLL.getProduto(p => p.descricao, direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
+                        dgvDados.DataSource = ProdutoList;
+                    }
+                    break;
 
-            //    case 3:
-            //        {
-            //            List<Produto> ProdutoList = ProdutoBLL.getProduto(p => p.dtcriacao.ToString(), direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
-            //            dgvDados.DataSource = ProdutoList;
-            //        }
-            //        break;
-            //    //O default será executado quando o index for 0
-            //    default:
-            //        {
-            //            List<Produto> ProdutoList = ProdutoBLL.getProduto(p => p.Id.ToString(), direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
-            //            dgvDados.DataSource = ProdutoList;
-            //        }
-            //        break;
-            //}
+                case COL_NCM:
+                    {
+                        List<Produto> ProdutoList = ProdutoBLL.getProduto(p => p.ncm, direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
+                        dgvDados.DataSource = ProdutoList;
+                    }
+                    break;
+
+                case COL_FAMILIA:
+                    {
+                        List<Produto> ProdutoList = ProdutoBLL.getProduto(p => p.descricao_familia, direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
+                        dgvDados.DataSource = ProdutoList;
+                    }
+                    break;
+                //O default será executado quando o index for 0
+                default:
+                    {
+                        List<Produto> ProdutoList = ProdutoBLL.getProduto(p => p.id.ToString(), direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
+                        dgvDados.DataSource = ProdutoList;
+                    }
+                    break;
+            }
 
             colOrdem = e.ColumnIndex;
 
@@ -221,101 +228,78 @@ namespace prjbase
         {
             base.executeCellValidatingChild(sender, e);
 
-            //if (e.ColumnIndex == 0 && !string.IsNullOrEmpty((string)e.FormattedValue))
-            //{
-            //    //
-            //}
-
-            //if (e.ColumnIndex == 1 && !string.IsNullOrEmpty((string)e.FormattedValue))
-            //{
-            //    //Executa filtro.                
-            //}
-
-            //if (e.ColumnIndex == 2 && !string.IsNullOrEmpty((string)e.FormattedValue))
-            //{
-            //    //Executa filtro.                
-            //}
-
-            //if (e.ColumnIndex == 3 && !string.IsNullOrEmpty((string)e.FormattedValue))
-            //{
-
-            //    if ((string.IsNullOrEmpty((string)e.FormattedValue)) || ((string)e.FormattedValue == "__/__/____"))
-            //    {
-            //        dgvFiltro[e.ColumnIndex, e.RowIndex].Value = "";
-            //        return;
-
-            //    }
-
-            //    if (!ValidateUtils.isDate((string)e.FormattedValue))
-            //    {
-            //        e.Cancel = true;
-            //        dgvFiltro[e.ColumnIndex, e.RowIndex].Value = "";
-            //        MessageBox.Show("Data inválida.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //    }
-            //    else
-            //    {
-            //        //Executa filtro.
-            //    }
-            //}
+            
         }
 
         protected override void executeCellEndEditChild(object sender, DataGridViewCellEventArgs e)
         {
             base.executeCellEndEditChild(sender, e);
 
-            //int id = 0;
-            //string email = "";
-            //string nome = "";
-            //DateTime? data = null;
+            int id = 0;
+            string codigo = string.Empty;
+            string descricao = string.Empty;
+            string unidade = string.Empty;
+            string ncm = string.Empty;
+            string familia = string.Empty;
 
-            //if (!string.IsNullOrEmpty((string)dgvFiltro[0, e.RowIndex].Value))
-            //{
-            //    id = Convert.ToInt32(dgvFiltro[0, e.RowIndex].Value);
-            //}
+            if (!string.IsNullOrEmpty((string)dgvFiltro[COL_ID, e.RowIndex].Value))
+            {
+                id = Convert.ToInt32(dgvFiltro[0, e.RowIndex].Value);
+            }
 
-            //if (!string.IsNullOrEmpty((string)dgvFiltro[1, e.RowIndex].Value))
-            //{
-            //    email = dgvFiltro[1, e.RowIndex].Value.ToString();
-            //}
+            if (!string.IsNullOrEmpty((string)dgvFiltro[COL_CODIGO, e.RowIndex].Value))
+            {
+                codigo = dgvFiltro[COL_CODIGO, e.RowIndex].Value.ToString();
+            }
 
-            //if (!string.IsNullOrEmpty((string)dgvFiltro[2, e.RowIndex].Value))
-            //{
-            //    nome = dgvFiltro[2, e.RowIndex].Value.ToString();
-            //}
+            if (!string.IsNullOrEmpty((string)dgvFiltro[COL_DESCRICAO, e.RowIndex].Value))
+            {
+                descricao = dgvFiltro[COL_DESCRICAO, e.RowIndex].Value.ToString();
+            }
 
-            //if (!string.IsNullOrEmpty((string)dgvFiltro[3, e.RowIndex].Value))
-            //{
-            //    data = Convert.ToDateTime(dgvFiltro[3, e.RowIndex].Value);
-            //}
+            if (!string.IsNullOrEmpty((string)dgvFiltro[COL_UNIDADE, e.RowIndex].Value))
+            {
+                unidade = dgvFiltro[COL_UNIDADE, e.RowIndex].Value.ToString();
+            }
 
-            ////var predicate = PredicateBuilder.True<Produto>();
+            if (!string.IsNullOrEmpty((string)dgvFiltro[COL_FAMILIA, e.RowIndex].Value))
+            {
+                familia = dgvFiltro[COL_FAMILIA, e.RowIndex].Value.ToString();
+            }
+
+            //var predicate = PredicateBuilder.True<Produto>();
 
 
-            //Expression<Func<Produto, bool>> predicate = p => true;
+            Expression<Func<Produto, bool>> predicate = p => true;
 
 
-            //if (id > 0)
-            //{
-            //    predicate = predicate = p => p.Id == id;
-            //}
+            if (id > 0)
+            {
+                predicate = predicate = p => p.id == id;
+            }
 
-            //if (!string.IsNullOrEmpty(email))
-            //{
-            //    predicate = predicate.And(p => p.email.Contains(email));
-            //}
+            if (!string.IsNullOrEmpty(codigo))
+            {
+                predicate = predicate.And(p => p.codigo.ToLower().Contains(codigo.ToLower()));
+            }
 
-            //if (!string.IsNullOrEmpty(nome))
-            //{
-            //    predicate = predicate.And(p => p.nome.Contains(nome));
-            //}
+            if (!string.IsNullOrEmpty(descricao))
+            {
+                predicate = predicate.And(p => p.descricao.ToLower().Contains(descricao.ToLower()));
+            }
 
-            //if ((data != null) & (ValidateUtils.isDate(data.ToString())))
-            //{
-            //    predicate = predicate.And(p => DbFunctions.TruncateTime(p.dtcriacao) == DbFunctions.TruncateTime(data));
-            //}
+            if (!string.IsNullOrEmpty(unidade))
+            {
+                predicate = predicate.And(p => p.unidade.ToLower().Contains(unidade.ToLower()));
+            }
 
-            //List<Produto> ProdutoList = ProdutoBLL.getProduto(predicate.Expand(), t => t.Id.ToString(), false, deslocamento, tamanhoPagina, out totalReg);
-            //dgvDados.DataSource = ProdutoList;
+            if (!string.IsNullOrEmpty(familia))
+            {
+                predicate = predicate.And(p => p.descricao_familia.ToLower().Contains(familia.ToLower()));
+            }
+
+            List<Produto> ProdutoList = ProdutoBLL.getProduto(predicate.Expand(), false, deslocamento, tamanhoPagina, out totalReg, t => t.id.ToString());
+            dgvDados.DataSource = ProdutoList;
 
         }
 

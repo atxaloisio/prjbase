@@ -43,8 +43,7 @@ namespace prjbase
         protected decimal totalPaginas = 0;
         protected int totalReg = 0;
         protected virtual int colOrdem { get; set; }
-
-        private PedidoBLL pedidoBLL;
+        
         private Pedido_OticaBLL pedido_OticaBLL;
         public frmProcParcelasPedido()
         {
@@ -328,8 +327,7 @@ namespace prjbase
 
             DataGridViewColumn col = dgvFiltro.Columns[e.ColumnIndex];
             DataGridViewColumn colAnt = dgvFiltro.Columns[colOrdem];
-            int? status = null;
-
+            
             ListSortDirection direction;
 
             switch (col.HeaderCell.SortGlyphDirection)
