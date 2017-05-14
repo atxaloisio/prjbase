@@ -31,15 +31,21 @@ namespace prjbase
                 rvRelatorios.Reset();
                 rvRelatorios.LocalReport.ReportEmbeddedResource = "prjbase.relatorios.relListPedido_Otica.rdlc";
                 dbintegracaoDataSetTableAdapters.qryListPedido_OticaTableAdapter lstPed = new dbintegracaoDataSetTableAdapters.qryListPedido_OticaTableAdapter();
+                dbintegracaoDataSetTableAdapters.empresa_logoTableAdapter Empresa_Logo = new dbintegracaoDataSetTableAdapters.empresa_logoTableAdapter();
 
                 DataTable dt = new DataTable();
+                DataTable dtl = new DataTable();
 
                 dt = lstPed.GetData((int)statusDe, (int)statusAte);
+                dtl = Empresa_Logo.GetData();
 
                 ReportDataSource ds = new ReportDataSource(dt.TableName, dt);
+                ReportDataSource ds2 = new ReportDataSource(dtl.TableName, dtl);
 
                 ds.Name = "DataSet1";
+                ds2.Name = "DataSet2";
                 rvRelatorios.LocalReport.DataSources.Add(ds);
+                rvRelatorios.LocalReport.DataSources.Add(ds2);
 
                 //rvRelatorios.LocalReport.SubreportProcessing += new SubreportProcessingEventHandler(onSubreportProcessing);
 

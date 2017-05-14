@@ -386,12 +386,23 @@ namespace prjbase
             if (MessageBox.Show(Text + " Deseja imprimir o recido do pedido?", Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 frmRelPedido_Otica relatorio = new frmRelPedido_Otica();
+                bool ViewOtica = Convert.ToBoolean(Parametro.GetParametro("layoutOtica"));
                 relatorio.Id = id;
                 relatorio.ImprimirDireto();
                 pedido_OticaBLL = new Pedido_OticaBLL();
                 Pedido_Otica pedido_otica = pedido_OticaBLL.Localizar(id);
+
                 if (pedido_otica.status == (int)StatusPedido.GRAVADO)
                 {
+                    if (ViewOtica)
+                    {
+                        decimal? totalValor = 0;
+                        totalValor = pedido_otica.itempedido_otica.Sum(p => p.valor_total);
+
+                        Pedido_Otica_ParcelasBLL popBLL = new Pedido_Otica_ParcelasBLL();
+                        //pedido_otica.pedido_otica_parcelas.Clear();
+                        pedido_otica.pedido_otica_parcelas = popBLL.GerarParcelas(pedido_otica.condicao_pagamento, totalValor, DateTime.Now);
+                    }
                     pedido_OticaBLL.UsuarioLogado = Program.usuario_logado;
                     pedido_OticaBLL.AtualizarStatusPedido(id, StatusPedido.IMPRESSO);
                 }
@@ -1055,8 +1066,15 @@ namespace prjbase
                             }
                         }
 
-
-                        txtDtFechamento.Focus();
+                        if (txtDtFechamento.Visible)
+                        {
+                            txtDtFechamento.Focus();
+                        }
+                        else
+                        {
+                            txtDtPrevEntrega.Focus();
+                        }
+                        
                     }
                 }
                 else

@@ -26,18 +26,25 @@ namespace prjbase
             rvRelatorios.LocalReport.DataSources.Clear();
             rvRelatorios.Reset();
             rvRelatorios.LocalReport.ReportEmbeddedResource = "prjbase.relatorios.relRota.rdlc";
-            dbintegracaoDataSetTableAdapters.qryPedido_OticaTableAdapter prod = new dbintegracaoDataSetTableAdapters.qryPedido_OticaTableAdapter();
+            
             dbintegracaoDataSetTableAdapters.qryRotaTableAdapter Rota = new dbintegracaoDataSetTableAdapters.qryRotaTableAdapter();
+            dbintegracaoDataSetTableAdapters.empresa_logoTableAdapter Empresa_Logo = new dbintegracaoDataSetTableAdapters.empresa_logoTableAdapter();
 
             DataTable dt = new DataTable();
+            DataTable dtl = new DataTable();
 
             //dt = prod.GetData(Convert.ToInt64(Id));
             dt = Rota.GetData();
+            dtl = Empresa_Logo.GetData();
 
             ReportDataSource ds = new ReportDataSource(dt.TableName, dt);
+            ReportDataSource ds2 = new ReportDataSource(dtl.TableName, dtl);
+
 
             ds.Name = "DataSet1";
+            ds2.Name = "DataSet2";
             rvRelatorios.LocalReport.DataSources.Add(ds);
+            rvRelatorios.LocalReport.DataSources.Add(ds2);
 
             //rvRelatorios.LocalReport.SubreportProcessing += new SubreportProcessingEventHandler(onSubreportProcessing);
 

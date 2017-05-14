@@ -845,8 +845,9 @@
             <Rectangle Name="Rectangle2">
               <ReportItems>
                 <Image Name="Image1">
-                  <Source>Embedded</Source>
-                  <Value>optima</Value>
+                  <Source>Database</Source>
+                  <Value>=First(Fields!imagem.Value, "DataSet2")</Value>
+                  <MIMEType>image/jpeg</MIMEType>
                   <Sizing>Fit</Sizing>
                   <Height>2.38125cm</Height>
                   <Width>4.43401cm</Width>
@@ -1262,6 +1263,34 @@
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
         <rd:TableAdapterName>qryRotaTableAdapter</rd:TableAdapterName>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="DataSet2">
+      <Query>
+        <DataSourceName>dbintegracaoDataSet</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Id">
+          <DataField>Id</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="id_empresa">
+          <DataField>id_empresa</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="imagem">
+          <DataField>imagem</DataField>
+          <rd:TypeName>System.Byte[]</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>dbintegracaoDataSet</rd:DataSetName>
+        <rd:SchemaPath>D:\Desenv\atra\prjbase\dbintegracaoDataSet.xsd</rd:SchemaPath>
+        <rd:TableName>empresa_logo</rd:TableName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+        <rd:TableAdapterName>empresa_logoTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>

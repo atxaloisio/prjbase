@@ -7,9 +7,12 @@
     }
 }
 
-namespace prjbase.dbintegracaoDataSetTableAdapters {
-    
-    
+namespace prjbase.dbintegracaoDataSetTableAdapters
+{
+    partial class empresa_logoTableAdapter
+    {
+    }
+
     public partial class qryListPedido_OticaTableAdapter {
     }
 }

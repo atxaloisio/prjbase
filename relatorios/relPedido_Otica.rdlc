@@ -5,8 +5,9 @@
       <Rectangle Name="Rectangle1">
         <ReportItems>
           <Image Name="Image2">
-            <Source>Embedded</Source>
-            <Value>optima</Value>
+            <Source>Database</Source>
+            <Value>=First(Fields!imagem.Value, "DataSet2")</Value>
+            <MIMEType>image/jpeg</MIMEType>
             <Sizing>Fit</Sizing>
             <Top>0.08114cm</Top>
             <Left>0.06173cm</Left>
@@ -141,7 +142,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!codigo.Value</Value>
+                    <Value>=First(Fields!codigo.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -176,7 +177,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!data_emissao.Value</Value>
+                    <Value>=First(Fields!data_emissao.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -360,7 +361,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!nome_fantasia.Value + "  " + Fields!codigo_cliente.Value</Value>
+                    <Value>=First(Fields!nome_fantasia.Value, "DataSet1") + "  " + First(Fields!codigo_cliente.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -405,7 +406,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!endereco.Value + " " + Fields!endereco_numero.Value</Value>
+                    <Value>=First(Fields!endereco.Value, "DataSet1") + " " + First(Fields!endereco_numero.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -438,7 +439,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!cidade.Value + " " + Fields!estado.Value</Value>
+                    <Value>=First(Fields!cidade.Value, "DataSet1") + " " + First(Fields!estado.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -539,7 +540,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!codigo_cliente.Value</Value>
+                    <Value>=First(Fields!codigo_cliente.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -573,7 +574,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!descricao.Value</Value>
+                    <Value>=First(Fields!descricao.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -683,7 +684,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!usuario_inclusao.Value</Value>
+                    <Value>=First(Fields!usuario_inclusao.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -943,7 +944,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!numero_caixa.Value</Value>
+                    <Value>=First(Fields!numero_caixa.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -977,7 +978,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!codigo.Value</Value>
+                    <Value>=First(Fields!codigo.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -1013,7 +1014,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!marca_material.Value</Value>
+                    <Value>=First(Fields!marca_material.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -1478,7 +1479,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!od_gl_esf.Value</Value>
+                    <Value>=First(Fields!od_gl_esf.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -1510,7 +1511,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!od_adicao.Value</Value>
+                    <Value>=First(Fields!od_adicao.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -1542,7 +1543,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!od_gp_esf.Value</Value>
+                    <Value>=First(Fields!od_gp_esf.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -1574,7 +1575,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!od_prisma_valor.Value</Value>
+                    <Value>=First(Fields!od_prisma_valor.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -1606,7 +1607,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!od_gl_cil.Value</Value>
+                    <Value>=First(Fields!od_gl_cil.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -1638,7 +1639,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!od_gp_cil.Value</Value>
+                    <Value>=First(Fields!od_gp_cil.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -1670,7 +1671,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!od_prisma_eixo.Value</Value>
+                    <Value>=First(Fields!od_prisma_eixo.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -1702,7 +1703,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!od_eixo.Value</Value>
+                    <Value>=First(Fields!od_eixo.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -1734,7 +1735,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!od_dnp_longe.Value</Value>
+                    <Value>=First(Fields!od_dnp_longe.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -1766,7 +1767,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!od_dnp_perto.Value</Value>
+                    <Value>=First(Fields!od_dnp_perto.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -1798,7 +1799,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!od_dech.Value</Value>
+                    <Value>=First(Fields!od_dech.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -2214,7 +2215,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!oe_gl_esf.Value</Value>
+                    <Value>=First(Fields!oe_gl_esf.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -2246,7 +2247,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!oe_adicao.Value</Value>
+                    <Value>=First(Fields!oe_adicao.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -2278,7 +2279,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!oe_gp_esf.Value</Value>
+                    <Value>=First(Fields!oe_gp_esf.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -2310,7 +2311,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!oe_prisma_valor.Value</Value>
+                    <Value>=First(Fields!oe_prisma_valor.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -2342,7 +2343,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!oe_gl_cil.Value</Value>
+                    <Value>=First(Fields!oe_gl_cil.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -2406,7 +2407,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!oe_gp_cil.Value</Value>
+                    <Value>=First(Fields!oe_gp_cil.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -2438,7 +2439,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!oe_prisma_eixo.Value</Value>
+                    <Value>=First(Fields!oe_prisma_eixo.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -2470,7 +2471,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!oe_eixo.Value</Value>
+                    <Value>=First(Fields!oe_eixo.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -2502,7 +2503,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!oe_dnp_longe.Value</Value>
+                    <Value>=First(Fields!oe_dnp_longe.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -2534,7 +2535,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!oe_dnp_perto.Value</Value>
+                    <Value>=First(Fields!oe_dnp_perto.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -2566,7 +2567,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!oe_dech.Value</Value>
+                    <Value>=First(Fields!oe_dech.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -2799,7 +2800,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Switch(Fields!tipo.Value = 1,"SEM ARMAÇÃO",Fields!tipo.Value = 2,"METAL",Fields!tipo.Value = 3,"ZILO",Fields!tipo.Value = 4,"FIO DE NYLON",Fields!tipo.Value = 5,"PARAFUSADA",Fields!tipo.Value = 6,"SEGURANÇA",Fields!tipo.Value = 7,"FIO DE AÇO",Fields!tipo.Value = 8,"PARAFUSO COM BUCHA")</Value>
+                    <Value>=Switch(First(Fields!tipo.Value, "DataSet1") = 1,"SEM ARMAÇÃO",First(Fields!tipo.Value, "DataSet1") = 2,"METAL",First(Fields!tipo.Value, "DataSet1") = 3,"ZILO",First(Fields!tipo.Value, "DataSet1") = 4,"FIO DE NYLON",First(Fields!tipo.Value, "DataSet1") = 5,"PARAFUSADA",First(Fields!tipo.Value, "DataSet1") = 6,"SEGURANÇA",First(Fields!tipo.Value, "DataSet1") = 7,"FIO DE AÇO",First(Fields!tipo.Value, "DataSet1") = 8,"PARAFUSO COM BUCHA")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>5pt</FontSize>
@@ -2832,7 +2833,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Switch(Fields!shape.Value = 1,"SHAPE_1",Fields!shape.Value = 2,"SHAPE_2",Fields!shape.Value = 3,"SHAPE_3",Fields!shape.Value = 4,"SHAPE_4",Fields!shape.Value = 5,"SHAPE_5",Fields!shape.Value = 6,"SHAPE_6",Fields!shape.Value = 7,"SHAPE_7",Fields!shape.Value = 8,"SHAPE_8",Fields!shape.Value = 9,"SHAPE_9",Fields!shape.Value = 10,"SHAPE_10",Fields!shape.Value = 11,"SHAPE_11",Fields!shape.Value = 12,"SHAPE_12")</Value>
+                    <Value>=Switch(First(Fields!shape.Value, "DataSet1") = 1,"SHAPE_1",First(Fields!shape.Value, "DataSet1") = 2,"SHAPE_2",First(Fields!shape.Value, "DataSet1") = 3,"SHAPE_3",First(Fields!shape.Value, "DataSet1") = 4,"SHAPE_4",First(Fields!shape.Value, "DataSet1") = 5,"SHAPE_5",First(Fields!shape.Value, "DataSet1") = 6,"SHAPE_6",First(Fields!shape.Value, "DataSet1") = 7,"SHAPE_7",First(Fields!shape.Value, "DataSet1") = 8,"SHAPE_8",First(Fields!shape.Value, "DataSet1") = 9,"SHAPE_9",First(Fields!shape.Value, "DataSet1") = 10,"SHAPE_10",First(Fields!shape.Value, "DataSet1") = 11,"SHAPE_11",First(Fields!shape.Value, "DataSet1") = 12,"SHAPE_12")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>5pt</FontSize>
@@ -2865,7 +2866,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!largura.Value</Value>
+                    <Value>=First(Fields!largura.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -2898,7 +2899,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!ponte.Value</Value>
+                    <Value>=First(Fields!ponte.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -2931,7 +2932,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!altura.Value</Value>
+                    <Value>=First(Fields!altura.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -2964,7 +2965,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!maior_diagonal.Value</Value>
+                    <Value>=First(Fields!maior_diagonal.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -3028,7 +3029,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!eixo_maior_diagonal.Value</Value>
+                    <Value>=First(Fields!eixo_maior_diagonal.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -3265,7 +3266,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!codigo.Value</Value>
+                    <Value>=First(Fields!codigo.Value, "DataSet1")</Value>
                     <Style>
                       <FontSize>18pt</FontSize>
                     </Style>
@@ -3333,7 +3334,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!base_calculada.Value</Value>
+                    <Value>=First(Fields!base_calculada.Value, "DataSet1")</Value>
                     <Style>
                       <FontWeight>Bold</FontWeight>
                     </Style>
@@ -3415,7 +3416,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!observacoes.Value</Value>
+                    <Value>=First(Fields!observacoes.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -3489,7 +3490,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!usuario_inclusao.Value</Value>
+                    <Value>=First(Fields!usuario_inclusao.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -4100,7 +4101,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!od_gl_esf.Value</Value>
+                    <Value>=First(Fields!od_gl_esf.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -4132,7 +4133,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!od_adicao.Value</Value>
+                    <Value>=First(Fields!od_adicao.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -4164,7 +4165,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!od_gp_esf.Value</Value>
+                    <Value>=First(Fields!od_gp_esf.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -4196,7 +4197,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!od_prisma_valor.Value</Value>
+                    <Value>=First(Fields!od_prisma_valor.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -4228,7 +4229,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!od_gl_cil.Value</Value>
+                    <Value>=First(Fields!od_gl_cil.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -4260,7 +4261,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!od_gp_cil.Value</Value>
+                    <Value>=First(Fields!od_gp_cil.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -4292,7 +4293,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!od_prisma_eixo.Value</Value>
+                    <Value>=First(Fields!od_prisma_eixo.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -4324,7 +4325,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!od_eixo.Value</Value>
+                    <Value>=First(Fields!od_eixo.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -4356,7 +4357,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!od_dnp_longe.Value</Value>
+                    <Value>=First(Fields!od_dnp_longe.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -4388,7 +4389,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!od_dnp_perto.Value</Value>
+                    <Value>=First(Fields!od_dnp_perto.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -4420,7 +4421,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!od_dech.Value</Value>
+                    <Value>=First(Fields!od_dech.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -4828,7 +4829,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!oe_gl_esf.Value</Value>
+                    <Value>=First(Fields!oe_gl_esf.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -4860,7 +4861,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!oe_adicao.Value</Value>
+                    <Value>=First(Fields!oe_adicao.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -4892,7 +4893,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!oe_gp_esf.Value</Value>
+                    <Value>=First(Fields!oe_gp_esf.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -4924,7 +4925,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!oe_prisma_valor.Value</Value>
+                    <Value>=First(Fields!oe_prisma_valor.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -4956,7 +4957,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!oe_gl_cil.Value</Value>
+                    <Value>=First(Fields!oe_gl_cil.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -5020,7 +5021,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!oe_gp_cil.Value</Value>
+                    <Value>=First(Fields!oe_gp_cil.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -5052,7 +5053,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!oe_prisma_eixo.Value</Value>
+                    <Value>=First(Fields!oe_prisma_eixo.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -5084,7 +5085,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!oe_eixo.Value</Value>
+                    <Value>=First(Fields!oe_eixo.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -5116,7 +5117,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!oe_dnp_longe.Value</Value>
+                    <Value>=First(Fields!oe_dnp_longe.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -5148,7 +5149,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!oe_dnp_perto.Value</Value>
+                    <Value>=First(Fields!oe_dnp_perto.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -5180,7 +5181,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!oe_dech.Value</Value>
+                    <Value>=First(Fields!oe_dech.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -5413,7 +5414,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Switch(Fields!shape.Value = 1,"SHAPE_1",Fields!shape.Value = 2,"SHAPE_2",Fields!shape.Value = 3,"SHAPE_3",Fields!shape.Value = 4,"SHAPE_4",Fields!shape.Value = 5,"SHAPE_5",Fields!shape.Value = 6,"SHAPE_6",Fields!shape.Value = 7,"SHAPE_7",Fields!shape.Value = 8,"SHAPE_8",Fields!shape.Value = 9,"SHAPE_9",Fields!shape.Value = 10,"SHAPE_10",Fields!shape.Value = 11,"SHAPE_11",Fields!shape.Value = 12,"SHAPE_12")</Value>
+                    <Value>=Switch(First(Fields!shape.Value, "DataSet1") = 1,"SHAPE_1",First(Fields!shape.Value, "DataSet1") = 2,"SHAPE_2",First(Fields!shape.Value, "DataSet1") = 3,"SHAPE_3",First(Fields!shape.Value, "DataSet1") = 4,"SHAPE_4",First(Fields!shape.Value, "DataSet1") = 5,"SHAPE_5",First(Fields!shape.Value, "DataSet1") = 6,"SHAPE_6",First(Fields!shape.Value, "DataSet1") = 7,"SHAPE_7",First(Fields!shape.Value, "DataSet1") = 8,"SHAPE_8",First(Fields!shape.Value, "DataSet1") = 9,"SHAPE_9",First(Fields!shape.Value, "DataSet1") = 10,"SHAPE_10",First(Fields!shape.Value, "DataSet1") = 11,"SHAPE_11",First(Fields!shape.Value, "DataSet1") = 12,"SHAPE_12")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>5pt</FontSize>
@@ -5446,7 +5447,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!largura.Value</Value>
+                    <Value>=First(Fields!largura.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -5479,7 +5480,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!ponte.Value</Value>
+                    <Value>=First(Fields!ponte.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -5512,7 +5513,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!altura.Value</Value>
+                    <Value>=First(Fields!altura.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -5545,7 +5546,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!maior_diagonal.Value</Value>
+                    <Value>=First(Fields!maior_diagonal.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -5609,7 +5610,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!eixo_maior_diagonal.Value</Value>
+                    <Value>=First(Fields!eixo_maior_diagonal.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -5642,7 +5643,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Microsoft.VisualBasic.Interaction.Switch(Fields!tipo.Value = 1, "SEM ARMAÇÃO", Fields!tipo.Value = 2, "METAL", Fields!tipo.Value = 3, "ZILO", Fields!tipo.Value = 4, "FIO DE NYLON", Fields!tipo.Value = 5, "PARAFUSADA", Fields!tipo.Value = 6, "SEGURANÇA", Fields!tipo.Value = 7, "FIO DE AÇO", Fields!tipo.Value = 8, "PARAFUSO COM BUCHA")</Value>
+                    <Value>=Microsoft.VisualBasic.Interaction.Switch(First(Fields!tipo.Value, "DataSet1") = 1, "SEM ARMAÇÃO", First(Fields!tipo.Value, "DataSet1") = 2, "METAL", First(Fields!tipo.Value, "DataSet1") = 3, "ZILO", First(Fields!tipo.Value, "DataSet1") = 4, "FIO DE NYLON", First(Fields!tipo.Value, "DataSet1") = 5, "PARAFUSADA", First(Fields!tipo.Value, "DataSet1") = 6, "SEGURANÇA", First(Fields!tipo.Value, "DataSet1") = 7, "FIO DE AÇO", First(Fields!tipo.Value, "DataSet1") = 8, "PARAFUSO COM BUCHA")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>5pt</FontSize>
@@ -5878,7 +5879,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!codigo.Value</Value>
+                    <Value>=First(Fields!codigo.Value, "DataSet1")</Value>
                     <Style>
                       <FontSize>18pt</FontSize>
                     </Style>
@@ -5944,7 +5945,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!base_calculada.Value</Value>
+                    <Value>=First(Fields!base_calculada.Value, "DataSet1")</Value>
                     <Style>
                       <FontWeight>Bold</FontWeight>
                     </Style>
@@ -6026,7 +6027,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!observacoes.Value</Value>
+                    <Value>=First(Fields!observacoes.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -6139,8 +6140,9 @@
       <Rectangle Name="Rectangle14">
         <ReportItems>
           <Image Name="Image3">
-            <Source>Embedded</Source>
-            <Value>otica_precision</Value>
+            <Source>Database</Source>
+            <Value>=First(Fields!imagem.Value, "DataSet2")</Value>
+            <MIMEType>image/jpeg</MIMEType>
             <Sizing>FitProportional</Sizing>
             <Top>0.08114cm</Top>
             <Left>0.06173cm</Left>
@@ -6275,7 +6277,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!codigo.Value</Value>
+                    <Value>=First(Fields!codigo.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -6310,7 +6312,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!data_emissao.Value</Value>
+                    <Value>=First(Fields!data_emissao.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -6494,7 +6496,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!nome_fantasia.Value + "  " + Fields!codigo_cliente.Value</Value>
+                    <Value>=First(Fields!nome_fantasia.Value, "DataSet1") + "  " + First(Fields!codigo_cliente.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -6539,7 +6541,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!endereco.Value + " " + Fields!endereco_numero.Value</Value>
+                    <Value>=First(Fields!endereco.Value, "DataSet1") + " " + First(Fields!endereco_numero.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -6572,7 +6574,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!cidade.Value + " " + Fields!estado.Value</Value>
+                    <Value>=First(Fields!cidade.Value, "DataSet1") + " " + First(Fields!estado.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -6673,7 +6675,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!codigo_cliente.Value</Value>
+                    <Value>=First(Fields!codigo_cliente.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -6707,7 +6709,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!condicao_pagamento.Value</Value>
+                    <Value>=First(Fields!condicao_pagamento.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -6857,7 +6859,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!numero_caixa.Value</Value>
+                    <Value>=First(Fields!numero_caixa.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -6891,7 +6893,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!codigo.Value</Value>
+                    <Value>=First(Fields!codigo.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -6927,7 +6929,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!marca_material.Value</Value>
+                    <Value>=First(Fields!marca_material.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -7459,6 +7461,34 @@
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
         <rd:TableAdapterName>qryPedido_OticaTableAdapter</rd:TableAdapterName>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="DataSet2">
+      <Query>
+        <DataSourceName>dbintegracaoDataSet</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Id">
+          <DataField>Id</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="id_empresa">
+          <DataField>id_empresa</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="imagem">
+          <DataField>imagem</DataField>
+          <rd:TypeName>System.Byte[]</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>dbintegracaoDataSet</rd:DataSetName>
+        <rd:SchemaPath>D:\Desenv\atra\prjbase\dbintegracaoDataSet.xsd</rd:SchemaPath>
+        <rd:TableName>empresa_logo</rd:TableName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+        <rd:TableAdapterName>empresa_logoTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
