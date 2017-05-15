@@ -204,6 +204,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cadastros\frmCadEditTipoLente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cadastros\frmCadEditTipoLente.Designer.cs">
+      <DependentUpon>frmCadEditTipoLente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="cadastros\frmCadEditTipo_Armacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cadastros\frmCadEditTipo_Armacao.Designer.cs">
+      <DependentUpon>frmCadEditTipo_Armacao.cs</DependentUpon>
+    </Compile>
     <Compile Include="cadastros\frmCadEditMovimento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -283,6 +295,18 @@
       <DependentUpon>frmParametroSistema.cs</DependentUpon>
     </Compile>
     <Compile Include="GravaArquivo.cs" />
+    <Compile Include="Listas\frmListTipo_Lente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listas\frmListTipo_Lente.Designer.cs">
+      <DependentUpon>frmListTipo_Lente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Listas\frmListTipo_Armacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listas\frmListTipo_Armacao.Designer.cs">
+      <DependentUpon>frmListTipo_Armacao.cs</DependentUpon>
+    </Compile>
     <Compile Include="Listas\frmListCliente_Vendedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -522,6 +546,12 @@
     <Compile Include="utilitarios\frmUtilCancelarPedido.Designer.cs">
       <DependentUpon>frmUtilCancelarPedido.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="cadastros\frmCadEditTipoLente.resx">
+      <DependentUpon>frmCadEditTipoLente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cadastros\frmCadEditTipo_Armacao.resx">
+      <DependentUpon>frmCadEditTipo_Armacao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="cadastros\frmCadEditMovimento.resx">
       <DependentUpon>frmCadEditMovimento.cs</DependentUpon>
     </EmbeddedResource>
@@ -563,6 +593,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmParametroSistema.resx">
       <DependentUpon>frmParametroSistema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listas\frmListTipo_Lente.resx">
+      <DependentUpon>frmListTipo_Lente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listas\frmListTipo_Armacao.resx">
+      <DependentUpon>frmListTipo_Armacao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Listas\frmListCliente_Vendedor.resx">
       <DependentUpon>frmListCliente_Vendedor.cs</DependentUpon>
