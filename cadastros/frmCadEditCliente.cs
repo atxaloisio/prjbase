@@ -292,8 +292,8 @@ namespace prjbase
         private void cbUF_Validating(object sender, CancelEventArgs e)
         {
             if (!string.IsNullOrEmpty(((ComboBox)sender).Text))
-            {
-                e.Cancel = ((ComboBox)sender).FindStringExact(((ComboBox)sender).Text) < 0;
+            {               
+                e.Cancel = ((ComboBox)sender).FindString(((ComboBox)sender).Text) < 0;
                 if (e.Cancel)
                 {
                     MessageBox.Show("Valor digitado não encontrado na lista", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -347,62 +347,63 @@ namespace prjbase
             string strCPF, strCNPJ = string.Empty;
             bool exibeMsg = false;
 
-            bool layoutLaboratorio = Convert.ToBoolean(Parametro.GetParametro("layoutLaboratorio"));
+            //bool layoutLaboratorio = Convert.ToBoolean(Parametro.GetParametro("layoutLaboratorio"));
 
-            if (layoutLaboratorio)
+            //if (layoutLaboratorio)
+            //{
+
+
+            //}
+            if (!string.IsNullOrEmpty(txtCNPJCPF.Text))
             {
+                txtCNPJCPF.Text = txtCNPJCPF.Text.Trim().Replace(".", "").Replace("-", "").Replace("/", "");
 
-                if (!string.IsNullOrEmpty(txtCNPJCPF.Text))
+                if (txtCNPJCPF.Text.Where(c => char.IsNumber(c)).Count() == 11)
                 {
-                    txtCNPJCPF.Text = txtCNPJCPF.Text.Trim().Replace(".", "").Replace("-", "").Replace("/", "");
-
-                    if (txtCNPJCPF.Text.Where(c => char.IsNumber(c)).Count() == 11)
-                    {
-                        strCPF = Convert.ToInt64(txtCNPJCPF.Text).ToString(@"000\.000\.000\-00");
-                        if (!ValidaCPF.IsCpf(strCPF))
-                        {
-                            exibeMsg = true;
-                        }
-                        else
-                        {
-                            txtCNPJCPF.Text = strCPF;
-                        }
-                    }
-                    else if (txtCNPJCPF.Text.Where(c => char.IsNumber(c)).Count() == 15)
-                    {
-                        strCNPJ = Convert.ToInt64(txtCNPJCPF.Text).ToString(@"00\.000\.000\/0000\-00");
-                        if (!ValidaCNPJ.IsCnpj(strCNPJ))
-                        {
-                            exibeMsg = true;
-                        }
-                        else
-                        {
-                            txtCNPJCPF.Text = strCNPJ;
-                        }
-                    }
-                    else
+                    strCPF = Convert.ToInt64(txtCNPJCPF.Text).ToString(@"000\.000\.000\-00");
+                    if (!ValidaCPF.IsCpf(strCPF))
                     {
                         exibeMsg = true;
                     }
-
-                    if (exibeMsg)
+                    else
                     {
-                        epValidaDados.SetError(txtCNPJCPF, "CNPJ / CPF inválido.");
-                        MessageBox.Show("CNPJ / CPF inválido.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        e.Cancel = true;
+                        txtCNPJCPF.Text = strCPF;
+                    }
+                }
+                else if (txtCNPJCPF.Text.Where(c => char.IsNumber(c)).Count() == 15)
+                {
+                    strCNPJ = Convert.ToInt64(txtCNPJCPF.Text).ToString(@"00\.000\.000\/0000\-00");
+                    if (!ValidaCNPJ.IsCnpj(strCNPJ))
+                    {
+                        exibeMsg = true;
                     }
                     else
                     {
-                        ClienteBLL = new ClienteBLL();
-                        List<Cliente> cliList = ClienteBLL.getCliente(p => p.cnpj_cpf.Contains(txtCNPJCPF.Text));
-                        if (cliList.Count() > 0)
+                        txtCNPJCPF.Text = strCNPJ;
+                    }
+                }
+                else
+                {
+                    exibeMsg = true;
+                }
+
+                if (exibeMsg)
+                {
+                    epValidaDados.SetError(txtCNPJCPF, "CNPJ / CPF inválido.");
+                    MessageBox.Show("CNPJ / CPF inválido.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    e.Cancel = true;
+                }
+                else
+                {
+                    ClienteBLL = new ClienteBLL();
+                    List<Cliente> cliList = ClienteBLL.getCliente(p => p.cnpj_cpf.Contains(txtCNPJCPF.Text));
+                    if (cliList.Count() > 0)
+                    {
+                        if (cliList.FirstOrDefault().Id != Id)
                         {
-                            if (cliList.FirstOrDefault().Id != Id)
-                            {
-                                epValidaDados.SetError(txtCNPJCPF, "CNPJ / CPF Já está cadastrado.");
-                                MessageBox.Show("CNPJ / CPF Já está cadastrado.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                e.Cancel = true;
-                            }
+                            epValidaDados.SetError(txtCNPJCPF, "CNPJ / CPF Já está cadastrado.");
+                            MessageBox.Show("CNPJ / CPF Já está cadastrado.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            e.Cancel = true;
                         }
                     }
                 }
@@ -544,7 +545,15 @@ namespace prjbase
         
         private void txt_Enter(object sender, EventArgs e)
         {
-            ((MaskedTextBox)sender).Select(0, 0);
+            if (sender is MaskedTextBox)
+            {
+                ((MaskedTextBox)sender).Select(0, 0);
+            }
+            else if (sender is TextBox)
+            {
+                ((TextBox)sender).Select(0, 0);
+            }
+            
         }
 
         private void btnCapturaCamera_Click(object sender, EventArgs e)

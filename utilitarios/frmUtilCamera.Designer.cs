@@ -76,6 +76,7 @@
             this.ClientSize = new System.Drawing.Size(284, 293);
             this.Controls.Add(this.imgCamera);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmUtilCamera";
             this.Text = "Camera";
             ((System.ComponentModel.ISupportInitialize)(this.imgCamera)).EndInit();

@@ -257,6 +257,7 @@
             this.txtDDD.Size = new System.Drawing.Size(26, 23);
             this.txtDDD.TabIndex = 3;
             this.epValidaDados.SetTipoValidacao(this.txtDDD, libComponente.TipoValidacao.Vazio);
+            this.txtDDD.Enter += new System.EventHandler(this.txt_Enter);
             // 
             // label4
             // 
@@ -499,7 +500,7 @@
             this.tpTelefoneEmail.Location = new System.Drawing.Point(4, 25);
             this.tpTelefoneEmail.Name = "tpTelefoneEmail";
             this.tpTelefoneEmail.Padding = new System.Windows.Forms.Padding(3);
-            this.tpTelefoneEmail.Size = new System.Drawing.Size(485, 180);
+            this.tpTelefoneEmail.Size = new System.Drawing.Size(786, 180);
             this.tpTelefoneEmail.TabIndex = 1;
             this.tpTelefoneEmail.Text = "Telefones e E-mail";
             this.tpTelefoneEmail.UseVisualStyleBackColor = true;
@@ -545,6 +546,7 @@
             this.txtDDDFax.Size = new System.Drawing.Size(26, 23);
             this.txtDDDFax.TabIndex = 0;
             this.epValidaDados.SetTipoValidacao(this.txtDDDFax, libComponente.TipoValidacao.Vazio);
+            this.txtDDDFax.Enter += new System.EventHandler(this.txt_Enter);
             // 
             // txtFax
             // 
@@ -599,6 +601,7 @@
             this.txtDDD2.Size = new System.Drawing.Size(26, 23);
             this.txtDDD2.TabIndex = 0;
             this.epValidaDados.SetTipoValidacao(this.txtDDD2, libComponente.TipoValidacao.Vazio);
+            this.txtDDD2.Enter += new System.EventHandler(this.txt_Enter);
             // 
             // txtTelefone2
             // 
@@ -668,7 +671,7 @@
             this.tpInscrCnae.Location = new System.Drawing.Point(4, 25);
             this.tpInscrCnae.Name = "tpInscrCnae";
             this.tpInscrCnae.Padding = new System.Windows.Forms.Padding(3);
-            this.tpInscrCnae.Size = new System.Drawing.Size(485, 180);
+            this.tpInscrCnae.Size = new System.Drawing.Size(786, 180);
             this.tpInscrCnae.TabIndex = 2;
             this.tpInscrCnae.Text = "Inscrições, CNAE e Outros";
             this.tpInscrCnae.UseVisualStyleBackColor = true;

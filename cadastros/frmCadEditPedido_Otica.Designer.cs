@@ -33,6 +33,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtIdPedInfoadic = new System.Windows.Forms.TextBox();
+            this.lblLaboratorio = new System.Windows.Forms.Label();
+            this.txtLaboratorio = new System.Windows.Forms.TextBox();
             this.txtCRM = new System.Windows.Forms.TextBox();
             this.lblCRM = new System.Windows.Forms.Label();
             this.lblNomeMedico = new System.Windows.Forms.Label();
@@ -64,6 +67,7 @@
             this.txtClienteNome = new System.Windows.Forms.TextBox();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.txtDtFechamento = new System.Windows.Forms.MaskedTextBox();
+            this.imgFotoCliente = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox20 = new System.Windows.Forms.GroupBox();
             this.txtIdPedLente = new System.Windows.Forms.TextBox();
@@ -152,13 +156,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnRemoveItem = new System.Windows.Forms.Button();
             this.btnAddItem = new System.Windows.Forms.Button();
-            this.lblLaboratorio = new System.Windows.Forms.Label();
-            this.txtLaboratorio = new System.Windows.Forms.TextBox();
-            this.txtIdPedInfoadic = new System.Windows.Forms.TextBox();
             this.pnlBotoes.SuspendLayout();
             this.pnlPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgFotoCliente)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox20.SuspendLayout();
             this.groupBox17.SuspendLayout();
@@ -230,6 +232,7 @@
             this.groupBox1.Controls.Add(this.txtClienteNome);
             this.groupBox1.Controls.Add(this.txtCodigo);
             this.groupBox1.Controls.Add(this.txtDtFechamento);
+            this.groupBox1.Controls.Add(this.imgFotoCliente);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
@@ -238,15 +241,49 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados Pedido";
             // 
+            // txtIdPedInfoadic
+            // 
+            this.txtIdPedInfoadic.Enabled = false;
+            this.epValidaDados.SetFraseErro(this.txtIdPedInfoadic, "");
+            this.txtIdPedInfoadic.Location = new System.Drawing.Point(566, 19);
+            this.txtIdPedInfoadic.Name = "txtIdPedInfoadic";
+            this.epValidaDados.SetObrigatorio(this.txtIdPedInfoadic, false);
+            this.txtIdPedInfoadic.ReadOnly = true;
+            this.txtIdPedInfoadic.Size = new System.Drawing.Size(71, 23);
+            this.txtIdPedInfoadic.TabIndex = 63;
+            this.txtIdPedInfoadic.TabStop = false;
+            this.txtIdPedInfoadic.Visible = false;
+            // 
+            // lblLaboratorio
+            // 
+            this.lblLaboratorio.AutoSize = true;
+            this.lblLaboratorio.Location = new System.Drawing.Point(455, 114);
+            this.lblLaboratorio.Name = "lblLaboratorio";
+            this.lblLaboratorio.Size = new System.Drawing.Size(84, 16);
+            this.lblLaboratorio.TabIndex = 62;
+            this.lblLaboratorio.Text = "Laboratório";
+            this.lblLaboratorio.Visible = false;
+            // 
+            // txtLaboratorio
+            // 
+            this.txtLaboratorio.Enabled = false;
+            this.epValidaDados.SetFraseErro(this.txtLaboratorio, "Numero do pedido no Cliente obrigatório.");
+            this.txtLaboratorio.Location = new System.Drawing.Point(539, 111);
+            this.txtLaboratorio.Name = "txtLaboratorio";
+            this.epValidaDados.SetObrigatorio(this.txtLaboratorio, false);
+            this.txtLaboratorio.Size = new System.Drawing.Size(270, 23);
+            this.txtLaboratorio.TabIndex = 61;
+            this.txtLaboratorio.Visible = false;
+            // 
             // txtCRM
             // 
             this.txtCRM.Enabled = false;
             this.epValidaDados.SetFraseErro(this.txtCRM, "Numero do pedido no Cliente obrigatório.");
             this.txtCRM.Location = new System.Drawing.Point(746, 78);
-            this.txtCRM.MaxLength = 6;
+            this.txtCRM.MaxLength = 8;
             this.txtCRM.Name = "txtCRM";
             this.epValidaDados.SetObrigatorio(this.txtCRM, false);
-            this.txtCRM.Size = new System.Drawing.Size(64, 23);
+            this.txtCRM.Size = new System.Drawing.Size(92, 23);
             this.txtCRM.TabIndex = 60;
             this.txtCRM.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtCRM.Visible = false;
@@ -600,6 +637,17 @@
             this.txtDtFechamento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
             this.txtDtFechamento.Validating += new System.ComponentModel.CancelEventHandler(this.Ctrls_Validating);
             this.txtDtFechamento.Validated += new System.EventHandler(this.Ctrls_Validated);
+            // 
+            // imgFotoCliente
+            // 
+            this.imgFotoCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.imgFotoCliente.Location = new System.Drawing.Point(854, 20);
+            this.imgFotoCliente.Name = "imgFotoCliente";
+            this.imgFotoCliente.Size = new System.Drawing.Size(114, 114);
+            this.imgFotoCliente.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgFotoCliente.TabIndex = 64;
+            this.imgFotoCliente.TabStop = false;
+            this.imgFotoCliente.Visible = false;
             // 
             // groupBox2
             // 
@@ -1599,40 +1647,6 @@
             this.btnAddItem.UseVisualStyleBackColor = false;
             this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
             // 
-            // lblLaboratorio
-            // 
-            this.lblLaboratorio.AutoSize = true;
-            this.lblLaboratorio.Location = new System.Drawing.Point(455, 114);
-            this.lblLaboratorio.Name = "lblLaboratorio";
-            this.lblLaboratorio.Size = new System.Drawing.Size(84, 16);
-            this.lblLaboratorio.TabIndex = 62;
-            this.lblLaboratorio.Text = "Laboratório";
-            this.lblLaboratorio.Visible = false;
-            // 
-            // txtLaboratorio
-            // 
-            this.txtLaboratorio.Enabled = false;
-            this.epValidaDados.SetFraseErro(this.txtLaboratorio, "Numero do pedido no Cliente obrigatório.");
-            this.txtLaboratorio.Location = new System.Drawing.Point(539, 111);
-            this.txtLaboratorio.Name = "txtLaboratorio";
-            this.epValidaDados.SetObrigatorio(this.txtLaboratorio, false);
-            this.txtLaboratorio.Size = new System.Drawing.Size(270, 23);
-            this.txtLaboratorio.TabIndex = 61;
-            this.txtLaboratorio.Visible = false;
-            // 
-            // txtIdPedInfoadic
-            // 
-            this.txtIdPedInfoadic.Enabled = false;
-            this.epValidaDados.SetFraseErro(this.txtIdPedInfoadic, "");
-            this.txtIdPedInfoadic.Location = new System.Drawing.Point(566, 19);
-            this.txtIdPedInfoadic.Name = "txtIdPedInfoadic";
-            this.epValidaDados.SetObrigatorio(this.txtIdPedInfoadic, false);
-            this.txtIdPedInfoadic.ReadOnly = true;
-            this.txtIdPedInfoadic.Size = new System.Drawing.Size(71, 23);
-            this.txtIdPedInfoadic.TabIndex = 63;
-            this.txtIdPedInfoadic.TabStop = false;
-            this.txtIdPedInfoadic.Visible = false;
-            // 
             // frmCadEditPedido_Otica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1647,6 +1661,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgFotoCliente)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox20.ResumeLayout(false);
@@ -1813,5 +1828,6 @@
         private System.Windows.Forms.Label lblLaboratorio;
         private System.Windows.Forms.TextBox txtLaboratorio;
         private System.Windows.Forms.TextBox txtIdPedInfoadic;
+        private System.Windows.Forms.PictureBox imgFotoCliente;
     }
 }

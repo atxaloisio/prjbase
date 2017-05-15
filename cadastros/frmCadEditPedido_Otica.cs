@@ -99,6 +99,8 @@ namespace prjbase
                 txtLaboratorio.Visible = false;
                 txtLaboratorio.TabIndex = 61;
                 txtLaboratorio.TabStop = false;
+                imgFotoCliente.Visible = false;
+                imgFotoCliente.SendToBack();
             }
             #endregion
 
@@ -252,6 +254,10 @@ namespace prjbase
                             txtCRM.Text = infoadic.crm_medico.ToString();
                             txtLaboratorio.Text = infoadic.laboratorio;
                         }
+
+                        imgFotoCliente.Image = ImagemFromDB.GetImagem(pedido_otica.cliente.Id, "cliente_imagem", "id_cliente");
+                        imgFotoCliente.Visible = true;
+                        imgFotoCliente.BringToFront();
                     }
                                        
                     
@@ -1072,6 +1078,12 @@ namespace prjbase
                         }
                         else
                         {
+                            imgFotoCliente.Image = ImagemFromDB.GetImagem(cliente.Id, "cliente_imagem", "id_cliente");
+                            if (imgFotoCliente.Image != null)
+                            {
+                                imgFotoCliente.Visible = true;
+                                imgFotoCliente.BringToFront();
+                            }
                             txtDtPrevEntrega.Focus();
                         }
                         
@@ -1148,7 +1160,20 @@ namespace prjbase
                 }
 
 
-                txtDtFechamento.Focus();
+                if (txtDtFechamento.Visible)
+                {
+                    txtDtFechamento.Focus();
+                }
+                else
+                {
+                    imgFotoCliente.Image = ImagemFromDB.GetImagem(cliente.Id, "cliente_imagem", "id_cliente");
+                    if (imgFotoCliente.Image != null)
+                    {
+                        imgFotoCliente.Visible = true;
+                        imgFotoCliente.BringToFront();
+                    }
+                    txtDtPrevEntrega.Focus();
+                }
             }
 
 
@@ -2118,6 +2143,18 @@ namespace prjbase
         private void dgvItemPedido_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
         {
             
+            
+        }
+
+        protected override void Limpar(Control control)
+        {
+            base.Limpar(control);
+
+            imgFotoCliente.Visible = false;
+            imgFotoCliente.Image = null;
+            imgFotoCliente.SendToBack();
+
+            txtCodCliIntegracao.Focus();
             
         }
     }
