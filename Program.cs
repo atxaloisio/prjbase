@@ -27,12 +27,12 @@ namespace prjbase
             Application.DoEvents();
            
             splash.setMensagem("Carregando configurações.");
-            splash.setprogresso(30);
+            splash.setprogresso(100);
             Thread.Sleep(500);
             Application.DoEvents();
             
-            splash.setMensagem("Sincronizando informações com a nuvem.");
-            Application.DoEvents();
+            //splash.setMensagem("Sincronizando informações com a nuvem.");
+            //Application.DoEvents();
 
             /*Ao incluir um novo webservice no projeto SYNC copiar o conteundo de <system.serviceModel> </system.serviceModel> 
              * para o app.config da aplicação principal.
@@ -181,17 +181,17 @@ namespace prjbase
 
 
 
-            splash.setprogresso(60);
-            Thread.Sleep(100);
-            Application.DoEvents();
+            //splash.setprogresso(60);
+            //Thread.Sleep(100);
+            //Application.DoEvents();
 
-            splash.setMensagem("Sincronizado.");            
-            splash.setprogresso(100);
-            Thread.Sleep(100);
-            Application.DoEvents();
+            //splash.setMensagem("Sincronizado.");            
+            //splash.setprogresso(100);
+            //Thread.Sleep(100);
+            //Application.DoEvents();
 
-            Thread.Sleep(50);
-            Application.DoEvents();
+            //Thread.Sleep(50);
+            //Application.DoEvents();
 
             splash.Dispose();
 

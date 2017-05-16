@@ -105,7 +105,7 @@ namespace prjbase
             base.carregaConsulta();
             Tipo_ArmacaoBLL = new Tipo_ArmacaoBLL();                        
             List<Tipo_Armacao> lstTipo_Armacao = Tipo_ArmacaoBLL.getTipo_Armacao(p => p.Id.ToString(), false, deslocamento, tamanhoPagina, out totalReg);
-            dgvDados.DataSource = lstTipo_Armacao;
+            dgvDados.DataSource = Tipo_ArmacaoBLL.ToList_Tipo_ArmacaoView(lstTipo_Armacao);
             colOrdem = 0;
         }
 
@@ -160,14 +160,14 @@ namespace prjbase
                 case COL_DESCRICAO:
                     {
                         List<Tipo_Armacao> Tipo_ArmacaoList = Tipo_ArmacaoBLL.getTipo_Armacao(p => p.descricao, direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
-                        dgvDados.DataSource = Tipo_ArmacaoList;
+                        dgvDados.DataSource = Tipo_ArmacaoBLL.ToList_Tipo_ArmacaoView(Tipo_ArmacaoList);
                     }
                     break;                
                 //O default será executado quando o index for 0
                 default:
                     {
                         List<Tipo_Armacao> Tipo_ArmacaoList = Tipo_ArmacaoBLL.getTipo_Armacao(p => p.Id.ToString(), direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
-                        dgvDados.DataSource = Tipo_ArmacaoList;
+                        dgvDados.DataSource = Tipo_ArmacaoBLL.ToList_Tipo_ArmacaoView(Tipo_ArmacaoList);
                     }
                     break;
             }
@@ -243,7 +243,7 @@ namespace prjbase
             }
 
             List<Tipo_Armacao> Tipo_ArmacaoList = Tipo_ArmacaoBLL.getTipo_Armacao(predicate.Expand(), t => t.Id.ToString(), false, deslocamento, tamanhoPagina, out totalReg);
-            dgvDados.DataSource = Tipo_ArmacaoList;
+            dgvDados.DataSource = Tipo_ArmacaoBLL.ToList_Tipo_ArmacaoView(Tipo_ArmacaoList);
 
         }
 

@@ -33,6 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblOS = new System.Windows.Forms.Label();
+            this.txtOS = new System.Windows.Forms.TextBox();
             this.txtIdPedInfoadic = new System.Windows.Forms.TextBox();
             this.lblLaboratorio = new System.Windows.Forms.Label();
             this.txtLaboratorio = new System.Windows.Forms.TextBox();
@@ -198,6 +200,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblOS);
+            this.groupBox1.Controls.Add(this.txtOS);
             this.groupBox1.Controls.Add(this.txtIdPedInfoadic);
             this.groupBox1.Controls.Add(this.lblLaboratorio);
             this.groupBox1.Controls.Add(this.txtLaboratorio);
@@ -241,6 +245,26 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados Pedido";
             // 
+            // lblOS
+            // 
+            this.lblOS.AutoSize = true;
+            this.lblOS.Location = new System.Drawing.Point(770, 116);
+            this.lblOS.Name = "lblOS";
+            this.lblOS.Size = new System.Drawing.Size(29, 16);
+            this.lblOS.TabIndex = 66;
+            this.lblOS.Text = "OS.";
+            this.lblOS.Visible = false;
+            // 
+            // txtOS
+            // 
+            this.epValidaDados.SetFraseErro(this.txtOS, "Numero do pedido no Cliente obrigatório.");
+            this.txtOS.Location = new System.Drawing.Point(800, 111);
+            this.txtOS.Name = "txtOS";
+            this.epValidaDados.SetObrigatorio(this.txtOS, false);
+            this.txtOS.Size = new System.Drawing.Size(67, 23);
+            this.txtOS.TabIndex = 65;
+            this.txtOS.Visible = false;
+            // 
             // txtIdPedInfoadic
             // 
             this.txtIdPedInfoadic.Enabled = false;
@@ -271,7 +295,7 @@
             this.txtLaboratorio.Location = new System.Drawing.Point(539, 111);
             this.txtLaboratorio.Name = "txtLaboratorio";
             this.epValidaDados.SetObrigatorio(this.txtLaboratorio, false);
-            this.txtLaboratorio.Size = new System.Drawing.Size(270, 23);
+            this.txtLaboratorio.Size = new System.Drawing.Size(223, 23);
             this.txtLaboratorio.TabIndex = 61;
             this.txtLaboratorio.Visible = false;
             // 
@@ -449,6 +473,7 @@
             this.txtHrPrevEntrega.TabIndex = 7;
             this.epValidaDados.SetTipoValidacao(this.txtHrPrevEntrega, libComponente.TipoValidacao.Vazio);
             this.txtHrPrevEntrega.ValidatingType = typeof(System.DateTime);
+            this.txtHrPrevEntrega.Enter += new System.EventHandler(this.txt_Enter);
             this.txtHrPrevEntrega.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
             // 
             // txtDtPrevEntrega
@@ -463,6 +488,7 @@
             this.txtDtPrevEntrega.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.epValidaDados.SetTipoValidacao(this.txtDtPrevEntrega, libComponente.TipoValidacao.Vazio);
             this.txtDtPrevEntrega.ValidatingType = typeof(System.DateTime);
+            this.txtDtPrevEntrega.Enter += new System.EventHandler(this.txt_Enter);
             this.txtDtPrevEntrega.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
             this.txtDtPrevEntrega.Validating += new System.ComponentModel.CancelEventHandler(this.Ctrls_Validating);
             this.txtDtPrevEntrega.Validated += new System.EventHandler(this.Ctrls_Validated);
@@ -634,6 +660,7 @@
             this.txtDtFechamento.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.epValidaDados.SetTipoValidacao(this.txtDtFechamento, libComponente.TipoValidacao.Vazio);
             this.txtDtFechamento.ValidatingType = typeof(System.DateTime);
+            this.txtDtFechamento.Enter += new System.EventHandler(this.txt_Enter);
             this.txtDtFechamento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
             this.txtDtFechamento.Validating += new System.ComponentModel.CancelEventHandler(this.Ctrls_Validating);
             this.txtDtFechamento.Validated += new System.EventHandler(this.Ctrls_Validated);
@@ -641,7 +668,7 @@
             // imgFotoCliente
             // 
             this.imgFotoCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.imgFotoCliente.Location = new System.Drawing.Point(854, 20);
+            this.imgFotoCliente.Location = new System.Drawing.Point(882, 20);
             this.imgFotoCliente.Name = "imgFotoCliente";
             this.imgFotoCliente.Size = new System.Drawing.Size(114, 114);
             this.imgFotoCliente.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -862,7 +889,7 @@
             // 
             // cbTipoArmacao
             // 
-            this.cbTipoArmacao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTipoArmacao.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cbTipoArmacao.FormattingEnabled = true;
             this.epValidaDados.SetFraseErro(this.cbTipoArmacao, "");
             this.epValidaDados.SetIndiceCombo(this.cbTipoArmacao, -1);
@@ -871,6 +898,8 @@
             this.epValidaDados.SetObrigatorio(this.cbTipoArmacao, false);
             this.cbTipoArmacao.Size = new System.Drawing.Size(170, 24);
             this.cbTipoArmacao.TabIndex = 0;
+            this.cbTipoArmacao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown);
+            this.cbTipoArmacao.Validating += new System.ComponentModel.CancelEventHandler(this.cb_Validating);
             // 
             // groupBox17
             // 
@@ -1464,7 +1493,7 @@
             // 
             // cbTipoLente
             // 
-            this.cbTipoLente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTipoLente.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cbTipoLente.FormattingEnabled = true;
             this.epValidaDados.SetFraseErro(this.cbTipoLente, "");
             this.epValidaDados.SetIndiceCombo(this.cbTipoLente, -1);
@@ -1473,6 +1502,8 @@
             this.epValidaDados.SetObrigatorio(this.cbTipoLente, false);
             this.cbTipoLente.Size = new System.Drawing.Size(252, 24);
             this.cbTipoLente.TabIndex = 2;
+            this.cbTipoLente.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown);
+            this.cbTipoLente.Validating += new System.ComponentModel.CancelEventHandler(this.cb_Validating);
             // 
             // groupBox3
             // 
@@ -1829,5 +1860,7 @@
         private System.Windows.Forms.TextBox txtLaboratorio;
         private System.Windows.Forms.TextBox txtIdPedInfoadic;
         private System.Windows.Forms.PictureBox imgFotoCliente;
+        private System.Windows.Forms.Label lblOS;
+        private System.Windows.Forms.TextBox txtOS;
     }
 }

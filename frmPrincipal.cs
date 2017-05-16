@@ -511,5 +511,80 @@ namespace prjbase
                 frm.WindowState = FormWindowState.Maximized;
             }
         }
+
+        private void mnuCadTipoArmacao_Click(object sender, EventArgs e)
+        {
+            Boolean instanciar = true;
+
+            foreach (var mdiChildForm in MdiChildren)
+            {
+                if (mdiChildForm is frmListTipo_Armacao)
+                {
+                    instanciar = false;
+                    //mdiChildForm.Show();
+                    mdiChildForm.WindowState = FormWindowState.Maximized;
+                    mdiChildForm.BringToFront();
+                }
+            }
+
+            if (instanciar)
+            {
+                var frm = new frmListTipo_Armacao();
+                frm.ConfigurarForm(this);
+                frm.Tag = ((ToolStripMenuItem)sender).Tag;
+                frm.Show();
+                frm.WindowState = FormWindowState.Maximized;
+            }
+        }
+
+        private void mnuCadTipoLente_Click(object sender, EventArgs e)
+        {
+            Boolean instanciar = true;
+
+            foreach (var mdiChildForm in MdiChildren)
+            {
+                if (mdiChildForm is frmListTipo_Lente)
+                {
+                    instanciar = false;
+                    //mdiChildForm.Show();
+                    mdiChildForm.WindowState = FormWindowState.Maximized;
+                    mdiChildForm.BringToFront();
+                }
+            }
+
+            if (instanciar)
+            {
+                var frm = new frmListTipo_Lente();
+                frm.ConfigurarForm(this);
+                frm.Tag = ((ToolStripMenuItem)sender).Tag;
+                frm.Show();
+                frm.WindowState = FormWindowState.Maximized;
+            }
+        }
+
+        private void mnuRelPedidoVendas_Click(object sender, EventArgs e)
+        {
+            Boolean instanciar = true;
+
+            foreach (var mdiChildForm in MdiChildren)
+            {
+                if (mdiChildForm is frmRelFiltroPedido_Otica)
+                {
+                    instanciar = false;
+                    //mdiChildForm.Show();
+                    mdiChildForm.WindowState = FormWindowState.Maximized;
+                    mdiChildForm.BringToFront();
+                }
+            }
+
+            if (instanciar)
+            {
+                var frm = new frmRelFiltroPedido_Otica();
+                frm.ConfigurarForm(this);
+                frm.Tag = ((ToolStripMenuItem)sender).Tag;
+                frm.Show();
+                frm.WindowState = FormWindowState.Maximized;
+            }
+        }
     }
 }

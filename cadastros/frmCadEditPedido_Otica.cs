@@ -79,6 +79,14 @@ namespace prjbase
                 txtLaboratorio.TabIndex = 12;
                 txtLaboratorio.TabStop = true;
 
+                lblOS.Enabled = true;
+                lblOS.Visible = true;
+
+                txtOS.Enabled = true;
+                txtOS.Visible = true;
+                txtOS.TabIndex = 13;
+                txtOS.TabStop = true;
+
             }
             else
             {
@@ -99,6 +107,16 @@ namespace prjbase
                 txtLaboratorio.Visible = false;
                 txtLaboratorio.TabIndex = 61;
                 txtLaboratorio.TabStop = false;
+
+                lblOS.Enabled = false;
+                lblOS.Visible = false;
+
+                txtOS.Enabled = false;
+                txtOS.Visible = false;
+                txtOS.TabStop = false;
+
+
+
                 imgFotoCliente.Visible = false;
                 imgFotoCliente.SendToBack();
             }
@@ -253,6 +271,7 @@ namespace prjbase
                             txtNomeMedico.Text = infoadic.nome_medico;
                             txtCRM.Text = infoadic.crm_medico.ToString();
                             txtLaboratorio.Text = infoadic.laboratorio;
+                            txtOS.Text = infoadic.ordem_servico;
                         }
 
                         imgFotoCliente.Image = ImagemFromDB.GetImagem(pedido_otica.cliente.Id, "cliente_imagem", "id_cliente");
@@ -493,6 +512,7 @@ namespace prjbase
                     infoadic.crm_medico = Convert.ToInt32(txtCRM.Text);
                 }
                 infoadic.laboratorio = txtLaboratorio.Text;
+                infoadic.ordem_servico = txtOS.Text;
 
                 pedido_Otica.pedido_otica_infoadic.Add(infoadic);
             }
@@ -806,10 +826,19 @@ namespace prjbase
 
         private void SetupTipoLente()
         {
-            TipoLente tp = new TipoLente();
+            Tipo_LenteBLL Tipo_LenteBLL = new Tipo_LenteBLL();
 
-            cbTipoLente.DataSource = Enumerados.getListEnum(tp);
-            cbTipoLente.ValueMember = "chave";
+            List<Tipo_Lente> Tipo_LenteList = Tipo_LenteBLL.getTipo_Lente();
+
+            AutoCompleteStringCollection acc = new AutoCompleteStringCollection();
+
+            foreach (Tipo_Lente item in Tipo_LenteList)
+            {
+                acc.Add(item.descricao);
+            }
+
+            cbTipoLente.DataSource = Tipo_LenteList;
+            cbTipoLente.ValueMember = "Id";
             cbTipoLente.DisplayMember = "descricao";
             cbTipoLente.SelectedIndex = -1;
         }
@@ -826,12 +855,22 @@ namespace prjbase
 
         private void SetupTipoArmacao()
         {
-            TipoArmacao tp = new TipoArmacao();
+            Tipo_ArmacaoBLL Tipo_ArmacaoBLL = new Tipo_ArmacaoBLL();
 
-            cbTipoArmacao.DataSource = Enumerados.getListEnum(tp);
-            cbTipoArmacao.ValueMember = "chave";
+            List<Tipo_Armacao> Tipo_ArmacaoList = Tipo_ArmacaoBLL.getTipo_Armacao();
+
+            AutoCompleteStringCollection acc = new AutoCompleteStringCollection();
+
+            foreach (Tipo_Armacao item in Tipo_ArmacaoList)
+            {
+                acc.Add(item.descricao);
+            }
+
+            cbTipoArmacao.DataSource = Tipo_ArmacaoList;
+            cbTipoArmacao.ValueMember = "Id";
             cbTipoArmacao.DisplayMember = "descricao";
             cbTipoArmacao.SelectedIndex = -1;
+
         }
 
         private void SetupMotivoEntrega()
@@ -1923,7 +1962,7 @@ namespace prjbase
             e.Cancel = false;
             if (!string.IsNullOrEmpty(((ComboBox)sender).Text))
             {
-                e.Cancel = ((ComboBox)sender).FindStringExact(((ComboBox)sender).Text) < 0;
+                e.Cancel = ((ComboBox)sender).FindString(((ComboBox)sender).Text) < 0;
                 if (e.Cancel)
                 {
                     MessageBox.Show("Valor digitado não encontrado na lista", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -2140,10 +2179,17 @@ namespace prjbase
             }
         }
 
-        private void dgvItemPedido_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
+        private void txt_Enter(object sender, EventArgs e)
         {
-            
-            
+            if (sender is MaskedTextBox)
+            {
+                ((MaskedTextBox)sender).Select(0, 0);
+            }
+            else if (sender is TextBox)
+            {
+                ((TextBox)sender).Select(0, 0);
+            }
+
         }
 
         protected override void Limpar(Control control)
@@ -2156,6 +2202,6 @@ namespace prjbase
 
             txtCodCliIntegracao.Focus();
             
-        }
+        }        
     }
 }

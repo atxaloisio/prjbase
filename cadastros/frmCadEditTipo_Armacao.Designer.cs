@@ -42,7 +42,7 @@
             // 
             this.btnSalvar.TabIndex = 0;
             // 
-            // btnCancelar
+            // btnFechar
             // 
             this.btnFechar.TabIndex = 1;
             // 
@@ -61,31 +61,31 @@
             this.pnlPrincipal.Controls.Add(this.label2);
             this.pnlPrincipal.Controls.Add(this.txtId);
             this.pnlPrincipal.Controls.Add(this.label1);
-            this.pnlPrincipal.Size = new System.Drawing.Size(176, 114);
+            this.pnlPrincipal.Size = new System.Drawing.Size(457, 114);
             // 
             // txtNumero
             // 
             this.epValidaDados.SetFraseErro(this.txtNumero, "Nome do Tipo_Armacao obrigatório.");
-            this.txtNumero.Location = new System.Drawing.Point(62, 36);
+            this.txtNumero.Location = new System.Drawing.Point(79, 36);
             this.txtNumero.Name = "txtNumero";
             this.epValidaDados.SetObrigatorio(this.txtNumero, true);
-            this.txtNumero.Size = new System.Drawing.Size(100, 23);
+            this.txtNumero.Size = new System.Drawing.Size(364, 23);
             this.txtNumero.TabIndex = 0;
             this.txtNumero.Validated += new System.EventHandler(this.Ctrls_Validated);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 39);
+            this.label2.Location = new System.Drawing.Point(7, 39);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 16);
+            this.label2.Size = new System.Drawing.Size(71, 16);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Número";
+            this.label2.Text = "Descrição";
             // 
             // txtId
             // 
             this.epValidaDados.SetFraseErro(this.txtId, "");
-            this.txtId.Location = new System.Drawing.Point(62, 9);
+            this.txtId.Location = new System.Drawing.Point(79, 9);
             this.txtId.Name = "txtId";
             this.epValidaDados.SetObrigatorio(this.txtId, false);
             this.txtId.ReadOnly = true;
@@ -97,7 +97,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 12);
+            this.label1.Location = new System.Drawing.Point(7, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 16);
             this.label1.TabIndex = 6;
@@ -107,7 +107,7 @@
             // 
             this.chkInativo.AutoSize = true;
             this.chkInativo.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkInativo.Location = new System.Drawing.Point(3, 60);
+            this.chkInativo.Location = new System.Drawing.Point(6, 65);
             this.chkInativo.Name = "chkInativo";
             this.chkInativo.Size = new System.Drawing.Size(73, 20);
             this.chkInativo.TabIndex = 1;
@@ -117,9 +117,9 @@
             // frmCadEditTipo_Armacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(291, 114);
+            this.ClientSize = new System.Drawing.Size(572, 114);
             this.Name = "frmCadEditTipo_Armacao";
-            this.Text = "Tipo_Armacao";
+            this.Text = "Tipo de Armacao";
             this.pnlBotoes.ResumeLayout(false);
             this.pnlPrincipal.ResumeLayout(false);
             this.pnlPrincipal.PerformLayout();

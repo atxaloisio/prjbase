@@ -105,7 +105,7 @@ namespace prjbase
             base.carregaConsulta();
             Tipo_LenteBLL = new Tipo_LenteBLL();                        
             List<Tipo_Lente> lstTipo_Lente = Tipo_LenteBLL.getTipo_Lente(p => p.Id.ToString(), false, deslocamento, tamanhoPagina, out totalReg);
-            dgvDados.DataSource = lstTipo_Lente;
+            dgvDados.DataSource = Tipo_LenteBLL.ToList_Tipo_LenteView(lstTipo_Lente);
             colOrdem = 0;
         }
 
@@ -160,14 +160,14 @@ namespace prjbase
                 case COL_DESCRICAO:
                     {
                         List<Tipo_Lente> Tipo_LenteList = Tipo_LenteBLL.getTipo_Lente(p => p.descricao, direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
-                        dgvDados.DataSource = Tipo_LenteList;
+                        dgvDados.DataSource = Tipo_LenteBLL.ToList_Tipo_LenteView(Tipo_LenteList);
                     }
                     break;                
                 //O default será executado quando o index for 0
                 default:
                     {
                         List<Tipo_Lente> Tipo_LenteList = Tipo_LenteBLL.getTipo_Lente(p => p.Id.ToString(), direction != ListSortDirection.Ascending, deslocamento, tamanhoPagina, out totalReg);
-                        dgvDados.DataSource = Tipo_LenteList;
+                        dgvDados.DataSource = Tipo_LenteBLL.ToList_Tipo_LenteView(Tipo_LenteList);
                     }
                     break;
             }
@@ -243,7 +243,7 @@ namespace prjbase
             }
 
             List<Tipo_Lente> Tipo_LenteList = Tipo_LenteBLL.getTipo_Lente(predicate.Expand(), t => t.Id.ToString(), false, deslocamento, tamanhoPagina, out totalReg);
-            dgvDados.DataSource = Tipo_LenteList;
+            dgvDados.DataSource = Tipo_LenteBLL.ToList_Tipo_LenteView(Tipo_LenteList);
 
         }
 

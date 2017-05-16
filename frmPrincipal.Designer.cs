@@ -43,6 +43,8 @@
             this.mnuCadRelClienteTransportadora = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCadRelVendedorLocalidade = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCadRelClienteVendedor = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCadTipoArmacao = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCadTipoLente = new System.Windows.Forms.ToolStripMenuItem();
             this.processosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAgrupamentoPedido = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuStatusPedido = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,6 +63,7 @@
             this.mnuJanFecharTodos = new System.Windows.Forms.ToolStripMenuItem();
             this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuRelPedidoVendas = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSistema.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,7 +93,9 @@
             this.mnuProdutos,
             this.mnuVendedores,
             this.mnuCadPedidoVendas,
-            this.produtoToolStripMenuItem});
+            this.produtoToolStripMenuItem,
+            this.mnuCadTipoArmacao,
+            this.mnuCadTipoLente});
             this.arquivoToolStripMenuItem.Name = "arquivoToolStripMenuItem";
             this.arquivoToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.arquivoToolStripMenuItem.Tag = "1000";
@@ -199,6 +204,20 @@
             this.mnuCadRelClienteVendedor.Text = "Cli&ente x Vendedor";
             this.mnuCadRelClienteVendedor.Click += new System.EventHandler(this.mnuCadRelClienteVendedor_Click);
             // 
+            // mnuCadTipoArmacao
+            // 
+            this.mnuCadTipoArmacao.Name = "mnuCadTipoArmacao";
+            this.mnuCadTipoArmacao.Size = new System.Drawing.Size(172, 22);
+            this.mnuCadTipoArmacao.Text = "Tipo de Armação";
+            this.mnuCadTipoArmacao.Click += new System.EventHandler(this.mnuCadTipoArmacao_Click);
+            // 
+            // mnuCadTipoLente
+            // 
+            this.mnuCadTipoLente.Name = "mnuCadTipoLente";
+            this.mnuCadTipoLente.Size = new System.Drawing.Size(172, 22);
+            this.mnuCadTipoLente.Text = "Tipo de Lente";
+            this.mnuCadTipoLente.Click += new System.EventHandler(this.mnuCadTipoLente_Click);
+            // 
             // processosToolStripMenuItem
             // 
             this.processosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -238,7 +257,8 @@
             // relatoriosToolStripMenuItem
             // 
             this.relatoriosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.rotasDeEntregaToolStripMenuItem});
+            this.rotasDeEntregaToolStripMenuItem,
+            this.mnuRelPedidoVendas});
             this.relatoriosToolStripMenuItem.Name = "relatoriosToolStripMenuItem";
             this.relatoriosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.relatoriosToolStripMenuItem.Tag = "3000";
@@ -247,7 +267,7 @@
             // rotasDeEntregaToolStripMenuItem
             // 
             this.rotasDeEntregaToolStripMenuItem.Name = "rotasDeEntregaToolStripMenuItem";
-            this.rotasDeEntregaToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.rotasDeEntregaToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.rotasDeEntregaToolStripMenuItem.Tag = "3001";
             this.rotasDeEntregaToolStripMenuItem.Text = "Rotas de Entrega";
             this.rotasDeEntregaToolStripMenuItem.Click += new System.EventHandler(this.rotasDeEntregaToolStripMenuItem_Click);
@@ -354,6 +374,13 @@
             this.sairToolStripMenuItem.Text = "Sair";
             this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
             // 
+            // mnuRelPedidoVendas
+            // 
+            this.mnuRelPedidoVendas.Name = "mnuRelPedidoVendas";
+            this.mnuRelPedidoVendas.Size = new System.Drawing.Size(167, 22);
+            this.mnuRelPedidoVendas.Text = "Pedido de Vendas";
+            this.mnuRelPedidoVendas.Click += new System.EventHandler(this.mnuRelPedidoVendas_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -409,5 +436,8 @@
         private System.Windows.Forms.ToolStripMenuItem mnuCadRelClienteVendedor;
         private System.Windows.Forms.ToolStripMenuItem mnuCadCaixa;
         private System.Windows.Forms.ToolStripMenuItem mnuParcelasPedido;
+        private System.Windows.Forms.ToolStripMenuItem mnuCadTipoArmacao;
+        private System.Windows.Forms.ToolStripMenuItem mnuCadTipoLente;
+        private System.Windows.Forms.ToolStripMenuItem mnuRelPedidoVendas;
     }
 }
