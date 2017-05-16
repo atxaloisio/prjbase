@@ -140,8 +140,35 @@ namespace prjbase
         public override void ConfigurarForm(Form pFormParent)
         {
             base.ConfigurarForm(pFormParent);
+            SetupControls();
+            
+        }
+
+        private void SetupControls()
+        {
             SetupCaixa(cbCaixaDe);
             SetupCaixa(cbCaixaAte);
+            SetupStatus(cbStatusDe);
+            SetupStatus(cbStatusAte);
+        }
+
+        private void SetupStatus(ComboBox cb)
+        {
+            StatusPedido sp = new StatusPedido();            
+            IList<itemEnumList> lstStatusPedido = Enumerados.getListEnum(sp);
+
+            AutoCompleteStringCollection acc = new AutoCompleteStringCollection();
+
+            foreach (itemEnumList item in lstStatusPedido)
+            {
+                acc.Add(item.descricao);
+            }
+
+            cb.DataSource = lstStatusPedido;
+            cb.ValueMember = "chave";
+            cb.DisplayMember = "descricao";
+
+
         }
 
         private void SetupCaixa(ComboBox cb)
@@ -162,6 +189,27 @@ namespace prjbase
             cb.ValueMember = "Id";
             cb.DisplayMember = "numero";
             cb.SelectedIndex = -1;
+        }
+
+        private void Enter_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SendKeys.Send("{TAB}");
+            }
+        }
+
+        private void cb_Validating(object sender, CancelEventArgs e)
+        {
+            e.Cancel = false;
+            if (!string.IsNullOrEmpty(((ComboBox)sender).Text))
+            {
+                e.Cancel = ((ComboBox)sender).FindString(((ComboBox)sender).Text) < 0;
+                if (e.Cancel)
+                {
+                    MessageBox.Show("Valor digitado não encontrado na lista", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

@@ -16,8 +16,29 @@ namespace prjbase
 {
     public partial class frmRelListPedido_Otica : prjbase.frmReportBase
     {
-        public StatusPedido? statusDe;
-        public StatusPedido? statusAte;
+        public long? pedidoDe { get; set; }
+        public long? pedidoAte { get; set; }
+        public long? clienteDe { get; set; }
+        public long? clienteAte { get; set; }
+        public DateTime? data_emissaoDe { get; set; }
+        public DateTime? data_emissaoAte { get; set; }
+
+        public DateTime? data_fechamentoDe { get; set; }
+        public DateTime? data_fechamentoAte { get; set; }
+
+        public long? vendedorDe { get; set; }
+        public long? vendedorAte { get; set; }
+
+        public long? transportadoraDe { get; set; }
+        public long? transportadoraAte { get; set; }
+
+        public int? caixaDe { get; set; }
+        public int? caixaAte { get; set; }
+
+        public string nrpedclienteDe { get; set; }
+        public string nrpedclienteAte { get; set; }
+        public StatusPedido? statusDe { get; set; }
+        public StatusPedido? statusAte { get; set; }
         public frmRelListPedido_Otica()
         {
             InitializeComponent();            

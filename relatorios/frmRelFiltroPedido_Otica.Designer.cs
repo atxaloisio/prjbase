@@ -84,7 +84,10 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.cbStatus = new System.Windows.Forms.ComboBox();
+            this.cbStatusDe = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.cbStatusAte = new System.Windows.Forms.ComboBox();
             this.pnlDados.SuspendLayout();
             this.pnlBotoes.SuspendLayout();
             this.pnlFiltro.SuspendLayout();
@@ -105,7 +108,7 @@
             // 
             // btnFechar
             // 
-            this.btnFechar.Location = new System.Drawing.Point(4, 882);
+            this.btnFechar.Location = new System.Drawing.Point(4, 967);
             // 
             // pnlBotoes
             // 
@@ -709,23 +712,58 @@
             // 
             // groupBox9
             // 
-            this.groupBox9.Controls.Add(this.cbStatus);
+            this.groupBox9.Controls.Add(this.label18);
+            this.groupBox9.Controls.Add(this.cbStatusAte);
+            this.groupBox9.Controls.Add(this.label17);
+            this.groupBox9.Controls.Add(this.cbStatusDe);
             this.groupBox9.Location = new System.Drawing.Point(7, 371);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(396, 48);
+            this.groupBox9.Size = new System.Drawing.Size(804, 48);
             this.groupBox9.TabIndex = 9;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Status";
             // 
-            // cbStatus
+            // cbStatusDe
             // 
-            this.cbStatus.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbStatus.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cbStatus.FormattingEnabled = true;
-            this.cbStatus.Location = new System.Drawing.Point(6, 18);
-            this.cbStatus.Name = "cbStatus";
-            this.cbStatus.Size = new System.Drawing.Size(211, 24);
-            this.cbStatus.TabIndex = 41;
+            this.cbStatusDe.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbStatusDe.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbStatusDe.FormattingEnabled = true;
+            this.cbStatusDe.Location = new System.Drawing.Point(32, 18);
+            this.cbStatusDe.Name = "cbStatusDe";
+            this.cbStatusDe.Size = new System.Drawing.Size(211, 24);
+            this.cbStatusDe.TabIndex = 41;
+            this.cbStatusDe.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown);
+            this.cbStatusDe.Validating += new System.ComponentModel.CancelEventHandler(this.cb_Validating);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(4, 21);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(25, 16);
+            this.label17.TabIndex = 42;
+            this.label17.Text = "De";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(276, 21);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(32, 16);
+            this.label18.TabIndex = 44;
+            this.label18.Text = "Até";
+            // 
+            // cbStatusAte
+            // 
+            this.cbStatusAte.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbStatusAte.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbStatusAte.FormattingEnabled = true;
+            this.cbStatusAte.Location = new System.Drawing.Point(311, 18);
+            this.cbStatusAte.Name = "cbStatusAte";
+            this.cbStatusAte.Size = new System.Drawing.Size(211, 24);
+            this.cbStatusAte.TabIndex = 43;
+            this.cbStatusAte.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown);
+            this.cbStatusAte.Validating += new System.ComponentModel.CancelEventHandler(this.cb_Validating);
             // 
             // frmRelFiltroPedido_Otica
             // 
@@ -754,6 +792,7 @@
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -815,6 +854,9 @@
         private System.Windows.Forms.TextBox txtNrPedClienteAte;
         private System.Windows.Forms.TextBox txtNrPedClienteDe;
         private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.ComboBox cbStatus;
+        private System.Windows.Forms.ComboBox cbStatusDe;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.ComboBox cbStatusAte;
+        private System.Windows.Forms.Label label17;
     }
 }

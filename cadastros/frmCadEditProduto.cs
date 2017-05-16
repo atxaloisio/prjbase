@@ -88,7 +88,9 @@ namespace prjbase
                     else
                     {
                         Produto.codigo_produto_integracao = Sequence.GetNextVal("sq_produto_sequence").ToString();
-                        ProdutoBLL.AdicionarProduto(Produto);                                                
+                        ProdutoBLL.AdicionarProduto(Produto);
+                        Id = Produto.id;
+                        txtId.Text = Id.ToString();                                        
                     }
 
                     if (IntOmie & updateProdutoOmie)
@@ -105,7 +107,7 @@ namespace prjbase
 
 
 
-                        if (Produto.id != 0)
+                    if (Produto.id != 0)
                     {
                         txtCodInt.Text = Produto.codigo_produto_integracao;
                     }
