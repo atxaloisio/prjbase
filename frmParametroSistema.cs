@@ -371,8 +371,22 @@ namespace prjbase
             {
                 SalvarEmpresa();
             }
-
-            MessageBox.Show(Text + " salvo com sucesso.", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+            {
+                EmpresaBLL empresaBLL = new EmpresaBLL();
+                Empresa empresa = empresaBLL.getEmpresa().FirstOrDefault();
+                if (empresa != null)
+                {
+                    if (empresa.Id > 0)
+                    {
+                        if (imgLogoEmp.Image != null)
+                        {
+                            ImagemFromDB.setImagem(empresa.Id, "empresa_logo", "id_empresa", imgLogoEmp.Image);
+                        }
+                    }
+                }
+            }
+                MessageBox.Show(Text + " salvo com sucesso.", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
 

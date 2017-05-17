@@ -155,10 +155,17 @@ namespace prjbase
 
             if (cbFamiliaProduto.SelectedValue != null)
             {
-                Familia_Produto fp = (Familia_Produto)cbFamiliaProduto.SelectedValue;
-                Produto.id_familia = fp.Id;
-                Produto.codigo_familia = fp.codigo;
-                Produto.descricao_familia = fp.nomeFamilia;
+                Familia_ProdutoBLL familiaBLL = new Familia_ProdutoBLL();
+                long Id_Familia = Convert.ToInt64(cbFamiliaProduto.SelectedValue);
+                List<Familia_Produto> fpList = familiaBLL.getFamilia_Produto(p => p.Id == Id_Familia, true);
+                if (fpList.Count() > 0)
+                {
+                    Familia_Produto fp = fpList.First();
+                    Produto.id_familia = fp.Id;
+                    Produto.codigo_familia = fp.codigo;
+                    Produto.descricao_familia = fp.nomeFamilia;
+                }
+                
             }
 
             Produto.descr_detalhada = txtDescDetProd.Text;
