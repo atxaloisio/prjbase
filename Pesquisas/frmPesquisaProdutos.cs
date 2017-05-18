@@ -47,7 +47,7 @@ namespace prjbase
                 {
                     case "id":
                         {
-                            dgvPesquisa.DataSource = produtoBLL.getProduto(p => p.codigo_produto_integracao == txtFiltro.Text);
+                            dgvPesquisa.DataSource = produtoBLL.getProduto(p => p.codigo_produto_integracao.ToLower() == txtFiltro.Text.ToLower());
                         }
                         break;
                     case "descricao":

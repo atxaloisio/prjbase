@@ -107,7 +107,7 @@ namespace prjbase
                     proxy.usuario = Program.usuario_logado;
 
                     bool intOmie = Convert.ToBoolean(Parametro.GetParametro("intOmie"));
-                    bool updateClienteOmie = Convert.ToBoolean(Parametro.GetParametro("updateClienteOmie"));
+                    bool updateClienteOmie = Convert.ToBoolean(Parametro.GetParametro("updateFornecedorOmie"));
 
                     Cliente Cliente = LoadFromControls();
                     Cliente.sincronizar = "S";

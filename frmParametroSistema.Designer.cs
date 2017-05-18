@@ -57,6 +57,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tpIntegracao = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.chkAtualizaTransportadora = new System.Windows.Forms.CheckBox();
+            this.chkAtualizaFornecedor = new System.Windows.Forms.CheckBox();
             this.chkAtualizaVendedor = new System.Windows.Forms.CheckBox();
             this.chkAtualizaCliente = new System.Windows.Forms.CheckBox();
             this.chkAtualizaProduto = new System.Windows.Forms.CheckBox();
@@ -464,21 +466,47 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.chkAtualizaTransportadora);
+            this.groupBox4.Controls.Add(this.chkAtualizaFornecedor);
             this.groupBox4.Controls.Add(this.chkAtualizaVendedor);
             this.groupBox4.Controls.Add(this.chkAtualizaCliente);
             this.groupBox4.Controls.Add(this.chkAtualizaProduto);
             this.groupBox4.Location = new System.Drawing.Point(7, 85);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(365, 52);
+            this.groupBox4.Size = new System.Drawing.Size(775, 52);
             this.groupBox4.TabIndex = 7;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Atualizar ERP ao incluir";
+            // 
+            // chkAtualizaTransportadora
+            // 
+            this.chkAtualizaTransportadora.AutoSize = true;
+            this.chkAtualizaTransportadora.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkAtualizaTransportadora.Location = new System.Drawing.Point(319, 22);
+            this.chkAtualizaTransportadora.Name = "chkAtualizaTransportadora";
+            this.chkAtualizaTransportadora.Size = new System.Drawing.Size(129, 20);
+            this.chkAtualizaTransportadora.TabIndex = 11;
+            this.chkAtualizaTransportadora.Text = "Transportadora";
+            this.chkAtualizaTransportadora.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.chkAtualizaTransportadora.UseVisualStyleBackColor = true;
+            // 
+            // chkAtualizaFornecedor
+            // 
+            this.chkAtualizaFornecedor.AutoSize = true;
+            this.chkAtualizaFornecedor.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkAtualizaFornecedor.Location = new System.Drawing.Point(148, 22);
+            this.chkAtualizaFornecedor.Name = "chkAtualizaFornecedor";
+            this.chkAtualizaFornecedor.Size = new System.Drawing.Size(100, 20);
+            this.chkAtualizaFornecedor.TabIndex = 10;
+            this.chkAtualizaFornecedor.Text = "Fornecedor";
+            this.chkAtualizaFornecedor.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.chkAtualizaFornecedor.UseVisualStyleBackColor = true;
             // 
             // chkAtualizaVendedor
             // 
             this.chkAtualizaVendedor.AutoSize = true;
             this.chkAtualizaVendedor.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkAtualizaVendedor.Location = new System.Drawing.Point(160, 22);
+            this.chkAtualizaVendedor.Location = new System.Drawing.Point(669, 22);
             this.chkAtualizaVendedor.Name = "chkAtualizaVendedor";
             this.chkAtualizaVendedor.Size = new System.Drawing.Size(90, 20);
             this.chkAtualizaVendedor.TabIndex = 9;
@@ -502,7 +530,7 @@
             // 
             this.chkAtualizaProduto.AutoSize = true;
             this.chkAtualizaProduto.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkAtualizaProduto.Location = new System.Drawing.Point(79, 22);
+            this.chkAtualizaProduto.Location = new System.Drawing.Point(519, 22);
             this.chkAtualizaProduto.Name = "chkAtualizaProduto";
             this.chkAtualizaProduto.Size = new System.Drawing.Size(79, 20);
             this.chkAtualizaProduto.TabIndex = 7;
@@ -1630,5 +1658,7 @@
         private System.Windows.Forms.ComboBox cbRegimeTributario;
         private System.Windows.Forms.OpenFileDialog dlgCaminhoImagem;
         private System.Windows.Forms.CheckBox chkEmpresa;
+        private System.Windows.Forms.CheckBox chkAtualizaTransportadora;
+        private System.Windows.Forms.CheckBox chkAtualizaFornecedor;
     }
 }

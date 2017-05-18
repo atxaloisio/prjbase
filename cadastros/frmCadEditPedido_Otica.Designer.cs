@@ -766,6 +766,7 @@
             this.epValidaDados.SetObrigatorio(this.txtEixoMaiorDiagonal, false);
             this.txtEixoMaiorDiagonal.Size = new System.Drawing.Size(71, 23);
             this.txtEixoMaiorDiagonal.TabIndex = 46;
+            this.txtEixoMaiorDiagonal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
             this.txtEixoMaiorDiagonal.Validating += new System.ComponentModel.CancelEventHandler(this.eixo_Validating);
             // 
             // label17
@@ -785,6 +786,7 @@
             this.epValidaDados.SetObrigatorio(this.txtMaiorDiagonal, false);
             this.txtMaiorDiagonal.Size = new System.Drawing.Size(71, 23);
             this.txtMaiorDiagonal.TabIndex = 43;
+            this.txtMaiorDiagonal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
             // 
             // label18
             // 

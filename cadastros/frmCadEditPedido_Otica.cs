@@ -283,7 +283,7 @@ namespace prjbase
                     txtod_gp_esf.Text = pedido_otica.od_gp_esf;
                     txtod_gp_cil.Text = pedido_otica.od_gp_cil;
                     txtod_eixo.Text = (pedido_otica.od_eixo != null) ? pedido_otica.od_eixo.Value.ToString() : string.Empty;
-                    txtod_adicao.Text = (pedido_otica.od_adicao != null) ? pedido_otica.od_adicao.Value.ToString() : string.Empty;
+                    txtod_adicao.Text = pedido_otica.od_adicao;
                     txtod_gl_esf.Text = pedido_otica.od_gl_esf;
                     txtod_gl_cil.Text = pedido_otica.od_gl_cil;
                     txtod_dnp_longe.Text = pedido_otica.od_dnp_longe;
@@ -296,7 +296,7 @@ namespace prjbase
                     txtoe_gp_esf.Text = pedido_otica.oe_gp_esf;
                     txtoe_gp_cil.Text = pedido_otica.oe_gp_cil;
                     txtoe_eixo.Text = (pedido_otica.oe_eixo != null) ? pedido_otica.oe_eixo.Value.ToString() : string.Empty;
-                    txtoe_adicao.Text = (pedido_otica.oe_adicao != null) ? pedido_otica.oe_adicao.Value.ToString() : string.Empty;
+                    txtoe_adicao.Text = pedido_otica.oe_adicao;
                     txtoe_gl_esf.Text = pedido_otica.oe_gl_esf;
                     txtoe_gl_cil.Text = pedido_otica.oe_gl_cil;
                     txtoe_dnp_longe.Text = pedido_otica.oe_dnp_longe;
@@ -557,10 +557,7 @@ namespace prjbase
                 pedido_Otica.od_eixo = Convert.ToInt32(txtod_eixo.Text);
             }
 
-            if (!string.IsNullOrEmpty(txtod_adicao.Text))
-            {
-                pedido_Otica.od_adicao = Convert.ToDecimal(txtod_adicao.Text);
-            }
+            pedido_Otica.od_adicao = txtod_adicao.Text;
 
             pedido_Otica.od_gp_esf = txtod_gp_esf.Text;
             pedido_Otica.od_gp_cil = txtod_gp_cil.Text;
@@ -583,10 +580,7 @@ namespace prjbase
                 pedido_Otica.oe_eixo = Convert.ToInt32(txtoe_eixo.Text);
             }
 
-            if (!string.IsNullOrEmpty(txtoe_adicao.Text))
-            {
-                pedido_Otica.oe_adicao = Convert.ToDecimal(txtoe_adicao.Text);
-            }
+            pedido_Otica.oe_adicao = txtoe_adicao.Text;
 
             pedido_Otica.oe_gp_esf = txtoe_gp_esf.Text;
             pedido_Otica.oe_gp_cil = txtoe_gp_cil.Text;
@@ -1690,7 +1684,7 @@ namespace prjbase
                         {
                             string codigo = dgvItemPedido[col_Codigo, e.RowIndex].Value.ToString();
                             produtoBLL = new ProdutoBLL();
-                            List<Produto> produtoList = produtoBLL.getProduto(p => p.codigo == codigo);
+                            List<Produto> produtoList = produtoBLL.getProduto(p => p.codigo.ToLower() == codigo.ToLower());
                             if (produtoList.Count() > 0)
                             {
                                 Produto produto = produtoList.First();
@@ -2202,6 +2196,17 @@ namespace prjbase
 
             txtCodCliIntegracao.Focus();
             
-        }        
+        }
+
+        private void txtDiagonal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsNumber(e.KeyChar) &&
+                !e.KeyChar.Equals('.') &&
+                !e.KeyChar.Equals(',') &&                
+                !Char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

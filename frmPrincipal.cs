@@ -586,5 +586,51 @@ namespace prjbase
                 frm.WindowState = FormWindowState.Maximized;
             }
         }
+
+        private void mnuFornecedores_Click(object sender, EventArgs e)
+        {
+            Boolean instanciar = true;
+
+            foreach (var mdiChildForm in MdiChildren)
+            {
+                if (mdiChildForm is frmListFornecedores)
+                {
+                    instanciar = false;
+                    mdiChildForm.BringToFront();
+                    mdiChildForm.Show();
+                }
+            }
+
+            if (instanciar)
+            {
+                var frm = new frmListFornecedores();
+                frm.ConfigurarForm(this);
+                frm.Tag = ((ToolStripMenuItem)sender).Tag;
+                frm.Show();
+            }
+        }
+
+        private void mnuTransportadoras_Click(object sender, EventArgs e)
+        {
+            Boolean instanciar = true;
+
+            foreach (var mdiChildForm in MdiChildren)
+            {
+                if (mdiChildForm is frmListTransportadoras)
+                {
+                    instanciar = false;
+                    mdiChildForm.BringToFront();
+                    mdiChildForm.Show();
+                }
+            }
+
+            if (instanciar)
+            {
+                var frm = new frmListTransportadoras();
+                frm.ConfigurarForm(this);
+                frm.Tag = ((ToolStripMenuItem)sender).Tag;
+                frm.Show();
+            }
+        }
     }
 }

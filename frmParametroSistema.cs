@@ -215,6 +215,18 @@ namespace prjbase
                 chkAtualizaCliente.Checked = Convert.ToBoolean(updateClienteOmie);
             }
 
+            string updateFornecedorOmie = Parametro.GetParametro("updateFornecedorOmie");
+            if (!string.IsNullOrEmpty(updateFornecedorOmie))
+            {
+                chkAtualizaFornecedor.Checked = Convert.ToBoolean(updateFornecedorOmie);
+            }
+
+            string updateTransportadoraOmie = Parametro.GetParametro("updateTransportadoraOmie");
+            if (!string.IsNullOrEmpty(updateTransportadoraOmie))
+            {
+                chkAtualizaTransportadora.Checked = Convert.ToBoolean(updateTransportadoraOmie);
+            }
+
             string updateProdutoOmie = Parametro.GetParametro("updateProdutoOmie");
             if (!string.IsNullOrEmpty(updateProdutoOmie))
             {
@@ -526,6 +538,26 @@ namespace prjbase
             else
             {
                 Parametro.AddParametro("updateClienteOmie", Convert.ToString(chkAtualizaCliente.Checked));
+            }
+
+            string updateFornecedorOmie = Parametro.GetParametro("updateFornecedorOmie");
+            if (!string.IsNullOrEmpty(updateFornecedorOmie))
+            {
+                Parametro.SetParametro("updateFornecedorOmie", Convert.ToString(chkAtualizaFornecedor.Checked));
+            }
+            else
+            {
+                Parametro.AddParametro("updateFornecedorOmie", Convert.ToString(chkAtualizaFornecedor.Checked));
+            }
+
+            string updateTransportadoraOmie = Parametro.GetParametro("updateTransportadoraOmie");
+            if (!string.IsNullOrEmpty(updateTransportadoraOmie))
+            {
+                Parametro.SetParametro("updateTransportadoraOmie", Convert.ToString(chkAtualizaTransportadora.Checked));
+            }
+            else
+            {
+                Parametro.AddParametro("updateTransportadoraOmie", Convert.ToString(chkAtualizaTransportadora.Checked));
             }
 
             string updateProdutoOmie = Parametro.GetParametro("updateProdutoOmie");
