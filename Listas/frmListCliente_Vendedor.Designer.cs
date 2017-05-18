@@ -63,12 +63,12 @@
             // 
             this.lblTotalRegistros.Location = new System.Drawing.Point(72, 293);
             // 
-            // frmClientesFormasPagVendas
+            // frmListCliente_Vendedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(731, 405);
-            this.Name = "frmClientesFormasPagVendas";
-            this.Text = "Listar Cliente x Forma de Pagamento";
+            this.Name = "frmListCliente_Vendedor";
+            this.Text = "Listar Cliente x Vendedor";
             this.Activated += new System.EventHandler(this.frmListCliente_Vendedor_Activated);
             this.pnlBotoes.ResumeLayout(false);
             this.pnlBotoes.PerformLayout();

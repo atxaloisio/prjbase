@@ -63,12 +63,12 @@
             // 
             this.lblTotalRegistros.Location = new System.Drawing.Point(72, 293);
             // 
-            // frmTipo_Lente
+            // frmListTipo_Lente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(731, 405);
-            this.Name = "frmTipo_Lente";
-            this.Text = "Listar Perfil";
+            this.Name = "frmListTipo_Lente";
+            this.Text = "Listar Tipo Lente";
             this.Activated += new System.EventHandler(this.frmTipo_Lente_Activated);
             this.BindingContextChanged += new System.EventHandler(this.frmTipo_Lente_BindingContextChanged);
             this.pnlBotoes.ResumeLayout(false);

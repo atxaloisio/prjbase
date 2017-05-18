@@ -63,12 +63,12 @@
             // 
             this.lblTotalRegistros.Location = new System.Drawing.Point(72, 293);
             // 
-            // frmListRotas
+            // frmListVendedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(731, 405);
-            this.Name = "frmListRotas";
-            this.Text = "Transportadora x Localidade (Rotas)";
+            this.Name = "frmListVendedores";
+            this.Text = "Listar Vendedores";
             this.Activated += new System.EventHandler(this.frmListVendedores_Activated);
             this.pnlBotoes.ResumeLayout(false);
             this.pnlBotoes.PerformLayout();

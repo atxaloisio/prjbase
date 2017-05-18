@@ -64,6 +64,8 @@
             this.mnuJanFecharTodos = new System.Windows.Forms.ToolStripMenuItem();
             this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fornecedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.transportadorasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSistema.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,6 +92,8 @@
             this.arquivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuCadCaixa,
             this.mnuCadClientes,
+            this.fornecedoresToolStripMenuItem,
+            this.transportadorasToolStripMenuItem,
             this.mnuProdutos,
             this.mnuVendedores,
             this.mnuCadPedidoVendas,
@@ -383,6 +387,20 @@
             this.sairToolStripMenuItem.Text = "Sair";
             this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
             // 
+            // fornecedoresToolStripMenuItem
+            // 
+            this.fornecedoresToolStripMenuItem.Name = "fornecedoresToolStripMenuItem";
+            this.fornecedoresToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.fornecedoresToolStripMenuItem.Tag = "1010";
+            this.fornecedoresToolStripMenuItem.Text = "Fornecedores";
+            // 
+            // transportadorasToolStripMenuItem
+            // 
+            this.transportadorasToolStripMenuItem.Name = "transportadorasToolStripMenuItem";
+            this.transportadorasToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.transportadorasToolStripMenuItem.Tag = "1011";
+            this.transportadorasToolStripMenuItem.Text = "Transportadoras";
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -441,5 +459,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuCadTipoArmacao;
         private System.Windows.Forms.ToolStripMenuItem mnuCadTipoLente;
         private System.Windows.Forms.ToolStripMenuItem mnuRelPedidoVendas;
+        private System.Windows.Forms.ToolStripMenuItem fornecedoresToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem transportadorasToolStripMenuItem;
     }
 }

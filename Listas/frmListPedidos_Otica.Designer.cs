@@ -107,7 +107,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(731, 405);
             this.Name = "frmListPedidos_Otica";
-            this.Text = "Pedido de Venda";
+            this.Text = "Listar Pedidos de Venda";
             this.Activated += new System.EventHandler(this.frmPedidoOtica_Activated);
             this.pnlBotoes.ResumeLayout(false);
             this.pnlBotoes.PerformLayout();

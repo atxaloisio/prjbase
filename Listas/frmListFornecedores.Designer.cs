@@ -1,6 +1,6 @@
 ﻿namespace prjbase
 {
-    partial class frmListCliente_Transportadora
+    partial class frmListFornecedores
     {
         /// <summary>
         /// Required designer variable.
@@ -61,15 +61,15 @@
             // 
             // lblTotalRegistros
             // 
-            this.lblTotalRegistros.Location = new System.Drawing.Point(72, 293);
+            this.lblTotalRegistros.Location = new System.Drawing.Point(58, 293);
             // 
-            // frmListCliente_Transportadora
+            // frmListFornecedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(731, 405);
-            this.Name = "frmListCliente_Transportadora";
-            this.Text = "Listar Cliente x Transportadora";
-            this.Activated += new System.EventHandler(this.frmListCliente_Transportadora_Activated);
+            this.Name = "frmListFornecedores";
+            this.Text = "Listar Fornecedores";
+            this.Activated += new System.EventHandler(this.frmClientes_Activated);
             this.pnlBotoes.ResumeLayout(false);
             this.pnlBotoes.PerformLayout();
             this.ResumeLayout(false);

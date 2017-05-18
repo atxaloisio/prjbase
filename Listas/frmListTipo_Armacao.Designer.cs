@@ -63,12 +63,12 @@
             // 
             this.lblTotalRegistros.Location = new System.Drawing.Point(72, 293);
             // 
-            // frmTipo_Armacao
+            // frmListTipo_Armacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(731, 405);
-            this.Name = "frmTipo_Armacao";
-            this.Text = "Listar Perfil";
+            this.Name = "frmListTipo_Armacao";
+            this.Text = "Listar Tipo Armação";
             this.Activated += new System.EventHandler(this.frmTipo_Armacao_Activated);
             this.BindingContextChanged += new System.EventHandler(this.frmTipo_Armacao_BindingContextChanged);
             this.pnlBotoes.ResumeLayout(false);

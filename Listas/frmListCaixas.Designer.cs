@@ -63,12 +63,12 @@
             // 
             this.lblTotalRegistros.Location = new System.Drawing.Point(72, 293);
             // 
-            // frmCaixas
+            // frmListCaixas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(731, 405);
-            this.Name = "frmCaixas";
-            this.Text = "Listar Perfil";
+            this.Name = "frmListCaixas";
+            this.Text = "Listar Caixas";
             this.Activated += new System.EventHandler(this.frmCaixas_Activated);
             this.BindingContextChanged += new System.EventHandler(this.frmCaixas_BindingContextChanged);
             this.pnlBotoes.ResumeLayout(false);
