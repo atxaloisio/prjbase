@@ -944,7 +944,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!numero_caixa.Value, "DataSet1")</Value>
+                    <Value>=First(Fields!numero.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -6859,7 +6859,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!numero_caixa.Value, "DataSet1")</Value>
+                    <Value>=First(Fields!numero.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -7479,6 +7479,26 @@
         </Field>
         <Field Name="sincronizar">
           <DataField>sincronizar</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="od_adicao1">
+          <DataField>od_adicao</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="oe_adicao1">
+          <DataField>oe_adicao</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Id5">
+          <DataField>Id5</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="numero">
+          <DataField>numero</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="inativo">
+          <DataField>inativo</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
