@@ -162,7 +162,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Nr. Ped. Cliente</Value>
+                              <Value>TSO</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>

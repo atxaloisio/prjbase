@@ -84,10 +84,14 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.cbStatusDe = new System.Windows.Forms.ComboBox();
-            this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.cbStatusAte = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.cbStatusDe = new System.Windows.Forms.ComboBox();
+            this.txtIdClienteDe = new System.Windows.Forms.TextBox();
+            this.txtIdTransportadoraDe = new System.Windows.Forms.TextBox();
+            this.txtIdClienteAte = new System.Windows.Forms.TextBox();
+            this.txtIdTransportadoraAte = new System.Windows.Forms.TextBox();
             this.pnlDados.SuspendLayout();
             this.pnlBotoes.SuspendLayout();
             this.pnlFiltro.SuspendLayout();
@@ -105,10 +109,11 @@
             // pnlDados
             // 
             this.pnlDados.Size = new System.Drawing.Size(824, 490);
+            this.pnlDados.TabIndex = 0;
             // 
             // btnFechar
             // 
-            this.btnFechar.Location = new System.Drawing.Point(4, 967);
+            this.btnFechar.Location = new System.Drawing.Point(4, 2072);
             // 
             // pnlBotoes
             // 
@@ -116,6 +121,10 @@
             // 
             // pnlFiltro
             // 
+            this.pnlFiltro.Controls.Add(this.txtIdTransportadoraAte);
+            this.pnlFiltro.Controls.Add(this.txtIdClienteAte);
+            this.pnlFiltro.Controls.Add(this.txtIdTransportadoraDe);
+            this.pnlFiltro.Controls.Add(this.txtIdClienteDe);
             this.pnlFiltro.Controls.Add(this.groupBox9);
             this.pnlFiltro.Controls.Add(this.groupBox8);
             this.pnlFiltro.Controls.Add(this.groupBox7);
@@ -127,6 +136,7 @@
             this.pnlFiltro.Controls.Add(this.groupBox1);
             this.pnlFiltro.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.pnlFiltro.Size = new System.Drawing.Size(824, 490);
+            this.pnlFiltro.TabIndex = 0;
             // 
             // groupBox1
             // 
@@ -149,7 +159,7 @@
             this.btnPesquisaPedidoAte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPesquisaPedidoAte.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnPesquisaPedidoAte.Image = ((System.Drawing.Image)(resources.GetObject("btnPesquisaPedidoAte.Image")));
-            this.btnPesquisaPedidoAte.Location = new System.Drawing.Point(300, 14);
+            this.btnPesquisaPedidoAte.Location = new System.Drawing.Point(300, 13);
             this.btnPesquisaPedidoAte.Name = "btnPesquisaPedidoAte";
             this.btnPesquisaPedidoAte.Size = new System.Drawing.Size(27, 27);
             this.btnPesquisaPedidoAte.TabIndex = 40;
@@ -170,10 +180,10 @@
             // 
             // txtCodPedidoAte
             // 
-            this.txtCodPedidoAte.Location = new System.Drawing.Point(200, 16);
+            this.txtCodPedidoAte.Location = new System.Drawing.Point(200, 15);
             this.txtCodPedidoAte.Name = "txtCodPedidoAte";
             this.txtCodPedidoAte.Size = new System.Drawing.Size(100, 23);
-            this.txtCodPedidoAte.TabIndex = 38;
+            this.txtCodPedidoAte.TabIndex = 1;
             // 
             // btnPesquisaPedidoDe
             // 
@@ -205,7 +215,8 @@
             this.txtCodPedidoDe.Location = new System.Drawing.Point(32, 15);
             this.txtCodPedidoDe.Name = "txtCodPedidoDe";
             this.txtCodPedidoDe.Size = new System.Drawing.Size(100, 23);
-            this.txtCodPedidoDe.TabIndex = 34;
+            this.txtCodPedidoDe.TabIndex = 0;
+            this.txtCodPedidoDe.Validated += new System.EventHandler(this.txtCodPedidoDe_Validated);
             // 
             // groupBox3
             // 
@@ -226,8 +237,7 @@
             this.txtDtEmissaoAte.Mask = "00/00/0000";
             this.txtDtEmissaoAte.Name = "txtDtEmissaoAte";
             this.txtDtEmissaoAte.Size = new System.Drawing.Size(87, 23);
-            this.txtDtEmissaoAte.TabIndex = 41;
-            this.txtDtEmissaoAte.TabStop = false;
+            this.txtDtEmissaoAte.TabIndex = 1;
             this.txtDtEmissaoAte.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.txtDtEmissaoAte.ValidatingType = typeof(System.DateTime);
             this.txtDtEmissaoAte.Enter += new System.EventHandler(this.txt_Enter);
@@ -238,11 +248,11 @@
             this.txtDtEmissaoDe.Mask = "00/00/0000";
             this.txtDtEmissaoDe.Name = "txtDtEmissaoDe";
             this.txtDtEmissaoDe.Size = new System.Drawing.Size(87, 23);
-            this.txtDtEmissaoDe.TabIndex = 40;
-            this.txtDtEmissaoDe.TabStop = false;
+            this.txtDtEmissaoDe.TabIndex = 0;
             this.txtDtEmissaoDe.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.txtDtEmissaoDe.ValidatingType = typeof(System.DateTime);
             this.txtDtEmissaoDe.Enter += new System.EventHandler(this.txt_Enter);
+            this.txtDtEmissaoDe.Validated += new System.EventHandler(this.txtDtEmissaoDe_Validated);
             // 
             // label4
             // 
@@ -281,8 +291,7 @@
             this.txtDtFechamentoAte.Mask = "00/00/0000";
             this.txtDtFechamentoAte.Name = "txtDtFechamentoAte";
             this.txtDtFechamentoAte.Size = new System.Drawing.Size(87, 23);
-            this.txtDtFechamentoAte.TabIndex = 41;
-            this.txtDtFechamentoAte.TabStop = false;
+            this.txtDtFechamentoAte.TabIndex = 1;
             this.txtDtFechamentoAte.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.txtDtFechamentoAte.ValidatingType = typeof(System.DateTime);
             this.txtDtFechamentoAte.Enter += new System.EventHandler(this.txt_Enter);
@@ -293,11 +302,11 @@
             this.txtDtFechamentoDe.Mask = "00/00/0000";
             this.txtDtFechamentoDe.Name = "txtDtFechamentoDe";
             this.txtDtFechamentoDe.Size = new System.Drawing.Size(87, 23);
-            this.txtDtFechamentoDe.TabIndex = 40;
-            this.txtDtFechamentoDe.TabStop = false;
+            this.txtDtFechamentoDe.TabIndex = 0;
             this.txtDtFechamentoDe.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.txtDtFechamentoDe.ValidatingType = typeof(System.DateTime);
             this.txtDtFechamentoDe.Enter += new System.EventHandler(this.txt_Enter);
+            this.txtDtFechamentoDe.Validated += new System.EventHandler(this.txtDtFechamentoDe_Validated);
             // 
             // label6
             // 
@@ -330,7 +339,7 @@
             this.groupBox2.Location = new System.Drawing.Point(7, 47);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(808, 46);
-            this.groupBox2.TabIndex = 4;
+            this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Cliente";
             // 
@@ -364,7 +373,9 @@
             this.txtCodClienteAte.Location = new System.Drawing.Point(432, 15);
             this.txtCodClienteAte.Name = "txtCodClienteAte";
             this.txtCodClienteAte.Size = new System.Drawing.Size(100, 23);
-            this.txtCodClienteAte.TabIndex = 38;
+            this.txtCodClienteAte.TabIndex = 3;
+            this.txtCodClienteAte.TextChanged += new System.EventHandler(this.txtCodClienteAte_TextChanged);
+            this.txtCodClienteAte.Validating += new System.ComponentModel.CancelEventHandler(this.txtCodClienteAte_Validating);
             // 
             // txtNomeClienteAte
             // 
@@ -405,7 +416,10 @@
             this.txtCodClienteDe.Location = new System.Drawing.Point(30, 15);
             this.txtCodClienteDe.Name = "txtCodClienteDe";
             this.txtCodClienteDe.Size = new System.Drawing.Size(100, 23);
-            this.txtCodClienteDe.TabIndex = 34;
+            this.txtCodClienteDe.TabIndex = 2;
+            this.txtCodClienteDe.TextChanged += new System.EventHandler(this.txtCodClienteDe_TextChanged);
+            this.txtCodClienteDe.Validating += new System.ComponentModel.CancelEventHandler(this.txtCodClienteDe_Validating);
+            this.txtCodClienteDe.Validated += new System.EventHandler(this.txtCodClienteDe_Validated);
             // 
             // txtNomeClienteDe
             // 
@@ -429,7 +443,7 @@
             this.groupBox5.Location = new System.Drawing.Point(7, 187);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(808, 46);
-            this.groupBox5.TabIndex = 5;
+            this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Vendedor";
             // 
@@ -442,7 +456,7 @@
             this.btnPesquisaVendedorAte.Location = new System.Drawing.Point(532, 13);
             this.btnPesquisaVendedorAte.Name = "btnPesquisaVendedorAte";
             this.btnPesquisaVendedorAte.Size = new System.Drawing.Size(27, 27);
-            this.btnPesquisaVendedorAte.TabIndex = 40;
+            this.btnPesquisaVendedorAte.TabIndex = 4;
             this.btnPesquisaVendedorAte.TabStop = false;
             this.btnPesquisaVendedorAte.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPesquisaVendedorAte.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -463,7 +477,7 @@
             this.txtCodVendedorAte.Location = new System.Drawing.Point(432, 15);
             this.txtCodVendedorAte.Name = "txtCodVendedorAte";
             this.txtCodVendedorAte.Size = new System.Drawing.Size(100, 23);
-            this.txtCodVendedorAte.TabIndex = 38;
+            this.txtCodVendedorAte.TabIndex = 3;
             // 
             // txtNomeVendedorAte
             // 
@@ -471,7 +485,7 @@
             this.txtNomeVendedorAte.Name = "txtNomeVendedorAte";
             this.txtNomeVendedorAte.ReadOnly = true;
             this.txtNomeVendedorAte.Size = new System.Drawing.Size(236, 23);
-            this.txtNomeVendedorAte.TabIndex = 39;
+            this.txtNomeVendedorAte.TabIndex = 5;
             this.txtNomeVendedorAte.TabStop = false;
             // 
             // btnPesquisaVendedorDe
@@ -483,7 +497,7 @@
             this.btnPesquisaVendedorDe.Location = new System.Drawing.Point(130, 13);
             this.btnPesquisaVendedorDe.Name = "btnPesquisaVendedorDe";
             this.btnPesquisaVendedorDe.Size = new System.Drawing.Size(27, 27);
-            this.btnPesquisaVendedorDe.TabIndex = 36;
+            this.btnPesquisaVendedorDe.TabIndex = 1;
             this.btnPesquisaVendedorDe.TabStop = false;
             this.btnPesquisaVendedorDe.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPesquisaVendedorDe.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -504,7 +518,8 @@
             this.txtCodVendedorDe.Location = new System.Drawing.Point(30, 15);
             this.txtCodVendedorDe.Name = "txtCodVendedorDe";
             this.txtCodVendedorDe.Size = new System.Drawing.Size(100, 23);
-            this.txtCodVendedorDe.TabIndex = 34;
+            this.txtCodVendedorDe.TabIndex = 0;
+            this.txtCodVendedorDe.Validated += new System.EventHandler(this.txtCodVendedorDe_Validated);
             // 
             // txtNomeVendedorDe
             // 
@@ -512,7 +527,7 @@
             this.txtNomeVendedorDe.Name = "txtNomeVendedorDe";
             this.txtNomeVendedorDe.ReadOnly = true;
             this.txtNomeVendedorDe.Size = new System.Drawing.Size(236, 23);
-            this.txtNomeVendedorDe.TabIndex = 35;
+            this.txtNomeVendedorDe.TabIndex = 2;
             this.txtNomeVendedorDe.TabStop = false;
             // 
             // groupBox6
@@ -528,7 +543,7 @@
             this.groupBox6.Location = new System.Drawing.Point(7, 232);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(808, 46);
-            this.groupBox6.TabIndex = 6;
+            this.groupBox6.TabIndex = 5;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Transportadora";
             // 
@@ -541,7 +556,7 @@
             this.btnPesquisaTransportadoraAte.Location = new System.Drawing.Point(532, 13);
             this.btnPesquisaTransportadoraAte.Name = "btnPesquisaTransportadoraAte";
             this.btnPesquisaTransportadoraAte.Size = new System.Drawing.Size(27, 27);
-            this.btnPesquisaTransportadoraAte.TabIndex = 40;
+            this.btnPesquisaTransportadoraAte.TabIndex = 4;
             this.btnPesquisaTransportadoraAte.TabStop = false;
             this.btnPesquisaTransportadoraAte.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPesquisaTransportadoraAte.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -562,7 +577,9 @@
             this.txtCodTransportadoraAte.Location = new System.Drawing.Point(432, 15);
             this.txtCodTransportadoraAte.Name = "txtCodTransportadoraAte";
             this.txtCodTransportadoraAte.Size = new System.Drawing.Size(100, 23);
-            this.txtCodTransportadoraAte.TabIndex = 38;
+            this.txtCodTransportadoraAte.TabIndex = 3;
+            this.txtCodTransportadoraAte.TextChanged += new System.EventHandler(this.txtCodTransportadoraAte_TextChanged);
+            this.txtCodTransportadoraAte.Validating += new System.ComponentModel.CancelEventHandler(this.txtCodTransportadoraAte_Validating);
             // 
             // txtNomeTransportadoraAte
             // 
@@ -570,7 +587,7 @@
             this.txtNomeTransportadoraAte.Name = "txtNomeTransportadoraAte";
             this.txtNomeTransportadoraAte.ReadOnly = true;
             this.txtNomeTransportadoraAte.Size = new System.Drawing.Size(236, 23);
-            this.txtNomeTransportadoraAte.TabIndex = 39;
+            this.txtNomeTransportadoraAte.TabIndex = 5;
             this.txtNomeTransportadoraAte.TabStop = false;
             // 
             // btnPesquisaTransportadoraDe
@@ -582,7 +599,7 @@
             this.btnPesquisaTransportadoraDe.Location = new System.Drawing.Point(130, 13);
             this.btnPesquisaTransportadoraDe.Name = "btnPesquisaTransportadoraDe";
             this.btnPesquisaTransportadoraDe.Size = new System.Drawing.Size(27, 27);
-            this.btnPesquisaTransportadoraDe.TabIndex = 36;
+            this.btnPesquisaTransportadoraDe.TabIndex = 1;
             this.btnPesquisaTransportadoraDe.TabStop = false;
             this.btnPesquisaTransportadoraDe.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPesquisaTransportadoraDe.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -603,7 +620,10 @@
             this.txtCodTransportadoraDe.Location = new System.Drawing.Point(30, 15);
             this.txtCodTransportadoraDe.Name = "txtCodTransportadoraDe";
             this.txtCodTransportadoraDe.Size = new System.Drawing.Size(100, 23);
-            this.txtCodTransportadoraDe.TabIndex = 34;
+            this.txtCodTransportadoraDe.TabIndex = 0;
+            this.txtCodTransportadoraDe.TextChanged += new System.EventHandler(this.txtCodTransportadoraDe_TextChanged);
+            this.txtCodTransportadoraDe.Validating += new System.ComponentModel.CancelEventHandler(this.txtCodTransportadoraDe_Validating);
+            this.txtCodTransportadoraDe.Validated += new System.EventHandler(this.txtCodTransportadoraDe_Validated);
             // 
             // txtNomeTransportadoraDe
             // 
@@ -611,7 +631,7 @@
             this.txtNomeTransportadoraDe.Name = "txtNomeTransportadoraDe";
             this.txtNomeTransportadoraDe.ReadOnly = true;
             this.txtNomeTransportadoraDe.Size = new System.Drawing.Size(236, 23);
-            this.txtNomeTransportadoraDe.TabIndex = 35;
+            this.txtNomeTransportadoraDe.TabIndex = 2;
             this.txtNomeTransportadoraDe.TabStop = false;
             // 
             // groupBox7
@@ -623,29 +643,28 @@
             this.groupBox7.Location = new System.Drawing.Point(7, 277);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(396, 48);
-            this.groupBox7.TabIndex = 7;
+            this.groupBox7.TabIndex = 6;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Caixa";
             // 
             // cbCaixaAte
             // 
-            this.cbCaixaAte.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbCaixaAte.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbCaixaAte.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCaixaAte.FormattingEnabled = true;
             this.cbCaixaAte.Location = new System.Drawing.Point(208, 18);
             this.cbCaixaAte.Name = "cbCaixaAte";
             this.cbCaixaAte.Size = new System.Drawing.Size(98, 24);
-            this.cbCaixaAte.TabIndex = 41;
+            this.cbCaixaAte.TabIndex = 1;
             // 
             // cbCaixaDe
             // 
-            this.cbCaixaDe.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbCaixaDe.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbCaixaDe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCaixaDe.FormattingEnabled = true;
             this.cbCaixaDe.Location = new System.Drawing.Point(30, 18);
             this.cbCaixaDe.Name = "cbCaixaDe";
             this.cbCaixaDe.Size = new System.Drawing.Size(98, 24);
-            this.cbCaixaDe.TabIndex = 40;
+            this.cbCaixaDe.TabIndex = 0;
+            this.cbCaixaDe.Validated += new System.EventHandler(this.cbCaixaDe_Validated);
             // 
             // label13
             // 
@@ -674,23 +693,24 @@
             this.groupBox8.Location = new System.Drawing.Point(7, 324);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(396, 48);
-            this.groupBox8.TabIndex = 8;
+            this.groupBox8.TabIndex = 7;
             this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Número do Pedido no Cliente";
+            this.groupBox8.Text = "TSO";
             // 
             // txtNrPedClienteAte
             // 
             this.txtNrPedClienteAte.Location = new System.Drawing.Point(208, 17);
             this.txtNrPedClienteAte.Name = "txtNrPedClienteAte";
             this.txtNrPedClienteAte.Size = new System.Drawing.Size(97, 23);
-            this.txtNrPedClienteAte.TabIndex = 41;
+            this.txtNrPedClienteAte.TabIndex = 1;
             // 
             // txtNrPedClienteDe
             // 
             this.txtNrPedClienteDe.Location = new System.Drawing.Point(31, 17);
             this.txtNrPedClienteDe.Name = "txtNrPedClienteDe";
             this.txtNrPedClienteDe.Size = new System.Drawing.Size(97, 23);
-            this.txtNrPedClienteDe.TabIndex = 40;
+            this.txtNrPedClienteDe.TabIndex = 0;
+            this.txtNrPedClienteDe.Validated += new System.EventHandler(this.txtNrPedClienteDe_Validated);
             // 
             // label15
             // 
@@ -719,30 +739,9 @@
             this.groupBox9.Location = new System.Drawing.Point(7, 371);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(804, 48);
-            this.groupBox9.TabIndex = 9;
+            this.groupBox9.TabIndex = 8;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Status";
-            // 
-            // cbStatusDe
-            // 
-            this.cbStatusDe.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbStatusDe.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cbStatusDe.FormattingEnabled = true;
-            this.cbStatusDe.Location = new System.Drawing.Point(32, 18);
-            this.cbStatusDe.Name = "cbStatusDe";
-            this.cbStatusDe.Size = new System.Drawing.Size(211, 24);
-            this.cbStatusDe.TabIndex = 41;
-            this.cbStatusDe.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown);
-            this.cbStatusDe.Validating += new System.ComponentModel.CancelEventHandler(this.cb_Validating);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(4, 21);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(25, 16);
-            this.label17.TabIndex = 42;
-            this.label17.Text = "De";
             // 
             // label18
             // 
@@ -755,15 +754,75 @@
             // 
             // cbStatusAte
             // 
-            this.cbStatusAte.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbStatusAte.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbStatusAte.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbStatusAte.FormattingEnabled = true;
             this.cbStatusAte.Location = new System.Drawing.Point(311, 18);
             this.cbStatusAte.Name = "cbStatusAte";
             this.cbStatusAte.Size = new System.Drawing.Size(211, 24);
-            this.cbStatusAte.TabIndex = 43;
+            this.cbStatusAte.TabIndex = 1;
             this.cbStatusAte.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown);
             this.cbStatusAte.Validating += new System.ComponentModel.CancelEventHandler(this.cb_Validating);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(4, 21);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(25, 16);
+            this.label17.TabIndex = 42;
+            this.label17.Text = "De";
+            // 
+            // cbStatusDe
+            // 
+            this.cbStatusDe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStatusDe.FormattingEnabled = true;
+            this.cbStatusDe.Location = new System.Drawing.Point(32, 18);
+            this.cbStatusDe.Name = "cbStatusDe";
+            this.cbStatusDe.Size = new System.Drawing.Size(211, 24);
+            this.cbStatusDe.TabIndex = 0;
+            this.cbStatusDe.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown);
+            this.cbStatusDe.Validating += new System.ComponentModel.CancelEventHandler(this.cb_Validating);
+            this.cbStatusDe.Validated += new System.EventHandler(this.cbStatusDe_Validated);
+            // 
+            // txtIdClienteDe
+            // 
+            this.txtIdClienteDe.Enabled = false;
+            this.txtIdClienteDe.Location = new System.Drawing.Point(481, 109);
+            this.txtIdClienteDe.Name = "txtIdClienteDe";
+            this.txtIdClienteDe.Size = new System.Drawing.Size(100, 23);
+            this.txtIdClienteDe.TabIndex = 10;
+            this.txtIdClienteDe.TabStop = false;
+            this.txtIdClienteDe.Visible = false;
+            // 
+            // txtIdTransportadoraDe
+            // 
+            this.txtIdTransportadoraDe.Enabled = false;
+            this.txtIdTransportadoraDe.Location = new System.Drawing.Point(481, 139);
+            this.txtIdTransportadoraDe.Name = "txtIdTransportadoraDe";
+            this.txtIdTransportadoraDe.Size = new System.Drawing.Size(100, 23);
+            this.txtIdTransportadoraDe.TabIndex = 11;
+            this.txtIdTransportadoraDe.TabStop = false;
+            this.txtIdTransportadoraDe.Visible = false;
+            // 
+            // txtIdClienteAte
+            // 
+            this.txtIdClienteAte.Enabled = false;
+            this.txtIdClienteAte.Location = new System.Drawing.Point(587, 109);
+            this.txtIdClienteAte.Name = "txtIdClienteAte";
+            this.txtIdClienteAte.Size = new System.Drawing.Size(100, 23);
+            this.txtIdClienteAte.TabIndex = 12;
+            this.txtIdClienteAte.TabStop = false;
+            this.txtIdClienteAte.Visible = false;
+            // 
+            // txtIdTransportadoraAte
+            // 
+            this.txtIdTransportadoraAte.Enabled = false;
+            this.txtIdTransportadoraAte.Location = new System.Drawing.Point(587, 138);
+            this.txtIdTransportadoraAte.Name = "txtIdTransportadoraAte";
+            this.txtIdTransportadoraAte.Size = new System.Drawing.Size(100, 23);
+            this.txtIdTransportadoraAte.TabIndex = 13;
+            this.txtIdTransportadoraAte.TabStop = false;
+            this.txtIdTransportadoraAte.Visible = false;
             // 
             // frmRelFiltroPedido_Otica
             // 
@@ -772,9 +831,11 @@
             this.KeyPreview = true;
             this.Name = "frmRelFiltroPedido_Otica";
             this.Text = "Filtragem do Pedido de Vendas";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmRelFiltroPedido_Otica_KeyPress);
             this.pnlDados.ResumeLayout(false);
             this.pnlBotoes.ResumeLayout(false);
             this.pnlFiltro.ResumeLayout(false);
+            this.pnlFiltro.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -858,5 +919,9 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.ComboBox cbStatusAte;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox txtIdTransportadoraAte;
+        private System.Windows.Forms.TextBox txtIdClienteAte;
+        private System.Windows.Forms.TextBox txtIdTransportadoraDe;
+        private System.Windows.Forms.TextBox txtIdClienteDe;
     }
 }

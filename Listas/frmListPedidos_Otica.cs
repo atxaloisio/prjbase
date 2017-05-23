@@ -59,7 +59,7 @@ namespace prjbase
             //altera o nome das colunas                 
             gridFiltros.Columns.Add("ID", "Id");
             gridFiltros.Columns.Add("PEDIDO", "Pedido");
-            gridFiltros.Columns.Add("NRPEDCLIENTE", "Nr. Ped. Cliente");
+            gridFiltros.Columns.Add("NRPEDCLIENTE", "TSO");
             gridFiltros.Columns.Add("NRCAIXA", "Caixa");
             gridFiltros.Columns.Add("CLIENTE", "Cliente");
             gridFiltros.Columns.Add("CONDPAGTO", "Cond. Pagamento");

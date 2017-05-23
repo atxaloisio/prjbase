@@ -18,8 +18,10 @@ namespace prjbase
     {
         public long? pedidoDe { get; set; }
         public long? pedidoAte { get; set; }
+
         public long? clienteDe { get; set; }
         public long? clienteAte { get; set; }
+
         public DateTime? data_emissaoDe { get; set; }
         public DateTime? data_emissaoAte { get; set; }
 
@@ -37,55 +39,74 @@ namespace prjbase
 
         public string nrpedclienteDe { get; set; }
         public string nrpedclienteAte { get; set; }
-        public StatusPedido? statusDe { get; set; }
-        public StatusPedido? statusAte { get; set; }
+
+        public int? statusDe { get; set; }
+        public int? statusAte { get; set; }
+
         public frmRelListPedido_Otica()
         {
-            InitializeComponent();            
+            InitializeComponent();
         }
 
         protected override void CarregaRelatorio()
-        {            
-            if (statusDe != null)
-            {
-                rvRelatorios.LocalReport.DataSources.Clear();
-                rvRelatorios.Reset();
-                rvRelatorios.LocalReport.ReportEmbeddedResource = "prjbase.relatorios.relListPedido_Otica.rdlc";
-                dbintegracaoDataSetTableAdapters.qryListPedido_OticaTableAdapter lstPed = new dbintegracaoDataSetTableAdapters.qryListPedido_OticaTableAdapter();
-                dbintegracaoDataSetTableAdapters.empresa_logoTableAdapter Empresa_Logo = new dbintegracaoDataSetTableAdapters.empresa_logoTableAdapter();
+        {
 
-                DataTable dt = new DataTable();
-                DataTable dtl = new DataTable();
+            rvRelatorios.LocalReport.DataSources.Clear();
+            rvRelatorios.Reset();
+            rvRelatorios.LocalReport.ReportEmbeddedResource = "prjbase.relatorios.relListPedido_Otica.rdlc";
+            dbintegracaoDataSetTableAdapters.qryListPedido_OticaTableAdapter lstPed = new dbintegracaoDataSetTableAdapters.qryListPedido_OticaTableAdapter();
+            dbintegracaoDataSetTableAdapters.empresa_logoTableAdapter Empresa_Logo = new dbintegracaoDataSetTableAdapters.empresa_logoTableAdapter();
 
-                dt = lstPed.GetData((int)statusDe, (int)statusAte);
-                dtl = Empresa_Logo.GetData();
+            DataTable dt = new DataTable();
+            DataTable dtl = new DataTable();
 
-                ReportDataSource ds = new ReportDataSource(dt.TableName, dt);
-                ReportDataSource ds2 = new ReportDataSource(dtl.TableName, dtl);
+            dt = lstPed.GetData(statusDe,
+                                statusAte,
+                                pedidoDe,
+                                pedidoAte,
+                                nrpedclienteDe,
+                                nrpedclienteAte,
+                                clienteDe,
+                                clienteAte,
+                                data_emissaoDe,
+                                data_emissaoAte,
+                                data_fechamentoDe,
+                                data_fechamentoAte,
+                                vendedorDe,
+                                vendedorAte,
+                                transportadoraDe,
+                                transportadoraAte,
+                                caixaDe,
+                                caixaAte);
 
-                ds.Name = "DataSet1";
-                ds2.Name = "DataSet2";
-                rvRelatorios.LocalReport.DataSources.Add(ds);
-                rvRelatorios.LocalReport.DataSources.Add(ds2);
+            dtl = Empresa_Logo.GetData();
 
-                //rvRelatorios.LocalReport.SubreportProcessing += new SubreportProcessingEventHandler(onSubreportProcessing);
+            ReportDataSource ds = new ReportDataSource(dt.TableName, dt);
+            ReportDataSource ds2 = new ReportDataSource(dtl.TableName, dtl);
 
-                ReportParameterCollection parametros = new ReportParameterCollection();
+            ds.Name = "DataSet1";
+            ds2.Name = "DataSet2";
+            rvRelatorios.LocalReport.DataSources.Add(ds);
+            rvRelatorios.LocalReport.DataSources.Add(ds2);
 
-                ReportParameter parametro = new ReportParameter();
-                parametro.Name = "EndLaboratorio";
-                //parametro.Values.Add("LABORATORIO PRECISION - Rua Antonio Rabelo Guimarães, 256 - Centro - Nova Iguaçu/RJ - Fone: (21) 2667-6932");
-                parametro.Values.Add("");
+            //rvRelatorios.LocalReport.SubreportProcessing += new SubreportProcessingEventHandler(onSubreportProcessing);
 
-                ReportParameter pardQtdRegs = new ReportParameter();
-                pardQtdRegs.Name = "QtdRegistros";
-                pardQtdRegs.Values.Add(dt.Rows.Count.ToString());
+            ReportParameterCollection parametros = new ReportParameterCollection();
 
-                parametros.Add(parametro);
-                parametros.Add(pardQtdRegs);
-                rvRelatorios.LocalReport.SetParameters(parametros);
-            }
-            
+            ReportParameter parametro = new ReportParameter();
+            parametro.Name = "EndLaboratorio";
+            //parametro.Values.Add("LABORATORIO PRECISION - Rua Antonio Rabelo Guimarães, 256 - Centro - Nova Iguaçu/RJ - Fone: (21) 2667-6932");
+            parametro.Values.Add("");
+
+            ReportParameter pardQtdRegs = new ReportParameter();
+            pardQtdRegs.Name = "QtdRegistros";
+            pardQtdRegs.Values.Add(dt.Rows.Count.ToString());
+
+            parametros.Add(parametro);
+            parametros.Add(pardQtdRegs);
+            rvRelatorios.LocalReport.SetParameters(parametros);
+
+
         }
     }
 }

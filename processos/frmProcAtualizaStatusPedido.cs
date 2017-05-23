@@ -1190,8 +1190,8 @@ namespace prjbase
         {
             frmRelListPedido_Otica relatorio = new frmRelListPedido_Otica();
             relatorio.rvRelatorios.LocalReport.ReportEmbeddedResource = "prjbase.relatorios.relListPedido_Otica.rdlc";
-            relatorio.statusDe = StatusDe;
-            relatorio.statusAte = StatusAte;
+            relatorio.statusDe = (int)StatusDe;
+            relatorio.statusAte = (int)StatusAte;
             relatorio.ExibeDialogo(this);
             relatorio.Dispose();
         }

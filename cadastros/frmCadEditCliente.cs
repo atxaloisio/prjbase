@@ -176,9 +176,12 @@ namespace prjbase
                 List<Cliente> cliList = ClienteBLL.getCliente(p => p.cnpj_cpf.Contains(txtCNPJCPF.Text));
                 if (cliList.Count() > 0)
                 {
-                    epValidaDados.SetError(txtCNPJCPF, "CNPJ / CPF Já está cadastrado.");
-                    MessageBox.Show("CNPJ / CPF Já está cadastrado.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    retorno = false;
+                    if (Id != cliList.FirstOrDefault().Id)
+                    {
+                        epValidaDados.SetError(txtCNPJCPF, "CNPJ / CPF Já está cadastrado.");
+                        MessageBox.Show("CNPJ / CPF Já está cadastrado.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        retorno = false;
+                    }
                 }
             }
             

@@ -386,11 +386,11 @@
             // lblNrPedCliente
             // 
             this.lblNrPedCliente.AutoSize = true;
-            this.lblNrPedCliente.Location = new System.Drawing.Point(814, 84);
+            this.lblNrPedCliente.Location = new System.Drawing.Point(885, 82);
             this.lblNrPedCliente.Name = "lblNrPedCliente";
-            this.lblNrPedCliente.Size = new System.Drawing.Size(106, 16);
+            this.lblNrPedCliente.Size = new System.Drawing.Size(32, 16);
             this.lblNrPedCliente.TabIndex = 54;
-            this.lblNrPedCliente.Text = "Nr. Ped. Cliente";
+            this.lblNrPedCliente.Text = "TSO";
             // 
             // txtNrPedCliente
             // 

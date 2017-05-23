@@ -2027,115 +2027,121 @@ namespace prjbase
         {
 
             EsfCilAd_Validated(sender, e);
-            decimal Esferico = 0;
-            decimal Cilindro = 0;
-            decimal Adicao = 0;
-            decimal GlEsf = 0;
-            decimal GlCil = 0;
-
-            if (!string.IsNullOrEmpty(txtod_gl_esf.Text))
-            {
-                Esferico = Convert.ToDecimal(txtod_gl_esf.Text.Substring(1, txtod_gl_esf.Text.Length - 1).Replace(".", ","));
-                if (txtod_gl_esf.Text.Substring(0, 1) == "-")
-                {
-                    Esferico = Esferico * -1;
-                }
-            }
-
-            if (!string.IsNullOrEmpty(txtod_gl_cil.Text))
-            {
-                Cilindro = Convert.ToDecimal(txtod_gl_cil.Text.Substring(1, txtod_gl_cil.Text.Length - 1).Replace(".", ","));
-                if (txtod_gl_cil.Text.Substring(0, 1) == "-")
-                {
-                    Cilindro = Cilindro * -1;
-                }
-            }
-
             if (!string.IsNullOrEmpty(txtod_adicao.Text))
             {
-                Adicao = Convert.ToDecimal(txtod_adicao.Text.Substring(1, txtod_adicao.Text.Length - 1).Replace(".", ","));
-                if ((txtod_adicao.Text.Substring(0, 1) == "-") & (txtod_adicao.Text.Trim().Length > 1))
+                decimal Esferico = 0;
+                decimal Cilindro = 0;
+                decimal Adicao = 0;
+                decimal GlEsf = 0;
+                decimal GlCil = 0;
+
+                if (!string.IsNullOrEmpty(txtod_gl_esf.Text))
                 {
-                    Adicao = Adicao * -1;
+                    Esferico = Convert.ToDecimal(txtod_gl_esf.Text.Substring(1, txtod_gl_esf.Text.Length - 1).Replace(".", ","));
+                    if (txtod_gl_esf.Text.Substring(0, 1) == "-")
+                    {
+                        Esferico = Esferico * -1;
+                    }
                 }
-            }
-            GlEsf = Esferico + Adicao;
-            GlCil = Cilindro;
-            if (GlEsf > 0)
-            {
-                txtod_gp_esf.Text = "+" + GlEsf.ToString("N2").Replace(",", ".");
-            }
-            else
-            {
-                txtod_gp_esf.Text = GlEsf.ToString("N2").Replace(",", ".");
-            }
 
-            if (GlCil > 0)
-            {
-                txtod_gp_cil.Text = "+" + GlCil.ToString("N2").Replace(",", ".");
-            }
-            else
-            {
-                txtod_gp_cil.Text = GlCil.ToString("N2").Replace(",", ".");
-            }
+                if (!string.IsNullOrEmpty(txtod_gl_cil.Text))
+                {
+                    Cilindro = Convert.ToDecimal(txtod_gl_cil.Text.Substring(1, txtod_gl_cil.Text.Length - 1).Replace(".", ","));
+                    if (txtod_gl_cil.Text.Substring(0, 1) == "-")
+                    {
+                        Cilindro = Cilindro * -1;
+                    }
+                }
 
+                if (!string.IsNullOrEmpty(txtod_adicao.Text))
+                {
+                    Adicao = Convert.ToDecimal(txtod_adicao.Text.Substring(1, txtod_adicao.Text.Length - 1).Replace(".", ","));
+                    if ((txtod_adicao.Text.Substring(0, 1) == "-") & (txtod_adicao.Text.Trim().Length > 1))
+                    {
+                        Adicao = Adicao * -1;
+                    }
+                }
+                GlEsf = Esferico + Adicao;
+                GlCil = Cilindro;
+                if (GlEsf > 0)
+                {
+                    txtod_gp_esf.Text = "+" + GlEsf.ToString("N2").Replace(",", ".");
+                }
+                else
+                {
+                    txtod_gp_esf.Text = GlEsf.ToString("N2").Replace(",", ".");
+                }
 
+                if (GlCil > 0)
+                {
+                    txtod_gp_cil.Text = "+" + GlCil.ToString("N2").Replace(",", ".");
+                }
+                else
+                {
+                    txtod_gp_cil.Text = GlCil.ToString("N2").Replace(",", ".");
+                }
+
+            }
 
         }
 
         private void txtoe_adicao_Validated(object sender, EventArgs e)
         {
             EsfCilAd_Validated(sender, e);
-            decimal Esferico = 0;
-            decimal Cilindro = 0;
-            decimal Adicao = 0;
-            decimal GlEsf = 0;
-            decimal GlCil = 0;
-
-            if (!string.IsNullOrEmpty(txtoe_gl_esf.Text))
-            {
-                Esferico = Convert.ToDecimal(txtoe_gl_esf.Text.Substring(1, txtoe_gl_esf.Text.Length - 1).Replace(".", ","));
-                if (txtoe_gl_esf.Text.Substring(0, 1) == "-")
-                {
-                    Esferico = Esferico * -1;
-                }
-            }
-
-            if (!string.IsNullOrEmpty(txtoe_gl_cil.Text))
-            {
-                Cilindro = Convert.ToDecimal(txtoe_gl_cil.Text.Substring(1, txtoe_gl_cil.Text.Length - 1).Replace(".", ","));
-                if (txtoe_gl_cil.Text.Substring(0, 1) == "-")
-                {
-                    Cilindro = Cilindro * -1;
-                }
-            }
 
             if (!string.IsNullOrEmpty(txtoe_adicao.Text))
             {
-                Adicao = Convert.ToDecimal(txtoe_adicao.Text.Substring(1, txtoe_adicao.Text.Length - 1).Replace(".", ","));
-                if (txtoe_adicao.Text.Substring(0, 1) == "-")
-                {
-                    Adicao = Adicao * -1;
-                }
-            }
-            GlEsf = Esferico + Adicao;
-            GlCil = Cilindro;
-            if (GlEsf > 0)
-            {
-                txtoe_gp_esf.Text = "+" + GlEsf.ToString("N2").Replace(",", ".");
-            }
-            else
-            {
-                txtoe_gp_esf.Text = GlEsf.ToString("N2").Replace(",", ".");
-            }
+                decimal Esferico = 0;
+                decimal Cilindro = 0;
+                decimal Adicao = 0;
+                decimal GlEsf = 0;
+                decimal GlCil = 0;
 
-            if (GlCil > 0)
-            {
-                txtoe_gp_cil.Text = "+" + GlCil.ToString("N2").Replace(",", ".");
-            }
-            else
-            {
-                txtoe_gp_cil.Text = GlCil.ToString("N2").Replace(",", ".");
+                if (!string.IsNullOrEmpty(txtoe_gl_esf.Text))
+                {
+                    Esferico = Convert.ToDecimal(txtoe_gl_esf.Text.Substring(1, txtoe_gl_esf.Text.Length - 1).Replace(".", ","));
+                    if (txtoe_gl_esf.Text.Substring(0, 1) == "-")
+                    {
+                        Esferico = Esferico * -1;
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(txtoe_gl_cil.Text))
+                {
+                    Cilindro = Convert.ToDecimal(txtoe_gl_cil.Text.Substring(1, txtoe_gl_cil.Text.Length - 1).Replace(".", ","));
+                    if (txtoe_gl_cil.Text.Substring(0, 1) == "-")
+                    {
+                        Cilindro = Cilindro * -1;
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(txtoe_adicao.Text))
+                {
+                    Adicao = Convert.ToDecimal(txtoe_adicao.Text.Substring(1, txtoe_adicao.Text.Length - 1).Replace(".", ","));
+                    if (txtoe_adicao.Text.Substring(0, 1) == "-")
+                    {
+                        Adicao = Adicao * -1;
+                    }
+                }
+                GlEsf = Esferico + Adicao;
+                GlCil = Cilindro;
+                if (GlEsf > 0)
+                {
+                    txtoe_gp_esf.Text = "+" + GlEsf.ToString("N2").Replace(",", ".");
+                }
+                else
+                {
+                    txtoe_gp_esf.Text = GlEsf.ToString("N2").Replace(",", ".");
+                }
+
+                if (GlCil > 0)
+                {
+                    txtoe_gp_cil.Text = "+" + GlCil.ToString("N2").Replace(",", ".");
+                }
+                else
+                {
+                    txtoe_gp_cil.Text = GlCil.ToString("N2").Replace(",", ".");
+                }
             }
         }
         
