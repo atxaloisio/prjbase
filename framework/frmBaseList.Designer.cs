@@ -311,7 +311,10 @@
             this.dgvDados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDados.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDados.Location = new System.Drawing.Point(0, 0);
+            this.dgvDados.MultiSelect = false;
             this.dgvDados.Name = "dgvDados";
+            this.dgvDados.ReadOnly = true;
+            this.dgvDados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDados.Size = new System.Drawing.Size(615, 335);
             this.dgvDados.TabIndex = 0;
             this.dgvDados.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dgvDados_Scroll);

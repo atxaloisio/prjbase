@@ -212,7 +212,7 @@ namespace prjbase
             gridDados.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             gridDados.DefaultCellStyle.Font = new Font("Tahoma", 10F, FontStyle.Regular);
 
-            gridDados.CellDoubleClick += new DataGridViewCellEventHandler(dgvDados_CellDoubleClick);
+            gridDados.DoubleClick -= new EventHandler(dgvDados_DoubleClick);
             gridDados.DoubleClick += new EventHandler(dgvDados_DoubleClick);          
         }
 
@@ -220,12 +220,7 @@ namespace prjbase
         {
             editarRegistro();
         }
-
-        private void dgvDados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-                       
-        }
-
+        
         protected virtual void formataGridFiltro()
         {
             var gridFiltros = dgvFiltro;
