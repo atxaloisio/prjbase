@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadEditPedido_Otica));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblOS = new System.Windows.Forms.Label();
             this.txtOS = new System.Windows.Forms.TextBox();
@@ -1153,7 +1153,8 @@
             this.txtoe_adicao.Name = "txtoe_adicao";
             this.epValidaDados.SetObrigatorio(this.txtoe_adicao, false);
             this.txtoe_adicao.Size = new System.Drawing.Size(53, 21);
-            this.txtoe_adicao.TabIndex = 1;
+            this.txtoe_adicao.TabIndex = 9;
+            this.txtoe_adicao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtoe_adicao_KeyDown);
             this.txtoe_adicao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EsfCil_KeyPress);
             this.txtoe_adicao.Validating += new System.ComponentModel.CancelEventHandler(this.EsfCilAd_Validating);
             this.txtoe_adicao.Validated += new System.EventHandler(this.txtoe_adicao_Validated);
@@ -1167,7 +1168,8 @@
             this.txtod_adicao.Name = "txtod_adicao";
             this.epValidaDados.SetObrigatorio(this.txtod_adicao, false);
             this.txtod_adicao.Size = new System.Drawing.Size(53, 21);
-            this.txtod_adicao.TabIndex = 0;
+            this.txtod_adicao.TabIndex = 3;
+            this.txtod_adicao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtod_adicao_KeyDown);
             this.txtod_adicao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EsfCil_KeyPress);
             this.txtod_adicao.Validating += new System.ComponentModel.CancelEventHandler(this.EsfCilAd_Validating);
             this.txtod_adicao.Validated += new System.EventHandler(this.txtod_adicao_Validated);
@@ -1192,7 +1194,8 @@
             this.txtoe_eixo.Name = "txtoe_eixo";
             this.epValidaDados.SetObrigatorio(this.txtoe_eixo, false);
             this.txtoe_eixo.Size = new System.Drawing.Size(53, 21);
-            this.txtoe_eixo.TabIndex = 1;
+            this.txtoe_eixo.TabIndex = 8;
+            this.txtoe_eixo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtoe_eixo_KeyDown);
             this.txtoe_eixo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Grau_KeyPress);
             this.txtoe_eixo.Validating += new System.ComponentModel.CancelEventHandler(this.eixo_Validating);
             // 
@@ -1205,7 +1208,8 @@
             this.txtod_eixo.Name = "txtod_eixo";
             this.epValidaDados.SetObrigatorio(this.txtod_eixo, false);
             this.txtod_eixo.Size = new System.Drawing.Size(53, 21);
-            this.txtod_eixo.TabIndex = 0;
+            this.txtod_eixo.TabIndex = 2;
+            this.txtod_eixo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtod_eixo_KeyDown);
             this.txtod_eixo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Grau_KeyPress);
             this.txtod_eixo.Validating += new System.ComponentModel.CancelEventHandler(this.eixo_Validating);
             // 
@@ -1242,7 +1246,7 @@
             this.txtoe_gp_cil.Name = "txtoe_gp_cil";
             this.epValidaDados.SetObrigatorio(this.txtoe_gp_cil, false);
             this.txtoe_gp_cil.Size = new System.Drawing.Size(53, 21);
-            this.txtoe_gp_cil.TabIndex = 1;
+            this.txtoe_gp_cil.TabIndex = 11;
             this.txtoe_gp_cil.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EsfCil_KeyPress);
             this.txtoe_gp_cil.Validating += new System.ComponentModel.CancelEventHandler(this.EsfCilAd_Validating);
             this.txtoe_gp_cil.Validated += new System.EventHandler(this.EsfCilAd_Validated);
@@ -1256,7 +1260,8 @@
             this.txtod_gp_cil.Name = "txtod_gp_cil";
             this.epValidaDados.SetObrigatorio(this.txtod_gp_cil, false);
             this.txtod_gp_cil.Size = new System.Drawing.Size(53, 21);
-            this.txtod_gp_cil.TabIndex = 0;
+            this.txtod_gp_cil.TabIndex = 5;
+            this.txtod_gp_cil.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtod_gp_cil_KeyDown);
             this.txtod_gp_cil.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EsfCil_KeyPress);
             this.txtod_gp_cil.Validating += new System.ComponentModel.CancelEventHandler(this.EsfCilAd_Validating);
             this.txtod_gp_cil.Validated += new System.EventHandler(this.EsfCilAd_Validated);
@@ -1283,7 +1288,8 @@
             this.txtoe_gp_esf.Name = "txtoe_gp_esf";
             this.epValidaDados.SetObrigatorio(this.txtoe_gp_esf, false);
             this.txtoe_gp_esf.Size = new System.Drawing.Size(53, 21);
-            this.txtoe_gp_esf.TabIndex = 1;
+            this.txtoe_gp_esf.TabIndex = 10;
+            this.txtoe_gp_esf.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtoe_gp_esf_KeyDown);
             this.txtoe_gp_esf.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EsfCil_KeyPress);
             this.txtoe_gp_esf.Validating += new System.ComponentModel.CancelEventHandler(this.EsfCilAd_Validating);
             this.txtoe_gp_esf.Validated += new System.EventHandler(this.EsfCilAd_Validated);
@@ -1297,7 +1303,8 @@
             this.txtod_gp_esf.Name = "txtod_gp_esf";
             this.epValidaDados.SetObrigatorio(this.txtod_gp_esf, false);
             this.txtod_gp_esf.Size = new System.Drawing.Size(53, 21);
-            this.txtod_gp_esf.TabIndex = 0;
+            this.txtod_gp_esf.TabIndex = 4;
+            this.txtod_gp_esf.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtod_gp_esf_KeyDown);
             this.txtod_gp_esf.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EsfCil_KeyPress);
             this.txtod_gp_esf.Validating += new System.ComponentModel.CancelEventHandler(this.EsfCilAd_Validating);
             this.txtod_gp_esf.Validated += new System.EventHandler(this.EsfCilAd_Validated);
@@ -1335,7 +1342,8 @@
             this.txtoe_gl_cil.Name = "txtoe_gl_cil";
             this.epValidaDados.SetObrigatorio(this.txtoe_gl_cil, false);
             this.txtoe_gl_cil.Size = new System.Drawing.Size(53, 21);
-            this.txtoe_gl_cil.TabIndex = 1;
+            this.txtoe_gl_cil.TabIndex = 7;
+            this.txtoe_gl_cil.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtoe_gl_cil_KeyDown);
             this.txtoe_gl_cil.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EsfCil_KeyPress);
             this.txtoe_gl_cil.Validating += new System.ComponentModel.CancelEventHandler(this.EsfCilAd_Validating);
             this.txtoe_gl_cil.Validated += new System.EventHandler(this.EsfCilAd_Validated);
@@ -1349,7 +1357,8 @@
             this.txtod_gl_cil.Name = "txtod_gl_cil";
             this.epValidaDados.SetObrigatorio(this.txtod_gl_cil, false);
             this.txtod_gl_cil.Size = new System.Drawing.Size(53, 21);
-            this.txtod_gl_cil.TabIndex = 0;
+            this.txtod_gl_cil.TabIndex = 1;
+            this.txtod_gl_cil.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtod_gl_cil_KeyDown);
             this.txtod_gl_cil.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EsfCil_KeyPress);
             this.txtod_gl_cil.Validating += new System.ComponentModel.CancelEventHandler(this.EsfCilAd_Validating);
             this.txtod_gl_cil.Validated += new System.EventHandler(this.EsfCilAd_Validated);
@@ -1376,7 +1385,8 @@
             this.txtoe_gl_esf.Name = "txtoe_gl_esf";
             this.epValidaDados.SetObrigatorio(this.txtoe_gl_esf, false);
             this.txtoe_gl_esf.Size = new System.Drawing.Size(53, 21);
-            this.txtoe_gl_esf.TabIndex = 1;
+            this.txtoe_gl_esf.TabIndex = 6;
+            this.txtoe_gl_esf.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtoe_gl_esf_KeyDown);
             this.txtoe_gl_esf.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EsfCil_KeyPress);
             this.txtoe_gl_esf.Validating += new System.ComponentModel.CancelEventHandler(this.EsfCilAd_Validating);
             this.txtoe_gl_esf.Validated += new System.EventHandler(this.EsfCilAd_Validated);
@@ -1385,12 +1395,13 @@
             // 
             this.txtod_gl_esf.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.epValidaDados.SetFraseErro(this.txtod_gl_esf, "");
-            this.txtod_gl_esf.Location = new System.Drawing.Point(6, 19);
+            this.txtod_gl_esf.Location = new System.Drawing.Point(7, 20);
             this.txtod_gl_esf.MaxLength = 5;
             this.txtod_gl_esf.Name = "txtod_gl_esf";
             this.epValidaDados.SetObrigatorio(this.txtod_gl_esf, false);
             this.txtod_gl_esf.Size = new System.Drawing.Size(53, 21);
             this.txtod_gl_esf.TabIndex = 0;
+            this.txtod_gl_esf.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtod_gl_esf_KeyDown);
             this.txtod_gl_esf.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EsfCil_KeyPress);
             this.txtod_gl_esf.Validating += new System.ComponentModel.CancelEventHandler(this.EsfCilAd_Validating);
             this.txtod_gl_esf.Validated += new System.EventHandler(this.EsfCilAd_Validated);
@@ -1608,9 +1619,9 @@
             // 
             // VLRUNITARIO
             // 
-            dataGridViewCellStyle1.Format = "N2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.VLRUNITARIO.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle31.Format = "N2";
+            dataGridViewCellStyle31.NullValue = null;
+            this.VLRUNITARIO.DefaultCellStyle = dataGridViewCellStyle31;
             this.VLRUNITARIO.HeaderText = "Vlr Unitário";
             this.VLRUNITARIO.Name = "VLRUNITARIO";
             this.VLRUNITARIO.Width = 110;
@@ -1623,18 +1634,18 @@
             // 
             // VLRDESCONTO
             // 
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.VLRDESCONTO.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle32.Format = "N2";
+            dataGridViewCellStyle32.NullValue = null;
+            this.VLRDESCONTO.DefaultCellStyle = dataGridViewCellStyle32;
             this.VLRDESCONTO.HeaderText = "Vlr Desc";
             this.VLRDESCONTO.Name = "VLRDESCONTO";
             this.VLRDESCONTO.Width = 110;
             // 
             // VLTTOTAL
             // 
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.VLTTOTAL.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle33.Format = "N2";
+            dataGridViewCellStyle33.NullValue = null;
+            this.VLTTOTAL.DefaultCellStyle = dataGridViewCellStyle33;
             this.VLTTOTAL.HeaderText = "Total";
             this.VLTTOTAL.Name = "VLTTOTAL";
             this.VLTTOTAL.ReadOnly = true;

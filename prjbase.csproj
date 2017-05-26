@@ -23,7 +23,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <TargetCulture>pt-BR</TargetCulture>
+    <TargetCulture>en</TargetCulture>
     <AutorunEnabled>true</AutorunEnabled>
     <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
@@ -64,7 +64,7 @@
     <ManifestKeyFile>prjbase_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
+    <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>false</SignManifests>
@@ -837,6 +837,8 @@
     </Content>
     <Content Include="oculos.ico" />
     <Content Include="oculos2.ico" />
+    <None Include="Resources\down.png" />
+    <None Include="Resources\up.png" />
     <None Include="Resources\camera1.png" />
     <None Include="Resources\camera.png" />
     <None Include="Resources\movimento.png" />

@@ -48,8 +48,13 @@ namespace prjbase
             bool Retorno = true;
             string mensagem = string.Empty;
 
-            if ((this.Tag != null)||(tag != null))
+            if (this.Tag.ToString() == "")
             {
+                this.Tag = null;
+            }
+
+            if ((this.Tag != null)||(tag != null))
+            {                
                 int func = Convert.ToInt32(this.Tag);
                 if (tag != null)
                 {

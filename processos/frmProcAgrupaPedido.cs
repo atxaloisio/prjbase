@@ -1432,7 +1432,7 @@ namespace prjbase
                 {
                     string mensagem = TrataException.getAllMessage(ex);
                     MessageBox.Show(mensagem, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    throw;
+                    //throw;
                 }
                 finally
                 {

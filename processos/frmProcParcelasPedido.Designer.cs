@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.pnlBotoes = new System.Windows.Forms.Panel();
-            this.btnImprimir = new System.Windows.Forms.Button();
             this.pnlBorda = new System.Windows.Forms.Panel();
             this.lblTotalRegistros = new System.Windows.Forms.Label();
             this.lblRegistros = new System.Windows.Forms.Label();
@@ -41,8 +40,7 @@
             this.btnProximo = new System.Windows.Forms.Button();
             this.btnUltimo = new System.Windows.Forms.Button();
             this.btnFechar = new System.Windows.Forms.Button();
-            this.btnExcluir = new System.Windows.Forms.Button();
-            this.btnAgrupar = new System.Windows.Forms.Button();
+            this.btnVisualizar = new System.Windows.Forms.Button();
             this.pnlDados = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvDados = new System.Windows.Forms.DataGridView();
@@ -59,7 +57,6 @@
             // pnlBotoes
             // 
             this.pnlBotoes.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.pnlBotoes.Controls.Add(this.btnImprimir);
             this.pnlBotoes.Controls.Add(this.pnlBorda);
             this.pnlBotoes.Controls.Add(this.lblTotalRegistros);
             this.pnlBotoes.Controls.Add(this.lblRegistros);
@@ -71,33 +68,13 @@
             this.pnlBotoes.Controls.Add(this.btnProximo);
             this.pnlBotoes.Controls.Add(this.btnUltimo);
             this.pnlBotoes.Controls.Add(this.btnFechar);
-            this.pnlBotoes.Controls.Add(this.btnExcluir);
-            this.pnlBotoes.Controls.Add(this.btnAgrupar);
+            this.pnlBotoes.Controls.Add(this.btnVisualizar);
             this.pnlBotoes.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlBotoes.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlBotoes.Location = new System.Drawing.Point(0, 0);
             this.pnlBotoes.Name = "pnlBotoes";
             this.pnlBotoes.Size = new System.Drawing.Size(116, 405);
             this.pnlBotoes.TabIndex = 10;
-            // 
-            // btnImprimir
-            // 
-            this.btnImprimir.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.btnImprimir.Enabled = false;
-            this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImprimir.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimir.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnImprimir.Image = global::prjbase.Properties.Resources.Imprimir;
-            this.btnImprimir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImprimir.Location = new System.Drawing.Point(4, 71);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(109, 33);
-            this.btnImprimir.TabIndex = 22;
-            this.btnImprimir.Text = "Imprimi&r";
-            this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnImprimir.UseVisualStyleBackColor = false;
-            this.btnImprimir.Visible = false;
-            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // pnlBorda
             // 
@@ -232,40 +209,22 @@
             this.btnFechar.UseVisualStyleBackColor = false;
             this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
-            // btnExcluir
+            // btnVisualizar
             // 
-            this.btnExcluir.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExcluir.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluir.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnExcluir.Image = global::prjbase.Properties.Resources.usd;
-            this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExcluir.Location = new System.Drawing.Point(4, 37);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(109, 33);
-            this.btnExcluir.TabIndex = 10;
-            this.btnExcluir.Text = "&Pagar";
-            this.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnExcluir.UseVisualStyleBackColor = false;
-            this.btnExcluir.Visible = false;
-            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
-            // 
-            // btnAgrupar
-            // 
-            this.btnAgrupar.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.btnAgrupar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgrupar.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgrupar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAgrupar.Image = global::prjbase.Properties.Resources.view;
-            this.btnAgrupar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnAgrupar.Location = new System.Drawing.Point(4, 3);
-            this.btnAgrupar.Name = "btnAgrupar";
-            this.btnAgrupar.Size = new System.Drawing.Size(109, 33);
-            this.btnAgrupar.TabIndex = 8;
-            this.btnAgrupar.Text = "&Visualizar";
-            this.btnAgrupar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAgrupar.UseVisualStyleBackColor = false;
-            this.btnAgrupar.Click += new System.EventHandler(this.btnIncluir_Click);
+            this.btnVisualizar.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnVisualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVisualizar.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVisualizar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnVisualizar.Image = global::prjbase.Properties.Resources.view;
+            this.btnVisualizar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnVisualizar.Location = new System.Drawing.Point(4, 3);
+            this.btnVisualizar.Name = "btnVisualizar";
+            this.btnVisualizar.Size = new System.Drawing.Size(109, 33);
+            this.btnVisualizar.TabIndex = 8;
+            this.btnVisualizar.Text = "&Visualizar";
+            this.btnVisualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnVisualizar.UseVisualStyleBackColor = false;
+            this.btnVisualizar.Click += new System.EventHandler(this.btnVisualizar_Click);
             // 
             // pnlDados
             // 
@@ -347,8 +306,7 @@
         #endregion
         public System.Windows.Forms.Panel pnlBotoes;
         public System.Windows.Forms.Panel pnlDados;
-        public System.Windows.Forms.Button btnExcluir;
-        public System.Windows.Forms.Button btnAgrupar;
+        public System.Windows.Forms.Button btnVisualizar;
         public System.Windows.Forms.Button btnFechar;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
@@ -364,6 +322,5 @@
         protected System.Windows.Forms.Label lblTotalRegistros;
         private System.Windows.Forms.Label lblRegistros;
         private System.Windows.Forms.Panel pnlBorda;
-        public System.Windows.Forms.Button btnImprimir;
     }
 }

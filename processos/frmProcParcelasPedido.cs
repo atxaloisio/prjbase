@@ -72,85 +72,7 @@ namespace prjbase
 
             MdiParent = pFormParent;
         }
-
-        protected virtual void btnIncluir_Click(object sender, EventArgs e)
-        {
-            //if (ValidaAcessoFuncao(Operacao.Salvar))
-            //{
-            //    AgruparPedidos();
-            //}
-
-        }
-
-        protected virtual void btnExcluir_Click(object sender, EventArgs e)
-        {
-
-            //try
-            //{
-            //    if (ValidaAcessoFuncao(Operacao.Excluir))
-            //    {
-            //        if (dgvDados.CurrentRow != null)
-            //        {
-            //            excluirRegistro(dgvDados.CurrentRow.Index);
-            //            carregaConsulta();
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-
-            //    MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-
-        }
-
-        protected virtual void excluirRegistro(int RowSelected)
-        {
-            //if (dgvDados[COL_IDPEDIDO_OMIE, dgvDados.CurrentRow.Index].Value != null)
-            //{
-            //    if (Convert.ToInt32(dgvDados[COL_IDPEDIDO_OMIE, dgvDados.CurrentRow.Index].Value) > 0)
-            //    {
-
-            //        pedido_OticaBLL = new Pedido_OticaBLL();
-            //        int IdPedidoOmie = Convert.ToInt32(dgvDados[COL_IDPEDIDO_OMIE, dgvDados.CurrentRow.Index].Value);
-            //        List<Pedido_Otica> pedido_oticaList = pedido_OticaBLL.getPedido_Otica(p => p.Id_pedido == IdPedidoOmie);
-
-            //        string pedidos = string.Empty;
-            //        foreach (Pedido_Otica item in pedido_oticaList)
-            //        {
-            //            if (string.IsNullOrEmpty(pedidos))
-            //            {
-            //                pedidos = item.codigo.ToString();
-            //            }
-            //            else
-            //            {
-            //                pedidos += ", " + item.codigo.ToString();
-            //            }
-            //        }
-
-            //        if (MessageBox.Show("Deseja realmente excluir o agrupamento referente ao(s) pedido(s): " + pedidos, Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            //        {
-            //            foreach (Pedido_Otica item in pedido_oticaList)
-            //            {
-            //                item.Id_pedido = null;
-            //                item.codigo_pedido = null;
-            //                item.status = (int)StatusPedido.IMPRESSO;
-            //                item.agrupado = "N";
-            //                pedido_OticaBLL.UsuarioLogado = Program.usuario_logado;
-            //                pedido_OticaBLL.AlterarPedido_Otica(item);
-            //            }
-
-            //            pedidoBLL = new PedidoBLL();
-            //            Pedido pedido = pedidoBLL.Localizar(IdPedidoOmie);
-            //            pedidoBLL.ExcluirPedido(pedido);
-            //        }
-            //    }
-            //}
-
-        }
-
-
-
+        
         private void btnFechar_Click(object sender, EventArgs e)
         {
             Close();
@@ -1122,6 +1044,11 @@ namespace prjbase
         protected virtual void imprimirRegistro(object sender, EventArgs e)
         {
 
-        }                                        
+        }
+
+        private void btnVisualizar_Click(object sender, EventArgs e)
+        {
+            VisualizarRegistro();
+        }
     }
 }

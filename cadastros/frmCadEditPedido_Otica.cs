@@ -1981,16 +1981,28 @@ namespace prjbase
                 if (Utils.StringExtensions.IsNumeric(txt.Substring(0, 1)))
                 {
                     decimal dec = Convert.ToDecimal(txt.Replace(".", ","));
+                    if (dec > 10)
+                    {
+                        dec = dec / 100;
+                    }
                     ((TextBox)sender).Text = "+" + dec.ToString("N2").Replace(",", ".");
                 }
                 else if ((txt.Substring(0, 1) == "-") & (txt.Trim().Length > 1) )
                 {
                     decimal dec = Convert.ToDecimal(txt.Substring(1, txt.Length -1).Replace(".", ","));
+                    if (dec > 10)
+                    {
+                        dec = dec / 100;
+                    }
                     ((TextBox)sender).Text = "-" + dec.ToString("N2").Replace(",", ".");
                 }
                 else if ((txt.Substring(0, 1) == "+") & (txt.Trim().Length > 1))
                 {
                     decimal dec = Convert.ToDecimal(txt.Substring(1, txt.Length -1).Replace(".", ","));
+                    if (dec > 10)
+                    {
+                        dec = dec / 100;
+                    }
                     ((TextBox)sender).Text = "+" + dec.ToString("N2").Replace(",", ".");
                 }
             }
@@ -2213,6 +2225,70 @@ namespace prjbase
             {
                 e.Handled = true;
             }
+        }
+
+        private void txtod_gl_esf_KeyDown(object sender, KeyEventArgs e)
+        {
+            navegaProximo(txtod_gl_cil, e);            
+        }
+
+        private void txtod_gl_cil_KeyDown(object sender, KeyEventArgs e)
+        {
+            navegaProximo(txtod_eixo, e);
+        }
+
+        private void navegaProximo(object sender, KeyEventArgs e)
+        {
+            if ((e.KeyCode == Keys.Enter) || (e.KeyCode == Keys.Tab))
+            {
+                ((TextBox)sender).Focus();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txtod_eixo_KeyDown(object sender, KeyEventArgs e)
+        {
+            navegaProximo(txtod_adicao, e);
+        }
+
+        private void txtod_adicao_KeyDown(object sender, KeyEventArgs e)
+        {
+            navegaProximo(txtod_gp_esf, e);
+        }
+
+        private void txtod_gp_esf_KeyDown(object sender, KeyEventArgs e)
+        {
+            navegaProximo(txtod_gp_cil, e);
+        }
+
+        private void txtod_gp_cil_KeyDown(object sender, KeyEventArgs e)
+        {
+            navegaProximo(txtoe_gl_esf, e);
+        }
+
+        private void txtoe_gl_esf_KeyDown(object sender, KeyEventArgs e)
+        {
+            navegaProximo(txtoe_gl_cil, e);
+        }
+
+        private void txtoe_gl_cil_KeyDown(object sender, KeyEventArgs e)
+        {
+            navegaProximo(txtoe_eixo, e);
+        }
+
+        private void txtoe_eixo_KeyDown(object sender, KeyEventArgs e)
+        {
+            navegaProximo(txtoe_adicao, e);
+        }
+
+        private void txtoe_adicao_KeyDown(object sender, KeyEventArgs e)
+        {
+            navegaProximo(txtoe_gp_esf, e);
+        }
+
+        private void txtoe_gp_esf_KeyDown(object sender, KeyEventArgs e)
+        {
+            navegaProximo(txtoe_gp_cil, e);
         }
     }
 }
