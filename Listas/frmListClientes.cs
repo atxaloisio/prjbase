@@ -13,6 +13,7 @@ using BLL;
 using JThomas.Controls;
 using Utils;
 using LinqKit;
+using Sync;
 
 namespace prjbase
 {
@@ -653,6 +654,18 @@ namespace prjbase
                 if (MessageBox.Show("Deseja realmente excluir o registro : " + Cliente.nome_fantasia , Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     clienteBLL.ExcluirCliente(Cliente);
+
+                    bool intOmie = Convert.ToBoolean(Parametro.GetParametro("intOmie"));
+                    bool updateClienteOmie = Convert.ToBoolean(Parametro.GetParametro("updateClienteOmie"));
+                    ClienteProxy proxy = new ClienteProxy();
+                    proxy.usuario = Program.usuario_logado;
+                    if ((intOmie) & (updateClienteOmie))
+                    {
+                        if (Cliente.codigo_cliente_omie > 0)
+                        {
+                            proxy.ExcluirClientes(Cliente);
+                        }
+                    }
                 }
             }
         }

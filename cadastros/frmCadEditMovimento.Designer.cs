@@ -159,7 +159,6 @@
             this.txtQuantidade.Size = new System.Drawing.Size(132, 23);
             this.txtQuantidade.TabIndex = 3;
             this.txtQuantidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumber_KeyPress);
-            this.txtQuantidade.Validating += new System.ComponentModel.CancelEventHandler(this.OnlyNumber_Validating);
             // 
             // label5
             // 

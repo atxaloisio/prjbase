@@ -371,6 +371,7 @@ namespace prjbase
         private void NovoMovimento()
         {
             frmCadEditMovimento frm = new frmCadEditMovimento();
+            frm.Tag = Tag;
             if (frm.ExibeDialogo(null,txtDescricao.Text) == DialogResult.OK)
             {
                 //carrega grid para lista.
@@ -536,6 +537,7 @@ namespace prjbase
                 if (dgvMovEstoque[0, dgvMovEstoque.CurrentRow.Index].Value != null)
                 {
                     frmCadEditMovimento frm = new frmCadEditMovimento();
+                    frm.Tag = Tag;
                     Movimento movEnt = LoadLinhaMovimentoFromGrid(dgvMovEstoque.CurrentRow.Index);
 
                     if (movEnt.tipo.Substring(0,1) == "S")

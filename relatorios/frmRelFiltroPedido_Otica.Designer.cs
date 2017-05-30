@@ -113,7 +113,7 @@
             // 
             // btnFechar
             // 
-            this.btnFechar.Location = new System.Drawing.Point(4, 2072);
+            this.btnFechar.Location = new System.Drawing.Point(4, 2157);
             // 
             // pnlBotoes
             // 
@@ -831,6 +831,7 @@
             this.KeyPreview = true;
             this.Name = "frmRelFiltroPedido_Otica";
             this.Text = "Filtragem do Pedido de Vendas";
+            this.Activated += new System.EventHandler(this.frmRelFiltroPedido_Otica_Activated);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmRelFiltroPedido_Otica_KeyPress);
             this.pnlDados.ResumeLayout(false);
             this.pnlBotoes.ResumeLayout(false);

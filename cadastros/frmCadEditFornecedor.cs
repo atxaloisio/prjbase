@@ -583,5 +583,6 @@ namespace prjbase
                 imgFotoCliente.Image = Image.FromFile(@dlgCaminhoImagem.FileName);
             }
         }
+        
     }
 }

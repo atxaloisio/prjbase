@@ -13,6 +13,7 @@ using BLL;
 using JThomas.Controls;
 using Utils;
 using LinqKit;
+using Sync;
 
 namespace prjbase
 {
@@ -315,6 +316,16 @@ namespace prjbase
                     if (MessageBox.Show("Deseja realmente excluir o registro : " + Produto.id.ToString() + " - " + Produto.descricao, Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         ProdutoBLL.ExcluirProduto(Produto);
+                        bool intOmie = Convert.ToBoolean(Parametro.GetParametro("intOmie"));
+                        bool updateProdutoOmie = Convert.ToBoolean(Parametro.GetParametro("updateProdutoOmie"));
+                        ProdutoProxy proxy = new ProdutoProxy();
+                        if (intOmie & updateProdutoOmie)
+                        {
+                            if (Produto.codigo_produto > 0)
+                            {
+                                proxy.ExcluirProduto(Produto);
+                            }
+                        }
                     }
 
                 }

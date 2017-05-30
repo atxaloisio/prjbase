@@ -43,7 +43,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtCaminhoArquivos = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbTipoArqIntegracao = new System.Windows.Forms.GroupBox();
             this.rbIntTooling = new System.Windows.Forms.RadioButton();
             this.rbIntGenLab = new System.Windows.Forms.RadioButton();
             this.btnCaminhoArquivos = new System.Windows.Forms.Button();
@@ -159,7 +159,7 @@
             this.tpGeral.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.gbTipoArqIntegracao.SuspendLayout();
             this.tpPedidoVenda.SuspendLayout();
             this.tpIntegracao.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -184,7 +184,7 @@
             this.pnlPrincipal.Location = new System.Drawing.Point(115, 0);
             this.pnlPrincipal.Name = "pnlPrincipal";
             this.pnlPrincipal.Size = new System.Drawing.Size(799, 295);
-            this.pnlPrincipal.TabIndex = 2;
+            this.pnlPrincipal.TabIndex = 0;
             // 
             // tcParametros
             // 
@@ -199,13 +199,14 @@
             this.tcParametros.SelectedIndex = 0;
             this.tcParametros.Size = new System.Drawing.Size(797, 293);
             this.tcParametros.TabIndex = 0;
+            this.tcParametros.SelectedIndexChanged += new System.EventHandler(this.tcParametros_SelectedIndexChanged);
             // 
             // tpGeral
             // 
             this.tpGeral.Controls.Add(this.groupBox3);
             this.tpGeral.Controls.Add(this.groupBox2);
             this.tpGeral.Controls.Add(this.txtCaminhoArquivos);
-            this.tpGeral.Controls.Add(this.groupBox1);
+            this.tpGeral.Controls.Add(this.gbTipoArqIntegracao);
             this.tpGeral.Controls.Add(this.btnCaminhoArquivos);
             this.tpGeral.Controls.Add(this.label1);
             this.tpGeral.Location = new System.Drawing.Point(4, 25);
@@ -223,7 +224,7 @@
             this.groupBox3.Location = new System.Drawing.Point(273, 100);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(261, 121);
-            this.groupBox3.TabIndex = 20;
+            this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Layout";
             // 
@@ -234,7 +235,7 @@
             this.rbOtica.Location = new System.Drawing.Point(49, 50);
             this.rbOtica.Name = "rbOtica";
             this.rbOtica.Size = new System.Drawing.Size(59, 20);
-            this.rbOtica.TabIndex = 14;
+            this.rbOtica.TabIndex = 1;
             this.rbOtica.TabStop = true;
             this.rbOtica.Text = "Ótica";
             this.rbOtica.UseVisualStyleBackColor = true;
@@ -246,7 +247,7 @@
             this.rbLaboratorio.Location = new System.Drawing.Point(6, 24);
             this.rbLaboratorio.Name = "rbLaboratorio";
             this.rbLaboratorio.Size = new System.Drawing.Size(102, 20);
-            this.rbLaboratorio.TabIndex = 13;
+            this.rbLaboratorio.TabIndex = 0;
             this.rbLaboratorio.TabStop = true;
             this.rbLaboratorio.Text = "Laboratório";
             this.rbLaboratorio.UseVisualStyleBackColor = true;
@@ -262,7 +263,7 @@
             this.groupBox2.Location = new System.Drawing.Point(6, 100);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(261, 121);
-            this.groupBox2.TabIndex = 19;
+            this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Último código";
             // 
@@ -271,21 +272,21 @@
             this.txtCodPedido.Location = new System.Drawing.Point(65, 75);
             this.txtCodPedido.Name = "txtCodPedido";
             this.txtCodPedido.Size = new System.Drawing.Size(113, 23);
-            this.txtCodPedido.TabIndex = 24;
+            this.txtCodPedido.TabIndex = 2;
             // 
             // txtCodProduto
             // 
             this.txtCodProduto.Location = new System.Drawing.Point(65, 49);
             this.txtCodProduto.Name = "txtCodProduto";
             this.txtCodProduto.Size = new System.Drawing.Size(113, 23);
-            this.txtCodProduto.TabIndex = 22;
+            this.txtCodProduto.TabIndex = 1;
             // 
             // txtCodCliente
             // 
             this.txtCodCliente.Location = new System.Drawing.Point(65, 23);
             this.txtCodCliente.Name = "txtCodCliente";
             this.txtCodCliente.Size = new System.Drawing.Size(113, 23);
-            this.txtCodCliente.TabIndex = 20;
+            this.txtCodCliente.TabIndex = 0;
             // 
             // label9
             // 
@@ -319,18 +320,18 @@
             this.txtCaminhoArquivos.Location = new System.Drawing.Point(6, 71);
             this.txtCaminhoArquivos.Name = "txtCaminhoArquivos";
             this.txtCaminhoArquivos.Size = new System.Drawing.Size(496, 23);
-            this.txtCaminhoArquivos.TabIndex = 2;
+            this.txtCaminhoArquivos.TabIndex = 1;
             // 
-            // groupBox1
+            // gbTipoArqIntegracao
             // 
-            this.groupBox1.Controls.Add(this.rbIntTooling);
-            this.groupBox1.Controls.Add(this.rbIntGenLab);
-            this.groupBox1.Location = new System.Drawing.Point(6, 4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(525, 44);
-            this.groupBox1.TabIndex = 12;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Gerar arquivo de integração";
+            this.gbTipoArqIntegracao.Controls.Add(this.rbIntTooling);
+            this.gbTipoArqIntegracao.Controls.Add(this.rbIntGenLab);
+            this.gbTipoArqIntegracao.Location = new System.Drawing.Point(6, 4);
+            this.gbTipoArqIntegracao.Name = "gbTipoArqIntegracao";
+            this.gbTipoArqIntegracao.Size = new System.Drawing.Size(525, 44);
+            this.gbTipoArqIntegracao.TabIndex = 0;
+            this.gbTipoArqIntegracao.TabStop = false;
+            this.gbTipoArqIntegracao.Text = "Gerar arquivo de integração";
             // 
             // rbIntTooling
             // 
@@ -339,7 +340,7 @@
             this.rbIntTooling.Location = new System.Drawing.Point(117, 18);
             this.rbIntTooling.Name = "rbIntTooling";
             this.rbIntTooling.Size = new System.Drawing.Size(79, 20);
-            this.rbIntTooling.TabIndex = 14;
+            this.rbIntTooling.TabIndex = 1;
             this.rbIntTooling.TabStop = true;
             this.rbIntTooling.Text = "TOOLING";
             this.rbIntTooling.UseVisualStyleBackColor = true;
@@ -351,7 +352,7 @@
             this.rbIntGenLab.Location = new System.Drawing.Point(8, 18);
             this.rbIntGenLab.Name = "rbIntGenLab";
             this.rbIntGenLab.Size = new System.Drawing.Size(74, 20);
-            this.rbIntGenLab.TabIndex = 13;
+            this.rbIntGenLab.TabIndex = 0;
             this.rbIntGenLab.TabStop = true;
             this.rbIntGenLab.Text = "GENLAB";
             this.rbIntGenLab.UseVisualStyleBackColor = true;
@@ -366,7 +367,7 @@
             this.btnCaminhoArquivos.Location = new System.Drawing.Point(504, 68);
             this.btnCaminhoArquivos.Name = "btnCaminhoArquivos";
             this.btnCaminhoArquivos.Size = new System.Drawing.Size(31, 28);
-            this.btnCaminhoArquivos.TabIndex = 10;
+            this.btnCaminhoArquivos.TabIndex = 2;
             this.btnCaminhoArquivos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCaminhoArquivos.UseVisualStyleBackColor = false;
             this.btnCaminhoArquivos.Click += new System.EventHandler(this.btnCaminhoArquivos_Click);
@@ -401,7 +402,7 @@
             this.txtCodigoEmpresa.Location = new System.Drawing.Point(10, 146);
             this.txtCodigoEmpresa.Name = "txtCodigoEmpresa";
             this.txtCodigoEmpresa.Size = new System.Drawing.Size(163, 23);
-            this.txtCodigoEmpresa.TabIndex = 5;
+            this.txtCodigoEmpresa.TabIndex = 2;
             this.txtCodigoEmpresa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
             this.txtCodigoEmpresa.Validating += new System.ComponentModel.CancelEventHandler(this.txtCodigoEmpresa_Validating);
             // 
@@ -420,7 +421,7 @@
             this.cbContaCorrente.Location = new System.Drawing.Point(10, 88);
             this.cbContaCorrente.Name = "cbContaCorrente";
             this.cbContaCorrente.Size = new System.Drawing.Size(351, 24);
-            this.cbContaCorrente.TabIndex = 3;
+            this.cbContaCorrente.TabIndex = 1;
             // 
             // cbCategoria
             // 
@@ -428,7 +429,7 @@
             this.cbCategoria.Location = new System.Drawing.Point(10, 30);
             this.cbCategoria.Name = "cbCategoria";
             this.cbCategoria.Size = new System.Drawing.Size(351, 24);
-            this.cbCategoria.TabIndex = 2;
+            this.cbCategoria.TabIndex = 0;
             // 
             // label3
             // 
@@ -474,7 +475,7 @@
             this.groupBox4.Location = new System.Drawing.Point(7, 85);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(775, 52);
-            this.groupBox4.TabIndex = 7;
+            this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Atualizar ERP ao incluir";
             // 
@@ -485,7 +486,7 @@
             this.chkAtualizaTransportadora.Location = new System.Drawing.Point(319, 22);
             this.chkAtualizaTransportadora.Name = "chkAtualizaTransportadora";
             this.chkAtualizaTransportadora.Size = new System.Drawing.Size(129, 20);
-            this.chkAtualizaTransportadora.TabIndex = 11;
+            this.chkAtualizaTransportadora.TabIndex = 2;
             this.chkAtualizaTransportadora.Text = "Transportadora";
             this.chkAtualizaTransportadora.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.chkAtualizaTransportadora.UseVisualStyleBackColor = true;
@@ -497,7 +498,7 @@
             this.chkAtualizaFornecedor.Location = new System.Drawing.Point(148, 22);
             this.chkAtualizaFornecedor.Name = "chkAtualizaFornecedor";
             this.chkAtualizaFornecedor.Size = new System.Drawing.Size(100, 20);
-            this.chkAtualizaFornecedor.TabIndex = 10;
+            this.chkAtualizaFornecedor.TabIndex = 1;
             this.chkAtualizaFornecedor.Text = "Fornecedor";
             this.chkAtualizaFornecedor.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.chkAtualizaFornecedor.UseVisualStyleBackColor = true;
@@ -509,7 +510,7 @@
             this.chkAtualizaVendedor.Location = new System.Drawing.Point(669, 22);
             this.chkAtualizaVendedor.Name = "chkAtualizaVendedor";
             this.chkAtualizaVendedor.Size = new System.Drawing.Size(90, 20);
-            this.chkAtualizaVendedor.TabIndex = 9;
+            this.chkAtualizaVendedor.TabIndex = 4;
             this.chkAtualizaVendedor.Text = "Vendedor";
             this.chkAtualizaVendedor.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.chkAtualizaVendedor.UseVisualStyleBackColor = true;
@@ -521,7 +522,7 @@
             this.chkAtualizaCliente.Location = new System.Drawing.Point(6, 22);
             this.chkAtualizaCliente.Name = "chkAtualizaCliente";
             this.chkAtualizaCliente.Size = new System.Drawing.Size(71, 20);
-            this.chkAtualizaCliente.TabIndex = 8;
+            this.chkAtualizaCliente.TabIndex = 0;
             this.chkAtualizaCliente.Text = "Cliente";
             this.chkAtualizaCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.chkAtualizaCliente.UseVisualStyleBackColor = true;
@@ -533,7 +534,7 @@
             this.chkAtualizaProduto.Location = new System.Drawing.Point(519, 22);
             this.chkAtualizaProduto.Name = "chkAtualizaProduto";
             this.chkAtualizaProduto.Size = new System.Drawing.Size(79, 20);
-            this.chkAtualizaProduto.TabIndex = 7;
+            this.chkAtualizaProduto.TabIndex = 3;
             this.chkAtualizaProduto.Text = "Produto";
             this.chkAtualizaProduto.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.chkAtualizaProduto.UseVisualStyleBackColor = true;
@@ -545,7 +546,7 @@
             this.chkIntegrarOmie.Location = new System.Drawing.Point(4, 7);
             this.chkIntegrarOmie.Name = "chkIntegrarOmie";
             this.chkIntegrarOmie.Size = new System.Drawing.Size(140, 20);
-            this.chkIntegrarOmie.TabIndex = 4;
+            this.chkIntegrarOmie.TabIndex = 0;
             this.chkIntegrarOmie.Text = "Integrar com ERP";
             this.chkIntegrarOmie.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.chkIntegrarOmie.UseVisualStyleBackColor = true;
@@ -555,14 +556,14 @@
             this.txtAppSecret.Location = new System.Drawing.Point(92, 56);
             this.txtAppSecret.Name = "txtAppSecret";
             this.txtAppSecret.Size = new System.Drawing.Size(311, 23);
-            this.txtAppSecret.TabIndex = 3;
+            this.txtAppSecret.TabIndex = 2;
             // 
             // txtAppKey
             // 
             this.txtAppKey.Location = new System.Drawing.Point(92, 30);
             this.txtAppKey.Name = "txtAppKey";
             this.txtAppKey.Size = new System.Drawing.Size(163, 23);
-            this.txtAppKey.TabIndex = 2;
+            this.txtAppKey.TabIndex = 1;
             this.txtAppKey.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
             // 
             // label5
@@ -617,7 +618,7 @@
             this.chkEmpresa.Location = new System.Drawing.Point(6, 169);
             this.chkEmpresa.Name = "chkEmpresa";
             this.chkEmpresa.Size = new System.Drawing.Size(82, 20);
-            this.chkEmpresa.TabIndex = 19;
+            this.chkEmpresa.TabIndex = 10;
             this.chkEmpresa.Text = "Empresa";
             this.chkEmpresa.UseVisualStyleBackColor = true;
             // 
@@ -633,6 +634,7 @@
             this.btnZerarCadFamiliaProd.Name = "btnZerarCadFamiliaProd";
             this.btnZerarCadFamiliaProd.Size = new System.Drawing.Size(151, 33);
             this.btnZerarCadFamiliaProd.TabIndex = 18;
+            this.btnZerarCadFamiliaProd.TabStop = false;
             this.btnZerarCadFamiliaProd.Text = "Z&erar Fam. Produtos";
             this.btnZerarCadFamiliaProd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnZerarCadFamiliaProd.UseVisualStyleBackColor = false;
@@ -645,7 +647,7 @@
             this.chkFamiliaProdutos.Location = new System.Drawing.Point(6, 54);
             this.chkFamiliaProdutos.Name = "chkFamiliaProdutos";
             this.chkFamiliaProdutos.Size = new System.Drawing.Size(152, 20);
-            this.chkFamiliaProdutos.TabIndex = 17;
+            this.chkFamiliaProdutos.TabIndex = 3;
             this.chkFamiliaProdutos.Text = "Familia de Produtos";
             this.chkFamiliaProdutos.UseVisualStyleBackColor = true;
             // 
@@ -655,7 +657,7 @@
             this.chkUnidades.Location = new System.Drawing.Point(6, 38);
             this.chkUnidades.Name = "chkUnidades";
             this.chkUnidades.Size = new System.Drawing.Size(85, 20);
-            this.chkUnidades.TabIndex = 16;
+            this.chkUnidades.TabIndex = 2;
             this.chkUnidades.Text = "Unidades";
             this.chkUnidades.UseVisualStyleBackColor = true;
             // 
@@ -671,6 +673,7 @@
             this.btnZerarCadCliente.Name = "btnZerarCadCliente";
             this.btnZerarCadCliente.Size = new System.Drawing.Size(151, 33);
             this.btnZerarCadCliente.TabIndex = 15;
+            this.btnZerarCadCliente.TabStop = false;
             this.btnZerarCadCliente.Text = "Z&erar Cad. Clientes";
             this.btnZerarCadCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnZerarCadCliente.UseVisualStyleBackColor = false;
@@ -688,6 +691,7 @@
             this.btnZerarCadProd.Name = "btnZerarCadProd";
             this.btnZerarCadProd.Size = new System.Drawing.Size(152, 33);
             this.btnZerarCadProd.TabIndex = 14;
+            this.btnZerarCadProd.TabStop = false;
             this.btnZerarCadProd.Text = "&Zerar Cad. Produtos";
             this.btnZerarCadProd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnZerarCadProd.UseVisualStyleBackColor = false;
@@ -700,7 +704,7 @@
             this.chkVendedores.Location = new System.Drawing.Point(6, 153);
             this.chkVendedores.Name = "chkVendedores";
             this.chkVendedores.Size = new System.Drawing.Size(105, 20);
-            this.chkVendedores.TabIndex = 13;
+            this.chkVendedores.TabIndex = 9;
             this.chkVendedores.Text = "Vendedores";
             this.chkVendedores.UseVisualStyleBackColor = true;
             // 
@@ -751,7 +755,7 @@
             this.chkCidade.Location = new System.Drawing.Point(6, 137);
             this.chkCidade.Name = "chkCidade";
             this.chkCidade.Size = new System.Drawing.Size(77, 20);
-            this.chkCidade.TabIndex = 6;
+            this.chkCidade.TabIndex = 8;
             this.chkCidade.Text = "Cidades";
             this.chkCidade.UseVisualStyleBackColor = true;
             // 
@@ -761,7 +765,7 @@
             this.chkContaCorrente.Location = new System.Drawing.Point(6, 120);
             this.chkContaCorrente.Name = "chkContaCorrente";
             this.chkContaCorrente.Size = new System.Drawing.Size(134, 20);
-            this.chkContaCorrente.TabIndex = 5;
+            this.chkContaCorrente.TabIndex = 7;
             this.chkContaCorrente.Text = "Contas Corrente";
             this.chkContaCorrente.UseVisualStyleBackColor = true;
             // 
@@ -771,7 +775,7 @@
             this.chkCategoria.Location = new System.Drawing.Point(6, 103);
             this.chkCategoria.Name = "chkCategoria";
             this.chkCategoria.Size = new System.Drawing.Size(97, 20);
-            this.chkCategoria.TabIndex = 4;
+            this.chkCategoria.TabIndex = 6;
             this.chkCategoria.Text = "Categorias";
             this.chkCategoria.UseVisualStyleBackColor = true;
             // 
@@ -781,7 +785,7 @@
             this.chkFormaPagto.Location = new System.Drawing.Point(6, 87);
             this.chkFormaPagto.Name = "chkFormaPagto";
             this.chkFormaPagto.Size = new System.Drawing.Size(170, 20);
-            this.chkFormaPagto.TabIndex = 3;
+            this.chkFormaPagto.TabIndex = 5;
             this.chkFormaPagto.Text = "Formas de Pagamento";
             this.chkFormaPagto.UseVisualStyleBackColor = true;
             // 
@@ -791,7 +795,7 @@
             this.chkImpostos.Location = new System.Drawing.Point(6, 71);
             this.chkImpostos.Name = "chkImpostos";
             this.chkImpostos.Size = new System.Drawing.Size(165, 20);
-            this.chkImpostos.TabIndex = 2;
+            this.chkImpostos.TabIndex = 4;
             this.chkImpostos.Text = "Impostos Aprendidos";
             this.chkImpostos.UseVisualStyleBackColor = true;
             // 
@@ -877,7 +881,7 @@
             this.tcCliente.Name = "tcCliente";
             this.tcCliente.SelectedIndex = 0;
             this.tcCliente.Size = new System.Drawing.Size(783, 149);
-            this.tcCliente.TabIndex = 65;
+            this.tcCliente.TabIndex = 5;
             // 
             // tpEndereco
             // 
@@ -909,7 +913,7 @@
             this.txtCEP.Mask = "00000-999";
             this.txtCEP.Name = "txtCEP";
             this.txtCEP.Size = new System.Drawing.Size(118, 23);
-            this.txtCEP.TabIndex = 58;
+            this.txtCEP.TabIndex = 6;
             this.txtCEP.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // label15
@@ -1053,7 +1057,7 @@
             this.groupBox5.Location = new System.Drawing.Point(241, 3);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(229, 53);
-            this.groupBox5.TabIndex = 8;
+            this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "FAX";
             // 
@@ -1082,14 +1086,16 @@
             this.txtDDDFax.Name = "txtDDDFax";
             this.txtDDDFax.Size = new System.Drawing.Size(26, 23);
             this.txtDDDFax.TabIndex = 0;
+            this.txtDDDFax.Enter += new System.EventHandler(this.txt_Enter);
             // 
             // txtFax
             // 
             this.txtFax.Location = new System.Drawing.Point(136, 19);
-            this.txtFax.Mask = "00000-0000";
             this.txtFax.Name = "txtFax";
             this.txtFax.Size = new System.Drawing.Size(85, 23);
             this.txtFax.TabIndex = 1;
+            this.txtFax.Enter += new System.EventHandler(this.txt_Enter);
+            this.txtFax.Validating += new System.ComponentModel.CancelEventHandler(this.txtTelefone_Validating);
             // 
             // groupBox6
             // 
@@ -1100,7 +1106,7 @@
             this.groupBox6.Location = new System.Drawing.Point(6, 3);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(229, 53);
-            this.groupBox6.TabIndex = 7;
+            this.groupBox6.TabIndex = 0;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "2º Telefone";
             // 
@@ -1129,14 +1135,16 @@
             this.txtDDD2.Name = "txtDDD2";
             this.txtDDD2.Size = new System.Drawing.Size(26, 23);
             this.txtDDD2.TabIndex = 0;
+            this.txtDDD2.Enter += new System.EventHandler(this.txt_Enter);
             // 
             // txtTelefone2
             // 
             this.txtTelefone2.Location = new System.Drawing.Point(136, 19);
-            this.txtTelefone2.Mask = "00000-0000";
             this.txtTelefone2.Name = "txtTelefone2";
             this.txtTelefone2.Size = new System.Drawing.Size(85, 23);
             this.txtTelefone2.TabIndex = 1;
+            this.txtTelefone2.Enter += new System.EventHandler(this.txt_Enter);
+            this.txtTelefone2.Validating += new System.ComponentModel.CancelEventHandler(this.txtTelefone_Validating);
             // 
             // label21
             // 
@@ -1152,7 +1160,7 @@
             this.txtWebSite.Location = new System.Drawing.Point(65, 88);
             this.txtWebSite.Name = "txtWebSite";
             this.txtWebSite.Size = new System.Drawing.Size(334, 23);
-            this.txtWebSite.TabIndex = 10;
+            this.txtWebSite.TabIndex = 3;
             // 
             // label22
             // 
@@ -1168,7 +1176,7 @@
             this.txtEmail.Location = new System.Drawing.Point(65, 61);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(334, 23);
-            this.txtEmail.TabIndex = 9;
+            this.txtEmail.TabIndex = 2;
             // 
             // tpInscrCnae
             // 
@@ -1208,7 +1216,7 @@
             this.txtDtSimplNac.Location = new System.Drawing.Point(498, 35);
             this.txtDtSimplNac.Name = "txtDtSimplNac";
             this.txtDtSimplNac.Size = new System.Drawing.Size(89, 23);
-            this.txtDtSimplNac.TabIndex = 59;
+            this.txtDtSimplNac.TabIndex = 4;
             // 
             // label25
             // 
@@ -1226,7 +1234,7 @@
             this.cbRegimeTributario.Location = new System.Drawing.Point(134, 35);
             this.cbRegimeTributario.Name = "cbRegimeTributario";
             this.cbRegimeTributario.Size = new System.Drawing.Size(153, 24);
-            this.cbRegimeTributario.TabIndex = 57;
+            this.cbRegimeTributario.TabIndex = 3;
             // 
             // btnPesquisa
             // 
@@ -1237,7 +1245,7 @@
             this.btnPesquisa.Location = new System.Drawing.Point(154, 63);
             this.btnPesquisa.Name = "btnPesquisa";
             this.btnPesquisa.Size = new System.Drawing.Size(27, 27);
-            this.btnPesquisa.TabIndex = 15;
+            this.btnPesquisa.TabIndex = 6;
             this.btnPesquisa.TabStop = false;
             this.btnPesquisa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPesquisa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -1257,7 +1265,7 @@
             this.txtCodCnae.Location = new System.Drawing.Point(53, 65);
             this.txtCodCnae.Name = "txtCodCnae";
             this.txtCodCnae.Size = new System.Drawing.Size(100, 23);
-            this.txtCodCnae.TabIndex = 14;
+            this.txtCodCnae.TabIndex = 5;
             // 
             // txtDescricaoCnae
             // 
@@ -1265,7 +1273,7 @@
             this.txtDescricaoCnae.Name = "txtDescricaoCnae";
             this.txtDescricaoCnae.ReadOnly = true;
             this.txtDescricaoCnae.Size = new System.Drawing.Size(586, 23);
-            this.txtDescricaoCnae.TabIndex = 16;
+            this.txtDescricaoCnae.TabIndex = 7;
             this.txtDescricaoCnae.TabStop = false;
             // 
             // label23
@@ -1281,8 +1289,8 @@
             // 
             this.txtInscricaoSuframa.Location = new System.Drawing.Point(653, 6);
             this.txtInscricaoSuframa.Name = "txtInscricaoSuframa";
-            this.txtInscricaoSuframa.Size = new System.Drawing.Size(123, 23);
-            this.txtInscricaoSuframa.TabIndex = 13;
+            this.txtInscricaoSuframa.Size = new System.Drawing.Size(115, 23);
+            this.txtInscricaoSuframa.TabIndex = 2;
             // 
             // label28
             // 
@@ -1298,7 +1306,7 @@
             this.txtInscricaoMunicipal.Location = new System.Drawing.Point(392, 6);
             this.txtInscricaoMunicipal.Name = "txtInscricaoMunicipal";
             this.txtInscricaoMunicipal.Size = new System.Drawing.Size(123, 23);
-            this.txtInscricaoMunicipal.TabIndex = 12;
+            this.txtInscricaoMunicipal.TabIndex = 1;
             // 
             // label29
             // 
@@ -1314,7 +1322,7 @@
             this.txtInscricaoEstadual.Location = new System.Drawing.Point(134, 6);
             this.txtInscricaoEstadual.Name = "txtInscricaoEstadual";
             this.txtInscricaoEstadual.Size = new System.Drawing.Size(123, 23);
-            this.txtInscricaoEstadual.TabIndex = 11;
+            this.txtInscricaoEstadual.TabIndex = 0;
             // 
             // label31
             // 
@@ -1349,15 +1357,17 @@
             this.txtDDD.Mask = "00";
             this.txtDDD.Name = "txtDDD";
             this.txtDDD.Size = new System.Drawing.Size(26, 23);
-            this.txtDDD.TabIndex = 62;
+            this.txtDDD.TabIndex = 3;
+            this.txtDDD.Enter += new System.EventHandler(this.txt_Enter);
             // 
             // txtTelefone
             // 
             this.txtTelefone.Location = new System.Drawing.Point(390, 85);
-            this.txtTelefone.Mask = "00000-0000";
             this.txtTelefone.Name = "txtTelefone";
             this.txtTelefone.Size = new System.Drawing.Size(85, 23);
-            this.txtTelefone.TabIndex = 63;
+            this.txtTelefone.TabIndex = 4;
+            this.txtTelefone.Enter += new System.EventHandler(this.txt_Enter);
+            this.txtTelefone.Validating += new System.ComponentModel.CancelEventHandler(this.txtTelefone_Validating);
             // 
             // txtCNPJ
             // 
@@ -1365,7 +1375,7 @@
             this.txtCNPJ.MaxLength = 15;
             this.txtCNPJ.Name = "txtCNPJ";
             this.txtCNPJ.Size = new System.Drawing.Size(119, 23);
-            this.txtCNPJ.TabIndex = 59;
+            this.txtCNPJ.TabIndex = 0;
             // 
             // label34
             // 
@@ -1381,7 +1391,7 @@
             this.txtNomeFantasia.Location = new System.Drawing.Point(294, 58);
             this.txtNomeFantasia.Name = "txtNomeFantasia";
             this.txtNomeFantasia.Size = new System.Drawing.Size(417, 23);
-            this.txtNomeFantasia.TabIndex = 60;
+            this.txtNomeFantasia.TabIndex = 2;
             // 
             // txtCodigo
             // 
@@ -1416,7 +1426,7 @@
             this.txtRazaoSocial.Location = new System.Drawing.Point(294, 32);
             this.txtRazaoSocial.Name = "txtRazaoSocial";
             this.txtRazaoSocial.Size = new System.Drawing.Size(417, 23);
-            this.txtRazaoSocial.TabIndex = 58;
+            this.txtRazaoSocial.TabIndex = 1;
             // 
             // txtCodInt
             // 
@@ -1493,9 +1503,11 @@
             this.Controls.Add(this.pnlPrincipal);
             this.Controls.Add(this.pnlBotoes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.Name = "frmParametroSistema";
             this.Text = "Parâmetros de Sistema ";
             this.Load += new System.EventHandler(this.frmParametroSistema_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmParametroSistema_KeyPress);
             this.pnlPrincipal.ResumeLayout(false);
             this.tcParametros.ResumeLayout(false);
             this.tpGeral.ResumeLayout(false);
@@ -1504,8 +1516,8 @@
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gbTipoArqIntegracao.ResumeLayout(false);
+            this.gbTipoArqIntegracao.PerformLayout();
             this.tpPedidoVenda.ResumeLayout(false);
             this.tpPedidoVenda.PerformLayout();
             this.tpIntegracao.ResumeLayout(false);
@@ -1550,7 +1562,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtCaminhoArquivos;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbTipoArqIntegracao;
         public System.Windows.Forms.Button btnCaminhoArquivos;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tpPedidoVenda;

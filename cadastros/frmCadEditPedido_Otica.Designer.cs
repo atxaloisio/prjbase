@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadEditPedido_Otica));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblOS = new System.Windows.Forms.Label();
             this.txtOS = new System.Windows.Forms.TextBox();
@@ -158,6 +158,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnRemoveItem = new System.Windows.Forms.Button();
             this.btnAddItem = new System.Windows.Forms.Button();
+            this.txtValorTotal = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.pnlBotoes.SuspendLayout();
             this.pnlPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
@@ -200,6 +202,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtValorTotal);
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.lblOS);
             this.groupBox1.Controls.Add(this.txtOS);
             this.groupBox1.Controls.Add(this.txtIdPedInfoadic);
@@ -269,7 +273,7 @@
             // 
             this.txtIdPedInfoadic.Enabled = false;
             this.epValidaDados.SetFraseErro(this.txtIdPedInfoadic, "");
-            this.txtIdPedInfoadic.Location = new System.Drawing.Point(566, 19);
+            this.txtIdPedInfoadic.Location = new System.Drawing.Point(771, 19);
             this.txtIdPedInfoadic.Name = "txtIdPedInfoadic";
             this.epValidaDados.SetObrigatorio(this.txtIdPedInfoadic, false);
             this.txtIdPedInfoadic.ReadOnly = true;
@@ -423,7 +427,7 @@
             // 
             this.txtIdCliente.Enabled = false;
             this.epValidaDados.SetFraseErro(this.txtIdCliente, "");
-            this.txtIdCliente.Location = new System.Drawing.Point(456, 19);
+            this.txtIdCliente.Location = new System.Drawing.Point(661, 19);
             this.txtIdCliente.Name = "txtIdCliente";
             this.epValidaDados.SetObrigatorio(this.txtIdCliente, false);
             this.txtIdCliente.ReadOnly = true;
@@ -531,7 +535,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(166, 22);
+            this.label5.Location = new System.Drawing.Point(166, 23);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(82, 16);
             this.label5.TabIndex = 36;
@@ -596,7 +600,7 @@
             this.epValidaDados.SetIndiceCombo(this.cbCondPagamento, -1);
             this.cbCondPagamento.Location = new System.Drawing.Point(129, 110);
             this.cbCondPagamento.Name = "cbCondPagamento";
-            this.epValidaDados.SetObrigatorio(this.cbCondPagamento, true);
+            this.epValidaDados.SetObrigatorio(this.cbCondPagamento, false);
             this.cbCondPagamento.Size = new System.Drawing.Size(318, 24);
             this.cbCondPagamento.TabIndex = 11;
             // 
@@ -616,7 +620,7 @@
             // 
             this.txtId.Enabled = false;
             this.epValidaDados.SetFraseErro(this.txtId, "");
-            this.txtId.Location = new System.Drawing.Point(347, 19);
+            this.txtId.Location = new System.Drawing.Point(552, 19);
             this.txtId.Name = "txtId";
             this.epValidaDados.SetObrigatorio(this.txtId, false);
             this.txtId.ReadOnly = true;
@@ -948,6 +952,7 @@
             this.epValidaDados.SetObrigatorio(this.txtod_prisma_eixo, false);
             this.txtod_prisma_eixo.Size = new System.Drawing.Size(53, 21);
             this.txtod_prisma_eixo.TabIndex = 0;
+            this.txtod_prisma_eixo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtod_prisma_eixo_KeyDown);
             this.txtod_prisma_eixo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Grau_KeyPress);
             this.txtod_prisma_eixo.Validating += new System.ComponentModel.CancelEventHandler(this.eixo_Validating);
             // 
@@ -973,6 +978,7 @@
             this.epValidaDados.SetObrigatorio(this.txtoe_prisma_valor, false);
             this.txtoe_prisma_valor.Size = new System.Drawing.Size(53, 21);
             this.txtoe_prisma_valor.TabIndex = 1;
+            this.txtoe_prisma_valor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtoe_prisma_valor_KeyDown);
             this.txtoe_prisma_valor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
             // 
             // txtod_prisma_valor
@@ -984,6 +990,7 @@
             this.epValidaDados.SetObrigatorio(this.txtod_prisma_valor, false);
             this.txtod_prisma_valor.Size = new System.Drawing.Size(53, 21);
             this.txtod_prisma_valor.TabIndex = 0;
+            this.txtod_prisma_valor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtod_prisma_valor_KeyDown);
             this.txtod_prisma_valor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
             // 
             // groupBox15
@@ -1006,6 +1013,7 @@
             this.epValidaDados.SetObrigatorio(this.txtoe_dech, false);
             this.txtoe_dech.Size = new System.Drawing.Size(53, 21);
             this.txtoe_dech.TabIndex = 1;
+            this.txtoe_dech.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtoe_dech_KeyDown);
             this.txtoe_dech.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
             // 
             // txtod_dech
@@ -1017,6 +1025,7 @@
             this.epValidaDados.SetObrigatorio(this.txtod_dech, false);
             this.txtod_dech.Size = new System.Drawing.Size(53, 21);
             this.txtod_dech.TabIndex = 0;
+            this.txtod_dech.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtod_dech_KeyDown);
             this.txtod_dech.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
             // 
             // groupBox16
@@ -1039,6 +1048,7 @@
             this.epValidaDados.SetObrigatorio(this.txtoe_alt, false);
             this.txtoe_alt.Size = new System.Drawing.Size(53, 21);
             this.txtoe_alt.TabIndex = 1;
+            this.txtoe_alt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtoe_alt_KeyDown);
             this.txtoe_alt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
             // 
             // txtod_alt
@@ -1050,6 +1060,7 @@
             this.epValidaDados.SetObrigatorio(this.txtod_alt, false);
             this.txtod_alt.Size = new System.Drawing.Size(53, 21);
             this.txtod_alt.TabIndex = 0;
+            this.txtod_alt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtod_alt_KeyDown);
             this.txtod_alt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
             // 
             // groupBox12
@@ -1085,6 +1096,7 @@
             this.epValidaDados.SetObrigatorio(this.txtoe_dnp_perto, false);
             this.txtoe_dnp_perto.Size = new System.Drawing.Size(53, 21);
             this.txtoe_dnp_perto.TabIndex = 1;
+            this.txtoe_dnp_perto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtoe_dnp_perto_KeyDown);
             this.txtoe_dnp_perto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
             // 
             // txtod_dnp_perto
@@ -1096,6 +1108,7 @@
             this.epValidaDados.SetObrigatorio(this.txtod_dnp_perto, false);
             this.txtod_dnp_perto.Size = new System.Drawing.Size(53, 21);
             this.txtod_dnp_perto.TabIndex = 0;
+            this.txtod_dnp_perto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtod_dnp_perto_KeyDown);
             this.txtod_dnp_perto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
             // 
             // groupBox14
@@ -1120,6 +1133,7 @@
             this.epValidaDados.SetObrigatorio(this.txtoe_dnp_longe, false);
             this.txtoe_dnp_longe.Size = new System.Drawing.Size(53, 21);
             this.txtoe_dnp_longe.TabIndex = 1;
+            this.txtoe_dnp_longe.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtoe_dnp_longe_KeyDown);
             this.txtoe_dnp_longe.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
             // 
             // txtod_dnp_longe
@@ -1131,6 +1145,7 @@
             this.epValidaDados.SetObrigatorio(this.txtod_dnp_longe, false);
             this.txtod_dnp_longe.Size = new System.Drawing.Size(53, 21);
             this.txtod_dnp_longe.TabIndex = 0;
+            this.txtod_dnp_longe.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtod_dnp_longe_KeyDown);
             this.txtod_dnp_longe.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
             // 
             // groupBox11
@@ -1563,6 +1578,7 @@
             this.dgvItemPedido.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvItemPedido_CellPainting);
             this.dgvItemPedido.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvItemPedido_CellValidating);
             this.dgvItemPedido.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvItemPedido_EditingControlShowing);
+            this.dgvItemPedido.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItemPedido_RowValidated);
             this.dgvItemPedido.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvItemPedido_RowValidating);
             this.dgvItemPedido.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvItemPedido_KeyDown);
             // 
@@ -1619,9 +1635,9 @@
             // 
             // VLRUNITARIO
             // 
-            dataGridViewCellStyle31.Format = "N2";
-            dataGridViewCellStyle31.NullValue = null;
-            this.VLRUNITARIO.DefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.VLRUNITARIO.DefaultCellStyle = dataGridViewCellStyle4;
             this.VLRUNITARIO.HeaderText = "Vlr Unitário";
             this.VLRUNITARIO.Name = "VLRUNITARIO";
             this.VLRUNITARIO.Width = 110;
@@ -1634,18 +1650,18 @@
             // 
             // VLRDESCONTO
             // 
-            dataGridViewCellStyle32.Format = "N2";
-            dataGridViewCellStyle32.NullValue = null;
-            this.VLRDESCONTO.DefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = null;
+            this.VLRDESCONTO.DefaultCellStyle = dataGridViewCellStyle5;
             this.VLRDESCONTO.HeaderText = "Vlr Desc";
             this.VLRDESCONTO.Name = "VLRDESCONTO";
             this.VLRDESCONTO.Width = 110;
             // 
             // VLTTOTAL
             // 
-            dataGridViewCellStyle33.Format = "N2";
-            dataGridViewCellStyle33.NullValue = null;
-            this.VLTTOTAL.DefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = null;
+            this.VLTTOTAL.DefaultCellStyle = dataGridViewCellStyle6;
             this.VLTTOTAL.HeaderText = "Total";
             this.VLTTOTAL.Name = "VLTTOTAL";
             this.VLTTOTAL.ReadOnly = true;
@@ -1690,6 +1706,29 @@
             this.btnAddItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAddItem.UseVisualStyleBackColor = false;
             this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
+            // 
+            // txtValorTotal
+            // 
+            this.txtValorTotal.Enabled = false;
+            this.epValidaDados.SetFraseErro(this.txtValorTotal, "Numero do pedido no Cliente obrigatório.");
+            this.txtValorTotal.Location = new System.Drawing.Point(424, 20);
+            this.txtValorTotal.MaxLength = 8;
+            this.txtValorTotal.Name = "txtValorTotal";
+            this.epValidaDados.SetObrigatorio(this.txtValorTotal, false);
+            this.txtValorTotal.ReadOnly = true;
+            this.txtValorTotal.Size = new System.Drawing.Size(111, 23);
+            this.txtValorTotal.TabIndex = 68;
+            this.txtValorTotal.TabStop = false;
+            this.txtValorTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(341, 23);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(78, 16);
+            this.label4.TabIndex = 67;
+            this.label4.Text = "Valor Total";
             // 
             // frmCadEditPedido_Otica
             // 
@@ -1875,5 +1914,7 @@
         private System.Windows.Forms.PictureBox imgFotoCliente;
         private System.Windows.Forms.Label lblOS;
         private System.Windows.Forms.TextBox txtOS;
+        private System.Windows.Forms.TextBox txtValorTotal;
+        private System.Windows.Forms.Label label4;
     }
 }

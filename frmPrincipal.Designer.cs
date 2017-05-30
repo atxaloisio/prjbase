@@ -39,7 +39,6 @@
             this.mnuVendedores = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCadPedidoVendas = new System.Windows.Forms.ToolStripMenuItem();
             this.produtoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuCadRelProdutoBase = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCadRelClienteFormaPagamento = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCadRelLocalidadeTransportadora = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCadRelClienteTransportadora = new System.Windows.Forms.ToolStripMenuItem();
@@ -166,7 +165,6 @@
             // produtoToolStripMenuItem
             // 
             this.produtoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuCadRelProdutoBase,
             this.mnuCadRelClienteFormaPagamento,
             this.mnuCadRelLocalidadeTransportadora,
             this.mnuCadRelClienteTransportadora,
@@ -176,13 +174,6 @@
             this.produtoToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.produtoToolStripMenuItem.Tag = "1004";
             this.produtoToolStripMenuItem.Text = "R&elacionamentos";
-            // 
-            // mnuCadRelProdutoBase
-            // 
-            this.mnuCadRelProdutoBase.Name = "mnuCadRelProdutoBase";
-            this.mnuCadRelProdutoBase.Size = new System.Drawing.Size(236, 22);
-            this.mnuCadRelProdutoBase.Tag = "10041";
-            this.mnuCadRelProdutoBase.Text = "Produto x &Base";
             // 
             // mnuCadRelClienteFormaPagamento
             // 
@@ -273,6 +264,7 @@
             this.mnuParcelasPedido.Size = new System.Drawing.Size(230, 22);
             this.mnuParcelasPedido.Tag = "";
             this.mnuParcelasPedido.Text = "Parcelas do Pedido de Vendas";
+            this.mnuParcelasPedido.Visible = false;
             this.mnuParcelasPedido.Click += new System.EventHandler(this.mnuParcelasPedido_Click);
             // 
             // relatoriosToolStripMenuItem
@@ -429,7 +421,6 @@
         private System.Windows.Forms.ToolStripMenuItem arquivoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuCadPedidoVendas;
         private System.Windows.Forms.ToolStripMenuItem produtoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mnuCadRelProdutoBase;
         private System.Windows.Forms.ToolStripMenuItem mnuCadRelClienteFormaPagamento;
         private System.Windows.Forms.ToolStripMenuItem mnuCadRelLocalidadeTransportadora;
         private System.Windows.Forms.ToolStripMenuItem mnuCadRelClienteTransportadora;

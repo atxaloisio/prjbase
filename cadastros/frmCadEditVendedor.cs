@@ -58,6 +58,8 @@ namespace prjbase
 
                     Vendedor Vendedor = LoadFromControls();
 
+                    Vendedor.sincronizar = "S";
+
                     if (Id != null)
                     {                        
                         VendedorBLL.AlterarVendedor(Vendedor);                      

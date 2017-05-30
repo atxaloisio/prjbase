@@ -3087,10 +3087,44 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>0.01867cm</Top>
+            <Top>0.05042cm</Top>
             <Left>0.06266cm</Left>
-            <Height>0.46771cm</Height>
+            <Height>0.43596cm</Height>
             <Width>2.02988cm</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox195">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!valor_total.Value, "DataSet1")</Value>
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox39</rd:DefaultName>
+            <Top>0.05042cm</Top>
+            <Left>2.60467cm</Left>
+            <Height>0.43596cm</Height>
+            <Width>2.02988cm</Width>
+            <ZIndex>1</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3139,6 +3173,40 @@
             <Left>0.06266cm</Left>
             <Height>0.46771cm</Height>
             <Width>2.08809cm</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox212">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!valor_total.Value, "DataSet1")</Value>
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox39</rd:DefaultName>
+            <Top>0.01867cm</Top>
+            <Left>2.73167cm</Left>
+            <Height>0.46771cm</Height>
+            <Width>2.02988cm</Width>
+            <ZIndex>1</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3428,8 +3496,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox44</rd:DefaultName>
-            <Top>0.11392cm</Top>
-            <Left>2.40089cm</Left>
+            <Top>0.14215cm</Top>
+            <Left>2.41026cm</Left>
             <Height>0.37246cm</Height>
             <Width>16.14322cm</Width>
             <ZIndex>1</ZIndex>
@@ -5715,6 +5783,40 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Textbox Name="Textbox213">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!valor_total.Value, "DataSet1")</Value>
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox39</rd:DefaultName>
+            <Top>0.07284cm</Top>
+            <Left>2.44592cm</Left>
+            <Height>0.43596cm</Height>
+            <Width>2.02988cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
         <KeepTogether>true</KeepTogether>
         <Top>24.6376cm</Top>
@@ -5753,6 +5855,40 @@
             <Left>0.06266cm</Left>
             <Height>0.46771cm</Height>
             <Width>2.08809cm</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox214">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!valor_total.Value, "DataSet1")</Value>
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox39</rd:DefaultName>
+            <Top>0.07284cm</Top>
+            <Left>2.41417cm</Left>
+            <Height>0.43596cm</Height>
+            <Width>2.02988cm</Width>
+            <ZIndex>1</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -7500,6 +7636,14 @@
         <Field Name="inativo">
           <DataField>inativo</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Id_pedido_otica2">
+          <DataField>Id_pedido_otica2</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="valor_total">
+          <DataField>valor_total</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>

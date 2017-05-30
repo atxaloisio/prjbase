@@ -189,6 +189,7 @@ namespace prjbase
             if (!string.IsNullOrEmpty(codEmpresa) && StringExtensions.IsNumeric(codEmpresa))
             {
                 txtCodigoEmpresa.Text = codEmpresa;
+                txtCodigo.Text = codEmpresa;
             }
 
             string intOmie = Parametro.GetParametro("intOmie");
@@ -261,40 +262,43 @@ namespace prjbase
                     Empresa empresa = empresaList.FirstOrDefault();
 
                     LoadEmpresaToControls(empresa);
-                    foreach (Control item in tpEmpresa.Controls)
+                    if (chkIntegrarOmie.Checked)
                     {
-                        item.Enabled = false;
-                        if (item is TextBox)
+                        foreach (Control item in tpEmpresa.Controls)
                         {
-                            ((TextBox)item).ReadOnly = true;
+                            item.Enabled = false;
+                            if (item is TextBox)
+                            {
+                                ((TextBox)item).ReadOnly = true;
+                            }
                         }
-                    }
 
-                    tcCliente.Enabled = true;
-                    foreach (Control item in tpEndereco.Controls)
-                    {
-                        item.Enabled = false;
-                        if (item is TextBox)
+                        tcCliente.Enabled = true;
+                        foreach (Control item in tpEndereco.Controls)
                         {
-                            ((TextBox)item).ReadOnly = true;
+                            item.Enabled = false;
+                            if (item is TextBox)
+                            {
+                                ((TextBox)item).ReadOnly = true;
+                            }
                         }
-                    }
 
-                    foreach (Control item in tpTelefoneEmail.Controls)
-                    {
-                        item.Enabled = false;
-                        if (item is TextBox)
+                        foreach (Control item in tpTelefoneEmail.Controls)
                         {
-                            ((TextBox)item).ReadOnly = true;
+                            item.Enabled = false;
+                            if (item is TextBox)
+                            {
+                                ((TextBox)item).ReadOnly = true;
+                            }
                         }
-                    }
 
-                    foreach (Control item in tpInscrCnae.Controls)
-                    {
-                        item.Enabled = false;
-                        if (item is TextBox)
+                        foreach (Control item in tpInscrCnae.Controls)
                         {
-                            ((TextBox)item).ReadOnly = true;
+                            item.Enabled = false;
+                            if (item is TextBox)
+                            {
+                                ((TextBox)item).ReadOnly = true;
+                            }
                         }
                     }
 
@@ -377,28 +381,37 @@ namespace prjbase
 
         private void Salvar()
         {
-            SalvarParametros();
+            try
+            {
+                SalvarParametros();
 
-            if (!chkIntegrarOmie.Checked)
-            {
-                SalvarEmpresa();
-            }
-            else
-            {
-                EmpresaBLL empresaBLL = new EmpresaBLL();
-                Empresa empresa = empresaBLL.getEmpresa().FirstOrDefault();
-                if (empresa != null)
+                if (!chkIntegrarOmie.Checked)
                 {
-                    if (empresa.Id > 0)
+                    SalvarEmpresa();
+                }
+                else
+                {
+                    EmpresaBLL empresaBLL = new EmpresaBLL();
+                    Empresa empresa = empresaBLL.getEmpresa().FirstOrDefault();
+                    if (empresa != null)
                     {
-                        if (imgLogoEmp.Image != null)
+                        if (empresa.Id > 0)
                         {
-                            ImagemFromDB.setImagem(empresa.Id, "empresa_logo", "id_empresa", imgLogoEmp.Image);
+                            if (imgLogoEmp.Image != null)
+                            {
+                                ImagemFromDB.setImagem(empresa.Id, "empresa_logo", "id_empresa", imgLogoEmp.Image);
+                            }
                         }
                     }
                 }
-            }
                 MessageBox.Show(Text + " salvo com sucesso.", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                string mensagem = TrataException.getAllMessage(ex);
+                MessageBox.Show(mensagem, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
 
         }
 
@@ -633,6 +646,7 @@ namespace prjbase
                 empresa.codigo_empresa = Convert.ToInt64(txtCodigo.Text);
             }
 
+            empresa.cnpj = txtCNPJ.Text;
             empresa.codigo_empresa_integracao = txtCodInt.Text;
             empresa.razao_social = txtRazaoSocial.Text;
             empresa.nome_fantasia = txtNomeFantasia.Text;
@@ -1079,6 +1093,124 @@ namespace prjbase
             if (dlgCaminhoImagem.ShowDialog() == DialogResult.OK)
             {
                 imgLogoEmp.Image = Image.FromFile(@dlgCaminhoImagem.FileName);
+            }
+        }
+
+        private void frmParametroSistema_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                e.Handled = true;
+                SendKeys.Send("{tab}");
+            }
+        }
+               
+        private void tcParametros_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tcParametros.SelectedTab == tpGeral)
+            {
+                gbTipoArqIntegracao.Focus();
+            }
+            else if (tcParametros.SelectedTab == tpPedidoVenda)
+            {
+                cbCategoria.Focus();
+            }
+            else if (tcParametros.SelectedTab == tpIntegracao)
+            {
+                chkIntegrarOmie.Focus();
+            }
+            else if (tcParametros.SelectedTab == tpSincroniar)
+            {
+                chkClientes.Focus();
+            }
+            else if (tcParametros.SelectedTab == tpEmpresa)
+            {
+                txtCNPJ.Focus();
+            }
+        }
+
+        private void txtTelefone_Validating(object sender, CancelEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(((MaskedTextBox)sender).Text))
+            {
+                string telefone = (((MaskedTextBox)sender).Text.Replace("-", string.Empty));
+                int valor = Convert.ToInt32(telefone.Trim());
+
+                switch (((MaskedTextBox)sender).Text.Length)
+                {
+                    case 8:
+                        {
+                            ((MaskedTextBox)sender).Text = string.Format("{0:####-####}", valor);
+                        }
+                        break;
+                    case 9:
+                        {
+                            ((MaskedTextBox)sender).Text = string.Format("{0:#####-####}", valor);
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        private void txt_Enter(object sender, EventArgs e)
+        {
+            if (sender is MaskedTextBox)
+            {
+                ((MaskedTextBox)sender).Select(0, 0);
+            }
+            else if (sender is TextBox)
+            {
+                ((TextBox)sender).Select(0, 0);
+            }
+
+        }
+
+        private void txtCNPJCPF_Validating(object sender, CancelEventArgs e)
+        {
+            string strCPF, strCNPJ = string.Empty;
+            bool exibeMsg = false;
+
+            
+            if (!string.IsNullOrEmpty(((TextBox)sender).Text))
+            {
+                ((TextBox)sender).Text = ((TextBox)sender).Text.Trim().Replace(".", "").Replace("-", "").Replace("/", "");
+
+                if (((TextBox)sender).Text.Where(c => char.IsNumber(c)).Count() == 11)
+                {
+                    strCPF = Convert.ToInt64(((TextBox)sender).Text).ToString(@"000\.000\.000\-00");
+                    if (!ValidaCPF.IsCpf(strCPF))
+                    {
+                        exibeMsg = true;
+                    }
+                    else
+                    {
+                        ((TextBox)sender).Text = strCPF;
+                    }
+                }
+                else if (((TextBox)sender).Text.Where(c => char.IsNumber(c)).Count() == 15)
+                {
+                    strCNPJ = Convert.ToInt64(((TextBox)sender).Text).ToString(@"00\.000\.000\/0000\-00");
+                    if (!ValidaCNPJ.IsCnpj(strCNPJ))
+                    {
+                        exibeMsg = true;
+                    }
+                    else
+                    {
+                        ((TextBox)sender).Text = strCNPJ;
+                    }
+                }
+                else
+                {
+                    exibeMsg = true;
+                }
+
+                if (exibeMsg)
+                {                    
+                    MessageBox.Show("CNPJ / CPF inválido.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    e.Cancel = true;
+                }                
             }
         }
     }

@@ -274,7 +274,7 @@ namespace prjbase
             AutoCompleteStringCollection acc = new AutoCompleteStringCollection();
             foreach (Cidade item in CidadeList)
             {
-                acc.Add(item.cNome);
+                acc.Add(item.cCod);
             }
 
 

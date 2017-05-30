@@ -274,10 +274,20 @@ namespace prjbase
                 Vendedor Vendedor = VendedorBLL.Localizar(Convert.ToInt32(dgvDados[COL_ID, dgvDados.CurrentRow.Index].Value));
                 if (MessageBox.Show("Deseja realmente excluir o registro : " + Vendedor.codInt + " - " + Vendedor.nome, Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
+                    bool intOmie = Convert.ToBoolean(Parametro.GetParametro("intOmie"));
+                    bool updateVendedorOmie = Convert.ToBoolean(Parametro.GetParametro("updateVendedorOmie"));
+
                     string retorno = string.Empty;
-                    VendedorProxy proxy = new VendedorProxy();
-                    retorno = proxy.ExcluirVendedor(Vendedor);                    
+
+                    retorno = "Vendedor excluído com sucesso.";
                     VendedorBLL.ExcluirVendedor(Vendedor);
+                    if ((intOmie) & (updateVendedorOmie))
+                    {                        
+                        VendedorProxy proxy = new VendedorProxy();
+                        retorno = proxy.ExcluirVendedor(Vendedor);
+                        
+                    }
+                        
                     MessageBox.Show(retorno, Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }

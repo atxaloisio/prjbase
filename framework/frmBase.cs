@@ -48,10 +48,14 @@ namespace prjbase
             bool Retorno = true;
             string mensagem = string.Empty;
 
-            if (this.Tag.ToString() == "")
+            if (this.Tag != null)
             {
-                this.Tag = null;
+                if (this.Tag.ToString() == "")
+                {
+                    this.Tag = null;
+                }
             }
+            
 
             if ((this.Tag != null)||(tag != null))
             {                

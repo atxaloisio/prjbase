@@ -493,5 +493,10 @@ namespace prjbase
         {
             Transportadora_Validating(null, ((TextBox)sender).Text, txtIdTransportadoraAte, txtCodTransportadoraAte, txtNomeTransportadoraAte);
         }
+
+        private void frmRelFiltroPedido_Otica_Activated(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+        }
     }
 }

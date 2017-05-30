@@ -75,16 +75,20 @@ namespace prjbase
             {
                 if (ValidaAcessoFuncao(Operacao.Excluir))
                 {
-                    excluirRegistro(dgvDados.CurrentRow.Index);
-                    carregaConsulta();
-                    AtualizaContadores();
+                    if (dgvDados.CurrentRow != null)
+                    {
+                        excluirRegistro(dgvDados.CurrentRow.Index);
+                        carregaConsulta();
+                        AtualizaContadores();
+                    }
+                    
                 }
                 
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string mensagem = TrataException.getAllMessage(ex);
+                MessageBox.Show(mensagem, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }

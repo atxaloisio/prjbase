@@ -358,6 +358,13 @@ namespace prjbase
                         dgvItemPedido[col_VlrDesconto, rowIndex].Value = item.valor_desconto;
                         dgvItemPedido[col_VlrTotal, rowIndex].Value = item.valor_total;
                     }
+
+                    if (pedido_otica.itempedido_otica.Count() > 0)
+                    {
+                        decimal ValorTotal = pedido_otica.itempedido_otica.Sum(p => p.valor_total);
+                        txtValorTotal.Text = ValorTotal.ToString("N2");
+                    }
+                    
                 }
             }
         }
@@ -1130,6 +1137,7 @@ namespace prjbase
             }
             else
             {
+                txtCodCliIntegracao.Text = string.Empty;
                 txtCodCliIntegracao.Focus();
             }
         }
@@ -2289,6 +2297,75 @@ namespace prjbase
         private void txtoe_gp_esf_KeyDown(object sender, KeyEventArgs e)
         {
             navegaProximo(txtoe_gp_cil, e);
+        }
+
+        private void txtod_dnp_longe_KeyDown(object sender, KeyEventArgs e)
+        {
+            navegaProximo(txtod_dnp_perto, e);
+        }
+
+        private void txtod_dnp_perto_KeyDown(object sender, KeyEventArgs e)
+        {
+            navegaProximo(txtod_alt, e);
+        }
+
+        private void txtod_alt_KeyDown(object sender, KeyEventArgs e)
+        {
+            navegaProximo(txtod_dech, e);
+        }
+
+        private void txtod_dech_KeyDown(object sender, KeyEventArgs e)
+        {
+            navegaProximo(txtod_prisma_valor, e);
+        }
+
+        private void txtod_prisma_valor_KeyDown(object sender, KeyEventArgs e)
+        {
+            navegaProximo(txtod_prisma_eixo, e);
+        }
+
+        private void txtoe_dnp_longe_KeyDown(object sender, KeyEventArgs e)
+        {
+            navegaProximo(txtoe_dnp_perto, e);
+        }
+
+        private void txtod_prisma_eixo_KeyDown(object sender, KeyEventArgs e)
+        {
+            navegaProximo(txtoe_dnp_longe, e);
+        }
+
+        private void txtoe_dnp_perto_KeyDown(object sender, KeyEventArgs e)
+        {
+            navegaProximo(txtoe_alt, e);
+        }
+
+        private void txtoe_alt_KeyDown(object sender, KeyEventArgs e)
+        {
+            navegaProximo(txtoe_dech, e);
+        }
+
+        private void txtoe_dech_KeyDown(object sender, KeyEventArgs e)
+        {
+            navegaProximo(txtoe_prisma_valor, e);
+        }
+
+        private void txtoe_prisma_valor_KeyDown(object sender, KeyEventArgs e)
+        {
+            navegaProximo(txtoe_prisma_eixo, e);
+        }
+
+        private void dgvItemPedido_RowValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            decimal Valor_Total = 0;
+            for (int i = 0; i < dgvItemPedido.RowCount; i++)
+            {
+                if (dgvItemPedido[col_VlrTotal, i].Value != null)
+                {
+                    Valor_Total += Convert.ToDecimal(dgvItemPedido[col_VlrTotal, i].Value);
+                }                
+            }
+
+            txtValorTotal.Text = Valor_Total.ToString("N2");
         }
     }
 }
