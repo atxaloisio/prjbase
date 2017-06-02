@@ -63,7 +63,7 @@
             this.mnuPermissoesAcesso = new System.Windows.Forms.ToolStripMenuItem();
             this.janelasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuJanFecharTodos = new System.Windows.Forms.ToolStripMenuItem();
-            this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSobre = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSistema.SuspendLayout();
             this.SuspendLayout();
@@ -77,7 +77,7 @@
             this.relatoriosToolStripMenuItem,
             this.utilitáriosToolStripMenuItem,
             this.janelasToolStripMenuItem,
-            this.sobreToolStripMenuItem,
+            this.mnuSobre,
             this.sairToolStripMenuItem});
             this.menuSistema.Location = new System.Drawing.Point(0, 0);
             this.menuSistema.MdiWindowListItem = this.janelasToolStripMenuItem;
@@ -262,9 +262,8 @@
             // 
             this.mnuParcelasPedido.Name = "mnuParcelasPedido";
             this.mnuParcelasPedido.Size = new System.Drawing.Size(230, 22);
-            this.mnuParcelasPedido.Tag = "";
+            this.mnuParcelasPedido.Tag = "2003";
             this.mnuParcelasPedido.Text = "Parcelas do Pedido de Vendas";
-            this.mnuParcelasPedido.Visible = false;
             this.mnuParcelasPedido.Click += new System.EventHandler(this.mnuParcelasPedido_Click);
             // 
             // relatoriosToolStripMenuItem
@@ -375,17 +374,17 @@
             // mnuJanFecharTodos
             // 
             this.mnuJanFecharTodos.Name = "mnuJanFecharTodos";
-            this.mnuJanFecharTodos.Size = new System.Drawing.Size(144, 22);
+            this.mnuJanFecharTodos.Size = new System.Drawing.Size(152, 22);
             this.mnuJanFecharTodos.Text = "Fechar Todos";
             this.mnuJanFecharTodos.Click += new System.EventHandler(this.mnuJanFecharTodos_Click);
             // 
-            // sobreToolStripMenuItem
+            // mnuSobre
             // 
-            this.sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
-            this.sobreToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
-            this.sobreToolStripMenuItem.Tag = "6000";
-            this.sobreToolStripMenuItem.Text = "Sobre";
-            this.sobreToolStripMenuItem.Visible = false;
+            this.mnuSobre.Name = "mnuSobre";
+            this.mnuSobre.Size = new System.Drawing.Size(49, 20);
+            this.mnuSobre.Tag = "6000";
+            this.mnuSobre.Text = "Sobre";
+            this.mnuSobre.Click += new System.EventHandler(this.mnuSobre_Click);
             // 
             // sairToolStripMenuItem
             // 
@@ -432,7 +431,7 @@
         private System.Windows.Forms.ToolStripMenuItem parametrosDeSistemasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuCadClientes;
         private System.Windows.Forms.ToolStripMenuItem janelasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sobreToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuSobre;
         private System.Windows.Forms.ToolStripMenuItem mnuJanFecharTodos;
         private System.Windows.Forms.ToolStripMenuItem mnuProdutos;
         private System.Windows.Forms.ToolStripMenuItem controleAcessoToolStripMenuItem;

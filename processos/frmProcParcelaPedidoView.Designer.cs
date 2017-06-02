@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProcParcelaPedidoView));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblPedidoCancelado = new System.Windows.Forms.Label();
             this.txtIdPedInfoadic = new System.Windows.Forms.TextBox();
             this.lblLaboratorio = new System.Windows.Forms.Label();
             this.txtLaboratorio = new System.Windows.Forms.TextBox();
@@ -68,6 +69,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvParcelas = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtNrDias = new System.Windows.Forms.TextBox();
+            this.txtIdPedido = new System.Windows.Forms.TextBox();
             this.txtIdParcela = new System.Windows.Forms.TextBox();
             this.lblParcela = new System.Windows.Forms.Label();
             this.chkPago = new System.Windows.Forms.CheckBox();
@@ -81,8 +84,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtDtVencimento = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtIdPedido = new System.Windows.Forms.TextBox();
-            this.txtNrDias = new System.Windows.Forms.TextBox();
             this.pnlBotoes.SuspendLayout();
             this.pnlPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
@@ -92,6 +93,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvParcelas)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // btnFechar
+            // 
+            this.btnFechar.Location = new System.Drawing.Point(3, 73);
+            // 
+            // btnIncluir
+            // 
+            this.btnIncluir.Image = global::prjbase.Properties.Resources.Imprimir;
+            this.btnIncluir.Location = new System.Drawing.Point(3, 39);
+            this.btnIncluir.Text = "&Recibo";
             // 
             // pnlBotoes
             // 
@@ -105,6 +116,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblPedidoCancelado);
             this.groupBox1.Controls.Add(this.txtIdPedInfoadic);
             this.groupBox1.Controls.Add(this.lblLaboratorio);
             this.groupBox1.Controls.Add(this.txtLaboratorio);
@@ -146,6 +158,17 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados Pedido";
+            // 
+            // lblPedidoCancelado
+            // 
+            this.lblPedidoCancelado.AutoSize = true;
+            this.lblPedidoCancelado.ForeColor = System.Drawing.Color.Red;
+            this.lblPedidoCancelado.Location = new System.Drawing.Point(657, 23);
+            this.lblPedidoCancelado.Name = "lblPedidoCancelado";
+            this.lblPedidoCancelado.Size = new System.Drawing.Size(135, 16);
+            this.lblPedidoCancelado.TabIndex = 70;
+            this.lblPedidoCancelado.Text = "PEDIDO CANCELADO";
+            this.lblPedidoCancelado.Visible = false;
             // 
             // txtIdPedInfoadic
             // 
@@ -225,7 +248,7 @@
             this.epValidaDados.SetObrigatorio(this.txtNomeMedico, false);
             this.txtNomeMedico.ReadOnly = true;
             this.txtNomeMedico.Size = new System.Drawing.Size(307, 23);
-            this.txtNomeMedico.TabIndex = 57;
+            this.txtNomeMedico.TabIndex = 9;
             this.txtNomeMedico.Visible = false;
             // 
             // cbCaixa
@@ -622,6 +645,32 @@
             this.panel2.Size = new System.Drawing.Size(318, 192);
             this.panel2.TabIndex = 1;
             // 
+            // txtNrDias
+            // 
+            this.txtNrDias.Enabled = false;
+            this.epValidaDados.SetFraseErro(this.txtNrDias, "");
+            this.txtNrDias.Location = new System.Drawing.Point(243, 90);
+            this.txtNrDias.Name = "txtNrDias";
+            this.epValidaDados.SetObrigatorio(this.txtNrDias, false);
+            this.txtNrDias.ReadOnly = true;
+            this.txtNrDias.Size = new System.Drawing.Size(71, 23);
+            this.txtNrDias.TabIndex = 71;
+            this.txtNrDias.TabStop = false;
+            this.txtNrDias.Visible = false;
+            // 
+            // txtIdPedido
+            // 
+            this.txtIdPedido.Enabled = false;
+            this.epValidaDados.SetFraseErro(this.txtIdPedido, "");
+            this.txtIdPedido.Location = new System.Drawing.Point(243, 63);
+            this.txtIdPedido.Name = "txtIdPedido";
+            this.epValidaDados.SetObrigatorio(this.txtIdPedido, false);
+            this.txtIdPedido.ReadOnly = true;
+            this.txtIdPedido.Size = new System.Drawing.Size(71, 23);
+            this.txtIdPedido.TabIndex = 70;
+            this.txtIdPedido.TabStop = false;
+            this.txtIdPedido.Visible = false;
+            // 
             // txtIdParcela
             // 
             this.txtIdParcela.Enabled = false;
@@ -633,6 +682,7 @@
             this.txtIdParcela.Size = new System.Drawing.Size(71, 23);
             this.txtIdParcela.TabIndex = 69;
             this.txtIdParcela.TabStop = false;
+            this.txtIdParcela.Visible = false;
             // 
             // lblParcela
             // 
@@ -653,6 +703,7 @@
             this.chkPago.TabIndex = 67;
             this.chkPago.Text = "Pago";
             this.chkPago.UseVisualStyleBackColor = true;
+            this.chkPago.CheckStateChanged += new System.EventHandler(this.chkPago_CheckStateChanged);
             // 
             // btnDown
             // 
@@ -693,6 +744,7 @@
             this.txtPercentual.MaxLength = 8;
             this.txtPercentual.Name = "txtPercentual";
             this.epValidaDados.SetObrigatorio(this.txtPercentual, false);
+            this.txtPercentual.ReadOnly = true;
             this.txtPercentual.Size = new System.Drawing.Size(87, 23);
             this.txtPercentual.TabIndex = 64;
             this.txtPercentual.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -744,6 +796,9 @@
             this.txtDtPagamento.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.epValidaDados.SetTipoValidacao(this.txtDtPagamento, libComponente.TipoValidacao.Vazio);
             this.txtDtPagamento.ValidatingType = typeof(System.DateTime);
+            this.txtDtPagamento.Enter += new System.EventHandler(this.txtDtPagamento_Enter);
+            this.txtDtPagamento.Validating += new System.ComponentModel.CancelEventHandler(this.txtDtPagamento_Validating);
+            this.txtDtPagamento.Validated += new System.EventHandler(this.txtDtPagamento_Validated);
             // 
             // label6
             // 
@@ -776,30 +831,6 @@
             this.label4.Size = new System.Drawing.Size(107, 16);
             this.label4.TabIndex = 38;
             this.label4.Text = "Dt. Vencimento";
-            // 
-            // txtIdPedido
-            // 
-            this.txtIdPedido.Enabled = false;
-            this.epValidaDados.SetFraseErro(this.txtIdPedido, "");
-            this.txtIdPedido.Location = new System.Drawing.Point(243, 63);
-            this.txtIdPedido.Name = "txtIdPedido";
-            this.epValidaDados.SetObrigatorio(this.txtIdPedido, false);
-            this.txtIdPedido.ReadOnly = true;
-            this.txtIdPedido.Size = new System.Drawing.Size(71, 23);
-            this.txtIdPedido.TabIndex = 70;
-            this.txtIdPedido.TabStop = false;
-            // 
-            // txtNrDias
-            // 
-            this.txtNrDias.Enabled = false;
-            this.epValidaDados.SetFraseErro(this.txtNrDias, "");
-            this.txtNrDias.Location = new System.Drawing.Point(243, 90);
-            this.txtNrDias.Name = "txtNrDias";
-            this.epValidaDados.SetObrigatorio(this.txtNrDias, false);
-            this.txtNrDias.ReadOnly = true;
-            this.txtNrDias.Size = new System.Drawing.Size(71, 23);
-            this.txtNrDias.TabIndex = 71;
-            this.txtNrDias.TabStop = false;
             // 
             // frmProcParcelaPedidoView
             // 
@@ -879,5 +910,6 @@
         private System.Windows.Forms.TextBox txtIdParcela;
         private System.Windows.Forms.TextBox txtNrDias;
         private System.Windows.Forms.TextBox txtIdPedido;
+        private System.Windows.Forms.Label lblPedidoCancelado;
     }
 }

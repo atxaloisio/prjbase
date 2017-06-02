@@ -250,17 +250,31 @@ namespace prjbase
                             txtNomeMedico.Text = infoadic.nome_medico;
                             txtCRM.Text = infoadic.crm_medico.ToString();
                             txtLaboratorio.Text = infoadic.laboratorio;
+                        }                        
+                    }
+
+                    if (pedido_otica.pedido_otica_parcelas.Count() > 0)
+                    {
+                        ParcelasBLL = new Pedido_Otica_ParcelasBLL();
+                        dgvParcelas.DataSource = ParcelasBLL.ToList_Pedido_OticaParcelaView(pedido_otica.pedido_otica_parcelas);
+                        formataGridParcelas();
+                        loadCamposParcela();
+                    }
+
+                    if (pedido_otica.cancelado == "S")
+                    {
+                        lblPedidoCancelado.Visible = true;
+
+                        foreach (Control item in pnlPrincipal.Controls)
+                        {
+                            item.Enabled = false;
+                            btnSalvar.Enabled = false;
+                            btnIncluir.Enabled = false;
                         }
 
-                        if (pedido_otica.pedido_otica_parcelas.Count() > 0)
-                        {
-                            ParcelasBLL = new Pedido_Otica_ParcelasBLL();
-                            dgvParcelas.DataSource = ParcelasBLL.ToList_Pedido_OticaParcelaView(pedido_otica.pedido_otica_parcelas);
-                            formataGridParcelas();
-                            loadCamposParcela();
-                        }
+                        lblPedidoCancelado.Enabled = true;
                     }
-                                                                                                   
+
                 }
             }
         }
@@ -282,6 +296,56 @@ namespace prjbase
                 txtDtPagamento.Text = dgvParcelas[COL_DATAPAGAMENTO, row].Value.ToString();
             }
             
+        }
+
+        protected override void Incluir()
+        {
+            if (dgvParcelas.SelectedRows.Count > 0)
+            {
+                int row = dgvParcelas.SelectedRows[0].Index;
+                long IdParcela = Convert.ToInt64(dgvParcelas[COL_ID, row].Value);
+                ImprimirRegistro(IdParcela);
+            }
+            
+        }
+
+        protected override void ImprimirRegistro(Int64? id)
+        {
+            frmRelPedido_Otica relatorio = new frmRelPedido_Otica();
+            try
+            {
+                relatorio.rvRelatorios.LocalReport.ReportEmbeddedResource = "prjbase.relatorios.relPedido_Otica.rdlc";
+                relatorio.ExibeDialogo(this, id);
+            }
+            catch (Exception ex)
+            {
+                string mensagem = TrataException.getAllMessage(ex);
+                MessageBox.Show(mensagem, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                relatorio.Dispose();
+            }                        
+        }
+
+        protected override void Salvar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                atualizagrid = true;
+                if (ValidaAcessoFuncao(Operacao.Salvar))
+                {
+                    if (salvar(sender, e))
+                    {                        
+                        MessageBox.Show(Text + " salvo com sucesso.", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);                        
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                string mensagem = TrataException.getAllMessage(ex);
+                MessageBox.Show(mensagem, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         protected override bool salvar(object sender, EventArgs e)
@@ -966,6 +1030,88 @@ namespace prjbase
         private void dgvParcelas_Click(object sender, EventArgs e)
         {
             loadCamposParcela();
+        }
+
+        private void chkPago_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (dgvParcelas.SelectedRows.Count > 0)
+            {
+                int row = dgvParcelas.SelectedRows[0].Index;
+                List<ParcelaView> ParcelasList = LoadFromGridParcela();
+                for (int i = 0; i < ParcelasList.Count(); i++)
+                {
+                    ParcelaView p = ParcelasList[i];
+                   
+                    if (i == row)
+                    {
+                        p.Pago = ((CheckBox)sender).Checked;
+                        p.Editado = true;
+                    }
+                    
+                }
+
+                dgvParcelas.DataSource = ParcelasList;
+
+                if (((CheckBox)sender).Checked)
+                {
+                    txtDtPagamento.Focus();
+                }
+                else
+                {
+                    txtDtPagamento.Text = string.Empty;
+                }
+
+                dgvParcelas.CurrentCell = dgvParcelas.Rows[row].Cells[COL_NUMEROPARCELA];
+                dgvParcelas.Rows[row].Selected = true;
+            }
+        }
+
+        private void txtDtPagamento_Enter(object sender, EventArgs e)
+        {
+            ((MaskedTextBox)sender).Select(0, 0);
+        }
+
+        private void txtDtPagamento_Validated(object sender, EventArgs e)
+        {
+            if (dgvParcelas.SelectedRows.Count > 0)
+            {
+                int row = dgvParcelas.SelectedRows[0].Index;
+                List<ParcelaView> ParcelasList = LoadFromGridParcela();
+                for (int i = 0; i < ParcelasList.Count(); i++)
+                {
+                    ParcelaView p = ParcelasList[i];
+
+                    if (i == row)
+                    {
+                        ((MaskedTextBox)sender).TextMaskFormat = MaskFormat.IncludeLiterals;
+                        p.DtPagamento = Convert.ToDateTime(((MaskedTextBox)sender).Text);
+                        ((MaskedTextBox)sender).TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+                        p.Editado = true;
+                    }
+
+                }
+
+                dgvParcelas.DataSource = ParcelasList;
+
+                dgvParcelas.CurrentCell = dgvParcelas.Rows[row].Cells[COL_NUMEROPARCELA];
+                dgvParcelas.Rows[row].Selected = true;
+
+            }
+        }
+
+        private void txtDtPagamento_Validating(object sender, CancelEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(((MaskedTextBox)sender).Text))
+            {
+                ((MaskedTextBox)sender).TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+                if (!ValidateUtils.isDate(((MaskedTextBox)sender).Text))
+                {
+                    MessageBox.Show("Data inválida.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ((MaskedTextBox)sender).Text = string.Empty;
+                    e.Cancel = true;
+                }
+                        ((MaskedTextBox)sender).TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            }
         }
     }
 }

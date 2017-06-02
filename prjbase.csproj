@@ -13,7 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>D:\GDrive\Optima\</PublishUrl>
+    <PublishUrl>D:\Optima\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -23,9 +23,9 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <TargetCulture>en</TargetCulture>
+    <TargetCulture>pt-BR</TargetCulture>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -64,7 +64,7 @@
     <ManifestKeyFile>prjbase_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>false</GenerateManifests>
+    <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>false</SignManifests>
@@ -208,6 +208,12 @@
     <Compile Include="cadastros\frmCadEditFornecedor.Designer.cs">
       <DependentUpon>frmCadEditFornecedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="cadastros\frmCadEditPedido_Laboratorio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cadastros\frmCadEditPedido_Laboratorio.Designer.cs">
+      <DependentUpon>frmCadEditPedido_Laboratorio.cs</DependentUpon>
+    </Compile>
     <Compile Include="cadastros\frmCadEditTransportadora.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -316,6 +322,12 @@
     </Compile>
     <Compile Include="Listas\frmListFornecedores.Designer.cs">
       <DependentUpon>frmListFornecedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Listas\frmListPedidos_Laboratorio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listas\frmListPedidos_Laboratorio.Designer.cs">
+      <DependentUpon>frmListPedidos_Laboratorio.cs</DependentUpon>
     </Compile>
     <Compile Include="Listas\frmListTransportadoras.cs">
       <SubType>Form</SubType>
@@ -580,6 +592,12 @@
       <DependentUpon>frmRelRota.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
+    <Compile Include="frmSobre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSobre.Designer.cs">
+      <DependentUpon>frmSobre.cs</DependentUpon>
+    </Compile>
     <Compile Include="utilitarios\frmUtilCamera.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -594,6 +612,9 @@
     </Compile>
     <EmbeddedResource Include="cadastros\frmCadEditFornecedor.resx">
       <DependentUpon>frmCadEditFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cadastros\frmCadEditPedido_Laboratorio.resx">
+      <DependentUpon>frmCadEditPedido_Laboratorio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="cadastros\frmCadEditTransportadora.resx">
       <DependentUpon>frmCadEditTransportadora.cs</DependentUpon>
@@ -651,6 +672,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Listas\frmListFornecedores.resx">
       <DependentUpon>frmListFornecedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listas\frmListPedidos_Laboratorio.resx">
+      <DependentUpon>frmListPedidos_Laboratorio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Listas\frmListTransportadoras.resx">
       <DependentUpon>frmListTransportadoras.cs</DependentUpon>
@@ -786,6 +810,9 @@
     <EmbeddedResource Include="relatorios\subRelItemPedido_Otica.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmSobre.resx">
+      <DependentUpon>frmSobre.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="utilitarios\frmUtilCamera.resx">
       <DependentUpon>frmUtilCamera.cs</DependentUpon>
     </EmbeddedResource>
@@ -835,6 +862,7 @@
     </Content>
     <Content Include="oculos.ico" />
     <Content Include="oculos2.ico" />
+    <None Include="Resources\logo.png" />
     <None Include="Resources\down.png" />
     <None Include="Resources\up.png" />
     <None Include="Resources\camera1.png" />

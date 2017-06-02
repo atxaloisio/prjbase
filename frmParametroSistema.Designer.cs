@@ -221,9 +221,9 @@
             // 
             this.groupBox3.Controls.Add(this.rbOtica);
             this.groupBox3.Controls.Add(this.rbLaboratorio);
-            this.groupBox3.Location = new System.Drawing.Point(273, 100);
+            this.groupBox3.Location = new System.Drawing.Point(6, 4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(261, 121);
+            this.groupBox3.Size = new System.Drawing.Size(536, 41);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Layout";
@@ -232,7 +232,7 @@
             // 
             this.rbOtica.AutoSize = true;
             this.rbOtica.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rbOtica.Location = new System.Drawing.Point(49, 50);
+            this.rbOtica.Location = new System.Drawing.Point(141, 14);
             this.rbOtica.Name = "rbOtica";
             this.rbOtica.Size = new System.Drawing.Size(59, 20);
             this.rbOtica.TabIndex = 1;
@@ -244,7 +244,7 @@
             // 
             this.rbLaboratorio.AutoSize = true;
             this.rbLaboratorio.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rbLaboratorio.Location = new System.Drawing.Point(6, 24);
+            this.rbLaboratorio.Location = new System.Drawing.Point(4, 14);
             this.rbLaboratorio.Name = "rbLaboratorio";
             this.rbLaboratorio.Size = new System.Drawing.Size(102, 20);
             this.rbLaboratorio.TabIndex = 0;
@@ -260,23 +260,23 @@
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Location = new System.Drawing.Point(6, 100);
+            this.groupBox2.Location = new System.Drawing.Point(6, 146);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(261, 121);
+            this.groupBox2.Size = new System.Drawing.Size(536, 57);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Último código";
             // 
             // txtCodPedido
             // 
-            this.txtCodPedido.Location = new System.Drawing.Point(65, 75);
+            this.txtCodPedido.Location = new System.Drawing.Point(417, 23);
             this.txtCodPedido.Name = "txtCodPedido";
             this.txtCodPedido.Size = new System.Drawing.Size(113, 23);
             this.txtCodPedido.TabIndex = 2;
             // 
             // txtCodProduto
             // 
-            this.txtCodProduto.Location = new System.Drawing.Point(65, 49);
+            this.txtCodProduto.Location = new System.Drawing.Point(241, 23);
             this.txtCodProduto.Name = "txtCodProduto";
             this.txtCodProduto.Size = new System.Drawing.Size(113, 23);
             this.txtCodProduto.TabIndex = 1;
@@ -291,7 +291,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(5, 78);
+            this.label9.Location = new System.Drawing.Point(357, 26);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(51, 16);
             this.label9.TabIndex = 23;
@@ -300,7 +300,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(5, 52);
+            this.label8.Location = new System.Drawing.Point(181, 26);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(60, 16);
             this.label8.TabIndex = 21;
@@ -317,7 +317,7 @@
             // 
             // txtCaminhoArquivos
             // 
-            this.txtCaminhoArquivos.Location = new System.Drawing.Point(6, 71);
+            this.txtCaminhoArquivos.Location = new System.Drawing.Point(6, 113);
             this.txtCaminhoArquivos.Name = "txtCaminhoArquivos";
             this.txtCaminhoArquivos.Size = new System.Drawing.Size(496, 23);
             this.txtCaminhoArquivos.TabIndex = 1;
@@ -326,9 +326,9 @@
             // 
             this.gbTipoArqIntegracao.Controls.Add(this.rbIntTooling);
             this.gbTipoArqIntegracao.Controls.Add(this.rbIntGenLab);
-            this.gbTipoArqIntegracao.Location = new System.Drawing.Point(6, 4);
+            this.gbTipoArqIntegracao.Location = new System.Drawing.Point(6, 46);
             this.gbTipoArqIntegracao.Name = "gbTipoArqIntegracao";
-            this.gbTipoArqIntegracao.Size = new System.Drawing.Size(525, 44);
+            this.gbTipoArqIntegracao.Size = new System.Drawing.Size(536, 44);
             this.gbTipoArqIntegracao.TabIndex = 0;
             this.gbTipoArqIntegracao.TabStop = false;
             this.gbTipoArqIntegracao.Text = "Gerar arquivo de integração";
@@ -364,7 +364,7 @@
             this.btnCaminhoArquivos.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCaminhoArquivos.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnCaminhoArquivos.Image = global::prjbase.Properties.Resources.pasta;
-            this.btnCaminhoArquivos.Location = new System.Drawing.Point(504, 68);
+            this.btnCaminhoArquivos.Location = new System.Drawing.Point(504, 110);
             this.btnCaminhoArquivos.Name = "btnCaminhoArquivos";
             this.btnCaminhoArquivos.Size = new System.Drawing.Size(31, 28);
             this.btnCaminhoArquivos.TabIndex = 2;
@@ -375,7 +375,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 52);
+            this.label1.Location = new System.Drawing.Point(6, 94);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(313, 16);
             this.label1.TabIndex = 1;

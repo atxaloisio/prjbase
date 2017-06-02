@@ -30,6 +30,28 @@ namespace prjbase
             InitializeComponent();
         }
 
+        protected override void Salvar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                atualizagrid = true;
+                if (ValidaAcessoFuncao(Operacao.Cancelar))
+                {
+                    if (salvar(sender, e))
+                    {                        
+                        MessageBox.Show(Text + " Pedido cancelado com sucesso.", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);                        
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                string mensagem = TrataException.getAllMessage(ex);
+                MessageBox.Show(mensagem, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         protected override void LoadToControls()
         {
             if (Id != null)

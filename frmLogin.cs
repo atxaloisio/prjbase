@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
 using Model;
+using Utils;
+using MySql.Data.MySqlClient;
 
 namespace prjbase
 {
@@ -35,21 +37,25 @@ namespace prjbase
         private void btnEntrar_Click(object sender, EventArgs e)
         {
             usuarioBLL = new UsuarioBLL();
+            try
+            {
+
+
 #if DEBUG
-            Program.usuario_logado = usuarioBLL.Localizar(1);
-            this.DialogResult = DialogResult.OK;
+                Program.usuario_logado = usuarioBLL.Localizar(1);
+                this.DialogResult = DialogResult.OK;
 
-            //Program.usuario_logado = usuarioBLL.loginSistema(txtUsuaio.Text, txtSenha.Text);
+                //Program.usuario_logado = usuarioBLL.loginSistema(txtUsuaio.Text, txtSenha.Text);
 
-            //if (Program.usuario_logado != null)
-            //{
-            //    this.DialogResult = DialogResult.OK;
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Usuário ou senha incorreto.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    this.DialogResult = DialogResult.None;
-            //}
+                //if (Program.usuario_logado != null)
+                //{
+                //    this.DialogResult = DialogResult.OK;
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Usuário ou senha incorreto.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    this.DialogResult = DialogResult.None;
+                //}
 #else
             Program.usuario_logado = usuarioBLL.loginSistema(txtUsuaio.Text, txtSenha.Text);
 
@@ -63,6 +69,12 @@ namespace prjbase
                     this.DialogResult = DialogResult.None;
                 }
 #endif
+            }
+            catch (Exception ex)
+            {
+                string mensagem = TrataException.getAllMessage(ex);
+                MessageBox.Show(mensagem, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

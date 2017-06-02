@@ -83,23 +83,51 @@ namespace prjbase
         {
             Boolean instanciar = true;
 
-            foreach (var mdiChildForm in MdiChildren)
+            bool ViewOtica = Convert.ToBoolean(Parametro.GetParametro("layoutOtica"));
+            bool ViewLaboratorio = Convert.ToBoolean(Parametro.GetParametro("layoutLaboratorio"));
+
+            if (ViewOtica)
             {
-                if (mdiChildForm is frmListPedidos_Otica)
+                foreach (var mdiChildForm in MdiChildren)
                 {
-                    instanciar = false;
-                    mdiChildForm.BringToFront();
-                    mdiChildForm.Show();
+                    if (mdiChildForm is frmListPedidos_Otica)
+                    {
+                        instanciar = false;
+                        mdiChildForm.BringToFront();
+                        mdiChildForm.Show();
+                    }
+                }
+
+                if (instanciar)
+                {
+                    var frm = new frmListPedidos_Otica();
+                    frm.ConfigurarForm(this);
+                    frm.Tag = ((ToolStripMenuItem)sender).Tag;
+                    frm.Show();
+                }
+            }
+            else if (ViewLaboratorio)
+            {
+                foreach (var mdiChildForm in MdiChildren)
+                {
+                    if (mdiChildForm is frmListPedidos_Laboratorio)
+                    {
+                        instanciar = false;
+                        mdiChildForm.BringToFront();
+                        mdiChildForm.Show();
+                    }
+                }
+
+                if (instanciar)
+                {
+                    var frm = new frmListPedidos_Laboratorio();
+                    frm.ConfigurarForm(this);
+                    frm.Tag = ((ToolStripMenuItem)sender).Tag;
+                    frm.Show();
                 }
             }
 
-            if (instanciar)
-            {
-                var frm = new frmListPedidos_Otica();
-                frm.ConfigurarForm(this);
-                frm.Tag = ((ToolStripMenuItem)sender).Tag;
-                frm.Show();
-            }
+                
             
         }
 
@@ -631,6 +659,13 @@ namespace prjbase
                 frm.Tag = ((ToolStripMenuItem)sender).Tag;
                 frm.Show();
             }
+        }
+
+        private void mnuSobre_Click(object sender, EventArgs e)
+        {
+            var frm = new frmSobre();
+            frm.ShowDialog();
+            frm.Dispose();
         }
     }
 }
