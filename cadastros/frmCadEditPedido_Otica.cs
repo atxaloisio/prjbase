@@ -70,7 +70,7 @@ namespace prjbase
 
                     if (pedido_otica.hora_previsao_entrega != null)
                     {
-                        txtHrPrevEntrega.Text = pedido_otica.hora_previsao_entrega.Value.ToString();
+                        txtHrPrevEntrega.Text = pedido_otica.hora_previsao_entrega;
                     }
 
                     if (pedido_otica.condicao_pagamento != null)
@@ -137,9 +137,12 @@ namespace prjbase
 
                         if (Armacao.tipo != null)
                         {
-                            cbTipoArmacao.SelectedValue = Armacao.tipo;
+                            Tipo_ArmacaoBLL tabll = new Tipo_ArmacaoBLL();
+                            Tipo_Armacao ta = tabll.getTipo_Armacao(Convert.ToInt32(Armacao.tipo)).FirstOrDefault();
+                            cbTipoArmacao.SelectedValue = ta;
+                            cbTipoArmacao.Text = ta.descricao;
                         }
-                        
+
                         txtDiaFinLente.Text = (Armacao.diametro_final_lente != null) ? Armacao.diametro_final_lente.Value.ToString() : string.Empty;
                         txtLarguaArmacao.Text = (Armacao.largura != null) ? Armacao.largura.Value.ToString() : string.Empty;
                         txtPonteArmacao.Text = (Armacao.ponte != null) ? Armacao.ponte.Value.ToString() : string.Empty;
@@ -154,7 +157,10 @@ namespace prjbase
                         txtIdPedLente.Text = Lente.Id.ToString();
                         if (Lente.tipo != null)
                         {
-                            cbTipoLente.SelectedValue = Lente.tipo;
+                            Tipo_LenteBLL tlbll = new Tipo_LenteBLL();
+                            Tipo_Lente tl = tlbll.getTipo_Lente(Convert.ToInt32(Lente.tipo)).FirstOrDefault();
+                            cbTipoLente.SelectedValue = tl;
+                            cbTipoLente.Text = tl.descricao;
                         }
                         txtMaterialLente.Text = Lente.marca_material;
                         txtObs.Text = Lente.observacoes;
@@ -316,7 +322,7 @@ namespace prjbase
             infoadic.nome_medico = txtNomeMedico.Text;
             if (!string.IsNullOrEmpty(txtCRM.Text))
             {
-                infoadic.crm_medico = Convert.ToInt32(txtCRM.Text);
+                infoadic.crm_medico = txtCRM.Text;
             }
             infoadic.laboratorio = txtLaboratorio.Text;
             infoadic.ordem_servico = txtOS.Text;
@@ -361,7 +367,7 @@ namespace prjbase
                 TimeSpan horaEnt;
                 txtHrPrevEntrega.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
                 TimeSpan.TryParseExact(txtHrPrevEntrega.Text, "g", Culture, out horaEnt);
-                pedido_Otica.hora_previsao_entrega = horaEnt;
+                pedido_Otica.hora_previsao_entrega = horaEnt.ToString();
             }
 
 
@@ -2002,6 +2008,22 @@ namespace prjbase
         private void txtoe_gp_alt_KeyDown(object sender, KeyEventArgs e)
         {
             navegaProximo(txtoe_dech, e);
+        }
+
+        private void txtHrPrevEntrega_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((!Char.IsNumber(e.KeyChar)) & (e.KeyChar != 8) & (!e.KeyChar.Equals(':')))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtCRM_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((!Char.IsNumber(e.KeyChar)) & (e.KeyChar != 8) & (!e.KeyChar.Equals('.')) & (!e.KeyChar.Equals('-')))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

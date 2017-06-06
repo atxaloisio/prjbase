@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblPedidoCancelado = new System.Windows.Forms.Label();
             this.txtValorTotal = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.lblOS = new System.Windows.Forms.Label();
@@ -154,7 +155,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnRemoveItem = new System.Windows.Forms.Button();
             this.btnAddItem = new System.Windows.Forms.Button();
-            this.lblPedidoCancelado = new System.Windows.Forms.Label();
             this.pnlBotoes.SuspendLayout();
             this.pnlPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
@@ -236,6 +236,17 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados Pedido";
+            // 
+            // lblPedidoCancelado
+            // 
+            this.lblPedidoCancelado.AutoSize = true;
+            this.lblPedidoCancelado.ForeColor = System.Drawing.Color.Red;
+            this.lblPedidoCancelado.Location = new System.Drawing.Point(667, 23);
+            this.lblPedidoCancelado.Name = "lblPedidoCancelado";
+            this.lblPedidoCancelado.Size = new System.Drawing.Size(135, 16);
+            this.lblPedidoCancelado.TabIndex = 69;
+            this.lblPedidoCancelado.Text = "PEDIDO CANCELADO";
+            this.lblPedidoCancelado.Visible = false;
             // 
             // txtValorTotal
             // 
@@ -319,6 +330,7 @@
             this.txtCRM.Size = new System.Drawing.Size(92, 23);
             this.txtCRM.TabIndex = 10;
             this.txtCRM.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtCRM.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCRM_KeyPress);
             // 
             // lblCRM
             // 
@@ -414,7 +426,7 @@
             this.epValidaDados.SetTipoValidacao(this.txtHrPrevEntrega, libComponente.TipoValidacao.Vazio);
             this.txtHrPrevEntrega.ValidatingType = typeof(System.DateTime);
             this.txtHrPrevEntrega.Enter += new System.EventHandler(this.txt_Enter);
-            this.txtHrPrevEntrega.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
+            this.txtHrPrevEntrega.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHrPrevEntrega_KeyPress);
             // 
             // txtDtPrevEntrega
             // 
@@ -1645,17 +1657,6 @@
             this.btnAddItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAddItem.UseVisualStyleBackColor = false;
             this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
-            // 
-            // lblPedidoCancelado
-            // 
-            this.lblPedidoCancelado.AutoSize = true;
-            this.lblPedidoCancelado.ForeColor = System.Drawing.Color.Red;
-            this.lblPedidoCancelado.Location = new System.Drawing.Point(667, 23);
-            this.lblPedidoCancelado.Name = "lblPedidoCancelado";
-            this.lblPedidoCancelado.Size = new System.Drawing.Size(135, 16);
-            this.lblPedidoCancelado.TabIndex = 69;
-            this.lblPedidoCancelado.Text = "PEDIDO CANCELADO";
-            this.lblPedidoCancelado.Visible = false;
             // 
             // frmCadEditPedido_Otica
             // 

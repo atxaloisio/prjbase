@@ -78,7 +78,7 @@ namespace prjbase
                     }
                     if (pedido_otica.hora_previsao_entrega != null)
                     {
-                        txtHrPrevEntrega.Text = pedido_otica.hora_previsao_entrega.Value.ToString();
+                        txtHrPrevEntrega.Text = pedido_otica.hora_previsao_entrega;
                     }
 
                     if (pedido_otica.condicao_pagamento != null)
