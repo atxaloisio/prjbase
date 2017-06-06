@@ -702,6 +702,7 @@ namespace prjbase
                     if (dgvItemPedido.Rows.Count > 0)
                     {
                         dgvItemPedido.Rows.RemoveAt(dgvItemPedido.CurrentRow.Index);
+                        AtualizaTotal();
                     }
                 }
             }
@@ -759,6 +760,7 @@ namespace prjbase
             if (dgvItemPedido.Rows.Count > 0)
             {
                 dgvItemPedido.Rows.RemoveAt(dgvItemPedido.CurrentRow.Index);
+                AtualizaTotal();
             }
 
         }
@@ -1973,16 +1975,7 @@ namespace prjbase
 
         private void dgvItemPedido_RowValidated(object sender, DataGridViewCellEventArgs e)
         {
-            decimal Valor_Total = 0;
-            for (int i = 0; i < dgvItemPedido.RowCount; i++)
-            {
-                if (dgvItemPedido[col_VlrTotal, i].Value != null)
-                {
-                    Valor_Total += Convert.ToDecimal(dgvItemPedido[col_VlrTotal, i].Value);
-                }
-            }
-
-            txtValorTotal.Text = Valor_Total.ToString("N2");
+            AtualizaTotal();
         }
 
         private void txt_od_gp_eixo_KeyDown(object sender, KeyEventArgs e)
@@ -2024,6 +2017,20 @@ namespace prjbase
             {
                 e.Handled = true;
             }
+        }
+
+        private void AtualizaTotal()
+        {
+            decimal Valor_Total = 0;
+            for (int i = 0; i < dgvItemPedido.RowCount; i++)
+            {
+                if (dgvItemPedido[col_VlrTotal, i].Value != null)
+                {
+                    Valor_Total += Convert.ToDecimal(dgvItemPedido[col_VlrTotal, i].Value);
+                }
+            }
+
+            txtValorTotal.Text = Valor_Total.ToString("N2");
         }
     }
 }
