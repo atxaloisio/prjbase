@@ -370,7 +370,7 @@ namespace prjbase
                         txtCNPJCPF.Text = strCPF;
                     }
                 }
-                else if (txtCNPJCPF.Text.Where(c => char.IsNumber(c)).Count() == 15)
+                else if (txtCNPJCPF.Text.Where(c => char.IsNumber(c)).Count() >= 14)
                 {
                     strCNPJ = Convert.ToInt64(txtCNPJCPF.Text).ToString(@"00\.000\.000\/0000\-00");
                     if (!ValidaCNPJ.IsCnpj(strCNPJ))
