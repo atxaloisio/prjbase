@@ -86,7 +86,11 @@ namespace prjbase
                         Pedido_Otica_InfoAdic infoadic = pedido_otica.pedido_otica_infoadic.FirstOrDefault();
                         txtIdPedInfoadic.Text = infoadic.Id.ToString();
                         txtNomeMedico.Text = infoadic.nome_medico;
-                        txtCRM.Text = infoadic.crm_medico.ToString();
+                        if (infoadic.crm_medico != null)
+                        {
+                            txtCRM.Text = infoadic.crm_medico.ToString();
+                        }
+                        
                         txtLaboratorio.Text = infoadic.laboratorio;
                         txtOS.Text = infoadic.ordem_servico;
                         txt_od_gp_eixo.Text = (infoadic.od_gp_eixo != null) ? infoadic.od_gp_eixo.Value.ToString() : string.Empty;
@@ -253,10 +257,10 @@ namespace prjbase
         {
             if (MessageBox.Show(Text + " Deseja imprimir o recido do pedido?", Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                frmRelPedido_Otica relatorio = new frmRelPedido_Otica();
+                frmRelReciboVenda relatorio = new frmRelReciboVenda();
 
                 relatorio.Id = id;
-                relatorio.ImprimirDireto();
+                relatorio.ImprimirDireto(new PageProps(8.27, 11.69, 0.3937, 0.3937, 0.3937, 0.3937));
                 pedido_OticaBLL = new Pedido_OticaBLL();
                 Pedido_Otica pedido_otica = pedido_OticaBLL.Localizar(id);
 

@@ -265,7 +265,7 @@ namespace prjbase
             {
                 frmRelPedido_Otica relatorio = new frmRelPedido_Otica();
                 relatorio.Id = id;
-                relatorio.ImprimirDireto();
+                relatorio.ImprimirDireto(new PageProps(8.27, 11.69, 0.19685, 0.19685, 0.19685, 0.19685));
                 pedido_OticaBLL = new Pedido_OticaBLL();
                 Pedido_Otica pedido_otica = pedido_OticaBLL.Localizar(id);
 

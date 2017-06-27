@@ -91,8 +91,9 @@
     <Reference Include="FilterControls">
       <HintPath>..\..\componentes\TrialMaker\TrialMaker\bin\Release\FilterControls.dll</HintPath>
     </Reference>
-    <Reference Include="libComponente">
-      <HintPath>..\..\treinamento\ValidaCampos\libComponente\bin\Debug\libComponente.dll</HintPath>
+    <Reference Include="libComponente, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\componentes\ValidaCampos\libComponente\bin\Release\libComponente.dll</HintPath>
     </Reference>
     <Reference Include="LinqKit">
       <HintPath>..\Utils\LinqKit.dll</HintPath>
@@ -578,6 +579,12 @@
     <Compile Include="relatorios\frmRelPedido_Otica.Designer.cs">
       <DependentUpon>frmRelPedido_Otica.cs</DependentUpon>
     </Compile>
+    <Compile Include="relatorios\frmRelReciboVenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="relatorios\frmRelReciboVenda.Designer.cs">
+      <DependentUpon>frmRelReciboVenda.cs</DependentUpon>
+    </Compile>
     <Compile Include="relatorios\frmRelReciboParcela.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -794,6 +801,9 @@
     <EmbeddedResource Include="relatorios\frmRelFiltroPedido_Otica.resx">
       <DependentUpon>frmRelFiltroPedido_Otica.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="relatorios\frmRelReciboVenda.resx">
+      <DependentUpon>frmRelReciboVenda.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="relatorios\frmRelReciboParcela.resx">
       <DependentUpon>frmRelReciboParcela.cs</DependentUpon>
     </EmbeddedResource>
@@ -807,6 +817,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="relatorios\relReciboParcela.rdlc" />
+    <EmbeddedResource Include="relatorios\relReciboVenda.rdlc" />
     <EmbeddedResource Include="relatorios\relRota.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>

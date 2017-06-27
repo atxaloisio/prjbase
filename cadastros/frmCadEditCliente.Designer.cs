@@ -77,6 +77,8 @@
             this.label19 = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.tpInscrCnae = new System.Windows.Forms.TabPage();
+            this.txtDtNascimento = new System.Windows.Forms.MaskedTextBox();
+            this.label28 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.txtObservacoes = new System.Windows.Forms.RichTextBox();
             this.chkProdutorRural = new System.Windows.Forms.CheckBox();
@@ -98,8 +100,6 @@
             this.btnAbrirImagem = new System.Windows.Forms.Button();
             this.btnCapturaCamera = new System.Windows.Forms.Button();
             this.dlgCaminhoImagem = new System.Windows.Forms.OpenFileDialog();
-            this.label28 = new System.Windows.Forms.Label();
-            this.txtDtNascimento = new System.Windows.Forms.MaskedTextBox();
             this.pnlBotoes.SuspendLayout();
             this.pnlPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
@@ -502,7 +502,7 @@
             this.tpTelefoneEmail.Location = new System.Drawing.Point(4, 25);
             this.tpTelefoneEmail.Name = "tpTelefoneEmail";
             this.tpTelefoneEmail.Padding = new System.Windows.Forms.Padding(3);
-            this.tpTelefoneEmail.Size = new System.Drawing.Size(786, 180);
+            this.tpTelefoneEmail.Size = new System.Drawing.Size(485, 180);
             this.tpTelefoneEmail.TabIndex = 1;
             this.tpTelefoneEmail.Text = "Telefones e E-mail";
             this.tpTelefoneEmail.UseVisualStyleBackColor = true;
@@ -680,6 +680,30 @@
             this.tpInscrCnae.Text = "Inscrições, CNAE e Outros";
             this.tpInscrCnae.UseVisualStyleBackColor = true;
             // 
+            // txtDtNascimento
+            // 
+            this.epValidaDados.SetFraseErro(this.txtDtNascimento, "Previsão de entrega obrigatório.");
+            this.txtDtNascimento.Location = new System.Drawing.Point(134, 3);
+            this.txtDtNascimento.Mask = "00/00/0000";
+            this.txtDtNascimento.Name = "txtDtNascimento";
+            this.epValidaDados.SetObrigatorio(this.txtDtNascimento, false);
+            this.txtDtNascimento.Size = new System.Drawing.Size(87, 23);
+            this.txtDtNascimento.TabIndex = 11;
+            this.txtDtNascimento.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.epValidaDados.SetTipoValidacao(this.txtDtNascimento, libComponente.TipoValidacao.Vazio);
+            this.txtDtNascimento.ValidatingType = typeof(System.DateTime);
+            this.txtDtNascimento.Enter += new System.EventHandler(this.txt_Enter);
+            this.txtDtNascimento.Validating += new System.ComponentModel.CancelEventHandler(this.txtDtNascimento_Validating);
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(6, 4);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(82, 16);
+            this.label28.TabIndex = 62;
+            this.label28.Text = "Nascimento";
+            // 
             // label25
             // 
             this.label25.AutoSize = true;
@@ -694,7 +718,7 @@
             this.txtObservacoes.Location = new System.Drawing.Point(9, 100);
             this.txtObservacoes.Name = "txtObservacoes";
             this.txtObservacoes.Size = new System.Drawing.Size(767, 76);
-            this.txtObservacoes.TabIndex = 19;
+            this.txtObservacoes.TabIndex = 20;
             this.txtObservacoes.Text = "";
             // 
             // chkProdutorRural
@@ -703,7 +727,7 @@
             this.chkProdutorRural.Location = new System.Drawing.Point(558, 69);
             this.chkProdutorRural.Name = "chkProdutorRural";
             this.chkProdutorRural.Size = new System.Drawing.Size(123, 20);
-            this.chkProdutorRural.TabIndex = 18;
+            this.chkProdutorRural.TabIndex = 19;
             this.chkProdutorRural.Text = "Produtor Rural";
             this.chkProdutorRural.UseVisualStyleBackColor = true;
             // 
@@ -713,7 +737,7 @@
             this.chkoptantesimples.Location = new System.Drawing.Point(558, 53);
             this.chkoptantesimples.Name = "chkoptantesimples";
             this.chkoptantesimples.Size = new System.Drawing.Size(209, 20);
-            this.chkoptantesimples.TabIndex = 17;
+            this.chkoptantesimples.TabIndex = 18;
             this.chkoptantesimples.Text = "Optante do Simples Nacional";
             this.chkoptantesimples.UseVisualStyleBackColor = true;
             // 
@@ -726,7 +750,7 @@
             this.btnPesquisa.Location = new System.Drawing.Point(154, 54);
             this.btnPesquisa.Name = "btnPesquisa";
             this.btnPesquisa.Size = new System.Drawing.Size(27, 27);
-            this.btnPesquisa.TabIndex = 15;
+            this.btnPesquisa.TabIndex = 16;
             this.btnPesquisa.TabStop = false;
             this.btnPesquisa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPesquisa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -749,7 +773,7 @@
             this.txtCodCnae.Name = "txtCodCnae";
             this.epValidaDados.SetObrigatorio(this.txtCodCnae, false);
             this.txtCodCnae.Size = new System.Drawing.Size(100, 23);
-            this.txtCodCnae.TabIndex = 14;
+            this.txtCodCnae.TabIndex = 15;
             this.txtCodCnae.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumero_KeyPress);
             this.txtCodCnae.Validating += new System.ComponentModel.CancelEventHandler(this.txtCodCnae_Validating);
             // 
@@ -761,7 +785,7 @@
             this.epValidaDados.SetObrigatorio(this.txtDescricaoCnae, true);
             this.txtDescricaoCnae.ReadOnly = true;
             this.txtDescricaoCnae.Size = new System.Drawing.Size(358, 23);
-            this.txtDescricaoCnae.TabIndex = 16;
+            this.txtDescricaoCnae.TabIndex = 17;
             this.txtDescricaoCnae.TabStop = false;
             // 
             // label23
@@ -780,7 +804,7 @@
             this.txtInscricaoSuframa.Name = "txtInscricaoSuframa";
             this.epValidaDados.SetObrigatorio(this.txtInscricaoSuframa, true);
             this.txtInscricaoSuframa.Size = new System.Drawing.Size(123, 23);
-            this.txtInscricaoSuframa.TabIndex = 13;
+            this.txtInscricaoSuframa.TabIndex = 14;
             // 
             // label22
             // 
@@ -798,7 +822,7 @@
             this.txtInscricaoMunicipal.Name = "txtInscricaoMunicipal";
             this.epValidaDados.SetObrigatorio(this.txtInscricaoMunicipal, true);
             this.txtInscricaoMunicipal.Size = new System.Drawing.Size(123, 23);
-            this.txtInscricaoMunicipal.TabIndex = 12;
+            this.txtInscricaoMunicipal.TabIndex = 13;
             // 
             // label21
             // 
@@ -816,7 +840,7 @@
             this.txtInscricaoEstadual.Name = "txtInscricaoEstadual";
             this.epValidaDados.SetObrigatorio(this.txtInscricaoEstadual, true);
             this.txtInscricaoEstadual.Size = new System.Drawing.Size(123, 23);
-            this.txtInscricaoEstadual.TabIndex = 11;
+            this.txtInscricaoEstadual.TabIndex = 12;
             // 
             // txtCNPJCPF
             // 
@@ -894,30 +918,6 @@
             // dlgCaminhoImagem
             // 
             this.dlgCaminhoImagem.Filter = "Arquivos PNG (*.png)|*.png|Arquivos JPEG (*.jpg)|*.jpg|All files (*.*)|*.*";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(6, 4);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(82, 16);
-            this.label28.TabIndex = 62;
-            this.label28.Text = "Nascimento";
-            // 
-            // txtDtNascimento
-            // 
-            this.epValidaDados.SetFraseErro(this.txtDtNascimento, "Previsão de entrega obrigatório.");
-            this.txtDtNascimento.Location = new System.Drawing.Point(134, 3);
-            this.txtDtNascimento.Mask = "00/00/0000";
-            this.txtDtNascimento.Name = "txtDtNascimento";
-            this.epValidaDados.SetObrigatorio(this.txtDtNascimento, false);
-            this.txtDtNascimento.Size = new System.Drawing.Size(87, 23);
-            this.txtDtNascimento.TabIndex = 63;
-            this.txtDtNascimento.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            this.epValidaDados.SetTipoValidacao(this.txtDtNascimento, libComponente.TipoValidacao.Vazio);
-            this.txtDtNascimento.ValidatingType = typeof(System.DateTime);
-            this.txtDtNascimento.Enter += new System.EventHandler(this.txt_Enter);
-            this.txtDtNascimento.Validating += new System.ComponentModel.CancelEventHandler(this.txtDtNascimento_Validating);
             // 
             // frmCadEditCliente
             // 

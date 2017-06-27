@@ -209,17 +209,20 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>=First(Fields!nr_recibo.Value, "DataSet1")</Value>
-                        <Style />
+                        <Value>=Parameters!nrRecibo.Value</Value>
+                        <Style>
+                          <FontSize>18pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
                       </TextRun>
                     </TextRuns>
                     <Style />
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox1</rd:DefaultName>
-                <Top>1.45203cm</Top>
+                <Top>1.29328cm</Top>
                 <Left>1.31233cm</Left>
-                <Height>0.6cm</Height>
+                <Height>0.7905cm</Height>
                 <Width>1.97083cm</Width>
                 <ZIndex>4</ZIndex>
                 <Style>
@@ -638,17 +641,20 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>=First(Fields!nr_recibo.Value, "DataSet1")</Value>
-                        <Style />
+                        <Value>=Parameters!nrRecibo.Value</Value>
+                        <Style>
+                          <FontSize>18pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
                       </TextRun>
                     </TextRuns>
                     <Style />
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox1</rd:DefaultName>
-                <Top>1.45203cm</Top>
+                <Top>1.29328cm</Top>
                 <Left>1.31233cm</Left>
-                <Height>0.6cm</Height>
+                <Height>0.7905cm</Height>
                 <Width>1.97083cm</Width>
                 <ZIndex>4</ZIndex>
                 <Style>
@@ -955,10 +961,6 @@
           <DataField>recibo</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="nr_recibo">
-          <DataField>nr_recibo</DataField>
-          <rd:TypeName>System.Int64</rd:TypeName>
-        </Field>
         <Field Name="valor">
           <DataField>valor</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
@@ -1009,6 +1011,12 @@
   <ReportParameters>
     <ReportParameter Name="EndLaboratorio">
       <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="nrRecibo">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>

@@ -43,7 +43,7 @@ namespace prjbase
                     txtCNPJCPF.Text = Cliente.cnpj_cpf;
                     txtContato.Text = Cliente.contato;
 
-                    if (Cliente.nascimento.Value != null)
+                    if (Cliente.nascimento != null)
                     {
                         txtDtNascimento.Text = Cliente.nascimento.Value.ToShortDateString();
                     }
@@ -213,9 +213,11 @@ namespace prjbase
             Cliente.cnpj_cpf = txtCNPJCPF.Text;
             Cliente.contato = txtContato.Text;
 
-            if (string.IsNullOrEmpty(txtDtNascimento.Text))
+            if (!string.IsNullOrEmpty(txtDtNascimento.Text))
             {
+                txtDtNascimento.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
                 Cliente.nascimento = Convert.ToDateTime(txtDtNascimento.Text);
+                txtDtNascimento.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             }
 
             Cliente.telefone1_ddd = txtDDD.Text;

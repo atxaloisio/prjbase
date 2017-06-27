@@ -2803,7 +2803,7 @@
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>=Fields!numero_parcela.Value</Value>
+                            <Value>=iif(Fields!numero_parcela.Value = 0,"A Vista",Fields!numero_parcela.Value)</Value>
                             <Style>
                               <FontSize>7.5pt</FontSize>
                             </Style>
@@ -3130,7 +3130,7 @@
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>=Fields!numero_parcela.Value</Value>
+                            <Value>=iif(Fields!numero_parcela.Value = 0,"A Vista",Fields!numero_parcela.Value)</Value>
                             <Style>
                               <FontSize>7.5pt</FontSize>
                             </Style>

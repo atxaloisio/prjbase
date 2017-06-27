@@ -208,7 +208,7 @@ namespace prjbase
             TrialMaker t = new TrialMaker("Optima", Application.StartupPath + "\\RegFile.reg",
                 path + "\\Optima.dbf",
                 "Fixo: +55 (21)3226-2645\nCelular: +55 (21)99205-6591",
-                5, 10, "745", false);
+                15, 10, "289", false);
 
             byte[] MyOwnKey = { 97, 250, 1, 5, 84, 21, 7, 63,
             4, 54, 87, 56, 123, 10, 3, 62,

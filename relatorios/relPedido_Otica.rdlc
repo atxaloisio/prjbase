@@ -552,7 +552,7 @@
         </ReportItems>
         <KeepTogether>true</KeepTogether>
         <Top>0.1905cm</Top>
-        <Left>1.04775cm</Left>
+        <Left>0.73025cm</Left>
         <Height>1.66394cm</Height>
         <Width>18.72932cm</Width>
         <Style>
@@ -7002,18 +7002,18 @@
         </Style>
       </Rectangle>
     </ReportItems>
-    <Height>27.10437cm</Height>
+    <Height>10.67101in</Height>
     <Style />
   </Body>
-  <Width>19.91278cm</Width>
+  <Width>7.83968in</Width>
   <Page>
-    <PageHeight>29.7cm</PageHeight>
-    <PageWidth>21cm</PageWidth>
-    <LeftMargin>0.5cm</LeftMargin>
-    <RightMargin>0.5cm</RightMargin>
-    <TopMargin>0.5cm</TopMargin>
-    <BottomMargin>0.5cm</BottomMargin>
-    <ColumnSpacing>0.13cm</ColumnSpacing>
+    <PageHeight>11.69in</PageHeight>
+    <PageWidth>8.27in</PageWidth>
+    <LeftMargin>0.19685in</LeftMargin>
+    <RightMargin>0.19685in</RightMargin>
+    <TopMargin>0.19685in</TopMargin>
+    <BottomMargin>0.19685in</BottomMargin>
+    <ColumnSpacing>0.05118in</ColumnSpacing>
     <Style />
   </Page>
   <AutoRefresh>0</AutoRefresh>
@@ -8089,6 +8089,6 @@ aVe/91c+IokQ9oo+Xd88onWAZ8OJr3zZye9/VRpGPfSv0HX0v5uIev6sJyOE3/vzN8OH9UceD/f53/1x
 ddJLlAAAAABJRU5ErkJggg==</ImageData>
     </EmbeddedImage>
   </EmbeddedImages>
-  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>70d3f7b0-7fed-43ed-a93f-f78266666adc</rd:ReportID>
 </Report>

@@ -51,9 +51,14 @@ namespace prjbase
             ReportParameterCollection parametros = new ReportParameterCollection();
             ReportParameter parametro = new ReportParameter();
             parametro.Name = "EndLaboratorio";
-            parametro.Values.Add("Documento sem valor fiscal");
-            parametro.Values.Add("");
+            parametro.Values.Add("Documento sem valor fiscal");            
             parametros.Add(parametro);
+
+            ReportParameter nrRecibo = new ReportParameter();
+            nrRecibo.Name = "nrRecibo";
+            nrRecibo.Values.Add(Sequence.GetNextVal("sq_recibo_parcela_sequence").ToString());            
+            parametros.Add(nrRecibo);
+
             rvRelatorios.LocalReport.SetParameters(parametros);
         }
 

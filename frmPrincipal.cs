@@ -379,7 +379,8 @@ namespace prjbase
 
         private void rotasDeEntregaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmRelRota relatorio = new frmRelRota();
+            //frmRelRota relatorio = new frmRelRota();
+            frmRelReciboVenda relatorio = new frmRelReciboVenda();
             //relatorio.rvRelatorios.LocalReport.ReportEmbeddedResource = "prjbase.relatorios.relRota.rdlc";
             relatorio.ExibeDialogo(this);
             relatorio.Dispose();
@@ -692,7 +693,7 @@ namespace prjbase
             TrialMaker t = new TrialMaker("Optima", Application.StartupPath + "\\RegFile.reg",
                 path + "\\Optima.dbf",
                 "Fixo: +55 (21)3226-2645\nCelular: +55 (21)99205-6591",
-                5, 10, "745", true);
+                5, 10, "289", true);
 
             byte[] MyOwnKey = { 97, 250, 1, 5, 84, 21, 7, 63,
             4, 54, 87, 56, 123, 10, 3, 62,
@@ -700,6 +701,12 @@ namespace prjbase
             t.TripleDESKey = MyOwnKey;
             
             TrialMaker.RunTypes RT = t.ShowDialog();
+
+            if (RT == TrialMaker.RunTypes.Full)
+            {
+                MessageBox.Show("Está cópia já foi registrada.", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+                
         }
     }
 }
