@@ -56,7 +56,6 @@ namespace prjbase
                     txtCEP.TextMaskFormat = MaskFormat.IncludeLiterals;
                     txtCEP.Text = Cliente.cep;
                     txtCEP.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-                    txtObsEndereco.Text = Cliente.obsEndereco;
 
                     //Telefone Email
                     txtDDD2.Text = Cliente.telefone2_ddd;
@@ -65,7 +64,6 @@ namespace prjbase
                     txtFax.Text = Cliente.fax_numero;
                     txtEmail.Text = Cliente.email;
                     txtWebSite.Text = Cliente.homepage;
-                    txtObsTelefonesEmail.Text = Cliente.obsTelefonesEmail;
 
                     txtInscricaoEstadual.Text = Cliente.inscricao_estadual;
                     txtInscricaoMunicipal.Text = Cliente.inscricao_municipal;
@@ -241,7 +239,6 @@ namespace prjbase
             Cliente.cidade = cbCidade.Text;
             Cliente.complemento = txtComplemento.Text;
             Cliente.cep = txtCEP.Text;
-            Cliente.obsEndereco = txtObsEndereco.Text;
 
             //Telefone Email
             Cliente.telefone2_ddd = txtDDD2.Text;
@@ -250,7 +247,6 @@ namespace prjbase
             Cliente.fax_numero = txtFax.Text;
             Cliente.email = txtEmail.Text;
             Cliente.homepage = txtWebSite.Text;
-            Cliente.obsTelefonesEmail = txtObsTelefonesEmail.Text;
 
             Cliente.inscricao_estadual = txtInscricaoEstadual.Text;
             Cliente.inscricao_municipal = txtInscricaoMunicipal.Text;

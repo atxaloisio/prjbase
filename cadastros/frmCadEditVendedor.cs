@@ -71,6 +71,7 @@ namespace prjbase
                     
                     if (Vendedor.Id != 0)
                     {
+                        Id = Vendedor.Id;
                         txtCodInt.Text = Vendedor.codInt;
                     }
 

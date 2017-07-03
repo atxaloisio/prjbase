@@ -62,6 +62,7 @@ namespace prjbase
                     txtCEP.TextMaskFormat = MaskFormat.IncludeLiterals;
                     txtCEP.Text = Cliente.cep;
                     txtCEP.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+                    txtObsEndereco.Text = Cliente.obsEndereco;
 
                     //Telefone Email
                     txtDDD2.Text = Cliente.telefone2_ddd;
@@ -70,6 +71,7 @@ namespace prjbase
                     txtFax.Text = Cliente.fax_numero;
                     txtEmail.Text = Cliente.email;
                     txtWebSite.Text = Cliente.homepage;
+                    txtObsTelefonesEmail.Text = Cliente.obsTelefonesEmail;
 
                     txtInscricaoEstadual.Text = Cliente.inscricao_estadual;
                     txtInscricaoMunicipal.Text = Cliente.inscricao_municipal;
@@ -129,7 +131,7 @@ namespace prjbase
                         Tag tg = tagBLL.getTag("Cliente").FirstOrDefault();
                         Cliente.cliente_tag.Add(new Cliente_Tag { Id_tag = tg.Id, tag = tg.tag1 });
                                                                         
-                        ClienteBLL.AdicionarCliente(Cliente);                        
+                        ClienteBLL.AdicionarCliente(Cliente);                                             
                     }
 
                     if ((intOmie) & (updateClienteOmie))
@@ -146,6 +148,7 @@ namespace prjbase
 
                     if (Cliente.Id != 0)
                     {
+                        Id = Cliente.Id;
                         txtId.Text = Cliente.Id.ToString();
                     }
 
@@ -173,13 +176,14 @@ namespace prjbase
         private bool ValidaDadosEspecifico()
         {
             bool retorno = true;
+            List<Cliente> cliList = null;
 
             bool layoutLaboratorio = Convert.ToBoolean(Parametro.GetParametro("layoutLaboratorio"));
 
             if (layoutLaboratorio)
             {
                 ClienteBLL = new ClienteBLL();
-                List<Cliente> cliList = ClienteBLL.getCliente(p => p.cnpj_cpf.Contains(txtCNPJCPF.Text));
+                cliList = ClienteBLL.getCliente(p => p.cnpj_cpf.Contains(txtCNPJCPF.Text), true);
                 if (cliList.Count() > 0)
                 {
                     if (Id != cliList.FirstOrDefault().Id)
@@ -190,6 +194,30 @@ namespace prjbase
                     }
                 }
             }
+
+            if (Id == null)
+            {
+                cliList = ClienteBLL.getCliente(p => p.razao_social == txtRazaoSocial.Text & p.cliente_tag.Any(c => c.tag == "Cliente"), true);
+                if (cliList.Count() > 0)
+                {
+                    epValidaDados.SetError(txtRazaoSocial, "Razão social / Nome Completo  informada já está cadastrada.");
+                    MessageBox.Show("Razão social / Nome Completo informada já está cadastrada.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    retorno = false;
+                }
+
+                if (retorno)
+                {
+                    cliList = ClienteBLL.getCliente(p => p.nome_fantasia == txtNomeFantasia.Text & p.cliente_tag.Any(c => c.tag == "Cliente"), true);
+                    if (cliList.Count() > 0)
+                    {
+                        epValidaDados.SetError(txtNomeFantasia, "Nome Fantasia / Nome Abreviado informado já está cadastrado.");
+                        MessageBox.Show("Nome Fantasia / Nome Abreviado informado já está cadastrado.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        retorno = false;
+                    }
+                }
+            }
+            
+
             
             return retorno;
         }
@@ -232,6 +260,7 @@ namespace prjbase
             Cliente.cidade = cbCidade.Text;
             Cliente.complemento = txtComplemento.Text;
             Cliente.cep = txtCEP.Text;
+            Cliente.obsEndereco = txtObsEndereco.Text;
 
             //Telefone Email
             Cliente.telefone2_ddd = txtDDD2.Text;
@@ -240,6 +269,7 @@ namespace prjbase
             Cliente.fax_numero = txtFax.Text;
             Cliente.email = txtEmail.Text;
             Cliente.homepage = txtWebSite.Text;
+            Cliente.obsTelefonesEmail = txtObsTelefonesEmail.Text;
 
             Cliente.inscricao_estadual = txtInscricaoEstadual.Text;
             Cliente.inscricao_municipal = txtInscricaoMunicipal.Text;
@@ -606,6 +636,16 @@ namespace prjbase
                     e.Cancel = true;
                 }
                         ((MaskedTextBox)sender).TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            }
+        }
+
+        private void txtObservacoes_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtObservacoes.AppendText("\r\n");
+                txtObservacoes.ScrollToCaret();
+                e.SuppressKeyPress = true;
             }
         }
     }

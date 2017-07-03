@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadEditPedido_Otica));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblPedidoCancelado = new System.Windows.Forms.Label();
             this.txtValorTotal = new System.Windows.Forms.TextBox();
@@ -252,7 +252,7 @@
             // 
             this.txtValorTotal.Enabled = false;
             this.epValidaDados.SetFraseErro(this.txtValorTotal, "Numero do pedido no Cliente obrigatório.");
-            this.txtValorTotal.Location = new System.Drawing.Point(424, 20);
+            this.txtValorTotal.Location = new System.Drawing.Point(272, 20);
             this.txtValorTotal.MaxLength = 8;
             this.txtValorTotal.Name = "txtValorTotal";
             this.epValidaDados.SetObrigatorio(this.txtValorTotal, false);
@@ -265,7 +265,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(341, 23);
+            this.label4.Location = new System.Drawing.Point(189, 23);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(78, 16);
             this.label4.TabIndex = 67;
@@ -385,18 +385,17 @@
             // 
             // txtDtEmissao
             // 
-            this.txtDtEmissao.Enabled = false;
             this.epValidaDados.SetFraseErro(this.txtDtEmissao, "Data de Emissão obrigatório");
-            this.txtDtEmissao.Location = new System.Drawing.Point(250, 20);
+            this.txtDtEmissao.Location = new System.Drawing.Point(582, 49);
             this.txtDtEmissao.Mask = "00/00/0000";
             this.txtDtEmissao.Name = "txtDtEmissao";
             this.epValidaDados.SetObrigatorio(this.txtDtEmissao, true);
-            this.txtDtEmissao.Size = new System.Drawing.Size(87, 23);
+            this.txtDtEmissao.Size = new System.Drawing.Size(84, 23);
             this.txtDtEmissao.TabIndex = 4;
-            this.txtDtEmissao.TabStop = false;
             this.txtDtEmissao.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.epValidaDados.SetTipoValidacao(this.txtDtEmissao, libComponente.TipoValidacao.Vazio);
             this.txtDtEmissao.ValidatingType = typeof(System.DateTime);
+            this.txtDtEmissao.Enter += new System.EventHandler(this.txt_Enter);
             this.txtDtEmissao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
             this.txtDtEmissao.Validating += new System.ComponentModel.CancelEventHandler(this.Ctrls_Validating);
             this.txtDtEmissao.Validated += new System.EventHandler(this.Ctrls_Validated);
@@ -417,7 +416,7 @@
             // txtHrPrevEntrega
             // 
             this.epValidaDados.SetFraseErro(this.txtHrPrevEntrega, "");
-            this.txtHrPrevEntrega.Location = new System.Drawing.Point(726, 47);
+            this.txtHrPrevEntrega.Location = new System.Drawing.Point(834, 49);
             this.txtHrPrevEntrega.Mask = "00:00";
             this.txtHrPrevEntrega.Name = "txtHrPrevEntrega";
             this.epValidaDados.SetObrigatorio(this.txtHrPrevEntrega, false);
@@ -431,7 +430,7 @@
             // txtDtPrevEntrega
             // 
             this.epValidaDados.SetFraseErro(this.txtDtPrevEntrega, "Previsão de entrega obrigatório.");
-            this.txtDtPrevEntrega.Location = new System.Drawing.Point(638, 47);
+            this.txtDtPrevEntrega.Location = new System.Drawing.Point(746, 49);
             this.txtDtPrevEntrega.Mask = "00/00/0000";
             this.txtDtPrevEntrega.Name = "txtDtPrevEntrega";
             this.epValidaDados.SetObrigatorio(this.txtDtPrevEntrega, false);
@@ -448,11 +447,11 @@
             // lblPrevEntrega
             // 
             this.lblPrevEntrega.AutoSize = true;
-            this.lblPrevEntrega.Location = new System.Drawing.Point(537, 52);
+            this.lblPrevEntrega.Location = new System.Drawing.Point(669, 52);
             this.lblPrevEntrega.Name = "lblPrevEntrega";
-            this.lblPrevEntrega.Size = new System.Drawing.Size(97, 16);
+            this.lblPrevEntrega.Size = new System.Drawing.Size(75, 16);
             this.lblPrevEntrega.TabIndex = 39;
-            this.lblPrevEntrega.Text = "Prev. Entrega";
+            this.lblPrevEntrega.Text = "P. Entrega";
             // 
             // btnPesquisa
             // 
@@ -474,11 +473,11 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(166, 23);
+            this.label5.Location = new System.Drawing.Point(525, 52);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(82, 16);
+            this.label5.Size = new System.Drawing.Size(59, 16);
             this.label5.TabIndex = 36;
-            this.label5.Text = "Dt. Emissão";
+            this.label5.Text = "Emissão";
             // 
             // lblTransportadora
             // 
@@ -559,7 +558,7 @@
             this.txtClienteNome.Name = "txtClienteNome";
             this.epValidaDados.SetObrigatorio(this.txtClienteNome, true);
             this.txtClienteNome.ReadOnly = true;
-            this.txtClienteNome.Size = new System.Drawing.Size(342, 23);
+            this.txtClienteNome.Size = new System.Drawing.Size(327, 23);
             this.txtClienteNome.TabIndex = 2;
             this.txtClienteNome.TabStop = false;
             this.txtClienteNome.Validated += new System.EventHandler(this.Ctrls_Validated);
@@ -1586,9 +1585,9 @@
             // 
             // VLRUNITARIO
             // 
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.VLRUNITARIO.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.VLRUNITARIO.DefaultCellStyle = dataGridViewCellStyle1;
             this.VLRUNITARIO.HeaderText = "Vlr Unitário";
             this.VLRUNITARIO.Name = "VLRUNITARIO";
             this.VLRUNITARIO.Width = 110;
@@ -1601,18 +1600,18 @@
             // 
             // VLRDESCONTO
             // 
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = null;
-            this.VLRDESCONTO.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.VLRDESCONTO.DefaultCellStyle = dataGridViewCellStyle2;
             this.VLRDESCONTO.HeaderText = "Vlr Desc";
             this.VLRDESCONTO.Name = "VLRDESCONTO";
             this.VLRDESCONTO.Width = 110;
             // 
             // VLTTOTAL
             // 
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = null;
-            this.VLTTOTAL.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.VLTTOTAL.DefaultCellStyle = dataGridViewCellStyle3;
             this.VLTTOTAL.HeaderText = "Total";
             this.VLTTOTAL.Name = "VLTTOTAL";
             this.VLTTOTAL.ReadOnly = true;

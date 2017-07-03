@@ -671,7 +671,7 @@
             this.tpInscrCnae.Location = new System.Drawing.Point(4, 25);
             this.tpInscrCnae.Name = "tpInscrCnae";
             this.tpInscrCnae.Padding = new System.Windows.Forms.Padding(3);
-            this.tpInscrCnae.Size = new System.Drawing.Size(485, 180);
+            this.tpInscrCnae.Size = new System.Drawing.Size(786, 180);
             this.tpInscrCnae.TabIndex = 2;
             this.tpInscrCnae.Text = "Inscrições, CNAE e Outros";
             this.tpInscrCnae.UseVisualStyleBackColor = true;
@@ -692,6 +692,7 @@
             this.txtObservacoes.Size = new System.Drawing.Size(767, 96);
             this.txtObservacoes.TabIndex = 19;
             this.txtObservacoes.Text = "";
+            this.txtObservacoes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtObservacoes_KeyDown);
             // 
             // chkProdutorRural
             // 
@@ -868,6 +869,7 @@
             this.btnAbrirImagem.Name = "btnAbrirImagem";
             this.btnAbrirImagem.Size = new System.Drawing.Size(30, 30);
             this.btnAbrirImagem.TabIndex = 78;
+            this.btnAbrirImagem.TabStop = false;
             this.btnAbrirImagem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAbrirImagem.UseVisualStyleBackColor = false;
             this.btnAbrirImagem.Click += new System.EventHandler(this.btnAbrirImagem_Click);
@@ -883,6 +885,7 @@
             this.btnCapturaCamera.Name = "btnCapturaCamera";
             this.btnCapturaCamera.Size = new System.Drawing.Size(30, 30);
             this.btnCapturaCamera.TabIndex = 79;
+            this.btnCapturaCamera.TabStop = false;
             this.btnCapturaCamera.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCapturaCamera.UseVisualStyleBackColor = false;
             this.btnCapturaCamera.Click += new System.EventHandler(this.btnCapturaCamera_Click);

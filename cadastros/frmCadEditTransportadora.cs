@@ -123,7 +123,7 @@ namespace prjbase
                         Tag tg = tagBLL.getTag("Transportadora").FirstOrDefault();
                         Cliente.cliente_tag.Add(new Cliente_Tag { Id_tag = tg.Id, tag = tg.tag1 });
                                                                         
-                        ClienteBLL.AdicionarCliente(Cliente);                        
+                        ClienteBLL.AdicionarCliente(Cliente);                                     
                     }
 
                     if ((intOmie) & (updateClienteOmie))
@@ -140,6 +140,7 @@ namespace prjbase
 
                     if (Cliente.Id != 0)
                     {
+                        Id = Cliente.Id;
                         txtId.Text = Cliente.Id.ToString();
                     }
 
@@ -167,13 +168,14 @@ namespace prjbase
         private bool ValidaDadosEspecifico()
         {
             bool retorno = true;
+            List<Cliente> cliList = null;
 
             bool layoutLaboratorio = Convert.ToBoolean(Parametro.GetParametro("layoutLaboratorio"));
 
             if (layoutLaboratorio)
             {
                 ClienteBLL = new ClienteBLL();
-                List<Cliente> cliList = ClienteBLL.getCliente(p => p.cnpj_cpf.Contains(txtCNPJCPF.Text));
+                cliList = ClienteBLL.getCliente(p => p.cnpj_cpf.Contains(txtCNPJCPF.Text));
                 if (cliList.Count() > 0)
                 {
                     epValidaDados.SetError(txtCNPJCPF, "CNPJ / CPF Já está cadastrado.");
@@ -181,7 +183,29 @@ namespace prjbase
                     retorno = false;
                 }
             }
-            
+
+            if (Id == null)
+            {
+                cliList = ClienteBLL.getCliente(p => p.razao_social == txtRazaoSocial.Text & p.cliente_tag.Any(c => c.tag == "Transportadora"), true);
+                if (cliList.Count() > 0)
+                {
+                    epValidaDados.SetError(txtRazaoSocial, "Razão social / Nome Completo  informada já está cadastrada.");
+                    MessageBox.Show("Razão social / Nome Completo informada já está cadastrada.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    retorno = false;
+                }
+
+                if (retorno)
+                {
+                    cliList = ClienteBLL.getCliente(p => p.nome_fantasia == txtNomeFantasia.Text & p.cliente_tag.Any(c => c.tag == "Transportadora"), true);
+                    if (cliList.Count() > 0)
+                    {
+                        epValidaDados.SetError(txtNomeFantasia, "Nome Fantasia / Nome Abreviado informado já está cadastrado.");
+                        MessageBox.Show("Nome Fantasia / Nome Abreviado informado já está cadastrado.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        retorno = false;
+                    }
+                }
+            }
+
             return retorno;
         }
 
@@ -581,6 +605,16 @@ namespace prjbase
             if (dlgCaminhoImagem.ShowDialog() == DialogResult.OK)
             {
                 imgFotoCliente.Image = Image.FromFile(@dlgCaminhoImagem.FileName);
+            }
+        }
+
+        private void txtObservacoes_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtObservacoes.AppendText("\r\n");
+                txtObservacoes.ScrollToCaret();
+                e.SuppressKeyPress = true;
             }
         }
     }

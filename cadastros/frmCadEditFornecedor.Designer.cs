@@ -98,6 +98,10 @@
             this.btnAbrirImagem = new System.Windows.Forms.Button();
             this.btnCapturaCamera = new System.Windows.Forms.Button();
             this.dlgCaminhoImagem = new System.Windows.Forms.OpenFileDialog();
+            this.label29 = new System.Windows.Forms.Label();
+            this.txtObsEndereco = new System.Windows.Forms.RichTextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.txtObsTelefonesEmail = new System.Windows.Forms.RichTextBox();
             this.pnlBotoes.SuspendLayout();
             this.pnlPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
@@ -318,6 +322,8 @@
             // 
             // tpEndereco
             // 
+            this.tpEndereco.Controls.Add(this.label29);
+            this.tpEndereco.Controls.Add(this.txtObsEndereco);
             this.tpEndereco.Controls.Add(this.txtCEP);
             this.tpEndereco.Controls.Add(this.label15);
             this.tpEndereco.Controls.Add(this.cbCidade);
@@ -491,6 +497,8 @@
             // 
             // tpTelefoneEmail
             // 
+            this.tpTelefoneEmail.Controls.Add(this.label30);
+            this.tpTelefoneEmail.Controls.Add(this.txtObsTelefonesEmail);
             this.tpTelefoneEmail.Controls.Add(this.groupBox2);
             this.tpTelefoneEmail.Controls.Add(this.groupBox1);
             this.tpTelefoneEmail.Controls.Add(this.label20);
@@ -500,7 +508,7 @@
             this.tpTelefoneEmail.Location = new System.Drawing.Point(4, 25);
             this.tpTelefoneEmail.Name = "tpTelefoneEmail";
             this.tpTelefoneEmail.Padding = new System.Windows.Forms.Padding(3);
-            this.tpTelefoneEmail.Size = new System.Drawing.Size(485, 180);
+            this.tpTelefoneEmail.Size = new System.Drawing.Size(786, 180);
             this.tpTelefoneEmail.TabIndex = 1;
             this.tpTelefoneEmail.Text = "Telefones e E-mail";
             this.tpTelefoneEmail.UseVisualStyleBackColor = true;
@@ -618,7 +626,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(383, 64);
+            this.label20.Location = new System.Drawing.Point(383, 62);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(62, 16);
             this.label20.TabIndex = 65;
@@ -627,7 +635,7 @@
             // txtWebSite
             // 
             this.epValidaDados.SetFraseErro(this.txtWebSite, "Nome do Cliente obrigatório.");
-            this.txtWebSite.Location = new System.Drawing.Point(445, 61);
+            this.txtWebSite.Location = new System.Drawing.Point(445, 59);
             this.txtWebSite.Name = "txtWebSite";
             this.epValidaDados.SetObrigatorio(this.txtWebSite, true);
             this.txtWebSite.Size = new System.Drawing.Size(334, 23);
@@ -637,7 +645,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(3, 64);
+            this.label19.Location = new System.Drawing.Point(3, 62);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(46, 16);
             this.label19.TabIndex = 63;
@@ -646,7 +654,7 @@
             // txtEmail
             // 
             this.epValidaDados.SetFraseErro(this.txtEmail, "Nome do Cliente obrigatório.");
-            this.txtEmail.Location = new System.Drawing.Point(55, 61);
+            this.txtEmail.Location = new System.Drawing.Point(55, 59);
             this.txtEmail.Name = "txtEmail";
             this.epValidaDados.SetObrigatorio(this.txtEmail, true);
             this.txtEmail.Size = new System.Drawing.Size(322, 23);
@@ -692,6 +700,7 @@
             this.txtObservacoes.Size = new System.Drawing.Size(767, 96);
             this.txtObservacoes.TabIndex = 19;
             this.txtObservacoes.Text = "";
+            this.txtObservacoes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtObservacoes_KeyDown);
             // 
             // chkProdutorRural
             // 
@@ -868,6 +877,7 @@
             this.btnAbrirImagem.Name = "btnAbrirImagem";
             this.btnAbrirImagem.Size = new System.Drawing.Size(30, 30);
             this.btnAbrirImagem.TabIndex = 78;
+            this.btnAbrirImagem.TabStop = false;
             this.btnAbrirImagem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAbrirImagem.UseVisualStyleBackColor = false;
             this.btnAbrirImagem.Click += new System.EventHandler(this.btnAbrirImagem_Click);
@@ -883,6 +893,7 @@
             this.btnCapturaCamera.Name = "btnCapturaCamera";
             this.btnCapturaCamera.Size = new System.Drawing.Size(30, 30);
             this.btnCapturaCamera.TabIndex = 79;
+            this.btnCapturaCamera.TabStop = false;
             this.btnCapturaCamera.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCapturaCamera.UseVisualStyleBackColor = false;
             this.btnCapturaCamera.Click += new System.EventHandler(this.btnCapturaCamera_Click);
@@ -890,6 +901,40 @@
             // dlgCaminhoImagem
             // 
             this.dlgCaminhoImagem.Filter = "Arquivos PNG (*.png)|*.png|Arquivos JPEG (*.jpg)|*.jpg|All files (*.*)|*.*";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(9, 82);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(92, 16);
+            this.label29.TabIndex = 64;
+            this.label29.Text = "Observações";
+            // 
+            // txtObsEndereco
+            // 
+            this.txtObsEndereco.Location = new System.Drawing.Point(9, 100);
+            this.txtObsEndereco.Name = "txtObsEndereco";
+            this.txtObsEndereco.Size = new System.Drawing.Size(767, 76);
+            this.txtObsEndereco.TabIndex = 63;
+            this.txtObsEndereco.Text = "";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(9, 82);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(92, 16);
+            this.label30.TabIndex = 69;
+            this.label30.Text = "Observações";
+            // 
+            // txtObsTelefonesEmail
+            // 
+            this.txtObsTelefonesEmail.Location = new System.Drawing.Point(9, 100);
+            this.txtObsTelefonesEmail.Name = "txtObsTelefonesEmail";
+            this.txtObsTelefonesEmail.Size = new System.Drawing.Size(767, 76);
+            this.txtObsTelefonesEmail.TabIndex = 68;
+            this.txtObsTelefonesEmail.Text = "";
             // 
             // frmCadEditFornecedor
             // 
@@ -987,5 +1032,9 @@
         public System.Windows.Forms.Button btnCapturaCamera;
         public System.Windows.Forms.Button btnAbrirImagem;
         private System.Windows.Forms.OpenFileDialog dlgCaminhoImagem;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.RichTextBox txtObsEndereco;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.RichTextBox txtObsTelefonesEmail;
     }
 }
