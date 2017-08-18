@@ -26,6 +26,7 @@ namespace prjbase
 
         protected override void LoadToControls()
         {
+            this.Cursor = Cursors.WaitCursor;
             if (Id != null)
             {
                 ClienteBLL = new ClienteBLL();
@@ -85,6 +86,7 @@ namespace prjbase
                     imgFotoCliente.Refresh();
                 }
             }
+            this.Cursor = Cursors.Default;
         }
 
         protected override bool salvar(object sender, EventArgs e)
@@ -150,6 +152,12 @@ namespace prjbase
                     {
                         Id = Cliente.Id;
                         txtId.Text = Cliente.Id.ToString();
+                        txtCodInt.Text = Cliente.codigo_cliente_integracao;
+                        if (Cliente.codigo_cliente_omie > 0)
+                        {
+                            txtCodigo.Text = Cliente.codigo_cliente_omie.ToString();
+                        }
+                        
                     }
 
                     SalvarImagem(Cliente.Id);

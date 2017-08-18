@@ -45,8 +45,10 @@ namespace prjbase
 
         protected virtual void btnIncluir_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             if (ValidaAcessoFuncao(Operacao.Salvar))
             {
+                this.Cursor = Cursors.Default;
                 String TituloTela;
                 if ((frmInstancia == null) || (frmInstancia.IsDisposed))
                 {
@@ -62,8 +64,10 @@ namespace prjbase
                 frmInstancia.ExibeDialogo();
                 if (frmInstancia.atualizagrid)
                 {
+                    this.Cursor = Cursors.WaitCursor;
                     carregaConsulta();
                     AtualizaContadores();
+                    this.Cursor = Cursors.Default;
                 }
                 frmInstancia.Dispose();
             }            
@@ -77,9 +81,11 @@ namespace prjbase
                 {
                     if (dgvDados.CurrentRow != null)
                     {
+                        this.Cursor = Cursors.WaitCursor;
                         excluirRegistro(dgvDados.CurrentRow.Index);
                         carregaConsulta();
                         AtualizaContadores();
+                        this.Cursor = Cursors.Default;
                     }
                     
                 }
@@ -101,14 +107,14 @@ namespace prjbase
         protected virtual void btnEditar_Click(object sender, EventArgs e)
         {
             if (ValidaAcessoFuncao(Operacao.Editar))
-            {
-                editarRegistro();
+            {                
+                editarRegistro();                
             }
             
         }
 
         private void editarRegistro()
-        {
+        {            
             String TituloTela;
             if ((frmInstancia == null) || (frmInstancia.IsDisposed))
             {
@@ -129,6 +135,7 @@ namespace prjbase
                 {
                     if (Convert.ToInt32(dgvDados[0, dgvDados.CurrentRow.Index].Value) > 0)
                     {
+                        frmInstancia.Cursor = Cursors.WaitCursor;                        
                         frmInstancia.ExibeDialogo(this, Convert.ToInt32(dgvDados[0, dgvDados.CurrentRow.Index].Value));
                     }
 
@@ -139,9 +146,11 @@ namespace prjbase
             if (frmInstancia.atualizagrid)
             {
                 // MessageBox.Show("atualiza.");
+                this.Cursor = Cursors.WaitCursor;
                 dgvDados.DataSource = null;
                 carregaConsulta();
                 AtualizaContadores();
+                this.Cursor = Cursors.Default;
             }
             frmInstancia.Dispose();
         }
@@ -415,7 +424,7 @@ namespace prjbase
             try
             {
                 
-                Cursor = Cursors.WaitCursor;
+                this.Cursor = Cursors.WaitCursor;
                 Application.DoEvents();
                 carregaConsulta();
                 pagina++;

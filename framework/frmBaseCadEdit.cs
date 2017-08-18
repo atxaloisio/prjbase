@@ -27,7 +27,9 @@ namespace prjbase
 
         protected virtual void btnSalvar_Click(object sender, EventArgs e)
         {
-            Salvar_Click(sender, e);                        
+            this.Cursor = Cursors.WaitCursor;
+            Salvar_Click(sender, e);
+            this.Cursor = Cursors.Default;               
         }
 
         protected virtual void Salvar_Click(object sender, EventArgs e)
@@ -134,8 +136,9 @@ namespace prjbase
 
         protected virtual void btnIncluir_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             Incluir();
-            
+            this.Cursor = Cursors.Default;
         }
 
         protected virtual void Incluir()
@@ -161,8 +164,10 @@ namespace prjbase
 
         private void frmBaseCadEdit_Load(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             SetupControls();
-            LoadToControls();            
+            LoadToControls();
+            this.Cursor = Cursors.Default;
         }
               
     }

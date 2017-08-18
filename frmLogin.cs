@@ -48,10 +48,11 @@ namespace prjbase
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
+            
             usuarioBLL = new UsuarioBLL();
             try
             {
-
+                this.Cursor = Cursors.WaitCursor;
 
 #if DEBUG
                 Program.usuario_logado = usuarioBLL.Localizar(1);
@@ -81,6 +82,7 @@ namespace prjbase
                     this.DialogResult = DialogResult.None;
                 }
 #endif
+                this.Cursor = Cursors.Default;
             }
             catch (Exception ex)
             {

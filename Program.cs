@@ -25,7 +25,9 @@ namespace prjbase
 
             frmSplash splash = new frmSplash();
             splash.Show();
-            
+            splash.Cursor = Cursors.AppStarting;
+
+
             Application.DoEvents();
            
             splash.setMensagem("Carregando configurações.");
@@ -214,7 +216,7 @@ namespace prjbase
             4, 54, 87, 56, 123, 10, 3, 62,
             7, 9, 20, 36, 37, 21, 101, 57};
             t.TripleDESKey = MyOwnKey;
-
+            splash.Cursor = Cursors.Default;
             splash.Dispose();
 
             TrialMaker.RunTypes RT = t.ShowDialog();

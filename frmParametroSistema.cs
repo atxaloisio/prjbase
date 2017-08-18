@@ -131,12 +131,14 @@ namespace prjbase
 
         private void frmParametroSistema_Load(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             SetupControls();
             LoadToControls();
+            this.Cursor = Cursors.Default;
         }
 
         private void LoadToControls()
-        {
+        {            
             LoadParametros();
             LoadEmpresa();
         }

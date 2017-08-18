@@ -73,10 +73,12 @@ namespace prjbase
 
             if (instanciar)
             {
+                this.Cursor = Cursors.WaitCursor;
                 var frm = new frmListClientes();
                 frm.ConfigurarForm(this);
                 frm.Tag = ((ToolStripMenuItem)sender).Tag;
                 frm.Show();
+                this.Cursor = Cursors.Default;
             }
             
         }
@@ -198,7 +200,9 @@ namespace prjbase
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
-            confPermissaoMenu();        
+            this.Cursor = Cursors.WaitCursor;
+            confPermissaoMenu();
+            this.Cursor = Cursors.Default;
         }
 
         private void confPermissaoMenu()
@@ -355,9 +359,11 @@ namespace prjbase
 
         private void parametrosDeSistemasToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             frmParametroSistema ParametroSistema = new frmParametroSistema();
             ParametroSistema.Tag = ((ToolStripMenuItem)sender).Tag;
             ParametroSistema.ExibeDialogo();
+            this.Cursor = Cursors.Default;
             ParametroSistema.Dispose();            
         }
 
