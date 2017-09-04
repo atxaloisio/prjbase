@@ -157,6 +157,12 @@ namespace prjbase
                 rbIntTooling.Checked = Convert.ToBoolean(tooling);
             }
 
+            string NrRegPagListagem = Parametro.GetParametro("NrRegPag");
+            if (!string.IsNullOrEmpty(NrRegPagListagem))
+            {
+                txtNrRegPag.Text = NrRegPagListagem;                
+            }
+
             string strPathFileLab = Parametro.GetParametro("strPathFileLab");
             if (!string.IsNullOrEmpty(strPathFileLab))
             {
@@ -438,6 +444,16 @@ namespace prjbase
             else
             {
                 Parametro.AddParametro("intTooling", Convert.ToString(rbIntTooling.Checked));
+            }
+
+            string NrRegPagListagem = Parametro.GetParametro("NrRegPag");
+            if (!string.IsNullOrEmpty(NrRegPagListagem))
+            {
+                Parametro.SetParametro("NrRegPag", txtNrRegPag.Text);
+            }
+            else
+            {
+                Parametro.AddParametro("NrRegPag", txtNrRegPag.Text);
             }
 
             string strPathFileLab = Parametro.GetParametro("strPathFileLab");

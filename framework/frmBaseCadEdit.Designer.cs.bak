@@ -1,4 +1,4 @@
-﻿namespace prjbase
+﻿namespace optmed
 {
     partial class frmBaseCadEdit 
     {
@@ -50,7 +50,7 @@
             this.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFechar.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFechar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnFechar.Image = global::prjbase.Properties.Resources.fechar;
+            this.btnFechar.Image = global::optmed.Properties.Resources.fechar;
             this.btnFechar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnFechar.Location = new System.Drawing.Point(3, 350);
             this.btnFechar.Name = "btnFechar";
@@ -79,7 +79,7 @@
             this.btnIncluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIncluir.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIncluir.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnIncluir.Image = global::prjbase.Properties.Resources.novo;
+            this.btnIncluir.Image = global::optmed.Properties.Resources.novo;
             this.btnIncluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnIncluir.Location = new System.Drawing.Point(3, 39);
             this.btnIncluir.Name = "btnIncluir";
@@ -97,7 +97,7 @@
             this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalvar.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalvar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSalvar.Image = global::prjbase.Properties.Resources.salvar;
+            this.btnSalvar.Image = global::optmed.Properties.Resources.salvar;
             this.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnSalvar.Location = new System.Drawing.Point(3, 5);
             this.btnSalvar.Name = "btnSalvar";
@@ -123,7 +123,7 @@
             this.pnlPrincipal.Location = new System.Drawing.Point(115, 0);
             this.pnlPrincipal.Name = "pnlPrincipal";
             this.pnlPrincipal.Size = new System.Drawing.Size(495, 386);
-            this.pnlPrincipal.TabIndex = 1;
+            this.pnlPrincipal.TabIndex = 2;
             // 
             // pnlJanela
             // 
@@ -133,8 +133,7 @@
             this.pnlJanela.Location = new System.Drawing.Point(0, 66);
             this.pnlJanela.Name = "pnlJanela";
             this.pnlJanela.Size = new System.Drawing.Size(493, 250);
-            this.pnlJanela.TabIndex = 0;
-            this.pnlJanela.TabStop = true;
+            this.pnlJanela.TabIndex = 1;
             // 
             // frmBaseCadEdit
             // 

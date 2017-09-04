@@ -162,21 +162,44 @@ namespace prjbase
                 {
                     if (Convert.ToInt32(dgvDados[0, dgvDados.CurrentRow.Index].Value) > 0)
                     {
-                        frmInstancia.ExibeDialogo(this, Convert.ToInt32(dgvDados[0, dgvDados.CurrentRow.Index].Value));
+                        frmInstancia.Cursor = Cursors.WaitCursor;
+                        frmInstancia.MinimizeBox = false;
+                        frmInstancia.MaximizeBox = false;
+                        frmInstancia.ControlBox = false;
+                        frmInstancia.FormBorderStyle = FormBorderStyle.FixedSingle;
+                        frmInstancia.MdiParent = this.MdiParent;
+                        frmInstancia.atualizagrid = new AtualizaGrid(atualizaGrid);
+                        frmInstancia.Id = Convert.ToInt32(dgvDados[0, dgvDados.CurrentRow.Index].Value);
+                        frmInstancia.Show();
+
+                        //frmInstancia.atualizagrid = new AtualizaGrid(atualizaGrid);
+                        //frmInstancia.Id = Convert.ToInt32(dgvDados[0, dgvDados.CurrentRow.Index].Value);
+                        //frmInstancia.Show();
+                        //frmInstancia.ExibeDialogo(this, Convert.ToInt32(dgvDados[0, dgvDados.CurrentRow.Index].Value));
                     }
 
                 }
             }
 
 
-            if (frmInstancia.atualizagrid)
-            {
-                // MessageBox.Show("atualiza.");
-                dgvDados.DataSource = null;
-                carregaConsulta();
-                //AtualizaContadores();
-            }
-            frmInstancia.Dispose();
+            //if (frmInstancia.atualizagrid != null)
+            //{
+
+            //}
+
+            //if (frmInstancia.atualizagrid)
+            //{
+            //    // MessageBox.Show("atualiza.");
+            //    dgvDados.DataSource = null;
+            //    carregaConsulta();
+            //    //AtualizaContadores();
+            //}
+            //frmInstancia.Dispose();
+        }
+
+        public virtual void atualizaGrid()
+        {
+            carregaConsulta();            
         }
 
         protected virtual void formataGridFiltro()

@@ -849,20 +849,14 @@ namespace prjbase
                                         CancelarPedido.ExibeDialogo(this, Id);
                                     }
                                 }
-
-                                CancelarPedido.atualizagrid = true;
-
+                                
                             }
 
                         }
                     }
 
 
-                    if (CancelarPedido.atualizagrid)
-                    {
-                        carregaConsulta();
-                        AtualizaContadores();
-                    }
+                    this.atualizagrid();
                 }
             }
             catch (Exception ex)

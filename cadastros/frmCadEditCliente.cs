@@ -663,5 +663,10 @@ namespace prjbase
                 e.SuppressKeyPress = true;
             }
         }
+
+        private void frmCadEditCliente_Activated(object sender, EventArgs e)
+        {            
+            this.WindowState = FormWindowState.Maximized;
+        }
     }
 }

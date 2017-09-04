@@ -154,6 +154,9 @@
             this.btnSalvar = new System.Windows.Forms.Button();
             this.dlgCaminhoArquivos = new System.Windows.Forms.FolderBrowserDialog();
             this.dlgCaminhoImagem = new System.Windows.Forms.OpenFileDialog();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtNrRegPag = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
             this.pnlPrincipal.SuspendLayout();
             this.tcParametros.SuspendLayout();
             this.tpGeral.SuspendLayout();
@@ -173,6 +176,7 @@
             this.groupBox6.SuspendLayout();
             this.tpInscrCnae.SuspendLayout();
             this.pnlBotoes.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlPrincipal
@@ -203,6 +207,7 @@
             // 
             // tpGeral
             // 
+            this.tpGeral.Controls.Add(this.groupBox1);
             this.tpGeral.Controls.Add(this.groupBox3);
             this.tpGeral.Controls.Add(this.groupBox2);
             this.tpGeral.Controls.Add(this.txtCaminhoArquivos);
@@ -273,6 +278,7 @@
             this.txtCodPedido.Name = "txtCodPedido";
             this.txtCodPedido.Size = new System.Drawing.Size(113, 23);
             this.txtCodPedido.TabIndex = 2;
+            this.txtCodPedido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
             // 
             // txtCodProduto
             // 
@@ -280,6 +286,7 @@
             this.txtCodProduto.Name = "txtCodProduto";
             this.txtCodProduto.Size = new System.Drawing.Size(113, 23);
             this.txtCodProduto.TabIndex = 1;
+            this.txtCodProduto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
             // 
             // txtCodCliente
             // 
@@ -287,6 +294,7 @@
             this.txtCodCliente.Name = "txtCodCliente";
             this.txtCodCliente.Size = new System.Drawing.Size(113, 23);
             this.txtCodCliente.TabIndex = 0;
+            this.txtCodCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
             // 
             // label9
             // 
@@ -1496,6 +1504,34 @@
             // 
             this.dlgCaminhoImagem.Filter = "Arquivos PNG (*.png)|*.png|Arquivos JPEG (*.jpg)|*.jpg|All files (*.*)|*.*";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtNrRegPag);
+            this.groupBox1.Controls.Add(this.label37);
+            this.groupBox1.Location = new System.Drawing.Point(6, 205);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(536, 51);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Listagem";
+            // 
+            // txtNrRegPag
+            // 
+            this.txtNrRegPag.Location = new System.Drawing.Point(220, 22);
+            this.txtNrRegPag.Name = "txtNrRegPag";
+            this.txtNrRegPag.Size = new System.Drawing.Size(113, 23);
+            this.txtNrRegPag.TabIndex = 0;
+            this.txtNrRegPag.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(5, 26);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(213, 16);
+            this.label37.TabIndex = 19;
+            this.label37.Text = "Numero de registros por página";
+            // 
             // frmParametroSistema
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1541,6 +1577,8 @@
             this.tpInscrCnae.ResumeLayout(false);
             this.tpInscrCnae.PerformLayout();
             this.pnlBotoes.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1672,5 +1710,8 @@
         private System.Windows.Forms.CheckBox chkEmpresa;
         private System.Windows.Forms.CheckBox chkAtualizaTransportadora;
         private System.Windows.Forms.CheckBox chkAtualizaFornecedor;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox txtNrRegPag;
+        private System.Windows.Forms.Label label37;
     }
 }

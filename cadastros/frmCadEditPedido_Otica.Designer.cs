@@ -156,8 +156,9 @@
             this.btnRemoveItem = new System.Windows.Forms.Button();
             this.btnAddItem = new System.Windows.Forms.Button();
             this.pnlBotoes.SuspendLayout();
-            this.pnlPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
+            this.pnlPrincipal.SuspendLayout();
+            this.pnlJanela.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgFotoCliente)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -185,16 +186,34 @@
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
+            // btnSalvar
+            // 
+            this.btnSalvar.BackColor = System.Drawing.Color.Green;
+            // 
+            // btnFechar
+            // 
+            this.btnFechar.BackColor = System.Drawing.Color.Green;
+            this.btnFechar.Location = new System.Drawing.Point(3, 1408);
+            // 
+            // btnIncluir
+            // 
+            this.btnIncluir.BackColor = System.Drawing.Color.Green;
+            // 
             // pnlBotoes
             // 
             this.pnlBotoes.Size = new System.Drawing.Size(115, 597);
             // 
             // pnlPrincipal
             // 
-            this.pnlPrincipal.Controls.Add(this.groupBox3);
-            this.pnlPrincipal.Controls.Add(this.groupBox2);
-            this.pnlPrincipal.Controls.Add(this.groupBox1);
             this.pnlPrincipal.Size = new System.Drawing.Size(1007, 597);
+            // 
+            // pnlJanela
+            // 
+            this.pnlJanela.Controls.Add(this.groupBox3);
+            this.pnlJanela.Controls.Add(this.groupBox2);
+            this.pnlJanela.Controls.Add(this.groupBox1);
+            this.pnlJanela.Location = new System.Drawing.Point(66, 20);
+            this.pnlJanela.Size = new System.Drawing.Size(1007, 597);
             // 
             // groupBox1
             // 
@@ -354,8 +373,10 @@
             // 
             this.epValidaDados.SetFraseErro(this.txtNomeMedico, "Numero do pedido no Cliente obrigatório.");
             this.txtNomeMedico.Location = new System.Drawing.Point(400, 79);
+            this.txtNomeMedico.MaxLength = 100;
             this.txtNomeMedico.Name = "txtNomeMedico";
             this.epValidaDados.SetObrigatorio(this.txtNomeMedico, false);
+            this.txtNomeMedico.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.txtNomeMedico.Size = new System.Drawing.Size(302, 23);
             this.txtNomeMedico.TabIndex = 9;
             // 
@@ -455,7 +476,7 @@
             // 
             // btnPesquisa
             // 
-            this.btnPesquisa.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnPesquisa.BackColor = System.Drawing.Color.Green;
             this.btnPesquisa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPesquisa.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnPesquisa.Image = ((System.Drawing.Image)(resources.GetObject("btnPesquisa.Image")));
@@ -1628,7 +1649,7 @@
             // 
             // btnRemoveItem
             // 
-            this.btnRemoveItem.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnRemoveItem.BackColor = System.Drawing.Color.Green;
             this.btnRemoveItem.CausesValidation = false;
             this.btnRemoveItem.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnRemoveItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1644,7 +1665,7 @@
             // 
             // btnAddItem
             // 
-            this.btnAddItem.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnAddItem.BackColor = System.Drawing.Color.Green;
             this.btnAddItem.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnAddItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -1663,12 +1684,15 @@
             this.AutoScroll = true;
             this.CancelButton = null;
             this.ClientSize = new System.Drawing.Size(1122, 597);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmCadEditPedido_Otica";
             this.Text = "Pedido de Venda";
+            this.Activated += new System.EventHandler(this.frmCadEditPedido_Otica_Activated);
             this.pnlBotoes.ResumeLayout(false);
-            this.pnlPrincipal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).EndInit();
+            this.pnlPrincipal.ResumeLayout(false);
+            this.pnlJanela.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgFotoCliente)).EndInit();

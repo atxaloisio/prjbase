@@ -201,7 +201,7 @@ namespace prjbase
                     {
                         lblPedidoCancelado.Visible = true;
 
-                        foreach (Control item in pnlPrincipal.Controls)
+                        foreach (Control item in pnlJanela.Controls)
                         {
                             item.Enabled = false;
                             btnSalvar.Enabled = false;
@@ -2150,6 +2150,11 @@ namespace prjbase
             }
 
             txtValorTotal.Text = Valor_Total.ToString("N2");
+        }
+
+        private void frmCadEditPedido_Laboratorio_Activated(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
         }
     }
 }

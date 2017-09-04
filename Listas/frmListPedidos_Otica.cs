@@ -72,7 +72,7 @@ namespace prjbase
             colDtEmissao.ValueType = typeof(DateTime);
             colDtEmissao.SortMode = DataGridViewColumnSortMode.Programmatic;
             colDtEmissao.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            colDtEmissao.DefaultCellStyle.Format = "d";
+            colDtEmissao.DefaultCellStyle.Format = "d";            
             gridFiltros.Columns.Add(colDtEmissao);
 
             gridFiltros.Columns.Add("Total", "Total");
@@ -154,6 +154,7 @@ namespace prjbase
             gridFiltros.EditingControlShowing += new DataGridViewEditingControlShowingEventHandler(gridFiltros_EditingControlShowing);
 
             //Adiciona uma linha ao grid.
+            gridFiltros.DefaultCellStyle.SelectionBackColor = Color.Green;
             gridFiltros.Rows.Add();
             
         }
@@ -262,6 +263,7 @@ namespace prjbase
         protected override void formataColunagridDados(DataGridView gridDados)
         {
             base.formataColunagridDados(gridDados);
+            gridDados.DefaultCellStyle.SelectionBackColor = Color.Green;
 
             gridDados.Columns[COL_ID].Width = 120;
             gridDados.Columns[COL_ID].ValueType = typeof(int);
@@ -783,7 +785,7 @@ namespace prjbase
                                     }
                                 }
 
-                                CancelarPedido.atualizagrid = true;
+                                //CancelarPedido.atualizagrid = true;
 
                             }
 
@@ -791,11 +793,11 @@ namespace prjbase
                     }
 
 
-                    if (CancelarPedido.atualizagrid)
-                    {
-                        carregaConsulta();
-                        AtualizaContadores();
-                    }
+                    //if (CancelarPedido.atualizagrid)
+                    //{
+                    //    carregaConsulta();
+                    //    AtualizaContadores();
+                    //}
                 }
             }
             catch (Exception ex)

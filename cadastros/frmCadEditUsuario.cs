@@ -134,6 +134,11 @@ namespace prjbase
             {
                 epValidaDados.SetError((ComboBox)sender, string.Empty);
             }
-        }        
+        }
+
+        private void frmCadEditUsuario_Activated(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+        }
     }
 }

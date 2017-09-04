@@ -11,14 +11,15 @@ using Model;
 
 namespace prjbase
 {
+    public delegate void AtualizaGrid();
     public partial class frmBase : Form, IDisposable
     {
-        public virtual bool atualizagrid { get; set; }
+        public AtualizaGrid atualizagrid;        
         public virtual long? Id { get; set; }
         public frmBase()
         {
             InitializeComponent();
-            atualizagrid = false;
+            atualizagrid = null;
             Id = null;
         }
 

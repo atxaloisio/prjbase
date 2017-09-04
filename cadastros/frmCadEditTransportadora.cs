@@ -617,5 +617,10 @@ namespace prjbase
                 e.SuppressKeyPress = true;
             }
         }
+
+        private void frmCadEditTransportadora_Activated(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+        }
     }
 }

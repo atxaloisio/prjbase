@@ -45,9 +45,14 @@
             this.chkInativo = new System.Windows.Forms.CheckBox();
             this.txtEmail = new System.Windows.Forms.MaskedTextBox();
             this.pnlBotoes.SuspendLayout();
-            this.pnlPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
+            this.pnlPrincipal.SuspendLayout();
+            this.pnlJanela.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // btnFechar
+            // 
+            this.btnFechar.Location = new System.Drawing.Point(3, 353);
             // 
             // pnlBotoes
             // 
@@ -55,25 +60,30 @@
             // 
             // pnlPrincipal
             // 
-            this.pnlPrincipal.Controls.Add(this.txtEmail);
-            this.pnlPrincipal.Controls.Add(this.chkInativo);
-            this.pnlPrincipal.Controls.Add(this.ckVisualizarSenha);
-            this.pnlPrincipal.Controls.Add(this.txtConfPassword);
-            this.pnlPrincipal.Controls.Add(this.label6);
-            this.pnlPrincipal.Controls.Add(this.label5);
-            this.pnlPrincipal.Controls.Add(this.cbPerfil);
-            this.pnlPrincipal.Controls.Add(this.txtDtAlteracao);
-            this.pnlPrincipal.Controls.Add(this.txtDtCriacao);
-            this.pnlPrincipal.Controls.Add(this.txtPassword);
-            this.pnlPrincipal.Controls.Add(this.label4);
-            this.pnlPrincipal.Controls.Add(this.label3);
-            this.pnlPrincipal.Controls.Add(this.txtNome);
-            this.pnlPrincipal.Controls.Add(this.label2);
-            this.pnlPrincipal.Controls.Add(this.txtId);
-            this.pnlPrincipal.Controls.Add(this.label1);
             this.pnlPrincipal.Size = new System.Drawing.Size(449, 237);
-            this.pnlPrincipal.TabIndex = 0;
-            this.pnlPrincipal.TabStop = true;
+            // 
+            // pnlJanela
+            // 
+            this.pnlJanela.Controls.Add(this.txtEmail);
+            this.pnlJanela.Controls.Add(this.chkInativo);
+            this.pnlJanela.Controls.Add(this.ckVisualizarSenha);
+            this.pnlJanela.Controls.Add(this.txtConfPassword);
+            this.pnlJanela.Controls.Add(this.label6);
+            this.pnlJanela.Controls.Add(this.label5);
+            this.pnlJanela.Controls.Add(this.cbPerfil);
+            this.pnlJanela.Controls.Add(this.txtDtAlteracao);
+            this.pnlJanela.Controls.Add(this.txtDtCriacao);
+            this.pnlJanela.Controls.Add(this.txtPassword);
+            this.pnlJanela.Controls.Add(this.label4);
+            this.pnlJanela.Controls.Add(this.label3);
+            this.pnlJanela.Controls.Add(this.txtNome);
+            this.pnlJanela.Controls.Add(this.label2);
+            this.pnlJanela.Controls.Add(this.txtId);
+            this.pnlJanela.Controls.Add(this.label1);
+            this.pnlJanela.Location = new System.Drawing.Point(66, 20);
+            this.pnlJanela.Size = new System.Drawing.Size(449, 237);
+            this.pnlJanela.TabIndex = 0;
+            this.pnlJanela.TabStop = true;
             // 
             // label1
             // 
@@ -249,13 +259,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(564, 237);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmCadEditUsuario";
             this.Text = "Usuário";
+            this.Activated += new System.EventHandler(this.frmCadEditUsuario_Activated);
             this.pnlBotoes.ResumeLayout(false);
-            this.pnlPrincipal.ResumeLayout(false);
-            this.pnlPrincipal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).EndInit();
+            this.pnlPrincipal.ResumeLayout(false);
+            this.pnlJanela.ResumeLayout(false);
+            this.pnlJanela.PerformLayout();
             this.ResumeLayout(false);
 
         }

@@ -29,6 +29,27 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProcParcelaPedidoView));
+            this.gbParcelas = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.dgvParcelas = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cbFormaPagamento = new System.Windows.Forms.ComboBox();
+            this.txtNrDias = new System.Windows.Forms.TextBox();
+            this.txtIdPedido = new System.Windows.Forms.TextBox();
+            this.txtIdParcela = new System.Windows.Forms.TextBox();
+            this.lblParcela = new System.Windows.Forms.Label();
+            this.chkPago = new System.Windows.Forms.CheckBox();
+            this.btnDown = new System.Windows.Forms.Button();
+            this.btnUp = new System.Windows.Forms.Button();
+            this.txtPercentual = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtValor = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtDtPagamento = new System.Windows.Forms.MaskedTextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtDtVencimento = new System.Windows.Forms.MaskedTextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblPedidoCancelado = new System.Windows.Forms.Label();
             this.txtIdPedInfoadic = new System.Windows.Forms.TextBox();
@@ -65,45 +86,24 @@
             this.txtClienteNome = new System.Windows.Forms.TextBox();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.txtDtFechamento = new System.Windows.Forms.MaskedTextBox();
-            this.gbParcelas = new System.Windows.Forms.GroupBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.dgvParcelas = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.cbFormaPagamento = new System.Windows.Forms.ComboBox();
-            this.txtNrDias = new System.Windows.Forms.TextBox();
-            this.txtIdPedido = new System.Windows.Forms.TextBox();
-            this.txtIdParcela = new System.Windows.Forms.TextBox();
-            this.lblParcela = new System.Windows.Forms.Label();
-            this.chkPago = new System.Windows.Forms.CheckBox();
-            this.btnDown = new System.Windows.Forms.Button();
-            this.btnUp = new System.Windows.Forms.Button();
-            this.txtPercentual = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtValor = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtDtPagamento = new System.Windows.Forms.MaskedTextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtDtVencimento = new System.Windows.Forms.MaskedTextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.pnlBotoes.SuspendLayout();
-            this.pnlPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.pnlPrincipal.SuspendLayout();
+            this.pnlJanela.SuspendLayout();
             this.gbParcelas.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvParcelas)).BeginInit();
             this.panel2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnFechar
             // 
-            this.btnFechar.Location = new System.Drawing.Point(3, 73);
+            this.btnFechar.Location = new System.Drawing.Point(3, 47);
             // 
             // btnIncluir
             // 
             this.btnIncluir.Image = global::prjbase.Properties.Resources.Imprimir;
-            this.btnIncluir.Location = new System.Drawing.Point(3, 39);
             this.btnIncluir.Text = "&Recibo";
             this.btnIncluir.Visible = true;
             // 
@@ -113,9 +113,275 @@
             // 
             // pnlPrincipal
             // 
-            this.pnlPrincipal.Controls.Add(this.gbParcelas);
-            this.pnlPrincipal.Controls.Add(this.groupBox1);
             this.pnlPrincipal.Size = new System.Drawing.Size(1007, 360);
+            // 
+            // pnlJanela
+            // 
+            this.pnlJanela.Controls.Add(this.gbParcelas);
+            this.pnlJanela.Controls.Add(this.groupBox1);
+            this.pnlJanela.Location = new System.Drawing.Point(5, 11);
+            this.pnlJanela.Size = new System.Drawing.Size(989, 336);
+            // 
+            // gbParcelas
+            // 
+            this.gbParcelas.Controls.Add(this.panel1);
+            this.gbParcelas.Controls.Add(this.panel2);
+            this.gbParcelas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbParcelas.Location = new System.Drawing.Point(0, 144);
+            this.gbParcelas.Name = "gbParcelas";
+            this.gbParcelas.Size = new System.Drawing.Size(987, 190);
+            this.gbParcelas.TabIndex = 3;
+            this.gbParcelas.TabStop = false;
+            this.gbParcelas.Text = "Parcelas";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.dgvParcelas);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 19);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(663, 168);
+            this.panel1.TabIndex = 0;
+            // 
+            // dgvParcelas
+            // 
+            this.dgvParcelas.AllowUserToAddRows = false;
+            this.dgvParcelas.AllowUserToDeleteRows = false;
+            this.dgvParcelas.AllowUserToOrderColumns = true;
+            this.dgvParcelas.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvParcelas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvParcelas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvParcelas.Location = new System.Drawing.Point(0, 0);
+            this.dgvParcelas.MultiSelect = false;
+            this.dgvParcelas.Name = "dgvParcelas";
+            this.dgvParcelas.RowHeadersVisible = false;
+            this.dgvParcelas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvParcelas.Size = new System.Drawing.Size(663, 168);
+            this.dgvParcelas.TabIndex = 3;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.cbFormaPagamento);
+            this.panel2.Controls.Add(this.txtNrDias);
+            this.panel2.Controls.Add(this.txtIdPedido);
+            this.panel2.Controls.Add(this.txtIdParcela);
+            this.panel2.Controls.Add(this.lblParcela);
+            this.panel2.Controls.Add(this.chkPago);
+            this.panel2.Controls.Add(this.btnDown);
+            this.panel2.Controls.Add(this.btnUp);
+            this.panel2.Controls.Add(this.txtPercentual);
+            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.txtValor);
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.txtDtPagamento);
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.txtDtVencimento);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(666, 19);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(318, 168);
+            this.panel2.TabIndex = 1;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(4, 165);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(144, 16);
+            this.label9.TabIndex = 73;
+            this.label9.Text = "Forma de Pagamento";
+            // 
+            // cbFormaPagamento
+            // 
+            this.cbFormaPagamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFormaPagamento.FormattingEnabled = true;
+            this.epValidaDados.SetFraseErro(this.cbFormaPagamento, "Transportadora obrigatório");
+            this.epValidaDados.SetIndiceCombo(this.cbFormaPagamento, -1);
+            this.cbFormaPagamento.Location = new System.Drawing.Point(150, 161);
+            this.cbFormaPagamento.Name = "cbFormaPagamento";
+            this.epValidaDados.SetObrigatorio(this.cbFormaPagamento, false);
+            this.cbFormaPagamento.Size = new System.Drawing.Size(152, 24);
+            this.cbFormaPagamento.TabIndex = 72;
+            // 
+            // txtNrDias
+            // 
+            this.txtNrDias.Enabled = false;
+            this.epValidaDados.SetFraseErro(this.txtNrDias, "");
+            this.txtNrDias.Location = new System.Drawing.Point(243, 90);
+            this.txtNrDias.Name = "txtNrDias";
+            this.epValidaDados.SetObrigatorio(this.txtNrDias, false);
+            this.txtNrDias.ReadOnly = true;
+            this.txtNrDias.Size = new System.Drawing.Size(71, 23);
+            this.txtNrDias.TabIndex = 71;
+            this.txtNrDias.TabStop = false;
+            this.txtNrDias.Visible = false;
+            // 
+            // txtIdPedido
+            // 
+            this.txtIdPedido.Enabled = false;
+            this.epValidaDados.SetFraseErro(this.txtIdPedido, "");
+            this.txtIdPedido.Location = new System.Drawing.Point(243, 63);
+            this.txtIdPedido.Name = "txtIdPedido";
+            this.epValidaDados.SetObrigatorio(this.txtIdPedido, false);
+            this.txtIdPedido.ReadOnly = true;
+            this.txtIdPedido.Size = new System.Drawing.Size(71, 23);
+            this.txtIdPedido.TabIndex = 70;
+            this.txtIdPedido.TabStop = false;
+            this.txtIdPedido.Visible = false;
+            // 
+            // txtIdParcela
+            // 
+            this.txtIdParcela.Enabled = false;
+            this.epValidaDados.SetFraseErro(this.txtIdParcela, "");
+            this.txtIdParcela.Location = new System.Drawing.Point(243, 36);
+            this.txtIdParcela.Name = "txtIdParcela";
+            this.epValidaDados.SetObrigatorio(this.txtIdParcela, false);
+            this.txtIdParcela.ReadOnly = true;
+            this.txtIdParcela.Size = new System.Drawing.Size(71, 23);
+            this.txtIdParcela.TabIndex = 69;
+            this.txtIdParcela.TabStop = false;
+            this.txtIdParcela.Visible = false;
+            // 
+            // lblParcela
+            // 
+            this.lblParcela.AutoSize = true;
+            this.lblParcela.Location = new System.Drawing.Point(159, 5);
+            this.lblParcela.Name = "lblParcela";
+            this.lblParcela.Size = new System.Drawing.Size(100, 16);
+            this.lblParcela.TabIndex = 68;
+            this.lblParcela.Text = "Parcela 1 de 1";
+            // 
+            // chkPago
+            // 
+            this.chkPago.AutoSize = true;
+            this.chkPago.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkPago.Location = new System.Drawing.Point(105, 114);
+            this.chkPago.Name = "chkPago";
+            this.chkPago.Size = new System.Drawing.Size(59, 20);
+            this.chkPago.TabIndex = 67;
+            this.chkPago.Text = "Pago";
+            this.chkPago.UseVisualStyleBackColor = true;
+            // 
+            // btnDown
+            // 
+            this.btnDown.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDown.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnDown.Image = global::prjbase.Properties.Resources.down;
+            this.btnDown.Location = new System.Drawing.Point(262, 0);
+            this.btnDown.Name = "btnDown";
+            this.btnDown.Size = new System.Drawing.Size(27, 27);
+            this.btnDown.TabIndex = 66;
+            this.btnDown.TabStop = false;
+            this.btnDown.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDown.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnDown.UseVisualStyleBackColor = false;
+            // 
+            // btnUp
+            // 
+            this.btnUp.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUp.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnUp.Image = global::prjbase.Properties.Resources.up;
+            this.btnUp.Location = new System.Drawing.Point(290, 0);
+            this.btnUp.Name = "btnUp";
+            this.btnUp.Size = new System.Drawing.Size(27, 27);
+            this.btnUp.TabIndex = 65;
+            this.btnUp.TabStop = false;
+            this.btnUp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnUp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnUp.UseVisualStyleBackColor = false;
+            // 
+            // txtPercentual
+            // 
+            this.epValidaDados.SetFraseErro(this.txtPercentual, "Numero do pedido no Cliente obrigatório.");
+            this.txtPercentual.Location = new System.Drawing.Point(150, 90);
+            this.txtPercentual.MaxLength = 8;
+            this.txtPercentual.Name = "txtPercentual";
+            this.epValidaDados.SetObrigatorio(this.txtPercentual, false);
+            this.txtPercentual.ReadOnly = true;
+            this.txtPercentual.Size = new System.Drawing.Size(87, 23);
+            this.txtPercentual.TabIndex = 64;
+            this.txtPercentual.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(70, 93);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(78, 16);
+            this.label8.TabIndex = 63;
+            this.label8.Text = "Percentual";
+            this.label8.Visible = false;
+            // 
+            // txtValor
+            // 
+            this.epValidaDados.SetFraseErro(this.txtValor, "Numero do pedido no Cliente obrigatório.");
+            this.txtValor.Location = new System.Drawing.Point(150, 63);
+            this.txtValor.MaxLength = 8;
+            this.txtValor.Name = "txtValor";
+            this.epValidaDados.SetObrigatorio(this.txtValor, false);
+            this.txtValor.Size = new System.Drawing.Size(87, 23);
+            this.txtValor.TabIndex = 62;
+            this.txtValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(106, 66);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(42, 16);
+            this.label7.TabIndex = 61;
+            this.label7.Text = "Valor";
+            this.label7.Visible = false;
+            // 
+            // txtDtPagamento
+            // 
+            this.epValidaDados.SetFraseErro(this.txtDtPagamento, "Data de Emissão obrigatório");
+            this.txtDtPagamento.Location = new System.Drawing.Point(150, 134);
+            this.txtDtPagamento.Mask = "00/00/0000";
+            this.txtDtPagamento.Name = "txtDtPagamento";
+            this.epValidaDados.SetObrigatorio(this.txtDtPagamento, true);
+            this.txtDtPagamento.Size = new System.Drawing.Size(87, 23);
+            this.txtDtPagamento.TabIndex = 39;
+            this.txtDtPagamento.TabStop = false;
+            this.txtDtPagamento.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.epValidaDados.SetTipoValidacao(this.txtDtPagamento, libComponente.TipoValidacao.Vazio);
+            this.txtDtPagamento.ValidatingType = typeof(System.DateTime);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(40, 137);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(104, 16);
+            this.label6.TabIndex = 40;
+            this.label6.Text = "Dt. Pagamento";
+            // 
+            // txtDtVencimento
+            // 
+            this.epValidaDados.SetFraseErro(this.txtDtVencimento, "Data de Emissão obrigatório");
+            this.txtDtVencimento.Location = new System.Drawing.Point(150, 36);
+            this.txtDtVencimento.Mask = "00/00/0000";
+            this.txtDtVencimento.Name = "txtDtVencimento";
+            this.epValidaDados.SetObrigatorio(this.txtDtVencimento, true);
+            this.txtDtVencimento.Size = new System.Drawing.Size(87, 23);
+            this.txtDtVencimento.TabIndex = 37;
+            this.txtDtVencimento.TabStop = false;
+            this.txtDtVencimento.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.epValidaDados.SetTipoValidacao(this.txtDtVencimento, libComponente.TipoValidacao.Vazio);
+            this.txtDtVencimento.ValidatingType = typeof(System.DateTime);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(40, 39);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(107, 16);
+            this.label4.TabIndex = 38;
+            this.label4.Text = "Dt. Vencimento";
             // 
             // groupBox1
             // 
@@ -157,8 +423,8 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1005, 144);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.Size = new System.Drawing.Size(987, 144);
+            this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados Pedido";
             // 
@@ -266,9 +532,6 @@
             this.epValidaDados.SetObrigatorio(this.cbCaixa, false);
             this.cbCaixa.Size = new System.Drawing.Size(75, 24);
             this.cbCaixa.TabIndex = 13;
-            this.cbCaixa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown);
-            this.cbCaixa.Validating += new System.ComponentModel.CancelEventHandler(this.cbCaixa_Validating);
-            this.cbCaixa.Validated += new System.EventHandler(this.cbCaixa_Validated);
             // 
             // label25
             // 
@@ -291,8 +554,6 @@
             this.epValidaDados.SetObrigatorio(this.cbVendedor, false);
             this.cbVendedor.Size = new System.Drawing.Size(252, 24);
             this.cbVendedor.TabIndex = 8;
-            this.cbVendedor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown);
-            this.cbVendedor.Validating += new System.ComponentModel.CancelEventHandler(this.cb_Validating);
             // 
             // lblNrPedCliente
             // 
@@ -329,9 +590,6 @@
             this.txtDtEmissao.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.epValidaDados.SetTipoValidacao(this.txtDtEmissao, libComponente.TipoValidacao.Vazio);
             this.txtDtEmissao.ValidatingType = typeof(System.DateTime);
-            this.txtDtEmissao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
-            this.txtDtEmissao.Validating += new System.ComponentModel.CancelEventHandler(this.Ctrls_Validating);
-            this.txtDtEmissao.Validated += new System.EventHandler(this.Ctrls_Validated);
             // 
             // txtIdCliente
             // 
@@ -389,7 +647,6 @@
             this.txtHrPrevEntrega.TabIndex = 7;
             this.epValidaDados.SetTipoValidacao(this.txtHrPrevEntrega, libComponente.TipoValidacao.Vazio);
             this.txtHrPrevEntrega.ValidatingType = typeof(System.DateTime);
-            this.txtHrPrevEntrega.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
             // 
             // txtDtPrevEntrega
             // 
@@ -405,9 +662,6 @@
             this.txtDtPrevEntrega.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.epValidaDados.SetTipoValidacao(this.txtDtPrevEntrega, libComponente.TipoValidacao.Vazio);
             this.txtDtPrevEntrega.ValidatingType = typeof(System.DateTime);
-            this.txtDtPrevEntrega.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
-            this.txtDtPrevEntrega.Validating += new System.ComponentModel.CancelEventHandler(this.Ctrls_Validating);
-            this.txtDtPrevEntrega.Validated += new System.EventHandler(this.Ctrls_Validated);
             // 
             // lblPrevEntrega
             // 
@@ -433,8 +687,6 @@
             this.btnPesquisa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPesquisa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnPesquisa.UseVisualStyleBackColor = false;
-            this.btnPesquisa.Click += new System.EventHandler(this.btnPesquisa_Click);
-            this.btnPesquisa.Validated += new System.EventHandler(this.btnPesquisa_Validated);
             // 
             // lblDtFechamento
             // 
@@ -502,8 +754,6 @@
             this.epValidaDados.SetObrigatorio(this.cbTransportadora, false);
             this.cbTransportadora.Size = new System.Drawing.Size(245, 24);
             this.cbTransportadora.TabIndex = 12;
-            this.cbTransportadora.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown);
-            this.cbTransportadora.Validating += new System.ComponentModel.CancelEventHandler(this.cb_Validating);
             // 
             // cbCondPagamento
             // 
@@ -528,9 +778,6 @@
             this.txtCodCliIntegracao.ReadOnly = true;
             this.txtCodCliIntegracao.Size = new System.Drawing.Size(100, 23);
             this.txtCodCliIntegracao.TabIndex = 1;
-            this.txtCodCliIntegracao.TextChanged += new System.EventHandler(this.txtCodCliIntegracao_TextChanged);
-            this.txtCodCliIntegracao.Validating += new System.ComponentModel.CancelEventHandler(this.txtCodCliIntegracao_Validating);
-            this.txtCodCliIntegracao.Validated += new System.EventHandler(this.Ctrls_Validated);
             // 
             // txtId
             // 
@@ -554,7 +801,6 @@
             this.txtClienteNome.Size = new System.Drawing.Size(342, 23);
             this.txtClienteNome.TabIndex = 2;
             this.txtClienteNome.TabStop = false;
-            this.txtClienteNome.Validated += new System.EventHandler(this.Ctrls_Validated);
             // 
             // txtCodigo
             // 
@@ -567,7 +813,6 @@
             this.txtCodigo.Size = new System.Drawing.Size(100, 23);
             this.txtCodigo.TabIndex = 0;
             this.txtCodigo.TabStop = false;
-            this.txtCodigo.Validated += new System.EventHandler(this.Ctrls_Validated);
             // 
             // txtDtFechamento
             // 
@@ -583,281 +828,6 @@
             this.txtDtFechamento.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.epValidaDados.SetTipoValidacao(this.txtDtFechamento, libComponente.TipoValidacao.Vazio);
             this.txtDtFechamento.ValidatingType = typeof(System.DateTime);
-            this.txtDtFechamento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
-            this.txtDtFechamento.Validating += new System.ComponentModel.CancelEventHandler(this.Ctrls_Validating);
-            this.txtDtFechamento.Validated += new System.EventHandler(this.Ctrls_Validated);
-            // 
-            // gbParcelas
-            // 
-            this.gbParcelas.Controls.Add(this.panel1);
-            this.gbParcelas.Controls.Add(this.panel2);
-            this.gbParcelas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbParcelas.Location = new System.Drawing.Point(0, 144);
-            this.gbParcelas.Name = "gbParcelas";
-            this.gbParcelas.Size = new System.Drawing.Size(1005, 214);
-            this.gbParcelas.TabIndex = 1;
-            this.gbParcelas.TabStop = false;
-            this.gbParcelas.Text = "Parcelas";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.dgvParcelas);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 19);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(681, 192);
-            this.panel1.TabIndex = 0;
-            // 
-            // dgvParcelas
-            // 
-            this.dgvParcelas.AllowUserToAddRows = false;
-            this.dgvParcelas.AllowUserToDeleteRows = false;
-            this.dgvParcelas.AllowUserToOrderColumns = true;
-            this.dgvParcelas.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dgvParcelas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvParcelas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvParcelas.Location = new System.Drawing.Point(0, 0);
-            this.dgvParcelas.MultiSelect = false;
-            this.dgvParcelas.Name = "dgvParcelas";
-            this.dgvParcelas.RowHeadersVisible = false;
-            this.dgvParcelas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvParcelas.Size = new System.Drawing.Size(681, 192);
-            this.dgvParcelas.TabIndex = 3;
-            this.dgvParcelas.Click += new System.EventHandler(this.dgvParcelas_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.cbFormaPagamento);
-            this.panel2.Controls.Add(this.txtNrDias);
-            this.panel2.Controls.Add(this.txtIdPedido);
-            this.panel2.Controls.Add(this.txtIdParcela);
-            this.panel2.Controls.Add(this.lblParcela);
-            this.panel2.Controls.Add(this.chkPago);
-            this.panel2.Controls.Add(this.btnDown);
-            this.panel2.Controls.Add(this.btnUp);
-            this.panel2.Controls.Add(this.txtPercentual);
-            this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.txtValor);
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.txtDtPagamento);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.txtDtVencimento);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(684, 19);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(318, 192);
-            this.panel2.TabIndex = 1;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(4, 165);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(144, 16);
-            this.label9.TabIndex = 73;
-            this.label9.Text = "Forma de Pagamento";
-            // 
-            // cbFormaPagamento
-            // 
-            this.cbFormaPagamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbFormaPagamento.FormattingEnabled = true;
-            this.epValidaDados.SetFraseErro(this.cbFormaPagamento, "Transportadora obrigatório");
-            this.epValidaDados.SetIndiceCombo(this.cbFormaPagamento, -1);
-            this.cbFormaPagamento.Location = new System.Drawing.Point(150, 161);
-            this.cbFormaPagamento.Name = "cbFormaPagamento";
-            this.epValidaDados.SetObrigatorio(this.cbFormaPagamento, false);
-            this.cbFormaPagamento.Size = new System.Drawing.Size(152, 24);
-            this.cbFormaPagamento.TabIndex = 72;
-            this.cbFormaPagamento.SelectionChangeCommitted += new System.EventHandler(this.cbFormaPagamento_SelectionChangeCommitted);
-            // 
-            // txtNrDias
-            // 
-            this.txtNrDias.Enabled = false;
-            this.epValidaDados.SetFraseErro(this.txtNrDias, "");
-            this.txtNrDias.Location = new System.Drawing.Point(243, 90);
-            this.txtNrDias.Name = "txtNrDias";
-            this.epValidaDados.SetObrigatorio(this.txtNrDias, false);
-            this.txtNrDias.ReadOnly = true;
-            this.txtNrDias.Size = new System.Drawing.Size(71, 23);
-            this.txtNrDias.TabIndex = 71;
-            this.txtNrDias.TabStop = false;
-            this.txtNrDias.Visible = false;
-            // 
-            // txtIdPedido
-            // 
-            this.txtIdPedido.Enabled = false;
-            this.epValidaDados.SetFraseErro(this.txtIdPedido, "");
-            this.txtIdPedido.Location = new System.Drawing.Point(243, 63);
-            this.txtIdPedido.Name = "txtIdPedido";
-            this.epValidaDados.SetObrigatorio(this.txtIdPedido, false);
-            this.txtIdPedido.ReadOnly = true;
-            this.txtIdPedido.Size = new System.Drawing.Size(71, 23);
-            this.txtIdPedido.TabIndex = 70;
-            this.txtIdPedido.TabStop = false;
-            this.txtIdPedido.Visible = false;
-            // 
-            // txtIdParcela
-            // 
-            this.txtIdParcela.Enabled = false;
-            this.epValidaDados.SetFraseErro(this.txtIdParcela, "");
-            this.txtIdParcela.Location = new System.Drawing.Point(243, 36);
-            this.txtIdParcela.Name = "txtIdParcela";
-            this.epValidaDados.SetObrigatorio(this.txtIdParcela, false);
-            this.txtIdParcela.ReadOnly = true;
-            this.txtIdParcela.Size = new System.Drawing.Size(71, 23);
-            this.txtIdParcela.TabIndex = 69;
-            this.txtIdParcela.TabStop = false;
-            this.txtIdParcela.Visible = false;
-            // 
-            // lblParcela
-            // 
-            this.lblParcela.AutoSize = true;
-            this.lblParcela.Location = new System.Drawing.Point(159, 5);
-            this.lblParcela.Name = "lblParcela";
-            this.lblParcela.Size = new System.Drawing.Size(100, 16);
-            this.lblParcela.TabIndex = 68;
-            this.lblParcela.Text = "Parcela 1 de 1";
-            // 
-            // chkPago
-            // 
-            this.chkPago.AutoSize = true;
-            this.chkPago.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkPago.Location = new System.Drawing.Point(105, 114);
-            this.chkPago.Name = "chkPago";
-            this.chkPago.Size = new System.Drawing.Size(59, 20);
-            this.chkPago.TabIndex = 67;
-            this.chkPago.Text = "Pago";
-            this.chkPago.UseVisualStyleBackColor = true;
-            this.chkPago.CheckStateChanged += new System.EventHandler(this.chkPago_CheckStateChanged);
-            // 
-            // btnDown
-            // 
-            this.btnDown.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.btnDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDown.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnDown.Image = global::prjbase.Properties.Resources.down;
-            this.btnDown.Location = new System.Drawing.Point(262, 0);
-            this.btnDown.Name = "btnDown";
-            this.btnDown.Size = new System.Drawing.Size(27, 27);
-            this.btnDown.TabIndex = 66;
-            this.btnDown.TabStop = false;
-            this.btnDown.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDown.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnDown.UseVisualStyleBackColor = false;
-            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
-            // 
-            // btnUp
-            // 
-            this.btnUp.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.btnUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUp.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnUp.Image = global::prjbase.Properties.Resources.up;
-            this.btnUp.Location = new System.Drawing.Point(290, 0);
-            this.btnUp.Name = "btnUp";
-            this.btnUp.Size = new System.Drawing.Size(27, 27);
-            this.btnUp.TabIndex = 65;
-            this.btnUp.TabStop = false;
-            this.btnUp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnUp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnUp.UseVisualStyleBackColor = false;
-            this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
-            // 
-            // txtPercentual
-            // 
-            this.epValidaDados.SetFraseErro(this.txtPercentual, "Numero do pedido no Cliente obrigatório.");
-            this.txtPercentual.Location = new System.Drawing.Point(150, 90);
-            this.txtPercentual.MaxLength = 8;
-            this.txtPercentual.Name = "txtPercentual";
-            this.epValidaDados.SetObrigatorio(this.txtPercentual, false);
-            this.txtPercentual.ReadOnly = true;
-            this.txtPercentual.Size = new System.Drawing.Size(87, 23);
-            this.txtPercentual.TabIndex = 64;
-            this.txtPercentual.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtPercentual.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(70, 93);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(78, 16);
-            this.label8.TabIndex = 63;
-            this.label8.Text = "Percentual";
-            this.label8.Visible = false;
-            // 
-            // txtValor
-            // 
-            this.epValidaDados.SetFraseErro(this.txtValor, "Numero do pedido no Cliente obrigatório.");
-            this.txtValor.Location = new System.Drawing.Point(150, 63);
-            this.txtValor.MaxLength = 8;
-            this.txtValor.Name = "txtValor";
-            this.epValidaDados.SetObrigatorio(this.txtValor, false);
-            this.txtValor.Size = new System.Drawing.Size(87, 23);
-            this.txtValor.TabIndex = 62;
-            this.txtValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtValor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumber_KeyPress);
-            this.txtValor.Validated += new System.EventHandler(this.txtValor_Validated);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(106, 66);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(42, 16);
-            this.label7.TabIndex = 61;
-            this.label7.Text = "Valor";
-            this.label7.Visible = false;
-            // 
-            // txtDtPagamento
-            // 
-            this.epValidaDados.SetFraseErro(this.txtDtPagamento, "Data de Emissão obrigatório");
-            this.txtDtPagamento.Location = new System.Drawing.Point(150, 134);
-            this.txtDtPagamento.Mask = "00/00/0000";
-            this.txtDtPagamento.Name = "txtDtPagamento";
-            this.epValidaDados.SetObrigatorio(this.txtDtPagamento, true);
-            this.txtDtPagamento.Size = new System.Drawing.Size(87, 23);
-            this.txtDtPagamento.TabIndex = 39;
-            this.txtDtPagamento.TabStop = false;
-            this.txtDtPagamento.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            this.epValidaDados.SetTipoValidacao(this.txtDtPagamento, libComponente.TipoValidacao.Vazio);
-            this.txtDtPagamento.ValidatingType = typeof(System.DateTime);
-            this.txtDtPagamento.Enter += new System.EventHandler(this.txtDtPagamento_Enter);
-            this.txtDtPagamento.Validating += new System.ComponentModel.CancelEventHandler(this.txtDtPagamento_Validating);
-            this.txtDtPagamento.Validated += new System.EventHandler(this.txtDtPagamento_Validated);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(40, 137);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(104, 16);
-            this.label6.TabIndex = 40;
-            this.label6.Text = "Dt. Pagamento";
-            // 
-            // txtDtVencimento
-            // 
-            this.epValidaDados.SetFraseErro(this.txtDtVencimento, "Data de Emissão obrigatório");
-            this.txtDtVencimento.Location = new System.Drawing.Point(150, 36);
-            this.txtDtVencimento.Mask = "00/00/0000";
-            this.txtDtVencimento.Name = "txtDtVencimento";
-            this.epValidaDados.SetObrigatorio(this.txtDtVencimento, true);
-            this.txtDtVencimento.Size = new System.Drawing.Size(87, 23);
-            this.txtDtVencimento.TabIndex = 37;
-            this.txtDtVencimento.TabStop = false;
-            this.txtDtVencimento.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            this.epValidaDados.SetTipoValidacao(this.txtDtVencimento, libComponente.TipoValidacao.Vazio);
-            this.txtDtVencimento.ValidatingType = typeof(System.DateTime);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(40, 39);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(107, 16);
-            this.label4.TabIndex = 38;
-            this.label4.Text = "Dt. Vencimento";
             // 
             // frmProcParcelaPedidoView
             // 
@@ -865,25 +835,65 @@
             this.AutoScroll = true;
             this.CancelButton = null;
             this.ClientSize = new System.Drawing.Size(1122, 360);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmProcParcelaPedidoView";
             this.Text = "Parcelas do Pedido de Vendas";
             this.pnlBotoes.ResumeLayout(false);
-            this.pnlPrincipal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.pnlPrincipal.ResumeLayout(false);
+            this.pnlJanela.ResumeLayout(false);
             this.gbParcelas.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvParcelas)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.GroupBox gbParcelas;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridView dgvParcelas;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cbFormaPagamento;
+        private System.Windows.Forms.TextBox txtNrDias;
+        private System.Windows.Forms.TextBox txtIdPedido;
+        private System.Windows.Forms.TextBox txtIdParcela;
+        private System.Windows.Forms.Label lblParcela;
+        private System.Windows.Forms.CheckBox chkPago;
+        private System.Windows.Forms.Button btnDown;
+        private System.Windows.Forms.Button btnUp;
+        private System.Windows.Forms.TextBox txtPercentual;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtValor;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.MaskedTextBox txtDtPagamento;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.MaskedTextBox txtDtVencimento;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lblPedidoCancelado;
+        private System.Windows.Forms.TextBox txtIdPedInfoadic;
+        private System.Windows.Forms.Label lblLaboratorio;
+        private System.Windows.Forms.TextBox txtLaboratorio;
+        private System.Windows.Forms.TextBox txtCRM;
+        private System.Windows.Forms.Label lblCRM;
+        private System.Windows.Forms.Label lblNomeMedico;
+        private System.Windows.Forms.TextBox txtNomeMedico;
+        private System.Windows.Forms.ComboBox cbCaixa;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.ComboBox cbVendedor;
+        private System.Windows.Forms.Label lblNrPedCliente;
+        private System.Windows.Forms.TextBox txtNrPedCliente;
+        private System.Windows.Forms.MaskedTextBox txtDtEmissao;
+        private System.Windows.Forms.TextBox txtIdCliente;
+        private System.Windows.Forms.Label lblNrCaixa;
         private System.Windows.Forms.Label lblMotivoEntrega;
         private System.Windows.Forms.ComboBox cbMotivoEntrega;
         private System.Windows.Forms.MaskedTextBox txtHrPrevEntrega;
@@ -902,43 +912,6 @@
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.TextBox txtClienteNome;
         private System.Windows.Forms.TextBox txtCodigo;
-        private System.Windows.Forms.Label lblNrCaixa;
-        private System.Windows.Forms.TextBox txtIdCliente;
         private System.Windows.Forms.MaskedTextBox txtDtFechamento;
-        private System.Windows.Forms.MaskedTextBox txtDtEmissao;
-        private System.Windows.Forms.Label lblNrPedCliente;
-        private System.Windows.Forms.TextBox txtNrPedCliente;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.ComboBox cbVendedor;
-        private System.Windows.Forms.ComboBox cbCaixa;
-        private System.Windows.Forms.TextBox txtNomeMedico;
-        private System.Windows.Forms.Label lblNomeMedico;
-        private System.Windows.Forms.TextBox txtCRM;
-        private System.Windows.Forms.Label lblCRM;
-        private System.Windows.Forms.Label lblLaboratorio;
-        private System.Windows.Forms.TextBox txtLaboratorio;
-        private System.Windows.Forms.TextBox txtIdPedInfoadic;
-        private System.Windows.Forms.GroupBox gbParcelas;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dgvParcelas;
-        private System.Windows.Forms.MaskedTextBox txtDtPagamento;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.MaskedTextBox txtDtVencimento;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btnDown;
-        private System.Windows.Forms.Button btnUp;
-        private System.Windows.Forms.TextBox txtPercentual;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtValor;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label lblParcela;
-        private System.Windows.Forms.CheckBox chkPago;
-        private System.Windows.Forms.TextBox txtIdParcela;
-        private System.Windows.Forms.TextBox txtNrDias;
-        private System.Windows.Forms.TextBox txtIdPedido;
-        private System.Windows.Forms.Label lblPedidoCancelado;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox cbFormaPagamento;
     }
 }

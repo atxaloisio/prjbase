@@ -194,7 +194,7 @@ namespace prjbase
                     {
                         lblPedidoCancelado.Visible = true;
                         
-                        foreach (Control item in pnlPrincipal.Controls)
+                        foreach (Control item in pnlJanela.Controls)
                         {
                             item.Enabled = false;
                             btnSalvar.Enabled = false;
@@ -654,6 +654,7 @@ namespace prjbase
             dgvItemPedido.Columns[col_VlrTotal].ValueType = typeof(decimal);
             dgvItemPedido.Columns[col_VlrTotal].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
+            dgvItemPedido.DefaultCellStyle.SelectionBackColor = Color.Green;
             setupCol_Unidade();
         }
 
@@ -967,7 +968,8 @@ namespace prjbase
             var x = e.CellBounds.Left + (e.CellBounds.Width - w) / 2;
             var y = e.CellBounds.Top + (e.CellBounds.Height - h) / 2;
 
-            e.CellStyle.BackColor = SystemColors.HotTrack;
+            //e.CellStyle.BackColor = SystemColors.HotTrack;
+            e.CellStyle.BackColor = Color.Green;
             e.CellStyle.ForeColor = SystemColors.HighlightText;
             e.CellStyle.SelectionBackColor = SystemColors.Highlight;
             e.CellStyle.SelectionForeColor = SystemColors.HighlightText;
@@ -2033,6 +2035,11 @@ namespace prjbase
             }
 
             txtValorTotal.Text = Valor_Total.ToString("N2");
+        }
+
+        private void frmCadEditPedido_Otica_Activated(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
         }
     }
 }
