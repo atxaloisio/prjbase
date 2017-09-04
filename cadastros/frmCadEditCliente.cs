@@ -205,6 +205,7 @@ namespace prjbase
 
             if (Id == null)
             {
+                ClienteBLL = new ClienteBLL();
                 cliList = ClienteBLL.getCliente(p => p.razao_social == txtRazaoSocial.Text & p.cliente_tag.Any(c => c.tag == "Cliente"), true);
                 if (cliList.Count() > 0)
                 {
@@ -612,11 +613,17 @@ namespace prjbase
         private void CapturaCamera()
         {
             frmUtilCamera camera = new frmUtilCamera();
-            if (camera.ExibeDialogo() == DialogResult.OK)
+            try
             {
-                imgFotoCliente.Image = (Bitmap)camera.imgCaptura.Clone();
+                if (camera.ExibeDialogo() == DialogResult.OK)
+                {
+                    imgFotoCliente.Image = (Bitmap)camera.imgCaptura.Clone();
+                }
             }
-            camera.Dispose(); 
+            finally
+            {
+                camera.Dispose();
+            }                        
         }
 
         private void btnAbrirImagem_Click(object sender, EventArgs e)

@@ -71,10 +71,11 @@
             // 
             // pnlBotoes
             // 
-            this.pnlBotoes.Size = new System.Drawing.Size(115, 309);
+            this.pnlBotoes.Size = new System.Drawing.Size(115, 316);
             // 
             // pnlPrincipal
             // 
+            this.pnlPrincipal.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.pnlPrincipal.Controls.Add(this.txtCodigo);
             this.pnlPrincipal.Controls.Add(this.label6);
             this.pnlPrincipal.Controls.Add(this.txtPrecoUnitario);
@@ -91,7 +92,7 @@
             this.pnlPrincipal.Controls.Add(this.txtCodInt);
             this.pnlPrincipal.Controls.Add(this.label3);
             this.pnlPrincipal.Controls.Add(this.tcProduto);
-            this.pnlPrincipal.Size = new System.Drawing.Size(813, 309);
+            this.pnlPrincipal.Size = new System.Drawing.Size(813, 316);
             // 
             // txtNCM
             // 
@@ -414,11 +415,12 @@
             this.tcProduto.Controls.Add(this.tpEstoque);
             this.tcProduto.Controls.Add(this.tpInscrCnae);
             this.tcProduto.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tcProduto.Location = new System.Drawing.Point(0, 98);
+            this.tcProduto.Location = new System.Drawing.Point(0, 105);
             this.tcProduto.Name = "tcProduto";
             this.tcProduto.SelectedIndex = 0;
             this.tcProduto.Size = new System.Drawing.Size(811, 209);
             this.tcProduto.TabIndex = 7;
+            this.tcProduto.Tag = "1012";
             // 
             // txtCodigo
             // 
@@ -433,7 +435,8 @@
             // frmCadEditProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(928, 309);
+            this.ClientSize = new System.Drawing.Size(928, 316);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Name = "frmCadEditProduto";
             this.Text = "Produto";
             this.pnlBotoes.ResumeLayout(false);

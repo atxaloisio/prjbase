@@ -188,9 +188,25 @@ namespace prjbase
 
         protected override void SetupControls()
         {
+            bool exibemov;
             SetupUnidade();
             SetupFamiliaProduto();
             formataGridMovEstoque();
+            //configura a exibição da movimentação de estoque
+            Funcao_Perfil fp = Program.usuario_logado.perfil.funcao_perfil.Where(p => p.codigo_funcao == Convert.ToInt32(tcProduto.Tag)).FirstOrDefault();
+            if (fp != null)
+            {
+                exibemov = fp.consultar == "S" || fp.editar == "S" || fp.excluir == "S" || fp.salvar == "S" || fp.imprimir == "S";
+                tcProduto.Visible = exibemov;
+                if (exibemov)
+                {
+                    this.Height = 355;
+                }
+                else
+                {
+                    this.Height = 150;
+                }
+            }
         }
 
         private void SetupFamiliaProduto()
