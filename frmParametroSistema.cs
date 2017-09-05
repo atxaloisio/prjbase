@@ -17,6 +17,16 @@ namespace prjbase
 {
     public partial class frmParametroSistema : prjbase.frmBase
     {
+        #region Constante de Colunas da Grid de Filiais
+        private const int COL_ID = 0;
+        private const int COL_IDEMPRESA = 1;
+        private const int COL_CODIGO = 2;
+        private const int COL_CODINT = 3;
+        private const int COL_CNPJ = 4;
+        private const int COL_RAZAOSOCIAL = 5;
+        private const int COL_NOMEFANTASIA = 6;        
+        #endregion
+
         CategoriaBLL categoriaBLL;
         Conta_CorrenteBLL conta_CorrenteBLL;
         public frmParametroSistema()
@@ -37,7 +47,7 @@ namespace prjbase
             SetupCategoria();
             SetupContaCorrente();
             SetupUF();
-            SetupRegimeTributario();
+            SetupRegimeTributario();            
         }
 
         private void SetupRegimeTributario()
@@ -380,6 +390,137 @@ namespace prjbase
                 txtDtSimplNac.Text = empresa.data_adesao_sn.Value.ToShortDateString();
             }
 
+
+            LoadListFilialToGrid(empresa.filials);
+            if (empresa.filials.Count <= 0)
+            {
+                adicionaColunasGridFilial();
+            }
+            
+        }
+
+        private void adicionaColunasGridFilial()
+        {
+            //altera o nome das colunas                        
+            dgvFilial.Columns.Add("ID", "ID");
+            dgvFilial.Columns.Add("ID_EMPRESA", "ID_EMPRESA");
+            dgvFilial.Columns.Add("CODIGO", "CODIGO");
+            dgvFilial.Columns.Add("COD_INT", "COD_INT");
+            dgvFilial.Columns.Add("CNPJ", "CNPJ");
+            dgvFilial.Columns.Add("RAZAO_SOCIAL", "Razão Social");
+            dgvFilial.Columns.Add("NOME_FANTASIA", "Nome Fantasia");
+        }
+
+        private void LoadListFilialToGrid(ICollection<Filial> filials)
+        {
+            FilialBLL filialBLL = new FilialBLL();
+            dgvFilial.DataSource = filialBLL.ToList_FilialView(filials);
+            formataGridFilial();            
+        }
+
+        private void formataGridFilial()
+        {
+            dgvFilial.AutoGenerateColumns = true;
+            dgvFilial.ColumnHeadersVisible = true;
+            dgvFilial.RowHeadersVisible = false;
+            dgvFilial.ReadOnly = true;
+            dgvFilial.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            dgvFilial.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            //altera a cor das linhas alternadas no grid
+            dgvFilial.RowsDefaultCellStyle.BackColor = System.Drawing.Color.White;
+            dgvFilial.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.LightSteelBlue;            
+            formataColunadgvFilial();
+            //seleciona a linha inteira
+            dgvFilial.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            //não permite seleção de multiplas linhas
+            dgvFilial.MultiSelect = false;
+            // exibe nulos formatados
+            dgvFilial.DefaultCellStyle.NullValue = " - ";
+            //permite que o texto maior que célula não seja truncado
+            dgvFilial.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgvFilial.DefaultCellStyle.Font = new Font("Tahoma", 10F, FontStyle.Regular);
+
+            dgvFilial.CellDoubleClick -= new DataGridViewCellEventHandler(dgvDados_CellDoubleClick);
+            dgvFilial.CellDoubleClick += new DataGridViewCellEventHandler(dgvDados_CellDoubleClick);
+        }
+
+        private void dgvDados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            EditarFilial();
+        }
+
+        private void EditarFilial()
+        {
+            if (dgvFilial.CurrentRow != null)
+            {
+                if (dgvFilial[0, dgvFilial.CurrentRow.Index].Value != null)
+                {
+                    if (Convert.ToInt32(dgvFilial[COL_ID, dgvFilial.CurrentRow.Index].Value) > 0)
+                    {
+                        frmCadEditFilial frmFilial = new frmCadEditFilial();
+                        frmFilial.Cursor = Cursors.WaitCursor;
+                        frmFilial.atualizagrid = new AtualizaGrid(atualizaGrid);                       
+                        frmFilial.ExibeDialogo(this, Convert.ToInt32(dgvFilial[COL_ID, dgvFilial.CurrentRow.Index].Value));
+                        frmFilial.Dispose();
+                    }
+
+                }
+            }
+        }
+
+        public virtual void atualizaGrid()
+        {
+            FilialBLL filialBLL = new FilialBLL();
+            long idEmp = Convert.ToInt64(txtId.Text);
+            dgvFilial.DataSource = filialBLL.ToList_FilialView(filialBLL.getFilial(t => t.Id_empresa == idEmp, true));
+        }
+
+        private void formataColunadgvFilial()
+        {                        
+            dgvFilial.Columns[COL_ID].Width = 70;
+            dgvFilial.Columns[COL_ID].ValueType = typeof(int);
+            dgvFilial.Columns[COL_ID].SortMode = DataGridViewColumnSortMode.Programmatic;
+            dgvFilial.Columns[COL_ID].Visible = false;
+            dgvFilial.Columns[COL_ID].HeaderText = "ID";
+
+            dgvFilial.Columns[COL_IDEMPRESA].Width = 200;
+            dgvFilial.Columns[COL_IDEMPRESA].ValueType = typeof(int);
+            dgvFilial.Columns[COL_IDEMPRESA].SortMode = DataGridViewColumnSortMode.Programmatic;
+            dgvFilial.Columns[COL_IDEMPRESA].Visible = false;
+            dgvFilial.Columns[COL_IDEMPRESA].HeaderText = "";
+
+            dgvFilial.Columns[COL_CODIGO].Width = 70;
+            dgvFilial.Columns[COL_CODIGO].ValueType = typeof(string);
+            dgvFilial.Columns[COL_CODIGO].SortMode = DataGridViewColumnSortMode.Programmatic;
+            dgvFilial.Columns[COL_CODIGO].HeaderText = "Código";
+
+            dgvFilial.Columns[COL_CODINT].Width = 75;
+            dgvFilial.Columns[COL_CODINT].ValueType = typeof(string);
+            dgvFilial.Columns[COL_CODINT].Visible = false;
+            dgvFilial.Columns[COL_CODINT].HeaderText = "";
+
+            dgvFilial.Columns[COL_CNPJ].Width = 120;
+            dgvFilial.Columns[COL_CNPJ].ValueType = typeof(string);
+            dgvFilial.Columns[COL_CNPJ].SortMode = DataGridViewColumnSortMode.Programmatic;
+            dgvFilial.Columns[COL_CNPJ].HeaderText = "CNPJ";
+
+            dgvFilial.Columns[COL_RAZAOSOCIAL].Width = 260;
+            dgvFilial.Columns[COL_RAZAOSOCIAL].ValueType = typeof(string);
+            dgvFilial.Columns[COL_RAZAOSOCIAL].SortMode = DataGridViewColumnSortMode.Programmatic;
+            dgvFilial.Columns[COL_RAZAOSOCIAL].HeaderText = "Razão Social";
+
+            dgvFilial.Columns[COL_NOMEFANTASIA].Width = 260;
+            dgvFilial.Columns[COL_NOMEFANTASIA].ValueType = typeof(string);
+            dgvFilial.Columns[COL_NOMEFANTASIA].SortMode = DataGridViewColumnSortMode.Programmatic;
+            dgvFilial.Columns[COL_NOMEFANTASIA].HeaderText = "Nome Fantasia";
+
+
+
+
+
+
+            //Adiciona uma linha ao grid.
+            //dgvFilial.Rows.Add();
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -1230,6 +1371,15 @@ namespace prjbase
                     e.Cancel = true;
                 }                
             }
+        }
+
+        private void btnAddItem_Click(object sender, EventArgs e)
+        {
+            frmCadEditFilial frmFilial = new frmCadEditFilial();
+            frmFilial.Id_Empresa = Convert.ToInt64(txtId.Text);
+            frmFilial.atualizagrid = new AtualizaGrid(atualizaGrid);
+            frmFilial.ExibeDialogo();
+            frmFilial.Dispose();
         }
     }
 }

@@ -166,31 +166,37 @@ namespace prjbase
             SetupControls();
             LoadToControls();
 
-            pnlJanela.Left = (this.Width / 2) - (pnlJanela.Width / 2);
-            pnlJanela.Left = pnlJanela.Left - (pnlBotoes.Width / 2);
-
-            if (pnlJanela.Left < pnlBotoes.Width)
+            if (!isDialogo)
             {
-                pnlJanela.Left = 5;                
+                pnlJanela.Left = (this.Width / 2) - (pnlJanela.Width / 2);
+                pnlJanela.Left = pnlJanela.Left - (pnlBotoes.Width / 2);
+
+                if (pnlJanela.Left < pnlBotoes.Width)
+                {
+                    pnlJanela.Left = 5;
+                }
+
+                pnlJanela.Top = (this.Height / 2) - (pnlJanela.Height / 2);
             }
-
-            pnlJanela.Top = (this.Height / 2) - (pnlJanela.Height / 2);
-
+                        
             btnFechar.Top = (pnlBotoes.Height - btnFechar.Height);
 			this.Cursor = Cursors.Default;
         }
 
         private void frmBaseCadEdit_Resize(object sender, EventArgs e)
-        {            
-            pnlJanela.Left = (this.Width / 2)  - (pnlJanela.Width / 2);            
-            pnlJanela.Top = (this.Height / 2) - (pnlJanela.Height / 2);
-
-            pnlJanela.Left = pnlJanela.Left - (pnlBotoes.Width / 2);
-
-            if (pnlJanela.Left < pnlBotoes.Width)
+        {
+            if (!isDialogo)
             {
-                pnlJanela.Left = 5;                
-            }
+                pnlJanela.Left = (this.Width / 2) - (pnlJanela.Width / 2);
+                pnlJanela.Top = (this.Height / 2) - (pnlJanela.Height / 2);
+
+                pnlJanela.Left = pnlJanela.Left - (pnlBotoes.Width / 2);
+
+                if (pnlJanela.Left < pnlBotoes.Width)
+                {
+                    pnlJanela.Left = 5;
+                }
+            }                        
         }
     }
 }
