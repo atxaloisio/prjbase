@@ -119,15 +119,15 @@
             // 
             // btnFechar
             // 
-            this.btnFechar.Location = new System.Drawing.Point(3, 353);
+            this.btnFechar.Location = new System.Drawing.Point(3, 364);
             // 
             // pnlBotoes
             // 
-            this.pnlBotoes.Size = new System.Drawing.Size(115, 328);
+            this.pnlBotoes.Size = new System.Drawing.Size(115, 394);
             // 
             // pnlPrincipal
             // 
-            this.pnlPrincipal.Size = new System.Drawing.Size(796, 328);
+            this.pnlPrincipal.Size = new System.Drawing.Size(849, 394);
             // 
             // pnlJanela
             // 
@@ -154,6 +154,7 @@
             this.pnlJanela.Controls.Add(this.txtRazaoSocial);
             this.pnlJanela.Controls.Add(this.txtCodInt);
             this.pnlJanela.Controls.Add(this.label3);
+            this.pnlJanela.Location = new System.Drawing.Point(35, 52);
             this.pnlJanela.Size = new System.Drawing.Size(796, 328);
             // 
             // label3
@@ -976,10 +977,13 @@
             // frmCadEditCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(911, 328);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(964, 394);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Name = "frmCadEditCliente";
             this.Text = "Cliente";
             this.Activated += new System.EventHandler(this.frmCadEditCliente_Activated);
+            this.Resize += new System.EventHandler(this.frmCadEditCliente_Resize);
             this.pnlBotoes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).EndInit();
             this.pnlPrincipal.ResumeLayout(false);

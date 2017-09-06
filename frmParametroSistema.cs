@@ -1373,13 +1373,71 @@ namespace prjbase
             }
         }
 
-        private void btnAddItem_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
-            frmCadEditFilial frmFilial = new frmCadEditFilial();
-            frmFilial.Id_Empresa = Convert.ToInt64(txtId.Text);
-            frmFilial.atualizagrid = new AtualizaGrid(atualizaGrid);
-            frmFilial.ExibeDialogo();
-            frmFilial.Dispose();
+            frmCadEditFilial frmFilial = new frmCadEditFilial();            
+            try
+            {
+                frmFilial.Id_Empresa = Convert.ToInt64(txtId.Text);
+                frmFilial.atualizagrid = new AtualizaGrid(atualizaGrid);
+                frmFilial.ExibeDialogo();
+                frmFilial.Dispose();
+            }
+            catch (Exception ex)
+            {
+                string mensagem = TrataException.getAllMessage(ex);
+                MessageBox.Show(mensagem, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            EditarFilial();
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ValidaAcessoFuncao(Operacao.Excluir))
+                {
+                    if (dgvFilial.CurrentRow != null)
+                    {
+                        this.Cursor = Cursors.WaitCursor;
+                        excluirRegistro(dgvFilial.CurrentRow.Index);
+                        this.atualizagrid();
+                        this.Cursor = Cursors.Default;
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                string mensagem = TrataException.getAllMessage(ex);
+                MessageBox.Show(mensagem, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void excluirRegistro(int index)
+        {
+            FilialBLL filialBLL = new FilialBLL();
+            try
+            {
+                if (Convert.ToInt32(dgvFilial[COL_ID, index].Value) > 0)
+                {
+                    Filial filial = filialBLL.Localizar(Convert.ToInt32(dgvFilial[COL_ID, index].Value));
+                    if (MessageBox.Show("Deseja realmente excluir a filial : " + filial.Id.ToString() + " - " + filial.nome_fantasia, Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        filialBLL.ExcluirFilial(filial);
+                    }
+
+                }
+            }
+            finally
+            {
+                filialBLL.Dispose();
+            }
         }
     }
 }

@@ -152,6 +152,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnRemoveItem = new System.Windows.Forms.Button();
             this.btnAddItem = new System.Windows.Forms.Button();
+            this.txtDtInc = new System.Windows.Forms.TextBox();
+            this.txtUsuarioInc = new System.Windows.Forms.TextBox();
             this.pnlBotoes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
             this.pnlPrincipal.SuspendLayout();
@@ -183,7 +185,7 @@
             // 
             // btnFechar
             // 
-            this.btnFechar.Location = new System.Drawing.Point(3, 353);
+            this.btnFechar.Location = new System.Drawing.Point(3, 564);
             // 
             // pnlBotoes
             // 
@@ -198,7 +200,7 @@
             this.pnlJanela.Controls.Add(this.groupBox3);
             this.pnlJanela.Controls.Add(this.groupBox2);
             this.pnlJanela.Controls.Add(this.groupBox1);
-            this.pnlJanela.Location = new System.Drawing.Point(66, 20);
+            this.pnlJanela.Location = new System.Drawing.Point(5, 20);
             this.pnlJanela.Size = new System.Drawing.Size(1007, 597);
             // 
             // groupBox1
@@ -635,6 +637,8 @@
             // 
             // groupBox20
             // 
+            this.groupBox20.Controls.Add(this.txtDtInc);
+            this.groupBox20.Controls.Add(this.txtUsuarioInc);
             this.groupBox20.Controls.Add(this.txtIdPedLente);
             this.groupBox20.Controls.Add(this.txtIdPedArmacao);
             this.groupBox20.Controls.Add(this.label16);
@@ -1638,6 +1642,24 @@
             this.btnAddItem.UseVisualStyleBackColor = false;
             this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
             // 
+            // txtDtInc
+            // 
+            this.epValidaDados.SetFraseErro(this.txtDtInc, "");
+            this.txtDtInc.Location = new System.Drawing.Point(884, 46);
+            this.txtDtInc.Name = "txtDtInc";
+            this.epValidaDados.SetObrigatorio(this.txtDtInc, false);
+            this.txtDtInc.Size = new System.Drawing.Size(71, 23);
+            this.txtDtInc.TabIndex = 54;
+            // 
+            // txtUsuarioInc
+            // 
+            this.epValidaDados.SetFraseErro(this.txtUsuarioInc, "");
+            this.txtUsuarioInc.Location = new System.Drawing.Point(809, 46);
+            this.txtUsuarioInc.Name = "txtUsuarioInc";
+            this.epValidaDados.SetObrigatorio(this.txtUsuarioInc, false);
+            this.txtUsuarioInc.Size = new System.Drawing.Size(71, 23);
+            this.txtUsuarioInc.TabIndex = 53;
+            // 
             // frmCadEditPedido_Laboratorio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1818,5 +1840,7 @@
         private System.Windows.Forms.Label lblNrPedCliente;
         private System.Windows.Forms.TextBox txtNrPedCliente;
         private System.Windows.Forms.Label lblPedidoCancelado;
+        private System.Windows.Forms.TextBox txtDtInc;
+        private System.Windows.Forms.TextBox txtUsuarioInc;
     }
 }

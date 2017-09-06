@@ -626,5 +626,32 @@ namespace prjbase
         {
             this.WindowState = FormWindowState.Maximized;
         }
+
+        private void frmCadEditFornecedor_Resize(object sender, EventArgs e)
+        {
+            if (!isDialogo)
+            {
+                pnlJanela.Dock = DockStyle.None;
+                pnlJanela.Left = (this.Width / 2) - (pnlJanela.Width / 2);
+                pnlJanela.Top = (this.Height / 2) - (pnlJanela.Height / 2);
+
+                if (pnlJanela.Top <= 0)
+                {
+                    pnlJanela.Top = 5;
+                }
+
+                if (pnlJanela.Left <= 0)
+                {
+                    pnlJanela.Left = 5;
+                    pnlJanela.Top = 5;
+                    pnlJanela.Dock = DockStyle.Left;
+                    pnlPrincipal.Width = pnlJanela.Width;
+                }
+                else
+                {
+                    pnlJanela.Left = pnlJanela.Left - (pnlBotoes.Width / 2);
+                }
+            }
+        }
     }
 }

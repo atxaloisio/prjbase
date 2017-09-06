@@ -117,7 +117,7 @@
             // 
             // btnFechar
             // 
-            this.btnFechar.Location = new System.Drawing.Point(3, 353);
+            this.btnFechar.Location = new System.Drawing.Point(3, 295);
             // 
             // pnlBotoes
             // 
@@ -152,7 +152,7 @@
             this.pnlJanela.Controls.Add(this.txtRazaoSocial);
             this.pnlJanela.Controls.Add(this.txtCodInt);
             this.pnlJanela.Controls.Add(this.label3);
-            this.pnlJanela.Location = new System.Drawing.Point(65, 19);
+            this.pnlJanela.Location = new System.Drawing.Point(8, 19);
             this.pnlJanela.Size = new System.Drawing.Size(796, 328);
             // 
             // label3
@@ -954,6 +954,7 @@
             this.Name = "frmCadEditFornecedor";
             this.Text = "Fornecedor";
             this.Activated += new System.EventHandler(this.frmCadEditFornecedor_Activated);
+            this.Resize += new System.EventHandler(this.frmCadEditFornecedor_Resize);
             this.pnlBotoes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).EndInit();
             this.pnlPrincipal.ResumeLayout(false);

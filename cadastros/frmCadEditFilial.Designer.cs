@@ -91,6 +91,7 @@
             this.txtRazaoSocial = new System.Windows.Forms.TextBox();
             this.txtCodInt = new System.Windows.Forms.TextBox();
             this.label36 = new System.Windows.Forms.Label();
+            this.dlgCaminhoImagem = new System.Windows.Forms.OpenFileDialog();
             this.pnlBotoes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
             this.pnlPrincipal.SuspendLayout();
@@ -162,6 +163,7 @@
             this.btnAbrirLogo.TabIndex = 94;
             this.btnAbrirLogo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAbrirLogo.UseVisualStyleBackColor = false;
+            this.btnAbrirLogo.Click += new System.EventHandler(this.btnAbrirLogo_Click);
             // 
             // imgLogoEmp
             // 
@@ -242,6 +244,7 @@
             this.epValidaDados.SetObrigatorio(this.cbCidade, false);
             this.cbCidade.Size = new System.Drawing.Size(376, 24);
             this.cbCidade.TabIndex = 5;
+            this.cbCidade.Validating += new System.ComponentModel.CancelEventHandler(this.cbUF_Validating);
             // 
             // label14
             // 
@@ -292,6 +295,9 @@
             this.epValidaDados.SetObrigatorio(this.cbUF, false);
             this.cbUF.Size = new System.Drawing.Size(48, 24);
             this.cbUF.TabIndex = 4;
+            this.cbUF.SelectedIndexChanged += new System.EventHandler(this.cbUF_SelectedIndexChanged);
+            this.cbUF.SelectionChangeCommitted += new System.EventHandler(this.cbUF_SelectionChangeCommitted);
+            this.cbUF.Validating += new System.ComponentModel.CancelEventHandler(this.cbUF_Validating);
             // 
             // label10
             // 
@@ -358,7 +364,7 @@
             this.tpTelefoneEmail.Location = new System.Drawing.Point(4, 25);
             this.tpTelefoneEmail.Name = "tpTelefoneEmail";
             this.tpTelefoneEmail.Padding = new System.Windows.Forms.Padding(3);
-            this.tpTelefoneEmail.Size = new System.Drawing.Size(766, 120);
+            this.tpTelefoneEmail.Size = new System.Drawing.Size(787, 120);
             this.tpTelefoneEmail.TabIndex = 1;
             this.tpTelefoneEmail.Text = "Telefones e E-mail";
             this.tpTelefoneEmail.UseVisualStyleBackColor = true;
@@ -404,6 +410,7 @@
             this.txtDDDFax.Size = new System.Drawing.Size(26, 23);
             this.txtDDDFax.TabIndex = 0;
             this.epValidaDados.SetTipoValidacao(this.txtDDDFax, libComponente.TipoValidacao.Vazio);
+            this.txtDDDFax.Enter += new System.EventHandler(this.txt_Enter);
             // 
             // txtFax
             // 
@@ -414,6 +421,8 @@
             this.txtFax.Size = new System.Drawing.Size(85, 23);
             this.txtFax.TabIndex = 1;
             this.epValidaDados.SetTipoValidacao(this.txtFax, libComponente.TipoValidacao.Vazio);
+            this.txtFax.Enter += new System.EventHandler(this.txt_Enter);
+            this.txtFax.Validating += new System.ComponentModel.CancelEventHandler(this.txtFax_Validating);
             // 
             // groupBox6
             // 
@@ -456,6 +465,7 @@
             this.txtDDD2.Size = new System.Drawing.Size(26, 23);
             this.txtDDD2.TabIndex = 0;
             this.epValidaDados.SetTipoValidacao(this.txtDDD2, libComponente.TipoValidacao.Vazio);
+            this.txtDDD2.Enter += new System.EventHandler(this.txt_Enter);
             // 
             // txtTelefone2
             // 
@@ -466,6 +476,8 @@
             this.txtTelefone2.Size = new System.Drawing.Size(85, 23);
             this.txtTelefone2.TabIndex = 1;
             this.epValidaDados.SetTipoValidacao(this.txtTelefone2, libComponente.TipoValidacao.Vazio);
+            this.txtTelefone2.Enter += new System.EventHandler(this.txt_Enter);
+            this.txtTelefone2.Validating += new System.ComponentModel.CancelEventHandler(this.txtTelefone2_Validating);
             // 
             // label21
             // 
@@ -701,6 +713,7 @@
             this.txtDDD.Size = new System.Drawing.Size(26, 23);
             this.txtDDD.TabIndex = 81;
             this.epValidaDados.SetTipoValidacao(this.txtDDD, libComponente.TipoValidacao.Vazio);
+            this.txtDDD.Enter += new System.EventHandler(this.txt_Enter);
             // 
             // txtTelefone
             // 
@@ -711,6 +724,8 @@
             this.txtTelefone.Size = new System.Drawing.Size(85, 23);
             this.txtTelefone.TabIndex = 82;
             this.epValidaDados.SetTipoValidacao(this.txtTelefone, libComponente.TipoValidacao.Vazio);
+            this.txtTelefone.Enter += new System.EventHandler(this.txt_Enter);
+            this.txtTelefone.Validating += new System.ComponentModel.CancelEventHandler(this.txtTelefone_Validating);
             // 
             // txtCNPJ
             // 
@@ -801,6 +816,10 @@
             this.label36.Size = new System.Drawing.Size(51, 16);
             this.label36.TabIndex = 85;
             this.label36.Text = "Código";
+            // 
+            // dlgCaminhoImagem
+            // 
+            this.dlgCaminhoImagem.Filter = "Arquivos PNG (*.png)|*.png|Arquivos JPEG (*.jpg)|*.jpg|All files (*.*)|*.*";
             // 
             // frmCadEditFilial
             // 
@@ -896,5 +915,6 @@
         private System.Windows.Forms.TextBox txtRazaoSocial;
         private System.Windows.Forms.TextBox txtCodInt;
         private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.OpenFileDialog dlgCaminhoImagem;
     }
 }

@@ -197,6 +197,9 @@ namespace prjbase
                         txtValorTotal.Text = ValorTotal.ToString("N2");
                     }
 
+                    txtUsuarioInc.Text = pedido_otica.usuario_inclusao;
+                    txtDtInc.Text = pedido_otica.inclusao.ToString();
+
                     if (pedido_otica.cancelado == "S")
                     {
                         lblPedidoCancelado.Visible = true;
@@ -535,7 +538,16 @@ namespace prjbase
             }
 
             #endregion
-            
+
+            if (Id != null)
+            {
+                pedido_Otica.usuario_inclusao = txtUsuarioInc.Text;
+                if (!string.IsNullOrEmpty(txtDtInc.Text))
+                {
+                    pedido_Otica.inclusao = Convert.ToDateTime(txtDtInc.Text);
+                }
+            }
+
             return pedido_Otica;
         }
 

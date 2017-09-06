@@ -155,6 +155,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnRemoveItem = new System.Windows.Forms.Button();
             this.btnAddItem = new System.Windows.Forms.Button();
+            this.txtUsuarioInc = new System.Windows.Forms.TextBox();
+            this.txtDtInc = new System.Windows.Forms.TextBox();
             this.pnlBotoes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
             this.pnlPrincipal.SuspendLayout();
@@ -193,7 +195,7 @@
             // btnFechar
             // 
             this.btnFechar.BackColor = System.Drawing.Color.Green;
-            this.btnFechar.Location = new System.Drawing.Point(3, 1408);
+            this.btnFechar.Location = new System.Drawing.Point(3, 1671);
             // 
             // btnIncluir
             // 
@@ -201,18 +203,18 @@
             // 
             // pnlBotoes
             // 
-            this.pnlBotoes.Size = new System.Drawing.Size(115, 597);
+            this.pnlBotoes.Size = new System.Drawing.Size(115, 649);
             // 
             // pnlPrincipal
             // 
-            this.pnlPrincipal.Size = new System.Drawing.Size(1007, 597);
+            this.pnlPrincipal.Size = new System.Drawing.Size(1037, 649);
             // 
             // pnlJanela
             // 
             this.pnlJanela.Controls.Add(this.groupBox3);
             this.pnlJanela.Controls.Add(this.groupBox2);
             this.pnlJanela.Controls.Add(this.groupBox1);
-            this.pnlJanela.Location = new System.Drawing.Point(66, 20);
+            this.pnlJanela.Location = new System.Drawing.Point(5, 46);
             this.pnlJanela.Size = new System.Drawing.Size(1007, 597);
             // 
             // groupBox1
@@ -627,6 +629,8 @@
             // 
             // groupBox20
             // 
+            this.groupBox20.Controls.Add(this.txtDtInc);
+            this.groupBox20.Controls.Add(this.txtUsuarioInc);
             this.groupBox20.Controls.Add(this.txtIdPedLente);
             this.groupBox20.Controls.Add(this.txtIdPedArmacao);
             this.groupBox20.Controls.Add(this.label16);
@@ -1678,12 +1682,30 @@
             this.btnAddItem.UseVisualStyleBackColor = false;
             this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
             // 
+            // txtUsuarioInc
+            // 
+            this.epValidaDados.SetFraseErro(this.txtUsuarioInc, "");
+            this.txtUsuarioInc.Location = new System.Drawing.Point(769, 50);
+            this.txtUsuarioInc.Name = "txtUsuarioInc";
+            this.epValidaDados.SetObrigatorio(this.txtUsuarioInc, false);
+            this.txtUsuarioInc.Size = new System.Drawing.Size(71, 23);
+            this.txtUsuarioInc.TabIndex = 51;
+            // 
+            // txtDtInc
+            // 
+            this.epValidaDados.SetFraseErro(this.txtDtInc, "");
+            this.txtDtInc.Location = new System.Drawing.Point(844, 50);
+            this.txtDtInc.Name = "txtDtInc";
+            this.epValidaDados.SetObrigatorio(this.txtDtInc, false);
+            this.txtDtInc.Size = new System.Drawing.Size(71, 23);
+            this.txtDtInc.TabIndex = 52;
+            // 
             // frmCadEditPedido_Otica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScroll = true;
             this.CancelButton = null;
-            this.ClientSize = new System.Drawing.Size(1122, 597);
+            this.ClientSize = new System.Drawing.Size(1152, 649);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmCadEditPedido_Otica";
@@ -1865,5 +1887,7 @@
         private System.Windows.Forms.TextBox txtoe_eixo;
         private System.Windows.Forms.TextBox txtod_eixo;
         private System.Windows.Forms.Label lblPedidoCancelado;
+        private System.Windows.Forms.TextBox txtDtInc;
+        private System.Windows.Forms.TextBox txtUsuarioInc;
     }
 }

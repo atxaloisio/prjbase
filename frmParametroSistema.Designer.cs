@@ -141,9 +141,9 @@
             this.tbFiliais = new System.Windows.Forms.TabPage();
             this.dgvFilial = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnRemoveItem = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnAddItem = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.label31 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
@@ -1397,59 +1397,61 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnRemoveItem);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.btnAddItem);
+            this.panel1.Controls.Add(this.btnRemove);
+            this.panel1.Controls.Add(this.btnEdit);
+            this.panel1.Controls.Add(this.btnAdd);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(36, 114);
             this.panel1.TabIndex = 2;
             // 
-            // btnRemoveItem
+            // btnRemove
             // 
-            this.btnRemoveItem.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.btnRemoveItem.CausesValidation = false;
-            this.btnRemoveItem.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRemoveItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemoveItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnRemoveItem.Image = global::prjbase.Properties.Resources.remove;
-            this.btnRemoveItem.Location = new System.Drawing.Point(0, 52);
-            this.btnRemoveItem.Name = "btnRemoveItem";
-            this.btnRemoveItem.Size = new System.Drawing.Size(36, 26);
-            this.btnRemoveItem.TabIndex = 1;
-            this.btnRemoveItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnRemoveItem.UseVisualStyleBackColor = false;
+            this.btnRemove.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnRemove.CausesValidation = false;
+            this.btnRemove.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemove.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnRemove.Image = global::prjbase.Properties.Resources.remove;
+            this.btnRemove.Location = new System.Drawing.Point(0, 52);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(36, 26);
+            this.btnRemove.TabIndex = 1;
+            this.btnRemove.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnRemove.UseVisualStyleBackColor = false;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
-            // button1
+            // btnEdit
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.button1.CausesValidation = false;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Image = global::prjbase.Properties.Resources.Editar;
-            this.button1.Location = new System.Drawing.Point(0, 26);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(36, 26);
-            this.button1.TabIndex = 2;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnEdit.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnEdit.CausesValidation = false;
+            this.btnEdit.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEdit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnEdit.Image = global::prjbase.Properties.Resources.Editar;
+            this.btnEdit.Location = new System.Drawing.Point(0, 26);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(36, 26);
+            this.btnEdit.TabIndex = 2;
+            this.btnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
-            // btnAddItem
+            // btnAdd
             // 
-            this.btnAddItem.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.btnAddItem.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAddItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAddItem.Image = global::prjbase.Properties.Resources.plus;
-            this.btnAddItem.Location = new System.Drawing.Point(0, 0);
-            this.btnAddItem.Name = "btnAddItem";
-            this.btnAddItem.Size = new System.Drawing.Size(36, 26);
-            this.btnAddItem.TabIndex = 0;
-            this.btnAddItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnAddItem.UseVisualStyleBackColor = false;
-            this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
+            this.btnAdd.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnAdd.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAdd.Image = global::prjbase.Properties.Resources.plus;
+            this.btnAdd.Location = new System.Drawing.Point(0, 0);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(36, 26);
+            this.btnAdd.TabIndex = 0;
+            this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // label31
             // 
@@ -1809,9 +1811,9 @@
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.TabPage tbFiliais;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnRemoveItem;
-        private System.Windows.Forms.Button btnAddItem;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnEdit;
         protected System.Windows.Forms.DataGridView dgvFilial;
     }
 }

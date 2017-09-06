@@ -169,14 +169,22 @@ namespace prjbase
             if (!isDialogo)
             {
                 pnlJanela.Left = (this.Width / 2) - (pnlJanela.Width / 2);
-                pnlJanela.Left = pnlJanela.Left - (pnlBotoes.Width / 2);
+                pnlJanela.Top = (this.Height / 2) - (pnlJanela.Height / 2);
 
-                if (pnlJanela.Left < pnlBotoes.Width)
+                if (pnlJanela.Top <= 0)
                 {
-                    pnlJanela.Left = 5;
+                    pnlJanela.Top = 5;
                 }
 
-                pnlJanela.Top = (this.Height / 2) - (pnlJanela.Height / 2);
+                if (pnlJanela.Left <= 0)
+                {
+                    pnlJanela.Left = 5;                    
+                    pnlJanela.Top = 5;
+                }
+                else
+                {
+                    pnlJanela.Left = pnlJanela.Left - (pnlBotoes.Width / 2);
+                }
             }
                         
             btnFechar.Top = (pnlBotoes.Height - btnFechar.Height);
@@ -187,16 +195,30 @@ namespace prjbase
         {
             if (!isDialogo)
             {
+                 
                 pnlJanela.Left = (this.Width / 2) - (pnlJanela.Width / 2);
-                pnlJanela.Top = (this.Height / 2) - (pnlJanela.Height / 2);
+                pnlJanela.Top = (this.Height / 2) - (pnlJanela.Height / 2);                
 
-                pnlJanela.Left = pnlJanela.Left - (pnlBotoes.Width / 2);
-
-                if (pnlJanela.Left < pnlBotoes.Width)
+                if (pnlJanela.Top <= 0)
                 {
-                    pnlJanela.Left = 5;
+                    pnlJanela.Top = 5;
                 }
+
+                if (pnlJanela.Left <= 0)
+                {                    
+                    pnlJanela.Left = 5;
+                    pnlJanela.Top = 5;
+                }
+                else
+                {
+                    pnlJanela.Left = pnlJanela.Left - (pnlBotoes.Width / 2);
+                }              
             }                        
+        }
+
+        private void frmBaseCadEdit_SizeChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
