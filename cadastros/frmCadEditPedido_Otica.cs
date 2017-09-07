@@ -20,10 +20,10 @@ namespace prjbase
     {
         private ClienteBLL clienteBLL;
         private ProdutoBLL produtoBLL;
-        private ParcelaBLL parcelaBLL;        
+        private ParcelaBLL parcelaBLL;
         private Pedido_OticaBLL pedido_OticaBLL;
         private VendedorBLL vendedorBLL;
-        private Vendedor_LocalidadeBLL vendedor_LocalidadeBLL;        
+        private Vendedor_LocalidadeBLL vendedor_LocalidadeBLL;
 
         #region Constante de Colunas da Grid
         private const int col_Id = 0;
@@ -90,7 +90,7 @@ namespace prjbase
                         {
                             txtCRM.Text = infoadic.crm_medico.ToString();
                         }
-                        
+
                         txtLaboratorio.Text = infoadic.laboratorio;
                         txtOS.Text = infoadic.ordem_servico;
                         txt_od_gp_eixo.Text = (infoadic.od_gp_eixo != null) ? infoadic.od_gp_eixo.Value.ToString() : string.Empty;
@@ -193,10 +193,20 @@ namespace prjbase
                     txtUsuarioInc.Text = pedido_otica.usuario_inclusao;
                     txtDtInc.Text = pedido_otica.inclusao.ToString();
 
+                    if (pedido_otica.Id_empresa != null)
+                    {
+                        txtIdEmpresa.Text = pedido_otica.Id_empresa.ToString();
+                    }
+
+                    if (pedido_otica.Id_filial != null)
+                    {
+                        txtIdFilial.Text = pedido_otica.Id_filial.ToString();
+                    }
+
                     if (pedido_otica.cancelado == "S")
                     {
                         lblPedidoCancelado.Visible = true;
-                        
+
                         foreach (Control item in pnlJanela.Controls)
                         {
                             item.Enabled = false;
@@ -337,7 +347,7 @@ namespace prjbase
                 infoadic.od_gp_eixo = Convert.ToInt32(txt_od_gp_eixo.Text);
             }
 
-            if(!string.IsNullOrEmpty(txt_oe_gp_eixo.Text))
+            if (!string.IsNullOrEmpty(txt_oe_gp_eixo.Text))
             {
                 infoadic.oe_gp_eixo = Convert.ToInt32(txt_oe_gp_eixo.Text);
             }
@@ -447,7 +457,7 @@ namespace prjbase
             if (cbTipoArmacao.SelectedIndex != -1)
             {
                 pedido_Armacao.tipo = Convert.ToInt32(cbTipoArmacao.SelectedValue);
-            }            
+            }
 
             if (!string.IsNullOrEmpty(txtDiaFinLente.Text))
             {
@@ -555,8 +565,18 @@ namespace prjbase
                 {
                     pedido_Otica.inclusao = Convert.ToDateTime(txtDtInc.Text);
                 }
+
+                if (!string.IsNullOrEmpty(txtIdEmpresa.Text))
+                {
+                    pedido_Otica.Id_empresa = Convert.ToInt64(txtIdEmpresa.Text);
+                }
+
+                if (!string.IsNullOrEmpty(txtIdFilial.Text))
+                {
+                    pedido_Otica.Id_filial = Convert.ToInt64(txtIdFilial.Text);
+                }
             }
-            
+
             return pedido_Otica;
         }
 
@@ -564,19 +584,19 @@ namespace prjbase
         {
             //Verifica se a caixa selecionada não está alocada um um pedido não entregue.
             bool retorno = true;
-            
+
             return retorno;
         }
 
         protected override void SetupControls()
         {
-            SetupCondPagamento();                        
-            SetupVendedor();            
-            SetupTipoArmacao();            
+            SetupCondPagamento();
+            SetupVendedor();
+            SetupTipoArmacao();
             SetupTipoLente();
             formataGridItens();
         }
-        
+
         private void SetupVendedor()
         {
             vendedorBLL = new VendedorBLL();
@@ -614,7 +634,7 @@ namespace prjbase
             cbTipoLente.DisplayMember = "descricao";
             cbTipoLente.SelectedIndex = -1;
         }
-        
+
         private void SetupTipoArmacao()
         {
             Tipo_ArmacaoBLL Tipo_ArmacaoBLL = new Tipo_ArmacaoBLL();
@@ -634,7 +654,7 @@ namespace prjbase
             cbTipoArmacao.SelectedIndex = -1;
 
         }
-                
+
         private void SetupCondPagamento()
         {
             parcelaBLL = new ParcelaBLL();
@@ -809,7 +829,7 @@ namespace prjbase
                         {
                             txtDtEmissao.Text = DateTime.Now.ToShortDateString();
                         }
-                        
+
                         if (cliente.cliente_vendedor.Count() > 0)
                         {
                             Cliente_Vendedor cliente_Vendedor = cliente.cliente_vendedor.First();
@@ -1246,7 +1266,7 @@ namespace prjbase
             {
                 dgvItemPedido.Rows.Clear();
             }
-            
+
             txtCodCliIntegracao.Focus();
         }
 
@@ -1254,7 +1274,7 @@ namespace prjbase
         {
             if (sender is MaskedTextBox)
             {
-                if ((((MaskedTextBox)sender).Name == txtDtEmissao.Name)                    
+                if ((((MaskedTextBox)sender).Name == txtDtEmissao.Name)
                     || (((MaskedTextBox)sender).Name == txtDtPrevEntrega.Name))
                 {
                     if (!string.IsNullOrEmpty(((MaskedTextBox)sender).Text))
@@ -1593,7 +1613,7 @@ namespace prjbase
             }
 
         }
-                               
+
         private void cb_Validating(object sender, CancelEventArgs e)
         {
             e.Cancel = false;

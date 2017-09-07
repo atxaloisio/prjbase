@@ -364,7 +364,7 @@
             this.tpTelefoneEmail.Location = new System.Drawing.Point(4, 25);
             this.tpTelefoneEmail.Name = "tpTelefoneEmail";
             this.tpTelefoneEmail.Padding = new System.Windows.Forms.Padding(3);
-            this.tpTelefoneEmail.Size = new System.Drawing.Size(787, 120);
+            this.tpTelefoneEmail.Size = new System.Drawing.Size(766, 120);
             this.tpTelefoneEmail.TabIndex = 1;
             this.tpTelefoneEmail.Text = "Telefones e E-mail";
             this.tpTelefoneEmail.UseVisualStyleBackColor = true;
@@ -711,7 +711,7 @@
             this.txtDDD.Name = "txtDDD";
             this.epValidaDados.SetObrigatorio(this.txtDDD, false);
             this.txtDDD.Size = new System.Drawing.Size(26, 23);
-            this.txtDDD.TabIndex = 81;
+            this.txtDDD.TabIndex = 4;
             this.epValidaDados.SetTipoValidacao(this.txtDDD, libComponente.TipoValidacao.Vazio);
             this.txtDDD.Enter += new System.EventHandler(this.txt_Enter);
             // 
@@ -722,7 +722,7 @@
             this.txtTelefone.Name = "txtTelefone";
             this.epValidaDados.SetObrigatorio(this.txtTelefone, false);
             this.txtTelefone.Size = new System.Drawing.Size(85, 23);
-            this.txtTelefone.TabIndex = 82;
+            this.txtTelefone.TabIndex = 5;
             this.epValidaDados.SetTipoValidacao(this.txtTelefone, libComponente.TipoValidacao.Vazio);
             this.txtTelefone.Enter += new System.EventHandler(this.txt_Enter);
             this.txtTelefone.Validating += new System.ComponentModel.CancelEventHandler(this.txtTelefone_Validating);
@@ -735,7 +735,7 @@
             this.txtCNPJ.Name = "txtCNPJ";
             this.epValidaDados.SetObrigatorio(this.txtCNPJ, false);
             this.txtCNPJ.Size = new System.Drawing.Size(119, 23);
-            this.txtCNPJ.TabIndex = 78;
+            this.txtCNPJ.TabIndex = 1;
             // 
             // label34
             // 
@@ -753,18 +753,16 @@
             this.txtNomeFantasia.Name = "txtNomeFantasia";
             this.epValidaDados.SetObrigatorio(this.txtNomeFantasia, false);
             this.txtNomeFantasia.Size = new System.Drawing.Size(417, 23);
-            this.txtNomeFantasia.TabIndex = 80;
+            this.txtNomeFantasia.TabIndex = 3;
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Enabled = false;
             this.epValidaDados.SetFraseErro(this.txtCodigo, "");
             this.txtCodigo.Location = new System.Drawing.Point(293, 4);
             this.txtCodigo.Name = "txtCodigo";
             this.epValidaDados.SetObrigatorio(this.txtCodigo, false);
             this.txtCodigo.Size = new System.Drawing.Size(100, 23);
-            this.txtCodigo.TabIndex = 88;
-            this.txtCodigo.TabStop = false;
+            this.txtCodigo.TabIndex = 0;
             // 
             // txtId
             // 
@@ -794,7 +792,7 @@
             this.txtRazaoSocial.Name = "txtRazaoSocial";
             this.epValidaDados.SetObrigatorio(this.txtRazaoSocial, false);
             this.txtRazaoSocial.Size = new System.Drawing.Size(417, 23);
-            this.txtRazaoSocial.TabIndex = 79;
+            this.txtRazaoSocial.TabIndex = 2;
             // 
             // txtCodInt
             // 

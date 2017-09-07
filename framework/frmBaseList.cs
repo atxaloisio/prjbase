@@ -12,7 +12,7 @@ namespace prjbase
 {
     public partial class frmBaseList : prjbase.frmBase
     {
-        protected frmBase frmInstancia;
+        protected frmBaseCadEdit frmInstancia;
 
         protected int deslocamento = 0;
         protected int pagina = 0;
@@ -69,6 +69,11 @@ namespace prjbase
                     frmInstancia.MdiParent = this.MdiParent;
                     frmInstancia.atualizagrid = new AtualizaGrid(atualizaGrid);
                     frmInstancia.Show();
+                }
+                else
+                {
+                    string mensagem = "Já existe uma Jalena aberta de " + frmInstancia.Text;
+                    MessageBox.Show(mensagem, Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 
                 //frmInstancia.Text = TituloTela;
@@ -167,7 +172,11 @@ namespace prjbase
                     }
                 }
             }
-            
+            else
+            {
+                string mensagem = "Já existe uma Jalena aberta de " + frmInstancia.Text;
+                MessageBox.Show(mensagem, Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
 
             //if (frmInstancia.atualizagrid)
@@ -453,13 +462,7 @@ namespace prjbase
                 
                 this.Cursor = Cursors.WaitCursor;
                 Application.DoEvents();
-
-                string NrRegPagListagem = Parametro.GetParametro("NrRegPag");
-                if (!string.IsNullOrEmpty(NrRegPagListagem))
-                {
-                    tamanhoPagina = Convert.ToInt32(NrRegPagListagem);
-                }
-
+                setTamanhoPagina();                
                 carregaConsulta();
                 pagina++;
                 AtualizaContadores();
@@ -475,6 +478,11 @@ namespace prjbase
                 MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        protected virtual void setTamanhoPagina()
+        {
+            
         }
 
         protected virtual void callNextPage()

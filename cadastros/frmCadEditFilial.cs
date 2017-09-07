@@ -78,6 +78,11 @@ namespace prjbase
                     {
                         txtDtSimplNac.Text = Filial.data_adesao_sn.Value.ToShortDateString();
                     }
+
+                    imgLogoEmp.Image = ImagemFromDB.GetImagem(Filial.Id, "filial_logo", "id_filial");
+
+                    imgLogoEmp.Enabled = true;
+                    btnAbrirLogo.Enabled = true;
                 }
             }
 
@@ -252,7 +257,7 @@ namespace prjbase
             AutoCompleteStringCollection acc = new AutoCompleteStringCollection();
             foreach (Cidade item in CidadeList)
             {
-                acc.Add(item.cNome);
+                acc.Add(item.cCod);
             }
 
 

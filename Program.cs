@@ -241,7 +241,7 @@ namespace prjbase
 
 
                 if (login.ShowDialog() == DialogResult.OK)
-                {
+                {                    
                     Application.Run(new frmPrincipal());
                 }
                 else

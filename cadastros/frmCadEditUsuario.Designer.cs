@@ -44,6 +44,8 @@
             this.ckVisualizarSenha = new System.Windows.Forms.CheckBox();
             this.chkInativo = new System.Windows.Forms.CheckBox();
             this.txtEmail = new System.Windows.Forms.MaskedTextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cbFilial = new System.Windows.Forms.ComboBox();
             this.pnlBotoes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
             this.pnlPrincipal.SuspendLayout();
@@ -52,18 +54,20 @@
             // 
             // btnFechar
             // 
-            this.btnFechar.Location = new System.Drawing.Point(3, 353);
+            this.btnFechar.Location = new System.Drawing.Point(3, 296);
             // 
             // pnlBotoes
             // 
-            this.pnlBotoes.Size = new System.Drawing.Size(115, 237);
+            this.pnlBotoes.Size = new System.Drawing.Size(115, 329);
             // 
             // pnlPrincipal
             // 
-            this.pnlPrincipal.Size = new System.Drawing.Size(449, 237);
+            this.pnlPrincipal.Size = new System.Drawing.Size(514, 329);
             // 
             // pnlJanela
             // 
+            this.pnlJanela.Controls.Add(this.label7);
+            this.pnlJanela.Controls.Add(this.cbFilial);
             this.pnlJanela.Controls.Add(this.txtEmail);
             this.pnlJanela.Controls.Add(this.chkInativo);
             this.pnlJanela.Controls.Add(this.ckVisualizarSenha);
@@ -80,10 +84,8 @@
             this.pnlJanela.Controls.Add(this.label2);
             this.pnlJanela.Controls.Add(this.txtId);
             this.pnlJanela.Controls.Add(this.label1);
-            this.pnlJanela.Location = new System.Drawing.Point(66, 20);
-            this.pnlJanela.Size = new System.Drawing.Size(449, 237);
-            this.pnlJanela.TabIndex = 0;
-            this.pnlJanela.TabStop = true;
+            this.pnlJanela.Location = new System.Drawing.Point(41, 14);
+            this.pnlJanela.Size = new System.Drawing.Size(449, 268);
             // 
             // label1
             // 
@@ -255,10 +257,31 @@
             this.txtEmail.TabIndex = 2;
             this.epValidaDados.SetTipoValidacao(this.txtEmail, libComponente.TipoValidacao.Email);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(5, 237);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(34, 16);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Filial";
+            // 
+            // cbFilial
+            // 
+            this.cbFilial.FormattingEnabled = true;
+            this.epValidaDados.SetFraseErro(this.cbFilial, "Filial do usuário obrigatório");
+            this.epValidaDados.SetIndiceCombo(this.cbFilial, -1);
+            this.cbFilial.Location = new System.Drawing.Point(57, 234);
+            this.cbFilial.Name = "cbFilial";
+            this.epValidaDados.SetObrigatorio(this.cbFilial, false);
+            this.cbFilial.Size = new System.Drawing.Size(360, 24);
+            this.cbFilial.TabIndex = 14;
+            this.cbFilial.Text = "Filial";
+            // 
             // frmCadEditUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(564, 237);
+            this.ClientSize = new System.Drawing.Size(629, 329);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmCadEditUsuario";
@@ -291,5 +314,7 @@
         private System.Windows.Forms.ComboBox cbPerfil;
         private System.Windows.Forms.CheckBox chkInativo;
         private System.Windows.Forms.MaskedTextBox txtEmail;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox cbFilial;
     }
 }

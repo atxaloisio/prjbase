@@ -24,7 +24,7 @@ namespace prjbase
         private const int COL_CODINT = 3;
         private const int COL_CNPJ = 4;
         private const int COL_RAZAOSOCIAL = 5;
-        private const int COL_NOMEFANTASIA = 6;        
+        private const int COL_NOMEFANTASIA = 6;
         #endregion
 
         CategoriaBLL categoriaBLL;
@@ -47,7 +47,7 @@ namespace prjbase
             SetupCategoria();
             SetupContaCorrente();
             SetupUF();
-            SetupRegimeTributario();            
+            SetupRegimeTributario();
         }
 
         private void SetupRegimeTributario()
@@ -91,7 +91,7 @@ namespace prjbase
             AutoCompleteStringCollection acc = new AutoCompleteStringCollection();
             foreach (Cidade item in CidadeList)
             {
-                acc.Add(item.cNome);
+                acc.Add(item.cCod);
             }
 
 
@@ -148,7 +148,7 @@ namespace prjbase
         }
 
         private void LoadToControls()
-        {            
+        {
             LoadParametros();
             LoadEmpresa();
         }
@@ -170,7 +170,7 @@ namespace prjbase
             string NrRegPagListagem = Parametro.GetParametro("NrRegPag");
             if (!string.IsNullOrEmpty(NrRegPagListagem))
             {
-                txtNrRegPag.Text = NrRegPagListagem;                
+                txtNrRegPag.Text = NrRegPagListagem;
             }
 
             string strPathFileLab = Parametro.GetParametro("strPathFileLab");
@@ -180,7 +180,7 @@ namespace prjbase
             }
 
             string layoutLaboratorio = Parametro.GetParametro("layoutLaboratorio");
-            if (!string.IsNullOrEmpty(genlab))
+            if (!string.IsNullOrEmpty(layoutLaboratorio))
             {
                 rbLaboratorio.Checked = Convert.ToBoolean(layoutLaboratorio);
             }
@@ -390,13 +390,13 @@ namespace prjbase
                 txtDtSimplNac.Text = empresa.data_adesao_sn.Value.ToShortDateString();
             }
 
-
+            //if (empresa.filials.Count <= 0)
+            //{
+            //    adicionaColunasGridFilial();
+            //}
             LoadListFilialToGrid(empresa.filials);
-            if (empresa.filials.Count <= 0)
-            {
-                adicionaColunasGridFilial();
-            }
-            
+
+
         }
 
         private void adicionaColunasGridFilial()
@@ -415,7 +415,7 @@ namespace prjbase
         {
             FilialBLL filialBLL = new FilialBLL();
             dgvFilial.DataSource = filialBLL.ToList_FilialView(filials);
-            formataGridFilial();            
+            formataGridFilial();
         }
 
         private void formataGridFilial()
@@ -428,7 +428,7 @@ namespace prjbase
             dgvFilial.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             //altera a cor das linhas alternadas no grid
             dgvFilial.RowsDefaultCellStyle.BackColor = System.Drawing.Color.White;
-            dgvFilial.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.LightSteelBlue;            
+            dgvFilial.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.LightSteelBlue;
             formataColunadgvFilial();
             //seleciona a linha inteira
             dgvFilial.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -458,8 +458,9 @@ namespace prjbase
                     if (Convert.ToInt32(dgvFilial[COL_ID, dgvFilial.CurrentRow.Index].Value) > 0)
                     {
                         frmCadEditFilial frmFilial = new frmCadEditFilial();
+                        frmFilial.Id_Empresa = Convert.ToInt64(txtId.Text);
                         frmFilial.Cursor = Cursors.WaitCursor;
-                        frmFilial.atualizagrid = new AtualizaGrid(atualizaGrid);                       
+                        frmFilial.atualizagrid = new AtualizaGrid(atualizaGrid);
                         frmFilial.ExibeDialogo(this, Convert.ToInt32(dgvFilial[COL_ID, dgvFilial.CurrentRow.Index].Value));
                         frmFilial.Dispose();
                     }
@@ -476,7 +477,7 @@ namespace prjbase
         }
 
         private void formataColunadgvFilial()
-        {                        
+        {
             dgvFilial.Columns[COL_ID].Width = 70;
             dgvFilial.Columns[COL_ID].ValueType = typeof(int);
             dgvFilial.Columns[COL_ID].SortMode = DataGridViewColumnSortMode.Programmatic;
@@ -560,7 +561,7 @@ namespace prjbase
                 string mensagem = TrataException.getAllMessage(ex);
                 MessageBox.Show(mensagem, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
 
         }
 
@@ -573,6 +574,7 @@ namespace prjbase
             }
             else
             {
+                Parametro.DelParametro("intGenLab");
                 Parametro.AddParametro("intGenLab", Convert.ToString(rbIntGenLab.Checked));
             }
 
@@ -584,6 +586,7 @@ namespace prjbase
             }
             else
             {
+                Parametro.DelParametro("intTooling");
                 Parametro.AddParametro("intTooling", Convert.ToString(rbIntTooling.Checked));
             }
 
@@ -594,6 +597,7 @@ namespace prjbase
             }
             else
             {
+                Parametro.DelParametro("NrRegPag");
                 Parametro.AddParametro("NrRegPag", txtNrRegPag.Text);
             }
 
@@ -604,6 +608,7 @@ namespace prjbase
             }
             else
             {
+                Parametro.DelParametro("strPathFileLab");
                 Parametro.AddParametro("strPathFileLab", txtCaminhoArquivos.Text);
             }
 
@@ -614,6 +619,7 @@ namespace prjbase
             }
             else
             {
+                Parametro.DelParametro("layoutLaboratorio");
                 Parametro.AddParametro("layoutLaboratorio", Convert.ToString(rbLaboratorio.Checked));
             }
 
@@ -625,6 +631,7 @@ namespace prjbase
             }
             else
             {
+                Parametro.DelParametro("layoutOtica");
                 Parametro.AddParametro("layoutOtica", Convert.ToString(rbOtica.Checked));
             }
 
@@ -639,6 +646,7 @@ namespace prjbase
                 {
                     if (cbCategoria.SelectedValue != null)
                     {
+                        Parametro.DelParametro("IdCategoria");
                         Parametro.AddParametro("IdCategoria", cbCategoria.SelectedValue.ToString());
                     }
 
@@ -657,6 +665,7 @@ namespace prjbase
                 {
                     if (cbContaCorrente.SelectedValue != null)
                     {
+                        Parametro.DelParametro("IdContaCorrente");
                         Parametro.AddParametro("IdContaCorrente", cbContaCorrente.SelectedValue.ToString());
                     }
                 }
@@ -669,6 +678,7 @@ namespace prjbase
             }
             else
             {
+                Parametro.DelParametro("codEmpresa");
                 Parametro.AddParametro("codEmpresa", txtCodigoEmpresa.Text);
             }
 
@@ -679,6 +689,7 @@ namespace prjbase
             }
             else
             {
+                Parametro.DelParametro("intOmie");
                 Parametro.AddParametro("intOmie", Convert.ToString(chkIntegrarOmie.Checked));
             }
 
@@ -689,6 +700,7 @@ namespace prjbase
             }
             else
             {
+                Parametro.DelParametro("app_key");
                 Parametro.AddParametro("app_key", txtAppKey.Text);
             }
 
@@ -699,6 +711,7 @@ namespace prjbase
             }
             else
             {
+                Parametro.DelParametro("app_secret");
                 Parametro.AddParametro("app_secret", txtAppSecret.Text);
             }
 
@@ -709,6 +722,7 @@ namespace prjbase
             }
             else
             {
+                Parametro.DelParametro("updateClienteOmie");
                 Parametro.AddParametro("updateClienteOmie", Convert.ToString(chkAtualizaCliente.Checked));
             }
 
@@ -719,6 +733,7 @@ namespace prjbase
             }
             else
             {
+                Parametro.DelParametro("updateFornecedorOmie");
                 Parametro.AddParametro("updateFornecedorOmie", Convert.ToString(chkAtualizaFornecedor.Checked));
             }
 
@@ -729,6 +744,7 @@ namespace prjbase
             }
             else
             {
+                Parametro.DelParametro("updateTransportadoraOmie");
                 Parametro.AddParametro("updateTransportadoraOmie", Convert.ToString(chkAtualizaTransportadora.Checked));
             }
 
@@ -739,6 +755,7 @@ namespace prjbase
             }
             else
             {
+                Parametro.DelParametro("updateProdutoOmie");
                 Parametro.AddParametro("updateProdutoOmie", Convert.ToString(chkAtualizaProduto.Checked));
             }
 
@@ -749,6 +766,7 @@ namespace prjbase
             }
             else
             {
+                Parametro.DelParametro("updateVendedorOmie");
                 Parametro.AddParametro("updateVendedorOmie", Convert.ToString(chkAtualizaVendedor.Checked));
             }
 
@@ -1263,7 +1281,7 @@ namespace prjbase
                 SendKeys.Send("{tab}");
             }
         }
-               
+
         private void tcParametros_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tcParametros.SelectedTab == tpGeral)
@@ -1331,7 +1349,7 @@ namespace prjbase
             string strCPF, strCNPJ = string.Empty;
             bool exibeMsg = false;
 
-            
+
             if (!string.IsNullOrEmpty(((TextBox)sender).Text))
             {
                 ((TextBox)sender).Text = ((TextBox)sender).Text.Trim().Replace(".", "").Replace("-", "").Replace("/", "");
@@ -1366,20 +1384,21 @@ namespace prjbase
                 }
 
                 if (exibeMsg)
-                {                    
+                {
                     MessageBox.Show("CNPJ / CPF inválido.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     e.Cancel = true;
-                }                
+                }
             }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            frmCadEditFilial frmFilial = new frmCadEditFilial();            
+            frmCadEditFilial frmFilial = new frmCadEditFilial();
             try
             {
                 frmFilial.Id_Empresa = Convert.ToInt64(txtId.Text);
                 frmFilial.atualizagrid = new AtualizaGrid(atualizaGrid);
+                frmFilial.Id_Empresa = Convert.ToInt64(txtId.Text);
                 frmFilial.ExibeDialogo();
                 frmFilial.Dispose();
             }
@@ -1405,7 +1424,7 @@ namespace prjbase
                     {
                         this.Cursor = Cursors.WaitCursor;
                         excluirRegistro(dgvFilial.CurrentRow.Index);
-                        this.atualizagrid();
+                        this.atualizaGrid();
                         this.Cursor = Cursors.Default;
                     }
 

@@ -140,6 +140,7 @@ namespace prjbase
                     {
                         if (Cliente.codigo_cliente_omie <= 0)
                         {
+                            Cliente.Id_empresa = Program.usuario_logado.Id_empresa;
                             proxy.IncluirClientes(Cliente);
                         }
                         else

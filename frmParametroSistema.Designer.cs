@@ -1528,7 +1528,7 @@
             this.txtCodigo.Location = new System.Drawing.Point(294, 6);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(100, 23);
-            this.txtCodigo.TabIndex = 70;
+            this.txtCodigo.TabIndex = 0;
             this.txtCodigo.TabStop = false;
             // 
             // txtId
@@ -1596,7 +1596,7 @@
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnCancelar.Image = global::prjbase.Properties.Resources.fechar;
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(3, 40);
+            this.btnCancelar.Location = new System.Drawing.Point(3, 258);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(109, 33);
             this.btnCancelar.TabIndex = 10;

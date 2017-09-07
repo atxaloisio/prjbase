@@ -66,6 +66,8 @@
             this.txtDtFechamento = new System.Windows.Forms.MaskedTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox20 = new System.Windows.Forms.GroupBox();
+            this.txtDtInc = new System.Windows.Forms.TextBox();
+            this.txtUsuarioInc = new System.Windows.Forms.TextBox();
             this.txtIdPedLente = new System.Windows.Forms.TextBox();
             this.txtIdPedArmacao = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -152,8 +154,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnRemoveItem = new System.Windows.Forms.Button();
             this.btnAddItem = new System.Windows.Forms.Button();
-            this.txtDtInc = new System.Windows.Forms.TextBox();
-            this.txtUsuarioInc = new System.Windows.Forms.TextBox();
             this.pnlBotoes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
             this.pnlPrincipal.SuspendLayout();
@@ -185,7 +185,7 @@
             // 
             // btnFechar
             // 
-            this.btnFechar.Location = new System.Drawing.Point(3, 564);
+            this.btnFechar.Location = new System.Drawing.Point(3, 775);
             // 
             // pnlBotoes
             // 
@@ -200,7 +200,7 @@
             this.pnlJanela.Controls.Add(this.groupBox3);
             this.pnlJanela.Controls.Add(this.groupBox2);
             this.pnlJanela.Controls.Add(this.groupBox1);
-            this.pnlJanela.Location = new System.Drawing.Point(5, 20);
+            this.pnlJanela.Location = new System.Drawing.Point(9, 20);
             this.pnlJanela.Size = new System.Drawing.Size(1007, 597);
             // 
             // groupBox1
@@ -663,6 +663,28 @@
             this.groupBox20.TabIndex = 8;
             this.groupBox20.TabStop = false;
             this.groupBox20.Text = "Dados da armação";
+            // 
+            // txtDtInc
+            // 
+            this.epValidaDados.SetFraseErro(this.txtDtInc, "");
+            this.txtDtInc.Location = new System.Drawing.Point(884, 46);
+            this.txtDtInc.Name = "txtDtInc";
+            this.epValidaDados.SetObrigatorio(this.txtDtInc, false);
+            this.txtDtInc.Size = new System.Drawing.Size(71, 23);
+            this.txtDtInc.TabIndex = 54;
+            this.txtDtInc.TabStop = false;
+            this.txtDtInc.Visible = false;
+            // 
+            // txtUsuarioInc
+            // 
+            this.epValidaDados.SetFraseErro(this.txtUsuarioInc, "");
+            this.txtUsuarioInc.Location = new System.Drawing.Point(809, 46);
+            this.txtUsuarioInc.Name = "txtUsuarioInc";
+            this.epValidaDados.SetObrigatorio(this.txtUsuarioInc, false);
+            this.txtUsuarioInc.Size = new System.Drawing.Size(71, 23);
+            this.txtUsuarioInc.TabIndex = 53;
+            this.txtUsuarioInc.TabStop = false;
+            this.txtUsuarioInc.Visible = false;
             // 
             // txtIdPedLente
             // 
@@ -1642,28 +1664,9 @@
             this.btnAddItem.UseVisualStyleBackColor = false;
             this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
             // 
-            // txtDtInc
-            // 
-            this.epValidaDados.SetFraseErro(this.txtDtInc, "");
-            this.txtDtInc.Location = new System.Drawing.Point(884, 46);
-            this.txtDtInc.Name = "txtDtInc";
-            this.epValidaDados.SetObrigatorio(this.txtDtInc, false);
-            this.txtDtInc.Size = new System.Drawing.Size(71, 23);
-            this.txtDtInc.TabIndex = 54;
-            // 
-            // txtUsuarioInc
-            // 
-            this.epValidaDados.SetFraseErro(this.txtUsuarioInc, "");
-            this.txtUsuarioInc.Location = new System.Drawing.Point(809, 46);
-            this.txtUsuarioInc.Name = "txtUsuarioInc";
-            this.epValidaDados.SetObrigatorio(this.txtUsuarioInc, false);
-            this.txtUsuarioInc.Size = new System.Drawing.Size(71, 23);
-            this.txtUsuarioInc.TabIndex = 53;
-            // 
             // frmCadEditPedido_Laboratorio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScroll = true;
             this.CancelButton = null;
             this.ClientSize = new System.Drawing.Size(1122, 597);
             this.Cursor = System.Windows.Forms.Cursors.Default;
