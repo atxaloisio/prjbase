@@ -60,6 +60,7 @@ namespace prjbase
                 this.DialogResult = DialogResult.OK;
 
                 //Program.usuario_logado = usuarioBLL.loginSistema(txtUsuaio.Text, txtSenha.Text);
+                //stUsuario.UsuarioLogado = Program.usuario_logado;
 
                 //if (Program.usuario_logado != null)
                 //{

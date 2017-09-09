@@ -99,7 +99,7 @@
             // 
             // btnFechar
             // 
-            this.btnFechar.Location = new System.Drawing.Point(3, 47);
+            this.btnFechar.Location = new System.Drawing.Point(3, 203);
             // 
             // btnIncluir
             // 
@@ -109,18 +109,18 @@
             // 
             // pnlBotoes
             // 
-            this.pnlBotoes.Size = new System.Drawing.Size(115, 360);
+            this.pnlBotoes.Size = new System.Drawing.Size(115, 438);
             // 
             // pnlPrincipal
             // 
-            this.pnlPrincipal.Size = new System.Drawing.Size(1007, 360);
+            this.pnlPrincipal.Size = new System.Drawing.Size(1007, 438);
             // 
             // pnlJanela
             // 
             this.pnlJanela.Controls.Add(this.gbParcelas);
             this.pnlJanela.Controls.Add(this.groupBox1);
-            this.pnlJanela.Location = new System.Drawing.Point(5, 11);
-            this.pnlJanela.Size = new System.Drawing.Size(989, 336);
+            this.pnlJanela.Location = new System.Drawing.Point(18, 56);
+            this.pnlJanela.Size = new System.Drawing.Size(989, 364);
             // 
             // gbParcelas
             // 
@@ -129,7 +129,7 @@
             this.gbParcelas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbParcelas.Location = new System.Drawing.Point(0, 144);
             this.gbParcelas.Name = "gbParcelas";
-            this.gbParcelas.Size = new System.Drawing.Size(987, 190);
+            this.gbParcelas.Size = new System.Drawing.Size(987, 218);
             this.gbParcelas.TabIndex = 3;
             this.gbParcelas.TabStop = false;
             this.gbParcelas.Text = "Parcelas";
@@ -140,7 +140,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 19);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(663, 168);
+            this.panel1.Size = new System.Drawing.Size(663, 196);
             this.panel1.TabIndex = 0;
             // 
             // dgvParcelas
@@ -156,8 +156,9 @@
             this.dgvParcelas.Name = "dgvParcelas";
             this.dgvParcelas.RowHeadersVisible = false;
             this.dgvParcelas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvParcelas.Size = new System.Drawing.Size(663, 168);
+            this.dgvParcelas.Size = new System.Drawing.Size(663, 196);
             this.dgvParcelas.TabIndex = 3;
+            this.dgvParcelas.Click += new System.EventHandler(this.dgvParcelas_Click);
             // 
             // panel2
             // 
@@ -181,7 +182,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel2.Location = new System.Drawing.Point(666, 19);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(318, 168);
+            this.panel2.Size = new System.Drawing.Size(318, 196);
             this.panel2.TabIndex = 1;
             // 
             // label9
@@ -204,6 +205,7 @@
             this.epValidaDados.SetObrigatorio(this.cbFormaPagamento, false);
             this.cbFormaPagamento.Size = new System.Drawing.Size(152, 24);
             this.cbFormaPagamento.TabIndex = 72;
+            this.cbFormaPagamento.SelectionChangeCommitted += new System.EventHandler(this.cbFormaPagamento_SelectionChangeCommitted);
             // 
             // txtNrDias
             // 
@@ -263,6 +265,7 @@
             this.chkPago.TabIndex = 67;
             this.chkPago.Text = "Pago";
             this.chkPago.UseVisualStyleBackColor = true;
+            this.chkPago.CheckStateChanged += new System.EventHandler(this.chkPago_CheckStateChanged);
             // 
             // btnDown
             // 
@@ -278,6 +281,7 @@
             this.btnDown.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDown.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnDown.UseVisualStyleBackColor = false;
+            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
             // 
             // btnUp
             // 
@@ -293,6 +297,7 @@
             this.btnUp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnUp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnUp.UseVisualStyleBackColor = false;
+            this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
             // 
             // txtPercentual
             // 
@@ -326,6 +331,7 @@
             this.txtValor.Size = new System.Drawing.Size(87, 23);
             this.txtValor.TabIndex = 62;
             this.txtValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtValor.Validated += new System.EventHandler(this.txtValor_Validated);
             // 
             // label7
             // 
@@ -350,6 +356,9 @@
             this.txtDtPagamento.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.epValidaDados.SetTipoValidacao(this.txtDtPagamento, libComponente.TipoValidacao.Vazio);
             this.txtDtPagamento.ValidatingType = typeof(System.DateTime);
+            this.txtDtPagamento.Enter += new System.EventHandler(this.txtDtPagamento_Enter);
+            this.txtDtPagamento.Validating += new System.ComponentModel.CancelEventHandler(this.txtDtPagamento_Validating);
+            this.txtDtPagamento.Validated += new System.EventHandler(this.txtDtPagamento_Validated);
             // 
             // label6
             // 
@@ -832,13 +841,13 @@
             // frmProcParcelaPedidoView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScroll = true;
             this.CancelButton = null;
-            this.ClientSize = new System.Drawing.Size(1122, 360);
+            this.ClientSize = new System.Drawing.Size(1122, 438);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmProcParcelaPedidoView";
             this.Text = "Parcelas do Pedido de Vendas";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown);
             this.pnlBotoes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).EndInit();
             this.pnlPrincipal.ResumeLayout(false);

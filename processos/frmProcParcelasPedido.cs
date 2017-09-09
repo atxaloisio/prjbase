@@ -881,6 +881,7 @@ namespace prjbase
         protected virtual void carregaConsulta()
         {
             pedido_OticaBLL = new Pedido_OticaBLL();
+            pedido_OticaBLL.UsuarioLogado = Program.usuario_logado;
             int stEntregue = (int)StatusPedido.GRAVADO;
 
             List<Pedido_Otica> Pedido_OticaList = pedido_OticaBLL.getPedido_Otica(c => c.status >= stEntregue, false, deslocamento, tamanhoPagina, out totalReg, p => p.Id_cliente.ToString(), p => p.codigo.ToString());
