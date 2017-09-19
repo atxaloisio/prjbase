@@ -807,5 +807,12 @@ namespace prjbase
             }
                 
         }
+
+        private void aberturaEncerramentoDoMovimentoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new frmCadEditLivro_Caixa();
+            frm.ExibeDialogo();
+            frm.Dispose();
+        }
     }
 }

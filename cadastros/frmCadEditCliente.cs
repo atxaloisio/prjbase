@@ -262,11 +262,13 @@ namespace prjbase
             Cliente.telefone1_numero = txtTelefone.Text;
             Cliente.bloqueado = chkBloqueado.Checked ? "S" : "N";
 
+
             //Endereço
             Cliente.endereco = txtEndereco.Text;
             Cliente.endereco_numero = txtNumero.Text;
             Cliente.bairro = txtBairro.Text;
             Cliente.estado = cbUF.Text;
+            Cliente.codigo_pais = "1058"; //Brasil
             Cliente.cidade = cbCidade.Text;
             Cliente.complemento = txtComplemento.Text;
             Cliente.cep = txtCEP.Text;

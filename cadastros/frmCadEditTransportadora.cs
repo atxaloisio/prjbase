@@ -236,6 +236,7 @@ namespace prjbase
             Cliente.endereco_numero = txtNumero.Text;
             Cliente.bairro = txtBairro.Text;
             Cliente.estado = cbUF.Text;
+            Cliente.codigo_pais = "1058"; //Brasil
             Cliente.cidade = cbCidade.Text;
             Cliente.complemento = txtComplemento.Text;
             Cliente.cep = txtCEP.Text;
