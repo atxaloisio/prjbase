@@ -638,6 +638,12 @@
     <Compile Include="utilitarios\frmUtilCancelarPedido.Designer.cs">
       <DependentUpon>frmUtilCancelarPedido.cs</DependentUpon>
     </Compile>
+    <Compile Include="utilitarios\frmUtilSelecionarFilial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="utilitarios\frmUtilSelecionarFilial.Designer.cs">
+      <DependentUpon>frmUtilSelecionarFilial.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="cadastros\frmCadEditLivro_Caixa.resx">
       <DependentUpon>frmCadEditLivro_Caixa.cs</DependentUpon>
     </EmbeddedResource>
@@ -860,6 +866,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="utilitarios\frmUtilCancelarPedido.resx">
       <DependentUpon>frmUtilCancelarPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="utilitarios\frmUtilSelecionarFilial.resx">
+      <DependentUpon>frmUtilSelecionarFilial.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="dbintegracaoDataSet.xsc">
       <DependentUpon>dbintegracaoDataSet.xsd</DependentUpon>

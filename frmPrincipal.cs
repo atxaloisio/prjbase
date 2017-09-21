@@ -808,9 +808,20 @@ namespace prjbase
                 
         }
 
-        private void aberturaEncerramentoDoMovimentoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void mnuAbrirMovimentoCaixa_Click(object sender, EventArgs e)
         {
             var frm = new frmCadEditLivro_Caixa();
+            frm.TipoMovimento = tpMovimentoLivroCaixa.Abertura;
+            frm.Text = frm.Text + ": Abertura de Movimento";
+            frm.ExibeDialogo();
+            frm.Dispose();
+        }
+
+        private void mnuEncerrarMovimentoCaixa_Click(object sender, EventArgs e)
+        {
+            var frm = new frmCadEditLivro_Caixa();
+            frm.TipoMovimento = tpMovimentoLivroCaixa.Encerramento;
+            frm.Text = frm.Text + ": Encerramento de Movimento";
             frm.ExibeDialogo();
             frm.Dispose();
         }

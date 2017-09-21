@@ -58,11 +58,11 @@
             this.trocarUsuárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.financeiroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.livroCaixaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aberturaEncerramentoDoMovimentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.encerrarMovimentaçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lançamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contasAPagarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fluxoDeCaixaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAbrirMovimentoCaixa = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEncerrarMovimentoCaixa = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuLancamentoCaixa = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuContasPagar = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFluxoCaixa = new System.Windows.Forms.ToolStripMenuItem();
             this.parametrosDeSistemasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.controleAcessoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCadUsuario = new System.Windows.Forms.ToolStripMenuItem();
@@ -335,8 +335,8 @@
             // 
             this.financeiroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.livroCaixaToolStripMenuItem,
-            this.contasAPagarToolStripMenuItem,
-            this.fluxoDeCaixaToolStripMenuItem});
+            this.mnuContasPagar,
+            this.mnuFluxoCaixa});
             this.financeiroToolStripMenuItem.Name = "financeiroToolStripMenuItem";
             this.financeiroToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.financeiroToolStripMenuItem.Text = "Financeiro";
@@ -344,43 +344,44 @@
             // livroCaixaToolStripMenuItem
             // 
             this.livroCaixaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aberturaEncerramentoDoMovimentoToolStripMenuItem,
-            this.encerrarMovimentaçãoToolStripMenuItem,
-            this.lançamentoToolStripMenuItem});
+            this.mnuAbrirMovimentoCaixa,
+            this.mnuEncerrarMovimentoCaixa,
+            this.mnuLancamentoCaixa});
             this.livroCaixaToolStripMenuItem.Name = "livroCaixaToolStripMenuItem";
             this.livroCaixaToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.livroCaixaToolStripMenuItem.Text = "Livro Caixa";
             // 
-            // aberturaEncerramentoDoMovimentoToolStripMenuItem
+            // mnuAbrirMovimentoCaixa
             // 
-            this.aberturaEncerramentoDoMovimentoToolStripMenuItem.Name = "aberturaEncerramentoDoMovimentoToolStripMenuItem";
-            this.aberturaEncerramentoDoMovimentoToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
-            this.aberturaEncerramentoDoMovimentoToolStripMenuItem.Text = "Abrir Movimentação";
-            this.aberturaEncerramentoDoMovimentoToolStripMenuItem.Click += new System.EventHandler(this.aberturaEncerramentoDoMovimentoToolStripMenuItem_Click);
+            this.mnuAbrirMovimentoCaixa.Name = "mnuAbrirMovimentoCaixa";
+            this.mnuAbrirMovimentoCaixa.Size = new System.Drawing.Size(200, 22);
+            this.mnuAbrirMovimentoCaixa.Text = "Abrir Movimentação";
+            this.mnuAbrirMovimentoCaixa.Click += new System.EventHandler(this.mnuAbrirMovimentoCaixa_Click);
             // 
-            // encerrarMovimentaçãoToolStripMenuItem
+            // mnuEncerrarMovimentoCaixa
             // 
-            this.encerrarMovimentaçãoToolStripMenuItem.Name = "encerrarMovimentaçãoToolStripMenuItem";
-            this.encerrarMovimentaçãoToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
-            this.encerrarMovimentaçãoToolStripMenuItem.Text = "Encerrar Movimentação";
+            this.mnuEncerrarMovimentoCaixa.Name = "mnuEncerrarMovimentoCaixa";
+            this.mnuEncerrarMovimentoCaixa.Size = new System.Drawing.Size(200, 22);
+            this.mnuEncerrarMovimentoCaixa.Text = "Encerrar Movimentação";
+            this.mnuEncerrarMovimentoCaixa.Click += new System.EventHandler(this.mnuEncerrarMovimentoCaixa_Click);
             // 
-            // lançamentoToolStripMenuItem
+            // mnuLancamentoCaixa
             // 
-            this.lançamentoToolStripMenuItem.Name = "lançamentoToolStripMenuItem";
-            this.lançamentoToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
-            this.lançamentoToolStripMenuItem.Text = "Lançamentos";
+            this.mnuLancamentoCaixa.Name = "mnuLancamentoCaixa";
+            this.mnuLancamentoCaixa.Size = new System.Drawing.Size(200, 22);
+            this.mnuLancamentoCaixa.Text = "Lançamentos";
             // 
-            // contasAPagarToolStripMenuItem
+            // mnuContasPagar
             // 
-            this.contasAPagarToolStripMenuItem.Name = "contasAPagarToolStripMenuItem";
-            this.contasAPagarToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.contasAPagarToolStripMenuItem.Text = "Contas a Pagar";
+            this.mnuContasPagar.Name = "mnuContasPagar";
+            this.mnuContasPagar.Size = new System.Drawing.Size(153, 22);
+            this.mnuContasPagar.Text = "Contas a Pagar";
             // 
-            // fluxoDeCaixaToolStripMenuItem
+            // mnuFluxoCaixa
             // 
-            this.fluxoDeCaixaToolStripMenuItem.Name = "fluxoDeCaixaToolStripMenuItem";
-            this.fluxoDeCaixaToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.fluxoDeCaixaToolStripMenuItem.Text = "Fluxo de Caixa";
+            this.mnuFluxoCaixa.Name = "mnuFluxoCaixa";
+            this.mnuFluxoCaixa.Size = new System.Drawing.Size(153, 22);
+            this.mnuFluxoCaixa.Text = "Fluxo de Caixa";
             // 
             // parametrosDeSistemasToolStripMenuItem
             // 
@@ -552,10 +553,10 @@
         private System.Windows.Forms.ToolStripMenuItem mnuRegistro;
         private System.Windows.Forms.ToolStripMenuItem financeiroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem livroCaixaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aberturaEncerramentoDoMovimentoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem encerrarMovimentaçãoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem lançamentoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem contasAPagarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem fluxoDeCaixaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuAbrirMovimentoCaixa;
+        private System.Windows.Forms.ToolStripMenuItem mnuEncerrarMovimentoCaixa;
+        private System.Windows.Forms.ToolStripMenuItem mnuLancamentoCaixa;
+        private System.Windows.Forms.ToolStripMenuItem mnuContasPagar;
+        private System.Windows.Forms.ToolStripMenuItem mnuFluxoCaixa;
     }
 }

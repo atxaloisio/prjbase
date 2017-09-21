@@ -28,12 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtNumero = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.chkInativo = new System.Windows.Forms.CheckBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.txtData = new System.Windows.Forms.MaskedTextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtSaldoInicial = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtSaldoFinal = new System.Windows.Forms.TextBox();
+            this.lblFilial = new System.Windows.Forms.Label();
+            this.cbFilial = new System.Windows.Forms.ComboBox();
             this.pnlBotoes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
             this.pnlPrincipal.SuspendLayout();
@@ -46,7 +50,7 @@
             // 
             // btnFechar
             // 
-            this.btnFechar.Location = new System.Drawing.Point(3, 119);
+            this.btnFechar.Location = new System.Drawing.Point(3, -1503);
             this.btnFechar.TabIndex = 1;
             // 
             // btnIncluir
@@ -55,50 +59,46 @@
             // 
             // pnlBotoes
             // 
-            this.pnlBotoes.Size = new System.Drawing.Size(115, 154);
+            this.pnlBotoes.Size = new System.Drawing.Size(115, 84);
             // 
             // pnlPrincipal
             // 
-            this.pnlPrincipal.Size = new System.Drawing.Size(623, 154);
+            this.pnlPrincipal.Size = new System.Drawing.Size(615, 84);
             // 
             // pnlJanela
             // 
-            this.pnlJanela.Controls.Add(this.dateTimePicker1);
-            this.pnlJanela.Controls.Add(this.chkInativo);
-            this.pnlJanela.Controls.Add(this.txtNumero);
+            this.pnlJanela.Controls.Add(this.lblFilial);
+            this.pnlJanela.Controls.Add(this.cbFilial);
+            this.pnlJanela.Controls.Add(this.label3);
+            this.pnlJanela.Controls.Add(this.txtSaldoFinal);
+            this.pnlJanela.Controls.Add(this.label5);
+            this.pnlJanela.Controls.Add(this.txtSaldoInicial);
+            this.pnlJanela.Controls.Add(this.txtData);
             this.pnlJanela.Controls.Add(this.label2);
             this.pnlJanela.Controls.Add(this.txtId);
             this.pnlJanela.Controls.Add(this.label1);
-            this.pnlJanela.Location = new System.Drawing.Point(3, 3);
-            this.pnlJanela.Size = new System.Drawing.Size(381, 114);
-            // 
-            // txtNumero
-            // 
-            this.epValidaDados.SetFraseErro(this.txtNumero, "Nome do Livro_Caixa obrigatório.");
-            this.txtNumero.Location = new System.Drawing.Point(62, 36);
-            this.txtNumero.Name = "txtNumero";
-            this.epValidaDados.SetObrigatorio(this.txtNumero, true);
-            this.txtNumero.Size = new System.Drawing.Size(100, 23);
-            this.txtNumero.TabIndex = 0;
-            this.txtNumero.Validated += new System.EventHandler(this.Ctrls_Validated);
+            this.pnlJanela.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlJanela.Location = new System.Drawing.Point(0, 0);
+            this.pnlJanela.Size = new System.Drawing.Size(613, 82);
+            this.pnlJanela.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlJanela_Paint);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(3, 39);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 16);
+            this.label2.Size = new System.Drawing.Size(39, 16);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Número";
+            this.label2.Text = "Data";
             // 
             // txtId
             // 
             this.epValidaDados.SetFraseErro(this.txtId, "");
-            this.txtId.Location = new System.Drawing.Point(62, 9);
+            this.txtId.Location = new System.Drawing.Point(56, 9);
             this.txtId.Name = "txtId";
             this.epValidaDados.SetObrigatorio(this.txtId, false);
             this.txtId.ReadOnly = true;
-            this.txtId.Size = new System.Drawing.Size(100, 23);
+            this.txtId.Size = new System.Drawing.Size(84, 23);
             this.txtId.TabIndex = 0;
             this.txtId.TabStop = false;
             this.txtId.Validated += new System.EventHandler(this.Ctrls_Validated);
@@ -112,32 +112,90 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Código";
             // 
-            // chkInativo
+            // txtData
             // 
-            this.chkInativo.AutoSize = true;
-            this.chkInativo.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkInativo.Location = new System.Drawing.Point(3, 60);
-            this.chkInativo.Name = "chkInativo";
-            this.chkInativo.Size = new System.Drawing.Size(73, 20);
-            this.chkInativo.TabIndex = 1;
-            this.chkInativo.Text = "Inativo";
-            this.chkInativo.UseVisualStyleBackColor = true;
+            this.txtData.Enabled = false;
+            this.epValidaDados.SetFraseErro(this.txtData, "Data de Emissão obrigatório");
+            this.txtData.Location = new System.Drawing.Point(56, 36);
+            this.txtData.Mask = "00/00/0000";
+            this.txtData.Name = "txtData";
+            this.epValidaDados.SetObrigatorio(this.txtData, true);
+            this.txtData.ReadOnly = true;
+            this.txtData.Size = new System.Drawing.Size(84, 23);
+            this.txtData.TabIndex = 8;
+            this.txtData.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.epValidaDados.SetTipoValidacao(this.txtData, libComponente.TipoValidacao.Vazio);
+            this.txtData.ValidatingType = typeof(System.DateTime);
             // 
-            // dateTimePicker1
+            // label5
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(172, 37);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(118, 23);
-            this.dateTimePicker1.TabIndex = 8;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(143, 39);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(107, 16);
+            this.label5.TabIndex = 78;
+            this.label5.Text = "Saldo Abertura";
+            // 
+            // txtSaldoInicial
+            // 
+            this.txtSaldoInicial.Enabled = false;
+            this.epValidaDados.SetFraseErro(this.txtSaldoInicial, "Valor Unitário do produto Obrigatório");
+            this.txtSaldoInicial.Location = new System.Drawing.Point(253, 36);
+            this.txtSaldoInicial.Name = "txtSaldoInicial";
+            this.epValidaDados.SetObrigatorio(this.txtSaldoInicial, true);
+            this.txtSaldoInicial.ReadOnly = true;
+            this.txtSaldoInicial.Size = new System.Drawing.Size(104, 23);
+            this.txtSaldoInicial.TabIndex = 77;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(360, 39);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(138, 16);
+            this.label3.TabIndex = 80;
+            this.label3.Text = "Saldo Encerramento";
+            // 
+            // txtSaldoFinal
+            // 
+            this.txtSaldoFinal.Enabled = false;
+            this.epValidaDados.SetFraseErro(this.txtSaldoFinal, "Valor Unitário do produto Obrigatório");
+            this.txtSaldoFinal.Location = new System.Drawing.Point(500, 36);
+            this.txtSaldoFinal.Name = "txtSaldoFinal";
+            this.epValidaDados.SetObrigatorio(this.txtSaldoFinal, true);
+            this.txtSaldoFinal.ReadOnly = true;
+            this.txtSaldoFinal.Size = new System.Drawing.Size(104, 23);
+            this.txtSaldoFinal.TabIndex = 79;
+            // 
+            // lblFilial
+            // 
+            this.lblFilial.AutoSize = true;
+            this.lblFilial.Location = new System.Drawing.Point(143, 12);
+            this.lblFilial.Name = "lblFilial";
+            this.lblFilial.Size = new System.Drawing.Size(34, 16);
+            this.lblFilial.TabIndex = 82;
+            this.lblFilial.Text = "Filial";
+            // 
+            // cbFilial
+            // 
+            this.cbFilial.BackColor = System.Drawing.SystemColors.Window;
+            this.cbFilial.Enabled = false;
+            this.cbFilial.FormattingEnabled = true;
+            this.epValidaDados.SetFraseErro(this.cbFilial, "Filial do usuário obrigatório");
+            this.epValidaDados.SetIndiceCombo(this.cbFilial, -1);
+            this.cbFilial.Location = new System.Drawing.Point(180, 9);
+            this.cbFilial.Name = "cbFilial";
+            this.epValidaDados.SetObrigatorio(this.cbFilial, false);
+            this.cbFilial.Size = new System.Drawing.Size(177, 24);
+            this.cbFilial.TabIndex = 81;
             // 
             // frmCadEditLivro_Caixa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(738, 154);
+            this.ClientSize = new System.Drawing.Size(730, 84);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Name = "frmCadEditLivro_Caixa";
-            this.Text = "Livro_Caixa";
+            this.Text = "Livro Caixa";
             this.Activated += new System.EventHandler(this.frmCadEditLivro_Caixa_Activated);
             this.Resize += new System.EventHandler(this.frmCadEditLivro_Caixa_Resize);
             this.pnlBotoes.ResumeLayout(false);
@@ -150,12 +208,15 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtNumero;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox chkInativo;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.MaskedTextBox txtData;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtSaldoFinal;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtSaldoInicial;
+        private System.Windows.Forms.Label lblFilial;
+        private System.Windows.Forms.ComboBox cbFilial;
     }
 }
