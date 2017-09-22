@@ -262,15 +262,14 @@
             treeNode116});
             System.Windows.Forms.TreeNode treeNode118 = new System.Windows.Forms.TreeNode("Relatorios", new System.Windows.Forms.TreeNode[] {
             treeNode117});
-            System.Windows.Forms.TreeNode treeNode119 = new System.Windows.Forms.TreeNode("Consultar");
-            System.Windows.Forms.TreeNode treeNode120 = new System.Windows.Forms.TreeNode("Editar");
-            System.Windows.Forms.TreeNode treeNode121 = new System.Windows.Forms.TreeNode("Excluir");
+            System.Windows.Forms.TreeNode treeNode119 = new System.Windows.Forms.TreeNode("Salvar");
+            System.Windows.Forms.TreeNode treeNode120 = new System.Windows.Forms.TreeNode("Imprimir");
+            System.Windows.Forms.TreeNode treeNode121 = new System.Windows.Forms.TreeNode("Abrir Movimentação", new System.Windows.Forms.TreeNode[] {
+            treeNode119,
+            treeNode120});
             System.Windows.Forms.TreeNode treeNode122 = new System.Windows.Forms.TreeNode("Salvar");
             System.Windows.Forms.TreeNode treeNode123 = new System.Windows.Forms.TreeNode("Imprimir");
-            System.Windows.Forms.TreeNode treeNode124 = new System.Windows.Forms.TreeNode("Parâmetro de Sistema ", new System.Windows.Forms.TreeNode[] {
-            treeNode119,
-            treeNode120,
-            treeNode121,
+            System.Windows.Forms.TreeNode treeNode124 = new System.Windows.Forms.TreeNode("Encerrar Movimentação", new System.Windows.Forms.TreeNode[] {
             treeNode122,
             treeNode123});
             System.Windows.Forms.TreeNode treeNode125 = new System.Windows.Forms.TreeNode("Consultar");
@@ -278,35 +277,88 @@
             System.Windows.Forms.TreeNode treeNode127 = new System.Windows.Forms.TreeNode("Excluir");
             System.Windows.Forms.TreeNode treeNode128 = new System.Windows.Forms.TreeNode("Salvar");
             System.Windows.Forms.TreeNode treeNode129 = new System.Windows.Forms.TreeNode("Imprimir");
-            System.Windows.Forms.TreeNode treeNode130 = new System.Windows.Forms.TreeNode("Usuários", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode130 = new System.Windows.Forms.TreeNode("Lançamentos", new System.Windows.Forms.TreeNode[] {
             treeNode125,
             treeNode126,
             treeNode127,
             treeNode128,
             treeNode129});
             System.Windows.Forms.TreeNode treeNode131 = new System.Windows.Forms.TreeNode("Consultar");
-            System.Windows.Forms.TreeNode treeNode132 = new System.Windows.Forms.TreeNode("Editar");
-            System.Windows.Forms.TreeNode treeNode133 = new System.Windows.Forms.TreeNode("Excluir");
-            System.Windows.Forms.TreeNode treeNode134 = new System.Windows.Forms.TreeNode("Salvar");
-            System.Windows.Forms.TreeNode treeNode135 = new System.Windows.Forms.TreeNode("Imprimir");
-            System.Windows.Forms.TreeNode treeNode136 = new System.Windows.Forms.TreeNode("Perfil de Usuário", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode132 = new System.Windows.Forms.TreeNode("Imprimir");
+            System.Windows.Forms.TreeNode treeNode133 = new System.Windows.Forms.TreeNode("Listagem de Lançamentos", new System.Windows.Forms.TreeNode[] {
             treeNode131,
-            treeNode132,
-            treeNode133,
-            treeNode134,
-            treeNode135});
-            System.Windows.Forms.TreeNode treeNode137 = new System.Windows.Forms.TreeNode("Salvar");
-            System.Windows.Forms.TreeNode treeNode138 = new System.Windows.Forms.TreeNode("Imprimir");
-            System.Windows.Forms.TreeNode treeNode139 = new System.Windows.Forms.TreeNode("Permissões de Acesso", new System.Windows.Forms.TreeNode[] {
-            treeNode137,
-            treeNode138});
-            System.Windows.Forms.TreeNode treeNode140 = new System.Windows.Forms.TreeNode("Controle de Acesso", new System.Windows.Forms.TreeNode[] {
-            treeNode130,
-            treeNode136,
-            treeNode139});
-            System.Windows.Forms.TreeNode treeNode141 = new System.Windows.Forms.TreeNode("Utilitarios", new System.Windows.Forms.TreeNode[] {
+            treeNode132});
+            System.Windows.Forms.TreeNode treeNode134 = new System.Windows.Forms.TreeNode("Livro Caixa", new System.Windows.Forms.TreeNode[] {
+            treeNode121,
             treeNode124,
-            treeNode140});
+            treeNode130,
+            treeNode133});
+            System.Windows.Forms.TreeNode treeNode135 = new System.Windows.Forms.TreeNode("Consultar");
+            System.Windows.Forms.TreeNode treeNode136 = new System.Windows.Forms.TreeNode("Editar");
+            System.Windows.Forms.TreeNode treeNode137 = new System.Windows.Forms.TreeNode("Excluir");
+            System.Windows.Forms.TreeNode treeNode138 = new System.Windows.Forms.TreeNode("Salvar");
+            System.Windows.Forms.TreeNode treeNode139 = new System.Windows.Forms.TreeNode("Imprimir");
+            System.Windows.Forms.TreeNode treeNode140 = new System.Windows.Forms.TreeNode("Contas a Pagar", new System.Windows.Forms.TreeNode[] {
+            treeNode135,
+            treeNode136,
+            treeNode137,
+            treeNode138,
+            treeNode139});
+            System.Windows.Forms.TreeNode treeNode141 = new System.Windows.Forms.TreeNode("Consultar");
+            System.Windows.Forms.TreeNode treeNode142 = new System.Windows.Forms.TreeNode("Imprimir");
+            System.Windows.Forms.TreeNode treeNode143 = new System.Windows.Forms.TreeNode("Fluxo de Caixa", new System.Windows.Forms.TreeNode[] {
+            treeNode141,
+            treeNode142});
+            System.Windows.Forms.TreeNode treeNode144 = new System.Windows.Forms.TreeNode("Financeiro", new System.Windows.Forms.TreeNode[] {
+            treeNode134,
+            treeNode140,
+            treeNode143});
+            System.Windows.Forms.TreeNode treeNode145 = new System.Windows.Forms.TreeNode("Consultar");
+            System.Windows.Forms.TreeNode treeNode146 = new System.Windows.Forms.TreeNode("Editar");
+            System.Windows.Forms.TreeNode treeNode147 = new System.Windows.Forms.TreeNode("Excluir");
+            System.Windows.Forms.TreeNode treeNode148 = new System.Windows.Forms.TreeNode("Salvar");
+            System.Windows.Forms.TreeNode treeNode149 = new System.Windows.Forms.TreeNode("Imprimir");
+            System.Windows.Forms.TreeNode treeNode150 = new System.Windows.Forms.TreeNode("Parâmetro de Sistema ", new System.Windows.Forms.TreeNode[] {
+            treeNode145,
+            treeNode146,
+            treeNode147,
+            treeNode148,
+            treeNode149});
+            System.Windows.Forms.TreeNode treeNode151 = new System.Windows.Forms.TreeNode("Consultar");
+            System.Windows.Forms.TreeNode treeNode152 = new System.Windows.Forms.TreeNode("Editar");
+            System.Windows.Forms.TreeNode treeNode153 = new System.Windows.Forms.TreeNode("Excluir");
+            System.Windows.Forms.TreeNode treeNode154 = new System.Windows.Forms.TreeNode("Salvar");
+            System.Windows.Forms.TreeNode treeNode155 = new System.Windows.Forms.TreeNode("Imprimir");
+            System.Windows.Forms.TreeNode treeNode156 = new System.Windows.Forms.TreeNode("Usuários", new System.Windows.Forms.TreeNode[] {
+            treeNode151,
+            treeNode152,
+            treeNode153,
+            treeNode154,
+            treeNode155});
+            System.Windows.Forms.TreeNode treeNode157 = new System.Windows.Forms.TreeNode("Consultar");
+            System.Windows.Forms.TreeNode treeNode158 = new System.Windows.Forms.TreeNode("Editar");
+            System.Windows.Forms.TreeNode treeNode159 = new System.Windows.Forms.TreeNode("Excluir");
+            System.Windows.Forms.TreeNode treeNode160 = new System.Windows.Forms.TreeNode("Salvar");
+            System.Windows.Forms.TreeNode treeNode161 = new System.Windows.Forms.TreeNode("Imprimir");
+            System.Windows.Forms.TreeNode treeNode162 = new System.Windows.Forms.TreeNode("Perfil de Usuário", new System.Windows.Forms.TreeNode[] {
+            treeNode157,
+            treeNode158,
+            treeNode159,
+            treeNode160,
+            treeNode161});
+            System.Windows.Forms.TreeNode treeNode163 = new System.Windows.Forms.TreeNode("Salvar");
+            System.Windows.Forms.TreeNode treeNode164 = new System.Windows.Forms.TreeNode("Imprimir");
+            System.Windows.Forms.TreeNode treeNode165 = new System.Windows.Forms.TreeNode("Permissões de Acesso", new System.Windows.Forms.TreeNode[] {
+            treeNode163,
+            treeNode164});
+            System.Windows.Forms.TreeNode treeNode166 = new System.Windows.Forms.TreeNode("Controle de Acesso", new System.Windows.Forms.TreeNode[] {
+            treeNode156,
+            treeNode162,
+            treeNode165});
+            System.Windows.Forms.TreeNode treeNode167 = new System.Windows.Forms.TreeNode("Utilitarios", new System.Windows.Forms.TreeNode[] {
+            treeNode144,
+            treeNode150,
+            treeNode166});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPermissaoAcesso));
             this.pnlPrincipal = new System.Windows.Forms.Panel();
             this.tvFuncoes = new System.Windows.Forms.TreeView();
@@ -698,24 +750,24 @@
             treeNode118.Name = "3000";
             treeNode118.Tag = "3000";
             treeNode118.Text = "Relatorios";
-            treeNode119.Name = "1";
-            treeNode119.Tag = "1";
-            treeNode119.Text = "Consultar";
-            treeNode120.Name = "2";
-            treeNode120.Tag = "2";
-            treeNode120.Text = "Editar";
-            treeNode121.Name = "3";
-            treeNode121.Tag = "3";
-            treeNode121.Text = "Excluir";
+            treeNode119.Name = "4";
+            treeNode119.Tag = "4";
+            treeNode119.Text = "Salvar";
+            treeNode120.Name = "5";
+            treeNode120.Tag = "5";
+            treeNode120.Text = "Imprimir";
+            treeNode121.Name = "400311";
+            treeNode121.Tag = "400311";
+            treeNode121.Text = "Abrir Movimentação";
             treeNode122.Name = "4";
             treeNode122.Tag = "4";
             treeNode122.Text = "Salvar";
             treeNode123.Name = "5";
             treeNode123.Tag = "5";
             treeNode123.Text = "Imprimir";
-            treeNode124.Name = "4001";
-            treeNode124.Tag = "4001";
-            treeNode124.Text = "Parâmetro de Sistema ";
+            treeNode124.Name = "400312";
+            treeNode124.Tag = "400312";
+            treeNode124.Text = "Encerrar Movimentação";
             treeNode125.Name = "1";
             treeNode125.Tag = "1";
             treeNode125.Text = "Consultar";
@@ -731,47 +783,125 @@
             treeNode129.Name = "5";
             treeNode129.Tag = "5";
             treeNode129.Text = "Imprimir";
-            treeNode130.Name = "40021";
-            treeNode130.Tag = "40021";
-            treeNode130.Text = "Usuários";
+            treeNode130.Name = "400313";
+            treeNode130.Tag = "400313";
+            treeNode130.Text = "Lançamentos";
             treeNode131.Name = "1";
             treeNode131.Tag = "1";
             treeNode131.Text = "Consultar";
-            treeNode132.Name = "2";
-            treeNode132.Tag = "2";
-            treeNode132.Text = "Editar";
-            treeNode133.Name = "3";
-            treeNode133.Tag = "3";
-            treeNode133.Text = "Excluir";
-            treeNode134.Name = "4";
-            treeNode134.Tag = "4";
-            treeNode134.Text = "Salvar";
-            treeNode135.Name = "5";
-            treeNode135.Tag = "5";
-            treeNode135.Text = "Imprimir";
-            treeNode136.Name = "40022";
-            treeNode136.Tag = "40022";
-            treeNode136.Text = "Perfil de Usuário";
-            treeNode137.Name = "4";
-            treeNode137.Tag = "4";
-            treeNode137.Text = "Salvar";
-            treeNode138.Name = "5";
-            treeNode138.Tag = "5";
-            treeNode138.Text = "Imprimir";
-            treeNode139.Name = "40023";
-            treeNode139.Tag = "40023";
-            treeNode139.Text = "Permissões de Acesso";
-            treeNode140.Name = "4002";
-            treeNode140.Tag = "4002";
-            treeNode140.Text = "Controle de Acesso";
-            treeNode141.Name = "4000";
-            treeNode141.Tag = "4000";
-            treeNode141.Text = "Utilitarios";
+            treeNode132.Name = "5";
+            treeNode132.Tag = "5";
+            treeNode132.Text = "Imprimir";
+            treeNode133.Name = "400314";
+            treeNode133.Tag = "400314";
+            treeNode133.Text = "Listagem de Lançamentos";
+            treeNode134.Name = "40031";
+            treeNode134.Tag = "40031";
+            treeNode134.Text = "Livro Caixa";
+            treeNode135.Name = "1";
+            treeNode135.Tag = "1";
+            treeNode135.Text = "Consultar";
+            treeNode136.Name = "2";
+            treeNode136.Tag = "2";
+            treeNode136.Text = "Editar";
+            treeNode137.Name = "3";
+            treeNode137.Tag = "3";
+            treeNode137.Text = "Excluir";
+            treeNode138.Name = "4";
+            treeNode138.Tag = "4";
+            treeNode138.Text = "Salvar";
+            treeNode139.Name = "5";
+            treeNode139.Tag = "5";
+            treeNode139.Text = "Imprimir";
+            treeNode140.Name = "40032";
+            treeNode140.Tag = "40032";
+            treeNode140.Text = "Contas a Pagar";
+            treeNode141.Name = "1";
+            treeNode141.Tag = "1";
+            treeNode141.Text = "Consultar";
+            treeNode142.Name = "5";
+            treeNode142.Tag = "5";
+            treeNode142.Text = "Imprimir";
+            treeNode143.Name = "40033";
+            treeNode143.Tag = "40033";
+            treeNode143.Text = "Fluxo de Caixa";
+            treeNode144.Name = "4003";
+            treeNode144.Tag = "4003";
+            treeNode144.Text = "Financeiro";
+            treeNode145.Name = "1";
+            treeNode145.Tag = "1";
+            treeNode145.Text = "Consultar";
+            treeNode146.Name = "2";
+            treeNode146.Tag = "2";
+            treeNode146.Text = "Editar";
+            treeNode147.Name = "3";
+            treeNode147.Tag = "3";
+            treeNode147.Text = "Excluir";
+            treeNode148.Name = "4";
+            treeNode148.Tag = "4";
+            treeNode148.Text = "Salvar";
+            treeNode149.Name = "5";
+            treeNode149.Tag = "5";
+            treeNode149.Text = "Imprimir";
+            treeNode150.Name = "4001";
+            treeNode150.Tag = "4001";
+            treeNode150.Text = "Parâmetro de Sistema ";
+            treeNode151.Name = "1";
+            treeNode151.Tag = "1";
+            treeNode151.Text = "Consultar";
+            treeNode152.Name = "2";
+            treeNode152.Tag = "2";
+            treeNode152.Text = "Editar";
+            treeNode153.Name = "3";
+            treeNode153.Tag = "3";
+            treeNode153.Text = "Excluir";
+            treeNode154.Name = "4";
+            treeNode154.Tag = "4";
+            treeNode154.Text = "Salvar";
+            treeNode155.Name = "5";
+            treeNode155.Tag = "5";
+            treeNode155.Text = "Imprimir";
+            treeNode156.Name = "40021";
+            treeNode156.Tag = "40021";
+            treeNode156.Text = "Usuários";
+            treeNode157.Name = "1";
+            treeNode157.Tag = "1";
+            treeNode157.Text = "Consultar";
+            treeNode158.Name = "2";
+            treeNode158.Tag = "2";
+            treeNode158.Text = "Editar";
+            treeNode159.Name = "3";
+            treeNode159.Tag = "3";
+            treeNode159.Text = "Excluir";
+            treeNode160.Name = "4";
+            treeNode160.Tag = "4";
+            treeNode160.Text = "Salvar";
+            treeNode161.Name = "5";
+            treeNode161.Tag = "5";
+            treeNode161.Text = "Imprimir";
+            treeNode162.Name = "40022";
+            treeNode162.Tag = "40022";
+            treeNode162.Text = "Perfil de Usuário";
+            treeNode163.Name = "4";
+            treeNode163.Tag = "4";
+            treeNode163.Text = "Salvar";
+            treeNode164.Name = "5";
+            treeNode164.Tag = "5";
+            treeNode164.Text = "Imprimir";
+            treeNode165.Name = "40023";
+            treeNode165.Tag = "40023";
+            treeNode165.Text = "Permissões de Acesso";
+            treeNode166.Name = "4002";
+            treeNode166.Tag = "4002";
+            treeNode166.Text = "Controle de Acesso";
+            treeNode167.Name = "4000";
+            treeNode167.Tag = "4000";
+            treeNode167.Text = "Utilitarios";
             this.tvFuncoes.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode95,
             treeNode114,
             treeNode118,
-            treeNode141});
+            treeNode167});
             this.tvFuncoes.Size = new System.Drawing.Size(415, 368);
             this.tvFuncoes.TabIndex = 1;
             this.tvFuncoes.BeforeCheck += new System.Windows.Forms.TreeViewCancelEventHandler(this.tvFuncoes_BeforeCheck);

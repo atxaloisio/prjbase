@@ -206,6 +206,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cadastros\frmCadEditItem_Livro_Caixa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cadastros\frmCadEditItem_Livro_Caixa.Designer.cs">
+      <DependentUpon>frmCadEditItem_Livro_Caixa.cs</DependentUpon>
+    </Compile>
     <Compile Include="cadastros\frmCadEditLivro_Caixa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -333,6 +339,12 @@
       <DependentUpon>frmParametroSistema.cs</DependentUpon>
     </Compile>
     <Compile Include="GravaArquivo.cs" />
+    <Compile Include="Listas\frmListItem_Livro_Caixa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listas\frmListItem_Livro_Caixa.Designer.cs">
+      <DependentUpon>frmListItem_Livro_Caixa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Listas\frmListFornecedores.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -644,6 +656,9 @@
     <Compile Include="utilitarios\frmUtilSelecionarFilial.Designer.cs">
       <DependentUpon>frmUtilSelecionarFilial.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="cadastros\frmCadEditItem_Livro_Caixa.resx">
+      <DependentUpon>frmCadEditItem_Livro_Caixa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="cadastros\frmCadEditLivro_Caixa.resx">
       <DependentUpon>frmCadEditLivro_Caixa.cs</DependentUpon>
     </EmbeddedResource>
@@ -709,6 +724,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmParametroSistema.resx">
       <DependentUpon>frmParametroSistema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listas\frmListItem_Livro_Caixa.resx">
+      <DependentUpon>frmListItem_Livro_Caixa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Listas\frmListFornecedores.resx">
       <DependentUpon>frmListFornecedores.cs</DependentUpon>

@@ -812,6 +812,7 @@ namespace prjbase
         {
             var frm = new frmCadEditLivro_Caixa();
             frm.TipoMovimento = tpMovimentoLivroCaixa.Abertura;
+            frm.atualizagrid = null;
             frm.Text = frm.Text + ": Abertura de Movimento";
             frm.ExibeDialogo();
             frm.Dispose();
@@ -821,9 +822,33 @@ namespace prjbase
         {
             var frm = new frmCadEditLivro_Caixa();
             frm.TipoMovimento = tpMovimentoLivroCaixa.Encerramento;
+            frm.atualizagrid = null;
             frm.Text = frm.Text + ": Encerramento de Movimento";
             frm.ExibeDialogo();
             frm.Dispose();
+        }
+
+        private void mnuLancamentoCaixa_Click(object sender, EventArgs e)
+        {
+            Boolean instanciar = true;
+
+            foreach (var mdiChildForm in MdiChildren)
+            {
+                if (mdiChildForm is frmListItem_Livro_Caixa)
+                {
+                    instanciar = false;
+                    mdiChildForm.BringToFront();
+                    mdiChildForm.Show();
+                }
+            }
+
+            if (instanciar)
+            {
+                var frm = new frmListItem_Livro_Caixa();
+                frm.ConfigurarForm(this);
+                frm.Tag = ((ToolStripMenuItem)sender).Tag;
+                frm.Show();
+            }
         }
     }
 }

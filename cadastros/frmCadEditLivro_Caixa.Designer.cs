@@ -38,6 +38,9 @@
             this.txtSaldoFinal = new System.Windows.Forms.TextBox();
             this.lblFilial = new System.Windows.Forms.Label();
             this.cbFilial = new System.Windows.Forms.ComboBox();
+            this.txtUsuarioInc = new System.Windows.Forms.TextBox();
+            this.txtDtInc = new System.Windows.Forms.TextBox();
+            this.txtStatus = new System.Windows.Forms.TextBox();
             this.pnlBotoes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
             this.pnlPrincipal.SuspendLayout();
@@ -50,7 +53,7 @@
             // 
             // btnFechar
             // 
-            this.btnFechar.Location = new System.Drawing.Point(3, -1503);
+            this.btnFechar.Location = new System.Drawing.Point(3, -3617);
             this.btnFechar.TabIndex = 1;
             // 
             // btnIncluir
@@ -67,6 +70,9 @@
             // 
             // pnlJanela
             // 
+            this.pnlJanela.Controls.Add(this.txtStatus);
+            this.pnlJanela.Controls.Add(this.txtDtInc);
+            this.pnlJanela.Controls.Add(this.txtUsuarioInc);
             this.pnlJanela.Controls.Add(this.lblFilial);
             this.pnlJanela.Controls.Add(this.cbFilial);
             this.pnlJanela.Controls.Add(this.label3);
@@ -123,7 +129,7 @@
             this.txtData.ReadOnly = true;
             this.txtData.Size = new System.Drawing.Size(84, 23);
             this.txtData.TabIndex = 8;
-            this.txtData.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.txtData.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
             this.epValidaDados.SetTipoValidacao(this.txtData, libComponente.TipoValidacao.Vazio);
             this.txtData.ValidatingType = typeof(System.DateTime);
             // 
@@ -146,6 +152,8 @@
             this.txtSaldoInicial.ReadOnly = true;
             this.txtSaldoInicial.Size = new System.Drawing.Size(104, 23);
             this.txtSaldoInicial.TabIndex = 77;
+            this.txtSaldoInicial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumber_KeyPress);
+            this.txtSaldoInicial.Validating += new System.ComponentModel.CancelEventHandler(this.OnlyNumber_Validating);
             // 
             // label3
             // 
@@ -166,6 +174,8 @@
             this.txtSaldoFinal.ReadOnly = true;
             this.txtSaldoFinal.Size = new System.Drawing.Size(104, 23);
             this.txtSaldoFinal.TabIndex = 79;
+            this.txtSaldoFinal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumber_KeyPress);
+            this.txtSaldoFinal.Validating += new System.ComponentModel.CancelEventHandler(this.OnlyNumber_Validating);
             // 
             // lblFilial
             // 
@@ -175,6 +185,7 @@
             this.lblFilial.Size = new System.Drawing.Size(34, 16);
             this.lblFilial.TabIndex = 82;
             this.lblFilial.Text = "Filial";
+            this.lblFilial.Visible = false;
             // 
             // cbFilial
             // 
@@ -188,6 +199,46 @@
             this.epValidaDados.SetObrigatorio(this.cbFilial, false);
             this.cbFilial.Size = new System.Drawing.Size(177, 24);
             this.cbFilial.TabIndex = 81;
+            this.cbFilial.Visible = false;
+            // 
+            // txtUsuarioInc
+            // 
+            this.txtUsuarioInc.Enabled = false;
+            this.epValidaDados.SetFraseErro(this.txtUsuarioInc, "Valor Unitário do produto Obrigatório");
+            this.txtUsuarioInc.Location = new System.Drawing.Point(373, 8);
+            this.txtUsuarioInc.Name = "txtUsuarioInc";
+            this.epValidaDados.SetObrigatorio(this.txtUsuarioInc, true);
+            this.txtUsuarioInc.ReadOnly = true;
+            this.txtUsuarioInc.Size = new System.Drawing.Size(10, 23);
+            this.txtUsuarioInc.TabIndex = 83;
+            this.txtUsuarioInc.TabStop = false;
+            this.txtUsuarioInc.Visible = false;
+            // 
+            // txtDtInc
+            // 
+            this.txtDtInc.Enabled = false;
+            this.epValidaDados.SetFraseErro(this.txtDtInc, "Valor Unitário do produto Obrigatório");
+            this.txtDtInc.Location = new System.Drawing.Point(389, 8);
+            this.txtDtInc.Name = "txtDtInc";
+            this.epValidaDados.SetObrigatorio(this.txtDtInc, true);
+            this.txtDtInc.ReadOnly = true;
+            this.txtDtInc.Size = new System.Drawing.Size(10, 23);
+            this.txtDtInc.TabIndex = 84;
+            this.txtDtInc.TabStop = false;
+            this.txtDtInc.Visible = false;
+            // 
+            // txtStatus
+            // 
+            this.txtStatus.Enabled = false;
+            this.epValidaDados.SetFraseErro(this.txtStatus, "Valor Unitário do produto Obrigatório");
+            this.txtStatus.Location = new System.Drawing.Point(405, 8);
+            this.txtStatus.Name = "txtStatus";
+            this.epValidaDados.SetObrigatorio(this.txtStatus, true);
+            this.txtStatus.ReadOnly = true;
+            this.txtStatus.Size = new System.Drawing.Size(10, 23);
+            this.txtStatus.TabIndex = 85;
+            this.txtStatus.TabStop = false;
+            this.txtStatus.Visible = false;
             // 
             // frmCadEditLivro_Caixa
             // 
@@ -218,5 +269,8 @@
         private System.Windows.Forms.TextBox txtSaldoInicial;
         private System.Windows.Forms.Label lblFilial;
         private System.Windows.Forms.ComboBox cbFilial;
+        private System.Windows.Forms.TextBox txtDtInc;
+        private System.Windows.Forms.TextBox txtUsuarioInc;
+        private System.Windows.Forms.TextBox txtStatus;
     }
 }

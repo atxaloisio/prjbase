@@ -39,7 +39,11 @@ namespace prjbase
                 {
                     if (salvar(sender, e))
                     {
-                        this.atualizagrid();
+                        if (this.atualizagrid != null)
+                        {
+                            this.atualizagrid();
+                        }
+                        
                         btnIncluir.Top = 40;
                         btnIncluir.Visible = true;                        
                         MessageBox.Show(Text + " salvo com sucesso.", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
