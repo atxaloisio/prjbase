@@ -78,10 +78,28 @@ namespace prjbase
                 {
                     if (Livro_Caixa.status == "F")
                     {
-                        MessageBox.Show("Movimentação encerrada para a data: " + Livro_Caixa.data.Value.ToShortDateString(), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        txtSaldoInicial.Enabled = false;
-                        txtSaldoInicial.ReadOnly = true;
-                        btnSalvar.Enabled = false;
+                        if (Program.usuario_logado.perfil.administrativo == "S")
+                        {
+                            if (MessageBox.Show("Movimentação encerrada para a data: " + Livro_Caixa.data.Value.ToShortDateString() + "\n Deseja reabir a movimentação?", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+                            {
+                                txtSaldoFinal.Text = string.Empty;
+                            }
+                            else
+                            {
+                                txtSaldoInicial.Enabled = false;
+                                txtSaldoInicial.ReadOnly = true;
+                                btnSalvar.Enabled = false;
+                            }
+                            
+                        }
+                        else
+                        {
+                            MessageBox.Show("Movimentação encerrada para a data: " + Livro_Caixa.data.Value.ToShortDateString(), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            txtSaldoInicial.Enabled = false;
+                            txtSaldoInicial.ReadOnly = true;
+                            btnSalvar.Enabled = false;
+                        }
+                        
                     }
                     else
                     {
@@ -132,9 +150,29 @@ namespace prjbase
                         lstLc = Livro_CaixaBLL.getLivro_Caixa(p => p.Id_empresa == Id_empresa, true, c => c.data.ToString());
 
                         if (lstLc.Count > 0)
-                        {
+                        {                            
                             Livro_Caixa = lstLc.First();
-                            txtSaldoInicial.Text = Livro_Caixa.saldo_final.Value.ToString("N2");
+                            //Verifica se a movimentação do dia anterior foi fechada se não foi fecha.
+                            if (Livro_Caixa.status == "A")
+                            {
+                                //Saldo inicial
+                                decimal sldIni = Convert.ToDecimal(Livro_Caixa.saldo_inicial);
+                                //Soma das entradas do dia
+                                decimal sumEnt = Convert.ToDecimal(Livro_Caixa.item_livro_caixa.Where(p => p.tipo == "E").Sum(c => c.valor));
+                                //Soma das saidas do dia
+                                decimal sumSaid = Convert.ToDecimal(Livro_Caixa.item_livro_caixa.Where(p => p.tipo == "S").Sum(c => c.valor));
+
+                                decimal total = ((sldIni + sumEnt) - (-1 * sumSaid));
+                                Livro_Caixa.status = "F";
+                                Livro_Caixa.saldo_final = total;
+                                Livro_CaixaBLL.AlterarLivro_Caixa(Livro_Caixa);
+                            }
+
+                            if (Livro_Caixa.saldo_final != null)
+                            {
+                                txtSaldoInicial.Text = Livro_Caixa.saldo_final.Value.ToString("N2");
+                            }
+                            
                         }
                     }
 
@@ -156,20 +194,23 @@ namespace prjbase
         {
             long? Id_filial = null;
 
-            if (Program.usuario_logado.Id_filial == null)
+            if (Id_filial == null)
             {
-                frmUtilSelecionarFilial frm = new frmUtilSelecionarFilial();
-
-                if (frm.ExibeDialogo() == DialogResult.OK)
+                if (Program.usuario_logado.Id_filial == null)
                 {
-                    Id_filial = frm.Id;
-                }
+                    frmUtilSelecionarFilial frm = new frmUtilSelecionarFilial();
 
-                frm.Dispose();
-            }
-            else
-            {
-                Id_filial = Program.usuario_logado.Id_filial;
+                    if (frm.ExibeDialogo() == DialogResult.OK)
+                    {
+                        Id_filial = frm.Id;
+                    }
+
+                    frm.Dispose();
+                }
+                else
+                {
+                    Id_filial = Program.usuario_logado.Id_filial;
+                }
             }
 
             if (Id_filial != null)
@@ -212,10 +253,30 @@ namespace prjbase
                     {
                         if (Livro_Caixa.status == "F")
                         {
-                            MessageBox.Show("Movimentação encerrada para a data: " + Livro_Caixa.data.Value.ToShortDateString(), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            txtSaldoInicial.Enabled = false;
-                            txtSaldoInicial.ReadOnly = true;
-                            btnSalvar.Enabled = false;
+                            if (Program.usuario_logado.perfil.administrativo == "S")
+                            {
+                                if (MessageBox.Show("Movimentação encerrada para a data: " + Livro_Caixa.data.Value.ToShortDateString() + "\n Deseja reabir a movimentação?", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+                                {
+                                    txtSaldoFinal.Text = string.Empty;
+                                    txtSaldoInicial.Enabled = true;
+                                    txtSaldoInicial.ReadOnly = false;
+                                    btnSalvar.Enabled = true;
+                                }
+                                else
+                                {
+                                    txtSaldoInicial.Enabled = false;
+                                    txtSaldoInicial.ReadOnly = true;
+                                    btnSalvar.Enabled = false;
+                                }
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("Movimentação encerrada para a data: " + Livro_Caixa.data.Value.ToShortDateString(), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                txtSaldoInicial.Enabled = false;
+                                txtSaldoInicial.ReadOnly = true;
+                                btnSalvar.Enabled = false;
+                            }
                         }
                         else
                         {
@@ -269,7 +330,26 @@ namespace prjbase
                                 if (lstLc.Count > 0)
                                 {
                                     Livro_Caixa = lstLc.First();
-                                    txtSaldoInicial.Text = Livro_Caixa.saldo_final.Value.ToString("N2");
+                                    //Verifica se a movimentação do dia anterior foi fechada se não foi fecha.
+                                    if (Livro_Caixa.status == "A")
+                                    {
+                                        //Saldo inicial
+                                        decimal sldIni = Convert.ToDecimal(Livro_Caixa.saldo_inicial);
+                                        //Soma das entradas do dia
+                                        decimal sumEnt = Convert.ToDecimal(Livro_Caixa.item_livro_caixa.Where(p => p.tipo == "E").Sum(c => c.valor));
+                                        //Soma das saidas do dia
+                                        decimal sumSaid = Convert.ToDecimal(Livro_Caixa.item_livro_caixa.Where(p => p.tipo == "S").Sum(c => c.valor));
+
+                                        decimal total = ((sldIni + sumEnt) - (-1 * sumSaid));
+                                        Livro_Caixa.status = "F";
+                                        Livro_Caixa.saldo_final = total;
+                                        Livro_CaixaBLL.AlterarLivro_Caixa(Livro_Caixa);
+                                    }
+
+                                    if (Livro_Caixa.saldo_final != null)
+                                    {
+                                        txtSaldoInicial.Text = Livro_Caixa.saldo_final.Value.ToString("N2");
+                                    }                                    
                                 }
                             }
 
@@ -310,6 +390,12 @@ namespace prjbase
 
         protected override bool salvar(object sender, EventArgs e)
         {
+
+            if (TipoMovimento == tpMovimentoLivroCaixa.Abertura)
+            {
+                epValidaDados.SetObrigatorio(txtSaldoFinal, false);                
+            }
+
             if (epValidaDados.Validar())
             {
                 Livro_Caixa Livro_Caixa = new Livro_Caixa();
@@ -357,7 +443,9 @@ namespace prjbase
                 Livro_Caixa.usuario_inclusao = txtUsuarioInc.Text;
             }
 
+            txtData.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
             Livro_Caixa.data = Convert.ToDateTime(txtData.Text);
+
             Livro_Caixa.Id_empresa = Program.usuario_logado.Id_empresa;
             if (cbFilial.SelectedValue != null)
             {

@@ -177,26 +177,30 @@ namespace prjbase
 
             if (Parametro.UtilizaFilial())
             {
-                if (Program.usuario_logado.Id_filial != null)
+                if (Id_Filial == null)
                 {
-                    Id_Filial = Program.usuario_logado.Id_filial;
-                }
-                else
-                {
-                    frmUtilSelecionarFilial frm = new frmUtilSelecionarFilial();
-
-                    if (frm.ExibeDialogo() == DialogResult.OK)
+                    if (Program.usuario_logado.Id_filial != null)
                     {
-                        Id_Filial = frm.Id;
+                        Id_Filial = Program.usuario_logado.Id_filial;
                     }
+                    else
+                    {
+                        frmUtilSelecionarFilial frm = new frmUtilSelecionarFilial();
 
-                    frm.Dispose();
+                        if (frm.ExibeDialogo() == DialogResult.OK)
+                        {
+                            Id_Filial = frm.Id;
+                        }
+
+                        frm.Dispose();
+                    }
                 }
+                
 
                 if (Id_Filial != null)
                 {
                     List<Livro_Caixa> lstLC = null;
-                    lstLC = Livro_CaixaBLL.getLivro_Caixa(p => p.Id_filial == Id_Filial & DbFunctions.TruncateTime(p.data) == DbFunctions.TruncateTime(DateTime.Now) & p.status == "A");
+                    lstLC = Livro_CaixaBLL.getLivro_Caixa(p => p.Id_filial == Id_Filial & DbFunctions.TruncateTime(p.data) == DbFunctions.TruncateTime(DateTime.Now) & p.status == "A", false, deslocamento, tamanhoPagina, out totalReg,c=>c.Id.ToString());
 
                     if (lstLC.Count > 0)
                     {
@@ -206,6 +210,8 @@ namespace prjbase
                     }
                     else
                     {
+                        desabilitaBotoes();                        
+                        //throw new Exception("Não existe movimentação de livro caixa aberta no momento.");
                         MessageBox.Show("Não existe movimentação de livro caixa aberta para filial no momento.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         Close();
                     }                    
@@ -214,7 +220,7 @@ namespace prjbase
             else
             {
                 List<Livro_Caixa> lstLC = null;
-                lstLC = Livro_CaixaBLL.getLivro_Caixa(p => DbFunctions.TruncateTime(p.data) == DbFunctions.TruncateTime(DateTime.Now) & p.status == "A");
+                lstLC = Livro_CaixaBLL.getLivro_Caixa(p => DbFunctions.TruncateTime(p.data) == DbFunctions.TruncateTime(DateTime.Now) & p.status == "A", false, deslocamento, tamanhoPagina, out totalReg, c => c.Id.ToString());
 
                 if (lstLC.Count > 0)
                 {
@@ -224,12 +230,26 @@ namespace prjbase
                 }
                 else
                 {
+                    desabilitaBotoes();
+                    //throw new Exception("Não existe movimentação de livro caixa aberta no momento.");
                     MessageBox.Show("Não existe movimentação de livro caixa aberta no momento.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     Close();
                 }
             }
                                                             
             colOrdem = 0;
+        }
+
+        private void desabilitaBotoes()
+        {
+            btnIncluir.Enabled = false;
+            btnEditar.Enabled = false;
+            btnExcluir.Enabled = false;
+
+            btnAnterior.Enabled = false;
+            btnPrimeiro.Enabled = false;
+            btnProximo.Enabled = false;
+            btnUltimo.Enabled = false;
         }
 
         protected override void ordenaCelula(object sender, DataGridViewCellMouseEventArgs e)

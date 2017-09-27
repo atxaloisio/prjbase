@@ -33,12 +33,12 @@
             this.pnlBotoes = new System.Windows.Forms.Panel();
             this.btnIncluir = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
-            this.epValidaDados = new libComponente.ValidaObrigatorio(this.components);
             this.pnlPrincipal = new System.Windows.Forms.Panel();
             this.pnlJanela = new System.Windows.Forms.Panel();
+            this.epValidaDados = new libComponente.ValidaObrigatorio(this.components);
             this.pnlBotoes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
             this.pnlPrincipal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
             this.SuspendLayout();
             // 
             // btnFechar
@@ -108,11 +108,6 @@
             this.btnSalvar.UseVisualStyleBackColor = false;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
-            // epValidaDados
-            // 
-            this.epValidaDados.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.epValidaDados.ContainerControl = this;
-            // 
             // pnlPrincipal
             // 
             this.pnlPrincipal.AutoScroll = true;
@@ -138,6 +133,11 @@
             this.pnlJanela.TabIndex = 0;
             this.pnlJanela.TabStop = true;
             // 
+            // epValidaDados
+            // 
+            this.epValidaDados.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.epValidaDados.ContainerControl = this;
+            // 
             // frmBaseCadEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -154,8 +154,8 @@
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmBaseCadEdit_KeyPress);
             this.Resize += new System.EventHandler(this.frmBaseCadEdit_Resize);
             this.pnlBotoes.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).EndInit();
             this.pnlPrincipal.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -165,8 +165,8 @@
         public System.Windows.Forms.Button btnFechar;
         public System.Windows.Forms.Button btnIncluir;
         protected System.Windows.Forms.Panel pnlBotoes;
-        protected libComponente.ValidaObrigatorio epValidaDados;
         protected System.Windows.Forms.Panel pnlPrincipal;
         protected System.Windows.Forms.Panel pnlJanela;
+        protected libComponente.ValidaObrigatorio epValidaDados;
     }
 }

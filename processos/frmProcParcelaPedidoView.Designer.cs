@@ -87,9 +87,9 @@
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.txtDtFechamento = new System.Windows.Forms.MaskedTextBox();
             this.pnlBotoes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
             this.pnlPrincipal.SuspendLayout();
             this.pnlJanela.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
             this.gbParcelas.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvParcelas)).BeginInit();
@@ -99,7 +99,7 @@
             // 
             // btnFechar
             // 
-            this.btnFechar.Location = new System.Drawing.Point(3, 203);
+            this.btnFechar.Location = new System.Drawing.Point(3, 252);
             // 
             // btnIncluir
             // 
@@ -109,17 +109,17 @@
             // 
             // pnlBotoes
             // 
-            this.pnlBotoes.Size = new System.Drawing.Size(115, 438);
+            this.pnlBotoes.Size = new System.Drawing.Size(115, 435);
             // 
             // pnlPrincipal
             // 
-            this.pnlPrincipal.Size = new System.Drawing.Size(1007, 438);
+            this.pnlPrincipal.Size = new System.Drawing.Size(1022, 435);
             // 
             // pnlJanela
             // 
             this.pnlJanela.Controls.Add(this.gbParcelas);
             this.pnlJanela.Controls.Add(this.groupBox1);
-            this.pnlJanela.Location = new System.Drawing.Point(18, 56);
+            this.pnlJanela.Location = new System.Drawing.Point(25, 55);
             this.pnlJanela.Size = new System.Drawing.Size(989, 364);
             // 
             // gbParcelas
@@ -842,16 +842,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.CancelButton = null;
-            this.ClientSize = new System.Drawing.Size(1122, 438);
+            this.ClientSize = new System.Drawing.Size(1137, 435);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmProcParcelaPedidoView";
             this.Text = "Parcelas do Pedido de Vendas";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown);
             this.pnlBotoes.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).EndInit();
             this.pnlPrincipal.ResumeLayout(false);
             this.pnlJanela.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).EndInit();
             this.gbParcelas.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvParcelas)).EndInit();

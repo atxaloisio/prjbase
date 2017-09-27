@@ -42,9 +42,9 @@
             this.txtDtInc = new System.Windows.Forms.TextBox();
             this.txtStatus = new System.Windows.Forms.TextBox();
             this.pnlBotoes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
             this.pnlPrincipal.SuspendLayout();
             this.pnlJanela.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSalvar
@@ -53,7 +53,7 @@
             // 
             // btnFechar
             // 
-            this.btnFechar.Location = new System.Drawing.Point(3, -3617);
+            this.btnFechar.Location = new System.Drawing.Point(3, -3919);
             this.btnFechar.TabIndex = 1;
             // 
             // btnIncluir
@@ -121,7 +121,7 @@
             // txtData
             // 
             this.txtData.Enabled = false;
-            this.epValidaDados.SetFraseErro(this.txtData, "Data de Emissão obrigatório");
+            this.epValidaDados.SetFraseErro(this.txtData, "Data de movimentação obrigatória");
             this.txtData.Location = new System.Drawing.Point(56, 36);
             this.txtData.Mask = "00/00/0000";
             this.txtData.Name = "txtData";
@@ -145,7 +145,7 @@
             // txtSaldoInicial
             // 
             this.txtSaldoInicial.Enabled = false;
-            this.epValidaDados.SetFraseErro(this.txtSaldoInicial, "Valor Unitário do produto Obrigatório");
+            this.epValidaDados.SetFraseErro(this.txtSaldoInicial, "Saldo de abertura obrigatório");
             this.txtSaldoInicial.Location = new System.Drawing.Point(253, 36);
             this.txtSaldoInicial.Name = "txtSaldoInicial";
             this.epValidaDados.SetObrigatorio(this.txtSaldoInicial, true);
@@ -167,7 +167,7 @@
             // txtSaldoFinal
             // 
             this.txtSaldoFinal.Enabled = false;
-            this.epValidaDados.SetFraseErro(this.txtSaldoFinal, "Valor Unitário do produto Obrigatório");
+            this.epValidaDados.SetFraseErro(this.txtSaldoFinal, "Saldo de encerramento obrigatório");
             this.txtSaldoFinal.Location = new System.Drawing.Point(500, 36);
             this.txtSaldoFinal.Name = "txtSaldoFinal";
             this.epValidaDados.SetObrigatorio(this.txtSaldoFinal, true);
@@ -192,7 +192,7 @@
             this.cbFilial.BackColor = System.Drawing.SystemColors.Window;
             this.cbFilial.Enabled = false;
             this.cbFilial.FormattingEnabled = true;
-            this.epValidaDados.SetFraseErro(this.cbFilial, "Filial do usuário obrigatório");
+            this.epValidaDados.SetFraseErro(this.cbFilial, "");
             this.epValidaDados.SetIndiceCombo(this.cbFilial, -1);
             this.cbFilial.Location = new System.Drawing.Point(180, 9);
             this.cbFilial.Name = "cbFilial";
@@ -207,7 +207,7 @@
             this.epValidaDados.SetFraseErro(this.txtUsuarioInc, "Valor Unitário do produto Obrigatório");
             this.txtUsuarioInc.Location = new System.Drawing.Point(373, 8);
             this.txtUsuarioInc.Name = "txtUsuarioInc";
-            this.epValidaDados.SetObrigatorio(this.txtUsuarioInc, true);
+            this.epValidaDados.SetObrigatorio(this.txtUsuarioInc, false);
             this.txtUsuarioInc.ReadOnly = true;
             this.txtUsuarioInc.Size = new System.Drawing.Size(10, 23);
             this.txtUsuarioInc.TabIndex = 83;
@@ -220,7 +220,7 @@
             this.epValidaDados.SetFraseErro(this.txtDtInc, "Valor Unitário do produto Obrigatório");
             this.txtDtInc.Location = new System.Drawing.Point(389, 8);
             this.txtDtInc.Name = "txtDtInc";
-            this.epValidaDados.SetObrigatorio(this.txtDtInc, true);
+            this.epValidaDados.SetObrigatorio(this.txtDtInc, false);
             this.txtDtInc.ReadOnly = true;
             this.txtDtInc.Size = new System.Drawing.Size(10, 23);
             this.txtDtInc.TabIndex = 84;
@@ -233,7 +233,7 @@
             this.epValidaDados.SetFraseErro(this.txtStatus, "Valor Unitário do produto Obrigatório");
             this.txtStatus.Location = new System.Drawing.Point(405, 8);
             this.txtStatus.Name = "txtStatus";
-            this.epValidaDados.SetObrigatorio(this.txtStatus, true);
+            this.epValidaDados.SetObrigatorio(this.txtStatus, false);
             this.txtStatus.ReadOnly = true;
             this.txtStatus.Size = new System.Drawing.Size(10, 23);
             this.txtStatus.TabIndex = 85;
@@ -250,10 +250,10 @@
             this.Activated += new System.EventHandler(this.frmCadEditLivro_Caixa_Activated);
             this.Resize += new System.EventHandler(this.frmCadEditLivro_Caixa_Resize);
             this.pnlBotoes.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).EndInit();
             this.pnlPrincipal.ResumeLayout(false);
             this.pnlJanela.ResumeLayout(false);
             this.pnlJanela.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).EndInit();
             this.ResumeLayout(false);
 
         }

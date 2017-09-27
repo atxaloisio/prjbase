@@ -242,6 +242,36 @@ namespace prjbase
                     if (child.DropDownItems.Count > 0)
                     {
                         interaMenuFilho(child);
+                        Funcao_Perfil fp = Program.usuario_logado.perfil.funcao_perfil.Where(p => p.codigo_funcao == Convert.ToInt32(child.Tag)).FirstOrDefault();
+                        if (fp != null)
+                        {
+                            exibemenu = fp.consultar == "S" || fp.editar == "S" || fp.excluir == "S" || fp.salvar == "S" || fp.imprimir == "S";
+                            child.Visible = exibemenu;
+                            //relacionar as tags que não serão exibidas na visão de Oticas
+                            if (exibemenu)
+                            {
+                                switch (Convert.ToInt32(child.Tag))
+                                {
+                                    case 1006:                                    
+                                    case 1011:
+                                    case 10043:
+                                    case 10044:
+                                    case 3001:
+                                        {
+                                            child.Visible = vwLaboratorio;
+                                        }
+                                        break;
+                                    default:
+                                        break;
+                                }
+
+                                //Agrupamento de pedidos somente com interação para ERP
+                                if (Convert.ToInt32(child.Tag) == 2001)
+                                {
+                                    child.Visible = intERP;
+                                }
+                            }
+                        }
                     }
                     else
                     {
@@ -258,8 +288,7 @@ namespace prjbase
                                 {
                                     switch (Convert.ToInt32(child.Tag))
                                     {
-                                        case 1006:
-                                        case 1010:
+                                        case 1006:                                        
                                         case 1011:
                                         case 10043:
                                         case 10044:
@@ -297,6 +326,36 @@ namespace prjbase
                 if (child.DropDownItems.Count >0)
                 {
                     interaMenuFilho(child);
+                    Funcao_Perfil fp = Program.usuario_logado.perfil.funcao_perfil.Where(p => p.codigo_funcao == Convert.ToInt32(child.Tag)).FirstOrDefault();
+                    if (fp != null)
+                    {
+                        exibemenu = fp.consultar == "S" || fp.editar == "S" || fp.excluir == "S" || fp.salvar == "S" || fp.imprimir == "S";
+                        child.Visible = exibemenu;
+                        //relacionar as tags que não serão exibidas na visão de Oticas
+                        if (exibemenu)
+                        {
+                            switch (Convert.ToInt32(child.Tag))
+                            {
+                                case 1006:                                
+                                case 1011:
+                                case 10043:
+                                case 10044:
+                                case 3001:
+                                    {
+                                        child.Visible = vwLaboratorio;
+                                    }
+                                    break;
+                                default:
+                                    break;
+                            }
+
+                            //Agrupamento de pedidos somente com interação para ERP
+                            if (Convert.ToInt32(child.Tag) == 2001)
+                            {
+                                child.Visible = intERP;
+                            }
+                        }
+                    }
                 }
                 else
                 {
@@ -313,8 +372,7 @@ namespace prjbase
                             {
                                 switch (Convert.ToInt32(child.Tag))
                                 {
-                                    case 1006:
-                                    case 1010:
+                                    case 1006:                                    
                                     case 1011:
                                     case 10043:
                                     case 10044:
@@ -846,8 +904,12 @@ namespace prjbase
             {
                 var frm = new frmListItem_Livro_Caixa();
                 frm.ConfigurarForm(this);
-                frm.Tag = ((ToolStripMenuItem)sender).Tag;
-                frm.Show();
+                if (! frm.IsDisposed)
+                {
+                    frm.Tag = ((ToolStripMenuItem)sender).Tag;
+                    frm.Show();
+                }
+                
             }
         }
     }

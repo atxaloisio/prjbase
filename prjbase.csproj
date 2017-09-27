@@ -102,8 +102,9 @@
     <Reference Include="FilterControls">
       <HintPath>..\..\Componentes\FilterTextBox\FilterTextBox\bin\Release\FilterControls.dll</HintPath>
     </Reference>
-    <Reference Include="libComponente">
-      <HintPath>..\..\Componentes\ValidaCampos\libComponente\bin\Debug\libComponente.dll</HintPath>
+    <Reference Include="libComponente, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\treinamento\ValidaCampos\libComponente\bin\Debug\libComponente.dll</HintPath>
     </Reference>
     <Reference Include="LinqKit">
       <HintPath>..\Utils\LinqKit.dll</HintPath>

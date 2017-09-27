@@ -45,7 +45,10 @@ namespace prjbase
                     txtDescricao.Text = Item_Livro_Caixa.descricao;
                     txtDocumento.Text = Item_Livro_Caixa.documento;
                     txtUsuario_Inclusao.Text = Item_Livro_Caixa.usuario_inclusao;
-                    txtInclusao.Text = Item_Livro_Caixa.inclusao.Value.ToShortDateString();
+                    if (Item_Livro_Caixa.inclusao.Value != null)
+                    {
+                        txtInclusao.Text = Item_Livro_Caixa.inclusao.Value.ToShortDateString();
+                    }
                     txtValor.Text = Item_Livro_Caixa.valor.Value.ToString("N2");
                     
                     txtDocumento.Focus();
@@ -71,7 +74,7 @@ namespace prjbase
 
         protected override bool salvar(object sender, EventArgs e)
         {
-            if (epValidaDados.Validar())
+            if (epValidaDados.Validar(true))
             {
                 Item_Livro_Caixa Item_Livro_Caixa = new Item_Livro_Caixa();
                 Item_Livro_CaixaBLL = new Item_Livro_CaixaBLL();
@@ -81,11 +84,15 @@ namespace prjbase
                 Item_Livro_Caixa = LoadFromControls();
 
                 if (Id != null)
-                {                    
+                {
+                    Item_Livro_Caixa.usuario_alteracao = Program.usuario_logado.nome;
+                    Item_Livro_Caixa.alteracao = DateTime.Now;
                     Item_Livro_CaixaBLL.AlterarItem_Livro_Caixa(Item_Livro_Caixa);
                 }
                 else
-                {                    
+                {
+                    Item_Livro_Caixa.usuario_inclusao = Program.usuario_logado.nome;
+                    Item_Livro_Caixa.inclusao = DateTime.Now;
                     Item_Livro_CaixaBLL.AdicionarItem_Livro_Caixa(Item_Livro_Caixa);
                 }
 
@@ -110,11 +117,42 @@ namespace prjbase
             if (Id != null)
             {
                 Item_Livro_Caixa.Id = Convert.ToInt32(txtId.Text);
+                Item_Livro_Caixa.usuario_inclusao = txtUsuario_Inclusao.Text;
+                Item_Livro_Caixa.inclusao = Convert.ToDateTime(txtInclusao.Text);
+                Item_Livro_Caixa.usuario_alteracao = Program.usuario_logado.nome;
+                Item_Livro_Caixa.alteracao = DateTime.Now;
             }
 
-            //Item_Livro_Caixa.numero = txtNumero.Text;
+            Item_Livro_Caixa.Id_livro = Convert.ToInt64(Id_Livro_Caixa);
+
+            Item_Livro_Caixa.documento = txtDocumento.Text;
+            Item_Livro_Caixa.descricao = txtDescricao.Text;
+            if (!string.IsNullOrEmpty(txtValor.Text))
+            {
+                Item_Livro_Caixa.valor = Convert.ToDecimal(txtValor.Text);
+            }
+
+            switch (Convert.ToInt32(cbTipo.SelectedValue))
+            {
+                case 1:
+                    {
+                        Item_Livro_Caixa.tipo = "E";
+                        Item_Livro_Caixa.valor = Item_Livro_Caixa.valor * (+1);
+                    }
+                    break;
+                case 2:
+                    {
+                        Item_Livro_Caixa.tipo = "S";
+                        Item_Livro_Caixa.valor = Item_Livro_Caixa.valor * (-1);
+                    }
+                    break;                
+            }
             
-            Item_Livro_CaixaBLL = new Item_Livro_CaixaBLL();
+
+
+            
+
+            //Item_Livro_CaixaBLL = new Item_Livro_CaixaBLL();
 
             //List<Item_Livro_Caixa> lstItem_Livro_Caixa = Item_Livro_CaixaBLL.getItem_Livro_Caixa(p => p.numero == Item_Livro_Caixa.numero);
 
@@ -161,6 +199,22 @@ namespace prjbase
         private void frmCadEditItem_Livro_Caixa_Load(object sender, EventArgs e)
         {
             
+        }
+
+        private void OnlyNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((!Char.IsNumber(e.KeyChar)) & (e.KeyChar != 8) & (!e.KeyChar.Equals(',')))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void OnlyNumber_Validating(object sender, CancelEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(((TextBox)sender).Text))
+            {
+                ((TextBox)sender).Text = Convert.ToDecimal(((TextBox)sender).Text).ToString("N2");
+            }
         }
     }
 }

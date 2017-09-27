@@ -250,7 +250,11 @@ namespace prjbase
             //altera a cor das linhas alternadas no grid
             gridDados.RowsDefaultCellStyle.BackColor = System.Drawing.Color.White;
             gridDados.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.LightSteelBlue;
-            formataColunagridDados(gridDados);
+
+            if (gridDados.ColumnCount > 0)
+            {
+                formataColunagridDados(gridDados);
+            }
             //seleciona a linha inteira
             gridDados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             //não permite seleção de multiplas linhas
@@ -278,7 +282,9 @@ namespace prjbase
             gridFiltros.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             gridFiltros.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             gridFiltros.RowHeadersVisible = false;
+
             formataColunagridFiltros(gridFiltros);
+
             //altera a cor das linhas alternadas no grid
             gridFiltros.RowsDefaultCellStyle.BackColor = System.Drawing.Color.White;
             gridFiltros.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.Aquamarine;
@@ -475,7 +481,7 @@ namespace prjbase
             catch (Exception ex)
             {
                 Cursor = Cursors.Default;
-                MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);                
             }
 
         }

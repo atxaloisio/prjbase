@@ -34,6 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.chkAdmin = new System.Windows.Forms.CheckBox();
             this.pnlBotoes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
             this.pnlPrincipal.SuspendLayout();
@@ -46,7 +47,7 @@
             // 
             // btnFechar
             // 
-            this.btnFechar.Location = new System.Drawing.Point(3, 353);
+            this.btnFechar.Location = new System.Drawing.Point(3, 167);
             this.btnFechar.TabIndex = 1;
             // 
             // btnIncluir
@@ -55,22 +56,23 @@
             // 
             // pnlBotoes
             // 
-            this.pnlBotoes.Size = new System.Drawing.Size(115, 114);
+            this.pnlBotoes.Size = new System.Drawing.Size(115, 200);
             // 
             // pnlPrincipal
             // 
-            this.pnlPrincipal.Size = new System.Drawing.Size(438, 114);
+            this.pnlPrincipal.Size = new System.Drawing.Size(482, 200);
             // 
             // pnlJanela
             // 
+            this.pnlJanela.Controls.Add(this.chkAdmin);
             this.pnlJanela.Controls.Add(this.txtDescricao);
             this.pnlJanela.Controls.Add(this.label3);
             this.pnlJanela.Controls.Add(this.txtNome);
             this.pnlJanela.Controls.Add(this.label2);
             this.pnlJanela.Controls.Add(this.txtId);
             this.pnlJanela.Controls.Add(this.label1);
-            this.pnlJanela.Location = new System.Drawing.Point(65, 19);
-            this.pnlJanela.Size = new System.Drawing.Size(438, 114);
+            this.pnlJanela.Location = new System.Drawing.Point(30, 23);
+            this.pnlJanela.Size = new System.Drawing.Size(438, 135);
             // 
             // txtNome
             // 
@@ -131,10 +133,20 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "Descrição";
             // 
+            // chkAdmin
+            // 
+            this.chkAdmin.AutoSize = true;
+            this.chkAdmin.Location = new System.Drawing.Point(81, 93);
+            this.chkAdmin.Name = "chkAdmin";
+            this.chkAdmin.Size = new System.Drawing.Size(122, 20);
+            this.chkAdmin.TabIndex = 10;
+            this.chkAdmin.Text = "Administrativo";
+            this.chkAdmin.UseVisualStyleBackColor = true;
+            // 
             // frmCadEditPerfil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(553, 114);
+            this.ClientSize = new System.Drawing.Size(597, 200);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Name = "frmCadEditPerfil";
             this.Text = "Perfil";
@@ -157,5 +169,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtDescricao;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox chkAdmin;
     }
 }

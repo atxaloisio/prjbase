@@ -32,7 +32,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtDocumento = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.cbTipo = new System.Windows.Forms.ComboBox();
@@ -41,10 +40,11 @@
             this.txtId_Livro_Caixa = new System.Windows.Forms.TextBox();
             this.txtUsuario_Inclusao = new System.Windows.Forms.TextBox();
             this.txtInclusao = new System.Windows.Forms.TextBox();
+            this.txtDocumento = new System.Windows.Forms.MaskedTextBox();
             this.pnlBotoes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
             this.pnlPrincipal.SuspendLayout();
             this.pnlJanela.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSalvar
@@ -53,7 +53,7 @@
             // 
             // btnFechar
             // 
-            this.btnFechar.Location = new System.Drawing.Point(3, -194);
+            this.btnFechar.Location = new System.Drawing.Point(3, -649);
             this.btnFechar.TabIndex = 1;
             // 
             // btnIncluir
@@ -70,6 +70,7 @@
             // 
             // pnlJanela
             // 
+            this.pnlJanela.Controls.Add(this.txtDocumento);
             this.pnlJanela.Controls.Add(this.txtInclusao);
             this.pnlJanela.Controls.Add(this.txtUsuario_Inclusao);
             this.pnlJanela.Controls.Add(this.txtId_Livro_Caixa);
@@ -77,18 +78,17 @@
             this.pnlJanela.Controls.Add(this.label4);
             this.pnlJanela.Controls.Add(this.label11);
             this.pnlJanela.Controls.Add(this.cbTipo);
-            this.pnlJanela.Controls.Add(this.txtDocumento);
             this.pnlJanela.Controls.Add(this.label3);
             this.pnlJanela.Controls.Add(this.txtDescricao);
             this.pnlJanela.Controls.Add(this.label2);
             this.pnlJanela.Controls.Add(this.txtId);
             this.pnlJanela.Controls.Add(this.label1);
             this.pnlJanela.Location = new System.Drawing.Point(120, 119);
-            this.pnlJanela.Size = new System.Drawing.Size(622, 123);
+            this.pnlJanela.Size = new System.Drawing.Size(636, 123);
             // 
             // txtDescricao
             // 
-            this.epValidaDados.SetFraseErro(this.txtDescricao, "Nome do Item_Livro_Caixa obrigatório.");
+            this.epValidaDados.SetFraseErro(this.txtDescricao, "Descrição do lançamento obrigatorio.");
             this.txtDescricao.Location = new System.Drawing.Point(87, 61);
             this.txtDescricao.Name = "txtDescricao";
             this.epValidaDados.SetObrigatorio(this.txtDescricao, true);
@@ -126,15 +126,6 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Código";
             // 
-            // txtDocumento
-            // 
-            this.epValidaDados.SetFraseErro(this.txtDocumento, "Nome do Item_Livro_Caixa obrigatório.");
-            this.txtDocumento.Location = new System.Drawing.Point(87, 35);
-            this.txtDocumento.Name = "txtDocumento";
-            this.epValidaDados.SetObrigatorio(this.txtDocumento, true);
-            this.txtDocumento.Size = new System.Drawing.Size(146, 23);
-            this.txtDocumento.TabIndex = 1;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -147,7 +138,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(236, 38);
+            this.label11.Location = new System.Drawing.Point(258, 38);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(34, 16);
             this.label11.TabIndex = 11;
@@ -157,22 +148,24 @@
             // 
             this.cbTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTipo.FormattingEnabled = true;
-            this.epValidaDados.SetFraseErro(this.cbTipo, "");
+            this.epValidaDados.SetFraseErro(this.cbTipo, "Tipo de Lançamento obrigatório");
             this.epValidaDados.SetIndiceCombo(this.cbTipo, -1);
-            this.cbTipo.Location = new System.Drawing.Point(270, 34);
+            this.cbTipo.Location = new System.Drawing.Point(292, 34);
             this.cbTipo.Name = "cbTipo";
-            this.epValidaDados.SetObrigatorio(this.cbTipo, false);
+            this.epValidaDados.SetObrigatorio(this.cbTipo, true);
             this.cbTipo.Size = new System.Drawing.Size(105, 24);
             this.cbTipo.TabIndex = 2;
             // 
             // txtValor
             // 
-            this.epValidaDados.SetFraseErro(this.txtValor, "Nome do Item_Livro_Caixa obrigatório.");
+            this.epValidaDados.SetFraseErro(this.txtValor, "Valor do lançamento obrigatório.");
             this.txtValor.Location = new System.Drawing.Point(87, 87);
             this.txtValor.Name = "txtValor";
             this.epValidaDados.SetObrigatorio(this.txtValor, true);
             this.txtValor.Size = new System.Drawing.Size(146, 23);
             this.txtValor.TabIndex = 4;
+            this.txtValor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumber_KeyPress);
+            this.txtValor.Validating += new System.ComponentModel.CancelEventHandler(this.OnlyNumber_Validating);
             // 
             // label4
             // 
@@ -222,19 +215,29 @@
             this.txtInclusao.TabStop = false;
             this.txtInclusao.Visible = false;
             // 
+            // txtDocumento
+            // 
+            this.epValidaDados.SetFraseErro(this.txtDocumento, "Numero de Documento obrigatório");
+            this.txtDocumento.Location = new System.Drawing.Point(87, 35);
+            this.txtDocumento.Name = "txtDocumento";
+            this.epValidaDados.SetObrigatorio(this.txtDocumento, true);
+            this.txtDocumento.Size = new System.Drawing.Size(146, 23);
+            this.txtDocumento.TabIndex = 0;
+            this.epValidaDados.SetTipoValidacao(this.txtDocumento, libComponente.TipoValidacao.Vazio);
+            // 
             // frmCadEditItem_Livro_Caixa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(961, 321);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Name = "frmCadEditItem_Livro_Caixa";
-            this.Text = "Item_Livro_Caixa";
+            this.Text = "Lançamento no Livro Caixa";
             this.Activated += new System.EventHandler(this.frmCadEditItem_Livro_Caixa_Activated);
             this.pnlBotoes.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).EndInit();
             this.pnlPrincipal.ResumeLayout(false);
             this.pnlJanela.ResumeLayout(false);
             this.pnlJanela.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -245,7 +248,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtDocumento;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtValor;
         private System.Windows.Forms.Label label4;
@@ -254,5 +256,6 @@
         private System.Windows.Forms.TextBox txtUsuario_Inclusao;
         private System.Windows.Forms.TextBox txtId_Livro_Caixa;
         private System.Windows.Forms.TextBox txtInclusao;
+        private System.Windows.Forms.MaskedTextBox txtDocumento;
     }
 }

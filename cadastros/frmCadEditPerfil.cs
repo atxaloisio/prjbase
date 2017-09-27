@@ -32,6 +32,7 @@ namespace prjbase
 
                 perfil.nome = txtNome.Text;
                 perfil.descricao = txtDescricao.Text;
+                perfil.administrativo = chkAdmin.Checked ? "S" : "N";
 
                 if (Id != null)
                 {
@@ -107,6 +108,7 @@ namespace prjbase
                     txtId.Text = perfil.Id.ToString();
                     txtNome.Text = perfil.nome;
                     txtDescricao.Text = perfil.descricao;
+                    chkAdmin.Checked = perfil.administrativo == "S";
                 }
             }
             

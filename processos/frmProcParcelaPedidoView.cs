@@ -18,7 +18,7 @@ namespace prjbase
 {
     public partial class frmProcParcelaPedidoView : prjbase.frmBaseCadEdit
     {
-        private ClienteBLL clienteBLL;        
+        private ClienteBLL clienteBLL;
         private ParcelaBLL parcelaBLL;
         private Motivo_EntregaBLL motivo_EntregaBLL;
         private Pedido_OticaBLL pedido_OticaBLL;
@@ -33,8 +33,8 @@ namespace prjbase
         private const int COL_NUMEROPARCELA = 2;
         private const int COL_DATAVENCIMENTO = 3;
         private const int COL_VALOR = 4;
-        private const int COL_PERCENTUAL = 5;        
-        private const int COL_PAGO = 6;        
+        private const int COL_PERCENTUAL = 5;
+        private const int COL_PAGO = 6;
         private const int COL_DATAPAGAMENTO = 7;
         private const int COL_FORMAPAGAMENTO = 8;
         private const int COL_USUARIOPAGAMENTO = 9;
@@ -61,12 +61,12 @@ namespace prjbase
                 txtDtPrevEntrega.Left = 647;
                 txtHrPrevEntrega.Left = 735;
 
-                lblNomeMedico.Visible = true;                
+                lblNomeMedico.Visible = true;
                 txtNomeMedico.Enabled = false;
                 txtNomeMedico.Visible = true;
                 txtNomeMedico.TabIndex = 9;
                 txtNomeMedico.TabStop = true;
-                
+
                 lblCRM.Visible = true;
                 txtCRM.Enabled = false;
                 txtCRM.Visible = true;
@@ -112,7 +112,7 @@ namespace prjbase
                 txtDtFechamento.Visible = true;
                 txtDtFechamento.TabIndex = 5;
                 txtDtFechamento.TabStop = true;
-                
+
                 lblPrevEntrega.Left = 753;
                 txtDtPrevEntrega.Left = 854;
                 txtHrPrevEntrega.Left = 942;
@@ -220,8 +220,8 @@ namespace prjbase
                             cbMotivoEntrega.SelectedValue = pedido_otica.motivo_entrega.Id;
                         }
                     }
-                    
-                    
+
+
                     if (pedido_otica.date_previsao_entrega != null)
                     {
                         txtDtPrevEntrega.Text = pedido_otica.date_previsao_entrega.Value.ToShortDateString();
@@ -236,7 +236,7 @@ namespace prjbase
                     {
                         cbCondPagamento.SelectedValue = pedido_otica.condicao_pagamento;
                     }
-                                                          
+
                     if (pedido_otica.vendedor != null)
                     {
                         cbVendedor.SelectedValue = pedido_otica.Id_vendedor;
@@ -254,7 +254,7 @@ namespace prjbase
                                 txtCRM.Text = infoadic.crm_medico.ToString();
                             }
                             txtLaboratorio.Text = infoadic.laboratorio;
-                        }                        
+                        }
                     }
 
                     if (pedido_otica.pedido_otica_parcelas.Count() > 0)
@@ -307,7 +307,7 @@ namespace prjbase
             {
                 cbFormaPagamento.Text = dgvParcelas[COL_FORMAPAGAMENTO, row].Value.ToString();
             }
-            
+
         }
 
         protected override void Incluir()
@@ -321,9 +321,9 @@ namespace prjbase
                 {
                     ImprimirRegistro(IdParcela);
                 }
-                
+
             }
-            
+
         }
 
         protected override void ImprimirRegistro(Int64? id)
@@ -342,20 +342,20 @@ namespace prjbase
             finally
             {
                 relatorio.Dispose();
-            }                        
+            }
         }
 
         protected override void Salvar_Click(object sender, EventArgs e)
         {
             try
             {
-                
+
                 if (ValidaAcessoFuncao(Operacao.Salvar))
                 {
                     if (salvar(sender, e))
                     {
-                        this.atualizagrid();                        
-                        MessageBox.Show(Text + " salvo com sucesso.", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);                        
+                        this.atualizagrid();
+                        MessageBox.Show(Text + " salvo com sucesso.", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
@@ -369,7 +369,7 @@ namespace prjbase
         protected override bool salvar(object sender, EventArgs e)
         {
             bool Retorno = true;
-            
+
             if (Retorno)
             {
                 try
@@ -381,9 +381,10 @@ namespace prjbase
 
                     foreach (Pedido_Otica_Parcelas item in ParcelasList)
                     {
+                        processaItemLivroCaixa(item);
                         ParcelasBLL.AlterarPedido_Otica_Parcelas(item);
                     }
-                                     
+
                     Retorno = true;
                 }
                 catch (Exception ex)
@@ -395,6 +396,99 @@ namespace prjbase
             return Retorno;
         }
 
+        private void processaItemLivroCaixa(Pedido_Otica_Parcelas Parcela)
+        {
+            long? Id_filial = null;
+            Item_Livro_CaixaBLL ilcBLL = new Item_Livro_CaixaBLL();
+            //buscamos se a parcela já foi registrada no livro caixa como paga.
+            List<Item_Livro_Caixa> ilcLst = ilcBLL.getItem_Livro_Caixa(p => p.Id_parcela == Parcela.Id, true);
+            #region SemRegistro
+            if ((ilcLst.Count <= 0) & (Parcela.pago == "S")) //Não foi encontrada e está registrada como paga.
+            {
+                //verificamos se usa a configuração de filial
+                if (Parametro.UtilizaFilial())
+                {
+                    //Buscamos pela filial
+                    if (Program.usuario_logado.Id_filial == null)
+                    {
+                        frmUtilSelecionarFilial frm = new frmUtilSelecionarFilial();
+
+                        if (frm.ExibeDialogo() == DialogResult.OK)
+                        {
+                            Id_filial = frm.Id;
+                        }
+
+                        frm.Dispose();
+                    }
+                    else
+                    {
+                        Id_filial = Program.usuario_logado.Id_filial;
+                    }
+                }
+
+                //Verificamos se temos movimentação aberta para a data buscando pela filial
+                
+                Livro_CaixaBLL Livro_CaixaBLL = new Livro_CaixaBLL();
+                List<Livro_Caixa> lstLc = null;
+                if (Id_filial != null)
+                {
+                    lstLc = Livro_CaixaBLL.getLivro_Caixa(p => p.Id_filial == Id_filial & DbFunctions.TruncateTime(p.data) == DbFunctions.TruncateTime(DateTime.Now) & p.status == "A", true);
+                }
+                else
+                {
+                    lstLc = Livro_CaixaBLL.getLivro_Caixa(p => DbFunctions.TruncateTime(p.data) == DbFunctions.TruncateTime(DateTime.Now) & p.status == "A", true);
+                }
+                    
+                Livro_Caixa Livro_Caixa = null;
+
+                //Temos movimentação aberta.
+                if (lstLc.Count > 0)
+                {
+                    Livro_Caixa = lstLc.First();
+                            
+                    Item_Livro_Caixa Item_Livro_Caixa = new Item_Livro_Caixa();
+
+                    Item_Livro_Caixa.documento = "PAG_PARCELA_" + Parcela.numero_parcela.ToString() + "_PED_" + Parcela.Id_pedido_otica.ToString();
+                    Item_Livro_Caixa.descricao = "Pedido: " + Parcela.Id_pedido_otica.ToString() + " - Parcela :" + Parcela.numero_parcela.ToString() + " Vencimento: " + Parcela.data_vencimento;
+                    Item_Livro_Caixa.Id_livro = Livro_Caixa.Id;
+                    Item_Livro_Caixa.Id_empresa = Program.usuario_logado.Id_empresa;
+                    Item_Livro_Caixa.Id_filial = Id_filial;
+                    Item_Livro_Caixa.Id_parcela = Parcela.Id;
+                    Item_Livro_Caixa.valor = Parcela.valor;
+                    Item_Livro_Caixa.usuario_inclusao = Program.usuario_logado.nome;
+                    Item_Livro_Caixa.tipo = "E";
+                    
+
+
+                    ilcBLL.AdicionarItem_Livro_Caixa(Item_Livro_Caixa);
+                }
+                else
+                {
+                    //Não temos movimentação aberta vamos chamar a abertura de movimentação.
+                    if (MessageBox.Show("A movimentação do livro caixa ainda não foi aberta. \n Deseja abrir?",this.Text,MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        var frm = new frmCadEditLivro_Caixa();
+                        frm.TipoMovimento = tpMovimentoLivroCaixa.Abertura;
+                        frm.atualizagrid = null;
+                        frm.Text = frm.Text + ": Abertura de Movimento";
+                        frm.ExibeDialogo();
+                        frm.Dispose();
+                        processaItemLivroCaixa(Parcela);
+                    }
+                }                                                
+            }
+            #endregion
+            #region Com Registro
+            if ((ilcLst.Count > 0) & (Parcela.pago == "N"))
+            {
+                foreach (Item_Livro_Caixa item in ilcLst)
+                {                    
+                    ilcBLL.ExcluirItem_Livro_Caixa(item);
+                }
+            }
+            #endregion
+        }
+
         private List<Pedido_Otica_Parcelas> toPedido_Otica_Parcelas(List<ParcelaView> ParcelaViewList)
         {
             List<Pedido_Otica_Parcelas> ParcelasList = new List<Pedido_Otica_Parcelas>();
@@ -404,7 +498,7 @@ namespace prjbase
                 p.Id = Convert.ToInt64(item.Id);
                 p.Id_pedido_otica = Convert.ToInt64(item.Id_Pedido_Otica);
                 p.numero_parcela = item.NrParcela;
-                p.pago = item.Pago?"S":"N";
+                p.pago = item.Pago ? "S" : "N";
                 p.quantidade_dias = item.NrDias;
                 p.percentual = item.Percentual;
                 p.valor = item.Valor;
@@ -412,11 +506,11 @@ namespace prjbase
                 p.data_vencimento = item.DtVencimento;
                 p.data_pagamento = item.DtPagamento;
                 p.forma_pagamento = item.FormaPagamento;
-                ParcelasList.Add(p);                           
+                ParcelasList.Add(p);
             }
             return ParcelasList;
         }
-                
+
         protected override void SetupControls()
         {
             SetupCondPagamento();
@@ -424,7 +518,7 @@ namespace prjbase
             SetupTransportadora();
             SetupVendedor();
             SetupMotivoEntrega();
-            setupFormaPagamento();       
+            setupFormaPagamento();
         }
 
         private void setupFormaPagamento()
@@ -457,14 +551,14 @@ namespace prjbase
             dgvParcelas.DefaultCellStyle.NullValue = " - ";
             //permite que o texto maior que célula não seja truncado
             dgvParcelas.DefaultCellStyle.WrapMode = DataGridViewTriState.False;
-            dgvParcelas.DefaultCellStyle.Font = new Font("Tahoma", 10F, FontStyle.Regular);            
+            dgvParcelas.DefaultCellStyle.Font = new Font("Tahoma", 10F, FontStyle.Regular);
         }
 
         private void formataColunadgvParcelas()
         {
             //altera o nome das colunas                        
-            
-                        
+
+
             dgvParcelas.Columns[COL_ID].Width = 70;
             dgvParcelas.Columns[COL_ID].ValueType = typeof(int);
             dgvParcelas.Columns[COL_ID].SortMode = DataGridViewColumnSortMode.Programmatic;
@@ -540,7 +634,7 @@ namespace prjbase
         private void SetupCaixa()
         {
             caixaBLL = new CaixaBLL();
-            
+
             List<Caixa> CaixaList = caixaBLL.getCaixa();
 
             AutoCompleteStringCollection acc = new AutoCompleteStringCollection();
@@ -575,7 +669,7 @@ namespace prjbase
             cbVendedor.DisplayMember = "nome";
             cbVendedor.SelectedIndex = -1;
         }
-        
+
         private void SetupMotivoEntrega()
         {
             motivo_EntregaBLL = new Motivo_EntregaBLL();
@@ -611,7 +705,7 @@ namespace prjbase
             cbCondPagamento.DisplayMember = "Descricao";
             cbCondPagamento.SelectedIndex = -1;
         }
-                        
+
         private void btnPesquisa_Click(object sender, EventArgs e)
         {
             ExecutaPesquisaCliente();
@@ -817,7 +911,7 @@ namespace prjbase
         {
 
         }
-                
+
         private void onlyNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((!Char.IsNumber(e.KeyChar)) & (e.KeyChar != 8) & (!e.KeyChar.Equals(',')))
@@ -837,7 +931,7 @@ namespace prjbase
                 e.Handled = true;
             }
         }
-                                             
+
         private void Ctrls_Validating(object sender, CancelEventArgs e)
         {
             if (sender is MaskedTextBox)
@@ -868,7 +962,7 @@ namespace prjbase
                 Ctrls_Validated(txtCodCliIntegracao, e);
             }
         }
-                        
+
         private void cbCaixa_Validating(object sender, CancelEventArgs e)
         {
             cb_Validating(sender, e);
@@ -897,10 +991,10 @@ namespace prjbase
                             epValidaDados.SetError(cbCaixa, "Caixa selecionada está em uso no pedido: " + CaixaList.FirstOrDefault().pedido_otica.Where(t => t.status < status).FirstOrDefault().codigo);
                             e.Cancel = true;
                         }
-                        
+
                     }
                 }
-            }            
+            }
         }
 
         private void cbCaixa_Validated(object sender, EventArgs e)
@@ -920,7 +1014,7 @@ namespace prjbase
                 }
             }
         }
-                
+
         private void Enter_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -947,8 +1041,8 @@ namespace prjbase
                     dgvParcelas.Rows[row].Selected = true;
                 }
                 loadCamposParcela();
-            } 
-            
+            }
+
         }
 
         private void btnUp_Click(object sender, EventArgs e)
@@ -991,7 +1085,7 @@ namespace prjbase
                 {
                     TotalParcelas = ParcelasList.Sum(p => p.Valor);
                     //calcular o percentual.
-                    
+
                     if (TotalParcelas > 0)
                     {
                         percentual = ((Valor / TotalParcelas) * 100);
@@ -1010,7 +1104,7 @@ namespace prjbase
                         PercentualRestante = ((ValorParcelaRestante / TotalParcelas) * 100);
 
                         for (int i = 0; i < ParcelasList.Count(); i++)
-                        {                            
+                        {
                             ParcelaView p = ParcelasList[i];
 
                             if (p.Editado)
@@ -1033,17 +1127,17 @@ namespace prjbase
                         }
 
                         dgvParcelas.DataSource = ParcelasList;
-                        
+
                     }
                 }
             }
-                
+
         }
 
         private List<ParcelaView> LoadFromGridParcela()
         {
             List<ParcelaView> ParcelaList = new List<ParcelaView>();
-            
+
             foreach (DataGridViewRow item in dgvParcelas.Rows)
             {
                 ParcelaView p = new ParcelaView();
@@ -1062,22 +1156,22 @@ namespace prjbase
                 {
                     p.DtPagamento = Convert.ToDateTime(item.Cells[COL_DATAPAGAMENTO].Value);
                 }
-                
+
                 if (item.Cells[COL_FORMAPAGAMENTO].Value != null)
                 {
                     p.FormaPagamento = item.Cells[COL_FORMAPAGAMENTO].Value.ToString();
                 }
-                
+
                 if (item.Cells[COL_USUARIOPAGAMENTO].Value != null)
                 {
                     p.Usuario = item.Cells[COL_USUARIOPAGAMENTO].Value.ToString();
                 }
-                
 
-                ParcelaList.Add(p);               
+
+                ParcelaList.Add(p);
             }
 
-            return ParcelaList; 
+            return ParcelaList;
         }
 
         private void dgvParcelas_Click(object sender, EventArgs e)
@@ -1094,13 +1188,13 @@ namespace prjbase
                 for (int i = 0; i < ParcelasList.Count(); i++)
                 {
                     ParcelaView p = ParcelasList[i];
-                   
+
                     if (i == row)
                     {
                         p.Pago = ((CheckBox)sender).Checked;
                         p.Editado = true;
                     }
-                    
+
                 }
 
                 dgvParcelas.DataSource = ParcelasList;
@@ -1180,7 +1274,7 @@ namespace prjbase
                     if (i == row)
                     {
                         p.FormaPagamento = cbFormaPagamento.Text;
-                        p.Usuario = Program.usuario_logado.nome;                        
+                        p.Usuario = Program.usuario_logado.nome;
                         p.Editado = true;
                     }
 
