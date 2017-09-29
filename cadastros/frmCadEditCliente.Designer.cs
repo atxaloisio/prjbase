@@ -105,9 +105,9 @@
             this.btnCapturaCamera = new System.Windows.Forms.Button();
             this.dlgCaminhoImagem = new System.Windows.Forms.OpenFileDialog();
             this.pnlBotoes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
             this.pnlPrincipal.SuspendLayout();
             this.pnlJanela.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).BeginInit();
             this.tcCliente.SuspendLayout();
             this.tpEndereco.SuspendLayout();
             this.tpTelefoneEmail.SuspendLayout();
@@ -119,7 +119,7 @@
             // 
             // btnFechar
             // 
-            this.btnFechar.Location = new System.Drawing.Point(3, 364);
+            this.btnFechar.Location = new System.Drawing.Point(3, 372);
             // 
             // pnlBotoes
             // 
@@ -173,6 +173,7 @@
             this.txtCodInt.Location = new System.Drawing.Point(261, 9);
             this.txtCodInt.Name = "txtCodInt";
             this.epValidaDados.SetObrigatorio(this.txtCodInt, false);
+            this.txtCodInt.ReadOnly = true;
             this.txtCodInt.Size = new System.Drawing.Size(100, 23);
             this.txtCodInt.TabIndex = 3;
             this.txtCodInt.TabStop = false;
@@ -215,6 +216,7 @@
             this.txtId.Location = new System.Drawing.Point(473, 9);
             this.txtId.Name = "txtId";
             this.epValidaDados.SetObrigatorio(this.txtId, false);
+            this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(100, 23);
             this.txtId.TabIndex = 43;
             this.txtId.TabStop = false;
@@ -227,6 +229,7 @@
             this.txtCodigo.Location = new System.Drawing.Point(367, 9);
             this.txtCodigo.Name = "txtCodigo";
             this.epValidaDados.SetObrigatorio(this.txtCodigo, false);
+            this.txtCodigo.ReadOnly = true;
             this.txtCodigo.Size = new System.Drawing.Size(100, 23);
             this.txtCodigo.TabIndex = 44;
             this.txtCodigo.TabStop = false;
@@ -985,10 +988,10 @@
             this.Activated += new System.EventHandler(this.frmCadEditCliente_Activated);
             this.Resize += new System.EventHandler(this.frmCadEditCliente_Resize);
             this.pnlBotoes.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).EndInit();
             this.pnlPrincipal.ResumeLayout(false);
             this.pnlJanela.ResumeLayout(false);
             this.pnlJanela.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epValidaDados)).EndInit();
             this.tcCliente.ResumeLayout(false);
             this.tpEndereco.ResumeLayout(false);
             this.tpEndereco.PerformLayout();

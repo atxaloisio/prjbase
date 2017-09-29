@@ -308,6 +308,22 @@ namespace prjbase
                 cbFormaPagamento.Text = dgvParcelas[COL_FORMAPAGAMENTO, row].Value.ToString();
             }
 
+            //Se foi pago não vamos permitir alterar.
+            if (chkPago.Checked)
+            {
+                txtDtVencimento.Enabled = false;
+                txtDtPagamento.Enabled = false;
+                txtValor.Enabled = false;
+                cbFormaPagamento.Enabled = false;
+            }
+            else
+            {
+                txtDtVencimento.Enabled = true;
+                txtDtPagamento.Enabled = true;
+                txtValor.Enabled = true;
+                cbFormaPagamento.Enabled = true;
+            }
+
         }
 
         protected override void Incluir()
@@ -1245,22 +1261,7 @@ namespace prjbase
 
             }
         }
-
-        private void txtDtPagamento_Validating(object sender, CancelEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(((MaskedTextBox)sender).Text))
-            {
-                ((MaskedTextBox)sender).TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
-                if (!ValidateUtils.isDate(((MaskedTextBox)sender).Text))
-                {
-                    MessageBox.Show("Data inválida.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    ((MaskedTextBox)sender).Text = string.Empty;
-                    e.Cancel = true;
-                }
-                        ((MaskedTextBox)sender).TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-            }
-        }
-
+        
         private void cbFormaPagamento_SelectionChangeCommitted(object sender, EventArgs e)
         {
             if (dgvParcelas.SelectedRows.Count > 0)
@@ -1275,6 +1276,49 @@ namespace prjbase
                     {
                         p.FormaPagamento = cbFormaPagamento.Text;
                         p.Usuario = Program.usuario_logado.nome;
+                        p.Editado = true;
+                    }
+
+                }
+
+                dgvParcelas.DataSource = ParcelasList;
+
+                dgvParcelas.CurrentCell = dgvParcelas.Rows[row].Cells[COL_NUMEROPARCELA];
+                dgvParcelas.Rows[row].Selected = true;
+
+            }
+        }
+
+        private void txtDate_Validating(object sender, CancelEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(((MaskedTextBox)sender).Text))
+            {
+                ((MaskedTextBox)sender).TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+                if (!ValidateUtils.isDate(((MaskedTextBox)sender).Text))
+                {
+                    MessageBox.Show("Data inválida.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ((MaskedTextBox)sender).Text = string.Empty;
+                    e.Cancel = true;
+                }
+                        ((MaskedTextBox)sender).TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            }
+        }
+
+        private void txtDtVencimento_Validated(object sender, EventArgs e)
+        {
+            if (dgvParcelas.SelectedRows.Count > 0)
+            {
+                int row = dgvParcelas.SelectedRows[0].Index;
+                List<ParcelaView> ParcelasList = LoadFromGridParcela();
+                for (int i = 0; i < ParcelasList.Count(); i++)
+                {
+                    ParcelaView p = ParcelasList[i];
+
+                    if (i == row)
+                    {
+                        ((MaskedTextBox)sender).TextMaskFormat = MaskFormat.IncludeLiterals;
+                        p.DtVencimento = ((MaskedTextBox)sender).Text;
+                        ((MaskedTextBox)sender).TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
                         p.Editado = true;
                     }
 

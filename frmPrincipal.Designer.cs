@@ -392,6 +392,7 @@
             this.mnuContasPagar.Size = new System.Drawing.Size(153, 22);
             this.mnuContasPagar.Tag = "40032";
             this.mnuContasPagar.Text = "Contas a Pagar";
+            this.mnuContasPagar.Click += new System.EventHandler(this.mnuContasPagar_Click);
             // 
             // mnuFluxoCaixa
             // 

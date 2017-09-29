@@ -912,5 +912,55 @@ namespace prjbase
                 
             }
         }
+
+        private void mnuContasPagar_Click(object sender, EventArgs e)
+        {
+            long? Id_filial = null;
+
+            if (Parametro.UtilizaFilial())
+            {
+                if (Program.usuario_logado.Id_filial != null)
+                {
+                    Id_filial = Program.usuario_logado.Id_filial;
+                }
+                else
+                {
+                    frmUtilSelecionarFilial frm = new frmUtilSelecionarFilial();
+
+                    if (frm.ExibeDialogo() == DialogResult.OK)
+                    {
+                        Id_filial = frm.Id;
+                    }
+
+                    frm.Dispose();
+                }
+            }
+
+            Boolean instanciar = true;
+
+            foreach (var mdiChildForm in MdiChildren)
+            {
+                if (mdiChildForm is frmListContas_Pagar)
+                {
+                    instanciar = false;
+                    mdiChildForm.BringToFront();
+                    ((frmListContas_Pagar)mdiChildForm).Id_filial = Id_filial;
+                    mdiChildForm.Show();
+                }
+            }
+
+            if (instanciar)
+            {
+                var frm = new frmListContas_Pagar();
+                frm.ConfigurarForm(this);
+                if (!frm.IsDisposed)
+                {
+                    frm.Tag = ((ToolStripMenuItem)sender).Tag;
+                    frm.Id_filial = Id_filial;                    
+                    frm.Show();
+                }
+
+            }
+        }
     }
 }

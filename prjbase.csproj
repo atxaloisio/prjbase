@@ -207,6 +207,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cadastros\frmCadEditContas_Pagar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cadastros\frmCadEditContas_Pagar.Designer.cs">
+      <DependentUpon>frmCadEditContas_Pagar.cs</DependentUpon>
+    </Compile>
     <Compile Include="cadastros\frmCadEditItem_Livro_Caixa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -340,6 +346,12 @@
       <DependentUpon>frmParametroSistema.cs</DependentUpon>
     </Compile>
     <Compile Include="GravaArquivo.cs" />
+    <Compile Include="Listas\frmListContas_Pagar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listas\frmListContas_Pagar.Designer.cs">
+      <DependentUpon>frmListContas_Pagar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Listas\frmListItem_Livro_Caixa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -657,6 +669,9 @@
     <Compile Include="utilitarios\frmUtilSelecionarFilial.Designer.cs">
       <DependentUpon>frmUtilSelecionarFilial.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="cadastros\frmCadEditContas_Pagar.resx">
+      <DependentUpon>frmCadEditContas_Pagar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="cadastros\frmCadEditItem_Livro_Caixa.resx">
       <DependentUpon>frmCadEditItem_Livro_Caixa.cs</DependentUpon>
     </EmbeddedResource>
@@ -725,6 +740,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmParametroSistema.resx">
       <DependentUpon>frmParametroSistema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listas\frmListContas_Pagar.resx">
+      <DependentUpon>frmListContas_Pagar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Listas\frmListItem_Livro_Caixa.resx">
       <DependentUpon>frmListItem_Livro_Caixa.cs</DependentUpon>
@@ -935,6 +953,7 @@
   <ItemGroup>
     <Content Include="oculos.ico" />
     <Content Include="oculos2.ico" />
+    <None Include="Resources\siflao.png" />
     <None Include="Resources\um.png" />
     <None Include="Resources\tres.png" />
     <None Include="Resources\dois.png" />

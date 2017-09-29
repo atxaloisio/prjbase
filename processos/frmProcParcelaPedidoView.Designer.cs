@@ -99,7 +99,7 @@
             // 
             // btnFechar
             // 
-            this.btnFechar.Location = new System.Drawing.Point(3, 252);
+            this.btnFechar.Location = new System.Drawing.Point(3, 353);
             // 
             // btnIncluir
             // 
@@ -204,7 +204,7 @@
             this.cbFormaPagamento.Name = "cbFormaPagamento";
             this.epValidaDados.SetObrigatorio(this.cbFormaPagamento, false);
             this.cbFormaPagamento.Size = new System.Drawing.Size(152, 24);
-            this.cbFormaPagamento.TabIndex = 72;
+            this.cbFormaPagamento.TabIndex = 42;
             this.cbFormaPagamento.SelectionChangeCommitted += new System.EventHandler(this.cbFormaPagamento_SelectionChangeCommitted);
             // 
             // txtNrDias
@@ -262,7 +262,7 @@
             this.chkPago.Location = new System.Drawing.Point(105, 114);
             this.chkPago.Name = "chkPago";
             this.chkPago.Size = new System.Drawing.Size(59, 20);
-            this.chkPago.TabIndex = 67;
+            this.chkPago.TabIndex = 40;
             this.chkPago.Text = "Pago";
             this.chkPago.UseVisualStyleBackColor = true;
             this.chkPago.CheckStateChanged += new System.EventHandler(this.chkPago_CheckStateChanged);
@@ -308,7 +308,7 @@
             this.epValidaDados.SetObrigatorio(this.txtPercentual, false);
             this.txtPercentual.ReadOnly = true;
             this.txtPercentual.Size = new System.Drawing.Size(87, 23);
-            this.txtPercentual.TabIndex = 64;
+            this.txtPercentual.TabIndex = 39;
             this.txtPercentual.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label8
@@ -329,7 +329,7 @@
             this.txtValor.Name = "txtValor";
             this.epValidaDados.SetObrigatorio(this.txtValor, false);
             this.txtValor.Size = new System.Drawing.Size(87, 23);
-            this.txtValor.TabIndex = 62;
+            this.txtValor.TabIndex = 38;
             this.txtValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtValor.Validated += new System.EventHandler(this.txtValor_Validated);
             // 
@@ -351,13 +351,12 @@
             this.txtDtPagamento.Name = "txtDtPagamento";
             this.epValidaDados.SetObrigatorio(this.txtDtPagamento, true);
             this.txtDtPagamento.Size = new System.Drawing.Size(87, 23);
-            this.txtDtPagamento.TabIndex = 39;
-            this.txtDtPagamento.TabStop = false;
+            this.txtDtPagamento.TabIndex = 41;
             this.txtDtPagamento.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.epValidaDados.SetTipoValidacao(this.txtDtPagamento, libComponente.TipoValidacao.Vazio);
             this.txtDtPagamento.ValidatingType = typeof(System.DateTime);
             this.txtDtPagamento.Enter += new System.EventHandler(this.txtDtPagamento_Enter);
-            this.txtDtPagamento.Validating += new System.ComponentModel.CancelEventHandler(this.txtDtPagamento_Validating);
+            this.txtDtPagamento.Validating += new System.ComponentModel.CancelEventHandler(this.txtDate_Validating);
             this.txtDtPagamento.Validated += new System.EventHandler(this.txtDtPagamento_Validated);
             // 
             // label6
@@ -378,10 +377,12 @@
             this.epValidaDados.SetObrigatorio(this.txtDtVencimento, true);
             this.txtDtVencimento.Size = new System.Drawing.Size(87, 23);
             this.txtDtVencimento.TabIndex = 37;
-            this.txtDtVencimento.TabStop = false;
             this.txtDtVencimento.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.epValidaDados.SetTipoValidacao(this.txtDtVencimento, libComponente.TipoValidacao.Vazio);
             this.txtDtVencimento.ValidatingType = typeof(System.DateTime);
+            this.txtDtVencimento.Enter += new System.EventHandler(this.txtDtPagamento_Enter);
+            this.txtDtVencimento.Validating += new System.ComponentModel.CancelEventHandler(this.txtDate_Validating);
+            this.txtDtVencimento.Validated += new System.EventHandler(this.txtDtVencimento_Validated);
             // 
             // label4
             // 
