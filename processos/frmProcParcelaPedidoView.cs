@@ -472,6 +472,7 @@ namespace prjbase
                     Item_Livro_Caixa.Id_parcela = Parcela.Id;
                     Item_Livro_Caixa.valor = Parcela.valor;
                     Item_Livro_Caixa.usuario_inclusao = Program.usuario_logado.nome;
+                    Item_Livro_Caixa.inclusao = DateTime.Now;
                     Item_Livro_Caixa.tipo = "E";
                     
 

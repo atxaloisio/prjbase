@@ -45,7 +45,7 @@ namespace prjbase
                     txtDtPrevPagamento.Text = Contas_Pagar.previsao.Value.ToShortDateString();
                     if (Contas_Pagar.pagamento != null)
                     {
-                        txtDtPrevPagamento.Text = Contas_Pagar.previsao.Value.ToShortDateString();
+                        txtDtPagamento.Text = Contas_Pagar.previsao.Value.ToShortDateString();
                     }
                     txtObs.Text = Contas_Pagar.observacao;
 
@@ -133,9 +133,10 @@ namespace prjbase
                 {
                     Id = Contas_Pagar.Id;
                     txtId.Text = Contas_Pagar.Id.ToString();
-                    btnPagamento.Enabled = true;
-                    btnPagamento.TabStop = true;
-                    btnPagamento.Visible = true;
+                    
+                    btnPagamento.Enabled = !chkPago.Checked;
+                    btnPagamento.TabStop = !chkPago.Checked;
+                    btnPagamento.Visible = !chkPago.Checked;
                 }
                 txtDocumento.Focus();
                 return true;
@@ -189,8 +190,8 @@ namespace prjbase
                 Contas_Pagar.pagamento = Convert.ToDateTime(txtDtPagamento.Text);
                 txtDtPagamento.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             }
-            
 
+            Contas_Pagar.observacao = txtObs.Text;
             Contas_Pagar.pago = chkPago.Checked ? "S" : "N";
 
             Contas_Pagar.valor = Convert.ToDecimal(txtValor.Text);
@@ -427,107 +428,115 @@ namespace prjbase
             {
                 //Vamos realizar o processo de pagamento do contas a pagar.
                 //Primeiro vamos ver se existe saldo no caixa para o pagamento da conta a pagar
-                Livro_CaixaBLL Livro_CaixaBLL = new Livro_CaixaBLL();
-                List<Livro_Caixa> lstLc = null;
-                if (Id_filial != null)
+                if (!chkPago.Checked)
                 {
-                    lstLc = Livro_CaixaBLL.getLivro_Caixa(p => p.Id_filial == Id_filial & DbFunctions.TruncateTime(p.data) == DbFunctions.TruncateTime(DateTime.Now), true);
-                }
-                else
-                {
-                    lstLc = Livro_CaixaBLL.getLivro_Caixa(p => DbFunctions.TruncateTime(p.data) == DbFunctions.TruncateTime(DateTime.Now), true);
-                }
-
-
-                Livro_Caixa Livro_Caixa = null;
-
-                if (lstLc.Count > 0)
-                {
-                    Livro_Caixa = lstLc.First();
-                }
-                else
-                {
-                    throw new Exception("Não existe movimentação aberta para realizar o pagamento.");
-                }
-
-                if (Livro_Caixa != null)
-                {
-                    if (Livro_Caixa.status != "F")
+                    Livro_CaixaBLL Livro_CaixaBLL = new Livro_CaixaBLL();
+                    List<Livro_Caixa> lstLc = null;
+                    if (Id_filial != null)
                     {
-                        entradas = Convert.ToDecimal(Livro_Caixa.item_livro_caixa.Where(p => p.tipo == "E").Sum(c => c.valor));
-                        saidas = Convert.ToDecimal(Livro_Caixa.item_livro_caixa.Where(p => p.tipo == "S").Sum(c => c.valor));
-                        saldo_inicial = Convert.ToDecimal(Livro_Caixa.saldo_inicial);
-
-                        //saldo obtido vamos comparar verificar se é suficinete para pagar 
-                        saldo = ((saldo_inicial + entradas) - (-1 * saidas));
-
-                        decimal valor = Convert.ToDecimal(txtValor.Text);
-
-                        if (valor <= saldo)
-                        {
-                            //Vamos registrar um item no livro de caixa e atualizar o conta a pagar
-                            //com a data de pagamento e o flag de pago.                            
-                            Item_Livro_CaixaBLL Item_LivroBLL = new Item_Livro_CaixaBLL();
-                            try
-                            {
-                                Item_LivroBLL.UsuarioLogado = Program.usuario_logado;
-
-                                Item_Livro_Caixa Item_Livro = new Item_Livro_Caixa();
-
-                                Item_Livro.Id_contaspagar = Convert.ToInt64(Id);
-                                Item_Livro.Id_empresa = Program.usuario_logado.Id_empresa;
-
-                                if (Id_filial != null)
-                                {
-                                    Item_Livro.Id_filial = Id_filial;
-                                }
-
-                                Item_Livro.inclusao = DateTime.Now;
-                                Item_Livro.tipo = "S";
-                                Item_Livro.descricao = "Contas a Pagar Documento: " + txtDocumento.Text;
-                                Item_Livro.usuario_inclusao = Program.usuario_logado.nome;
-                                Item_Livro.valor = valor;
-                                Item_Livro.Id_livro = Livro_Caixa.Id;
-
-                                Item_LivroBLL.AdicionarItem_Livro_Caixa(Item_Livro);
-
-                                if (Item_Livro.Id > 0)
-                                {
-                                    Contas_PagarBLL = new Contas_PagarBLL();
-                                    Contas_PagarBLL.UsuarioLogado = Program.usuario_logado;
-                                    Contas_Pagar cp = Contas_PagarBLL.Localizar(Id);
-
-                                    cp.pago = "S";
-                                    cp.pagamento = DateTime.Now;
-                                    cp.usuario_alteracao = Program.usuario_logado.nome;
-                                    cp.alteracao = DateTime.Now;
-
-                                    Contas_PagarBLL.AlterarContas_Pagar(cp);
-
-                                    LoadToControls();
-                                    
-                                    chkPago.Checked = true;
-                                    chkPago.Enabled = false;
-                                    chkPago.Visible = true;
-                                    btnPagamento.Enabled = false;
-                                }
-                            }
-                            catch (Exception)
-                            {
-                                throw;
-                            }                            
-                        }
-                        else
-                        {
-                            throw new Exception("saldo em caixa menor que o valor para pagamento.");
-                        }
-                     
+                        lstLc = Livro_CaixaBLL.getLivro_Caixa(p => p.Id_filial == Id_filial & DbFunctions.TruncateTime(p.data) == DbFunctions.TruncateTime(DateTime.Now), true);
                     }
                     else
                     {
-                        throw new Exception("Não será possivel realizar o pagamento pois a movimentação diária está Fechada");
+                        lstLc = Livro_CaixaBLL.getLivro_Caixa(p => DbFunctions.TruncateTime(p.data) == DbFunctions.TruncateTime(DateTime.Now), true);
                     }
-                    
+
+
+                    Livro_Caixa Livro_Caixa = null;
+
+                    if (lstLc.Count > 0)
+                    {
+                        Livro_Caixa = lstLc.First();
+                    }
+                    else
+                    {
+                        throw new Exception("Não existe movimentação aberta para realizar o pagamento.");
+                    }
+
+                    if (Livro_Caixa != null)
+                    {
+                        if (Livro_Caixa.status != "F")
+                        {
+                            entradas = Convert.ToDecimal(Livro_Caixa.item_livro_caixa.Where(p => p.tipo == "E").Sum(c => c.valor));
+                            saidas = Convert.ToDecimal(Livro_Caixa.item_livro_caixa.Where(p => p.tipo == "S").Sum(c => c.valor));
+                            saldo_inicial = Convert.ToDecimal(Livro_Caixa.saldo_inicial);
+
+                            //saldo obtido vamos comparar verificar se é suficinete para pagar 
+                            saldo = ((saldo_inicial + entradas) - (-1 * saidas));
+
+                            decimal valor = Convert.ToDecimal(txtValor.Text);
+
+                            if (valor <= saldo)
+                            {
+                                //Vamos registrar um item no livro de caixa e atualizar o conta a pagar
+                                //com a data de pagamento e o flag de pago.                            
+                                Item_Livro_CaixaBLL Item_LivroBLL = new Item_Livro_CaixaBLL();
+                                try
+                                {
+                                    Item_LivroBLL.UsuarioLogado = Program.usuario_logado;
+
+                                    Item_Livro_Caixa Item_Livro = new Item_Livro_Caixa();
+
+                                    Item_Livro.Id_contaspagar = Convert.ToInt64(Id);
+                                    Item_Livro.Id_empresa = Program.usuario_logado.Id_empresa;
+
+                                    if (Id_filial != null)
+                                    {
+                                        Item_Livro.Id_filial = Id_filial;
+                                    }
+
+                                    Item_Livro.inclusao = DateTime.Now;
+                                    Item_Livro.tipo = "S";
+                                    Item_Livro.descricao = "Contas a Pagar Documento: " + txtDocumento.Text;
+                                    Item_Livro.usuario_inclusao = Program.usuario_logado.nome;
+                                    Item_Livro.valor = valor;
+                                    Item_Livro.Id_livro = Livro_Caixa.Id;
+
+                                    Item_LivroBLL.AdicionarItem_Livro_Caixa(Item_Livro);
+
+                                    if (Item_Livro.Id > 0)
+                                    {
+                                        Contas_PagarBLL = new Contas_PagarBLL();
+                                        Contas_PagarBLL.UsuarioLogado = Program.usuario_logado;
+                                        Contas_Pagar cp = Contas_PagarBLL.Localizar(Id);
+
+                                        cp.pago = "S";
+                                        cp.pagamento = DateTime.Now;
+                                        cp.usuario_alteracao = Program.usuario_logado.nome;
+                                        cp.alteracao = DateTime.Now;
+
+                                        Contas_PagarBLL.AlterarContas_Pagar(cp);
+
+                                        LoadToControls();
+
+                                        chkPago.Checked = true;
+                                        chkPago.Enabled = false;
+                                        chkPago.Visible = true;
+                                        btnPagamento.Enabled = false;
+
+                                        btnIncluir.Top = 40;
+                                        btnIncluir.Visible = true;
+                                        MessageBox.Show("Processo de Pagamento realizado com sucesso.", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                    }
+                                }
+                                catch (Exception)
+                                {
+                                    throw;
+                                }
+                            }
+                            else
+                            {
+                                throw new Exception("saldo em caixa menor que o valor para pagamento.");
+                            }
+
+                        }
+                        else
+                        {
+                            throw new Exception("Não será possivel realizar o pagamento pois a movimentação diária está Fechada");
+                        }
+
+                    }
                 }
             }
             catch (Exception ex)

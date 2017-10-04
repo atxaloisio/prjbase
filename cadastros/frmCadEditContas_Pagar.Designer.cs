@@ -68,7 +68,7 @@
             // 
             // btnFechar
             // 
-            this.btnFechar.Location = new System.Drawing.Point(3, -319);
+            this.btnFechar.Location = new System.Drawing.Point(3, -351);
             this.btnFechar.TabIndex = 1;
             // 
             // btnIncluir
@@ -201,7 +201,7 @@
             // 
             // btnPesquisa
             // 
-            this.btnPesquisa.BackColor = System.Drawing.Color.Green;
+            this.btnPesquisa.BackColor = System.Drawing.SystemColors.HotTrack;
             this.btnPesquisa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPesquisa.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnPesquisa.Image = ((System.Drawing.Image)(resources.GetObject("btnPesquisa.Image")));

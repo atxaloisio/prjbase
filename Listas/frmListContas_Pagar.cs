@@ -40,6 +40,12 @@ namespace prjbase
             InitializeComponent();            
         }
 
+        public frmListContas_Pagar(long? pId_filial)
+        {
+            Id_filial = pId_filial;
+            InitializeComponent();
+        }
+
         private void frmContas_Pagar_Activated(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;

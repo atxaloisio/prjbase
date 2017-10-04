@@ -99,7 +99,7 @@
             // 
             // btnFechar
             // 
-            this.btnFechar.Location = new System.Drawing.Point(3, 353);
+            this.btnFechar.Location = new System.Drawing.Point(3, 402);
             // 
             // btnIncluir
             // 

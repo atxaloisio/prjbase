@@ -951,7 +951,7 @@ namespace prjbase
 
             if (instanciar)
             {
-                var frm = new frmListContas_Pagar();
+                var frm = new frmListContas_Pagar(Id_filial);
                 frm.ConfigurarForm(this);
                 if (!frm.IsDisposed)
                 {

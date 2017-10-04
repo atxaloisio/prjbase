@@ -55,22 +55,22 @@ namespace prjbase
                 this.Cursor = Cursors.WaitCursor;
 
 #if DEBUG
-                Program.usuario_logado = usuarioBLL.Localizar(1);
-                stUsuario.UsuarioLogado = Program.usuario_logado;
-                this.DialogResult = DialogResult.OK;
-
-                //Program.usuario_logado = usuarioBLL.loginSistema(txtUsuaio.Text, txtSenha.Text);
+                //Program.usuario_logado = usuarioBLL.Localizar(1);
                 //stUsuario.UsuarioLogado = Program.usuario_logado;
+                //this.DialogResult = DialogResult.OK;
 
-                //if (Program.usuario_logado != null)
-                //{
-                //    this.DialogResult = DialogResult.OK;
-                //}
-                //else
-                //{
-                //    MessageBox.Show("Usuário ou senha incorreto.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //    this.DialogResult = DialogResult.None;
-                //}
+                Program.usuario_logado = usuarioBLL.loginSistema(txtUsuaio.Text, txtSenha.Text);
+                stUsuario.UsuarioLogado = Program.usuario_logado;
+
+                if (Program.usuario_logado != null)
+                {
+                    this.DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("Usuário ou senha incorreto.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.DialogResult = DialogResult.None;
+                }
 #else
                 Program.usuario_logado = usuarioBLL.loginSistema(txtUsuaio.Text, txtSenha.Text);
                 stUsuario.UsuarioLogado = Program.usuario_logado;
